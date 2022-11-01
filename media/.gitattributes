@@ -1,0 +1,10 @@
+resistores.mp4 filter=lfs diff=lfs merge=lfs -text
+jogovelha.mp4 filter=lfs diff=lfs merge=lfs -text
+relogio.mp4 filter=lfs diff=lfs merge=lfs -text
+triangulos.mp4 filter=lfs diff=lfs merge=lfs -text
+animais_caixas.mp4 filter=lfs diff=lfs merge=lfs -text
+dados.mp4 filter=lfs diff=lfs merge=lfs -text
+line_following.mp4 filter=lfs diff=lfs merge=lfs -text
+lines.mp4 filter=lfs diff=lfs merge=lfs -text
+cartas.mp4 filter=lfs diff=lfs merge=lfs -text
+dogs_chairs.mp4 filter=lfs diff=lfs merge=lfs -text
