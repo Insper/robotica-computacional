@@ -1,0 +1,33 @@
+<h1 id="instalando-opencv-no-ipython-notebook">Instalando OpenCV no IPython notebook</h1>
+<p>Precisamos usar Python 2 este é o Python mais suportado e testado na versão do ROS que usaremos. Assim fica mais fácil aproveitar código feito agora no robô.</p>
+<p>Abra um terminal, e veja se já não tem um ambiente com Python 2.</p>
+<pre><code>conda env list</code></pre>
+<p>Para saber qual é o ambiente ativo atualmente dê o comando:</p>
+<pre><code>conda info --envs</code></pre>
+<p>A saída deverá ser algo assim:</p>
+<pre><code># conda environments:
+#
+Python27                 //anaconda/envs/Python27
+_build                   //anaconda/envs/_build
+root                  *  //anaconda</code></pre>
+<p>O asterisco marca o ambiente que está sendo usando</p>
+<p>Para ativar outro ambiente:</p>
+<p><strong>No Windows</strong> activate <font color=red>NOME_DO_AMBIENTE</font></p>
+<p><strong>No Linux ou Mac</strong> source activate <font colore=red>NOME_DO_AMBIENTE</font></p>
+<p>Para criar um environment Python 2.7 faça:</p>
+<pre><code>conda create -n python2amb python=2.7 anaconda</code></pre>
+<p>Depois, para mudar para o ambiente Python 2.7, fa;ca</p>
+<p><strong>No Windows</strong> activate <font color=red>python2amb</font></p>
+<p><strong>No Linux ou Mac</strong> source activate <font colore=red>python2amb</font></p>
+<p>No que ao invés de <strong>python2amb</strong> você pode usar o nome que quiser.</p>
+<p>Para instalar a OpenCV</p>
+<pre><code>conda install opencv</code></pre>
+<h2 id="caso-tenha-problemas">Caso tenha problemas</h2>
+<h3 id="no-windows-ou-no-osx">No Windows ou no OSX</h3>
+<p>Faça:</p>
+<pre><code>conda install -c conda-forge opencv</code></pre>
+<p><strong>Alternativa para Windows:</strong></p>
+<p>Baixe a OpenCV do link <a href="https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.11/" class="uri">https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.11/</a> e a instale em C:</p>
+<p>Depois copie o conteúdo de C:86.7 e cole na pasta <strong>Pasta_Anaconda</strong>/envs/<strong>NOME_DO_SEU_AMBIENTE</strong>/lib/python2.7/site-packages</p>
+<p>No lugar de <strong>Pasta_Anaconda</strong> inclue a pasta em que seu Anaconda está instalado. Por exemplo C:</p>
+<p>No lugar de <strong>NOME_DO_SEU_AMBIENTE</strong> coloque <strong>python2amb</strong> ou o nome que deu ao seu ambiente Python</p>
