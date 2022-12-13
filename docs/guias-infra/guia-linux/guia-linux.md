@@ -435,7 +435,7 @@ chmod a+x /home/borg/Documents/nome_da_pasta/teste.py
 ```
 
 A concatenação de a+x significa que estamos permitindo para todos (a = all) usuarios e grupos executem (x = execution) o
-**[teste.py](http://teste.py/)**
+**teste.py**
 
 ## Editando arquivos
 
