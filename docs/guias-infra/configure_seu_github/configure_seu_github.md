@@ -67,10 +67,11 @@ Salve com muito carinho o token gerado, ele **não vai aparecer novamente,** se 
 
 ![Untitled](imgs/Untitled7.png)
 
-É possível salvar o seu token no gerenciador de credenciais do git. 
+É possível salvar o seu token no gerenciador de credenciais do git.
+💡Você precisa estar dentro de um repositório git para conseguir armazenar a sua credencial.
 
 Na primeira vez que você fizer um push para um repositório remoto, o git solicitará suas credenciais, como nome de usuário e seu token
-Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais, basta abrir um terminal e executar o comando
+Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais dentro do repositório, basta abrir um terminal e executar o comando
 
 ```bash
 git config credential.helper store
