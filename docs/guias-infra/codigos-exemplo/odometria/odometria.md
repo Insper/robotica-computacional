@@ -18,7 +18,7 @@ Algo assim vai aparecer no seu terminal
 
 ![Untitled](imgs/Untitled.png)
 
-Esses são os dados coletados pela odometria do Insperbot simulado. Agora, vamos capturar e exibir os dados da odometria via código em python, certifique-se de que o seu terminal está aberto na mesma pasta que o código [odom.py](http://odom.py), digite o comando abaixo para executar o código.
+Esses são os dados coletados pela odometria do Insperbot simulado. Agora, vamos capturar e exibir os dados da odometria via código em python, certifique-se de que o seu terminal está aberto na mesma pasta que o código [odom.py](odom.py), digite o comando abaixo para executar o código.
 
 ```bash
 python3 odom.py
