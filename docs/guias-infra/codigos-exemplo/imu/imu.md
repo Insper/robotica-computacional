@@ -2,7 +2,7 @@
 
 A IMU - Unidade de medição inercial é um conjunto de sensores que combinam vários acelerômetros e giroscópios para uma medição tridimensional da aceleração e da velocidade angular, esse sensor é muito importante para fazer o alinhamento angular do robô.
 
-![Untitled](Alinhamento%20angular%20do%20robo%CC%82%20usando%20a%20IMU%20859f751a677c41bbbeebae9ff0847dc9/Untitled.png)
+![Untitled](imgs/Untitled.png)
 
 Vamos abrir o Gazebo para capturar os da IMU. Com o arquivo robótica devidamente configurado para conectar com o robô simulado, abra um terminal novo e digite o código abaixo para abrir uma simulação do gazebo.
 
@@ -16,7 +16,7 @@ Em seguida, abra um novo terminal e execute o comando abaixo para visualizar os 
 rostopic echo imu
 ```
 
-![Untitled](Alinhamento%20angular%20do%20robo%CC%82%20usando%20a%20IMU%20859f751a677c41bbbeebae9ff0847dc9/Untitled%201.png)
+![Untitled](imgs/Untitled1.png)
 
 A IMU está exibindo os dados de orientação nos angular no formato quartenário ( x, y, z e w), a velocidade angular e a aceleração linear nos eixos x,y e z. Um quatérnion é um tipo de dado que define a orientação de um objeto. Uma orientação pode ser imaginada como um valor de ângulo (θ) em torno de um certo vetor denominado eixo de Euler (ê).
 
@@ -24,7 +24,7 @@ Se quiser entender melhor o que são os quatérnions e como eles nos ajudam com 
 
 ![https://www.allaboutcircuits.com/uploads/articles/gimbalFrames15.gif](https://www.allaboutcircuits.com/uploads/articles/gimbalFrames15.gif)
 
-![Untitled](Alinhamento%20angular%20do%20robo%CC%82%20usando%20a%20IMU%20859f751a677c41bbbeebae9ff0847dc9/Untitled%202.png)
+![Untitled](imgs/Untitled2.png)
 
 Com os dados da IMU disponível para gente via ROS, podemos utilizar o código abaixo para visualizar os dados do sensor:
 
@@ -73,6 +73,6 @@ if __name__=="__main__":
 		rospy.sleep(1)
 ```
 
-![imu.gif](Alinhamento%20angular%20do%20robo%CC%82%20usando%20a%20IMU%20859f751a677c41bbbeebae9ff0847dc9/imu.gif)
+![imu.gif](imgs/imu.gif)
 
 Agora é a sua vez, Faça um código que faz o robô girar exatamente 90 graus em torno de si mesmo, usando a IMU!
