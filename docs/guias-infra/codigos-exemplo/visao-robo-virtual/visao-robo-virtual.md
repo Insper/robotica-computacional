@@ -4,7 +4,7 @@ Encontrar objetos usando técnicas de visão computacional é muito útil para q
 
 Na atividade 2 de robótica, apresentamos para você técnicas de detecção de cores e operações morfológicas para fazer a segmentação de imagens usando o opencv recomendo que volte lá para relembrar esses conceitos. 
 
-Disponibilizamos o código  [cormodule.py](https://www.notion.so/cormodule-py-098a9f532b244555842ddf5e006404d2). Que é um código auxiliar usado para fazer a segmentação da máscara e contorno da maior área encontrada, o código retorna **media, centro,**  e **maior_contorno_area** da cor definida na máscara. Sugiro que leia o código atentamente para entender como o processo funciona. Esse código é usado como um módulo auxiliar, não executamos ele sozinho.
+Disponibilizamos o código  [cormodule.py](cormodule.py). Que é um código auxiliar usado para fazer a segmentação da máscara e contorno da maior área encontrada, o código retorna **media, centro,**  e **maior_contorno_area** da cor definida na máscara. Sugiro que leia o código atentamente para entender como o processo funciona. Esse código é usado como um módulo auxiliar, não executamos ele sozinho.
 
 ```python
 #! /usr/bin/env python3
@@ -104,14 +104,14 @@ def identifica_cor(frame):
     return media, centro, maior_contorno_area
 ```
 
-Com o código [cor.py](https://www.notion.so/cor-py-f0c360f93506407dbb30a79c691152a9), o robô gira em torno de si mesmo enquanto procura um objeto laranja, quando ele encontra esse objeto laranja, o robô faz o ajuste fino para centralizar em relação a esse objeto e para, analise o código de exemplo disponibilizado e:
+Com o código [cor.py](cor.py), o robô gira em torno de si mesmo enquanto procura um objeto laranja, quando ele encontra esse objeto laranja, o robô faz o ajuste fino para centralizar em relação a esse objeto e para, analise o código de exemplo disponibilizado e:
 
 - Ajuste os parâmetros necessários para que o robô procure apenas a caixa laranja, e ignore os outros objetos do cenário.
 - Faça com que o robô se aproxime da caixa laranja e pare a uma distância de 1.5m da caixa (use o laser_scan para descobrir a distância que o robô está da caixa, se quiser.)
 
  
 
-![Untitled](Encontrando%20a%20caixa%20laranja%20293cbea037e7440ebcb65c8342357726/Untitled.png)
+![Untitled](imgs/Untitled.png)
 
 ```python
 #! /usr/bin/env python3
