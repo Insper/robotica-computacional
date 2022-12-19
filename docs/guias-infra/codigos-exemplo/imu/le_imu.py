@@ -34,13 +34,13 @@ def leu_imu(dado):
 
 if __name__=="__main__":
 
-    #inicializa o node de conexao com o ROS
+        #inicializa o node de conexao com o ROS
 	rospy.init_node("le_imu")
 
-    #Captura o dado do sensor via topico do tipo subscriber 
+        #Chama a função recebe_scan sempre que chegar um dado via ROS
 	recebe_scan = rospy.Subscriber("/imu", Imu, leu_imu)
 
-    #Loop do ROS
+        #Loop do ROS
 	while not rospy.is_shutdown():
         #sleep pra nao floodar o terminal
 		rospy.sleep(1)

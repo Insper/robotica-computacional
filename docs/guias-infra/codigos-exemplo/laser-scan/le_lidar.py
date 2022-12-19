@@ -25,7 +25,7 @@ def scaneou(dado):
 if __name__=="__main__":
 	# inicializa o node com o ROS
 	rospy.init_node("le_lidar")
-	#Captura os dados do LIDAR usando o topico do tipo subscriber "scan"
+	#Chama a função scaneou sempre que chegar um dado via ROS
 	recebe_scan = rospy.Subscriber("/scan", LaserScan, scaneou)
 
 	# loop do ROS

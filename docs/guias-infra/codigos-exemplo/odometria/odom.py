@@ -23,7 +23,7 @@ if __name__=="__main__":
 
     rospy.init_node("print_odom")
 
-    # Cria um subscriber que chama recebeu_leitura sempre que houver nova odometria
+    # Chama a função recebe_scan sempre que chegar um dado via ROS
     recebe_scan = rospy.Subscriber(topico_odom, Odometry , recebeu_leitura)
     
     #loop do ROS
