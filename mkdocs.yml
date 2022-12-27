@@ -55,10 +55,10 @@ nav:
         - guias-infra/simulador/index.md
       - Robô TurtleBot3
         - guias-infra/turtlebot3/index.md
-    - Modulos:
-      - modulos/visao1
-      - modulos/visao2
-      - modulos/visao3
-      - modulos/visao4
+    - Módulos:
+      - modulos/01-imagens-e-matrizes/index.md
+      - modulos/02-videos/index.md
+      - modulos/03-visao/index.md
+      - modulos/04-ROS-basico/index.md
     - Projetos:
       - projeto/index.md
