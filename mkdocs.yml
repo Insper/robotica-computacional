@@ -53,7 +53,7 @@ nav:
         - guias-infra/ssd-linux/git-e-github.md
       - Robô Simulado:
         - guias-infra/simulador/index.md
-      - Robô TurtleBot3
+      - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
     - Módulos:
       - modulos/01-imagens-e-matrizes/index.md
