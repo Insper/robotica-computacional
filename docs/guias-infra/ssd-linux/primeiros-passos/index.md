@@ -1,6 +1,6 @@
 # Meu SSD subiu, e agora?
 
-Assumindo que você seguiu o [tutorial anterior](../recebi-meu-ssd/index.md), este guia detalha como: 
+Assumindo que você seguiu o [tutorial anterior](guias-infra/ssd-linux/recebi-meu-ssd.md/index.md), este guia detalha como: 
 
 **1.** Fazer o login
 
@@ -83,8 +83,6 @@ Após a conexão, você verá o ícone do Wi-Fi no canto superior direito da tel
 
 ## Atualizando o Sistema
 
-Algo que você precisa se habituar a usar é o terminal. Sim, no linux digitamos bastante e há algo importante neste caso, a tecla TAB é sua melhor amiga quando abrir o terminal! Ela sabe quase tudo!! (Só não supera o google hehehe).
-
 Vamos abrir o terminal usando as teclas de atalho SUPER+T (lembrando que a tecla super é como a tecla “windows” é chamada no linux).
 
 Em nosso SSD você verá a tela do Terminator após usar este atalho. Na imagem abaixo você verá o terminator aberto e o primeiro comando que iremos utilizar. 
@@ -97,6 +95,8 @@ Com a mesma premissa, vamos atualizar os pacotes que ele encontrou com novas ver
 
 Podemos concatenar os dois comandos utilizando `&&` no terminal. Desta forma podemos executar o update e o upgrade na mesma linha, como segue: `sudo apt update && sudo apt upgrade -y`.
 
+!!! tip "Use o TAB para autocompletar os comandos no terminal"
+
 ## Finalizando
 
-Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre. Se você ficou com alguma dúvida ou algum passo não deu certo, nos procure no Laboratório de Informática - 404 Prédio 1 ou na sala definida para a aula de Robótica que auxiliaremos com este primeiro passo.
+Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre, no [próximo passo](guias-infra/ssd-linux/git-e-github/index.md), vamos configurar o Git e o GitHub usando o terminal.
