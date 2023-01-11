@@ -1,4 +1,4 @@
-# Roboótica Computacional 2023/1
+# Robótica Computacional 2023/1
 
 TODO: resumo da disciplina
 
