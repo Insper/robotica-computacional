@@ -3,13 +3,13 @@ theme:
   name: active-handout-theme
   language: pt
 
+extra:
+  custom_variables:
+    data_infra_linux: "TBA"
+    data_infra_simulador: "TBA"
+    data_infra_turtlebot3: "TBA"
 
 markdown_extensions:
-  - active-handout-plugins:
-      custom_variables:
-        data_infra_linux: "TBA"
-        data_infra_simulador: "TBA"
-        data_infra_turtlebot3: "TBA"
   - toc:
       toc_depth: 0
   - markdown.extensions.admonition
