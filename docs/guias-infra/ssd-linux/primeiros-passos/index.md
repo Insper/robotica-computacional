@@ -49,7 +49,8 @@ A outra forma de fazer a mudança de senha é pelo terminal. Para isso, você po
 
 Com o terminal aberto (não importa qual dos dois você escolheu), você digitará o comando: `passwd` em seguida forneca a **senha atual** (fl1pfl0p) e depois a **nova senha**, lembrando que precisa ter no mínimo 8 dígitos, usar letras maíusculas e minúsculas, números e símbolos. Ele pedirá para **confirmar a nova senha** e pronto! Sempre que precisar trocar a senha, refaça este procedimento.
 
-!!! tip "É normal não aparecer nada no terminal quando você digita a senha, é uma medida de segurança do terminal esconder o display de caracteres."
+!!! dica
+    É normal não aparecer nada no terminal quando você digita a senha, é uma medida de segurança do terminal esconder o display de caracteres.
 
 ![Untitled](imgs/img8.png){width="800"}
 
@@ -95,7 +96,8 @@ Com a mesma premissa, vamos atualizar os pacotes que ele encontrou com novas ver
 
 Podemos concatenar os dois comandos utilizando `&&` no terminal. Desta forma podemos executar o update e o upgrade na mesma linha, como segue: `sudo apt update && sudo apt upgrade -y`.
 
-!!! tip "Use o TAB para autocompletar os comandos no terminal"
+!!! dica
+    Use o TAB para autocompletar os comandos no terminal
 
 ## Finalizando
 
