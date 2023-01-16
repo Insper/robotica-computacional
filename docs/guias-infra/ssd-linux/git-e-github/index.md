@@ -82,41 +82,37 @@ git config --global core.editor code
 Atualmente, o GitHub oferece suporte a dois tipos de tokens, nós vamos de clássico. 
 
 !!! tip
-    Para saber detalhes e diferenças entre os tipos de tokens do GitHub e porque eles existem (Spoiler > é por segurança) consulte a [documentação aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+    Para saber detalhes e diferenças entre os tipos de tokens do GitHub e porque eles existem (Spoiler -> é por segurança) consulte a [documentação aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
-Na página do seu GitHub, clique na sua foto e depois encontre a opção “Configuração” ou **“Settings”**
+Na página do seu GitHub -> clique na sua foto -> “Configuração” ou **“Settings”**
 
-![img1](imgs/img1.png)
+![passo1](imgs/passo1.png)
 
-Em seguida, **Na barra lateral esquerda**, lá embaixo, clique em **Developer settings.**
+Em seguida, **Na barra lateral esquerda**, lá embaixo ->  **Developer settings.** -> **Personal access tokens** -> Tokens (classic)
 
-![img2](imgs/img2.png)
+![passo2](imgs/passo2.png)
 
-Clique em **Personal access tokens,**
+![passo3](imgs/passo3.png)
 
-![img3](imgs/img3.png)
+![passo4](imgs/passo4.png)
 
-Depois, em Tokens (classic)
+Finalmente -> **Generate new token (classic)**
 
-![img4](imgs/img4.png)
-
-Finalmente, clique em **Generate new token (classic)**
-
-![img5](imgs/img5.png)
+![passo5](imgs/passo5.png)
 
 !!! tip "Você pode criar quantos tokens você quiser, apenas certifique-se de salvar a chave hash com carinho."
 
 Dê um nome para o seu token, como você pode criar vários, ter um bom nome ajuda com a organização.
 
-![img6](imgs/img6.png)
+![passo6](imgs/passo6.png)
 
-Role a página até o final => Generate token => Clique.
+Role a página até o final -> Generate token.
 
-![img7](imgs/img7.png)
+![passo7](imgs/passo7.png)
 
 Salve com muito carinho o token gerado, ele **não vai aparecer novamente,** se você perder o token, será necessário criar outro.
 
-![img8](imgs/img8.png)
+![passo8](imgs/passo8.png)
 
 É possível salvar o seu token no gerenciador de credenciais do git.
 
