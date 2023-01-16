@@ -56,6 +56,9 @@ nav:
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
     - Módulos:
+      - "00 - Introdução":
+        - "Sobre o curso": modulos/00-intro/index.md
+        - modulos/00-intro/atividade-dia1.md
       - modulos/01-imagens-e-matrizes/index.md
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md
