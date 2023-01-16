@@ -101,4 +101,4 @@ Podemos concatenar os dois comandos utilizando `&&` no terminal. Desta forma pod
 
 ## Finalizando
 
-Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre, no [próximo passo](guias-infra/ssd-linux/git-e-github/index.md), vamos configurar o Git e o GitHub usando o terminal.
+Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre.
