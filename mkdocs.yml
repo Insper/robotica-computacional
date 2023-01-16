@@ -50,7 +50,7 @@ nav:
         - guias-infra/ssd-linux/recebi-meu-ssd.md
         - guias-infra/ssd-linux/primeiros-passos/index.md
         - guias-infra/ssd-linux/terminal-basico.md
-        - guias-infra/ssd-linux/git-e-github.md
+        - guias-infra/ssd-linux/git-e-github/index.md
       - Robô Simulado:
         - guias-infra/simulador/index.md
       - Robô TurtleBot3:
