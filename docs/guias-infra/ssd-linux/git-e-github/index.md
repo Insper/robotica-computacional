@@ -22,26 +22,42 @@ GitHub cria colaboração diretamente no processo de desenvolvimento. O trabalho
 
 ### Git
 É um software que é instalado na máquina do usuário e é executado localmente, possui um conjunto de ferramentas que monitora o histórico de alteraçoes onde qualquer versão anterior do projeto pode ser recuperada a qualquer momento, isso é Git:
+
     - git init
+    
     - git clone
+    
     - git status
+    
     - git add meu_arquivo.py
+    
     - git add minha_pasta_completona
+    
     - git commit -m "minha mensagem de commit"
+    
     - git push origin nome_da_branch
+    
     - git checkout -b nome_da_nova_branch
 
 [Resumo de comandos git via terminal](https://training.github.com/downloads/pt_BR/github-git-cheat-sheet/) 
 
 ### GitHub
 É uma plataforma que hospeda códigos e possibilita a colaboração com repositórios públicos, é o chamado repositório remoto. Isso é GitHub:
+
     - Abrir um pull request
+    
     - Criar um Fork de um repositório remoto 
+    
     - Criar um repositório público
+    
     - Criar um repositório privado
-    - Criar um clone de um repositório remoto 
+    
+    - Criar um clone de um repositório remoto
+    
     - Criar plugins de automação com actions
+    
     - Criar Issues no repositório remoto
+    
     - Criar organizações com gerenciamento de permissões entre integrantes
 
 Se quiser saber mais, visite o [canal do YouTube oficial do GitHub](https://www.youtube.com/githubguides) 
