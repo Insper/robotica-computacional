@@ -10,7 +10,9 @@ Um repositório ou um projeto Git, engloba toda a coleção de arquivos e pastas
 
 Por meio de plataformas como GitHub, o Git também oferece mais oportunidades para transparência e colaboração do projeto. Repositórios públicos ajudam as equipes a trabalhar juntas para criar o melhor produto final possível.
 
-para saber mais, consulte a [documentação](https://docs.github.com/pt/get-started/using-git/about-git)
+
+!!! tip
+    Para saber mais, consulte a [documentação](https://docs.github.com/pt/get-started/using-git/about-git)
 
 ## O que é GitHub?
 
@@ -22,31 +24,31 @@ GitHub cria colaboração diretamente no processo de desenvolvimento. O trabalho
 
 ### Git
 É um software que é instalado na máquina do usuário e é executado localmente, possui um conjunto de ferramentas que monitora o histórico de alteraçoes onde qualquer versão anterior do projeto pode ser recuperada a qualquer momento, isso é Git:
-    - git init
-    - git clone
-    - git status
-    - git add meu_arquivo.py
-    - git add minha_pasta_completona
-    - git commit -m "minha mensagem de commit"
-    - git push origin nome_da_branch
-    - git checkout -b nome_da_nova_branch
+
+- git init
+- git clone
+- git status
+- git add meu_arquivo.py
+- git add minha_pasta_completona
+- git commit -m "minha mensagem de commit"
+- git push origin nome_da_branch
+- git checkout -b nome_da_nova_branch
 
 [Resumo de comandos git via terminal](https://training.github.com/downloads/pt_BR/github-git-cheat-sheet/) 
 
 ### GitHub
 É uma plataforma que hospeda códigos e possibilita a colaboração com repositórios públicos, é o chamado repositório remoto. Isso é GitHub:
-    - Abrir um pull request
-    - Criar um Fork de um repositório remoto 
-    - Criar um repositório público
-    - Criar um repositório privado
-    - Criar um clone de um repositório remoto 
-    - Criar plugins de automação com actions
-    - Criar Issues no repositório remoto
-    - Criar organizações com gerenciamento de permissões entre integrantes
 
-Se quiser saber mais, visite o [canal do YouTube oficial do GitHub](https://www.youtube.com/githubguides) 
-Ou a [documentação oficial.](https://docs.github.com/pt/get-started/quickstart/hello-world)
+- Abrir um pull request
+- Criar um Fork de um repositório remoto
+- Criar um repositório público
+- Criar um repositório privado
+- Criar um clone de um repositório remoto
+- Criar plugins de automação com actions
+- Criar Issues no repositório remoto
+- Criar organizações com gerenciamento de permissões entre integrantes
 
+Se quiser saber mais, visite o [canal do YouTube oficial do GitHub](https://www.youtube.com/githubguides) ou a [documentação oficial.](https://docs.github.com/pt/get-started/quickstart/hello-world)
 
 
 ## Se identificando para o Git
@@ -60,7 +62,8 @@ git config --global user.name "Seu Belo Nome Aqui"
 git config --global user.email Seu_email_do_GitHub_aqui@exemplo.br
 ```
 
-!!! tip "Não precisa colocar o seu login do GitHub ao configurar o user.name, pode ser o seu nome sem problemas"
+!!! tip
+    Não precisa colocar o seu login do GitHub ao configurar o user.name, pode ser o seu nome sem problemas
 
 Você precisara fazer a configuração de usuário e email somente uma vez, por que estamos usado a opção `--global`, o Git usará esta configuração para qualquer coisa que você fizer no Git em qualquer parte do sistema.
 Se você precisar substituir os dados de usuário e email para um projeto específico, você pode executar o mesmo comando **sem a opção** `--global` dentro do projeto específico, então a configuração será local e só vai funcionar naquele espaço.
@@ -78,7 +81,8 @@ git config --global core.editor code
 
 Atualmente, o GitHub oferece suporte a dois tipos de tokens, nós vamos de clássico. 
 
-para saber detalhes e diferenças entre os tipos de tokens do GitHub e porque eles existem (Spoiler > é por segurança) consulte a [documentação aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) 
+!!! tip
+    Para saber detalhes e diferenças entre os tipos de tokens do GitHub e porque eles existem (Spoiler > é por segurança) consulte a [documentação aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 Na página do seu GitHub, clique na sua foto e depois encontre a opção “Configuração” ou **“Settings”**
 
@@ -116,7 +120,8 @@ Salve com muito carinho o token gerado, ele **não vai aparecer novamente,** se 
 
 É possível salvar o seu token no gerenciador de credenciais do git.
 
-!!! warning "Você precisa estar dentro de um repositório git para conseguir armazenar a sua credencial."
+!!! warning
+    Você precisa estar dentro de um repositório git para conseguir armazenar a sua credencial.
 
 Na primeira vez que você fizer um push para um repositório remoto, o git solicitará suas credenciais, como nome de usuário e seu token, Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais dentro do repositório, basta abrir um terminal e executar o comando:
 
@@ -130,12 +135,12 @@ git push http://example.com/repo.git
 
 ```
 Username: SeuUserNameAqui
-
 Password: SeuTokenAqui
 ```
 
 Pronto, após essa configuração, não será mais necessário utlizar o token explicitamente para autenticar os seus commits, ele estará armazenado no gerenciador de credenciais do Git e será usado automaticamente.
 
-!!! important "Se quiser entender melhor como funciona o sistema de gerenciamento de credenciais do Git, a documentação é essa [aqui](https://git-scm.com/docs/git-credential-store)."
+!!! tip
+    Se quiser entender melhor como funciona o sistema de gerenciamento de credenciais do Git, a documentação é essa [aqui](https://git-scm.com/docs/git-credential-store).
 
-!!! important "Se quiser se começar a entender como funciona o GitHub, comece por [aqui](https://docs.github.com/pt/get-started/quickstart)."
+    Se quiser se começar a entender como funciona o GitHub, comece por [aqui](https://docs.github.com/pt/get-started/quickstart).
