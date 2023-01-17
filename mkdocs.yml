@@ -59,6 +59,7 @@ nav:
       - "00 - Introdução":
         - "Sobre o curso": modulos/00-intro/index.md
         - modulos/00-intro/atividade-dia1.md
+        - "Para saber mais": modulos/00-intro/recursos-legais.md
       - modulos/01-imagens-e-matrizes/index.md
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md

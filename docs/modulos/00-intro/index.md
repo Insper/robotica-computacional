@@ -14,10 +14,9 @@ section.progress-section.show iframe {
 
 # Sobre o curso
 
-<!-- 
 !!! pdf
     ![](slides.pdf)
--->
+
 
 ## Critérios de aprovação
 
