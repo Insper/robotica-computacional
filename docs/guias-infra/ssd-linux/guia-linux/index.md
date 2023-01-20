@@ -2,7 +2,8 @@
 
 Com este tutorial vamos guiar você por alguns exercícios práticos usando comandos e apresentando conceitos básicos que vão te ajudar muito no decorrer do curso. Não assumiremos nenhum conhecimento prévio, mas no final esperamos que você se sinta um pouco mais confortável na próxima vez que se deparar com algumas instruções que começam com “Abrir o terminal”. 
 
-!!! tip "Caso tenha interesse em aprofundar alguns conceitos sobre o Sistema Operacional Linux, [clique aqui](um-pouco-de-historia.md)."
+!!! tip 
+    Caso tenha interesse em aprofundar alguns conceitos sobre o Sistema Operacional Linux, [clique aqui](um-pouco-de-historia.md).
 
 ## O que você vai aprender:
 
@@ -134,7 +135,8 @@ git pull
 
 ```
 
-!!! tip "É uma boa prática manter os seus repositórios do GitHub sempre atualizados, antes de começar a trabalhar, não esqueça de dar um `git pull`, para ter certeza de que está trabalhando com a ultima versão dos arquivos no seu repositório!"
+!!! tip 
+    É uma boa prática manter os seus repositórios do GitHub sempre atualizados, antes de começar a trabalhar, não esqueça de dar um `git pull`, para ter certeza de que está trabalhando com a ultima versão dos arquivos no seu repositório!
 
 Feita a atualização, vamos instalar uma ferramenta que permite visualizar toda a estrutaras de árvore da pasta, no terminal que já está aberto, utilize o comando abaixo:
 
@@ -177,7 +179,8 @@ cd /home/borg/Z01.1/Projetos/B-LogicaCombinacional/src
 
 ```
 
-!!! tip  " Utilize a tecla TAB para autocompletar ou sugerir comandos no terminal."
+!!! tip  
+    Utilize a tecla TAB para autocompletar ou sugerir comandos no terminal.
 
 
 Para acessar o diretório anterior podemos digitar:
@@ -257,7 +260,8 @@ mkdir ~/Documents/nome_da_pasta/nome_da_pasta
 
 Para criar um novo diretório em um local especifico, basta especificar o caminho que o diretório deverá ser criado;
 
-!!! tip "Relembrando, Você sempre pode usar a tecla TAB para auto-completar os comandos."
+!!! tip 
+    Relembrando, Você sempre pode usar a tecla TAB para auto-completar os comandos.
 
 ```
 mkdir /home/borg/Documents/nome_da_pasta
@@ -342,7 +346,8 @@ mv /home/borg/Documents/nome_da_pasta/pastinha /home/borg/Documents/nome_da_past
 
 ```
 
-!!! warning "Cuidado para não sobrescrever arquivos e pastas impoortantes na hora de executar estes comandos."
+!!! warning 
+    Cuidado para não sobrescrever arquivos e pastas impoortantes na hora de executar estes comandos.
 
 
 ### Comando "rm"
@@ -354,7 +359,8 @@ rm -rf /home/borg/Documents/nome_da_pasta/nova_pastinha
 
 ```
 
-!!! warning "Arquivos e pastas são apagados permanentemente, não vão para lixeira. No caso de diretórios, apaga o diretório e tudo que está dentro dele, use o comando com sabedoria." 
+!!! warning 
+    Arquivos e pastas são apagados permanentemente, não vão para lixeira. No caso de diretórios, apaga o diretório e tudo que está dentro dele, use o comando com sabedoria.
 
 ## Super Usuário
 
@@ -492,7 +498,7 @@ pkill terminal
 
 ```
 
-## Espero que você esteja se sentindo mais confortável para explorar e personalizar o seu Ubuntu. [No próximo guia](), vamos conhecer o robô simulado e o ROS, divirta-se!
+Espero que você esteja se sentindo mais confortável para explorar e personalizar o seu Ubuntu, divirta-se!
 
 
 
