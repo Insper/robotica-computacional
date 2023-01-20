@@ -100,7 +100,8 @@ Finalmente -> **Generate new token (classic)**
 
 ![passo5](imgs/passo5.png)
 
-!!! tip "Você pode criar quantos tokens você quiser, apenas certifique-se de salvar a chave hash com carinho."
+!!! tip
+    Você pode criar quantos tokens você quiser, apenas certifique-se de salvar a chave hash com carinho.
 
 Dê um nome para o seu token, como você pode criar vários, ter um bom nome ajuda com a organização.
 
@@ -119,17 +120,11 @@ Salve com muito carinho o token gerado, ele **não vai aparecer novamente,** se 
 !!! warning
     Você precisa estar dentro de um repositório git para conseguir armazenar a sua credencial.
 
-Na primeira vez que você fizer um push para um repositório remoto, o git solicitará suas credenciais, como nome de usuário e seu token, Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais dentro do repositório, basta abrir um terminal e executar o comando:
+Na primeira vez que você fizer um push para um repositório remoto, o git solicitará suas credenciais, como nome de usuário e seu token, Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais dentro do repositório, basta abrir um terminal e executar os seguintes comandos:
 
 ```bash
-git config credential.helper store
-```
-
-```bash
-git push http://example.com/repo.git
-```
-
-```
+$> git config credential.helper store
+$> git push http://example.com/repo.git
 Username: SeuUserNameAqui
 Password: SeuTokenAqui
 ```
