@@ -1,7 +1,7 @@
 site_name: Robótica Computacional - Insper
 theme:
   name: active-handout-theme
-  language: pt
+  locale: pt_BR
 
 extra:
   custom_variables:
