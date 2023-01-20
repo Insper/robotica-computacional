@@ -47,7 +47,10 @@ nav:
       - guias-infra/index.md
       - Linux:
         - guias-infra/ssd-linux/index.md
-        - guias-infra/ssd-linux/recebi-meu-ssd.md
+        - "Primeiro boot com SSD":
+            - guias-infra/ssd-linux/recebi-meu-ssd/index.md
+            - guias-infra/ssd-linux/recebi-meu-ssd/windows.md
+            - guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
         - guias-infra/ssd-linux/primeiros-passos/index.md
         - guias-infra/ssd-linux/terminal-basico.md
         - guias-infra/ssd-linux/git-e-github/index.md
