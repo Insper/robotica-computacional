@@ -3,6 +3,9 @@ theme:
   name: active-handout-theme
   language: pt
 
+extra_css:
+    - equipe.css
+
 extra:
   custom_variables:
     data_infra_linux: "TBA"
