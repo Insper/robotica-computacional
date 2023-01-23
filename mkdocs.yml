@@ -3,6 +3,9 @@ theme:
   name: active-handout-theme
   locale: pt_BR
 
+extra_css:
+    - equipe.css
+
 extra:
   custom_variables:
     data_infra_linux: "TBA"
@@ -59,6 +62,10 @@ nav:
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
     - Módulos:
+      - "00 - Introdução":
+        - "Sobre o curso": modulos/00-intro/index.md
+        - modulos/00-intro/atividade-dia1.md
+        - "Para saber mais": modulos/00-intro/recursos-legais.md
       - modulos/01-imagens-e-matrizes/index.md
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md
