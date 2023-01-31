@@ -55,6 +55,7 @@ nav:
             - guias-infra/ssd-linux/recebi-meu-ssd/windows.md
             - guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
         - guias-infra/ssd-linux/primeiros-passos/index.md
+        - guias-infra/ssd-linux/guia-linux/index.md
         - guias-infra/ssd-linux/git-e-github/index.md
       - Robô Simulado:
         - guias-infra/robo-simulado/index.md
