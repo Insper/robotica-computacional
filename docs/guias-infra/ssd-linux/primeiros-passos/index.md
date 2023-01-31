@@ -1,6 +1,6 @@
 # Meu SSD subiu, e agora?
 
-Assumindo que você seguiu o [tutorial anterior](guias-infra/ssd-linux/recebi-meu-ssd.md/index.md), este guia detalha como: 
+Assumindo que você seguiu o [tutorial anterior](../recebi-meu-ssd/index.md), este guia detalha como: 
 
 **1.** Fazer o login
 
