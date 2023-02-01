@@ -1,7 +1,10 @@
 site_name: Robótica Computacional - Insper
 theme:
   name: active-handout-theme
-  language: pt
+  locale: pt_BR
+
+extra_css:
+    - equipe.css
 
 extra:
   custom_variables:
@@ -39,6 +42,7 @@ markdown_extensions:
 
 plugins:
     - active-handout
+    - mknotebooks
 
 
 nav:
@@ -47,16 +51,27 @@ nav:
       - guias-infra/index.md
       - Linux:
         - guias-infra/ssd-linux/index.md
-        - guias-infra/ssd-linux/recebi-meu-ssd.md
+        - "Primeiro boot com SSD":
+            - guias-infra/ssd-linux/recebi-meu-ssd/index.md
+            - guias-infra/ssd-linux/recebi-meu-ssd/windows.md
+            - guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
         - guias-infra/ssd-linux/primeiros-passos/index.md
-        - guias-infra/ssd-linux/terminal-basico.md
-        - guias-infra/ssd-linux/git-e-github.md
+        - guias-infra/ssd-linux/guia-linux/index.md
+        - guias-infra/ssd-linux/git-e-github/index.md
       - Robô Simulado:
-        - guias-infra/simulador/index.md
+        - guias-infra/robo-simulado/index.md
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
     - Módulos:
-      - modulos/01-imagens-e-matrizes/index.md
+      - modulos/index.md
+      - "00 - Introdução":
+        - "Sobre o curso": modulos/00-intro/index.md
+        - modulos/00-intro/atividade-dia1.md
+        - "Para saber mais": modulos/00-intro/recursos-legais.md
+      - "01 - Imagens e Matrizes":
+        - modulos/01-imagens-e-matrizes/index.md
+        - "Atividades":
+          - "Leitura de imagens": modulos/01-imagens-e-matrizes/atividade1.ipynb
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md
       - modulos/04-ROS-basico/index.md

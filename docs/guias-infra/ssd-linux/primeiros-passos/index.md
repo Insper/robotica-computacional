@@ -1,6 +1,6 @@
 # Meu SSD subiu, e agora?
 
-Assumindo que você seguiu o [tutorial anterior](guias-infra/ssd-linux/recebi-meu-ssd.md/index.md), este guia detalha como: 
+Assumindo que você seguiu o [tutorial anterior](../recebi-meu-ssd/index.md), este guia detalha como: 
 
 **1.** Fazer o login
 
@@ -101,4 +101,4 @@ Podemos concatenar os dois comandos utilizando `&&` no terminal. Desta forma pod
 
 ## Finalizando
 
-Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre, no [próximo passo](guias-infra/ssd-linux/git-e-github/index.md), vamos configurar o Git e o GitHub usando o terminal.
+Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre.
