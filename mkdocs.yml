@@ -42,6 +42,7 @@ markdown_extensions:
 
 plugins:
     - active-handout
+    - mknotebooks
 
 
 nav:
@@ -62,11 +63,15 @@ nav:
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
     - Módulos:
+      - modulos/index.md
       - "00 - Introdução":
         - "Sobre o curso": modulos/00-intro/index.md
         - modulos/00-intro/atividade-dia1.md
         - "Para saber mais": modulos/00-intro/recursos-legais.md
-      - modulos/01-imagens-e-matrizes/index.md
+      - "01 - Imagens e Matrizes":
+        - modulos/01-imagens-e-matrizes/index.md
+        - "Atividades":
+          - "Leitura de imagens": modulos/01-imagens-e-matrizes/atividade1.ipynb
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md
       - modulos/04-ROS-basico/index.md

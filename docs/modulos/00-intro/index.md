@@ -43,4 +43,6 @@ desde que as seguintes restrições sejam respeitadas:
 
 ## Calendário do curso
 
-<iframe src="https://outlook.office365.com/owa/calendar/b19a6b8c3e534b50b2ed7f8d2b9b5cfc@insper.edu.br/acd69e8c7b71418bb3147fb1292e23855028950726849223989/calendar.html"></iframe>
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FSao_Paulo&mode=AGENDA&hl=pt_BR&src=OTRmZWQwZDUzNzAyNmRjMDc3NWZiOGFkZDg2MTljOGQ3YjY4MmI1YWVkN2UzOTE5YTdlNGY1ZTJhMDI0OTFmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
