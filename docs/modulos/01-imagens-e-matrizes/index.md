@@ -13,9 +13,9 @@ As atividades deste módulos estão divididas em 4 partes, que podem ser feitas 
     Cada atividade tem uma versão de leitura online e um link para baixar o pacote com os arquivos da atividade completa para rodar local. 
 
 - [Atividade 01 - Leitura de imagens](atividade1/)
-- [Atividade 02](atividade2/)
-- [Atividade 03](atividade3/)
-- [Atividade 04](atividade4/)
+- [Atividade 02 - Percorrendo a imagem](atividade2/)
+- [Atividade 03 - Cookbook de Numpy](atividade3/)
+- [Atividade 04 - Segmentação de imagens por cor](atividade4/)
 
 [Download das atividades](atividades-modulo01-aluno.zip){ .ah-button }
 
