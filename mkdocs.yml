@@ -72,6 +72,9 @@ nav:
         - modulos/01-imagens-e-matrizes/index.md
         - "Atividades":
           - "Leitura de imagens": modulos/01-imagens-e-matrizes/atividade1.ipynb
+          - "Percorrendo a imagem": modulos/01-imagens-e-matrizes/atividade2.ipynb
+          - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
+          - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
       - modulos/02-videos/index.md
       - modulos/03-visao/index.md
       - modulos/04-ROS-basico/index.md
