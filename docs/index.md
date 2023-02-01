@@ -46,4 +46,4 @@ Robótica é uma disciplina que já teve contribuições de muitas pessoas. As p
 !!! people "Semestres passados"
     - ![Miranda](equipe/miranda.png) Fábio Miranda
     - ![Antonio](equipe/antonio.jpeg) Antônio Selvatici
-
+    - ![Arnaldo](equipe/arnaldo.jpeg) Arnaldo Alves Viana Junior
