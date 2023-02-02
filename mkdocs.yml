@@ -11,6 +11,8 @@ extra:
     data_infra_linux: "TBA"
     data_infra_simulador: "TBA"
     data_infra_turtlebot3: "TBA"
+    repo_aps: https://github.com/Insper/robotica-computacional-aps
+    repo_aps_git: git@github.com:Insper/robotica-computacional-aps.git
 
 markdown_extensions:
   - toc:
@@ -62,6 +64,7 @@ nav:
         - guias-infra/robo-simulado/index.md
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
+      - guias-infra/aps.md
     - Módulos:
       - modulos/index.md
       - "00 - Introdução":
