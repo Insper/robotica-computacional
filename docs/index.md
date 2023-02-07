@@ -19,16 +19,13 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
 Teremos os seguintes horários de atendimento:
 
 - **SEX** 09:45 (Igor)
-- **TBA** (Ana Laiz)
-- **TBA** (Enricco) 
+- **TER** 18:00 (Ana Laiz)
+- **QUI** 18:00 (Enricco) 
 
-Além disso, nosso lab estará aberto nos seguintes horários
+Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
 
-- **SEG** - 
-- **TER** -
-- **QUA** -
-- **QUI** -
-- **SEX** -
+- **Lícia** - 07:00 - 16:00
+- **Rogério** - 12:00 - 21:00
 
 ## Equipe
 
