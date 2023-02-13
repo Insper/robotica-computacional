@@ -30,8 +30,8 @@ Primeiro vamos adicionar o repositório remoto dos arquivos de suporte e baixar 
 
 ```bash
 git remote add insper {{ repo_aps_git }}
-git fetch
-git switch -c main
+git fetch insper
+git checkout main
 ```
 
 Agora vamos adicionar o repositório das suas entregas e já enviar o código de suporte:

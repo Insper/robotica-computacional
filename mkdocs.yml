@@ -12,7 +12,7 @@ extra:
     data_infra_simulador: "17/03"
     data_infra_turtlebot3: "17/03"
     repo_aps: https://github.com/Insper/robotica-computacional-aps
-    repo_aps_git: git@github.com:Insper/robotica-computacional-aps.git
+    repo_aps_git: https://github.com/Insper/robotica-computacional-aps.git
     data_final_APS: 07/04
     data_APS1: 24/02
     data_PF: 07/06
