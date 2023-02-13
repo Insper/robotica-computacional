@@ -1,4 +1,11 @@
-# 02 - Vídeos
+# 02 - Captura de imagens e vídeos
 
-TODO
+!!! pdf
+    ![](slides.pdf)
+
+TODO: resumo do módulo
+
+TODO: link para baixar atividades
+
+TODO: APS do módulo
 
