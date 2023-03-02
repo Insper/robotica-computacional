@@ -69,6 +69,7 @@ nav:
       - Robô TurtleBot3:
         - guias-infra/turtlebot3/index.md
       - guias-infra/aps.md
+      - guias-infra/checagem.md
     - Módulos:
       - modulos/index.md
       - "00 - Introdução":

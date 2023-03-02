@@ -5,5 +5,5 @@ zip atividades-modulo01-aluno.zip *ipynb img/*
 popd
 
 pushd 02-modelo-de-camera
-zip atividades-modulo02-aluno.zip *ipynb img/*
+zip atividades-modulo02-aluno.zip *ipynb auxiliar.py img/*
 popd
