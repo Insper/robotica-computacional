@@ -137,7 +137,15 @@ O comando abaixo manda o robô ir para a frente com uma taxa de 10 vezes por seg
     rostopic pub -r 10 /cmd_vel geometry_msgs/Twist  '{linear:  {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0,y: 0.0,z: 0.0}}'
 
 # Exercicio Topico /odom
-## 1 - Mostre uma mensagem do topico `odom`.
+
+!!! exercise long 
+    Mostre uma mensagem do tópico `odom`
+
+    !!! answer
+        A mensagem deve estar no formato XXXX 
+
+
+
 ## 2 - Qual o tipo de mensagem que o topico `odom` transporta?
 ## 3 - Qual a estrutura da mensagem que o topico `odom` transporta?
 ## 4 - No simulador, mova o robô, como a saída do tópico `odom` muda?
