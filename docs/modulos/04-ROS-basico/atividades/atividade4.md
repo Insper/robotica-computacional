@@ -96,21 +96,21 @@ Neste exercício vamos trabalhar no arquivo `image_publisher`. O objetivo é cri
 
 Deixamos no arquivo a função que recebe os dados da imagem, faltando apenas o tipo da imagem.
 
-```python
+```python linenums="1"
 def laser_callback(self, msg: LaserScan) -> None:
-1    """
-2    Callback function for the image topic
-3    """
-4    try:
-5        cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")
-6    except CvBridgeError as e:
-7        print(e)
-8
-9    self.color_segmentation(cv_image)
-10
-11   self.image_pub.publish(self.bridge.cv2_to_compressed_imgmsg(cv_image))
+    """
+    Callback function for the image topic
+    """
+    try:
+        cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")
+    except CvBridgeError as e:
+        print(e)
+
+    self.color_segmentation(cv_image)
+
+    self.image_pub.publish(self.bridge.cv2_to_compressed_imgmsg(cv_image))
 ```
 
-Primeiramente na função `__init__` definimos a variável `self.bridge`. Os tópicos da ROS trabalham com imagens codificadas, então na linha `5`, utilizamos essa variável para converter a imagem para a estrutura do OpenCV. Por fim, depois da imagem ser processada, na linha `11`, ela é codificada novamente e publicada em outro tópico.
+Primeiramente na função `__init__` definimos a variável `self.bridge`. Os tópicos da ROS trabalham com imagens codificadas, então na linha `6`, utilizamos essa variável para converter a imagem para a estrutura do OpenCV. Por fim, depois da imagem ser processada, na linha `12`, ela é codificada novamente e publicada em outro tópico.
 
 
