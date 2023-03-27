@@ -91,5 +91,7 @@ nav:
           - "Demonstração de segmentação": modulos/02-modelo-de-camera/atividade3.ipynb 
       - modulos/03-visao/index.md
       - modulos/04-ROS-basico/index.md
+    - Revisões:
+      - revisao-PI.md
     - Projetos:
       - projeto/index.md
