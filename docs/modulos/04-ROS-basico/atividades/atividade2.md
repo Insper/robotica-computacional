@@ -9,7 +9,7 @@ Tópicos são identificados por strings únicas.
 Se o simulador da última atividade foi fechado, abra novamente, executando cada comando a seguir em seu terminal.
 
 ```bash 
-roslaunch turtlebot3_gazebo pista_s2.launch
+roslaunch my_simulation pista_s2.launch
 rqt_image_view
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
