@@ -9,7 +9,7 @@ Tópicos são identificados por strings únicas.
 Se o simulador da última atividade foi fechado, abra novamente, executando cada comando a seguir em seu terminal.
 
 ```bash 
-roslaunch turtlebot3_gazebo pista_s2.launch
+roslaunch my_simulation pista_s2.launch
 rqt_image_view
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
@@ -139,25 +139,26 @@ O comando abaixo manda o robô ir para a frente com uma taxa de 10 vezes por seg
 # Exercicio Topico /odom
 
 !!! exercise long 
-    Mostre uma mensagem do tópico `odom`
+    Qual o commando para visualizar as mensagens do tópico `odom`
 
     !!! answer
-        A mensagem deve estar no formato XXXX 
+        rostopic echo /odom
 
 !!! exercise long 
-    Qual o tipo de mensagem que o topico `odom` transporta?
+    Qual o tipo de mensagem que o tópico `odom` transporta?
 
     !!! answer
-        A mensagem deve estar no formato XXXX 
+        nav_msgs/Odometry 
 
 !!! exercise long 
-    Qual a estrutura da mensagem que o topico `odom` transporta?
+    Qual o comando para visualizar a estrutura da mensagem que o tópico `odom` transporta?
 
     !!! answer
-        A mensagem deve estar no formato XXXX 
+        rosmsg info nav_msgs/Odometry
 
 !!! exercise long 
     No simulador, mova o robô, como a saída do tópico `odom` muda?
 
     !!! answer
-        A mensagem deve estar no formato XXXX 
+        Se o robô estiver se deslocando os valores do pose.pose.position vão variar de acordo com a direção do deslocamento. Se o robô estiver girando, os valores do pose.pose.orientation vão variar, no caso a orientação está sendo representada no formato de `quaternion`, isso será explorado melhor no futuro.
+
