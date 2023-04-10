@@ -17,6 +17,7 @@ class Control():
 	def __init__(self):
 
 		self.rate = rospy.Rate(250) # 250 Hz
+		
 		# Subscribers
 		self.laser_subscriber = rospy.Subscriber('/scan',LaserScan, self.laser_callback)
 		

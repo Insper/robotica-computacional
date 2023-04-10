@@ -14,6 +14,8 @@ class Control():
 	def __init__(self):
 		super().__init__()
 
+		# Subscribers
+		
 		# Publishers
 		self.cmd_vel_pub = rospy.Publisher(???, ???, queue_size=3)
 
