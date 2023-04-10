@@ -90,7 +90,13 @@ nav:
           - "Morfologia matemática": modulos/02-modelo-de-camera/atividade2.ipynb
           - "Demonstração de segmentação": modulos/02-modelo-de-camera/atividade3.ipynb 
       - modulos/03-visao/index.md
-      - modulos/04-ROS-basico/index.md
+      - "04 - ROS Básico":
+        - modulos/04-ROS-basico/index.md
+        - "Atividades":
+          - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
+          - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
+          - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
+          - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
     - Revisões:
       - revisao-PI.md
     - Projetos:
