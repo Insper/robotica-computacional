@@ -16,11 +16,10 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
     - **SEG** 15:45 
     - **QUI** 15:45
 
-Teremos os seguintes horários de atendimento:
+Teremos os seguintes horários de atendimento, ambos na sala 404. 
 
-- **SEX** 09:45 (Igor)
-- **TER** 18:00 (Ana Laiz)
-- **QUI** 18:00 (Enricco) 
+- **TER** 18:00 (Ana Laiz + Igor)
+- **QUI** 18:00 (Enricco + Igor) 
 
 Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
 
