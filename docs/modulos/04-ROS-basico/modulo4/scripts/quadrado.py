@@ -7,7 +7,7 @@ import numpy as np
 """ 
 Running
 	roslaunch my_simulation novas_formas.launch
-	rosrun aps4 quadrado.py
+	rosrun modulo4 quadrado.py
 """
 
 class Control():
