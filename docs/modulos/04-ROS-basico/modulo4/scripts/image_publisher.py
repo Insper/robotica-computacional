@@ -13,7 +13,7 @@ import numpy as np
 """ 
 Running
 	roslaunch my_simulation pista_s2.launch
-	rosrun aps4 cor.py
+	rosrun modulo4 cor.py
 """
 
 class ImagePublisher():

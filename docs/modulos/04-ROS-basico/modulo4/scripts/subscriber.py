@@ -6,8 +6,8 @@ from std_msgs.msg import ???
 """ 
 Running each line in a different terminal
 	roslaunch roscore
-	rosrun aps4 publisher.py
-	rosrun aps4 subscriber.py
+	rosrun modulo4 publisher.py
+	rosrun modulo4 subscriber.py
 """
 
 class Subscriber():
