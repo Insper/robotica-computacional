@@ -10,7 +10,7 @@ from sensor_msgs.msg import LaserScan
 """ 
 Running
 	roslaunch my_simulation paralelas.launch
-	rosrun aps4 indeciso.py
+	rosrun modulo4 indeciso.py
 """
 
 class Control():

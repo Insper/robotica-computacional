@@ -4,7 +4,7 @@ import rospy
 
 """ 
 Running
-	rosrun aps4 base.py
+	rosrun modulo4 base.py
 
 """
 
