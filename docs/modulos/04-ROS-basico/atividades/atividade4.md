@@ -28,6 +28,14 @@ self.pub = rospy.Publisher({topico},{tipo de mensagem},queue_size=10)
 
 O argumento `queue_size` indica o tamanho máximo da fila de mensagens. Em condições normais a fila não ultrapassa o tamanho 1, este argumento só é relevante quando o conteúdo da mensagem é muito extenso, como uma imagem.
 
+## Antes de começar
+Após extrair os arquivos e rodar `catkin_make`, para rodar os exercícios, execute os seguintes comandos no terminal:
+
+```bash
+roscd modulo4
+cd scripts
+chmod +x *.py
+```
 
 ## Q1 - Publisher
 Começando do arquivo `publisher.py` complete as partes do código com ??? para que o código funcione sem erros. O nó deve publicar uma mensagem no tópico `publisher` do tipo `std_msgs/String` contendo o horário atual e um o número da mensagem enviada. Também imprima no terminal uma mensagem utilizando o comando `rospy.loginfo` com a seguinte estrutura:
