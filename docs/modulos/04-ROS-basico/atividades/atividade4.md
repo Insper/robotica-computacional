@@ -38,7 +38,7 @@ chmod +x *.py
 ```
 
 ## Q1 - Publisher
-Começando do arquivo `publisher.py` complete as partes do código com ??? para que o código funcione sem erros. O nó deve publicar uma mensagem no tópico `publisher` do tipo `std_msgs/String` contendo o horário atual e um o número da mensagem enviada. Também imprima no terminal uma mensagem utilizando o comando `rospy.loginfo` com a seguinte estrutura:
+Começando do arquivo `publisher.py` complete as partes do código com ??? para que o código funcione sem erros. O nó deve publicar uma mensagem no tópico `publisher` do tipo `std_msgs/String` contendo o horário atual e um o número da mensagem enviada, **separadas por um espaço**. Também deve imprimir no terminal uma alerta utilizando o comando `rospy.loginfo` com a seguinte estrutura:
 
 ```bash
 [INFO] [1677878366.175759]: Ola, são 1677878366175707817 e estou publicando pela 117 vez
@@ -63,6 +63,12 @@ Agora vamos trabalhar em um nó que se inscreve no tópico que criamos no exerc�
 ```python 
 time = rospy.Time( float( rospy.Time.now().to_sec() ) )
 ```
+
+!!! exercise long 
+    Qual a estrutura da mensagem do tipo `String`?
+
+    !!! answer
+        `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo da mensagem, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 # Q3 - Robô quadrado (Deadlock)
 Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mover em uma trajetória que se ***aproxima*** de um quadrado.
