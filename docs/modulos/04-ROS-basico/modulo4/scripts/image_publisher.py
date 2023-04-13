@@ -45,7 +45,7 @@ class ImagePublisher():
 		except CvBridgeError as e:
 			print(e)
 		
-		self.color_segmentation(cv_image)
+		self.color_segmentation(cv_image) # Processamento da imagem
 
 		self.image_pub.publish(self.bridge.cv2_to_compressed_imgmsg(cv_image))
 
