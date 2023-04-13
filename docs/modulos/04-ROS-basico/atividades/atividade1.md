@@ -80,11 +80,11 @@ roslaunch turtlebot3_gazebo turtlebot3_world.launch
 É comum que na primeira vez que se executa o simulador haja demora para este abrir porque os modelos 3D estão sendo baixados. Seu computador precisa ter acesso à internet para funcionar.
 
 ### Mudando o cenário
-Podemos trocar o cenário mudando o `launch` file. Este abre com o robô em uma casa
+Podemos trocar o cenário mudando o `launch` file.
 
 ```bash    
 export TURTLEBOT3_MODEL=burger
-roslaunch turtlebot3_gazebo pista_s2.launch
+roslaunch my_simulation pista_s2.launch
 ```
 ### Visualizar a câmera do robô
 Em outro terminal execute o seguinte comando para visualizar o conteudo da câmera do robô:

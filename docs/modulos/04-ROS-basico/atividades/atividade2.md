@@ -1,6 +1,7 @@
 # Explorando tópicos e mensagens
 
 Primeiramente vamos inciar com algumas definições:
+
 * Nodes (Nós): Um nó na ROS é um processo que executa algum tipo de processo. No caso da disciplina, um nó seria um script do python que vamos chamar diretamente.
 * Topics (Tópicos): Os tópicos na ROS são barramentos onde a informação é trocada entre nós. Através de tópicos, nós podemos publicar e se inscrever para enviar e receber mensagens.
 Quando um nó publica uma mensagem ela é enviada para todos os nós que estão inscritos nesta mensagem.
