@@ -5,7 +5,7 @@ from geometry_msgs.msg import ???
 import numpy as np
 
 """ 
-Running
+Rode cada linha em um terminal diferente
 	roslaunch my_simulation novas_formas.launch
 	rosrun modulo4 quadrado.py
 """
