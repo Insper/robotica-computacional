@@ -68,14 +68,14 @@ time = rospy.Time( float( rospy.Time.now().to_sec() ) )
     Qual a estrutura da mensagem do tipo `String`?
 
     !!! answer
-        `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo da mensagem, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
+        `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 # Q3 - Robô quadrado (Deadlock)
 Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mover em uma trajetória que se ***aproxima*** de um quadrado.
 
 **DICA 1** - Para fazer o robô se mover, publique uma mensagem para o tópico `cmd_vel`, verifique o tipo de mensagem que este tópico recebe.
 
-**DICA 2** - Você pode esperar n segundos usando `rospy.sleep`. Este tipo de controle se chama "Deadlock". É uma forma mais simples de se controlar o robô, mas "trava" o código, deixando o roubo menos reativo.
+**DICA 2** - Você pode esperar n segundos usando `rospy.sleep(n)`. Este tipo de controle se chama "Deadlock". É uma forma mais simples de se controlar o robô, mas "trava" o código, deixando o roubo menos reativo.
 
 # Q4 Robô Quase Indeciso
 Usando o simulador e o LIDAR simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
