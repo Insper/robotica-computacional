@@ -21,9 +21,9 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 4](atividades/atividade4.md) - Lista de exercícios explorando implementação de comunicação entre tópicos, controle do robô e utilização dos tópicos de imagem e laser.
 
 [Download das atividades](atividades-modulo04-aluno.zip){ .ah-button }
-Extrai os arquivos dentro da diretório `~/catking_ws/src` e depois executa o comando:
+Extrai os arquivos dentro da diretório `~/catkin_ws/src` e depois executa o comando:
 ```bash
-cd ~/catking_ws/
+cd ~/catkin_ws/
 catkin_make
 ```
 
@@ -34,8 +34,8 @@ catkin_make
 
 ## Para entregar
 
-Os arquivos para entrega encontram-se na pasta `APS04` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps). Mova o diretório `APS04` para o diretorio `~/catking_ws/src` e depois executa o comando:
+Os arquivos para entrega encontram-se na pasta `APS04` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps). Mova o diretório `APS04` para o diretorio `~/catkin_ws/src` e depois executa o comando:
 ```bash
-cd ~/catking_ws/
+cd ~/catkin_ws/
 catkin_make
 ```
