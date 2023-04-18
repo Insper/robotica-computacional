@@ -51,8 +51,8 @@ Utilize o comando `rostopic echo publisher` para verificar se o exercício está
 tempo = rospy.Time.now()
 tempo_sec = rospy.Time.now().to_sec()
 ```
-
-[Resposta](modulo4/scripts_resp/publisher.py){ .ah-button }
+??? details "Resposta"
+    [Resposta](modulo4/scripts_resp/publisher.py){ .ah-button }
 
 # Q2 - Subscriber
 Agora vamos trabalhar em um nó que se inscreve no tópico que criamos no exercício anterior. A função `callback`, deve separar o tempo do contador no conteúdo da mensagem,lembre-se de checar a estrutura da mensagem. A função `control` deve calcular o tempo que passou e utilizar o comando `rospy.loginfo` para mostrar o número da mensagem e o delay dela no terminal, como no exemplo a seguir,
@@ -72,7 +72,8 @@ time = rospy.Time( float( rospy.Time.now().to_sec() ) )
     !!! answer
         `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
-[Resposta](modulo4/scripts_resp/subscriber.py){ .ah-button }
+??? details "Resposta"
+    [Resposta](modulo4/scripts_resp/subscriber.py){ .ah-button }
 
 # Q3 - Robô quadrado (Deadlock)
 Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em uma trajetória que se ***aproxima*** de um quadrado.
