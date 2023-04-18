@@ -71,18 +71,18 @@ time = rospy.Time( float( rospy.Time.now().to_sec() ) )
         `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 # Q3 - Robô quadrado (Deadlock)
-Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mover em uma trajetória que se ***aproxima*** de um quadrado.
+Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em uma trajetória que se ***aproxima*** de um quadrado.
 
-**DICA 1** - Para fazer o robô se mover, publique uma mensagem para o tópico `cmd_vel`, verifique o tipo de mensagem que este tópico recebe.
+**DICA 1** - Para fazer o robô se mover, publique uma mensagem para o tópico `cmd_vel`, verifique o tipo de mensagem que este tópico recebe utilizando o comando `rostopic type cmd_vel`.
 
-**DICA 2** - Você pode esperar n segundos usando `rospy.sleep(n)`. Este tipo de controle se chama "Deadlock". É uma forma mais simples de se controlar o robô, mas "trava" o código, deixando o roubo menos reativo.
+**DICA 2** - Você pode esperar `n` segundos usando `rospy.sleep(n)`. Dessa forma, assumindo que o robô está se deslocando/rotacionando com velocidade constante, é possível prever sua posição final. Este tipo de controle se chama "Deadlock". É uma forma simples de se controlar o robô, mas tem a desvantagem de "travar" o código, deixando o roubo menos reativo.
 
 # Q4 Robô Quase Indeciso
-Usando o simulador e o LIDAR simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
+Usando o simulador e o Laser simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
 
-**DICA** Recorte a mensagem do laser para observar um limiar de &plusmn;5&deg; e avalie com base no menor valor desse limiar.
+**DICA** - Recorte a mensagem do laser para observar um limiar de &plusmn;5&deg; e avalie com base no **menor valor desse limiar**.
 
-Deixamos no arquivo a função que recebe os dados do LIDAR.
+Deixamos no arquivo a função que recebe os dados do Laser.
 ```python
 def laser_callback(self, msg: LaserScan) -> None:
     self.laser_msg = np.array(msg.ranges).round(decimals=2)
@@ -90,23 +90,22 @@ def laser_callback(self, msg: LaserScan) -> None:
 ```
 Esta função será chamada sempre que uma mensagem for publicada no tópico `/scan`. O conteúdo da mensagem será convertido para np.array e o valor é arredondado para 2 casas decimais. 
 
-Como no robô simulado um objeto muito longe tem o valor np.inf e no robô real tem o valor 0. a segunda linha do `laser_callback` serve para fazer a padronização dos valores.
+Como no robô simulado um objeto muito longe tem o valor `np.inf` e no robô real tem o valor `0`. a segunda linha do `laser_callback` serve para fazer a padronização dos valores.
 
 # Q5 Image Subscriber
 Em projetos mais complexos da ROS, separar o código em módulos é uma boa prática para manter o projeto organizado e bem estruturado. Um módulo muito utilizado seria o módulo da visão, onde todos os processamentos de imagem são executados por um nó, que publica apenas as informações relevantes da imagem, como por exemplo, coordenadas do alvo.
 Neste exercício vamos trabalhar no arquivo `image_publisher`. O objetivo é criar um nó da ROS que:
 
 1. Se inscreva no tópico `/camera/image/compressed`.
-2. Utilizando métodos de visão computacional, modifique a função `color_segmentation` para encontrar o centro dos "creepers" vermelhos.
-3. Publicar uma imagem com um *crosshair* no centro do “creeper” para o tópico `image_publisher`
-4. Publicar os valores de `x` e `y` do centro do “creeper” em um tópico `center_publisher` do tipo from `geometry_msgs/Point`
-5. No caso de não haver um "creeper" vermelho no frame, deve publicar `x=-1` e `y=-1`.
+2. Utilizando métodos de visão computacional, modifique a função `color_segmentation` para encontrar o centro do "creeper" azul.
+3. Publique uma imagem com um *crosshair* no centro do “creeper” para o tópico `image_publisher`
+4. Publique os valores de `x` e `y` do centro do “creeper” em um tópico `center_publisher` do tipo `geometry_msgs/Point`
+5. No caso de não haver um "creeper" azul no frame, deve publicar `x=-1` e `y=-1`.
 6. Na função `control` utilize o comando `rospy.loginfo` para mostrar no terminal as coordenadas do centro do “creeper”, ou alertar que não existem “creepers” na imagem.
 
-**DICA** - Utilize o `rqt_image_view` para capturar uma imagem do “creepers” e descubra os limiares do filtro HSV para esta imagem.
+**DICA** - Utilize o `rqt_image_view` para capturar uma imagem do “creeper” e descubra os limiares do filtro HSV para esta imagem.
 
 **SUGESTÃO** - Durante o curso vamos utilizar também os “creepers” de outras cores, presentes neste cenário, pode ser vantajoso preparar a segmentação para eles também.
-
 
 Deixamos no arquivo a função que recebe os dados da imagem, faltando apenas o tipo da imagem.
 
@@ -126,5 +125,3 @@ def laser_callback(self, msg: LaserScan) -> None:
 ```
 
 Primeiramente na função `__init__` definimos a variável `self.bridge`. Os tópicos da ROS trabalham com imagens codificadas, então na linha `6`, utilizamos essa variável para converter a imagem para a estrutura do OpenCV. Por fim, depois da imagem ser processada, na linha `12`, ela é codificada novamente e publicada em outro tópico.
-
-
