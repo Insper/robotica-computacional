@@ -75,12 +75,12 @@ time = rospy.Time( float( rospy.Time.now().to_sec() ) )
 ??? details "Resposta"
     [Resposta](modulo4/scripts_resp/subscriber.py){ .ah-button }
 
-# Q3 - Robô quadrado (Deadlock)
+# Q3 - Robô quadrado (Dead reckoning)
 Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em uma trajetória que se ***aproxima*** de um quadrado.
 
 **DICA 1** - Para fazer o robô se mover, publique uma mensagem para o tópico `cmd_vel`, verifique o tipo de mensagem que este tópico recebe utilizando o comando `rostopic type cmd_vel`.
 
-**DICA 2** - Você pode esperar `n` segundos usando `rospy.sleep(n)`. Dessa forma, assumindo que o robô está se deslocando/rotacionando com velocidade constante, é possível prever sua posição final. Este tipo de controle se chama "Deadlock". É uma forma simples de se controlar o robô, mas tem a desvantagem de "travar" o código, deixando o roubo menos reativo.
+**DICA 2** - Você pode esperar `n` segundos usando `rospy.sleep(n)`. Dessa forma, assumindo que o robô está se deslocando/rotacionando com velocidade constante, é possível prever sua posição final. Este tipo de controle se chama "dead reckoning". É uma forma simples de se controlar o robô, mas tem a desvantagem de "travar" o código, deixando o roubo menos reativo.
 
 # Q4 Robô Quase Indeciso
 Usando o simulador e o Laser simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
