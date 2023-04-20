@@ -52,7 +52,7 @@ tempo = rospy.Time.now()
 tempo_sec = rospy.Time.now().to_sec()
 ```
 ??? details "Resposta"
-    [Resposta](modulo4/scripts_resp/publisher.py){ .ah-button }
+    [Resposta](../modulo4/scripts_resp/publisher.py){ .ah-button }
 
 # Q2 - Subscriber
 Agora vamos trabalhar em um nó que se inscreve no tópico que criamos no exercício anterior. A função `callback`, deve separar o tempo do contador no conteúdo da mensagem,lembre-se de checar a estrutura da mensagem. A função `control` deve calcular o tempo que passou e utilizar o comando `rospy.loginfo` para mostrar o número da mensagem e o delay dela no terminal, como no exemplo a seguir,
@@ -73,7 +73,7 @@ time = rospy.Time( float( rospy.Time.now().to_sec() ) )
         `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 ??? details "Resposta"
-    [Resposta](modulo4/scripts_resp/subscriber.py){ .ah-button }
+    [Resposta](../modulo4/scripts_resp/subscriber.py){ .ah-button }
 
 # Q3 - Robô quadrado (Dead reckoning)
 Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em uma trajetória que se ***aproxima*** de um quadrado.
@@ -103,7 +103,7 @@ Neste exercício vamos trabalhar no arquivo `image_publisher`. O objetivo é cri
 
 1. Se inscreva no tópico `/camera/image/compressed`.
 2. Utilizando métodos de visão computacional, modifique a função `color_segmentation` para encontrar o centro do "creeper" azul.
-3. Publique uma imagem com um *crosshair* no centro do “creeper” para o tópico `image_publisher`
+3. Publique uma imagem com um *crosshair* no centro do “creeper” para o tópico `image_publisher` do tipo `sensor_msgs/Image`
 4. Publique os valores de `x` e `y` do centro do “creeper” em um tópico `center_publisher` do tipo `geometry_msgs/Point`
 5. No caso de não haver um "creeper" azul no frame, deve publicar `x=-1` e `y=-1`.
 6. Na função `control` utilize o comando `rospy.loginfo` para mostrar no terminal as coordenadas do centro do “creeper”, ou alertar que não existem “creepers” na imagem.
@@ -126,7 +126,7 @@ def laser_callback(self, msg: LaserScan) -> None:
 
     self.color_segmentation(cv_image) # Processamento da imagem
 
-    self.image_pub.publish(self.bridge.cv2_to_compressed_imgmsg(cv_image))
+    self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
 ```
 
 Primeiramente na função `__init__` definimos a variável `self.bridge`. Os tópicos da ROS trabalham com imagens codificadas, então na linha `6`, utilizamos essa variável para converter a imagem para a estrutura do OpenCV. Por fim, depois da imagem ser processada, na linha `12`, ela é codificada novamente e publicada em outro tópico.

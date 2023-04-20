@@ -13,7 +13,7 @@ import numpy as np
 """ 
 Rode cada linha em um terminal diferente
 	roslaunch my_simulation pista_s2.launch
-	rosrun modulo4 cor.py
+	rosrun modulo4 image_publisher.py
 """
 
 class ImagePublisher():
@@ -47,7 +47,7 @@ class ImagePublisher():
 		
 		self.color_segmentation(cv_image) # Processamento da imagem
 
-		self.image_pub.publish(self.bridge.cv2_to_compressed_imgmsg(cv_image))
+		self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
 
 
 	def color_segmentation(self,bgr: np.ndarray) -> None:

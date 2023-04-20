@@ -13,7 +13,7 @@ import numpy as np
 """ 
 Rode cada linha em um terminal diferente
 	roslaunch my_simulation pista_s2.launch
-	rosrun modulo4 cor.py
+	rosrun modulo4 image_publisher.py
 """
 
 class ImagePublisher():
