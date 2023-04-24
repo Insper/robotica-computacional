@@ -26,7 +26,7 @@ Cada missão deverá ser colocada em um arquivo `.py` separado com o nome da mis
 O projeto consistirá em diversas missões diferentes no cenário acima. As missões tem complexidade crescente e requisitos tanto de projeto de software quanto de uso dos sensores e comportamentos do robô. É necessário realizar todas as missões anteriores para conseguir a nota de uma missão mais avançada. As missões envolvem os seguintes elementos:
 
 - **Creepers**: bonequinhos que parecem os do minecraft e que devem ser levados até
-- **Drop areas**: caixas com imagens detectáveis pela mobilenet. Creepers devem ser depositados perto dessas caixas
+- **Drop Area**: caixas com imagens detectáveis pela mobilenet. Creepers devem ser depositados perto dessas caixas
 - **Slalom**: sequência de 3 caixas coloridas em forma de zigue zague. 
 
 Para completar uma missão você deve:
@@ -55,7 +55,7 @@ Essa missão é a mais simples do projeto e envolve aplicar diretamente os conce
 
 A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente o LiDAR para medir a distância até ele). 
 
-1. O robô sai da posição inicial, vira à direita na encruzilhada e vai até a áera dos creepers
+1. O robô sai da posição inicial, vira à direita na encruzilhada e vai até a área dos creepers
 2. Ele pega o creeper **verde** e deposita perto da drop area da pista do centro. 
 3. Volta para posição inicial
 
@@ -88,9 +88,9 @@ A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 Agora vamos integrar tudo, com objetivos que dependem da *MobileNet*
 
 1. O programa recebe dois argumentos na linha de comando: cor do creeper e drop area
-2. Vai até a áera do creepers usando qualquer caminho que quiser e pega o creeper
+2. Vai até a área do creepers usando qualquer caminho que quiser e pega o creeper
 3. Encontra a drop area passada como argumento. **Neste item ela sempre estará no centro ou na direita.**
-4. Deposita o creeper na drop area
+4. Deposita o creeper na drop area requisitada
 5. Retorna ao ponto inicial
 
 !!! important
