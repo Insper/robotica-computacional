@@ -19,6 +19,21 @@ Quando isso for finalizado, o restante do grupo deverá clonar o projeto ROS na 
 git clone SEU_REPO_AQUI ~/catkin_ws/src/projeto-robcomp
 ```
 
+Também é necessário atualizar os repositórios locais para baixar a pista do projeto. Faça isso usando os comandos abaixo. **Todos os membros do grupo precisam fazer este passo**.
+
+```bash
+cd ~/catkin_ws/src/mybot_description
+git pull
+cd ~/catkin_ws/src/my_simulation
+git pull
+```
+
+Para lançar a simulação da pista do projeto, execute o comando abaixo.
+
+```bash
+roslaunch my_simulation pista23-1.launch
+```
+
 Cada missão deverá ser colocada em um arquivo `.py` separado com o nome da missão que ele realiza. 
 
 ## Missões
