@@ -82,7 +82,7 @@ Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS q
 
 **DICA 2** - Você pode esperar `n` segundos usando `rospy.sleep(n)`. Dessa forma, assumindo que o robô está se deslocando/rotacionando com velocidade constante, é possível prever sua posição final. Este tipo de controle se chama "dead reckoning". É uma forma simples de se controlar o robô, mas tem a desvantagem de "travar" o código, deixando o roubo menos reativo.
 
-# Q4 Robô Quase Indeciso
+# Q4 - Robô Quase Indeciso
 Usando o simulador e o Laser simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
 
 **DICA** - Recorte a mensagem do laser para observar um limiar de &plusmn;5&deg; e avalie com base no **menor valor desse limiar**.
@@ -97,7 +97,7 @@ Esta função será chamada sempre que uma mensagem for publicada no tópico `/s
 
 Como no robô simulado um objeto muito longe tem o valor `np.inf` e no robô real tem o valor `0`. a segunda linha do `laser_callback` serve para fazer a padronização dos valores.
 
-# Q5 Image Subscriber
+# Q5 - Image Subscriber
 Em projetos mais complexos da ROS, separar o código em módulos é uma boa prática para manter o projeto organizado e bem estruturado. Um módulo muito utilizado seria o módulo da visão, onde todos os processamentos de imagem são executados por um nó, que publica apenas as informações relevantes da imagem, como por exemplo, coordenadas do alvo.
 Neste exercício vamos trabalhar no arquivo `image_publisher`. O objetivo é criar um nó da ROS que:
 
