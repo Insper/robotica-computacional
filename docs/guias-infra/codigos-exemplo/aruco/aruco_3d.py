@@ -36,7 +36,7 @@ class Aruco3d:
 
     def laser_callback(self, msg):
         leitura = np.array(msg.ranges).round(decimals=2)
-        self.frente = leitura[0]
+        
 
 
     def image_callback(self, msg: CompressedImage) -> None:
