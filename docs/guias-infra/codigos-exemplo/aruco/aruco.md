@@ -57,7 +57,7 @@ Agora, vamos entender a função **geraAruco**. Cada ponto a seguir apresenta um
 
 - **distancia_aruco**: Criamos outra lista vazia chamada *distancia_aruco* para armazenar as distâncias calculadas a partir dos vetores de translação dos marcadores Aruco.
 
-- ***grayColor***: É aqui que realizamos a conversão da imagem colorida de entrada (img) para uma imagem em tons de cinza utilizando a função cv2.cvtColor() da biblioteca OpenCV. 
+- ***grayColor***: É aqui que realizamos a conversão da imagem colorida de entrada (cv_image) para uma imagem em tons de cinza utilizando a função cv2.cvtColor() da biblioteca OpenCV. 
 
 
 Agora observe que criamos um dicionário que irá conter os marcadores Aruco pré-definidos, utilizando a função **aruco.getPredefinedDictionary()** da biblioteca OpenCV.
