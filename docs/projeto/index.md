@@ -79,6 +79,7 @@ A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente
 
 - [ ] o código deve usar classes
 - [ ] o código deve usar máquina de estados
+- [ ] é usado controlo proporcional para o robô seguir a linha
 
 **Nota final desta missão:** 5,0
 
@@ -95,6 +96,7 @@ A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
+- [ ] é usado controlo proporcional para o robô seguir a linha
 
 **Nota final desta missão:** 6,5
 
@@ -120,6 +122,7 @@ Agora vamos integrar tudo, com objetivos que dependem da *MobileNet*
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
+- [ ] é usado controlo proporcional para o robô seguir a linha
 - [ ] código não leva em conta conhecimento sobre a posição das drop areas, mas sim a detecção da imagem das caixas
 
 
@@ -136,6 +139,7 @@ Esse item é exatamente igual ao anterior, mas deve-se demonstrar a missão acim
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
+- [ ] é usado controlo proporcional para o robô seguir a linha
 - [ ] código não leva em conta conhecimento sobre a posição das drop areas, mas sim a detecção da imagem das caixas
 - [ ] parte de visão do código está feita em um nó separado do ROS, que publica um ou mais tópicos com as informações detectadas
 
@@ -149,7 +153,7 @@ A missão final é a mesma da **Missão B**, mas com um adendo: qualquer uma das
 1. **Garra** e **LiDAR** para pegar os creepers
 2. **mobile net** para detectar as drop areas corretas
 3. **aruco** para encontrar encruzilhadas e creepers
-4. **controle** para andar na pista sem sair
+4. **controle proporcional** para andar na pista sem sair
 5. **planejamento e máquina de estados** para criar comportamento complexo a partir de estados "simples"
 
 !!! important
