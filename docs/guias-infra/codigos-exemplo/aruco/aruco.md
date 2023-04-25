@@ -204,7 +204,7 @@ No seu terminal será exibida a lista com todos os arucos que o robô detectou, 
 
 Estude o código exemplo, modifique o programa para que:
 - O robô encontra um ArUco
-- O robô se aproxima do AruCo, e se mantém a aproximadamente 1m do primeiro aruco encontrado.
+- O robô se aproxima do ArUco, e se mantém a aproximadamente 1m do primeiro aruco encontrado.
 
 
 Divirta-se!
