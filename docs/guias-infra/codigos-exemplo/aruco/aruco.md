@@ -39,7 +39,7 @@ python3 aruco_3d.py
 
 Neste código, temos a estrutura padrão que será utilizada na matéria. No entanto, vamos explicar agora, linha por linha, como funciona a função geraAruco que está no arquivo aruco_3d.py. Em primeiro lugar, peço que olhe para a função **image_callback** e perceba que nela tratamos a imagem que chega através do **Subscriber**, responsável por cuidar do tópico que recebe as informações da câmera do robô.
 
-Para executar a função *geraAruco* iremos chamá-la no *image_calback*, pois é a função responsável por atualizar a imagem a para todo frame recebido.
+Para executar a função *geraAruco* iremos chamá-la no *image_calback*, pois é a função responsável por atualizar a imagem para todo frame recebido.
 
 ```bash
 def image_callback(self, msg: CompressedImage) -> None:
