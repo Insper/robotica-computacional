@@ -127,7 +127,7 @@ Fazemos um ***for*** nos ids detectados na lista ids, onde *i* é o índice do m
 
 - Em **ret[1][0,0,:]** está acessando o valor do vetor de translação (tvec) na posição [0,0,:]. 
 
-!Tip A notação **":"** é usada para indicar que queremos considerar todos os valores da última dimensão da matriz ou vetor, que no caso é a dimensão 3
+ A notação **":"** é usada para indicar que queremos considerar todos os valores da última dimensão da matriz ou vetor, que no caso é a dimensão 3
 
 - **distancia_aruco.append(np.linalg.norm(tvec))** está calculando a norma Euclidiana do vetor de translação tvec usando a função np.linalg.norm() e adicionando o resultado à lista distancia_aruco.  
 
