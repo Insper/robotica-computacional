@@ -30,12 +30,12 @@ class Aruco3d:
             # ========================================= IMPORTANTE!!!! ================================================================
             # ===== Se estiver usando o robo fisico, e o seu robo está com a RealSense, troque o arquivo de calibração =====
             # ===== Verifique se o arquivo cameraDistortion_realsense.txt e cameraMatrix_realsense.txt esta disponivel na pasta arucopath ====
-            # ===== Troque o nome do arquivo nas variavel camera_matrix e camera_distortion para cameraDistortion_realsense.txt e cameraMatrix_realsense.txt respectivamente. 
+            # ===== Troque o nome do arquivo nas variaveis camera_matrix e camera_distortion para cameraDistortion_realsense.txt e cameraMatrix_realsense.txt respectivamente. 
             # ===== SE O SEU ROBO ESTA USANDO A RASPICAM, NAO PRECISA ALTERAR NADA!
             # ===== Caso não saiba do que eu estou falando, por favor, jogue no google imagens "Camera RealSense D400", essa é a camera RealSense.
             
             
-            #Carregando oS arquivoS de calibracao da camera
+            #Carregando os arquivos de calibracao da camera
             #Exemplo de calibracao para a raspcam, funciona no robo simulado e no robo real que está com a Raspcam
             self.camera_matrix   = np.loadtxt(calibra_path+'/arucopath/cameraMatrix_raspi.txt', delimiter=',')
             self.camera_distortion   = np.loadtxt(calibra_path+'/arucopath/cameraDistortion_raspi.txt', delimiter=',')
