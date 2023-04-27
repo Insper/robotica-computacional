@@ -1,13 +1,16 @@
 # Missão na 404
 
+!!! important
+    Esse enunciado ainda está em desenvolvimento. Não deve ser usado para desenvolver o projeto ainda.
+
 No projeto da disciplina iremos programar o nosso TurtleBot para realizar missões robóticas na sala 404. O cenário que usaremos é o abaixo.
 
-![TODO: foto do simulador](pista.jpeg)
+![](pista.jpeg)
 
 O projeto deverá ser feito em grupos de 3 pessoas usando o repositório do GH Classroom abaixo. 
 
 
-[Link para tarefa do GH Classroom](TODO: link aqui){ .ah-button }
+[Link para tarefa do GH Classroom](https://classroom.github.com/a/4tk_fGP5){ .ah-button }
 
 ## Começando o projeto
 
@@ -40,6 +43,7 @@ Cada missão deverá ser colocada em um arquivo `.py` separado com o nome da mis
 
 O projeto consistirá em diversas missões diferentes no cenário acima. As missões tem complexidade crescente e requisitos tanto de projeto de software quanto de uso dos sensores e comportamentos do robô. É necessário realizar todas as missões anteriores para conseguir a nota de uma missão mais avançada. As missões envolvem os seguintes elementos:
 
+- **Pista**: seu robô deve andar sempre dentro da pista. Se ele sair da pista, deve voltar o mais rápido possível 
 - **Creepers**: bonequinhos que parecem os do minecraft e que devem ser levados até
 - **Drop Area**: caixas com imagens detectáveis pela mobilenet. Creepers devem ser depositados perto dessas caixas
 - **Slalom**: sequência de 3 caixas coloridas em forma de zigue zague. 
