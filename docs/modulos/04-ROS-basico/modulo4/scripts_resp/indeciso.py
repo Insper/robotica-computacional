@@ -4,7 +4,7 @@
 import rospy
 import numpy as np
 
-from geometry_msgs.msg import ???
+from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 
 """ 
@@ -22,15 +22,17 @@ class Control():
 		self.laser_subscriber = rospy.Subscriber('/scan',LaserScan, self.laser_callback)
 		
 		# Publishers
-		self.cmd_vel_pub = rospy.Publisher(???, ???, queue_size=3)
+		self.cmd_vel_pub = rospy.Publisher("cmd_vel", Twist, queue_size=3)
 
-		self.cmd_vel_pub.publish(???)
+		self.cmd_vel_pub.publish(Twist())
 		
 	def laser_callback(self, msg: LaserScan) -> None:
 		self.laser_msg = np.array(msg.ranges).round(decimals=2) # Converte para np.array e arredonda para 2 casas decimais
 		self.laser_msg[self.laser_msg == 0] = np.inf
 
-		print(f'Leitura diretamente na frente: {self.laser_msg[0]}')
+		self.frente = list(self.laser_msg)[0:5] + list(self.laser_msg)[-5:]
+
+		print(f'Leitura na frente: {self.laser_msg[0]}')
 		print("Faixa valida: ", msg.range_min , " - ", msg.range_max )
 	
 	def control(self) -> None:
@@ -38,8 +40,17 @@ class Control():
 		This function is called at least at {self.rate} Hz.
 		This function controls the robot.
 		'''
-		???
+		vel = Twist()
+		valor_min = np.min(self.frente)
 
+		if valor_min > 1.05:
+			vel.linear.x = 0.5
+		elif valor_min < 0.95:
+			vel.linear.x = -0.5
+		else:
+			vel.linear.x = 0
+
+		self.cmd_vel_pub.publish(vel)
 		self.rate.sleep()
 
 
