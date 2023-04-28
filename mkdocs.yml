@@ -99,5 +99,7 @@ nav:
           - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
     - Revisões:
       - revisao-PI.md
-    - Projetos:
+    - Projeto:
       - projeto/index.md
+      - "Exemplos":
+        - projeto/exemplos/aruco/index.md
