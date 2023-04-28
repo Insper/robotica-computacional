@@ -1,8 +1,8 @@
 # Marcadores ArUco
 
 !!! people "Autoras"
-    - ![Licia](/equipe/licia.jpeg) **Licia Lima** 
-    - ![Ana Laiz](/equipe/ana-laiz.jpg) **Ana Laiz Farias** 
+    - ![Ana Laiz](/robotica-computacional/equipe/ana-laiz.jpg) **Ana Laiz Farias** 
+    - ![Licia](/robotica-computacional/equipe/licia.jpeg) **Licia Lima** 
 
 
 Estimar a posição relativa a um objeto é de grande importância em muitas aplicações de visão computacional, como navegação de robôs, realidade aumentada e muito mais. Este processo se baseia em encontrar correspondências entre pontos no ambiente e sua projeção de imagem 3D. Esta é geralmente uma etapa difícil e, portanto, é comum o uso de marcadores para facilitar.

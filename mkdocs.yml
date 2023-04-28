@@ -1,4 +1,5 @@
 site_name: Robótica Computacional - Insper
+site_url: https://insper.github.io/robotica-computacional/
 theme:
   name: active-handout-theme
   locale: pt_BR

@@ -168,6 +168,12 @@ A missão final é a mesma da **Missão B**, mas com um adendo: qualquer uma das
 
 **Nota final desta missão:** 10,0
 
+-----------------------------------------
 
+
+!!! people "Contribuições"
+    - ![Igor](/robotica-computacional/equipe/igor.jpg) **Igor Montagner** *Professor*
+    - ![Diego](/robotica-computacional/equipe/diego.jpg) **Diego Pavan Soler** *Prof. Auxiliar*
+    - ![Rogério](/robotica-computacional/equipe/rogerio.jpeg) **Rogério Cuenca** *Técnico de lab*
 
 
