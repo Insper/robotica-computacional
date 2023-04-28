@@ -1,2 +1,2 @@
-git+https://github.com/insper-education/active-handout-plugins-py.git@v0.4
+git+https://github.com/insper-education/active-handout-plugins-py.git@v0.4.4
 mknotebooks
