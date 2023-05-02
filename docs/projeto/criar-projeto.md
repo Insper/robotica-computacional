@@ -58,7 +58,7 @@ if __name__ == "__main__":
 ```
 
 !!! important
-    Toda vez que **adicionar** novos programas na pasta `scripts` execute o comando `catkin_make` para registrá-los no ROS. 
+    Toda vez que **adicionar** novos programas na pasta `scripts` execute o comando `chmod +x *.py` para torná-los executáveis no ROS. 
 
 Para rodar esse programa de testes 
 
