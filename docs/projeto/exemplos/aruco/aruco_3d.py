@@ -24,7 +24,7 @@ class Aruco3d:
             self.distancias = []
 
             #Capturando o caminho da pasta local em que o codigo esta
-            calibra_path  = os.path.abspath(os.getcwd())
+            calibra_path  = os.path.abspath(__file__)
             
             # =================================== APENAS PARA O ROBO FISICO ===========================================================
             # ========================================= IMPORTANTE!!!! ================================================================
@@ -37,8 +37,8 @@ class Aruco3d:
             
             #Carregando os arquivos de calibracao da camera
             #Exemplo de calibracao para a raspcam, funciona no robo simulado e no robo real que está com a Raspcam
-            self.camera_matrix   = np.loadtxt(calibra_path+'/arucopath/cameraMatrix_raspi.txt', delimiter=',')
-            self.camera_distortion   = np.loadtxt(calibra_path+'/arucopath/cameraDistortion_raspi.txt', delimiter=',')
+            self.camera_matrix   = np.loadtxt(calibra_path+'/cameraMatrix_realsense.txt', delimiter=',')
+            self.camera_distortion   = np.loadtxt(calibra_path+'/cameraDistortion_realsense.txt', delimiter=',')
 
     def image_callback(self, msg: CompressedImage) -> None:
         #converte a msg do ROS para OpenCV 
