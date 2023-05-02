@@ -24,7 +24,7 @@ class Aruco3d:
             self.distancias = []
 
             #Capturando o caminho da pasta local em que o codigo esta
-            calibra_path  = os.path.abspath(__file__)
+            calibra_path  = os.path.dirname(os.path.abspath(__file__))
             
             # =================================== APENAS PARA O ROBO FISICO ===========================================================
             # ========================================= IMPORTANTE!!!! ================================================================

@@ -12,6 +12,8 @@ O projeto deverá ser feito em grupos de 3 pessoas usando o repositório do GH C
 
 [Link para tarefa do GH Classroom](https://classroom.github.com/a/4tk_fGP5){ .ah-button }
 
+**Data de Entrega: 31/05 23:59**
+
 ## Começando o projeto
 
 O repositório do Github Classroom estará vazio. Para iniciar o projeto um dos membros do grupo deverá seguir o [guia de início de projetos ROS](criar-projeto.md). 

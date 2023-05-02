@@ -22,13 +22,16 @@ Se estiver usando o robô físico, configure corretamente o arquivo ***robotica.
 
 ## Aruco 3D
 
-Utilizando a técnica de marcadores aruco 3D podemos obter os corners que são as coordenadas dos “cantos” do aruco e os IDs dos arucos, também conseguimos calcular o vetor de transalação e o vetor de rotação do aruco em relação ao robô, com essas informações é possível extrair a distância euclidiana e a distância focal do aruco em relação ao robô, essas implementações estão disponíveis para você no código exemplo [aruco_3d.py](aruco_3d.py), para executar:
+Utilizando a técnica de marcadores aruco 3D podemos obter os corners que são as coordenadas dos “cantos” do aruco e os IDs dos arucos, também conseguimos calcular o vetor de transalação e o vetor de rotação do aruco em relação ao robô, com essas informações é possível extrair a distância euclidiana e a distância focal do aruco em relação ao robô, essas implementações estão disponíveis para você no código exemplo [aruco_3d.py](aruco_3d.py). Você precisará baixar os seguintes arquivos e colocá-los também na pasta *scripts*:
+
+- [cameraDistortion_realsense.txt](cameraDistortion_realsense.txt)
+- [cameraMatrix_realsense.txt](cameraMatrix_realsense.txt)
 
 Certifique-se de que o terminal está aberto na mesma página que está o código, usando o comando “ls” é possível listar o conteúdo do diretório, é preciso que os arquivos abaixo estejam na pasta.
 
 ```bash
 $> ls
-aruco_3d.py cameraDistortion_realsense.txt cameraMatrix_realsense.tx*
+aruco_3d.py cameraDistortion_realsense.txt cameraMatrix_realsense.txt
 ```
 
 ![Untitled](imgs/Untitled1.png)
