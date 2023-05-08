@@ -52,7 +52,7 @@ class Aruco3d:
         centros = []
         distancia_aruco=[]
         # Gera a mascara em escalas de Cinza apartir da copia da imagem la da função image_callback
-        grayColor = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        grayColor = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
         #Define o Dicionario para o Aruco que vamos utilizar
         dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
         

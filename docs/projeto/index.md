@@ -1,13 +1,10 @@
 # Missão na 404
 
-!!! important
-    Esse enunciado ainda está em desenvolvimento. Não deve ser usado para desenvolver o projeto ainda.
-
 No projeto da disciplina iremos programar o nosso TurtleBot para realizar missões robóticas na sala 404. O cenário que usaremos é o abaixo.
 
 ![](pista.jpeg)
 
-O projeto deverá ser feito em grupos de 3 pessoas usando o repositório do GH Classroom abaixo. 
+O projeto deverá ser feito em grupos de 4 pessoas usando o repositório do GH Classroom abaixo. 
 
 
 [Link para tarefa do GH Classroom](https://classroom.github.com/a/4tk_fGP5){ .ah-button }
@@ -31,6 +28,8 @@ cd ~/catkin_ws/src/mybot_description
 git pull
 cd ~/catkin_ws/src/my_simulation
 git pull
+cd ~/catkin_ws
+catkin_make
 ```
 
 Para lançar a simulação da pista do projeto, execute o comando abaixo.
