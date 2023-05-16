@@ -102,5 +102,6 @@ nav:
       - revisao-PI.md
     - Projeto:
       - projeto/index.md
+      - projeto/atualizacoes.md
       - "Exemplos":
         - projeto/exemplos/aruco/index.md

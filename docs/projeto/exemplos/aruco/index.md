@@ -71,7 +71,7 @@ Agora observe que criamos um dicionário que irá conter os marcadores Aruco pr�
 
 - **Dicionário ArUco:** A função ***cv2.aruco.getPredefinedDictionary()*** é usada para criar um dicionário contendo os marcadores Aruco pré-definidos, que são um conjuntos de marcadores com ID's únicos e padrões específicos. Esses dicionários são usados para detecção e estimativa de posição dos marcadores em imagens de entrada. O dicionário é criado com base em uma constante passada como parâmetro, que especifica o tipo de dicionário Aruco desejado.
 
-Por exemplo, no código abaixo, a linha ***dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)*** cria um dicionário Aruco pré-definido com *250 marcadores de 6x6 bits*. 
+Por exemplo, no código abaixo, a linha ***dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_1000)*** cria um dicionário Aruco pré-definido com *250 marcadores de 6x6 bits*. 
 
 ```python
 def geraAruco(self,cv_image):   
@@ -80,7 +80,7 @@ def geraAruco(self,cv_image):
     # Gera mask Cinza
     grayColor = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
     #Gera Dicionario com Arucos
-    dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
+    dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_1000)
 ```
 
 - **cv2.aruco.detectMarkers(grayColor, dicionarioAruco)**: Essa função realiza a detecção dos marcadores Aruco em uma imagem em tons de cinza. O primeiro parâmetro, grayColor, é a imagem em tons de cinza onde a detecção será realizada. O segundo parâmetro, dicionarioAruco,é o dicionário Aruco pré-definido que será utilizado para a detecção. Essa função retorna três valores: 

@@ -46,4 +46,4 @@ Modifique o arquivo `goto.py` para criar um nó da ROS que, utilizando controle 
 [Download das atividades](modulo4/scripts/goto.py){ .ah-button }
 
 ??? details "Resposta"
-    [Resposta](../modulo4/scripts/goto.py){ .ah-button }
+    [Resposta](modulo4/scripts_resp/goto.py){ .ah-button }
