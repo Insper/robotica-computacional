@@ -52,11 +52,14 @@ O projeto consistirá em diversas missões diferentes no cenário acima. As miss
 Para completar uma missão você deve:
 
 - [ ] capturar a tela do robô realizando a missão no simulador 
-- [ ] filmar o robô realizando a missão na pista da sala
+- [ ] **Obrigatório para a Missão D**: filmar o robô realizando a missão na pista da sala
     - para filmar é preciso pedir a preparação da pista para a equipe de técnicos. Isso garante que todos terão condições parecidas nas missões.
 - [ ] cada missão demora menos de 15 minutos para ser completada
 
 Missões podem ser completadas durante o andamento do projeto. É só pedir a validação da parte dos requisitos de software antes de gravar. 
+
+!!! Atenção
+    Se uma missão só for completada no simulador ela valerá 50% da nota. **A missão D é obrigatório rodar no robô real**. 
 
 ### Missão **D**
 
@@ -71,6 +74,9 @@ Essa missão é a mais simples do projeto e envolve aplicar diretamente os conce
 
 **Nota final desta missão:** 3,0
 
+!!! Atenção
+    É obrigatório rodar essa missão no robô real
+
 ### Missão **C**
 
 A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente o LiDAR para medir a distância até ele). 
@@ -84,7 +90,9 @@ A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente
 
 - [ ] o código deve usar classes
 - [ ] o código deve usar máquina de estados
-- [ ] é usado controlo proporcional para o robô seguir a linha
+- [ ] é usado controle proporcional para o robô seguir a linha
+- [ ] existe um subscriber específico para a leitura do aruco
+- [ ] existe um subscriber específico para a leitura da mobileNet (mesmo que não use)
 
 **Nota final desta missão:** 5,0
 
@@ -101,7 +109,7 @@ A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
-- [ ] é usado controlo proporcional para o robô seguir a linha
+- [ ] é usado controle proporcional para o robô seguir a linha
 
 **Nota final desta missão:** 6,5
 
@@ -127,7 +135,7 @@ Agora vamos integrar tudo, com objetivos que dependem da *MobileNet*
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
-- [ ] é usado controlo proporcional para o robô seguir a linha
+- [ ] é usado controle proporcional para o robô seguir a linha
 - [ ] código não leva em conta conhecimento sobre a posição das drop areas, mas sim a detecção da imagem das caixas
 
 
@@ -144,7 +152,7 @@ Esse item é exatamente igual ao anterior, mas deve-se demonstrar a missão acim
 
 - [ ] código deve usar classes
 - [ ] código deve usar máquina de estados
-- [ ] é usado controlo proporcional para o robô seguir a linha
+- [ ] é usado controle proporcional para o robô seguir a linha
 - [ ] código não leva em conta conhecimento sobre a posição das drop areas, mas sim a detecção da imagem das caixas
 - [ ] parte de visão do código está feita em um nó separado do ROS, que publica um ou mais tópicos com as informações detectadas
 

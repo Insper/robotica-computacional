@@ -32,6 +32,7 @@ desde que as seguintes restrições sejam respeitadas:
 2. `PI + PF >= 10`
 3. `PI >= 5 OU PF >= 5`
 4. `PI >= 4 E PF >= 4`
+5. nota de projeto maior que 4
 
 !!! important "Segundas chances"
     1. Se alguma APS não foi entregue até a data acima, ela poderá ser entregue até {{ data_PF }} valendo %50 da nota
