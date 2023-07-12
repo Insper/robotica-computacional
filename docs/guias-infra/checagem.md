@@ -8,7 +8,6 @@ Estes pontos serão checados pela equipe para cada aluno. Se forem feitos até {
 - [ ] Conseguiu executar o *Jupyter Notebook* e mostrou a execução da sua *APS1*
 - [ ] Executou `git config user.name` e mostrou seu próprio nome
 - [ ] Executou `git config user.email` e mostrou seu email
-- [ ] 
 
 ## Simulador
 
