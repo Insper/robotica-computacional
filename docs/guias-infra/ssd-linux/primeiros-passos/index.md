@@ -105,4 +105,4 @@ sudo apt update && sudo apt upgrade -y
 
 ## Finalizando
 
-Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica é usar o SSD para tudo neste semestre.
+Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica **é usar o SSD para tudo neste semestre**.
