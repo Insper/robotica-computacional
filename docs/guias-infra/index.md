@@ -12,7 +12,7 @@ Um ponto importante da disciplina de Robótica é que a configuração da Infra 
 2. **Simulador**: {{ data_infra_simulador }}
 3. **TurtleBot3**: {{ data_infra_turtlebot3 }}
 
-Quando acabar, é só pedir para fazer a validação do guia com algum dos técnicos da discplina.
+Quando acabar, é só pedir para fazer a validação do guia com algum dos técnicos da disciplina.
 
 !!! done
     Executar todos os guias até as datas acima é uma tarefa bônus do curso com valor de até 0,5 pontos.

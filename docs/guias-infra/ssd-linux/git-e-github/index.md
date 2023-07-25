@@ -55,7 +55,7 @@ Se quiser saber mais, visite o [canal do YouTube oficial do GitHub](https://www.
 
 A primeira coisa que devemos fazer antes de começar a usar o Git é configurar o **nome de usuário** e **endereço de e-mail**. Isto é importante porque cada *commit*  usa esta informação, e ela é carimbada de forma imutável nos seus *commits*:
 
-Abra um terminal usando o atalho Super + T, então use os comando a seguir para configurar o seu user name e seu email:
+Abra um terminal usando o atalho `Super + T`, então use os comando a seguir para configurar o seu user name e seu email:
 
 ```bash
 git config --global user.name "Seu Belo Nome Aqui"
@@ -76,6 +76,55 @@ Se você quiser usar um editor de texto diferente, como o Visual Code, você pod
 ```bash
 git config --global core.editor code
 ```
+
+## Configurando autenticação por chave ssh
+Autenticação por chave SSH é um método de garantir uma conexão segura entre dois sistemas. Uma chanve SSH na verdade consiste de um par de chaves, uma chave privada, que é mantida em segredo no computador do usuário, e uma chave pública, que é colocada no servidor. Quando você tenta conectar-se ao um servidor, no caso tenta se conectar na sua conta do Git, ele criará um desafio criptográfico usando sua chave pública, que só pode ser resolvido com a chave privada correspondente. Assim, o Git pode confirmar sua identidade automaticamente, sem que você precise enviar uma senha ou seu personal access token.
+
+Vamos agora aprnder como confirguardar a sua chave SSH no GitHub.
+
+### Gerando uma chave SSH
+
+Primeiramente devemos criar uma chave SSH, para isso, abra um terminal e execute o seguinte comando substituindo o endereço de e-mail pelo seu GitHub, não pressione enter novamente.
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Quando você pressionar enter, o terminal vai pedir para você escolher um local para salvar a chave, mude o local para o seguinte:
+**TODO: colocar o caminho da pasta .ssh**
+
+```bash
+~/.ssh/id_ed25519
+```
+
+Agora vamos adicionar a chave ao ssh-agent, o ssh-agent é um programa que roda em segundo plano e armazena as chaves privadas usadas para autenticação SSH, ele é responsável por segurar as chaves privadas e usar quando necessário.
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+### Adicionando a chave SSH ao GitHub
+
+Agora vamos adicionar a chave SSH que criamos ao GitHub, para isso, vamos copiar o conteudo do arquivo `id_ed25519.pub` e cola-lo na sua página de configurações do GitHub. Voce pode fazer isso abri o arquivo com o seu editor de texto favorito e copiar o conteudo, ou pode usar o comando abaixo:
+```bash
+apt install xclip
+alias pbcopy="xclip -sel clip"
+pbcopy < ~/.ssh/ubuntuBase.pub
+```
+
+Para acessar a página de configurações, clique na sua foto de perfil no canto superior direito da página do GitHub, em seguida, clique em **Settings**.
+
+![passo1](imgs/passo1.png)
+
+Depois, na barra lateral esquerda, clique em **SSH and GPG keys**. Em seguida, clique em **New SSH key** ou **Add SSH key**.
+
+Preencha o campo **Title** com um nome descritivo para a chave, por exemplo, **SSD Robotica**. Em seguida, cole a chave no campo **Key**. Finalmente, clique em **Add SSH key**.
+
+![passo2](imgs/passo2.png)
+**TODO: Imagem passo2**
+
+Agora não será mais nescessario digitar seu usuário e senha toda vez que você executar um comando git, o GitHub vai reconhecer a sua chave SSH e vai autenticar você automaticamente.
 
 ## Criando um **personal access token**
 
