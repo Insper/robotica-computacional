@@ -29,17 +29,17 @@ Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
 ## Equipe
 
 !!! people "Equipe atual"
-    - ![Igor](equipe/igor.jpg) **Igor Montagner** *Professor*
-    - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Prof. Auxiliar*
+    - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Professor*
+    - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
     - ![Licia](equipe/licia.jpeg) **Licia Lima** *Técnica de lab*
     - ![Rogério](equipe/rogerio.jpeg) **Rogério Cuenca** *Técnico de lab*
     - ![Ana Laiz](equipe/ana-laiz.jpg) **Ana Laiz Farias** *Ninja*
-    - ![Enricco](equipe/enricco.jpg) **Enricco Gemha** *Ninja*
 
 
 Robótica é uma disciplina que já teve contribuições de muitas pessoas. As pessoas abaixo já contribuíram para a disciplina no passado.
 
 !!! people "Semestres passados"
-    - ![Miranda](equipe/miranda.png) Fábio Miranda
+    - ![Igor](equipe/igor.jpg) Igor Montagner
     - ![Antonio](equipe/antonio.jpeg) Antônio Selvatici
+    - ![Miranda](equipe/miranda.png) Fábio Miranda
     - ![Arnaldo](equipe/arnaldo.jpeg) Arnaldo Alves Viana Junior
