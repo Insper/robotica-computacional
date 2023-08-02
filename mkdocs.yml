@@ -65,6 +65,7 @@ nav:
         - guias-infra/ssd-linux/primeiros-passos/index.md
         - guias-infra/ssd-linux/guia-linux/index.md
         - guias-infra/ssd-linux/git-e-github/index.md
+        - guias-infra/ssd-linux/git-e-github/pull_template.md
       - Robô Simulado:
         - guias-infra/robo-simulado/index.md
       - Robô TurtleBot3:
