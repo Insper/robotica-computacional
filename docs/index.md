@@ -1,6 +1,6 @@
-# Robótica Computacional 2023/1
+# Robótica Computacional 2023/2
 
-Essa página reúne todos os materiais de apoio e de Robótica Computacional, 2023/1. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
+Essa página reúne todos os materiais de apoio e de Robótica Computacional, 2023/2. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
 
 - [Introdução à disciplina](modulos/00-intro/index.md)
 - [Organização do Semestre](modulos/index.md)
