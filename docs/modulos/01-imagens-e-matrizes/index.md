@@ -5,14 +5,17 @@
     ![](slides.pdf)
     
 
-Neste módulo iremos iniciar o trabalho com imagens usando as bibliotecas [OpenCV](https://opencv.org) e [Numpy](https://numpy.org). Também já usaremos `matplotlib`, que vocês já usaram em Ciência dos Dados para gráficos e mostrar imagens.
+Neste módulo iremos iniciar o trabalho com imagens usando as bibliotecas [OpenCV](https://opencv.org) e [Numpy](https://numpy.org). Também usaremos `matplotlib`, que vocês já usaram em Ciência dos Dados para gráficos e mostrar imagens.
 
 ## Atividades
 
-As atividades deste módulos estão divididas em 4 partes, que podem ser feitas individualmente ou em grupo. Não é necessário entregá-las, mas a *APS* do módulo irá usar os resultados dessas atividades. 
+As atividades deste módulos estão divididas em 4 partes, que podem ser feitas individualmente ou em grupo. Não é necessário entregá-las, mas a *APS* do módulo irá usar os conceitos aprendidos aqui.
 
 !!! warning
-    Cada atividade tem uma versão de leitura online e um link para baixar o pacote com os arquivos da atividade completa para rodar local. 
+    Cada atividade tem uma versão de leitura online e um link para baixar o pacote com os arquivos da atividade completa para rodar localmente. 
+
+!!! warning
+    Neste curso, recomendamos usar o VSCode no Ubuntu para executar os notebooks da disciplina. Dessa forma não é necessário executar o Jupyter Notebook.
 
 - [Atividade 01 - Leitura de imagens](atividade1/)
 - [Atividade 02 - Percorrendo a imagem](atividade2/)
