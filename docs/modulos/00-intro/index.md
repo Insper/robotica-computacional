@@ -28,16 +28,16 @@ N = 0,15 APS + 0,4 Projeto + 0,2 NI + 0,25 PF
 
 desde que as seguintes restrições sejam respeitadas:
 
-1. todas as APS foram entregues até {{ data_final_APS }}
-2. `NI = MAX( ACV, SCV )`
-2. `NI + PF >= 10`
-3. `NI >= 5 OU PF >= 5`
-4. `NI >= 4 E PF >= 4`
-5. nota de projeto maior que 4
+1. todas as APS foram entregues;
+2. `NI = MAX( AI, SI )`;
+3. `NI + PF >= 10`;
+4. `NI >= 5 OU PF >= 5`;
+5. `NI >= 4 E PF >= 4`;
+6. nota de projeto maior que 4.
 
 !!! important "Segundas chances"
-    1. Se alguma APS não foi entregue até a data acima, ela poderá ser entregue até {{ data_PF }} valendo %50 da nota
-    2. Se o critério 3 for atendido mas não o 4, poderá ser feita uma prova DELTA para mostrar proficiência na avaliação com nota menor que 4.
+    1. Se alguma APS não foi entregue até a data limite, ela poderá ser entregue até {{ data_PF }} valendo %50 da nota;
+    2. Se o critério 4 for atendido mas não o 5, poderá ser feita uma prova DELTA para mostrar proficiência na avaliação com nota menor que 4;
     3. Se a regra acima for usada o critério 2 desaparece e será possível compensar desempenho ruim e provas no projeto e APS.
 
 ## Calendário do curso
