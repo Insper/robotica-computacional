@@ -12,8 +12,6 @@ A partir da cena do Google Maps e qualquer outra informação que considerarem r
 
 * Que tipo de sensores você precisaria para obter melhorar sua solução?
 
-Escolha uma das perguntas acima e discuta com sua mesa as seguintes perguntas.
-
 !!! exercise long
     O carro pode acelerar, frear ou manter velocidade?
 
