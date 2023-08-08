@@ -42,5 +42,7 @@ desde que as seguintes restrições sejam respeitadas:
 
 ## Calendário do curso
 
-<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FSao_Paulo&mode=AGENDA&hl=pt_BR&src=OTRmZWQwZDUzNzAyNmRjMDc3NWZiOGFkZDg2MTljOGQ3YjY4MmI1YWVkN2UzOTE5YTdlNGY1ZTJhMDI0OTFmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/u/0?cid=NDg1NWI1MGU4NjU4MWY5OGI4NmRmNmJkN2ZiNzY0YjAyMjgwZjY4ZWM2MzBjZWIwNDU2ZTMwMzNmMTk4MjFjN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+
 
