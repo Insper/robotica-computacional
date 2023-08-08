@@ -2,9 +2,9 @@
 
 Acesse esta [localização do Street View](https://www.google.com/maps/@-23.594911,-46.6950896,3a,75y,224.92h,79.29t/data=!3m6!1e1!3m4!1sVXupnfdMKEx_2CS6Ttewqg!2e0!7i16384!8i8192) antes de continuar.
 
-Imagine que você é um carro autônomo. Considerando a imagem acima como uma cena, em robótica, uma cena seria um conjunto de informações que o robô pode obter de seu ambiente em um dado momento do tempo `t`.
+Imaginem que vocês são um carro autônomo. Considerando a imagem acima como uma cena, em robótica, uma cena seria um conjunto de informações que o robô pode obter de seu ambiente em um dado momento do tempo `t`.
 
-A partir da cena do Google Maps e qualquer outra informação que considerar relevante, discuta, em suas mesas, as seguintes perguntas, levando em conta, quando relevante, os seguintes pontos:
+A partir da cena do Google Maps e qualquer outra informação que considerarem relevante, discutam, em suas mesas, as seguintes perguntas, levando em conta, quando relevante, os seguintes pontos:
 
 * Que informações você usou para chegar nessa resposta?
 
