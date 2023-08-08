@@ -88,6 +88,7 @@ nav:
           - "Percorrendo a imagem": modulos/01-imagens-e-matrizes/atividade2.ipynb
           - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
           - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
+          - "Classes em Python": modulos/01-imagens-e-matrizes/atividade5.ipynb
       - "02 - Modelo de Câmera":
         - modulos/02-modelo-de-camera/index.md
         - "Atividades":
