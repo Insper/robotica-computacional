@@ -7,7 +7,7 @@ Essa página reúne todos os materiais de apoio e de Robótica Computacional, 20
 
 ## Informações importantes
 
-A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/UQqCkDbWvy).
+A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/kTZh8Cikjj).
 
 - Turma A: 
     - **SEG** 15:45 
@@ -18,8 +18,8 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
 
 Teremos os seguintes horários de atendimento, ambos na sala 404. 
 
-- **TER** 18:00 (Ana Laiz + Igor)
-- **QUI** 18:00 (Enricco + Igor) 
+- **TER** 18:00 (Ana Laiz + Diego)
+- **QUI** 18:00 (Diego) 
 
 Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
 
@@ -42,4 +42,3 @@ Robótica é uma disciplina que já teve contribuições de muitas pessoas. As p
     - ![Igor](equipe/igor.jpg) Igor Montagner
     - ![Antonio](equipe/antonio.jpeg) Antônio Selvatici
     - ![Miranda](equipe/miranda.png) Fábio Miranda
-    - ![Arnaldo](equipe/arnaldo.jpeg) Arnaldo Alves Viana Junior
