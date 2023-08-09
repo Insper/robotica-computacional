@@ -26,10 +26,10 @@ As atividades deste módulos estão divididas em 4 partes, que podem ser feitas 
 [Download das atividades](atividades-modulo01-aluno.zip){ .ah-button }
 
 
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
     Após acabar as atividades siga o [guia de configuração da APS](../../guias-infra/aps.md). A data final de entrega é **{{ data_APS1 }}**.
     
-Os arquivos e enunciado da APS estão na pasta `APS01` do repositório de entregas configurado no item anterior.
+Os arquivos e enunciado da APS estão na pasta `APS01` do repositório de entregas configurado no item anterior. -->
 
