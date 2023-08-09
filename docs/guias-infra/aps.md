@@ -16,5 +16,5 @@ Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e a
 !!! warning
     As duplas serão as mesmas para todas APS. No projeto serão formados novos grupos.
 
-!!!
+!!! warning
     Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](ssd-linux\git-e-github\pull_template.md)
