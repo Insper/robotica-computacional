@@ -18,3 +18,21 @@ Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e a
 
 !!! warning
     Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](ssd-linux/git-e-github/pull_template.md)
+
+## Teste seu código da APS
+
+As APS serão testadas automaticamente. Para isso, você deve seguir as instruções abaixo.
+
+```bash
+pip install pytest
+```
+
+No repositório da APS, execute o comando abaixo para testar seu código.
+
+```bash
+pytest
+```
+
+Se discordar do resultado do teste, verifique se seu código está seguindo o que foi pedido, leia com atenção o enunciado e a saída do teste. Se ainda assim discordar, entre em contato com os professores ou outro membro da equipe da disciplina.
+
+Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.
