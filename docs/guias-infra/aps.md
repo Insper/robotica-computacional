@@ -9,7 +9,7 @@ Podem escolher qualquer nome para a equipe, mas é importante que os dois membro
 
 Se você já completou o tutorial de configuração do git e gerou sua chave SSH, pode clonar o repositório lembrande de trocar para SSH no link do repositório. Se ainda não fez, siga o tutorial abaixo.
  
-[Configure o seu Git](ssd-linux\git-e-github\index.md)
+[Configure o seu Git](ssd-linux/git-e-github/index.md)
 
 Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e adicione o nome dos dois membros da dupla no local indicado. Após isso, faça um commit e um push para o repositório. A partir desse momento, vocês já podem começar a trabalhar na APS.
 
@@ -17,4 +17,4 @@ Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e a
     As duplas serão as mesmas para todas APS. No projeto serão formados novos grupos.
 
 !!! warning
-    Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](ssd-linux\git-e-github\pull_template.md)
+    Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](ssd-linux/git-e-github/pull_template.md)
