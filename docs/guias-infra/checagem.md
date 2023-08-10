@@ -5,7 +5,7 @@ Estes pontos serão checados pela equipe para cada aluno. Se forem feitos até a
 ## Linux
 
 - [ ] Ligou seu notebook com o SSD (ou subiu máquina virtual no Ubuntu/ROS)
-- [ ] Conseguiu executar o mostrou a execução de alguma atividade do módulo 1
+- [ ] Mostrou a execução de alguma atividade do módulo 1
 - [ ] Executou `git config user.name` e mostrou seu próprio nome
 - [ ] Executou `git config user.email` e mostrou seu email
 
