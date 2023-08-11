@@ -26,10 +26,15 @@ A nota será composta segundo a seguinte fórmula:
 N = 0,15 APS + 0,4 Projeto + 0,2 AI + 0,25 PF
 ```
 onde:
+
 * `APS` é a média das notas das APS;
+
 * `Projeto` é a nota do projeto;
+
 * `AI` é a nota da Avaliação Intermediária - OpenCV. Será realizada no dia {{ data_AI }};
-* `PF` é a nota da Prova Final. Será realizada na semana de provas finais, ~aproximadamente~ no dia {{ data_PF }}.
+
+* `PF` é a nota da Prova Final. Será realizada na semana de provas finais, 
+aproximadamente no dia {{ data_PF }}.
 
 Será aprovado o aluno que siga as seguites restrições:
 
