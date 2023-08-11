@@ -21,6 +21,7 @@ extra:
     data_APS4: 06/11
     avaliacao_CV: 02/10
     data_PF: 04/12
+    data_AI: 02/10
 
 markdown_extensions:
   - toc:
