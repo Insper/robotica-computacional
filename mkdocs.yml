@@ -9,15 +9,19 @@ extra_css:
 
 extra:
   custom_variables:
-    data_infra_linux: "24/03"
-    data_infra_simulador: "24/03"
-    data_infra_turtlebot3: "24/03"
+    data_infra_linux: "25/08"
+    data_infra_simulador: "01/09"
+    data_infra_turtlebot3: "01/09"
     repo_aps: https://github.com/Insper/robotica-computacional-aps
     repo_aps_git: https://github.com/Insper/robotica-computacional-aps.git
     data_final_APS: 28/03
-    data_APS1: 28/03
-    data_PF: 07/06
-
+    data_APS1: 25/08
+    data_APS2: 11/09
+    data_APS3: 22/09
+    data_APS4: 06/11
+    avaliacao_CV: 02/10
+    data_PF: 04/12
+    data_AI: 02/10
 
 markdown_extensions:
   - toc:
@@ -85,25 +89,26 @@ nav:
           - "Percorrendo a imagem": modulos/01-imagens-e-matrizes/atividade2.ipynb
           - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
           - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
-      - "02 - Modelo de Câmera":
-        - modulos/02-modelo-de-camera/index.md
-        - "Atividades":
-          - "Segmentação usando HSV e contornos": modulos/02-modelo-de-camera/atividade1.ipynb
-          - "Morfologia matemática": modulos/02-modelo-de-camera/atividade2.ipynb
-          - "Demonstração de segmentação": modulos/02-modelo-de-camera/atividade3.ipynb 
-      - modulos/03-visao/index.md
-      - "04 - ROS Básico":
-        - modulos/04-ROS-basico/index.md
-        - "Atividades":
-          - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
-          - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
-          - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
-          - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
-    - Revisões:
-      - revisao-PI.md
-      - revisaoPF.md
-    - Projeto:
-      - projeto/index.md
-      - projeto/atualizacoes.md
-      - "Exemplos":
-        - projeto/exemplos/aruco/index.md
+          - "Classes em Python": modulos/01-imagens-e-matrizes/atividade5.ipynb
+    #   - "02 - Modelo de Câmera":
+    #     - modulos/02-modelo-de-camera/index.md
+    #     - "Atividades":
+    #       - "Segmentação usando HSV e contornos": modulos/02-modelo-de-camera/atividade1.ipynb
+    #       - "Morfologia matemática": modulos/02-modelo-de-camera/atividade2.ipynb
+    #       - "Demonstração de segmentação": modulos/02-modelo-de-camera/atividade3.ipynb 
+    #   - modulos/03-visao/index.md
+    #   - "04 - ROS Básico":
+    #     - modulos/04-ROS-basico/index.md
+    #     - "Atividades":
+    #       - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
+    #       - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
+    #       - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
+    #       - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
+    # - Revisões:
+    #   - revisao-PI.md
+    #   - revisaoPF.md
+    # - Projeto:
+    #   - projeto/index.md
+    #   - projeto/atualizacoes.md
+    #   - "Exemplos":
+    #     - projeto/exemplos/aruco/index.md

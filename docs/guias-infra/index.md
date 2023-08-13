@@ -15,5 +15,5 @@ Um ponto importante da disciplina de Robótica é que a configuração da Infra 
 Quando acabar, é só pedir para fazer a validação do guia com algum dos técnicos da disciplina.
 
 !!! done
-    Executar todos os guias até as datas acima é uma tarefa bônus do curso com valor de até 0,5 pontos.
+    Executar todos os guias até as datas acima é uma tarefa bônus do curso com valor de 0,5 na media se o aluno já segue os critérios de aprovação.
 
