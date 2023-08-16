@@ -5,6 +5,8 @@ Essa página reúne todos os materiais de apoio e de Robótica Computacional, 20
 - [Introdução à disciplina](modulos/00-intro/index.md)
 - [Organização do Semestre](modulos/index.md)
 
+Também disponibilizamos o github da disciplina, que pode ser acessado [aqui](https://github.com/Insper/robotica-computacional). Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso recomendamos apenas o uso dos materiais disponibilizados nesse site.
+
 ## Informações importantes
 
 A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/kTZh8Cikjj).
