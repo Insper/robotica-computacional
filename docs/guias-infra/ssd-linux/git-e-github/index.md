@@ -86,6 +86,10 @@ Vamos agora aprnder como confirguardar a sua chave SSH no GitHub.
 
 Primeiramente devemos criar uma chave SSH, para isso, abra um terminal e execute o seguinte comando substituindo o endereço de e-mail pelo seu GitHub. Pressione enter para aceitar o local padrão para salvar a chave, ao menos que você deseje salvar com outro nome.
 
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
 Você receberá uma mensagem parecida com a imagem a seguir, se desejar adicionar uma senha para a chave, digite uma senha e pressione enter, se não quiser adicionar uma senha, pressione enter sem digitar nada. Se adicionar uma senha, você precisará digitar a senha toda vez que usar a chave.
 
 ![saida1](imgs/saida1.jpeg)
