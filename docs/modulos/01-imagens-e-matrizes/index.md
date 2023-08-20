@@ -26,15 +26,17 @@ As atividades deste módulos estão divididas em 4 partes, que podem ser feitas 
 [Download das atividades](atividades-modulo01-aluno.zip){ .ah-button }
 
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Após acabar as atividades siga o [guia de configuração da APS](../../guias-infra/aps.md).
 
     E depois clique no link abaixo para ser direcionado para o Github Classroom da APS 1.
 
-    [APS 1 - Github Classroom](https://classroom.github.com)
+    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+
+    [APS 1 - Github Classroom](https://classroom.github.com/a/bJWDJgrE)
 
     A data final de entrega é **{{ data_APS1 }}**.
- -->
+
 
