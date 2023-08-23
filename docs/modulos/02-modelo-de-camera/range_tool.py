@@ -1,14 +1,15 @@
 import cv2
 import numpy as np
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QSlider, QLabel, QVBoxLayout, QWidget, QPushButton, QRadioButton, QHBoxLayout, QFileDialog
+from PyQt5.QtWidgets import QApplication, QSlider, QLabel, QVBoxLayout, QWidget, QPushButton, QRadioButton, QHBoxLayout, QFileDialog, QGroupBox, QLineEdit, QFrame
 from PyQt5.QtGui import QImage, QPixmap
-
+from module import ImageModule
 
 class ImageTuner(QWidget):
     def __init__(self):
         super().__init__()
         self.init_ui()
+        self.image_module = ImageModule()
 
     def init_ui(self):
         self.init_variables()
@@ -67,7 +68,17 @@ class ImageTuner(QWidget):
         ui_layout.addWidget(self.open_button)
         ui_layout.addLayout(self.create_radio_buttons_layout())
         ui_layout.addLayout(self.create_sliders_layout())
+        ui_layout.addWidget(self.create_horizontal_line())
+        
+        # Add kernel configuration
+        ui_layout.addWidget(self.create_kernel_configuration())
+
+        # Add morphological transformation
+        ui_layout.addWidget(self.create_morphological_transform())
+        
         main_layout.addLayout(ui_layout)
+        
+        main_layout.addWidget(self.create_vertical_line())
 
         image_layout = QVBoxLayout()
         image_layout.addWidget(self.image_label)
@@ -75,6 +86,18 @@ class ImageTuner(QWidget):
         main_layout.addLayout(image_layout)
 
         self.setLayout(main_layout)
+
+    def create_horizontal_line(self):
+        horizontal_line = QFrame()
+        horizontal_line.setFrameShape(QFrame.HLine)
+        horizontal_line.setFrameShadow(QFrame.Sunken)
+        return horizontal_line
+
+    def create_vertical_line(self):
+        vertical_line = QFrame()
+        vertical_line.setFrameShape(QFrame.VLine)
+        vertical_line.setFrameShadow(QFrame.Sunken)
+        return vertical_line
 
     def create_radio_buttons_layout(self):
         radio_layout = QHBoxLayout()
@@ -94,6 +117,55 @@ class ImageTuner(QWidget):
     def _make_slider_callback(self, i):
         return lambda value: self.update_slider_label(i, value)
 
+    def create_kernel_configuration(self):
+        self.kernel_size_edit = QLineEdit("1")
+        self.kernel_size_edit.textChanged.connect(self.update_kernel)
+
+        self.kernel_types = ["rect", "ellipse"]
+        self.kernel_checkboxes = {t: QRadioButton(t) for t in self.kernel_types}
+        self.kernel_checkboxes["rect"].setChecked(True)
+
+        for checkbox in self.kernel_checkboxes.values():
+            checkbox.toggled.connect(self.update_kernel)
+
+        group_box = QGroupBox("Kernel Configuration")
+        layout = QHBoxLayout()
+        
+        for checkbox in self.kernel_checkboxes.values():
+            layout.addWidget(checkbox)
+
+        layout.addWidget(QLabel("Kernel size:"))
+        layout.addWidget(self.kernel_size_edit)
+        group_box.setLayout(layout)
+
+        return group_box
+
+    def create_morphological_transform(self):
+        self.morph_types = ["none", "open", "close", "erode", "dilate"]
+        self.morph_checkboxes = {t: QRadioButton(t) for t in self.morph_types}
+        self.morph_checkboxes["none"].setChecked(True)
+
+        for checkbox in self.morph_checkboxes.values():
+            checkbox.toggled.connect(self.update_morph)
+
+        group_box = QGroupBox("Morphological Transformations")
+        layout = QHBoxLayout()
+        for checkbox in self.morph_checkboxes.values():
+            layout.addWidget(checkbox)
+        group_box.setLayout(layout)
+
+        return group_box
+
+    def update_kernel(self):
+        kernel_size = int(self.kernel_size_edit.text())
+        kernel_type = [t for t, checkbox in self.kernel_checkboxes.items() if checkbox.isChecked()][0]
+        self.image_module.configure_kernel(kernel_size, kernel_type)
+        self.update_image()
+
+    def update_morph(self):
+        self.morph_types = [t for t, checkbox in self.morph_checkboxes.items() if checkbox.isChecked()]
+        self.update_image()
+    
     def open_image(self):
         options = QFileDialog.Options()
         fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "",
@@ -102,6 +174,7 @@ class ImageTuner(QWidget):
             self.img = cv2.imread(fileName)
             self.hsv_img = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
             self.show_image(self.img, self.image_label)
+        self.update_ui()
 
     def show_image(self, img, label):
         qformat = QImage.Format_Indexed8
@@ -120,9 +193,12 @@ class ImageTuner(QWidget):
         high = np.array([self.sliders[i].value() for i in range(3, 6)])
 
         if self.rgb_button.isChecked():
-            mask = cv2.inRange(self.img, low, high)
+            mask = self.image_module.color_filter(self.img, low, high)
         else:
-            mask = cv2.inRange(self.hsv_img, low, high)
+            mask = self.image_module.color_filter(self.hsv_img, low, high)
+
+        # Apply the morphological transformations
+        mask = self.image_module.morphological_transform(mask, self.morph_types)
 
         mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
         self.show_image(self.img, self.image_label)
