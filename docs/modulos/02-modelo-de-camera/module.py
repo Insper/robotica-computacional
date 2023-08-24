@@ -35,12 +35,12 @@ class ImageModule():
         pass # Pode remover essa linha
         # Desenvolva aqui
 
-    def morphological_transform(self, mask: np.ndarray, str) -> np.ndarray:
+    def morphological_transform(self, mask: np.ndarray, types: str) -> np.ndarray:
         """Realiza a operação morfológica selecionada na variável "types" na máscara "mask"
 
         Args:
             mask (np.ndarray): Máscara binária
-            types (str): open (abertura), close (fechamento), erode (erosão), dilate (dilatação)
+            types (str): open (abertura), close (fechamento), erode (erosão), dilate (dilatação). Qualquer outra string não faz nada.
 
         Returns:
             mask (np.ndarray): Máscara binária transformada
