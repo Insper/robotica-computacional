@@ -35,7 +35,7 @@ class ImageModule():
         pass # Pode remover essa linha
         # Desenvolva aqui
 
-    def morphological_transform(self, mask: np.ndarray, str) -> np.ndarray:
+    def morphological_transform(self, mask: np.ndarray, types: str) -> np.ndarray:
         """Realiza a operação morfológica selecionada na variável "types" na máscara "mask"
 
         Args:
