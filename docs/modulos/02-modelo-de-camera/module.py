@@ -40,7 +40,7 @@ class ImageModule():
 
         Args:
             mask (np.ndarray): Máscara binária
-            types (str): open (abertura), close (fechamento), erode (erosão), dilate (dilatação)
+            types (str): open (abertura), close (fechamento), erode (erosão), dilate (dilatação). Qualquer outra string não faz nada.
 
         Returns:
             mask (np.ndarray): Máscara binária transformada
