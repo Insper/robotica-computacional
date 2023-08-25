@@ -41,7 +41,7 @@ def rodar_frame():
 def rodar_video():
     RodaAtividade = Atividade5()
 
-    cap = cv2.VideoCapture('img/video.mp4') # Confira se o video esta na pasta img
+    cap = cv2.VideoCapture('img/pista_simulado.mp4') # Confira se o video esta na pasta img
 
     while(cap.isOpened()):
         ret, frame = cap.read()
