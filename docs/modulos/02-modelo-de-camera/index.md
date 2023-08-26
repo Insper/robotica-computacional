@@ -15,6 +15,7 @@ As atividades deste módulo focam em melhorar nossas habilidades de segmentaçã
 - [Atividade 2](atividade2.ipynb) - Morfologia Matemática para refinar nossas máscaras
 - [Atividade 3](atividade3.ipynb) - Componentes conexos, contornos e bounding boxes.
 - [Atividade 4](atividade4.ipynb) - Demonstração do processo de resolução de problemas ao segmentar imagens por cor usando HSV
+- [Atividade 5](atividade5.ipynb) - Encaixe de uma reta em um conjunto de pontos (não colineares)
 
 [Download das atividades](atividades-modulo02-aluno.zip){ .ah-button }
 
