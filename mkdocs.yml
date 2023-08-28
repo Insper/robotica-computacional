@@ -90,12 +90,14 @@ nav:
           - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
           - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
           - "Classes em Python": modulos/01-imagens-e-matrizes/atividade5.ipynb
-    #   - "02 - Modelo de Câmera":
-    #     - modulos/02-modelo-de-camera/index.md
-    #     - "Atividades":
-    #       - "Segmentação usando HSV e contornos": modulos/02-modelo-de-camera/atividade1.ipynb
-    #       - "Morfologia matemática": modulos/02-modelo-de-camera/atividade2.ipynb
-    #       - "Demonstração de segmentação": modulos/02-modelo-de-camera/atividade3.ipynb 
+      - "02 - Modelo de Câmera":
+        - modulos/02-modelo-de-camera/index.md
+        - "Atividades":
+          - "Segmentação usando HSV": modulos/02-modelo-de-camera/atividade1.ipynb
+          - "Morfologia Matemática": modulos/02-modelo-de-camera/atividade2.ipynb
+          - "Componentes Conexos": modulos/02-modelo-de-camera/atividade3.ipynb
+          - "Exemplo de Resolução de Problemas": modulos/02-modelo-de-camera/atividade4.ipynb 
+          - "Regressão Linear": modulos/02-modelo-de-camera/atividade5.ipynb 
     #   - modulos/03-visao/index.md
     #   - "04 - ROS Básico":
     #     - modulos/04-ROS-basico/index.md

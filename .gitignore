@@ -1,5 +1,6 @@
 env/**
 site/**
 *pyc
+*.mp4
 
 .ipynb_checkpoints/
