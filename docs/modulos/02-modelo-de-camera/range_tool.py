@@ -172,6 +172,11 @@ class ImageTuner(QWidget):
                                                   "All Files (*);;Image Files (*.jpg *.png)", options=options)
         if fileName:
             self.img = cv2.imread(fileName)
+            if self.img.shape[0] > 200 or self.img.shape[1] > 200:
+                max_dim = max(self.img.shape[0], self.img.shape[1])
+                scale = 200 / max_dim
+                self.img = cv2.resize(self.img, (int(self.img.shape[1] * scale), int(self.img.shape[0] * scale)))
+
             self.hsv_img = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
             self.show_image(self.img, self.image_label)
         self.update_ui()
