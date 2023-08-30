@@ -106,8 +106,8 @@ nav:
     #       - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
     #       - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
     #       - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
-    # - Revisões:
-    #   - revisao-PI.md
+    - APS:
+      - "Gravar Tela": aps/screen_record.md
     #   - revisaoPF.md
     # - Projeto:
     #   - projeto/index.md
