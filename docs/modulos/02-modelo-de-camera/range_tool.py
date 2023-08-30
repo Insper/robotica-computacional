@@ -10,6 +10,7 @@ class ImageTuner(QWidget):
         super().__init__()
         self.init_ui()
         self.image_module = ImageModule()
+        self.image_size = 400
 
     def init_ui(self):
         self.init_variables()
@@ -172,6 +173,11 @@ class ImageTuner(QWidget):
                                                   "All Files (*);;Image Files (*.jpg *.png)", options=options)
         if fileName:
             self.img = cv2.imread(fileName)
+            if self.img.shape[0] > self.image_size or self.img.shape[1] > self.image_size:
+                max_dim = max(self.img.shape[0], self.img.shape[1])
+                scale = self.image_size / max_dim
+                self.img = cv2.resize(self.img, (int(self.img.shape[1] * scale), int(self.img.shape[0] * scale)))
+
             self.hsv_img = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
             self.show_image(self.img, self.image_label)
         self.update_ui()
@@ -198,7 +204,7 @@ class ImageTuner(QWidget):
             mask = self.image_module.color_filter(self.hsv_img, low, high)
 
         # Apply the morphological transformations
-        mask = self.image_module.morphological_transform(mask, self.morph_types)
+        mask = self.image_module.morphological_transform(mask, self.morph_types[0])
 
         mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
         self.show_image(self.img, self.image_label)
