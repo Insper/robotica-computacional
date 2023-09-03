@@ -9,6 +9,7 @@
 from ipywidgets import widgets, interact, interactive, FloatSlider, IntSlider
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
 def make_widgets_mat(m, n):
     """
@@ -84,6 +85,44 @@ def ranges(value):
     hsv[1:] = 50
     hsv2[1:] = 255
     return hsv, hsv2 
+
+def plot_filter(img, kernel):
+    plt.figure(figsize=(20,10))
+    # kernel = aux.make_np_from_widgets_list(widgets)
+    out3 = cv2.filter2D(img, -1,  kernel)
+    plt.subplot(121)
+    plt.axis(False)
+    plt.title("Original")
+    plt.imshow(img, cmap="gray", vmin=0, vmax=255)
+
+    plt.subplot(122)
+    plt.axis(False)
+    plt.title("Transformado")
+    plt.imshow(out3, cmap="gray", vmin=0, vmax=255)
+    plt.show()
+
+def plot_filter_3(img, kernel_1, kernel_2, title_1, title_2):
+    plt.figure(figsize=(20,10))
+    # kernel = aux.make_np_from_widgets_list(widgets)
+    out1 = cv2.filter2D(img, -1,  kernel_1)
+    out2 = cv2.filter2D(img, -1,  kernel_2)
+
+    plt.subplot(131)
+    plt.axis(False)
+    plt.title("Original")
+    plt.imshow(img, cmap="gray", vmin=0, vmax=255)
+
+    plt.subplot(132)
+    plt.axis(False)
+    plt.title(title_1)
+    plt.imshow(out1, cmap="gray", vmin=0, vmax=255)
+    plt.show()
+
+    plt.subplot(133)
+    plt.axis(False)
+    plt.title(title_2)
+    plt.imshow(out2, cmap="gray", vmin=0, vmax=255)
+    plt.show()
 
 # Returns an image containing the borders of the image
 # sigma is how far from the median we are setting the thresholds
