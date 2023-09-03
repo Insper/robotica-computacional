@@ -5,3 +5,5 @@ site/**
 *_.py
 
 .ipynb_checkpoints/
+*.prototxt.txt
+*.caffemodel
