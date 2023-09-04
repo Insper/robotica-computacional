@@ -100,7 +100,7 @@ class YOLOModule():
             color = self.colors[int(classid) % len(self.colors)]
             cv2.rectangle(image, box, color, 2)
             cv2.rectangle(image, (box[0], box[1] - 20), (box[0] + box[2], box[1]), color, -1)
-            cv2.putText(image, self.class_list[classid], (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,0))
+            cv2.putText(image, f'{self.class_list[classid]} - {confidence:.2f}', (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,0))
         
         return image
 
