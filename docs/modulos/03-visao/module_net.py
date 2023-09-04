@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 import math
 import os
-import atividade3
 
 class YOLODector():
     # REF: https://github.com/doleron/yolov5-opencv-cpp-python/blob/main/config_files/yolov5s.onnx

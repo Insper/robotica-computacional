@@ -1,40 +1,12 @@
 import cv2
 import numpy as np
 import argparse
+from module_net import MobileNetDetector
 
-class MobileNetDetector:
+class DangerDetector(MobileNetDetector):
     def __init__(self):
-        self.CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
-        self.CONFIDENCE = 0.7
-        self.COLORS = np.random.uniform(0, 255, size=(len(self.CLASSES), 3))
-        self.args_prototxt = "./mobilenet_detection/MobileNetSSD_deploy.prototxt.txt"
-        self.args_model = "./mobilenet_detection/MobileNetSSD_deploy.caffemodel"
-        self.net = self.load_mobilenet()
-
-    def load_mobilenet(self):
-        net = cv2.dnn.readNetFromCaffe(self.args_prototxt, self.args_model)
-        return net
-
-    def detect(self, frame):
-        image = frame.copy()
-        (h, w) = image.shape[:2]
-        blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5)
-        self.net.setInput(blob)
-        detections = self.net.forward()
-        results = []
-        for i in np.arange(0, detections.shape[2]):
-            confidence = detections[0, 0, i, 2]
-            if confidence > self.CONFIDENCE:
-                idx = int(detections[0, 0, i, 1])
-                box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
-                (startX, startY, endX, endY) = box.astype("int")
-                label = "{}: {:.2f}%".format(self.CLASSES[idx], confidence * 100)
-                cv2.rectangle(image, (startX, startY), (endX, endY), self.COLORS[idx], 2)
-                y = startY - 15 if startY - 15 > 15 else startY + 15
-                cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.COLORS[idx], 2)
-                results.append((self.CLASSES[idx], confidence*100, (startX, startY), (endX, endY)))
-        return image, results
-
+        super().__init__()
+        
     def separar_caixa_entre_animais(self, img, resultados):
         img = img.copy()
         animais = {'vaca': [], 'lobo': []}
@@ -120,9 +92,10 @@ def main():
     import time
     bgr = cv2.imread("img/cow_wolf03.png")
 
-    start = time.perf_counter()
-    Detector = MobileNetDetector()
+    Detector = DangerDetector()
     image, results = Detector.detect(bgr)
+    image, animais = Detector.separar_caixa_entre_animais(image, results)
+    image = Detector.checar_perigo(image, animais)
 
     cv2.imshow("Result_MobileNet", image)
     cv2.waitKey(0)
