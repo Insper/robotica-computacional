@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import math
 import os
-import biblioteca_cow
+import atividade3
 
 class YOLOModule():
     # REF: https://github.com/doleron/yolov5-opencv-cpp-python/blob/main/config_files/yolov5s.onnx
@@ -119,8 +119,8 @@ def main():
 
 
     start = time.perf_counter()
-    model = biblioteca_cow.load_mobilenet()
-    result_mob, out = biblioteca_cow.detect(bgr, model)
+    model = atividade3.load_mobilenet()
+    result_mob, out = atividade3.detect(bgr, model)
     print("MobileNet: ", time.perf_counter() - start)
 
     cv2.imshow("Result_YOLO", result_yolo)
