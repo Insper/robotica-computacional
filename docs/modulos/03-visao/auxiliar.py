@@ -116,7 +116,6 @@ def plot_filter_3(img, kernel_1, kernel_2, title_1, title_2):
     plt.axis(False)
     plt.title(title_1)
     plt.imshow(out1, cmap="gray", vmin=0, vmax=255)
-    plt.show()
 
     plt.subplot(133)
     plt.axis(False)
