@@ -98,7 +98,11 @@ nav:
           - "Componentes Conexos": modulos/02-modelo-de-camera/atividade3.ipynb
           - "Exemplo de Resolução de Problemas": modulos/02-modelo-de-camera/atividade4.ipynb 
           - "Regressão Linear": modulos/02-modelo-de-camera/atividade5.ipynb 
-    #   - modulos/03-visao/index.md
+      - "03 - Técnicas em Visão Computacional":
+        - modulos/03-visao/index.md
+        - "Atividades":
+          - "Convolução e Filtragem de Imagens no OpenCV": modulos/03-visao/atividade1.ipynb
+          - "Detecção de retas e círculos com a Transformada de Hough": modulos/03-visao/atividade2.ipynb
     #   - "04 - ROS Básico":
     #     - modulos/04-ROS-basico/index.md
     #     - "Atividades":

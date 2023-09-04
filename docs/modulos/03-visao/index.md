@@ -21,7 +21,7 @@ Diferente dos outros módulos, elas estão disponibilizadas como consulta para r
 
 [Download das atividades](atividades-modulo03-aluno.zip){ .ah-button }
 
-## Visão de Alto Nível
+<!-- ## Visão de Alto Nível
 
 !!! pdf
     ![](slides-2.pdf)
@@ -33,4 +33,4 @@ Diferente dos outros módulos, elas estão disponibilizadas como consulta para r
 
 ## Para entregar
 
-Os arquivos para entrega encontram-se na pasta `APS03` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps).
+Os arquivos para entrega encontram-se na pasta `APS03` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps). -->
