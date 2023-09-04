@@ -123,19 +123,5 @@ def plot_filter_3(img, kernel_1, kernel_2, title_1, title_2):
     plt.imshow(out2, cmap="gray", vmin=0, vmax=255)
     plt.show()
 
-# Returns an image containing the borders of the image
-# sigma is how far from the median we are setting the thresholds
-def auto_canny(image, sigma=0.33):
-    # compute the median of the single channel pixel intensities
-    v = np.median(image)
-
-    # apply automatic Canny edge detection using the computed median
-    lower = int(max(0, (1.0 - sigma) * v))
-    upper = int(min(255, (1.0 + sigma) * v))
-    edged = cv2.Canny(image, lower, upper)
-
-    # return the edged image
-    return edged
-
 if __name__ == "__main__":
     print("Este script não deve ser executado diretamente")
