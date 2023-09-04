@@ -88,7 +88,7 @@ class YOLOModule():
         result_boxes = []
 
         for i in indexes:
-            i = i[0]
+            #i = i[0]
             result_confidences.append(confidences[i])
             result_class_ids.append(class_ids[i])
             result_boxes.append(boxes[i])
@@ -109,12 +109,12 @@ def main():
     bgr = cv2.imread("img/cow_wolf03.png")
 
     start = time.perf_counter()
-    Neural = YOLOModule("config/yolov5s.onnx")
-    inputImage = Neural.format_yolov5(bgr)
-    outs = Neural.detect(inputImage)
+    YOLO = YOLOModule("config/yolov5s.onnx")
+    inputImage = YOLO.format_yolov5(bgr)
+    outs = YOLO.detect(inputImage)
 
-    class_ids, confidences, boxes = Neural.wrap_detection(inputImage, outs[0])
-    result_yolo = Neural.draw_detections(bgr.copy(), class_ids, confidences, boxes)
+    class_ids, confidences, boxes = YOLO.wrap_detection(inputImage, outs[0])
+    result_yolo = YOLO.draw_detections(bgr.copy(), class_ids, confidences, boxes)
     print("YOLO: ", time.perf_counter() - start)
 
 
