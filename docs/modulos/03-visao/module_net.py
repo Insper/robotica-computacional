@@ -8,6 +8,7 @@ import os
 import biblioteca_cow
 
 class YOLOModule():
+    # REF: https://github.com/doleron/yolov5-opencv-cpp-python/blob/main/config_files/yolov5s.onnx
     def __init__(self, path):
         self.INPUT_WIDTH = 640
         self.INPUT_HEIGHT = 640
