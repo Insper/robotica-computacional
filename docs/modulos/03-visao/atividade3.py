@@ -24,39 +24,6 @@ class DangerDetector(MobileNetDetector):
         """
         img = img.copy()
         animais = {'vaca': [], 'lobo': []}
-        for i in range(len(resultados)):
-            if resultados[i][0] == 'cow':
-                cv2.rectangle(img, (resultados[i][2][0], resultados[i][2][1]), (resultados[i][3][0], resultados[i][3][1]), [255,0,0], 2)
-                animais['vaca'].append([resultados[i][2][0], resultados[i][2][1], resultados[i][3][0], resultados[i][3][1]])
-            else:
-                animais['lobo'].append([resultados[i][2][0], resultados[i][2][1], resultados[i][3][0], resultados[i][3][1]])
-
-        retang_lobo = []
-        if len(animais['lobo']) == 2:
-            if animais['lobo'][0][0] > animais['lobo'][1][0]: #pegando o menor xmin
-                retang_lobo.append(animais['lobo'][1][0])
-            else:
-                retang_lobo.append(animais['lobo'][0][0])
-
-            if animais['lobo'][0][1] > animais['lobo'][1][1]: #pegando o menor ymin
-                retang_lobo.append(animais['lobo'][1][1])
-            else:
-                retang_lobo.append(animais['lobo'][0][1])
-
-            if animais['lobo'][0][2] > animais['lobo'][1][2]: #pegando o maior xmax
-                retang_lobo.append(animais['lobo'][0][2])
-            else:
-                retang_lobo.append(animais['lobo'][1][2])
-
-            if animais['lobo'][0][3] > animais['lobo'][1][3]: #pegando o maior ymax
-                retang_lobo.append(animais['lobo'][0][3])
-            else:
-                retang_lobo.append(animais['lobo'][1][3])
-        
-            animais['lobo'] = retang_lobo
-            cv2.rectangle(img, (retang_lobo[0], retang_lobo[1]),(retang_lobo[2], retang_lobo[3]), [0,0,255], 2)
-        else:
-            cv2.rectangle(img, (animais['lobo'][0][0], animais['lobo'][0][1]), (animais['lobo'][0][2], animais['lobo'][0][3]), [0,0,255], 2)
 
         return img, animais
 
@@ -70,21 +37,7 @@ class DangerDetector(MobileNetDetector):
         Returns:
             iou: Retorna o valor da IoU entre as duas caixas
         """
-        xA = min(boxA[0], boxB[0])
-        yA = min(boxA[1], boxB[1])
-        xB = max(boxA[2], boxB[2])
-        yB = max(boxA[3], boxB[3])
-
-        # compute the area of intersection rectangle
-        interArea = max(0, xB - xA + 1) * max(0, yB - yA + 1)
-        # compute the area of both the prediction and ground-truth
-        # rectangles
-        boxAArea = (boxA[2] - boxA[0] + 1) * (boxA[3] - boxA[1] + 1)
-        boxBArea = (boxB[2] - boxB[0] + 1) * (boxB[3] - boxB[1] + 1)
-        # compute the intersection over union by taking the intersection
-        # area and dividing it by the sum of prediction + ground-truth
-        # areas - the interesection area
-        iou = interArea / float(boxAArea + boxBArea - interArea)
+        iou = 0
 
         return iou
 
@@ -103,13 +56,6 @@ class DangerDetector(MobileNetDetector):
         Returns:
             image: Imagem de saída com as caixas desenhadas e o texto indicando se está em perigo ou não
         """
-
-        for i in animais['vaca']:
-            iou = self.calcula_iou(animais['lobo'], i)
-            if iou > 0.5:
-                image = cv2.putText(image,"Esta em perigo",(i[0], i[1]),cv2.FONT_HERSHEY_SIMPLEX,1.5,[0,0,255],3)
-            else:
-                image = cv2.putText(image,'Esta sem perigo', (i[0], i[1]), cv2.FONT_HERSHEY_SIMPLEX, 1.5, [255, 0, 0], 3)
             
         return image
 
