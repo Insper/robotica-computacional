@@ -3,9 +3,10 @@ import numpy as np
 import argparse
 from module_net import MobileNetDetector
 
-class DangerDetector(MobileNetDetector):
+class DangerDetector(): # Esta classe deve herdar da classe MobileNetDetector
     def __init__(self, CONFIDENCE=0.7):
-        super().__init__()
+        # Inicialize a classe Pai
+
         # Ajuste o valor de confiança para o valor que você achar melhor
         self.CONFIDENCE = CONFIDENCE
         
