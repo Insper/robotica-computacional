@@ -4,14 +4,10 @@ import numpy as np
 import os
 
 #definindo a classe Aruco3d
-class Aruco3d:
+class Aruco3d():
     def __init__(self):
-            #Definindo centros_aruco para armazenar as coordenadas [x,y] do ponto central do aruco detectado
-            self.centros_aruco = []
             #Definindo a variavel ids para armazenar o Id do aruco detectado
             self.ids = None 
-            #Definindo a lista que vai armazenar os pontos contendo a distancia dos arucos detectados em relacao ao robo
-            self.distancias = []
 
             #Capturando o caminho da pasta local em que o codigo esta
             calibra_path  = os.path.dirname(os.path.abspath(__file__))
@@ -31,8 +27,6 @@ class Aruco3d:
             self.camera_distortion   = np.loadtxt(calibra_path+'/config/cameraDistortion_realsense.txt', delimiter=',')
 
     def detectaAruco(self,bgr):
-        centros = []
-        results = []
         # Gera a mascara em escalas de Cinza apartir da copia da imagem em BGR
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
         #Define o Dicionario para o Aruco que vamos utilizar
@@ -49,6 +43,7 @@ class Aruco3d:
 
         aruco.drawDetectedMarkers(bgr, cornersList, ids)
 
+        results = []
         # Se um Id foi detectado, verifica se ele esta dentro da range de 0 a 99 e calcula os valores de rotação e translação 
         if ids is not None:
             for i in range(len(ids)):
@@ -70,7 +65,6 @@ class Aruco3d:
                 'centro': np.mean(cornersList[i], axis=1).astype("int").flatten()
             })
         
-
         #retorna os ids e as coordenadas de centro e de distancia do aruco em relação ao robo
         return bgr, results
             
