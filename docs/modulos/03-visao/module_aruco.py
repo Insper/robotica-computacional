@@ -33,16 +33,8 @@ class Aruco3d():
         dicionarioAruco = aruco.getPredefinedDictionary(aruco.DICT_6X6_1000)
         
         #Detecta os Arucos e Carrega os pontos de translação e de rotação do aruco em relação ao robo
-        cornersList, ids, _ = aruco.detectMarkers(
-            gray, dicionarioAruco)
+        cornersList, ids, _ = aruco.detectMarkers(gray, dicionarioAruco)
         
-        # Desenha a linha referencia em X
-        cv2.line(bgr, (bgr.shape[1]//2,bgr.shape[0]//2), ((bgr.shape[1]//2 + 50),(bgr.shape[0]//2)), (0,0,255), 5) 
-        # Desenha a linha referencia em Y
-        cv2.line(bgr, (bgr.shape[1]//2,bgr.shape[0]//2), (bgr.shape[1]//2,(bgr.shape[0]//2 + 50)), (0,255,0), 5) 
-
-        aruco.drawDetectedMarkers(bgr, cornersList, ids)
-
         results = []
         # Se um Id foi detectado, verifica se ele esta dentro da range de 0 a 99 e calcula os valores de rotação e translação 
         if ids is not None:
@@ -54,19 +46,31 @@ class Aruco3d():
                     ret = aruco.estimatePoseSingleMarkers(cornersList[i], 6, self.camera_matrix, self.camera_distortion)
                     rvec, tvec = ret[0][0,0,:], ret[1][0,0,:]
                     
-            #-- Desenha um retanculo e exibe Id do marker encontrado
-            cv2.drawFrameAxes(bgr, self.camera_matrix, self.camera_distortion, rvec, tvec ,0.03)
-
             results.append({
                 'id': ids[i],
                 'rvec': rvec,
                 'tvec': tvec,
                 'distancia':np.linalg.norm(tvec),
+                'corners': cornersList[i],
                 'centro': np.mean(cornersList[i], axis=1).astype("int").flatten()
             })
         
         #retorna os ids e as coordenadas de centro e de distancia do aruco em relação ao robo
         return bgr, results
+
+    def drawAruco(self, bgr, result):
+            # Desenha a linha referencia em X
+            cv2.line(bgr, (bgr.shape[1]//2,bgr.shape[0]//2), ((bgr.shape[1]//2 + 50),(bgr.shape[0]//2)), (0,0,255), 5) 
+            # Desenha a linha referencia em Y
+            cv2.line(bgr, (bgr.shape[1]//2,bgr.shape[0]//2), (bgr.shape[1]//2,(bgr.shape[0]//2 + 50)), (0,255,0), 5) 
+
+            #-- Desenha um retanculo e exibe Id do marker encontrado
+            cv2.drawFrameAxes(bgr, self.camera_matrix, self.camera_distortion, result['rvec'], result['tvec'] ,0.03)
+
+            aruco.drawDetectedMarkers(bgr, np.array([result['corners']]), np.array([result['id']]))
+
+            return bgr
+         
             
                     
 if __name__ == "__main__":
@@ -76,6 +80,7 @@ if __name__ == "__main__":
     bgr = cv2.imread("img/aruco.png")
     #Chama a funcao detectaAruco
     bgr, results = Arucos.detectaAruco(bgr)
+    bgr = Arucos.drawAruco(bgr, results[0])
 
     print(results[0])
 
