@@ -4,8 +4,9 @@ import argparse
 from module_net import MobileNetDetector
 
 class DangerDetector(MobileNetDetector):
-    def __init__(self):
+    def __init__(self, CONFIDENCE=0.7):
         super().__init__()
+        self.CONFIDENCE = CONFIDENCE
         
     def separar_caixa_entre_animais(self, img, resultados):
         img = img.copy()
@@ -50,7 +51,6 @@ class DangerDetector(MobileNetDetector):
         """Não mude ou renomeie esta função
             Calcula o valor do "Intersection over Union" para saber se as caixa se encontram
         """
-
         xA = min(boxA[0], boxB[0])
         yA = min(boxA[1], boxB[1])
         xB = max(boxA[2], boxB[2])
@@ -79,7 +79,7 @@ class DangerDetector(MobileNetDetector):
         """
 
         for i in animais['vaca']:
-            iou = self.calcula_iou(animais['lobo'][0], i)
+            iou = self.calcula_iou(animais['lobo'], i)
             if iou > 0.5:
                 image = cv2.putText(image,"Esta em perigo",(i[0], i[1]),cv2.FONT_HERSHEY_SIMPLEX,1.5,[0,0,255],3)
             else:
@@ -90,11 +90,12 @@ class DangerDetector(MobileNetDetector):
 
 def main():
     import time
-    bgr = cv2.imread("img/cow_wolf03.png")
+    bgr = cv2.imread("img/cow_wolf05.png")
 
     Detector = DangerDetector()
     image, results = Detector.detect(bgr)
     image, animais = Detector.separar_caixa_entre_animais(image, results)
+    print(animais)
     image = Detector.checar_perigo(image, animais)
 
     cv2.imshow("Result_MobileNet", image)
