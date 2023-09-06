@@ -7,3 +7,4 @@ site/**
 .ipynb_checkpoints/
 *.prototxt.txt
 *.caffemodel
+~$*
