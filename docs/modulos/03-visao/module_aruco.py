@@ -70,11 +70,13 @@ class Aruco3d():
             aruco.drawDetectedMarkers(bgr, np.array([result['corners']]), np.array([result['id']]))
 
             return bgr
+
+    def writeDistance(self, bgr, distancia):
+        cv2.putText(bgr, f"Distancia: {distancia:.2f} cm", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        return bgr
          
             
-                    
-if __name__ == "__main__":
-    #inicializa a classe Aruco3d
+def rodar_frame():
     Arucos = Aruco3d()
 
     bgr = cv2.imread("img/aruco.png")
@@ -84,5 +86,31 @@ if __name__ == "__main__":
 
     print(results[0])
 
-    cv2.imshow("Result_MobileNet", bgr)
+    cv2.imshow("Aruco", bgr)
     cv2.waitKey(0)
+
+
+def rodar_webcam():
+    Arucos = Aruco3d()
+    cap = cv2.VideoCapture(0)
+
+    while True:
+        ret, bgr = cap.read()
+        bgr, results = Arucos.detectaAruco(bgr)
+        for result in results:
+            bgr = Arucos.drawAruco(bgr, result)
+            bgr = Arucos.writeDistance(bgr, result['distancia'])
+
+        cv2.imshow("Imagem", bgr)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+            
+def main():
+    # Selecione se deseja rodar seu codigo com uma imagem ou um video:
+
+    # rodar_frame()
+    rodar_webcam()
+
+
+if __name__ == "__main__":
+    main()
