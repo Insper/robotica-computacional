@@ -1,7 +1,7 @@
 # 03 - Visão
 
 !!! pdf
-    ![](slides-1.pdf)
+    ![](slides.pdf)
 
 Neste módulo iremos trabalhar com conceitos e implementações relacionadas a identificação de formas e objetos complexos em imagens. Para isso, iremos utilizar técnicas de processamento de imagens e redes neurais convolucionais. Também iremos expandir o conceito de transformações 2D para o 3D, e como podemos utilizar essas transformações para realizar tarefas de localização e posicionamento.
 
