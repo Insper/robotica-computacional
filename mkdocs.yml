@@ -104,7 +104,7 @@ nav:
           - "Convolução e Filtragem": modulos/03-visao/atividade1.ipynb
           - "Transformada de Hough": modulos/03-visao/atividade2.ipynb
           - "Detecção com NN": modulos/03-visao/atividade3.ipynb
-          - "Pose com Aruco": modulos/03-visao/atividade4.ipynb
+          - "Pose com Aruco": modulos/03-visao/atividade4.ipynb 
     #   - "04 - ROS Básico":
     #     - modulos/04-ROS-basico/index.md
     #     - "Atividades":
