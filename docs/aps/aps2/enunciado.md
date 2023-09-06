@@ -115,6 +115,7 @@ Pela legenda, a distância $D$ entre a câmera e a folha é de 80 cm. A distânc
 Saída<summary>Saída Esperada</summary>
 
 * Distância entre os círculos = 161
+
 * Distância focal = 1014.1732283464568
 
 </details>
@@ -126,10 +127,13 @@ As imagens [./angulo01.jpg](./img/angulo01.jpg), ..., [./angulo04.jpg](./img/ang
 <details>
 <summary>Saída Esperada</summary>
 
-* angulo01.jpg: Ángulo de 90.18 graos
-* angulo02.jpg:  ngulo de 141.98 graus
-* angulo03.jpg:  ngulo de 178.92 graus
-* angulo04.jpg:  ngulo de -28.72 graus
+* angulo01.jpg: Ángulo de -0.18 graos
+
+* angulo02.jpg:  ngulo de -51.98 graus
+
+* angulo03.jpg:  ngulo de -88.93 graus
+
+* angulo04.jpg:  ngulo de 118.57 graus
 
 </details>
 </p>

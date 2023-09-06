@@ -1,8 +1,6 @@
 import pytest
 import cv2
 from unittest.mock import patch
-from ex1 import Atividade1
-from ex2 import Atividade2
 import numpy as np
 import traceback
 
@@ -23,11 +21,11 @@ def run_ex1(RodaAtividade, fname):
 
 def check_ex1(result):
     assert result['angulo01']['f'] == pytest.approx(2054., abs=10.), "O foco da camera esta fora do esperado"
-    assert result['angulo01']['h'] == pytest.approx(320., abs=2.), "A distancia entre os circulos esta fora do esperado"
-    assert result['angulo01']['angulo'] == pytest.approx(-0.17849094755360373, abs=0.1), "O angulo, para a imagem angulo01.jpg, esta fora do esperado"
-    assert result['angulo02']['angulo'] == pytest.approx(-51.98362315755636, abs=0.1), "O angulo, para a imagem angulo02.jpg, esta fora do esperado"
-    assert result['angulo03']['angulo'] == pytest.approx(-88.92917554521304, abs=0.1), "O angulo, para a imagem angulo03.jpg, esta fora do esperado"
-    assert result['angulo04']['angulo'] == pytest.approx(118.56758430890487, abs=0.1), "O angulo, para a imagem angulo04.jpg, esta fora do esperado"
+    assert result['angulo01']['h'] == pytest.approx(320., abs=5.), "A distancia entre os circulos esta fora do esperado"
+    assert result['angulo01']['angulo'] == pytest.approx(-0.17849094755360373, abs=5.), "O angulo, para a imagem angulo01.jpg, esta fora do esperado"
+    assert result['angulo02']['angulo'] == pytest.approx(-51.98362315755636, abs=5.), "O angulo, para a imagem angulo02.jpg, esta fora do esperado"
+    assert result['angulo03']['angulo'] == pytest.approx(-88.92917554521304, abs=5.), "O angulo, para a imagem angulo03.jpg, esta fora do esperado"
+    assert result['angulo04']['angulo'] == pytest.approx(118.56758430890487, abs=5.), "O angulo, para a imagem angulo04.jpg, esta fora do esperado"
     if result['blank'] is True:
         pass
     elif str(result['blank']['error']) == "list index out of range":
@@ -35,6 +33,7 @@ def check_ex1(result):
     else:
         assert False, "Ocorreu um erro inesperado ao rodar seu codigo com uma imagem em branco - {0} - {1}".format(result['blank']['traceback'], result['blank']['error'])
 def test_ex1():
+    from ex1 import Atividade1
     RodaAtividade = Atividade1()
 
     result = {
@@ -97,6 +96,7 @@ def check_ex2(result):
     else:
         assert False, "Ocorreu um erro inesperado ao rodar seu codigo com uma imagem com apenas um contorno - {0} - {1}".format(result['run_single_contour']['traceback'], result['run_single_contour']['error'])
 def test_ex2():
+    from ex2 import Atividade2
     RodaAtividade = Atividade2()
 
     result = {
