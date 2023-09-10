@@ -19,6 +19,15 @@ As atividades deste módulo focam em melhorar nossas habilidades de segmentaçã
 
 [Download das atividades](atividades-modulo02-aluno.zip){ .ah-button }
 
-<!-- ## Para entregar
+## Para entregar
 
-Os arquivos para entrega encontram-se na pasta `APS02` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps). -->
+!!! exercise
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
+
+    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+
+    Uma das entregas da APS 2 é um vídeo, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+
+    [APS 2 - Github Classroom](https://classroom.github.com/a/NBBBoAiG)
+
+    A data final de entrega é **{{ data_APS2 }}**.

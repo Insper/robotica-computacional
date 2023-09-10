@@ -98,7 +98,13 @@ nav:
           - "Componentes Conexos": modulos/02-modelo-de-camera/atividade3.ipynb
           - "Exemplo de Resolução de Problemas": modulos/02-modelo-de-camera/atividade4.ipynb 
           - "Regressão Linear": modulos/02-modelo-de-camera/atividade5.ipynb 
-    #   - modulos/03-visao/index.md
+      - "03 - Técnicas em Visão Computacional":
+        - modulos/03-visao/index.md
+        - "Atividades":
+          - "Convolução e Filtragem": modulos/03-visao/atividade1.ipynb
+          - "Transformada de Hough": modulos/03-visao/atividade2.ipynb
+          - "Detecção com NN": modulos/03-visao/atividade3.ipynb
+          - "Pose com Aruco": modulos/03-visao/atividade4.ipynb 
     #   - "04 - ROS Básico":
     #     - modulos/04-ROS-basico/index.md
     #     - "Atividades":
@@ -106,8 +112,12 @@ nav:
     #       - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
     #       - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
     #       - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
-    # - Revisões:
-    #   - revisao-PI.md
+    - APS:
+      - "Gravar Tela": aps/screen_record.md
+      - "APS 1": aps/aps1/enunciado.md
+      - "APS 2": aps/aps2/enunciado.md
+      # - "APS 3": aps/aps3/enunciado.md
+      # - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
     # - Projeto:
     #   - projeto/index.md
