@@ -14,7 +14,7 @@ As atividades deste módulo focam em introduzir técnicas úteis para
 2. encontrar objetos complexos usando redes neurais pré-treinadas;
 3. encontrar padrões conhecidos em imagens para realizar tarefas de localização e posicionamento.
 
-Diferente dos outros módulos, elas estão disponibilizadas como consulta para realizar o
+Como nos outros módulos, estas técnicas estão disponibilizadas como consulta ao realizar as seguintes atividades:
 
 - [Atividade 1](atividade1.ipynb) - Filtros lineares e bordas.
 - [Atividade 2](atividade2.ipynb) - Detecção de círculos e retas.
