@@ -39,21 +39,17 @@ class Aruco3d():
         # Se um Id foi detectado, verifica se ele esta dentro da range de 0 a 99 e calcula os valores de rotação e translação 
         if ids is not None:
             for i in range(len(ids)):
-                if ids[i]>99:
-                    ret = aruco.estimatePoseSingleMarkers(cornersList[i], 19, self.camera_matrix, self.camera_distortion)
-                    rvec, tvec = ret[0][0,0,:], ret[1][0,0,:]
-                else: 
-                    ret = aruco.estimatePoseSingleMarkers(cornersList[i], 6, self.camera_matrix, self.camera_distortion)
-                    rvec, tvec = ret[0][0,0,:], ret[1][0,0,:]
+                ret = aruco.estimatePoseSingleMarkers(cornersList[i], 6, self.camera_matrix, self.camera_distortion)
+                rvec, tvec = ret[0][0,0,:], ret[1][0,0,:]
                     
-            results.append({
-                'id': ids[i],
-                'rvec': rvec,
-                'tvec': tvec,
-                'distancia':np.linalg.norm(tvec),
-                'corners': cornersList[i],
-                'centro': np.mean(cornersList[i], axis=1).astype("int").flatten()
-            })
+                results.append({
+                    'id': ids[i],
+                    'rvec': rvec,
+                    'tvec': tvec,
+                    'distancia':np.linalg.norm(tvec),
+                    'corners': cornersList[i],
+                    'centro': np.mean(cornersList[i], axis=1).astype("int").flatten()
+                })
         
         #retorna os ids e as coordenadas de centro e de distancia do aruco em relação ao robo
         return bgr, results
@@ -82,7 +78,9 @@ def rodar_frame():
     bgr = cv2.imread("img/aruco.png")
     #Chama a funcao detectaAruco
     bgr, results = Arucos.detectaAruco(bgr)
-    bgr = Arucos.drawAruco(bgr, results[0])
+    
+    for result in results:
+        bgr = Arucos.drawAruco(bgr, result)
 
     print(results[0])
 
@@ -92,11 +90,13 @@ def rodar_frame():
 
 def rodar_webcam():
     Arucos = Aruco3d()
-    cap = cv2.VideoCapture(0)
+    # cap = cv2.VideoCapture(0) # webcam
+    cap = cv2.VideoCapture('img/aruco.mp4') # Confira se o video esta na pasta img
 
     while True:
         ret, bgr = cap.read()
         bgr, results = Arucos.detectaAruco(bgr)
+        print(len(results))
         for result in results:
             bgr = Arucos.drawAruco(bgr, result)
             bgr = Arucos.writeDistance(bgr, result['distancia'])
