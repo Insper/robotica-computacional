@@ -16,8 +16,8 @@ extra:
     repo_aps_git: https://github.com/Insper/robotica-computacional-aps.git
     data_final_APS: 28/03
     data_APS1: 25/08
-    data_APS2: 11/09
-    data_APS3: 22/09
+    data_APS2: 14/09
+    data_APS3: 25/09
     data_APS4: 06/11
     avaliacao_CV: 02/10
     data_PF: 04/12
@@ -116,7 +116,7 @@ nav:
       - "Gravar Tela": aps/screen_record.md
       - "APS 1": aps/aps1/enunciado.md
       - "APS 2": aps/aps2/enunciado.md
-      # - "APS 3": aps/aps3/enunciado.md
+      - "APS 3": aps/aps3/enunciado.md
       # - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
     # - Projeto:

@@ -20,9 +20,8 @@ class ImageModule():
         Returns:
             mask (np.ndarray): Mascara binaria
         """
-        pass # Pode remover essa linha
-        # Desenvolva aqui
-        return None
+        mask = cv2.inRange(img, lower, upper)
+        return mask
     
     def configure_kernel(self, kernel_size: int, type: str) -> None:
         """Configura o kernel para ser usado nas operações morfológicas
@@ -32,8 +31,10 @@ class ImageModule():
             type (str): rect (retangular), ellipse (elipse)
         """
 
-        pass # Pode remover essa linha
-        # Desenvolva aqui
+        if type == "rect":
+            self.kernel = np.ones((kernel_size, kernel_size), np.uint8)
+        elif type == "ellipse":
+            self.kernel =  cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size, kernel_size))
 
     def morphological_transform(self, mask: np.ndarray, types: str) -> np.ndarray:
         """Realiza a operação morfológica selecionada na variável "types" na máscara "mask"
@@ -49,7 +50,14 @@ class ImageModule():
         if self.kernel is None:
             print("Kernel is not configured, call configure_kernel() first")
             return mask
-        # Desenvolva aqui
+        if "open" in types:
+            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
+        if "close" in types:
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
+        if "erode" in types:
+            mask = cv2.erode(mask, self.kernel, iterations=1)
+        if "dilate" in types:
+            mask = cv2.dilate(mask, self.kernel, iterations=1)
 
         return mask
 
@@ -62,8 +70,8 @@ class ImageModule():
         Returns:
             contours (list): Lista de contornos
         """
-        # Desenvolva aqui
-        return None
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        return contours
     
     def order_contours(self, contours: list) -> list:
         """Ordena os contornos por área. O maior contorno deve ser o primeiro da lista.
@@ -75,8 +83,8 @@ class ImageModule():
             contours (list): Lista de contornos ordenados
         """
 
-        # Desenvolva aqui
-        return None
+        contours = sorted(contours, key=cv2.contourArea, reverse=True)
+        return contours
     
     def contour_center(self, contour: list) -> tuple:
         """Retorna o centro de massa do contorno. Apenas de um contorno por vez.
@@ -87,8 +95,10 @@ class ImageModule():
         Returns:
             (cx, cy) (tuple(int, int)): Coordenadas do centro de massa
         """
-        # Desenvolva aqui
-        return None
+        M = cv2.moments(contour)
+        cx = int(M["m10"] / M["m00"])
+        cy = int(M["m01"] / M["m00"])
+        return (cx, cy)
     
     def contour_area(self, contour: list) -> float:
         """Retorna a área do contorno. Apenas de um contorno por vez.
@@ -99,8 +109,8 @@ class ImageModule():
         Returns:
             area (float): Area do contorno
         """
-        # Desenvolva aqui
-        return None
+        area = cv2.contourArea(contour)
+        return area
     
     def bounding_box(self, contour: list) -> tuple:
         """Retorna as coordenadas do retângulo que envolve o contorno. Apenas de um contorno por vez.
@@ -111,8 +121,8 @@ class ImageModule():
         Returns:
             (x, y, w, h) (tuple(int, int, int, int)): Coordenadas relevantes do retângulo. x e y são as coordenadas do canto superior esquerdo. w e h são a largura e altura do retângulo.
         """
-        # Desenvolva aqui
-        return None
+        x, y, w, h = cv2.boundingRect(contour)
+        return (x, y, w, h)
 
     @staticmethod
     def draw_contours(img: np.ndarray, contours: list, color: tuple, thickness: int) -> np.ndarray:
@@ -128,8 +138,8 @@ class ImageModule():
             img (np.ndarray): Imagem com os contornos desenhados
         """
 
-        # Desenvolva aqui
-        return None
+        img = cv2.drawContours(img, contours, -1, color, thickness)
+        return img
     @staticmethod
     def draw_bounding_box(img: np.ndarray, x: int, y: int, w: int, h: int, color: tuple, thickness: int) -> np.ndarray:
         """Desenha um retângulo na imagem
@@ -147,8 +157,8 @@ class ImageModule():
             img (np.ndarray): Imagem com o retângulo desenhado
         """
 
-        # Desenvolva aqui
-        return None
+        img = cv2.rectangle(img, (x, y), (x + w, y + h), color, thickness)
+        return img
     @staticmethod
     def cross_hair(img: np.ndarray, center: tuple, color: tuple, thickness: int) -> np.ndarray:
         """Desenha uma cruz na posição "center"
@@ -163,8 +173,10 @@ class ImageModule():
             img (np.ndarray): Imagem com a cruz desenhada
         """
 
-        # Desenvolva aqui
-        return None
+        x, y = center
+        img = cv2.line(img, (x, y - 10), (x, y + 10), color, thickness)
+        img = cv2.line(img, (x - 10, y), (x + 10, y), color, thickness)
+        return img
 
 def main():
     Module = ImageModule()

@@ -91,7 +91,7 @@ def rodar_frame():
 def rodar_webcam():
     Arucos = Aruco3d()
     # cap = cv2.VideoCapture(0) # webcam
-    cap = cv2.VideoCapture('img/aruco.mp4') # Confira se o video esta na pasta img
+    cap = cv2.VideoCapture('img/aruco2.mp4') # Confira se o video esta na pasta img
 
     while True:
         ret, bgr = cap.read()
@@ -99,7 +99,6 @@ def rodar_webcam():
         print(len(results))
         for result in results:
             bgr = Arucos.drawAruco(bgr, result)
-            bgr = Arucos.writeDistance(bgr, result['distancia'])
 
         cv2.imshow("Imagem", bgr)
         if cv2.waitKey(1) & 0xFF == ord('q'):
