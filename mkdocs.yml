@@ -121,7 +121,7 @@ nav:
     #   - revisaoPF.md
     - Provas:
       - "Simulado": provas/simulado/enunciado.md
-      - "Avaliação Intermediária": provas/pi/enunciado.md
+      - "Avaliação Intermediária": provas/ai/enunciado.md
     # - Projeto:
     #   - projeto/index.md
     #   - projeto/atualizacoes.md
