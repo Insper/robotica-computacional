@@ -123,8 +123,6 @@ O objetivo deste exercicio é encontrar o ponto de fuga da pista através do enc
 
 5. Encontrar o ponto de fuga a partir do encontro das retas.
 
-6. Desenhar o ponto de fuga na imagem e executar executar seu código no vídeo `TODO.mp4`.
-
 
 **Sugestão:** 
 
@@ -166,9 +164,9 @@ Voce deve trabalhar no arquivo `ex3.py` e implementar a classe `DistanceEstimato
 
 Por fim, deve associar os marcadores aruco com os corpos dos "creepers" e então rankear os "creepers" de acordo com a distância até o robô.
 
-**Grave um video** com o resultado mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
+**Grave um video** do seu código rodando no video no link abaixando, mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
 
-
+[Link Para Baixar o Video](img/aruco.mp4)
 ___
 
 
@@ -243,4 +241,6 @@ Para isso você deve:
 
 7. A função `plot_last_detections` desenha as últimas 3 detecções de cada cachorro na imagem. Representado pelas ultimas 3 caixas (se existirem) e uma linha ligando o centro das caixas. Você não precisa implementar essa função, mas entenda como ela funciona;
 
-8. **Grave um video** com o resultado do seu código e coloque o link no arquivo `README.md` do seu repositório.
+8. **Grave um video** com o resultado do seu código rodando no video no link abaixando e coloque o link no arquivo `README.md` do seu repositório.
+
+[Link Para Baixar o Video](img/dogs.wmv)
