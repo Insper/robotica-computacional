@@ -1,5 +1,7 @@
 # Robótica Computacional 2023.1
 
+## ACEITE A ATIVIDADE NO LINK: https://classroom.github.com/a/NAM0IG8k
+
 EMAIL: ______________
 
 Observações de avaliações nesta disciplina:
