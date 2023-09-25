@@ -139,7 +139,7 @@ ___
 # Exercício 2
 Trabalhe no arquivo `ex2.py`. 
 
-Você vai notar que este programa roda o vídeo `dominoes.mp4`. Baixe o vídeo [neste endereço](https://github.com/Insper/robot20/raw/master/media/dominoes.mp4)
+Você vai notar que este programa roda o vídeo `dominoes.mp4`. Baixe o vídeo [neste endereço](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/ETs-JVT7B51Nlt9kbnhrev4BNqA3N58dSuKLjVvi-Um6wA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=bWY8xh)
 
 ![Domino](img/domino.jpg)
 
@@ -166,7 +166,7 @@ Por fim, deve associar os marcadores aruco com os corpos dos "creepers" e então
 
 **Grave um video** do seu código rodando no video no link abaixando, mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
 
-[Link Para Baixar o Video](img/aruco.mp4)
+[Link Para Baixar o Video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EeOys3--O4tPhCbELsfZ9FABRMdAhARfKogGpqT1yHoLNQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=Tviiaw)
 ___
 
 
@@ -243,4 +243,4 @@ Para isso você deve:
 
 8. **Grave um video** com o resultado do seu código rodando no video no link abaixando e coloque o link no arquivo `README.md` do seu repositório.
 
-[Link Para Baixar o Video](img/dogs.wmv)
+[Link Para Baixar o Video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/Ea8ODYUTaMxAhr6UNxnTPOABi9FcgSkkbUW7ZTbCUijWgQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=lzGIhe)
