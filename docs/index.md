@@ -9,13 +9,6 @@ Também disponibilizamos o github da disciplina, que pode ser acessado [aqui](ht
 
 # Aviso
 
-* Link para avaliação: https://insper.avaliar.org/ 
-
-* Código da avaliação: 73247  
-
-* Chave: 478630 
-
-
 ## Informações importantes
 
 A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/kTZh8Cikjj).
