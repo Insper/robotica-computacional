@@ -93,7 +93,14 @@ Os critérios de avaliação são os seguintes:
 </details>
 </p>
 
+<p>
+<details>
+<summary>Resposta</summary>
 
+![q1](q1/img/q1.png)
+
+</details>
+</p>
 
 ## Questão 2 (3,5)
 
@@ -151,6 +158,15 @@ Os critérios de avaliação são os seguintes:
 
 4. teste4.png - respectivamente: 3, 1, 3, 1
 
+
+</details>
+</p>
+
+<p>
+<details>
+<summary>Resposta</summary>
+
+![q2](q2/img/q2.png)
 
 </details>
 </p>
@@ -217,5 +233,14 @@ Nesta questão você deve:
     'gatos': [],
 }
 ```
+</details>
+</p>
+
+<p>
+<details>
+<summary>Resposta</summary>
+
+![q3](q3/img/q3.png)
+
 </details>
 </p>
