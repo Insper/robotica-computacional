@@ -97,7 +97,7 @@ Os critérios de avaliação são os seguintes:
 <details>
 <summary>Resposta</summary>
 
-<a href="q1/q1_gab.py">q1</a>
+<a href="../q1/q1_gab.py">q1</a>
 
 </details>
 </p>
@@ -166,7 +166,7 @@ Os critérios de avaliação são os seguintes:
 <details>
 <summary>Resposta</summary>
 
-<a href="q2/q2_gab.py">q2</a>
+<a href="../q2/q2_gab.py">q2</a>
 
 </details>
 </p>
@@ -240,7 +240,7 @@ Nesta questão você deve:
 <details>
 <summary>Resposta</summary>
 
-<a href="q3/q3_gab.py">q3</a>
+<a href="../q3/q3_gab.py">q3</a>
 
 </details>
 </p>
