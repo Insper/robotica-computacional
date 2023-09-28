@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import math
-from module_net_ import MobileNetDetector
+from module_net import MobileNetDetector
 
 class IdentificarPerigo(MobileNetDetector):
     def __init__(self) -> None:
@@ -57,6 +57,10 @@ class IdentificarPerigo(MobileNetDetector):
         
         perigo = {}
         bgr, results = self.detect(bgr)
+        print(results)
+        cv2.imshow('bgr',bgr)
+        cv2.waitKey(0)
+
         self.processar_animais(results)
         bgr = self.checar_perigos(bgr)
 

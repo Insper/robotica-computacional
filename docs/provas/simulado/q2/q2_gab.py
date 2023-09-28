@@ -60,6 +60,7 @@ class PrateleiraArrumada(ImageModule):
         '''
         hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
         self.middle = bgr.shape[0] // 2
+        print(self.middle)
 
         rects_m = self.get_rectangles(hsv, 'magenta')
         rects_y = self.get_rectangles(hsv, 'yellow')

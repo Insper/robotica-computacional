@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from module_ import ImageModule
+from module import ImageModule
 
 class IdentificadorBandeiras(ImageModule):
     def __init__(self) -> None:
@@ -24,6 +24,7 @@ class IdentificadorBandeiras(ImageModule):
         for rect in rects:
             x, y, w, h = rect
             crop = hsv[y:y+h, x:x+w]
+            cv2.imshow('crop', cv2.cvtColor(crop, cv2.COLOR_HSV2BGR))
 
             # Irlanda
             if np.sum(self.color_filter(crop, self.colors['orange'][0], self.colors['orange'][1])) > 0:
@@ -33,8 +34,12 @@ class IdentificadorBandeiras(ImageModule):
             else:
                 area = w * h
                 print(area)
-                red = np.sum(self.color_filter(crop, self.colors['red'][0], self.colors['red'][1])) / 255
-                white = np.sum(self.color_filter(crop, self.colors['white'][0], self.colors['white'][1])) / 255
+                mask_r = self.color_filter(crop, self.colors['red'][0], self.colors['red'][1])
+                cv2.imshow('mask_r', mask_r)
+                red = np.sum(mask_r) / 255
+                mask_w = self.color_filter(crop, self.colors['white'][0], self.colors['white'][1])
+                cv2.imshow('mask_w', mask_w)
+                white = np.sum(mask_w) / 255
                 if white > red:
                     self.bandeiras.append(('singapura', (x, y), (x+w, y+h)))
                 elif red > white:
@@ -71,7 +76,7 @@ class IdentificadorBandeiras(ImageModule):
 
 
 if __name__ == '__main__':
-    bgr = cv2.imread('img/teste4.png')
+    bgr = cv2.imread('img/teste1.png')
     q1 = IdentificadorBandeiras()
     items = q1.run(bgr)
 
