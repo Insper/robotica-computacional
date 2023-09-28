@@ -97,7 +97,7 @@ Os critérios de avaliação são os seguintes:
 <details>
 <summary>Resposta</summary>
 
-![q1](q1/img/q1.png)
+![q1](q1/q1_gab.py)
 
 </details>
 </p>
@@ -166,7 +166,7 @@ Os critérios de avaliação são os seguintes:
 <details>
 <summary>Resposta</summary>
 
-![q2](q2/img/q2.png)
+![q2](q2/q2_gab.py)
 
 </details>
 </p>
@@ -240,7 +240,7 @@ Nesta questão você deve:
 <details>
 <summary>Resposta</summary>
 
-![q3](q3/img/q3.png)
+![q3](q3/q3_gab.py)
 
 </details>
 </p>
