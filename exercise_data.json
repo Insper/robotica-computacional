@@ -1,16 +1,6 @@
 {
   "course": "",
   "exercises": {
-    "guias-infra/aps/": {
-      "exercise_1": {
-        "tags": [],
-        "slug": "guias-infra/aps/exercise_1"
-      },
-      "exercise_2": {
-        "tags": [],
-        "slug": "guias-infra/aps/exercise_2"
-      }
-    },
     "modulos/00-intro/atividade-dia1/": {
       "long_1": {
         "tags": [
@@ -39,12 +29,31 @@
           "long-text"
         ],
         "slug": "modulos/00-intro/atividade-dia1/long_4"
+      },
+      "long_5": {
+        "tags": [
+          "text-exercise",
+          "long-text"
+        ],
+        "slug": "modulos/00-intro/atividade-dia1/long_5"
       }
     },
     "modulos/01-imagens-e-matrizes/": {
       "exercise_1": {
         "tags": [],
         "slug": "modulos/01-imagens-e-matrizes/exercise_1"
+      }
+    },
+    "modulos/02-modelo-de-camera/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "modulos/02-modelo-de-camera/exercise_1"
+      }
+    },
+    "modulos/03-visao/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "modulos/03-visao/exercise_1"
       }
     },
     "modulos/04-ROS-basico/atividades/atividade2/": {
@@ -84,6 +93,26 @@
           "long-text"
         ],
         "slug": "modulos/04-ROS-basico/atividades/atividade4/long_1"
+      }
+    },
+    "projeto/atualizacoes/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "projeto/atualizacoes/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "projeto/atualizacoes/exercise_2"
+      }
+    },
+    "projeto/exemplos/aruco/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "projeto/exemplos/aruco/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "projeto/exemplos/aruco/exercise_2"
       }
     }
   },

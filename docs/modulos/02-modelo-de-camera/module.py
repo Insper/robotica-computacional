@@ -61,7 +61,7 @@ class ImageModule():
 
         return mask
 
-    def find_contours(self, mask: np.ndarray) -> list:
+    def find_contours(self, mask: np.ndarray, mode='external') -> list:
         """Baseado na máscara binária, encontra os contornos
 
         Args:
@@ -69,8 +69,12 @@ class ImageModule():
 
         Returns:
             contours (list): Lista de contornos
+            mode (str): external (apenas contornos externos), all (todos os contornos)
         """
-        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if mode == 'external':
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        elif mode == 'all':
+            contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         return contours
     
     def order_contours(self, contours: list) -> list:

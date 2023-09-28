@@ -120,8 +120,12 @@ nav:
       - "APS 3": aps/aps3/enunciado.md
       # - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
+    - Provas:
+      - "Simulado": provas/simulado/enunciado.md
+      - "Avaliação Intermediária": provas/ai/enunciado.md
     # - Projeto:
     #   - projeto/index.md
     #   - projeto/atualizacoes.md
     #   - "Exemplos":
     #     - projeto/exemplos/aruco/index.md
+

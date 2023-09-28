@@ -8,3 +8,4 @@ site/**
 *.prototxt.txt
 *.caffemodel
 ~$*
+exercise_data.json

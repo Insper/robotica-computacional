@@ -123,8 +123,6 @@ O objetivo deste exercicio é encontrar o ponto de fuga da pista através do enc
 
 5. Encontrar o ponto de fuga a partir do encontro das retas.
 
-6. Desenhar o ponto de fuga na imagem e executar executar seu código no vídeo `TODO.mp4`.
-
 
 **Sugestão:** 
 
@@ -141,7 +139,7 @@ ___
 # Exercício 2
 Trabalhe no arquivo `ex2.py`. 
 
-Você vai notar que este programa roda o vídeo `dominoes.mp4`. Baixe o vídeo [neste endereço](https://github.com/Insper/robot20/raw/master/media/dominoes.mp4)
+Você vai notar que este programa roda o vídeo `dominoes.mp4`. Baixe o vídeo [neste endereço](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/ETs-JVT7B51Nlt9kbnhrev4BNqA3N58dSuKLjVvi-Um6wA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=bWY8xh)
 
 ![Domino](img/domino.jpg)
 
@@ -166,9 +164,9 @@ Voce deve trabalhar no arquivo `ex3.py` e implementar a classe `DistanceEstimato
 
 Por fim, deve associar os marcadores aruco com os corpos dos "creepers" e então rankear os "creepers" de acordo com a distância até o robô.
 
-**Grave um video** com o resultado mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
+**Grave um video** do seu código rodando no video no link abaixando, mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
 
-
+[Link Para Baixar o Video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EeOys3--O4tPhCbELsfZ9FABRMdAhARfKogGpqT1yHoLNQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=Tviiaw)
 ___
 
 
@@ -228,11 +226,21 @@ Se houver uma segunda detecção, associamos a detecção ao outro cachorro. Not
 O objetivo deste exercicio é implementar a classe `DogTracker` que vai herdar a classe `MobileNetDetector` e a cada frame vai armazenar as posições de cada um dos dois cachorros presentes no video `dogs.wmv`.
 
 Para isso você deve:
+
 1. Implementar a função `bbox_center` que recebe uma detecção e retorna o centro da bounding box;
+
 2. Implementar a função `bbox_distance` que recebe duas detecções e retorna a distância euclidiana entre elas;
+
 3. A função `run` já está implementada para você. Entenda o que ela faz e como ela funciona;
+
 4. No caso de um dos dois cachorros ainda não foram encontrados, a função `first_detection` deve implementar o **Caso 1** e o **Caso 2**;
+
 5. No caso de ambos os cachorros já foram encontrados, a função `update_tracking` deve implementar o **Caso 3**;
+
 6. A função `update_2dogs` verufica se há uma segunda detecção e associa a detecção ao outro cachorro, definido pela variável `key`;
+
 7. A função `plot_last_detections` desenha as últimas 3 detecções de cada cachorro na imagem. Representado pelas ultimas 3 caixas (se existirem) e uma linha ligando o centro das caixas. Você não precisa implementar essa função, mas entenda como ela funciona;
-8. **Grave um video** com o resultado do seu código e coloque o link no arquivo `README.md` do seu repositório.
+
+8. **Grave um video** com o resultado do seu código rodando no video no link abaixando e coloque o link no arquivo `README.md` do seu repositório.
+
+[Link Para Baixar o Video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/Ea8ODYUTaMxAhr6UNxnTPOABi9FcgSkkbUW7ZTbCUijWgQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=lzGIhe)
