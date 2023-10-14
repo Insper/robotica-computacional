@@ -27,7 +27,7 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
-## Conceitos em Robótica
+<!-- ## Conceitos em Robótica
 
 !!! pdf
     ![](slides-2.pdf)
@@ -43,7 +43,7 @@ catkin_make
 ## Atividade Extra
 Modifique o arquivo `goto.py` para criar um nó da ROS que, utilizando controle proporcional, move o robô a um ponto desejado `self.point` no mapa.
 
-[Download das atividades](modulo4/scripts/goto.py){ .ah-button }
+[Download das atividades](modulo4/scripts/goto.py){ .ah-button } -->
 
-??? details "Resposta"
-    [Resposta](modulo4/scripts_resp/goto.py){ .ah-button }
+<!-- ??? details "Resposta"
+    [Resposta](modulo4/scripts_resp/goto.py){ .ah-button } -->
