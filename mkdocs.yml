@@ -117,7 +117,7 @@ nav:
       - "APS 1": aps/aps1/enunciado.md
       - "APS 2": aps/aps2/enunciado.md
       - "APS 3": aps/aps3/enunciado.md
-      # - "APS 4": aps/aps4/enunciado.md
+      - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
     - Provas:
       - "Simulado": provas/simulado/enunciado.md
