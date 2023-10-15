@@ -106,19 +106,19 @@ nav:
           - "Transformada de Hough": modulos/03-visao/atividade2.ipynb
           - "Detecção com NN": modulos/03-visao/atividade3.ipynb
           - "Pose com Aruco": modulos/03-visao/atividade4.ipynb 
-    #   - "04 - ROS Básico":
-    #     - modulos/04-ROS-basico/index.md
-    #     - "Atividades":
-    #       - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
-    #       - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
-    #       - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
-    #       - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
+      - "04 - ROS Básico":
+        - modulos/04-ROS-basico/index.md
+        - "Atividades":
+          - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
+          - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
+          - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
+          - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
     - APS:
       - "Gravar Tela": aps/screen_record.md
       - "APS 1": aps/aps1/enunciado.md
       - "APS 2": aps/aps2/enunciado.md
       - "APS 3": aps/aps3/enunciado.md
-      - "APS 4": aps/aps4/enunciado.md
+      # - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
     - Provas:
       - "Simulado": provas/simulado/enunciado.md
