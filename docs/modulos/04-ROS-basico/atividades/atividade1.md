@@ -99,4 +99,4 @@ Neste ponto sua tela deve estar parecida com a figura abaixo:
 Apertando os botões em destaque na imagem acima, você pode mover (verde) ou rotacionar (vermelho) os objetos no mundo simulado. Este recurso pode ser utilizado para mover o robô para o local específico onde deseja-se testar algum módulo do robô.
 
 ### Retornar o mundo simulado para posição inicial
-Apertando as teclas `alt + r` você pode reiniciar o mundo simulado.
+Apertando as teclas `ctrl + r` você pode reiniciar o mundo simulado.
