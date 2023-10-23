@@ -27,12 +27,12 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
-<!-- ## Conceitos em Robótica
+## Conceitos em Robótica
 
 !!! pdf
-    ![](slides-2.pdf)
+    ![](slides-2.pdf) -->
 
-## Para entregar
+<!-- ## Para entregar
 
 Os arquivos para entrega encontram-se na pasta `APS04` dos repositórios de cada grupo no Classroom. Se essa pasta não aparece, siga o [guia para atualizar os enunciados](../../guias-infra/aps.md#recebendo-atualizacoes-e-novas-aps). Mova o diretório `APS04` para o diretorio `~/catkin_ws/src` e depois executa o comando:
 ```bash
@@ -43,7 +43,7 @@ catkin_make
 ## Atividade Extra
 Modifique o arquivo `goto.py` para criar um nó da ROS que, utilizando controle proporcional, move o robô a um ponto desejado `self.point` no mapa.
 
-[Download das atividades](modulo4/scripts/goto.py){ .ah-button } -->
+[Download das atividades](modulo4/scripts/goto.py){ .ah-button } --> --> -->
 
 <!-- ??? details "Resposta"
     [Resposta](modulo4/scripts_resp/goto.py){ .ah-button } -->
