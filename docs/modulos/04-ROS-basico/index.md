@@ -19,6 +19,7 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 2](atividades/atividade2.md) - Explorando o conceito de tópicos e mensagens na ROS
 - [Atividade 3](atividades/atividade3.md) - Explorando as ferramentas de visualização da ROS
 - [Atividade 4](atividades/atividade4.md) - Lista de exercícios explorando implementação de comunicação entre tópicos, controle do robô e utilização dos tópicos de imagem e laser.
+- [Atividade 5](atividades/atividade5.md) - Lista de exercícios expandindo a atividade 4.
 
 [Download das atividades](atividades-modulo04-aluno.zip){ .ah-button }
 Extrai os arquivos dentro da diretório `~/catkin_ws/src` e depois executa o comando:
