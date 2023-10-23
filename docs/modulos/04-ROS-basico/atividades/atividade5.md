@@ -40,4 +40,6 @@ Primeiramente entenda o a função `odom_callback`, ela recebe a mensagem do tó
 ## Q3 - Robô quadrado (Controle Proporcional)
 Modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em um quadrado utilizando controle proporcional.
 
+* Depois teste seu código no robô real.
+
 **DICA** - Em um estado, chame a classe `GoTo` para mover o robô para um ponto desejado. Quando o robô chegar no ponto desejado, mude o estado para o próximo ponto.
