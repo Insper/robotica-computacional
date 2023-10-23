@@ -13,10 +13,10 @@ Running
 
 """
 
-class Control():
-	def __init__(self):
+class GoTo():
+	def __init__(self, point: Point = Point()):
 		self.rate = rospy.Rate(250) # 250 Hz
-		self.point = Point( x = 2, y = 1, z = 0)
+		self.point = point
 		self.kp = 0.01
 
 		self.robot_state = 'center'
@@ -45,24 +45,21 @@ class Control():
 
 		self.roll, self.pitch, self.yaw = euler_from_quaternion(orientation_list)
 
-		# convert yaw from [-pi, pi] to [0, 2pi]
-		self.yaw = self.yaw % (2*np.pi)
-
 	def get_angular_error(self):
 		x = self.point.x - self.x
 		y = self.point.y - self.y
 		theta = np.arctan2(y , x)
 
 		self.distance = np.sqrt(x**2 + y**2)
-		self.err = np.rad2deg(theta - self.yaw)
-		self.err = (self.err + 180) % 360 - 180
+		err = theta - self.yaw
+		err = np.arctan2(np.sin(err), np.cos(err))
 
 		self.twist.angular.z = self.err * self.kp
 
 	def center(self):
 		self.get_angular_error()
 
-		if abs(self.err) < 5:
+		if abs(self.err) < np.deg2rad(5):
 			rospy.loginfo('Waypoint Centered')
 			self.robot_state = 'goto'
 
@@ -91,11 +88,13 @@ class Control():
 
 def main():
 	rospy.init_node('GoTo')
-	control = Control()
+	control = GoTo(Point( x = 2, y = 1, z = 0))
 	rospy.sleep(1) # Espera 1 segundo para que os publishers e subscribers sejam criados
 
 	while not rospy.is_shutdown():
 		control.control()
+		if control.robot_state == 'stop':
+			break
 
 if __name__=="__main__":
 	main()
