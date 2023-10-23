@@ -13,8 +13,8 @@ Running
 
 """
 
-class Control():
-	def __init__(self):
+class GoTo():
+	def __init__(self, point: Point = Point()):
 		self.rate = rospy.Rate(250) # 250 Hz
 		self.point = Point( x = 2, y = 1, z = 0)
 
@@ -44,12 +44,8 @@ class Control():
 
 		self.roll, self.pitch, self.yaw = euler_from_quaternion(orientation_list)
 
-		# convert yaw from [-pi, pi] to [0, 2pi]
-		self.yaw = self.yaw % (2*np.pi)
-
 	def get_angular_error(self):
 		pass
-
 
 	def center(self):
 		pass
@@ -73,11 +69,13 @@ class Control():
 
 def main():
 	rospy.init_node('GoTo')
-	control = Control()
+	control = GoTo(Point( x = 2, y = 1, z = 0))
 	rospy.sleep(1) # Espera 1 segundo para que os publishers e subscribers sejam criados
 
 	while not rospy.is_shutdown():
 		control.control()
+		if control.robot_state == 'stop':
+			break
 
 if __name__=="__main__":
 	main()
