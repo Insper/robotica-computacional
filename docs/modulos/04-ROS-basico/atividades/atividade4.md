@@ -110,7 +110,7 @@ Neste exercício vamos trabalhar no arquivo `image_publisher.py`. O objetivo é 
 1. Se inscreva no tópico `/camera/image/compressed`.
 2. Utilizando métodos de visão computacional, modifique a função `color_segmentation` para encontrar o centro do "creeper" azul.
 3. Publique uma imagem com um *crosshair* no centro do “creeper” para o tópico `image_publisher` do tipo `sensor_msgs/Image`
-4. Publique os valores de `x` e `y` do centro do “creeper” em um tópico `center_publisher` do tipo `geometry_msgs/Point`
+4. Publique os valores de `x` e `y` do centro do “creeper” em um tópico `center_publisher` do tipo `geometry_msgs/Point`. Publique também a largura / 2 da imagem no valor `z`.
 5. No caso de não haver um "creeper" azul no frame, deve publicar `x=-1` e `y=-1`.
 6. Na função `control` utilize o comando `rospy.loginfo` para mostrar no terminal as coordenadas do centro do “creeper”, ou alertar que não existem “creepers” na imagem.
 
