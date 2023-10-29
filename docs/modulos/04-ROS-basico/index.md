@@ -40,3 +40,29 @@ Os arquivos para entrega encontram-se na pasta `APS04` dos repositórios de cada
 cd ~/catkin_ws/
 catkin_make
 ``` -->
+
+
+## Para entregar
+
+!!! exercise
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 4.
+
+    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+
+    Mova o seu repositório para o diretorio `~/catkin_ws/src` e depois execute o comando:
+    ```bash
+    cd ~/catkin_ws/
+    catkin_make
+    ```
+
+    Depois, modifique os arquivos `.py` para executavel com o comando:
+    ```bash
+    cd roscd aps4/scripts
+    chmod +x *.py
+    ```
+
+    As entregas da APS 4 são vídeos, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+
+    [APS 4 - Github Classroom](https://classroom.github.com/a/IaH1w-pV)
+
+    A data final de entrega é **{{ data_APS4 }}**.
