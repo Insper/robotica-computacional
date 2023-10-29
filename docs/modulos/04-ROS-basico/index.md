@@ -49,7 +49,7 @@ catkin_make
 
     As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
 
-    Mova o seu repositório para o diretorio `~/catkin_ws/src` e depois executa o comando:
+    Mova o seu repositório para o diretorio `~/catkin_ws/src` e depois execute o comando:
     ```bash
     cd ~/catkin_ws/
     catkin_make
@@ -66,5 +66,3 @@ catkin_make
     [APS 4 - Github Classroom](https://classroom.github.com/a/IaH1w-pV)
 
     A data final de entrega é **{{ data_APS4 }}**.
-
-<!--  -->
