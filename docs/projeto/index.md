@@ -65,6 +65,15 @@ Para completar uma missão você deve:
 
 Missões podem ser completadas durante o andamento do projeto. É só pedir a validação da parte dos requisitos de software antes de gravar. 
 
+Seu codigo deve reseber os seguinte argumentos pelo terminal:
+```python
+parser = argparse.ArgumentParser()
+parser.add_argument('--cor', type=str, default='verde', help='cor do creeper desejado')
+parser.add_argument('--id', type=int, default=10, help='id do creeper desejado')
+parser.add_argument('--drop', type=str, default='bicicleta', help='drop area desejada')
+args = parser.parse_args()
+```
+
 !!! Atenção
     Se uma missão só for completada no simulador so recebera 25% da diferenca dos conceitos nota. **A missão D é obrigatório rodar no robô real**. 
 
@@ -72,7 +81,7 @@ Missões podem ser completadas durante o andamento do projeto. É só pedir a va
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na APS04. Os seguintes passos devem ser realizados:
 
-1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+1. O programa recebe um argumento na linha de comando: cor do creeper **desejado**
 2. O robô sai da posição inicial e segue reto na bifurcação. 
 3. Ele segue pela área da direita até juntar novamente os caminhos
 4. Vai em direção aos creepers e derruba o creeper **desejado**
@@ -91,9 +100,9 @@ Essa missão é a mais simples do projeto e envolve aplicar diretamente os conce
 
 ### Missão **C**
 
-A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente o LiDAR para medir a distância até ele). 
+A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente o LiDAR para medir a distância até ele). Neste estagio tambem sera nescessrio diferenciar os creepers da mesma cor pelo ID.
 
-1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+1. O programa recebe dois argumentos na linha de comando: cor e id do creeper **desejado**.
 2. O robô sai da posição inicial e segue reto na bifurcação. 
 3. Ele segue pela área da direita até juntar novamente os caminhos
 4. Ele pega o creeper **desejado** e retorna pela pista do centro. 
@@ -115,7 +124,7 @@ A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente
 
 A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 
-1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+1. O programa recebe dois argumentos na linha de comando: cor e id do creeper **desejado**.
 1. O robô sai da posição inicial, vira à esquerda na bifurcacao
 3. Segue ate a pista da esquerda
 2. Faz o **Slalom** e prossegue até a área dos creepers
@@ -132,7 +141,7 @@ A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 
 Agora vamos integrar tudo, com objetivos que dependem da *MobileNet*
 
-1. O programa recebe dois argumentos na linha de comando: cor do creeper e drop area
+1. O programa recebe 3 argumentos na linha de comando: cor e id do creeper **desejado** e drop area
 2. Vai até a área do creepers usando qualquer caminho que quiser e pega o creeper
 3. Encontra a drop area passada como argumento. **Neste item ela sempre estará no centro ou na direita.**
 4. Deposita o creeper na drop area requisitada
