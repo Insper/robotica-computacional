@@ -17,37 +17,34 @@ class Control():
 		# Subscribers
 		
 		# Publishers
-		self.cmd_vel_pub = rospy.Publisher("cmd_vel", Twist, queue_size=3)
-		self.dormir = 5.0
+		self.cmd_vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size=3)
 
 		self.cmd_vel_pub.publish(Twist())
 	
 	def forward(self, distance: float = 0.5, vel = Twist()) -> None:
-		vel.linear.x = distance / self.dormir
+		vel.linear.x = 0.5
 		self.cmd_vel_pub.publish(vel)
-		rospy.sleep(self.dormir)
+		delta_t = distance / vel.linear.x
+		rospy.sleep(delta_t)
+		self.cmd_vel_pub.publish(Twist())
+
 
 	def rotate(self, angle: float = np.pi/2, vel = Twist()) -> None:
-		vel.angular.z = angle / self.dormir
+		vel.angular.z = np.pi/2
 		self.cmd_vel_pub.publish(vel)
-		rospy.sleep(self.dormir)
+		delta_t = angle / vel.angular.z
+		rospy.sleep(delta_t)
+
 
 	def control(self):
 		'''
 		This function is called at least at {self.rate} Hz.
 		This function controls the robot.
 		'''
-		self.forward()
-		self.rotate()
+		for _ in range(4):
+			self.forward()
+			self.rotate()
 
-		self.forward()
-		self.rotate()
-
-		self.forward()
-		self.rotate()
-
-		self.forward()
-		self.rotate()
 		
 def main():
 	rospy.init_node('Controler')

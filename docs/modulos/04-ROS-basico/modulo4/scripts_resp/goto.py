@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 import rospy
@@ -10,14 +11,14 @@ import numpy as np
 Running
 	roslaunch my_simulation novas_formas.launch
 	rosrun aps4 goto.py
-
+ 
 """
 
 class GoTo():
 	def __init__(self, point: Point = Point()):
 		self.rate = rospy.Rate(250) # 250 Hz
 		self.point = point
-		self.kp = 0.01
+		self.kp = 1
 
 		self.robot_state = 'center'
 		self.state_machine = {
@@ -52,8 +53,9 @@ class GoTo():
 
 		self.distance = np.sqrt(x**2 + y**2)
 		err = theta - self.yaw
-		err = np.arctan2(np.sin(err), np.cos(err))
+		self.err = np.arctan2(np.sin(err), np.cos(err))
 
+		print(self.err)
 		self.twist.angular.z = self.err * self.kp
 
 	def center(self):
@@ -88,7 +90,7 @@ class GoTo():
 
 def main():
 	rospy.init_node('GoTo')
-	control = GoTo(Point( x = 2, y = 1, z = 0))
+	control = GoTo(Point( x = 1, y = 1, z = 0))
 	rospy.sleep(1) # Espera 1 segundo para que os publishers e subscribers sejam criados
 
 	while not rospy.is_shutdown():
@@ -98,4 +100,3 @@ def main():
 
 if __name__=="__main__":
 	main()
-
