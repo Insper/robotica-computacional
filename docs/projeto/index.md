@@ -35,7 +35,7 @@ catkin_make
 Para lançar a simulação da pista do projeto, execute o comando abaixo.
 
 ```bash
-roslaunch my_simulation pista23-1.launch
+roslaunch my_simulation pista23-B.launch
 ```
 
 Cada missão deverá ser colocada em um arquivo `.py` separado com o nome da missão que ele realiza. 
@@ -52,25 +52,37 @@ O projeto consistirá em diversas missões diferentes no cenário acima. As miss
 Para completar uma missão você deve:
 
 - [ ] capturar a tela do robô realizando a missão no simulador 
-- [ ] **Obrigatório para a Missão D**: filmar o robô realizando a missão na pista da sala
+- [ ] filmar o robô realizando a missão na pista da sala
     - para filmar é preciso pedir a preparação da pista para a equipe de técnicos. Isso garante que todos terão condições parecidas nas missões.
+- [ ] Coloque o link do video no README de seu repositorio e crie um **Releases** com a tag do ultimo conceito completado.
 - [ ] cada missão demora menos de 15 minutos para ser completada
+- [ ] Entende-se por **DEIXAR** o creeper em uma drop area como realizar as seguintes acoes:
+    - Parar perto da drop area
+    - Olhar diretamente para a drop area
+    - Se aproximar ate ficar a 0.5m da drop area
+    - Descer a garra e soltar o creeper em **pe**
+    - Retornar a pista sem derrubar o creeper
 
 Missões podem ser completadas durante o andamento do projeto. É só pedir a validação da parte dos requisitos de software antes de gravar. 
 
 !!! Atenção
-    Se uma missão só for completada no simulador ela valerá 50% da nota. **A missão D é obrigatório rodar no robô real**. 
+    Se uma missão só for completada no simulador so recebera 25% da diferenca dos conceitos nota. **A missão D é obrigatório rodar no robô real**. 
 
 ### Missão **D**
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na APS04. Os seguintes passos devem ser realizados:
 
-1. O robô sai da posição inicial e vira à direita na trifurcação. 
-2. Ele segue pela área da direita até juntar novamente os caminhos
-3. Vai em direção aos creepers e derruba o creeper **verde**
-4. Retorna para a posição inicial usando a pista do meio
+1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+2. O robô sai da posição inicial e segue reto na bifurcação. 
+3. Ele segue pela área da direita até juntar novamente os caminhos
+4. Vai em direção aos creepers e derruba o creeper **desejado**
+5. Retorna para a posição inicial usando a mesma pista
 
-**Essa missão não tem requisitos de projeto de software**
+**Requisitos de projeto de software**:
+
+- [ ] o código deve usar classes
+- [ ] o código deve usar máquina de estados
+- [ ] é usado controle proporcional para o robô seguir a linha
 
 **Nota final desta missão:** 3,0
 
@@ -81,9 +93,12 @@ Essa missão é a mais simples do projeto e envolve aplicar diretamente os conce
 
 A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente o LiDAR para medir a distância até ele). 
 
-1. O robô sai da posição inicial, vira à direita na encruzilhada e vai até a área dos creepers
-2. Ele pega o creeper **verde** e deposita perto da drop area da pista do centro. 
-3. Volta para posição inicial
+1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+2. O robô sai da posição inicial e segue reto na bifurcação. 
+3. Ele segue pela área da direita até juntar novamente os caminhos
+4. Ele pega o creeper **desejado** e retorna pela pista do centro. 
+5. Ele **deixa** o creeper na bicicleta
+6. Para na posição inicial
 
 
 **Requisitos de projeto de software**:
@@ -100,16 +115,16 @@ A missão **C** envolve agora usar a garra para pegar o creeper (e possivelmente
 
 A missão **C+** adiciona um novo desafio de controle: fazer o **Slalom**
 
-1. O robô sai da posição inicial, vira à esquerda na encruzilhada
+1. Seu codigo inicia e pede ao usario a cor do creeper **desejado**.
+1. O robô sai da posição inicial, vira à esquerda na bifurcacao
+3. Segue ate a pista da esquerda
 2. Faz o **Slalom** e prossegue até a área dos creepers
 3. Pega o creeper **verde** e deposita na drop area da pista do centro
 4. Volta para posição inicial
 
 **Requisitos de projeto de software**:
 
-- [ ] código deve usar classes
-- [ ] código deve usar máquina de estados
-- [ ] é usado controle proporcional para o robô seguir a linha
+- Mesmo do **C**
 
 **Nota final desta missão:** 6,5
 
@@ -181,8 +196,9 @@ A missão final é a mesma da **Missão B**, mas com um adendo: qualquer uma das
 
 
 !!! people "Contribuições"
-    - ![Igor](/robotica-computacional/equipe/igor.jpg) **Igor Montagner** *Professor*
-    - ![Diego](/robotica-computacional/equipe/diego.jpg) **Diego Pavan Soler** *Prof. Auxiliar*
+    - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Professor*
+    - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
     - ![Rogério](/robotica-computacional/equipe/rogerio.jpeg) **Rogério Cuenca** *Técnico de lab*
+    - ![Igor](/robotica-computacional/equipe/igor.jpg) **Igor Montagner** *Professor-23a*
 
 
