@@ -7,7 +7,7 @@ O objetivo deste projeto, realizado no contexto da disciplina, é programar um T
 Os grupos, compostos por quatro integrantes, deverão trabalhar juntos utilizando o repositório do GitHub Classroom disponibilizado. 
 
 
-[Link para tarefa do GH Classroom](https://classroom.github.com/a/4tk_fGP5){ .ah-button }
+[Link para tarefa do GH Classroom](https://classroom.github.com/a/e-E9R5E1){ .ah-button }
 
 **Data de Entrega: 01/12 23:59**
 
@@ -18,7 +18,7 @@ O repositório do Github Classroom conterá apenas o arquivo README. O primeiro 
 Após essa etapa, os demais membros devem clonar o repositório ROS na pasta `~/catkin_ws/src` utilizando o comando:
 
 ```bash
-git clone SEU_REPO_AQUI ~/catkin_ws/src/projeto-robcomp
+git clone SEU_REPO_AQUI ~/catkin_ws/src/
 ```
 
 É essencial que **todos os integrantes do grupo** atualizem os repositórios locais para obter a pista do projeto. Utilize os comandos a seguir para isso:
