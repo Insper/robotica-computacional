@@ -42,7 +42,7 @@ Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado
 
 ## Descrição das Missões
 
-O projeto é composto por várias missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. É preciso concluir todas as missões anteriores para obter a nota da missão subsequente. As missões envolvem os seguintes elementos:
+O projeto é composto por várias missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**. As missões envolvem os seguintes elementos:
 
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
@@ -178,7 +178,7 @@ Agora vamos integrar tudo, com objetivos que dependem da *MobileNet*
 4. Deposita o creeper na drop área requisitada
 5. Retorna ao ponto inicial
 
-!!! important
+!!! warning
     Para demonstrar o funcionamento do seu robô será necessário fazer vários testes:
 
     - combinações de creepers e ID diferentes
@@ -222,7 +222,7 @@ A missão final é a mesma da **Missão B**, mas com um adendo: qualquer uma das
 4. **controle proporcional** para andar na pista sem sair
 5. **planejamento e máquina de estados** para criar comportamento complexo a partir de estados "simples"
 
-!!! important
+!!! warning
     Aqui será necessário criar várias filmagens para validar. Isso dá um certo trabalho fazer no robô real, então algumas delas podem ser feitas no simulador. Faça várias combinações possíveis de
 
     - cores do creeper a ser pego
