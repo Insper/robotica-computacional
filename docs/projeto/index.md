@@ -7,7 +7,7 @@ O objetivo deste projeto, realizado no contexto da disciplina, é programar um T
 Os grupos, compostos por quatro integrantes, deverão trabalhar juntos utilizando o repositório do GitHub Classroom disponibilizado. 
 
 
-[Link para tarefa do GH Classroom](https://classroom.github.com/a/e-E9R5E1){ .ah-button }
+[Link para tarefa do GH Classroom](https://classroom.github.com/a/NkmSeO1t){ .ah-button }
 
 **Data de Entrega: 01/12 23:59**
 
