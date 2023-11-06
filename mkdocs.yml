@@ -126,7 +126,7 @@ nav:
       - "Avaliação Intermediária": provas/ai/enunciado.md
     - Projeto:
       - projeto/index.md
-      - projeto/atualizacoes.md
+      # - projeto/atualizacoes.md
       - "Exemplos":
         - projeto/exemplos/aruco/index.md
 
