@@ -27,6 +27,8 @@ Successfully created files in /home/borg/catkin_ws/src/projeto-robcomp. Please a
 Vamos criar um diretório para os programas Python:
 
 ```bash
+cd ~/catkin_ws/
+catkin_make
 cd ~/catkin_ws/src/projeto-robcomp
 mkdir scripts
 cd scripts
