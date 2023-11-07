@@ -40,7 +40,7 @@ Usando o simulador, modifique o arquivo `aleatorio.py` para criar um nó da ROS 
 
 4. Se a caixa for magenta, o robô deve se aproximar da caixa e parar a **20cm**, depois deve voltar para a posição de origem.
 
-5. Se a caixa for amarela, o robô deve se deslocar para trás, enquanto centraliza na caixa cyano, e parar a **20cm** de algum obstáculo, depois deve voltar para a posição de origem.
+5. Se a caixa for amarela, o robô deve se deslocar para trás, enquanto centraliza na caixa amarela, e parar a **20cm** de algum obstáculo, depois deve voltar para a posição de origem.
 
 6. Se não encontrar nada, rode novamente.
 
