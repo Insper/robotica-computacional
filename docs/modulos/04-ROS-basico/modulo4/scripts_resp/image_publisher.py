@@ -33,7 +33,6 @@ class ImagePublisher():
 		# Subscribers
 		self.bridge = CvBridge()
 		self.image_sub = rospy.Subscriber('/camera/image/compressed',CompressedImage,self.image_callback,queue_size=1,buff_size = 2**24)
-		self.color_sub
 		
 		# Publishers
 		self.image_pub = rospy.Publisher("/image_publisher/", Image, queue_size=1)
