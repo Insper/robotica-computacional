@@ -33,6 +33,7 @@ class ImagePublisher():
 		# Subscribers
 		self.bridge = CvBridge()
 		self.image_sub = rospy.Subscriber('/camera/image/compressed',CompressedImage,self.image_callback,queue_size=1,buff_size = 2**24)
+		self.color_sub
 		
 		# Publishers
 		self.image_pub = rospy.Publisher("/image_publisher/", Image, queue_size=1)
@@ -80,9 +81,11 @@ class ImagePublisher():
 			M = cv2.moments(cnt)
 			self.point.x = int(M['m10']/M['m00'])
 			self.point.y = int(M['m01']/M['m00'])
+			self.point.z = mask.shape[1] / 2
 		else:
 			self.point.x = -1
 			self.point.y = -1
+			self.point.z = -1
 
 	def control(self) -> None:
 		'''
@@ -98,7 +101,7 @@ class ImagePublisher():
 		self.rate.sleep()
 
 def main():
-	rospy.init_node('Controler')
+	rospy.init_node('Image')
 	control = ImagePublisher()
 	rospy.sleep(1)
 

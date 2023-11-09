@@ -2,7 +2,12 @@
 
 * Certifique-se que seu repositório está no diretório da ROS, `catkin_ws/src` e que você executou o comando `catkin_make` no diretório `catkin_ws`.
 
-* Depois use o comando `chmod +x catkin_ws/src/aps4/scripts/*.py` para tornar os arquivos `.py` executáveis.
+* Depois use os seguints comandos para tornar os arquivos `.py` executáveis.
+```bash
+roscd aps4/scripts
+chmod +x *.py
+```
+
 
 # Exercício 1
 Usando o simulador, modifique o arquivo `cor.py` para criar um nó da ROS que faça o seguinte.
@@ -35,7 +40,7 @@ Usando o simulador, modifique o arquivo `aleatorio.py` para criar um nó da ROS 
 
 4. Se a caixa for magenta, o robô deve se aproximar da caixa e parar a **20cm**, depois deve voltar para a posição de origem.
 
-5. Se a caixa for amarela, o robô deve se deslocar para trás, enquanto centraliza na caixa cyano, e parar a **20cm** de algum obstáculo, depois deve voltar para a posição de origem.
+5. Se a caixa for amarela, o robô deve se deslocar para trás, enquanto centraliza na caixa amarela, e parar a **20cm** de algum obstáculo, depois deve voltar para a posição de origem.
 
 6. Se não encontrar nada, rode novamente.
 

@@ -63,6 +63,6 @@ catkin_make
 
     As entregas da APS 4 são vídeos, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 4 - Github Classroom](https://classroom.github.com/a/IaH1w-pV)
+    [APS 4 - Github Classroom](https://classroom.github.com/a/LxO7SjNZ)
 
     A data final de entrega é **{{ data_APS4 }}**.

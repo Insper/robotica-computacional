@@ -36,6 +36,8 @@ Primeiramente entenda o a função `odom_callback`, ela recebe a mensagem do tó
     self.err = theta - self.yaw
     self.err = np.arctan2(np.sin(self.err), np.cos(self.err))  # Normaliza o erro para o intervalo [-π, π]
 ```
+??? details "Resposta"
+    [Resposta](../modulo4/scripts_resp/goto.py){ .ah-button }
 
 ## Q3 - Robô quadrado (Controle Proporcional)
 Modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em um quadrado utilizando controle proporcional.
