@@ -20,7 +20,7 @@ extra:
     data_APS3: 25/09
     data_APS4: 13/11
     avaliacao_CV: 02/10
-    data_PF: 04/12
+    data_PF: 05/12
     data_AI: 02/10
     # COlocar links do classroom
 
@@ -122,7 +122,8 @@ nav:
       - "APS 4": aps/aps4/enunciado.md
     #   - revisaoPF.md
     - Provas:
-      - "Simulado": provas/simulado/enunciado.md
+      - "Simulado_AI": provas/simulado/enunciado.md
+      - "Simulado_PF": provas/simulado_pf/README.md
       - "Avaliação Intermediária": provas/ai/enunciado.md
     - Projeto:
       - projeto/index.md
