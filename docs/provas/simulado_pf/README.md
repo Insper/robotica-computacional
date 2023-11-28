@@ -20,6 +20,8 @@ Observações de avaliações nesta disciplina:
 
 ## Instruções para a prova
 
+**Link Classroom: ** https://classroom.github.com/a/jMp3s1SY
+
 Como a prova é um projeto ROS, é necessário colocá-la dentro da pasta de projetos ROS `~/catkin_ws/src`. Você pode fazer isso executando os comandos abaixo, substituindo `<REPO>` por seu repositório da PF.
 
 ```
