@@ -38,6 +38,12 @@ Para iniciar a simulação da pista do projeto, execute o comando abaixo.
 roslaunch my_simulation pista23-B.launch
 ```
 
+Para habilitar controles da garra
+
+```bash
+roslaunch mybot_description mybot_control2.launch
+```
+
 Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
 ## Descrição das Missões
