@@ -23,7 +23,7 @@ section.progress-section.show iframe {
 A nota será composta segundo a seguinte fórmula:
 
 ```
-N = 0,15 APS + 0,4 Projeto + 0,2 AI + 0,25 PF
+N = 0,2 APS + 0,3 Projeto + 0,2 AI + 0,3 PF
 ```
 onde:
 
