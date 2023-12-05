@@ -125,6 +125,7 @@ nav:
       - "Simulado_AI": provas/simulado/enunciado.md
       - "Simulado_PF": provas/simulado_pf/README.md
       - "Avaliação Intermediária": provas/ai/enunciado.md
+      - "Prova Final": provas/pf/README.md
     - Projeto:
       - projeto/index.md
       # - projeto/atualizacoes.md
