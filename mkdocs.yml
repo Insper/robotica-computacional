@@ -19,10 +19,8 @@ extra:
     data_APS2: 14/09
     data_APS3: 25/09
     data_APS4: 13/11
-    avaliacao_CV: 02/10
     data_PF: 05/12
     data_AI: 02/10
-    # COlocar links do classroom
 
 markdown_extensions:
   - toc:
@@ -56,78 +54,96 @@ plugins:
     - active-handout
     - mknotebooks
 
-
 nav:
     - index.md
-    - Infra:
-      - guias-infra/index.md
-      - Linux:
-        - guias-infra/ssd-linux/index.md
-        - "Primeiro boot com SSD":
-            - guias-infra/ssd-linux/recebi-meu-ssd/index.md
-            - guias-infra/ssd-linux/recebi-meu-ssd/windows.md
-            - guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
-        - guias-infra/ssd-linux/primeiros-passos/index.md
-        - guias-infra/ssd-linux/guia-linux/index.md
-        - guias-infra/ssd-linux/git-e-github/index.md
-        - guias-infra/ssd-linux/git-e-github/pull_template.md
-      - Robô Simulado:
-        - guias-infra/robo-simulado/index.md
-      - Robô TurtleBot3:
-        - guias-infra/turtlebot3/index.md
-      - guias-infra/aps.md
-      - guias-infra/checagem.md
-    - Módulos:
-      - modulos/index.md
-      - "00 - Introdução":
-        - "Sobre o curso": modulos/00-intro/index.md
-        - modulos/00-intro/atividade-dia1.md
-        - "Para saber mais": modulos/00-intro/recursos-legais.md
-      - "01 - Imagens e Matrizes":
-        - modulos/01-imagens-e-matrizes/index.md
-        - "Atividades":
-          - "Leitura de imagens": modulos/01-imagens-e-matrizes/atividade1.ipynb
-          - "Percorrendo a imagem": modulos/01-imagens-e-matrizes/atividade2.ipynb
-          - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
-          - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
-          - "Classes em Python": modulos/01-imagens-e-matrizes/atividade5.ipynb
-      - "02 - Modelo de Câmera":
-        - modulos/02-modelo-de-camera/index.md
-        - "Atividades":
-          - "Segmentação usando HSV": modulos/02-modelo-de-camera/atividade1.ipynb
-          - "Morfologia Matemática": modulos/02-modelo-de-camera/atividade2.ipynb
-          - "Componentes Conexos": modulos/02-modelo-de-camera/atividade3.ipynb
-          - "Exemplo de Resolução de Problemas": modulos/02-modelo-de-camera/atividade4.ipynb 
-          - "Regressão Linear": modulos/02-modelo-de-camera/atividade5.ipynb 
-      - "03 - Técnicas em Visão Computacional":
-        - modulos/03-visao/index.md
-        - "Atividades":
-          - "Convolução e Filtragem": modulos/03-visao/atividade1.ipynb
-          - "Transformada de Hough": modulos/03-visao/atividade2.ipynb
-          - "Detecção com NN": modulos/03-visao/atividade3.ipynb
-          - "Pose com Aruco": modulos/03-visao/atividade4.ipynb 
-      - "04 - ROS Básico":
-        - modulos/04-ROS-basico/index.md
-        - "Atividades":
-          - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
-          - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
-          - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
-          - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
-          - "Lista de exercícios da ROS - Parte 2": modulos/04-ROS-basico/atividades/atividade5.md
-    - APS:
-      - "Gravar Tela": aps/screen_record.md
-      - "APS 1": aps/aps1/enunciado.md
-      - "APS 2": aps/aps2/enunciado.md
-      - "APS 3": aps/aps3/enunciado.md
-      - "APS 4": aps/aps4/enunciado.md
-    #   - revisaoPF.md
-    - Provas:
-      - "Simulado_AI": provas/simulado/enunciado.md
-      - "Simulado_PF": provas/simulado_pf/README.md
-      - "Avaliação Intermediária": provas/ai/enunciado.md
-    - Projeto:
-      - projeto/index.md
-      # - projeto/atualizacoes.md
-      - "Exemplos":
-        - projeto/exemplos/aruco/index.md
+    - "Critérios de Aprovação": criterios.md
+
+    - Módulo 1 - Introdução do Curso: 
+      - modulos/01-intro/index.md
+      - Atividade Dia 1: modulos/01-intro/atividade-dia1.md
+      - Para Saber Mais: modulos/01-intro/recursos-legais.md
+      - Infra:
+        - modulos/01-intro/guias-infra/index.md
+        - Linux:
+          - modulos/01-intro/guias-infra/ssd-linux/index.md
+          - "Primeiro boot com SSD":
+              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/index.md
+              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/windows.md
+              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
+          - modulos/01-intro/guias-infra/ssd-linux/primeiros-passos/index.md
+          - modulos/01-intro/guias-infra/ssd-linux/guia-linux/index.md
+          - modulos/01-intro/guias-infra/ssd-linux/git-e-github/index.md
+          - modulos/01-intro/guias-infra/ssd-linux/git-e-github/pull_template.md
+        - Robô Simulado:
+          - modulos/01-intro/guias-infra/robo-simulado/index.md
+        - Robô TurtleBot3:
+          - modulos/01-intro/guias-infra/turtlebot3/index.md
+        - modulos/01-intro/guias-infra/aps.md
+      - Revisão Python: 
+        - Introdução a Classes: modulos/01-intro/atividades/classes.ipynb
+        - Dicionario e Funções: modulos/01-intro/revisao-python/dicionario-funcoes.md
+      - APS 1:
+        - Enunciado: modulos/01-intro/aps/enunciado.md
+        - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md
+
+      - Módulo 2 - Introdução à ROS:
+        - modulos/02-intro-ros/index.md
+
+
+
+
+
+    # - Módulos:
+    #   - modulos/index.md
+    #   - "00 - Introdução":
+    #     - "Sobre o curso": modulos/00-intro/index.md
+    #     - modulos/00-intro/atividade-dia1.md
+    #     - "Para saber mais": modulos/00-intro/recursos-legais.md
+    #   - "01 - Imagens e Matrizes":
+    #     - modulos/01-imagens-e-matrizes/index.md
+    #     - "Atividades":
+    #       - "Leitura de imagens": modulos/01-imagens-e-matrizes/atividade1.ipynb
+    #       - "Percorrendo a imagem": modulos/01-imagens-e-matrizes/atividade2.ipynb
+    #       - "Cookbook de Numpy": modulos/01-imagens-e-matrizes/atividade3.ipynb
+    #       - "Segmentação de imagens por cor": modulos/01-imagens-e-matrizes/atividade4.ipynb
+    #       - "Classes em Python": modulos/01-imagens-e-matrizes/atividade5.ipynb
+    #   - "02 - Modelo de Câmera":
+    #     - modulos/02-modelo-de-camera/index.md
+    #     - "Atividades":
+    #       - "Segmentação usando HSV": modulos/02-modelo-de-camera/atividade1.ipynb
+    #       - "Morfologia Matemática": modulos/02-modelo-de-camera/atividade2.ipynb
+    #       - "Componentes Conexos": modulos/02-modelo-de-camera/atividade3.ipynb
+    #       - "Exemplo de Resolução de Problemas": modulos/02-modelo-de-camera/atividade4.ipynb 
+    #       - "Regressão Linear": modulos/02-modelo-de-camera/atividade5.ipynb 
+    #   - "03 - Técnicas em Visão Computacional":
+    #     - modulos/03-visao/index.md
+    #     - "Atividades":
+    #       - "Convolução e Filtragem": modulos/03-visao/atividade1.ipynb
+    #       - "Transformada de Hough": modulos/03-visao/atividade2.ipynb
+    #       - "Detecção com NN": modulos/03-visao/atividade3.ipynb
+    #       - "Pose com Aruco": modulos/03-visao/atividade4.ipynb 
+    #   - "04 - ROS Básico":
+    #     - modulos/04-ROS-basico/index.md
+    #     - "Atividades":
+    #       - "Simulador do Turtlebot": modulos/04-ROS-basico/atividades/atividade1.md
+    #       - "Tópicos e mensagens na ROS": modulos/04-ROS-basico/atividades/atividade2.md
+    #       - "Visualização da ROS": modulos/04-ROS-basico/atividades/atividade3.md
+    #       - "Lista de exercícios da ROS": modulos/04-ROS-basico/atividades/atividade4.md
+    #       - "Lista de exercícios da ROS - Parte 2": modulos/04-ROS-basico/atividades/atividade5.md
+    # - APS:
+    #   - "Gravar Tela": aps/screen_record.md
+    #   - "APS 1": aps/aps1/enunciado.md
+    #   - "APS 2": aps/aps2/enunciado.md
+    #   - "APS 3": aps/aps3/enunciado.md
+    #   - "APS 4": aps/aps4/enunciado.md
+    # #   - revisaoPF.md
+    # - Provas:
+    #   - "Simulado_AI": provas/simulado/enunciado.md
+    #   - "Simulado_PF": provas/simulado_pf/README.md
+    #   - "Avaliação Intermediária": provas/ai/enunciado.md
+    # - Projeto:
+    #   - projeto/index.md
+    #   # - projeto/atualizacoes.md
+    #   - "Exemplos":
+    #     - projeto/exemplos/aruco/index.md
 
