@@ -90,8 +90,8 @@ def rodar_frame():
 
 def rodar_webcam():
     Arucos = Aruco3d()
-    # cap = cv2.VideoCapture(0) # webcam
-    cap = cv2.VideoCapture('img/aruco.mp4') # Confira se o video esta na pasta img
+    cap = cv2.VideoCapture(0) # webcam
+    # cap = cv2.VideoCapture('img/aruco.mp4') # Confira se o video esta na pasta img
 
     while True:
         ret, bgr = cap.read()
