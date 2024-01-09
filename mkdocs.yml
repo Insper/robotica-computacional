@@ -58,6 +58,7 @@ nav:
     - index.md
     - "Critérios de Aprovação": criterios.md
 
+
     - Módulo 1 - Introdução do Curso: 
       - modulos/01-intro/index.md
       - Atividade Dia 1: modulos/01-intro/atividade-dia1.md
@@ -86,6 +87,7 @@ nav:
         - Enunciado: modulos/01-intro/aps/enunciado.md
         - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md
 
+
       - Módulo 2 - Introdução à ROS:
         - modulos/02-intro-ros/index.md
         - Atividades:
@@ -96,6 +98,7 @@ nav:
           - Salvando Eventos na ROS: modulos/02-intro-ros/atividades/5-rosbag.md
         - APS 2:
           - Enunciado: modulos/02-intro-ros/aps/enunciado.md
+
 
       - Módulo 3 - Controlando o Robô:
         - modulos/03-laser-e-robo/index.md
