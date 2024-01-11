@@ -83,6 +83,7 @@ nav:
       - Revisão Python: 
         - Introdução a Classes: modulos/01-intro/atividades/1-classes.ipynb
         - Dicionario e Funções: modulos/01-intro/revisao-python/2-funcoes.ipynb
+      - Sobre APS: modulos/01-intro/aps.md
       - APS 1:
         - Enunciado: modulos/01-intro/aps/enunciado.md
         - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md

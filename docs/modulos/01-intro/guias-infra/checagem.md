@@ -1,6 +1,6 @@
 # Conferência da Infra
 
-Estes pontos serão checados pela equipe para cada aluno. Se forem feitos até a data limite de cada item e o aluno já segue os critérios de aprovação, resultam em **0,5** pontos na média.
+Estes pontos serão checados pela equipe para cada aluno.
 
 ## Linux
 
