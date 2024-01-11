@@ -81,8 +81,8 @@ nav:
           - modulos/01-intro/guias-infra/turtlebot3/index.md
         - modulos/01-intro/guias-infra/aps.md
       - Revisão Python: 
-        - Introdução a Classes: modulos/01-intro/atividades/classes.ipynb
-        - Dicionario e Funções: modulos/01-intro/revisao-python/dicionario-funcoes.md
+        - Introdução a Classes: modulos/01-intro/atividades/1-classes.ipynb
+        - Dicionario e Funções: modulos/01-intro/revisao-python/2-funcoes.ipynb
       - APS 1:
         - Enunciado: modulos/01-intro/aps/enunciado.md
         - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md
