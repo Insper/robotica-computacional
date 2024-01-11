@@ -13,8 +13,6 @@ class Mapa:
         self.grade = np.random.choice([0, 1], size=(linhas, colunas), p=[0.9, 0.1]) * 2
         self.grade[-2:, :] = 0  # A última linha deve ser livre
         self.grade_init = self.grade.copy()
-        # 10% should be walls
-        print(f"Grade inicial:\n{self.grade}")
 
         self.posicao = (-1, 3)
         self.atualizar_posicao(self.posicao)
@@ -35,11 +33,14 @@ class Mapa:
         """
         Exibe a grade atual.
         """
+        plt.close()
         plt.figure(figsize=(6, 10))
         plt.imshow(self.grade, cmap='hot', interpolation='nearest')
         plt.axis('off')
         plt.grid(True)
-        plt.show()
+        plt.draw()
+        plt.savefig('mapa.png', bbox_inches='tight')
+        plt.pause(0.1)
 
 def main():
     grid = Mapa()

@@ -1,5 +1,5 @@
 import time
-from q1_aux import Mapa
+from util import Mapa
 
 class Control(): # Herdando de Mapa
     def __init__(self):
@@ -50,7 +50,7 @@ def main():
 
     i = 40
     
-    while not control.posicao[0] == 0 and i > 0:
+    while not control.robot_state == 'stop' and i > 0:
         control.control()
         time.sleep(1)
         i -= 1
