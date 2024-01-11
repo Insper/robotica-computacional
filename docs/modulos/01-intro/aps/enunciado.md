@@ -20,7 +20,7 @@ A parte visual do programa já está pronta, no arquivo `util.py`. A classe `Map
 ![mapa](./mapa.png)
 A cor branca representa células com obstáculos (2), a cor vermelha representa o carro (1) e a cor branca representa células livres (0).
 
-### Instruções:
+## Instruções:
 
 Sua tarefa é implementar a lógica de movimentação do carro usando a classe Control, que herda de Mapa. Na função `control` você deve verificar no mapa, se há algum obstáculo na linha de acima do carro. Se não houver obstáculo, o carro deve entrar no estado `forward`, modificando a variável `self.robot_state` para `forward`. Se houver obstáculo, o carro deve move para a esquerda ou direita, dependendo de onde há espaço.
 
@@ -30,7 +30,7 @@ Note que o carro começa na ultima linha e deve chegar na primeira linha, ou sej
 
 Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode testar seu código executando o arquivo `ex1.py`.
 
-### Critérios de Avaliação:
+## Critérios de Avaliação:
 1. **(+ 0,5)** Faz a herança da classe `Mapa` corretamente. 
 2. **(+ 1,0)** Na função `control`, implementa a lógica para escolher a ação do carro, modificando a variavel `self.robot_state` de acordo com a situação.
 3. **(+ 1,0)** Desenvolve corretamente as ações do carro, chamando o método `atualizar_posicao` da classe `Mapa`.
@@ -39,18 +39,18 @@ Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode test
 
 A entrega será feita pelo repositório do grupo no github e por um vídeo no youtube.
 
-Link do Vídeo: ____________________________
+## Link do Vídeo: ____________________________
 
 # Exercício 2 (6 pontos)
 
 O objetivo deste exercício é completar os tutoriais relacionados a Linux, Simulador e Turtlebot3. Estes tutoriais são essenciais para desenvolver uma compreensão sólida das ferramentas e tecnologias que serão utilizadas nas próximas etapas do curso.
 
-### Instruções:
+## Instruções:
 
 * Acesse os tutoriais através do link fornecido: [Guias-Infratestrutura]().
 
 * Complete cada tutorial com atenção, seguindo todas as instruções e procedimentos detalhados.
 
-### Critérios de Avaliação:
+## Critérios de Avaliação:
 
 A conclusão deste exercício será avaliada por um professor ou técnico. Para isso, você deverá demonstrar que completou cada tutorial de acordo com a planilha de checagem disponível no seguinte link: [Planilha de Checagem]().
