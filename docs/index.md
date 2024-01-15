@@ -22,7 +22,6 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
 
 Teremos os seguintes horários de atendimento, ambos na sala 404. 
 
-- **TER** 18:00 (Ana Laiz + Diego)
 - **QUI** 18:00 (Diego) 
 
 Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
@@ -37,7 +36,6 @@ Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
     - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
     - ![Licia](equipe/licia.jpeg) **Licia Lima** *Técnica de lab*
     - ![Rogério](equipe/rogerio.jpeg) **Rogério Cuenca** *Técnico de lab*
-    - ![Ana Laiz](equipe/ana-laiz.jpg) **Ana Laiz Farias** *Ninja*
 
 
 Robótica é uma disciplina que já teve contribuições de muitas pessoas. As pessoas abaixo já contribuíram para a disciplina no passado.

@@ -1,4 +1,0 @@
-# Lista dos videos pedios na APS
-# Inserir um link por linha, na ordem em que foram pedidos
-# se não fez o exercício, deixe um traço -- na linha correspondente
- 
