@@ -56,7 +56,7 @@ plugins:
 
 nav:
     - index.md
-    # - Critérios de Aprovação: criterios.md
+    - "Critérios de Aprovação": criterios.md
 
 
     # - Unidade 1:
