@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 from numpy.linalg import norm
 import numpy as np
-
 import math
 
 def mostra_imagem(img, title=None, ticks=False, subfig=False):
@@ -23,7 +22,6 @@ def mostra_imagem(img, title=None, ticks=False, subfig=False):
     if title is not None: plt.title(title)
     if not subfig:
         plt.show()
-
 
 def acumulador_hough_retas(image, rho, theta):
     '''
@@ -48,7 +46,6 @@ def acumulador_hough_retas(image, rho, theta):
     
     return votes
 
-
 def desenha_retas(image, lines):
     '''
     Desenha as retas encontradas pela transformada de Hough
@@ -71,7 +68,6 @@ def desenha_retas(image, lines):
     
     return imout
 
-
 def desenha_circulos(image, circles):
     '''
     Desenha as circunferências encontradas pela transformada de Hough
@@ -88,31 +84,31 @@ def desenha_circulos(image, circles):
     
     return imout
 
+def auto_canny(image, sigma=0.33):
+    # compute the median of the single channel pixel intensities
+    v = np.median(image)
 
+    # apply automatic Canny edge detection using the computed median
+    lower = int(max(0, (1.0 - sigma) * v))
+    upper = int(min(255, (1.0 + sigma) * v))
+    edged = cv2.Canny(image, lower, upper)
 
+    # return the edged image
+    return edged
 
-if __name__ == "__main__":
-    # Imagem com apenas um ponto
-    h = 100
-    w = 100
-    img1 = np.zeros((h, w), dtype=np.uint8)
-    img1[h//2, w//2] = 255
-    img1[h-1, w-1] = 255
-    img1[h//2, w-2] = 255
+def non_max_suppression(lines, rho_interval=40, theta_interval=np.radians(20)):
+    good_lines = []
+    for line in lines:
+        candidate = True
+        rho, theta= line[0]
+            
+        for good_line in good_lines:
+            rho2, theta2 = good_line[0]
+            if abs(abs(rho2)-abs(rho)) < rho_interval and min(abs(theta-theta2),abs(abs(theta-theta2)-math.pi) ) < theta_interval:
+                candidate = False
+                break
+        if candidate:
+            good_lines.append([[rho, theta]])
 
-    linhas1 = cv2.HoughLines(img1, 1, np.pi/180, 1)
-    circs1 = cv2.HoughCircles(img1, cv2.HOUGH_GRADIENT, dp=1, minDist=50, param1=110, param2=4, minRadius=10, maxRadius=50)
-
-    votes1 = acumulador_hough_retas(img1, 1, np.pi/180) 
-
-    plt.subplot(2, 2, 1)
-    mostra_imagem(img1, subfig=True)
-    plt.subplot(2, 2, 2)
-    mostra_imagem(votes1, subfig=True)
-    plt.subplot(2, 2, 3)
-    mostra_imagem(desenha_retas(img1, linhas1), subfig=True)
-    plt.subplot(2, 2, 4)
-    mostra_imagem(desenha_circulos(img1, circs1))
-    
-    
+    return good_lines
 

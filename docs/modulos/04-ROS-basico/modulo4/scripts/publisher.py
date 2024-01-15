@@ -4,8 +4,8 @@ import rospy
 from std_msgs.msg import ???
 
 """ 
-Running each line in a different terminal
-	roslaunch roscore
+Rode cada linha em um terminal diferente
+	roscore
 	rosrun modulo4 publisher.py
 	rosrun modulo4 subscriber.py
 """
