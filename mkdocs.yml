@@ -61,12 +61,12 @@ nav:
 
 
     - Unidade 1:
-      - Módulo 1 - Introdução do Curso: 
+      - Módulo 1 - Introdução ao Curso: 
         - modulos/01-intro/index.md
         - "Atividade Dia 1": modulos/01-intro/atividade-dia1.md
         - "Para Saber Mais": modulos/01-intro/recursos-legais.md
         - Atividades:
-          - Infra:
+          - 1-Infra:
             - modulos/01-intro/atividades/guias-infra/index.md
             - Linux:
               - modulos/01-intro/atividades/guias-infra/ssd-linux/index.md
@@ -83,9 +83,9 @@ nav:
             - Robô TurtleBot3:
               - modulos/01-intro/atividades/guias-infra/turtlebot3/index.md
             - modulos/01-intro/atividades/guias-infra/aps.md
-          - Revisão Python: 
-            - "Introdução a Classes": modulos/01-intro/atividades/1-classes.ipynb
-            - "Dicionario e Funções": modulos/01-intro/atividades/2-funcoes.ipynb
+          - 2-Revisão Python: 
+            - "2.1-Introdução a Classes": modulos/01-intro/atividades/21-classes.ipynb
+            - "2.2-Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
         - APS 1:
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
