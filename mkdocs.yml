@@ -59,57 +59,60 @@ nav:
     - "Critérios de Aprovação": criterios.md
 
 
-    - Módulo 1 - Introdução do Curso: 
-      - modulos/01-intro/index.md
-      - Atividade Dia 1: modulos/01-intro/atividade-dia1.md
-      - Para Saber Mais: modulos/01-intro/recursos-legais.md
-      - Infra:
-        - modulos/01-intro/guias-infra/index.md
-        - Linux:
-          - modulos/01-intro/guias-infra/ssd-linux/index.md
-          - "Primeiro boot com SSD":
-              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/index.md
-              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/windows.md
-              - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
-          - modulos/01-intro/guias-infra/ssd-linux/primeiros-passos/index.md
-          - modulos/01-intro/guias-infra/ssd-linux/guia-linux/index.md
-          - modulos/01-intro/guias-infra/ssd-linux/git-e-github/index.md
-          - modulos/01-intro/guias-infra/ssd-linux/git-e-github/pull_template.md
-        - Robô Simulado:
-          - modulos/01-intro/guias-infra/robo-simulado/index.md
-        - Robô TurtleBot3:
-          - modulos/01-intro/guias-infra/turtlebot3/index.md
-        - modulos/01-intro/guias-infra/aps.md
-      - Revisão Python: 
-        - Introdução a Classes: modulos/01-intro/atividades/1-classes.ipynb
-        - Dicionario e Funções: modulos/01-intro/revisao-python/2-funcoes.ipynb
-      - Sobre APS: modulos/01-intro/aps.md
-      - APS 1:
-        - Enunciado: modulos/01-intro/aps/enunciado.md
-        - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md
+    - Unidade 1:
+      - Módulo 1 - Introdução do Curso: 
+        - modulos/01-intro/index.md
+        - Atividade Dia 1: modulos/01-intro/atividade-dia1.md
+        - Para Saber Mais: modulos/01-intro/recursos-legais.md
+        - Infra:
+          - modulos/01-intro/guias-infra/index.md
+          - Linux:
+            - modulos/01-intro/guias-infra/ssd-linux/index.md
+            - "Primeiro boot com SSD":
+                - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/index.md
+                - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/windows.md
+                - modulos/01-intro/guias-infra/ssd-linux/recebi-meu-ssd/mac-os.md
+            - modulos/01-intro/guias-infra/ssd-linux/primeiros-passos/index.md
+            - modulos/01-intro/guias-infra/ssd-linux/guia-linux/index.md
+            - modulos/01-intro/guias-infra/ssd-linux/git-e-github/index.md
+            - modulos/01-intro/guias-infra/ssd-linux/git-e-github/pull_template.md
+          - Robô Simulado:
+            - modulos/01-intro/guias-infra/robo-simulado/index.md
+          - Robô TurtleBot3:
+            - modulos/01-intro/guias-infra/turtlebot3/index.md
+          - modulos/01-intro/guias-infra/aps.md
+        - Revisão Python: 
+          - Introdução a Classes: modulos/01-intro/atividades/1-classes.ipynb
+          - Dicionario e Funções: modulos/01-intro/revisao-python/2-funcoes.ipynb
+        - Sobre APS: modulos/01-intro/aps.md
+        - APS 1:
+          - Enunciado: modulos/01-intro/aps/enunciado.md
+          - Checagem da Infra: modulos/01-intro/guias-infra/checagem.md
 
 
-      - Módulo 2 - Introdução à ROS:
-        - modulos/02-intro-ros/index.md
-        - Atividades:
-          - Usando o Gazebo: modulos/02-intro-ros/atividades/1-simulador.md
-          - Topicos na ROS: modulos/02-intro-ros/atividades/2-topicos.md
-          - Criando uma Lib: modulos/02-intro-ros/atividades/3-custom-lib.md
-          - Criando uma Mensagem: modulos/02-intro-ros/atividades/4-custom-msg.md
-          - Salvando Eventos na ROS: modulos/02-intro-ros/atividades/5-rosbag.md
-        - APS 2:
-          - Enunciado: modulos/02-intro-ros/aps/enunciado.md
+        - Módulo 2 - Introdução à ROS:
+          - modulos/02-intro-ros/index.md
+          - Atividades:
+            - Usando o Gazebo: modulos/02-intro-ros/atividades/1-simulador.md
+            - Topicos na ROS: modulos/02-intro-ros/atividades/2-topicos.md
+            - Criando uma Lib: modulos/02-intro-ros/atividades/3-custom-lib.md
+            - Criando uma Mensagem: modulos/02-intro-ros/atividades/4-custom-msg.md
+            - Salvando Eventos na ROS: modulos/02-intro-ros/atividades/5-rosbag.md
+          - APS 2:
+            - Enunciado: modulos/02-intro-ros/aps/enunciado.md
 
 
-      - Módulo 3 - Controlando o Robô:
-        - modulos/03-laser-e-robo/index.md
-        - Atividades:
-          - Estrutura Basica de um Nó: modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
-          - Entendendo a Odometria: modulos/03-laser-e-robo/atividades/2-odometria.md
-          - Visualização na ROS: modulos/03-laser-e-robo/atividades/3-visualizacao.md
-          - Entendendo o Laser: modulos/03-laser-e-robo/atividades/4-laser.md
-        - APS 3:
-          - Enunciado: modulos/03-laser-e-robo/aps/enunciado.md
+        - Módulo 3 - Controlando o Robô:
+          - modulos/03-laser-e-robo/index.md
+          - Atividades:
+            - Estrutura Basica de um Nó: modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
+            - Entendendo a Odometria: modulos/03-laser-e-robo/atividades/2-odometria.md
+            - Visualização na ROS: modulos/03-laser-e-robo/atividades/3-visualizacao.md
+            - Entendendo o Laser: modulos/03-laser-e-robo/atividades/4-laser.md
+          - APS 3:
+            - Enunciado: modulos/03-laser-e-robo/aps/enunciado.md
+      
+      - Unidade 2:
 
 
 
