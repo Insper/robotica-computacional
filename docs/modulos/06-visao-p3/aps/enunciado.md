@@ -1,0 +1,1 @@
+# 1. Robo centraliza no creeper desejado COR+ID

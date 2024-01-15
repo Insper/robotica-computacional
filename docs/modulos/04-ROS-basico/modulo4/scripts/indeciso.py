@@ -8,7 +8,7 @@ from geometry_msgs.msg import ???
 from sensor_msgs.msg import LaserScan
 
 """ 
-Rode cada linha em um terminal diferente
+Running
 	roslaunch my_simulation paralelas.launch
 	rosrun modulo4 indeciso.py
 """

@@ -84,19 +84,18 @@ Vamos agora aprnder como confirguardar a sua chave SSH no GitHub.
 
 ### Gerando uma chave SSH
 
-Primeiramente devemos criar uma chave SSH, para isso, abra um terminal e execute o seguinte comando substituindo o endereço de e-mail pelo seu GitHub. Pressione enter para aceitar o local padrão para salvar a chave, ao menos que você deseje salvar com outro nome.
+Primeiramente devemos criar uma chave SSH, para isso, abra um terminal e execute o seguinte comando substituindo o endereço de e-mail pelo seu GitHub, não pressione enter novamente.
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-Você receberá uma mensagem parecida com a imagem a seguir, se desejar adicionar uma senha para a chave, digite uma senha e pressione enter, se não quiser adicionar uma senha, pressione enter sem digitar nada. Se adicionar uma senha, você precisará digitar a senha toda vez que usar a chave.
+Quando você pressionar enter, o terminal vai pedir para você escolher um local para salvar a chave, mude o local para o seguinte:
+**TODO: colocar o caminho da pasta .ssh**
 
-![saida1](imgs/saida1.jpeg)
-
-Por fim, você receberá uma mensagem parecida com a imagem a seguir, isso significa que a chave foi criada com sucesso.
-
-![saida2](imgs/saida2.jpeg)
+```bash
+~/.ssh/id_ed25519
+```
 
 Agora vamos adicionar a chave ao ssh-agent, o ssh-agent é um programa que roda em segundo plano e armazena as chaves privadas usadas para autenticação SSH, ele é responsável por segurar as chaves privadas e usar quando necessário.
 
@@ -105,31 +104,83 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-Você receberá uma mensagem parecida com a imagem a seguir.
-
-![saida3](imgs/saida3.jpeg)
-
 ### Adicionando a chave SSH ao GitHub
 
 Agora vamos adicionar a chave SSH que criamos ao GitHub, para isso, vamos copiar o conteudo do arquivo `id_ed25519.pub` e cola-lo na sua página de configurações do GitHub. Voce pode fazer isso abri o arquivo com o seu editor de texto favorito e copiar o conteudo, ou pode usar o comando abaixo:
 ```bash
-sudo apt install xclip
+apt install xclip
 alias pbcopy="xclip -sel clip"
-pbcopy < ~/.ssh/id_ed25519.pub
+pbcopy < ~/.ssh/ubuntuBase.pub
 ```
 
-Após esse último comando, o conteúdo da sua chave SSH estará na sua área de transferência, agora basta colar na sua página de configurações do GitHub.
 Para acessar a página de configurações, clique na sua foto de perfil no canto superior direito da página do GitHub, em seguida, clique em **Settings**.
 
 ![passo1](imgs/passo1.png)
 
 Depois, na barra lateral esquerda, clique em **SSH and GPG keys**. Em seguida, clique em **New SSH key** ou **Add SSH key**.
 
-![passo2](imgs/passo2.png)
-
 Preencha o campo **Title** com um nome descritivo para a chave, por exemplo, **SSD Robotica**. Em seguida, cole a chave no campo **Key**. Finalmente, clique em **Add SSH key**.
+
+![passo2](imgs/passo2.png)
+**TODO: Imagem passo2**
 
 Agora não será mais nescessario digitar seu usuário e senha toda vez que você executar um comando git, o GitHub vai reconhecer a sua chave SSH e vai autenticar você automaticamente.
 
-### Clonando repositorios
-Agora, quando for clonar um repositório do github, pegue o link clicando no botão **SSH**
+## Criando um **personal access token**
+
+Atualmente, o GitHub oferece suporte a dois tipos de tokens, nós vamos de clássico. 
+
+!!! tip
+    Para saber detalhes e diferenças entre os tipos de tokens do GitHub e porque eles existem (Spoiler -> é por segurança) consulte a [documentação aqui](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+Na página do seu GitHub -> clique na sua foto -> “Configuração” ou **“Settings”**
+
+![passo1](imgs/passo1.png)
+
+Em seguida, **Na barra lateral esquerda**, lá embaixo ->  **Developer settings.** -> **Personal access tokens** -> Tokens (classic)
+
+![passo2](imgs/passo2.png)
+
+![passo3](imgs/passo3.png)
+
+![passo4](imgs/passo4.png)
+
+Finalmente -> **Generate new token (classic)**
+
+![passo5](imgs/passo5.png)
+
+!!! tip
+    Você pode criar quantos tokens você quiser, apenas certifique-se de salvar a chave hash com carinho.
+
+Dê um nome para o seu token, como você pode criar vários, ter um bom nome ajuda com a organização.
+
+![passo6](imgs/passo6.png)
+
+Role a página até o final -> Generate token.
+
+![passo7](imgs/passo7.png)
+
+Salve com muito carinho o token gerado, ele **não vai aparecer novamente,** se você perder o token, será necessário criar outro.
+
+![passo8](imgs/passo8.png)
+
+É possível salvar o seu token no gerenciador de credenciais do git.
+
+!!! warning
+    Você precisa estar dentro de um repositório git para conseguir armazenar a sua credencial.
+
+Na primeira vez que você fizer um push para um repositório remoto, o git solicitará suas credenciais, como nome de usuário e seu token, Da próxima vez, ele vai usar o mesmo token, que permanecerá armazenado com segurança em seu Gerenciador de Credenciais dentro do repositório, basta abrir um terminal e executar os seguintes comandos:
+
+```bash
+$> git config credential.helper store
+$> git push http://example.com/repo.git
+Username: SeuUserNameAqui
+Password: SeuTokenAqui
+```
+
+Pronto, após essa configuração, não será mais necessário utlizar o token explicitamente para autenticar os seus commits, ele estará armazenado no gerenciador de credenciais do Git e será usado automaticamente.
+
+!!! tip
+    Se quiser entender melhor como funciona o sistema de gerenciamento de credenciais do Git, a documentação é essa [aqui](https://git-scm.com/docs/git-credential-store).
+
+    Se quiser se começar a entender como funciona o GitHub, comece por [aqui](https://docs.github.com/pt/get-started/quickstart).

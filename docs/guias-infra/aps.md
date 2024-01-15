@@ -1,38 +1,111 @@
 # Configuração da APS
 
-Todas as entregas da disciplina serão feita via um Github Classroom. Para cada APS será enviado um link com o convite do Github Classroom.
-O trabalho será em duplas, então será necessário criar sua equipe para as APS. Ao clicar no link de convite você será direcionado para uma página do Github Classroom, com as opções de criar uma equipe ou entrar em uma já existente, como na imagem abaixo.
+Todas as entregas da disciplina serão feita via um repositório Git para cada aluno. Acesse abaixo para aceitar o convite e iniciar seu trabalho. 
 
-![](github-classroom.png)
+[Link de convite](https://classroom.github.com/a/csDvCJXy){ .ah-button }
 
-Podem escolher qualquer nome para a equipe, mas é importante que os dois membros da dupla estejam na mesma equipe. Após criar a equipe, espere um momento que você será direcionado para um repositório privado, onde será feita a entrega da APS.
-
-Se você já completou o tutorial de configuração do git e gerou sua chave SSH, pode clonar o repositório lembrande de trocar para SSH no link do repositório. Se ainda não fez, siga o tutorial abaixo.
- 
-[Configure o seu Git](ssd-linux/git-e-github/index.md)
-
-Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e adicione o nome dos dois membros da dupla no local indicado. Após isso, faça um commit e um push para o repositório. A partir desse momento, vocês já podem começar a trabalhar na APS.
+O trabalho será em duplas, então será necessário criar sua equipe para as APS. 
 
 !!! warning
     As duplas serão as mesmas para todas APS. No projeto serão formados novos grupos.
 
-!!! warning
-    Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](ssd-linux/git-e-github/pull_template.md)
+## Primeiro acesso
 
-## Teste seu código da APS
+Todo o código de suporte da disciplina está público no repositório [Robótica Computacional APS]({{ repo_aps }}). Nesse guia iremos configurar seu repositório privado para acompanhar esse repo público.
 
-As APS serão testadas automaticamente. Para isso, você deve seguir as instruções abaixo.
+!!! important
+    Você deve ter recebido um repo novo privado. Copie o endereço do seu repo abaixo. Ele será usado no restante do guia. 
 
-```bash
-pip install pytest
-```
+    ![](endereco-repo-privado.png)
 
-No repositório da APS, execute o comando abaixo para testar seu código.
+Para começar, crie uma pasta nova para seu repositório de entregas e inicialize um repo vazio:
 
 ```bash
-pytest
+mkdir entregas-robotica
+cd entregas-robotica
+git init
 ```
 
-Se discordar do resultado do teste, verifique se seu código está seguindo o que foi pedido, leia com atenção o enunciado e a saída do teste. Se ainda assim discordar, entre em contato com os professores ou outro membro da equipe da disciplina.
+Primeiro vamos adicionar o repositório remoto dos arquivos de suporte e baixar o branch `main` (que contém os arquivos deste semestre)
 
-Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.
+```bash
+git remote add insper {{ repo_aps_git }}
+git fetch insper
+git checkout main
+```
+
+Agora vamos adicionar o repositório das suas entregas e já enviar o código de suporte:
+
+```bash
+git remote add entregas endereco_do_seu_repo_privado
+git push --set-upstream entregas main
+```
+
+Pronto! Com isso você já deve ter seu repositório local configurado e apontando para dois repositórios remotos:
+
+- **insper**: este repo contém todo o código de suporte para as atividades. É compartilhado por toda a sala e ninguém tem permissão de dar push nele.
+- **entregas**: este repo é só seu e contém seu trabalho apenas. Aqui irão somente as modificações feitas por você :)
+
+Você pode checar se tudo deu certo rodando `git branch -avv`. Você deve ver algo parecido como o abaixo:
+
+```bash
+deck@ubuntu-dev:~/Documents/entregas-robotica$ git branch -avv
+* main                  7329318 [entregas/main] Add readme.md
+  remotes/entregas/main 7329318 Add readme.md
+  remotes/insper/main   7329318 Add readme.md
+```
+
+!!! exercise
+    Para testar, edite o arquivo `README.md` e 
+    
+    - adicione seu nome no local indicado
+    - faça um commit
+    - envie as modificações para seu repositório privado com `git push`
+
+## Recebendo atualizações e novas APS
+
+Ao longo do semestre será liberado código das novas APS e possíveis atualizações nos testes. Siga este guia para atualizar seus arquivos de suporte.
+
+Vamos iniciar baixando as novidades do repositório de suporte:
+
+```bash
+git fetch insper
+```
+
+Vamos então incorporar as novidades no seu repositório local e enviar os novos arquivos pro seu repo privado. 
+
+```bash
+git switch main
+git merge insper/main
+git push
+```
+
+!!! exercise
+    Agora é só verificar que seus commits aparecem no seu repositório privado. Você pode ver isso rodando `git log`. Algo como o abaixo deve aparecer. Também pode checar online se os commits estão no repositório do *Github*.
+
+    ```bash
+    commit f0a444787de5bcf6c869cfda043e069a20a3300a (HEAD -> main, entregas/main)
+    Merge: 1996777 0f42021
+    Author: Igor Montagner <igordsm@gmail.com>
+    Date:   Tue Jan 31 11:50:35 2023 -0300
+
+        Merge
+
+    commit 1996777386d12aea6c2869e7943c06e6895e3b08
+    Author: Steam Deck User <deck@ubuntu-dev.steamdeck>
+    Date:   Tue Jan 31 11:47:54 2023 -0300
+
+        Add meu nome
+
+    commit 0f420212b147d5f2a60c652b645127f4276624e4 (insper/main)
+    Author: Igor Montagner <igordsm@gmail.com>
+    Date:   Tue Jan 31 11:46:28 2023 -0300
+
+        Adicionando arquivos iniciais para APS01
+
+    commit 73293182f28cd7f11796c5c01ccb7231d817554a
+    Author: Igor Montagner <igordsm@gmail.com>
+    Date:   Tue Jan 31 11:32:50 2023 -0300
+
+        Add readme.md
+    ``` 

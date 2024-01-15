@@ -28,7 +28,6 @@ rosrun rviz rviz
 ```
 
 Quando o programa abrir, faça as seguites modificações:
-
 * Mude a celula `Fixed Frame` para `base_scan`
 * Ao clica no botão `Add` adicione `LaserScan`
 * No LaserScan mude a celula `topic` para `/scan`

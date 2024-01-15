@@ -3,8 +3,9 @@
 import rospy
 
 """ 
-Rode cada linha em um terminal diferente
+Running
 	rosrun modulo4 base.py
+
 """
 
 class Control():

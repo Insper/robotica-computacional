@@ -66,17 +66,26 @@ export TURTLEBOT3_MODEL=burger
     
 Feche o terminal e abra um novo para carregar as alterações. Feche também qualquer terminal no VS Code também.
 
+
 ## Verificando se o simulador funciona
+
 
 Tentar ver se o simulador do robô funciona:
 
 ```bash
 export TURTLEBOT3_MODEL=burger
-roslaunch my_simulation pista_s2.launch
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
 ```
 
 É comum que na primeira vez que se executa o simulador haja demora para este abrir porque os modelos 3D estão sendo baixados. Seu computador precisa ter acesso à internet para funcionar.
 
+### Mudando o cenário
+Podemos trocar o cenário mudando o `launch` file. Este abre com o robô em uma casa
+
+```bash    
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_gazebo pista_s2.launch
+```
 ### Visualizar a câmera do robô
 Em outro terminal execute o seguinte comando para visualizar o conteudo da câmera do robô:
 
@@ -99,4 +108,4 @@ Neste ponto sua tela deve estar parecida com a figura abaixo:
 Apertando os botões em destaque na imagem acima, você pode mover (verde) ou rotacionar (vermelho) os objetos no mundo simulado. Este recurso pode ser utilizado para mover o robô para o local específico onde deseja-se testar algum módulo do robô.
 
 ### Retornar o mundo simulado para posição inicial
-Apertando as teclas `ctrl + r` você pode reiniciar o mundo simulado.
+Apertando as teclas `alt + r` você pode reiniciar o mundo simulado.
