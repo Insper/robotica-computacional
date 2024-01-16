@@ -118,5 +118,6 @@ nav:
         - modulos/04-visao-p1/index.md
         - Atividades:
           - "Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+          - "Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
         - APS 4:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
