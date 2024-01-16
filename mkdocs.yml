@@ -117,9 +117,6 @@ nav:
       - Módulo 4 - Imagens e Matrizes:
         - modulos/04-visao-p1/index.md
         - Atividades:
-          - "Estrutura Basica de um Nó": modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
-          - "Entendendo a Odometria": modulos/03-laser-e-robo/atividades/2-odometria.md
-          - "Visualização na ROS": modulos/03-laser-e-robo/atividades/3-visualizacao.md
-          - "Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-        - APS 3:
+          - "Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+        - APS 4:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
