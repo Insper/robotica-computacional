@@ -113,4 +113,13 @@ nav:
         - APS 3:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
       
-    #   - Unidade 2:
+    - Unidade 2:
+      - Módulo 4 - Imagens e Matrizes:
+        - modulos/04-visao-p1/index.md
+        - Atividades:
+          - "Estrutura Basica de um Nó": modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
+          - "Entendendo a Odometria": modulos/03-laser-e-robo/atividades/2-odometria.md
+          - "Visualização na ROS": modulos/03-laser-e-robo/atividades/3-visualizacao.md
+          - "Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
+        - APS 3:
+          - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md

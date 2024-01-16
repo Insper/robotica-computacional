@@ -5,7 +5,7 @@
 
 Bem vindos ao curso de Robótica Computacional! Neste curso vamos aprender a programar robôs móveis, utilizando a linguagem Python e o sistema operacional ROS 2.
 
-Neste primeiro módulo vamos aprender a configurar o infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
+Neste primeiro módulo vamos aprender a configurar a infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
 
 ## Atividades
 As atividades deste módulo focam em introduzir técnicas úteis para 
