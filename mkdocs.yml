@@ -66,10 +66,10 @@ nav:
         - "Atividade Dia 1": modulos/01-intro/atividade-dia1.md
         - "Para Saber Mais": modulos/01-intro/recursos-legais.md
         - Atividades:
-          - 1-Infra:
-            - modulos/01-intro/atividades/guias-infra/index.md
-            - Linux:
-              - modulos/01-intro/atividades/guias-infra/ssd-linux/index.md
+          - 1 - Infra:
+            - "Começe Aqui!": modulos/01-intro/atividades/guias-infra/index.md
+            - 1.1 - Linux:
+              - "Início": modulos/01-intro/atividades/guias-infra/ssd-linux/index.md
               - "Primeiro boot com SSD":
                   - "Primeiro Boot": modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/index.md
                   - "Primeiro Boot - Windows": modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows.md
@@ -78,13 +78,11 @@ nav:
               - "Guia básico de Linux": modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/index.md
               - "Configure o seu Git": modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/index.md
               # - "Pull Template": modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/pull_template.md
-            - Robô Simulado:
-              - modulos/01-intro/atividades/guias-infra/robo-simulado/index.md
-            - Robô TurtleBot3:
-              - modulos/01-intro/atividades/guias-infra/turtlebot3/index.md
-          - 2-Revisão Python: 
-            - "2.1-Introdução a Classes": modulos/01-intro/atividades/21-classes.ipynb
-            - "2.2-Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
+            - 1.2 - Robô Simulado: modulos/01-intro/atividades/guias-infra/robo-simulado/index.md
+            - 1.3 - Robô TurtleBot3: modulos/01-intro/atividades/guias-infra/turtlebot3/index.md
+          - 2 - Revisão Python: 
+            - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
+            - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
         - APS 1:
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
