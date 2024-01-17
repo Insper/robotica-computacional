@@ -36,8 +36,8 @@ Após estas alterações você deve salvar e fechar o gedit. Para efetivar a mud
 
 Se tudo aconteceu como deveria, usando o comando:
 
-```
-rostopic list
+```bash
+ros2 topic list
 ```
 
 Você verá a seguinte resposta:
@@ -48,8 +48,8 @@ Você verá a seguinte resposta:
 
 Para teleoperar o robô, você deve usar o seguinte comando:
 
-```
-rosrun turtlebot3_teleop turtlebot3_teleop_key
+```bash
+ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
 ![Passo 9](imgs/passo09.png)
@@ -60,8 +60,8 @@ como podemos ver na imagem acima, os comandos para movimentação do robô são 
 
 Você pode visualizar a imagem da câmera com o mesmo comando usado no robô simulado:
 
-```
-rqt_image_view
+```bash
+ros2 run rqt_image_view rqt_image_view
 ```
 
 Ao digitar este comando no terminal, teremos a seguinte janela aberta:
