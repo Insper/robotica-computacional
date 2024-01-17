@@ -137,83 +137,15 @@ Foi divertido, porém, vamos controlar o robô via código não é mesmo?
 
 Se estiver com o teleop aberto, mate o terminal, clicando no terminal que está com o comando do teleop e apertando as teclas <kbd>Ctrl</kbd> + <kbd>C</kbd>. Não é legal ter lugares diferentes enviando comandos para o robô, normalmente dá conflito.
 
-## Controlando o robô via código - TODO
-
-Agora, com tudo limpo, tudo em paz, crie um arquivo python em branco e cole o código abaixo.
-
-Para criar o arquivo:
-
-```bash
-code ~/roda_robozinho.py
-```
-
-Para dar permissão de execução para o arquivo:
-
-```bash
-chmod a+x ~/roda_robozinho.py
-```
-
-Código em python que faz o robô andar em círculos eternamente:
-
-```bash
-#!/usr/bin/env python3
-
-import rospy
-from geometry_msgs.msg import Twist
-import sys
-
-#função que publica valores de velocidade no robô
-def move_robot(lin_vel,ang_vel,sleep):
-    #inicializando um node no ROS
-    rospy.init_node('move_robot', anonymous=True) 
-
-    #definindo o tópico que será utilizado pela função, o tipo da mensagem e o 
-    #tamanho da fila de mensagens que serão enviadas para o tópico definido
-		#no caso é cmd_vel, topico do tipo publisher que controla os motores do robô
-    pub = rospy.Publisher('cmd_vel', Twist, queue_size=3)
-
-		#definindo um metodo to tipo Twist()
-		#http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
-    vel = Twist()       
-
-    vel.linear.x = lin_vel # Velocidade linear (eixo x)
-    vel.linear.y = 0
-    vel.linear.z = 0
-
-    vel.angular.x = 0
-    vel.angular.y = 0
-    vel.angular.z = ang_vel  # Velocidade angular (eixo z)
-
-		# exibindo no terminal a velocidade linear e a velocidade angular atual
-    rospy.loginfo("Linear Vel = %f: Angular Vel = %f",lin_vel,ang_vel)
-		# publicando a velocidade via ROS no robô
-    pub.publish(vel)
-		# aguardando um tempinho para dar tempo de executar o comando
-    rospy.sleep(sleep)
-
-if __name__ == '__main__':
-
-     while not rospy.is_shutdown(): #loop do ROS
-				#enviando os valores de velocidade para a função move_robot
-        move_robot(0.5,0.5,0.5) 
-```
-
-!!! tip
-    Você pode executarseu programa tanto com `python3 ~/roda_robozinho.py` quanto com `~/roda_robozinho.py`. Isso é possível pois demos permissão de execução ao programa (com o comando `chmod` acima) e colocamos na primeira linha que queremos executar esse programa usando o comando `python3`
-
-O seu resultado deve ser algo parecido com isso:
-
-![robo_python.gif](imgs/robo_python.gif)
-
 ## Parando o robô
 
-Para interromper o programa, use o  <kbd>Ctrl</kbd> + <kbd>C</kbd>, você perceberá que o robô continuará girando loucamente, apesar de não existir mais um programa sendo executado. Isso acontece porquê o robô mantém em execução o último comando enviado. Se você quiser parar o robô, é preciso enviar 0 para os motores, o comando é esse e pode ser executado diretamente no terminal:
+Vamos mover novamente o robô, desta vez, sem passar o argumento `-1` que limita o número de vezes que o comando é publicado.
 
 ```bash
-rostopic pub -1 cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.4, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.0}}"
 ```
 
-Esse comando funciona tanto com o robô simulado quanto com o robô real e é muito útil para parar o robô em momentos de emergência. Se quiser facilitar a sua vida para futuros momentos caóticos de robô desgovernado, você pode criar um alias no seu arquivo robotica.sh.
+Para interromper o comando, use o  <kbd>Ctrl</kbd> + <kbd>C</kbd>, você perceberá que o robô continuará girando loucamente, apesar do comando não estar sendo executado. Isso acontece porquê o robô mantém em execução o último comando enviado. Se você quiser parar o robô, é preciso enviar 0 para os motores, como fizemos anteriormente, mas desta vez vamos fazer diferente. Vamos facilitar nossa vida para **futuros momentos caóticos de robô desgovernado**, criando um alias no seu arquivo robotica.sh.
 
 Primeiro, abra o arquivo *robotica.sh* 
 
@@ -226,12 +158,12 @@ Depois, defina o alias que será o seu “comando de emergência” no arquivo r
 ```bash
 # Comando para parar o Insperbot
 
-alias socorro="rostopic pub -1 cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'"
+alias sos='ros2 topic pub -1 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"'
 ```
 
 !!! tip
-    Um *alias* é um apelido para um comando já existente. Quando digitarmos *socorro* no terminal o *bash* irá substituir por todo aquele comando.
+    Um *alias* é um apelido para um comando já existente. Quando digitarmos *sos* no terminal o *bash* irá substituir por todo aquele comando.
 
 Salve o arquivo, abra um terminal novo e teste o seu alias, ele será seu fiel companheiro. Lembre-se de que é preciso encerrar o código python que controla o robô para que não existam comandos concorrendo o controle do robô. 
 
-![socorro.gif](imgs/socorro.gif)
+![sos.gif](imgs/socorro.gif)
