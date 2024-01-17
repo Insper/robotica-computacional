@@ -55,7 +55,7 @@ Abra um novo terminal para recarregar as configurações do .bashrc que chama o 
 Execute o comando abaixo em um terminal novo para subir o cenário pista_s2 no simulador Gazebo.
 
 ```bash
-roslaunch my_simulation pista_s2.launch
+ros2 launch my_gazebo pista-23B.launch.py
 ```
 
 O seu terminal vai exibir algo parecido com isso:
@@ -70,7 +70,7 @@ O seu terminal vai exibir algo parecido com isso:
  Essa é a janela do Gazebo, o nosso simulador, com ele podemos simular o comportamento do robô, dos seus sensores, câmera, garra, quanto dos objetos como os creepers, arucos ou caixas coloridas. O ROS não sabe diferenciar se os dados estão vindo de um robô simulado ou se estão vindo de um robô real. É dessa forma porque os dados dos sensores chegam para o ROS através de tópicos, também é pelos tópicos que nós conseguimos enviar comandos para os motores ou para a garra do robô, isso é interessante porque via código o tratamento dos dados é bem parecido, tanto no robô real quanto no robô simulado. Para saber quais são os tópicos disponíveis para o ROS, abra um novo terminal  (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>) e use o comando:
 
 ```bash
-rostopic list
+ros2 topic list
 ```
 
 Uma lista de tópicos como essa vai aparecer pra você no terminal:
@@ -80,7 +80,7 @@ Uma lista de tópicos como essa vai aparecer pra você no terminal:
 Conseguimos “escutar” os dados dos sensores que estão chegando via ROS usando o comando **rostopic echo nome_do_topico**
 
 ```bash
-rostopic echo imu
+ros2 topic echo imu
 ```
 
 ![Untitled](imgs/Untitled4.png)
@@ -90,7 +90,7 @@ Se quiser parar de acessar os dados da IMU do robô simulado, use o <kbd>Ctrl</k
 Para abrir a câmera do robô use o comando:
 
 ```bash
-rqt_image_view
+ros2 run rqt_image_view rqt_image_view
 ```
 
 Se a imagem não aparecer, provavelmente você está escutando um tópico fantasma, basta trocar a opção para acessar o tópico certo, conforme imagem abaixo:
@@ -102,7 +102,7 @@ Com o comando abaixo, podemos publicar valores de velocidade angular e linear di
 Em um novo terminal, utilize o comando fazer o robô andar loucamente:
 
 ```bash
-rostopic pub -1 cmd_vel geometry_msgs/Twist '[4.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+ros2 topic pub -1 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.4, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.0}}"
 ```
 
 ![robo_descontrolado.gif](imgs/robo_descontrolado.gif)
@@ -110,7 +110,7 @@ rostopic pub -1 cmd_vel geometry_msgs/Twist '[4.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
 Com o mesmo comando, podemos enviar 0 para os motores, parando o robô, **este comando pode ser útil em momentos de emergência**.
 
 ```bash
-rostopic pub -1 cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
+ros2 topic pub -1 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
 ```
 
 ![parando_robo.gif](imgs/parando_robo.gif)
@@ -118,7 +118,7 @@ rostopic pub -1 cmd_vel geometry_msgs/Twist '[0.0, 0.0, 0.0]' '[0.0, 0.0, 0.0]'
 Também conseguimos teleoperar o robô com o comando abaixo:
 
 ```bash
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
 Para controlar o robô, use 
@@ -137,7 +137,7 @@ Foi divertido, porém, vamos controlar o robô via código não é mesmo?
 
 Se estiver com o teleop aberto, mate o terminal, clicando no terminal que está com o comando do teleop e apertando as teclas <kbd>Ctrl</kbd> + <kbd>C</kbd>. Não é legal ter lugares diferentes enviando comandos para o robô, normalmente dá conflito.
 
-## Controlando o robô via código
+## Controlando o robô via código - TODO
 
 Agora, com tudo limpo, tudo em paz, crie um arquivo python em branco e cole o código abaixo.
 
