@@ -114,10 +114,10 @@ nav:
       - Módulo 4 - Imagens e Matrizes:
         - modulos/04-visao-p1/index.md
         - Atividades:
-          - "Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
-          - "Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
-          - "ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
-          - "Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
-          - "Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
+          - "1.1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+          - "1.2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
+          - "1.3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
+          - "1.4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
+          - "1.5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
         - APS 4:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md

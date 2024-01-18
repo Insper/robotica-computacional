@@ -11,15 +11,15 @@ Neste módulo vamos explorar a biblioteca OpenCV e aprender a usar alguns de seu
 
 As atividades deste módulo focam em melhorar nossas habilidades de segmentação por cor e identificação de aréas de interesse na imagem. Isso será necessário pois o nosso processo simples de calibração de câmera envolve encontrar círculos coloridos em uma imagem. 
 
-- [Atividade 1](atividade1.ipynb) - Segmentação usando HSV.
-- [Atividade 2](atividade2.ipynb) - Morfologia Matemática para refinar nossas máscaras
-- [Atividade 3](atividade3.ipynb) - Componentes conexos, contornos e bounding boxes.
-- [Atividade 4](atividade4.ipynb) - Demonstração do processo de resolução de problemas ao segmentar imagens por cor usando HSV
-- [Atividade 5](atividade5.ipynb) - Encaixe de uma reta em um conjunto de pontos (não colineares)
+- [1.1 - Leitura de Imagem e Webcam](atividades/1-leitura_e_webcam.ipynb) - Leitura de imagem, visualização, transposição e  uso da webcam.
+- [1.2 - Corte e Criação de Imagens](atividades/2-corte_e_criacao.ipynb) - Corte e criação de imagens usando NumPy.
+- [1.3 - ROI e NumPy](atividades/atividades/3-roi_e_numpy.ipynb) - Region of Interest (ROI), desenho de retângulos e operações com NumPy.
+- [1.4 - Segmentação de Imagens p1](atividades/4-segmentacao_1.ipynb) - Segmentação de imagens por cor usando o modelo RGB no OpenCV.
+- [1.5 - Segmentação de Imagens p2](atividades/5-segmentacao_2.ipynb) - Segmentação usando o modelo HSV no OpenCV e inciando a implementação do modulo de visão.
 
-[Download das atividades](atividades-modulo02-aluno.zip){ .ah-button }
+[Download das atividades](atividades-modulo04-aluno.zip){ .ah-button }
 
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2. -->
