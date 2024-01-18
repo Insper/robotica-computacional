@@ -120,4 +120,14 @@ nav:
           - "1.4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
           - "1.5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
         - APS 4:
-          - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
+          - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+
+      - Módulo 5 - Visão Robótica:
+        - modulos/05-visao-p2/index.md
+        - Atividades:
+          - "1.1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
+          - "1.2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
+          - "1.3 - Exemplo de Resolução de Exercício": modulos/05-visao-p2/atividades/3-exemplos.ipynb
+          - "1.4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-imagesub.ipynb
+        - APS 5:
+          - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
