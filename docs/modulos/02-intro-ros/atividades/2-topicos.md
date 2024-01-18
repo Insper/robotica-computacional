@@ -37,8 +37,11 @@ ros2 topic info /cmd_vel
 ```
 
 Vamos entender a saída do comando acima:
+
 * Type: geometry_msgs/msg/Twist - Esse é o tipo de mensagem que o tópico transporta, no caso, uma mensagem do tipo `Twist` que existe dentro do pacote `geometry_msgs`.
+
 * Publisher count: 1 - Quantidade de nós que estão publicando mensagens neste tópico.
+
 * Subscription count: 1 - Quantidade de nós que estão inscritos neste tópico.
 
 **Dica:** Se a saída do comando acima for `Publisher count: 0`, inicie o programa `teleop_keyboard` novamente.
