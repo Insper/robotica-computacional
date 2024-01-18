@@ -167,3 +167,6 @@ alias sos='ros2 topic pub -1 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0,
 Salve o arquivo, abra um terminal novo e teste o seu alias, ele será seu fiel companheiro. Lembre-se de que é preciso encerrar o código python que controla o robô para que não existam comandos concorrendo o controle do robô. 
 
 ![sos.gif](imgs/socorro.gif)
+
+## Retornar o mundo simulado para posição inicial
+Apertando as teclas `ctrl + r` você pode reiniciar o mundo simulado.

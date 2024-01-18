@@ -87,18 +87,16 @@ nav:
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-
       - Módulo 2 - Introdução à ROS:
         - modulos/02-intro-ros/index.md
         - Atividades:
-          - "Usando o Gazebo": modulos/02-intro-ros/atividades/1-simulador.md
+          - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
           - "Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
           - "Criando uma Lib": modulos/02-intro-ros/atividades/3-custom-lib.md
           - "Criando uma Mensagem": modulos/02-intro-ros/atividades/4-custom-msg.md
           - "Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
         - APS 2:
           - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
-
 
       - Módulo 3 - Controlando o Robô:
         - modulos/03-laser-e-robo/index.md
@@ -109,7 +107,8 @@ nav:
           - "Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
         - APS 3:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
-      
+
+
     - Unidade 2:
       - Módulo 4 - Imagens e Matrizes:
         - modulos/04-visao-p1/index.md
