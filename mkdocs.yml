@@ -93,7 +93,7 @@ nav:
           - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
           - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
           - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
-          - "Criando uma Mensagem": modulos/02-intro-ros/atividades/4-custom-msg.md
+          - "4 - Pubshisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
           - "Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
         - APS 2:
           - "Enunciado": modulos/02-intro-ros/aps/enunciado.md

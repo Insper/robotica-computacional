@@ -1,4 +1,4 @@
-# Criando um Subscriber na ROS
+# Criando um Pubshisher e um Subscriber na ROS
 
 ## Pubshisher e Subscriber
 Agora que você já sabe como criar um novo pacote, vamos aprender como se inscrever em um tópico para receber mensagens. Primeiro, vamos para algumas definições:
@@ -12,3 +12,13 @@ Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que est
 ![ros-pub-sub](imgs/ros-pub-sub.png)
 
 ## Criando um Subscriber
+
+rodar com ROS RUN
+
+## Criando um Publisher
+
+rodar com ROS RUN
+
+## Criando um Arquivo Launch
+
+tralla
