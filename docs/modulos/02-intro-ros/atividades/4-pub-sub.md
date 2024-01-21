@@ -40,7 +40,7 @@ Os comandos acima fazem o seguinte:
 
 Agora vamos abrir o arquivo `first_node.py` e adicionar o seguinte código:
 
-```python {numberLines: true}
+```python
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
