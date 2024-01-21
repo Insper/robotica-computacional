@@ -217,7 +217,7 @@ colcon build --packages-select my_package
 Dessa vez, enviamos o argumento `--packages-select` para o comando `colcon build`. Este argumento faz com que o comando compile apenas o pacote `my_package`.
 
 Rode o nó com o comando abaixo:
-**IMPORTANTE:** Certifique-se de que o simulador está rodando antes de executar o comando abaixo.
+**IMPORTANTE:** Certifique-se de que o simulador está rodando antes de executar o comando abaixo!
 
 ```bash
 ros2 launch my_package first_node.launch.py
@@ -225,7 +225,98 @@ ros2 launch my_package first_node.launch.py
 
 ## Criando um Subscriber
 
-rodar com ROS RUN
+Com isso, o nó `first_node` será executado e publicará mensagens no tópico `cmd_vel`, movendo o robô para frente. Agora vamos criar um novo nó que se inscreve no tópico `odom` e imprime as mensagens recebidas no terminal.
 
+Crie um novo arquivo chamado `second_node.py` dentro da pasta `my_package` e então, faça com que o arquivo seja **executável** com os mesmos comandos que usamos anteriormente para criar o arquivo `first_node.py`.
 
-tralla
+Primeiro, cheque o tipo de mensagem que o tópico `odom` transporta com o comando abaixo:
+
+```bash
+ros2 topic info /odom
+```
+
+Podemos ver que o tópico `odom` transporta mensagens do tipo `Odometry`. Agora vamos abrir o arquivo `second_node.py` e adicionar o seguinte código:
+
+```python
+import rclpy
+from rclpy.node import Node
+from nav_msgs.msg import Odometry
+from rclpy.qos import ReliabilityPolicy, QoSProfile
+
+class SecondNode(Node):
+
+    def __init__(self):
+        super().__init__('second_node')
+        self.timer = self.create_timer(0.25, self.control)
+        
+        self.odom_sub = self.create_subscription(
+            Odometry,
+            '/odom',
+            self.odom_callback,
+            QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))
+
+    def odom_callback(self, data: Odometry):
+        self.x = data.pose.pose.position.x
+        self.y = data.pose.pose.position.y
+
+    def control(self):
+        print(f'Posição x: {self.x}')
+        print(f'Posição y: {self.y}\n')
+        
+            
+def main(args=None):
+    rclpy.init(args=args)
+    second_node = SecondNode()
+
+    rclpy.spin(second_node)
+
+    second_node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+### Explicação do Código
+
+Vamos entender o que as linhas novas do código acima fazem:
+
+* `self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_callback, QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))`: recebe quatro argumentos:
+
+    * `Odometry`: tipo da mensagem que será recebida. Descobrimos o tipo da mensagem verificando as informações do tópico `/odom`.
+
+    * `'/odom'`: nome do tópico que será inscrito.
+
+    * `self.odom_callback`: função que será executada quando uma mensagem for recebida.
+
+    * `QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)`: configura a qualidade de serviço do tópico. Este argumento é opcional e o valor padrão é `QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)`.
+
+* `self.odom_callback`: coleta a posição x e y do robô a partir da mensagem recebida.
+
+* `self.control`: imprime a posição x e y do robô no terminal.
+
+### Configurando o Arquivo setup.py
+
+Agora precisamos configurar o arquivo `setup.py` para que a ROS consiga encontrar o nó e então compilar o pacote novamente. Para isso, abra o arquivo `setup.py` e adicione a seguinte linha dentro do dicionário `entry_points` na chave `console_scripts`:
+
+```python
+'second_node = my_package.second_node:main',
+```
+
+### Rodando o Nó
+
+Uma vez que o arquivo `setup.py` foi configurado, **compile** o pacote novamente com o mesmo comando que usamos anteriormente e rode o arquivo launch `first_node.launch.py`, isso vai iniciar apenas o nó `first_node.py`.
+
+```bash
+ros2 launch my_package first_node.launch.py
+```
+
+E agora, em um novo terminal, execute o comando abaixo para rodar o nó `second_node.py`:
+
+```bash
+ros2 run my_package second_node
+```
+
+Você deve ver a posição x e y do robô sendo impressa no terminal a cada 0.25 segundos.
+
+Com isso você já está pronto para desenvolver a APS 2.
