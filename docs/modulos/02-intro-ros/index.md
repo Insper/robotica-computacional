@@ -1,26 +1,37 @@
-# 04 - ROS básico
+# Módulo 2 - Introdução à ROS 2
 
 !!! pdf
-    ![](slides-1.pdf)
+    ![](slides.pdf)
 
-Neste módulo iremos trabalhar com conceitos e implementações relacionados à robótica utilizando a ROS.
+
+
+Bem vindos ao curso de Robótica Computacional! Neste curso vamos aprender a programar robôs móveis, utilizando a linguagem Python e o sistema operacional ROS 2.
+
+Neste primeiro módulo vamos aprender a configurar a infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
 
 ## Atividades
 As atividades deste módulo focam em introduzir técnicas úteis para 
 
-1. Entender o conceito de nó, tópico e mensagens da ROS.
-2. Criar novos tópicos.
-3. Controlar o robô, real e simulado na ROS, utilizando o método "dead-reckoning".
-4. Receber e processar mensagens dos tópicos de imagens, laser.
+1. Introduzir aos sistemas operacionais Linux e ROS 2.
+2. Utilizar o simulador do Turtlebot3.
+3. Iniciar e utilizar nosso robô real.
+4. Estudar os conceitos básicos de classe em Python.
 
 Estes conceitos são explorados nas seguintes atividades,
 
-- [Atividade 1](atividades/atividade1.md) - Utilizando o Simulador do Turtlebot
-- [Atividade 2](atividades/atividade2.md) - Explorando o conceito de tópicos e mensagens na ROS
+- [Atividade 1](atividades/guias-infra/index.md) - Assim que receber o seu SSD, entre neste link para começar;
+- [Atividade 2.1](atividades/21-classes.ipynb) - Explorando o conceito de classes em Python;
+- [Atividade 2.2](atividades/22-funcoes.ipynb) - Explorando uma forma alternativa de chamar funções em Python.
 
-[Download das atividades](atividades-modulo04-aluno.zip){ .ah-button }
-Extrai os arquivos dentro da diretório `~/catkin_ws/src` e depois executa o comando:
-```bash
-cd ~/catkin_ws/
-catkin_make
-```
+<!-- ## Para entregar
+
+!!! exercise
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 1.
+
+    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+
+    Uma das entregas da APS 2 é um vídeo, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+
+    [APS 2 - Github Classroom](https://classroom.github.com/a/NBBBoAiG)
+
+    A data final de entrega é **{{ data_APS2 }}**. -->
