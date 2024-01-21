@@ -84,7 +84,7 @@ if __name__ == '__main__':
 ### Explicação do Código
 Vamos entender o que cada linha do código acima faz:
 
-* `super().__init__('first_node')` cria um nó com o nome `first_node`.
+* `super().__init__('first_node')`: cria um nó com o nome `first_node`.
 
 * `self.create_publisher(Twist, 'cmd_vel', 10)`: recebe três argumentos:
 
