@@ -5,23 +5,23 @@
 
 
 
-Bem vindos ao curso de Robótica Computacional! Neste curso vamos aprender a programar robôs móveis, utilizando a linguagem Python e o sistema operacional ROS 2.
-
-Neste primeiro módulo vamos aprender a configurar a infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
+Neste módulo vamos aprender a sobre os recursos básicos da ROS 2. Aprendendo sobre mensagens, tópicos, como criar e configurar nosso primeiro pacotes na ROS 2 e desenvolver nosso primeiro nó subscritor (subscriber) e publicador (publisher).
 
 ## Atividades
 As atividades deste módulo focam em introduzir técnicas úteis para 
 
-1. Introduzir aos sistemas operacionais Linux e ROS 2.
-2. Utilizar o simulador do Turtlebot3.
-3. Iniciar e utilizar nosso robô real.
-4. Estudar os conceitos básicos de classe em Python.
+1. Aos conceitos básicos da ROS 2.
+2. Criar e configurar um pacote na ROS 2.
+3. Criar um nó subscritor e publicador.
+4. Criar um mensagem customizada.
 
 Estes conceitos são explorados nas seguintes atividades,
 
-- [Atividade 1](atividades/guias-infra/index.md) - Assim que receber o seu SSD, entre neste link para começar;
-- [Atividade 2.1](atividades/21-classes.ipynb) - Explorando o conceito de classes em Python;
-- [Atividade 2.2](atividades/22-funcoes.ipynb) - Explorando uma forma alternativa de chamar funções em Python.
+- [Atividade 1](atividades/1-package.md) - Pacotes e comandos importantes no simulador.
+- [Atividade 2](atividades/2-topicos.md) - Navegando nos tópicos e mensagens da ROS 2.
+- [Atividade 3](atividades/3-creating-package.md) - Criando e configurando um pacote na ROS 2.
+- [Atividade 4](atividades/4-criando-nos.md) - Criando um nó subscritor e publicador e configurando o pacote.
+- [Atividade 5](atividades/5-custom-msg.md) - Criando uma mensagem customizada e configurando o pacote.
 
 <!-- ## Para entregar
 
