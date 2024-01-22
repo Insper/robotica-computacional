@@ -102,7 +102,7 @@ nav:
         - Atividades:
           - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
           - "2 - Estrutura Básica de um Nó":
-              - "Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
+              - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
               - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
               - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
           - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
