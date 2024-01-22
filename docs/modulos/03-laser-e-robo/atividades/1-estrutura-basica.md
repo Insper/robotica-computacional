@@ -1,37 +1,23 @@
-No arquivo `base.py` fornecemos uma estrutura básica de um script da ROS usando classe no python.
+# Estrutura Básica de um Nó
 
-A função `main.py` cria um nó com o nome `'Controler'` e construir um a classe `Control()`, depois até que o `core` da ROS seja interrompido vai executar o conteúdo da função `Control().control` em loop.
+Para facilitar o desenvolvimento de um nó, a fornecemos uma estrutura básica de um nó da ROS 2 em python. Também fornecemos uma estrutura básica de um nó que controla o robô, incluindo a definição da maquina de estados, a função de controle e o publisher do `cmd_vel`.
 
-```python
-def main():
-	rospy.init_node('Controler')
-	control = Control()
-	rospy.sleep(1) # Espera 1 segundo para que os publishers e subscribers sejam criados
+* Nó básico: [base.py](../util/base.py)
 
-	while not rospy.is_shutdown():
-		control.control()
-```
+* Nó básico de controle: [main.py](../util/base_control.py)
 
-Para fazer com que o nó se inscreva em um tópico deve-se primeiro pegar o tipo de mensagem e então comando com a seguinte estrutura de comando pode se inscrever no tópico:
-```python
-self.sub = rospy.Subscriber({topico},{tipo de mensagem},self.callback)
-```
+Baixe os arquivos e coloque-os na em uma pasta de fácil acesso. 
 
-Sempre que uma nova mensagem seja enviada ao tópico “topico”, a função `self.callback` será executada com esta nova mensagem.
+Agora vamos entender o que cada parte do código faz.
 
-Para fazer com que um nó publique em um tópico, utilize a seguinte estrutura de comando: 
+## Nó Básico
 
-```python
-self.pub = rospy.Publisher({topico},{tipo de mensagem},queue_size=10)
-```
+Este script não tem nenhuma novidade em relação ao que já foi visto. Quando executado, ele chama a função `control()` a cada 0,25 segundos. Este script é útil para criar um nó que se inscreve em um tópico e executa uma função a cada nova mensagem recebid, publicando uma mensagem em outro tópico.
 
-O argumento `queue_size` indica o tamanho máximo da fila de mensagens. Em condições normais a fila não ultrapassa o tamanho 1, este argumento só é relevante quando o conteúdo da mensagem é muito extenso, como uma imagem.
+**Dica:** Será útil para desenvolver módulos de processamento de imagem, onde o nó se inscreve em um tópico de imagem, processa a imagem e publica o resultado em outro tópico.
 
-## Antes de começar
-Após extrair os arquivos e rodar `catkin_make`, para rodar os exercícios, execute os seguintes comandos no terminal:
+## Nó Básico de Controle
 
-```bash
-roscd modulo4
-cd scripts
-chmod +x *.py
-```
+Neste script, definimos a máquina de estados do robô (no dicionário `self.state_machine`), o estado inicial (no atributo `self.robot_state`) e a função de controle (no método `self.control()`), que a cada 0,25 segundos, executa a função `self.state_machine[self.robot_state]()` e publica a a ação de controle no tópico `cmd_vel` (`self.cmd_vel_pub.publish(self.twist)`).
+
+**Dica:** Em uma máquina de estados bem definida, a função de controle não precisa ser alterada, sendo ela a única função que publica no tópico `cmd_vel`.
