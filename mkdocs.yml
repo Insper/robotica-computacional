@@ -100,7 +100,10 @@ nav:
       - Módulo 3 - Controlando o Robô:
         - modulos/03-laser-e-robo/index.md
         - Atividades:
-          - "Estrutura Basica de um Nó": modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
+          - "Estrutura Basica de um Nó":
+            - "Estrutura Basica de um Nó": modulos/03-laser-e-robo/atividades/1-estrutura-basica.md
+            - "Nó Básico": modulos/03-laser-e-robo/util/base.py
+            - "Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
           - "Entendendo a Odometria": modulos/03-laser-e-robo/atividades/2-odometria.md
           - "Visualização na ROS": modulos/03-laser-e-robo/atividades/3-visualizacao.md
           - "Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
