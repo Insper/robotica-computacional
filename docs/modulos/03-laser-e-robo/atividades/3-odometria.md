@@ -30,7 +30,7 @@ Este método é intuitivo, mas pode sofrer de "gimbal lock". Gimbal lock é um p
 
 ### Orientação - Quaternion
 
-Uma alternativa aos ângulos de Euler é o uso de quaternions. Um quaternion é uma estrutura matemática que evita o problema de gimbal lock e é computacionalmente mais eficiente para algumas operações. Ele é representado como q=w+xi+yj+zkq=w+xi+yj+zk.
+Uma alternativa aos ângulos de Euler é o uso de quaternions. Um quaternion é uma estrutura matemática que evita o problema de gimbal lock e é computacionalmente mais eficiente para algumas operações. Ele é representado como $q=w+xi+yj+zkq=w+xi+yj+zk$.
 
 Assista o vídeo abaixo para entender como funciona a representação de orientação usando quaternions.
 
