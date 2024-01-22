@@ -77,9 +77,9 @@ ros2 topic echo /odom
 
 e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
 
-## Modulo da Odometria - Exercício da APS 3
+## Módulo de Odometria - APS 3
 
-Vamos criar um modulo para encapsular a odometria, que possa ser facilmente importado em outros programas.
+Vamos criar um módulo para encapsular a odometria, que possa ser facilmente importado em outros programas.
 
 Crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. Essa classe deve:
 
