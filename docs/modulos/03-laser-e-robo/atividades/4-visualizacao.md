@@ -1,53 +1,56 @@
 # Explorando as ferramentas de visualização da ROS
-Na seção anterior observamos o conteúdo do tópico `scan`, retomando este topico tem a seguinte estrutura de dados.
+
+Nessa atividades, vamos ver como visualizar os dados dos sensores do robô.
+
+## Visualizando o Tópico de Imagem
+Para visualizar a imagem da câmera, vamos utilizar o `rqt_image_view`, que é uma ferramenta de visualização de imagens. Com o simulador e o teleop aberto, em um novo terminal, execute:
 
 ```bash
-borg@ubuntu:~$ rosmsg info sensor_msgs/LaserScan
-std_msgs/Header header
-  uint32 seq
-  time stamp
-  string frame_id
-float32 angle_min
-float32 angle_max
-float32 angle_increment
-float32 time_increment
-float32 scan_time
-float32 range_min
-float32 range_max
-float32[] ranges
-float32[] intensities
+ros2 run rqt_image_view rqt_image_view
 ```
 
-Onde `ranges` tem o formato de uma lista com 360 elementos onde cada o index é a orientação e o valor do elemento é a distância, em metros, de um obstáculo até o robô. Existe uma diferença entre o robô real e o simulado, no robô simulado, valores muito longe recebem o valor `inf` e no real recebem o valor `0`.
+Quando o programa abrir, faça as seguites modificações:
+* Atualize os tópicos clicando no botão `Refresh` (duas setas circulares).
 
-## Visualizando com RViz.
+* Selecione o tópico `/camera/image_raw`.
+
+
+Para capturar o frame atual da image, clique no botão `Save as image`.
+![rqt_image_view](img/rqt_image_view.png)
+
+Na Unidade 2, vamos explorar mais a fundo como processar imagens, nesse momento, vamos apenas observar a imagem da câmera do robô.
+
+## Visualizando o Tópico do Sensor de Distância
+
+Na seção anterior estudamos o conteúdo do tópico `scan`. Agora vamos visualizar os dados do sensor de distância.
+
 Vamos executar o `RViz`, que é uma ferramenta importante de monitoramento de dados de sensores e estado interno do robô, em um novo terminal, execute:
 
 ```bash
-rosrun rviz rviz
+ros2 run rviz2 rviz2
 ```
 
 Quando o programa abrir, faça as seguites modificações:
 
 * Mude a celula `Fixed Frame` para `base_scan`
-* Ao clica no botão `Add` adicione `LaserScan`
-* No LaserScan mude a celula `topic` para `/scan`
-* E mude a celula `Size` para `0.1`
 
-![Rviz](img/rviz.png)
+* Clique no botão `Add` e adicione `LaserScan`
 
-Agora é possível entender melhor as leituras do sensor, faça o teste colocando a mão na frente do lidar, se estiver no robô real, ou movendo algum obstáculo para perto do robô, se estiver na simulação.
+* No `LaserScan` mude a celula `topic` para `/scan`
 
-## Visualizando o topico da imagem.
-Para visualiza a imagem da camera do robo, execute o seguinte comando:
+* E mude a celula `Size` para `0.05`
 
-```bash
-rqt_image_view
-```
+* Clique no botão `Add` e adicione `Odometry`
 
-Quando o programa abrir, faça as seguites modificações:
-* Atualize os topico clicando no botão verde.
-* Selecione o topico `/camera/image/compressed`
+* No `Odometry` mude a celula `topic` para `/odom`
 
-Para capturar o frame atual da image, clique no botão `Save as image`.
-![rqt_image_view](img/rqt_image_view.png)
+* No `Odometry` remova a seleção da celula `Covariance`
+
+Você deve ter algo parecido com a imagem abaixo:
+
+![Rviz](figs/rviz.png)
+
+A sexta representa a `Pose` atual do robô, que é a posição e orientação do robô no espaço. Cada um dos circulos representa uma leitura do sensor de distância.
+
+Agora pilote o robô utilizando o `teleop` e observe como os dados do sensor de distância e a pose do robô mudam.
+
