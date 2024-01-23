@@ -63,7 +63,7 @@ nav:
     - Unidade 1:
       - Módulo 1 - Introdução ao Curso: 
         - modulos/01-intro/index.md
-        - "Atividade Dia 1": modulos/01-intro/atividade-dia1.md
+        - "Atividade Dia 1": modulos/01-intro/atividades/atividade-dia1.md
         - "Para Saber Mais": modulos/01-intro/recursos-legais.md
         - Atividades:
           - 1 - Infra:
