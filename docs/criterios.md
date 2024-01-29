@@ -20,7 +20,7 @@ N = 0,3 NAPS + 0,3 Projeto + 0,2 AI + 0,2 AF;
 
 NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
 
-APS_UNIDADE_# = ( MAIOR(APS_1o + APS_2o) + APS_3o ) / 2;
+APS_UNIDADE_# = ( **MAIOR**(APS_1o + APS_2o) + APS_3o ) / 2;
 ```
 onde:
 
