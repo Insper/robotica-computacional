@@ -21,6 +21,7 @@ extra:
     data_APS4: 13/11
     data_PF: 05/12
     data_AI: 02/10
+    semestre: 2024-1
 
 markdown_extensions:
   - toc:
