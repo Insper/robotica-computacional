@@ -20,4 +20,4 @@ Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e a
 
 ## Configuração do Pacote (ROS 2)
 
-Para as APSs que utilizam o ROS 2, você deve primeiramente aceitar o convite para o Github Classroom e clona-lo **dentro da pasta `colcon_ws/src/`** do seu SSD. E então, **dentro do diretório do seu repositório**, crie um novo pacote chamado `entregavel_#`, onde `#` é o número da APS. Você vai aprender a criar um pacote no módulo 2.
+Para as APSs que utilizam o ROS 2, você deve primeiramente aceitar o convite para o Github Classroom e clona-lo **dentro da pasta** `colcon_ws/src/` do seu SSD. E então, **dentro do diretório do seu repositório**, crie um novo pacote chamado `entregavel_#`, onde `#` é o número da APS. Você vai aprender a criar um pacote no módulo 2.
