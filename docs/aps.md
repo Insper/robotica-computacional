@@ -1,9 +1,11 @@
 # Configuração da APS
 
-Todas as entregas da disciplina serão feita via um Github Classroom. Para cada APS será enviado um link com o convite do Github Classroom.
-O trabalho será em duplas, então será necessário criar sua equipe para as APS. Ao clicar no link de convite você será direcionado para uma página do Github Classroom, com as opções de criar uma equipe ou entrar em uma já existente, como na imagem abaixo.
+Todas as entregas da disciplina serão feita via Github Classroom. Para cada APS será enviado um link com o convite do Github Classroom.
+As APSs são em duplas, então um aluno vai criar a equipe para cada APS e o outro deve entrar na equipe já existente **- NÃO SE ESQUEÇA DE ENTRAR NA SUA EQUIPE! -**.
 
-![](github-classroom.png)
+Ao clicar no link de convite você será direcionado para a página do Github Classroom, com as opções de criar uma equipe ou entrar em uma já existente, como na imagem abaixo.
+
+![](figs/github-classroom.png)
 
 Podem escolher qualquer nome para a equipe, mas é importante que os dois membros da dupla estejam na mesma equipe. Após criar a equipe, espere um momento que você será direcionado para um repositório privado, onde será feita a entrega da APS.
 
@@ -14,25 +16,8 @@ Se você já completou o tutorial de configuração do git e gerou sua chave SSH
 Uma vez que você tenha clonado o repositório, entre no arquivo `README.md` e adicione o nome dos dois membros da dupla no local indicado. Após isso, faça um commit e um push para o repositório. A partir desse momento, vocês já podem começar a trabalhar na APS.
 
 !!! warning
-    As duplas serão as mesmas para todas APS. No projeto serão formados novos grupos.
-
-!!! warning
     Pode acontecer do professor pedir para que vocês atualizem o repositório com as últimas alterações. Para isso, basta seguir o tutorial [pull_template](modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/pull_template.md)
 
-## Teste seu código da APS
+## Configuração do Pacote (ROS 2)
 
-As APS serão testadas automaticamente. Para isso, você deve seguir as instruções abaixo.
-
-```bash
-pip install pytest
-```
-
-No repositório da APS, execute o comando abaixo para testar seu código.
-
-```bash
-pytest
-```
-
-Se discordar do resultado do teste, verifique se seu código está seguindo o que foi pedido, leia com atenção o enunciado e a saída do teste. Se ainda assim discordar, entre em contato com os professores ou outro membro da equipe da disciplina.
-
-Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.
+Para as APSs que utilizam o ROS 2, você deve primeiramente aceitar o convite para o Github Classroom e clona-lo **dentro da pasta** `colcon_ws/src/` do seu SSD. E então, **dentro do diretório do seu repositório**, crie um novo pacote chamado `entregavel_#`, onde `#` é o número da APS. Você vai aprender a criar um pacote no módulo 2.

@@ -9,7 +9,8 @@ Cada módulo terá duração de uma semana e será composto por aula expositiva,
 Além das APS, teremos um projeto final, que será desenvolvido em grupo de 4 alunos, a avaliação intermédiaria e a avaliação final, em suas respectivas semanas.
 
 Os **critérios de avaliação** da disciplina podem ser encontrados no link abaixo:
-- [Critérios de avaliação](criterios.md)
+
+* [Critérios de avaliação](criterios.md)
 
 Os tópicos abordados em cada unidade são:
 
@@ -42,6 +43,10 @@ Também disponibilizamos o github da disciplina, que pode ser acessado no link a
 [Github Robotica Computacional](https://github.com/Insper/robotica-computacional). 
 
 Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso **recomendamos apenas o uso dos materiais disponibilizados nesse site**.
+
+No link abaixo você pode acessar o tutorial de configuração das APSs:
+
+* [Configuração das APSs](aps.md)
 
 # Avisos
 
