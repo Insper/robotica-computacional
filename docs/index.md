@@ -1,11 +1,15 @@
-# Robótica Computacional 2023/2
+# Robótica Computacional 2024/1
 
-Essa página reúne todos os materiais de apoio e de Robótica Computacional, 2023/2. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
+Essa página reúne todos os materiais de apoio e de Robótica Computacional, 2024/1. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
 
 - [Introdução à disciplina](modulos/00-intro/index.md)
 - [Organização do Semestre](modulos/index.md)
 
-Também disponibilizamos o github da disciplina, que pode ser acessado [aqui](https://github.com/Insper/robotica-computacional). Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso recomendamos apenas o uso dos materiais disponibilizados nesse site.
+Também disponibilizamos o github da disciplina, que pode ser acessado no link abaixo:
+
+[Github Robotica Computacional](https://github.com/Insper/robotica-computacional). 
+
+Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso **recomendamos apenas o uso dos materiais disponibilizados nesse site**.
 
 # Aviso
 
