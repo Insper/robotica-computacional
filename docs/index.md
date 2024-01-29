@@ -1,6 +1,6 @@
-# Robótica Computacional **{{ semestre }}**
+# Robótica Computacional {{ semestre }}
 
-Essa página reúne todos os materiais de apoio e de Robótica Computacional, **{{ semestre }}**. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
+Essa página reúne todos os materiais de apoio e de Robótica Computacional, {{ semestre }}. Não deixe de se familiarizar com a disciplina visitando as seguintes páginas
 
 - [Introdução à disciplina](modulos/00-intro/index.md)
 - [Organização do Semestre](modulos/index.md)
