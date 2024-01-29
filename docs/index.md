@@ -52,7 +52,11 @@ No link abaixo você pode acessar o tutorial de configuração das APSs:
 
 ## Informações importantes
 
-A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/kTZh8Cikjj).
+A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário de escolha de turmas](https://forms.office.com/r/mAGHZzgGPr).
+
+<div style="text-align: center;">
+    <img src="figs/turmas.png" alt="alt text" width="300"/>
+</div>
 
 - Turma A: 
     - **SEG** 15:45 
