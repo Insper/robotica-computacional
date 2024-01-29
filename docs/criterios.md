@@ -19,10 +19,12 @@ A nota será composta segundo a seguinte fórmula:
 N = 0,3 NAPS + 0,3 Projeto + 0,2 AI + 0,2 AF;
 
 NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
+
+APS_UNIDADE_# = ( MAIOR(APS_1o + APS_2o) + APS_3o ) / 2;
 ```
 onde:
 
-* `APS_UNIDADE_1, APS_UNIDADE_2, APS_UNIDADE_3` é a média das notas das duas melhores APS de cada unidade. Cada unidade terá aproximadamente 3 APSs.
+* `APS_UNIDADE_#` média aritmética entre a nota da terceira APS (da unidade) e a maior nota entre a primeira e a segunda APS (da unidade), ao menos para a unidade 3, onde a média é feita entre as duas melhores APSs;
 
 * `NAPS` é a média das notas das APS de cada unidade;
 

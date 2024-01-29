@@ -4,7 +4,7 @@ Essa página reúne todos os materiais de apoio e de Robótica Computacional, {{
 
 A disciplina é dividida três unidades e um projeto. Cada unidade é composta por três módulos.
 
-Cada módulo terá duração de uma semana e será composto por aula expositiva, atividades que guiam o aluno para o desenvolvimento da APS. As notas das APSs serão calculadas por unidade e consiste da média aritmética das duas melhores APSs.
+Cada módulo terá duração de uma semana e será composto por aula expositiva, atividades que guiam o aluno para o desenvolvimento da APS. As notas das APSs serão calculadas por unidade e consiste da média aritmética entre a nota da terceira APS e a maior nota entre a primeira e a segunda APS, ao menos para a unidade 3, onde a média é feita entre as duas melhores APSs;
 
 Além das APS, teremos um projeto final, que será desenvolvido em grupo de 4 alunos, a avaliação intermédiaria e a avaliação final, em suas respectivas semanas.
 
