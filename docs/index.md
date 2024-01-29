@@ -8,12 +8,12 @@ Cada módulo terá duração de uma semana e será composto por aula expositiva,
 
 Além das APS, teremos um projeto final, que será desenvolvido em grupo de 4 alunos, a avaliação intermédiaria e a avaliação final, em suas respectivas semanas.
 
-Os critérios de avaliação da disciplina podem ser encontrados no link abaixo:
+Os **critérios de avaliação** da disciplina podem ser encontrados no link abaixo:
 - [Critérios de avaliação](criterios.md)
 
 Os tópicos abordados em cada unidade são:
 
-* Unidade 1 - Introdução
+* **Unidade 1 - Introdução**
 
     * Módulo 1 - Introdução ao curso
 
@@ -21,7 +21,7 @@ Os tópicos abordados em cada unidade são:
 
     * Módulo 3 -  Controlando o Robô
 
-* Unidade 2 - Visão Computacional
+* **Unidade 2 - Visão Computacional**
 
     * Módulo 4 - Imagens e Matrizes
 
@@ -29,7 +29,7 @@ Os tópicos abordados em cada unidade são:
 
     * Módulo 6 - Tópicos em Visão Computacional
 
-* Unidade 3 - Controle Robótico
+* **Unidade 3 - Controle Robótico**
 
     * Módulo 7 - Máquinas de Estados Robótico
 
