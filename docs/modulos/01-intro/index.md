@@ -21,15 +21,15 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 2.1](atividades/21-classes.ipynb) - Explorando o conceito de classes em Python;
 - [Atividade 2.2](atividades/22-funcoes.ipynb) - Explorando uma forma alternativa de chamar funções em Python.
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 1.
 
-    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
-    Uma das entregas da APS 2 é um vídeo, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+    Uma das entregas da APS 1 é um vídeo, siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Depois, dê upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 2 - Github Classroom](https://classroom.github.com/a/NBBBoAiG)
+    [APS 1 - Github Classroom](https://classroom.github.com/a/j0Ae3Szi)
 
-    A data final de entrega é **{{ data_APS2 }}**. -->
+    A data final de entrega é **{{ data_APS1 }}**.
