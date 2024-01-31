@@ -32,7 +32,7 @@ Os tópicos abordados em cada unidade são:
 
 * **Unidade 3 - Controle Robótico**
 
-    * Módulo 7 - Máquinas de Estados Robótico
+    * Módulo 7 - Ação Robóticas e Visão
 
     * Módulo 8 - Controle
 
