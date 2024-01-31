@@ -8,7 +8,9 @@
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/aps/screen_record/), e deve ser postado no Youtube. Ao final de cada questão existe o `Link do Vídeo` onde deve ser disponibilizado o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `Não de commit no vídeo`, somente adicione o link.
+**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/aps/screen_record/), e deve ser postado no Youtube. 
+
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
 
 # Exercício 1 (4 pontos)
@@ -38,8 +40,6 @@ Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode test
 5. **(+ 0,5)** O carro chega na primeira linha e entra no estado `stop`.
 
 A entrega será feita pelo repositório do grupo no github e por um vídeo no youtube.
-
-## Link do Vídeo: ____________________________
 
 # Exercício 2 (6 pontos)
 
