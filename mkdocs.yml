@@ -9,18 +9,19 @@ extra_css:
 
 extra:
   custom_variables:
-    data_infra_linux: "25/08"
-    data_infra_simulador: "01/09"
-    data_infra_turtlebot3: "01/09"
     repo_aps: https://github.com/Insper/robotica-computacional-aps
     repo_aps_git: https://github.com/Insper/robotica-computacional-aps.git
-    data_final_APS: 28/03
-    data_APS1: 25/08
-    data_APS2: 14/09
-    data_APS3: 25/09
-    data_APS4: 13/11
-    data_PF: 05/12
-    data_AI: 02/10
+    data_APS1: 19/02 às 12:00
+    data_APS2: 26/02 às 12:00
+    data_APS3: 11/03 às 12:00
+    data_APS4: 18/03 às 12:00
+    data_APS5: 25/03 às 12:00
+    data_APS6: 08/04 às 12:00
+    data_APS7: 15/04 às 12:00
+    data_APS8: 22/04 às 12:00
+    data_APS9: 29/04 às 12:00
+    data_AI: 01/04
+    data_PF: 27/05
     semestre: 2024-1
 
 markdown_extensions:

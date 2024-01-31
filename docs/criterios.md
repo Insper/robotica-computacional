@@ -30,10 +30,9 @@ onde:
 
 * `Projeto` é a nota do projeto;
 
-* `AI` é a nota da Avaliação Intermediária - OpenCV. Será realizada no dia {{ data_AI }};
+* `AI` é a nota da Avaliação Intermediária. Será realizada na semana do dia {{ data_AI }};
 
-* `AF` é a nota da Avaliação Final. Será realizada na semana de provas finais, 
-aproximadamente no dia {{ data_PF }}.
+* `AF` é a nota da Avaliação Final. Será realizada na semana do dia {{ data_PF }}.
 
 Será aprovado o aluno que siga as seguites restrições:
 
