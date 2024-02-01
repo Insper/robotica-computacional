@@ -7,13 +7,13 @@ Neste roteiro iremos controlar o robô físico pela primeira vez. Faremos as mes
 O primeiro passo para usarmos o Insperbot é ligar o robô. São três passos simples:
 
 1. Primeiro você deve alocar a bateria, com cuidado, na parte inferior do robô;
-![Passo 1](imgs/passo001.png)
+![Passo 1](imgs/passo001.jpg)
 2. Depois você deve conectar a batertia utilizando o conector amarelo;
-![Passo 2](imgs/passo002.png)
+![Passo 2](imgs/passo002.jpg)
 3. Depois você deve ligar o robô utilizando o botão que fica no compartimento acima da bateria;
-![Passo 3](imgs/passo003.png)
+![Passo 3](imgs/passo003.jpg)
 4. Por último você deve aguardar o robô ligar completamente. Quando o processo de iniciar estiver completo ou próximo de se completar, o seu nome e endereço IP aparecerão na telinha na parte de trás.
-![Passo 4](imgs/passo004.png)
+![Passo 4](imgs/passo004.jpg)
 !!! warning 
     Em geral demora cerca de 2-3 minutos até o robô inicializar por completo. 
 
@@ -24,11 +24,11 @@ Cada robô cria uma rede Wifi própria que usaremos para enviar/receber dados di
 
 Agora que o Insperbot já está ligado, basta conectar na rede que ele liberou. Se atente ao número que está na parte de cima do robô, pois será o número da rede que você irá conectar. Por exmeplo, o Turtlebot 03 terá a rede: InsperBot03 e a senha da rede será **InsperBot03**. O mesmo acontecerá com todos os outros robôs. O nome exato da rede, considerando maiúsculas e minúculas, será a senha de rede.
 
-![Passo 5](imgs/passo005.png)
+![Passo 5](imgs/passo005.jpg)
 
-![Passo 6](imgs/passo006.png)
+![Passo 6](imgs/passo006.jpg)
 
-![Passo 7](imgs/passo007.png)
+![Passo 7](imgs/passo007.jpg)
 
 Se tudo aconteceu como deveria, usando o comando:
 
