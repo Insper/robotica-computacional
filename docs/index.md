@@ -1,18 +1,38 @@
 # Robótica Computacional {{ semestre }}
 
-Essa página reúne todos os materiais de apoio e de Robótica Computacional, {{ semestre }}. 
+Essa página contém todos os materiais para o curso de Robótica Computacional de {{ semestre }}. 
 
-A disciplina é dividida três unidades e um projeto. Cada unidade é composta por três módulos.
+## Estrutura do Curso
 
-Cada módulo terá duração de uma semana e será composto por aula expositiva, atividades que guiam o aluno para o desenvolvimento da APS. As notas das APSs serão calculadas por unidade e consiste da média aritmética entre a nota da terceira APS e a maior nota entre a primeira e a segunda APS, ao menos para a unidade 3, onde a média é feita entre as duas melhores APSs;
+O curso é estruturado em três unidades principais, seguidas por um projeto final:
 
-Além das APS, teremos um projeto final, que será desenvolvido em grupo de 4 alunos, a avaliação intermédiaria e a avaliação final, em suas respectivas semanas.
+- **Unidade 1**
+- **Unidade 2**
+- **Unidade 3**
+- **Projeto Final**
 
-Os **critérios de avaliação** da disciplina podem ser encontrados no link abaixo:
+Cada unidade é dividida em **três módulos**, com cada módulo tendo a duração de uma semana.
 
-* [Critérios de avaliação](criterios.md)
+### Detalhes dos Módulos
 
-Os tópicos abordados em cada unidade são:
+Dentro de cada módulo, os alunos participarão de:
+
+- Aulas expositivas;
+- Atividades práticas guiadas para o desenvolvimento da APS.
+
+### Projeto Final
+
+- Desenvolvido em grupos de 4 alunos.
+
+### Avaliações
+
+- A avaliação intermédiaria (AI) e avaliação final (AF), serão realizadas em suas respectivas semanas definidas no calendário acadêmico.
+
+### Critérios de avaliação
+
+- [Critérios de avaliação](criterios.md)
+
+## Principais conteúdos abordados:
 
 * **Unidade 1 - Introdução**
 
@@ -24,31 +44,35 @@ Os tópicos abordados em cada unidade são:
 
 * **Unidade 2 - Visão Computacional**
 
-    * Módulo 4 - Imagens e Matrizes
+    * Módulo 4 - Tópicos de Processamento Digital de Imagem
 
     * Módulo 5 - Visão Robótica
 
-    * Módulo 6 - Tópicos em Visão Computacional
+    * Módulo 6 - Tópicos de Visão Computacional
 
 * **Unidade 3 - Controle Robótico**
 
-    * Módulo 7 - Ação Robóticas e Visão
+    * Módulo 7 - Ação Robótica e Visão
 
-    * Módulo 8 - Controle
+    * Módulo 8 - Controle de Atitude
 
-    * Módulo 9 - Localização
+    * Módulo 9 - Sistema de Localização
 
-Também disponibilizamos o github da disciplina, que pode ser acessado no link abaixo:
+## Repositório 
 
-[Github Robotica Computacional](https://github.com/Insper/robotica-computacional). 
+Github da disciplina, pode ser acessado no link:
+
+- [Github Robotica Computacional](https://github.com/Insper/robotica-computacional). 
 
 Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso **recomendamos apenas o uso dos materiais disponibilizados nesse site**.
 
+# Avisos
+
+## Configuração do repositório para realização das APSs
+
 No link abaixo você pode acessar o tutorial de configuração das APSs:
 
-* [Configuração das APSs](aps.md)
-
-# Avisos
+- [Configuração das APSs](aps.md)
 
 ## Informações importantes
 
@@ -65,11 +89,11 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
     - **SEG** 15:45 
     - **QUI** 15:45
 
-Teremos os seguintes horários de atendimento, ambos na sala 404. 
+Teremos o seguinte horário de atendimento: 
 
-- **QUI** 18:00 (Diego) 
+- **QUI** 18:00 (Diego) - sala 404
 
-Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários
+Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários:
 
 - **Lícia** - 07:00 - 16:00
 - **Rogério** - 12:00 - 21:00
