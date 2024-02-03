@@ -8,11 +8,14 @@
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/aps/screen_record/), e deve ser postado no Youtube. Ao final de cada questão existe o `Link do Vídeo` onde deve ser disponibilizado o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `Não de commit no vídeo`, somente adicione o link.
+**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/screen_record/), e deve ser postado no Youtube. 
 
-## Configuração do Pacote
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-Para este entregável, você deve primeiramente aceitar o convite para o Github Classroom e clona-lo dentro da pasta `colcon_ws/src/` do seu SSD. E então, **dentro do diretório do seu repositório**, crie um novo pacote chamado `entregavel_2` com os comandos aprendidos nas atividades do módulo 2.
+## Configuração do Pacote (ROS 2)
+
+- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_2`.
 
 # Exercício 1 (5 pontos)
 
