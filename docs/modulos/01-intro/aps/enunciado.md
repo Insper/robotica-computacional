@@ -4,7 +4,7 @@
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar commit e push no seu repositório até o horário limite de entrega.
+**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
