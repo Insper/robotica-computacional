@@ -54,7 +54,7 @@ Dentro de cada módulo, os alunos participarão de:
 
     * Módulo 7 - Ação Robótica e Visão
 
-    * Módulo 8 - Controle de Atitude
+    * Módulo 8 - Controle Proporcional
 
     * Módulo 9 - Sistema de Localização
 
