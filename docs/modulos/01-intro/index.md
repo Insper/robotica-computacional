@@ -21,6 +21,10 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 2.1](atividades/21-classes.ipynb) - Explorando o conceito de classes em Python;
 - [Atividade 2.2](atividades/22-funcoes.ipynb) - Explorando uma forma alternativa de chamar funções em Python.
 
+Clique no link abaixo para dar download dos notebooks das atividades.
+!!! download
+    [Download dos Notebooks](atividades_modulo_1.zip)
+
 ## Para entregar
 
 !!! exercise
