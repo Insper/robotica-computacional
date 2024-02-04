@@ -20,15 +20,15 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 3](atividades/3-creating-package.md) - Criando e configurando um pacote na ROS 2.
 - [Atividade 4](atividades/4-pub-sub.md) - Criando um nó subscritor e publicador e configurando o pacote.
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 1.
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
 
-    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
-    Uma das entregas da APS 2 é um vídeo, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+    As entregas da APS 2 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 2 - Github Classroom](https://classroom.github.com/a/NBBBoAiG)
+    [APS 2 - Github Classroom](https://classroom.github.com/a/RB7GaxQd)
 
-    A data final de entrega é **{{ data_APS2 }}**. -->
+    A data final de entrega é **{{ data_APS2 }}**.
