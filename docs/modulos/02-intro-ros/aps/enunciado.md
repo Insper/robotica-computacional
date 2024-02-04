@@ -4,7 +4,7 @@
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar commit e push no seu repositório até o horário limite de entrega.
+**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
@@ -20,15 +20,17 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 # Exercício 1 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `publisher` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/String`. A mensagem deve conter:
+Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `publisher` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/String`. 
+
+A mensagem deve conter:
 
 * O horário atual em segundos;
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
-* Ambos separados por um espaço. Ou seja, a mensagem deve conter: **tempo atual** + **espaço** + **contador**.
+* Ambos separados por um espaço. Ou seja, a mensagem deve ter o formato: "**tempo atual** **contador**".
 
-O nó também deve imprimir no terminal uma alerta com a seguinte estrutura:
+O nó também deve imprimir no terminal uma alerta como na linha a seguir:
 
 ```bash
 Ola, são 1677878366175707817 e estou publicando pela 117 vez
@@ -51,7 +53,7 @@ tempo_sec = rospy.Time.now().to_sec()
 # Exercício 2 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `second_node.py` do módulo 2, crie um nó denominado `subscriber` que se inscreva no tópico `publisher` do tipo `std_msgs/String`. A cada nova mensagem recebida, a função `callback` deve separar o tempo do contador no conteúdo da mensagem, lembre-se de checar a estrutura da mensagem.
+Baseando-se no código `second_node.py` do módulo 2, crie um nó denominado `subscriber` que se inscreva no tópico `publisher` do tipo `std_msgs/String`. A cada nova mensagem recebida, a função `callback` deve separar o tempo do contador no conteúdo da mensagem. Lembre-se de checar a estrutura da mensagem.
 
 A função `control` deve calcular o tempo que passou e imprimir número da mensagem recebida e o delay entra quando a messagem foi publicada e quando foi recebida, como no exemplo a seguir,
 
@@ -75,9 +77,13 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 5. **(+ 1,0)** O nó funciona corretamente.
 
 # Entrega
-Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `subscriber` e o nó `publisher` publicando mensagens no tópico `publisher`. O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
+Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `subscriber` e o nó `publisher` publicando mensagens no tópico `publisher`.
+
+O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
 
 ## Caso tenha apenas desenvolvido o exercício 1
 
-Neste caso, grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro com o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`. O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
+Neste caso, grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro com o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`.
+
+O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
 
