@@ -25,12 +25,12 @@ Estes conceitos são explorados nas seguintes atividades,
 <!-- ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 1.
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 3.
 
-    As APSs são em dupla dentro da mesma turma, no link acima você deve escolher seu parceiro e criar um grupo.
+    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
-    Uma das entregas da APS 2 é um vídeo, siga o [guia de configuração da APS](../../aps/screen_record.md) para saber como fazer a gravação do vídeo no Ubuntu. Depois, de upload do vídeo no Youtube e coloque o link no arquivo `README.md` do seu repositório.
+    As entregas da APS 3 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 2 - Github Classroom](https://classroom.github.com/a/NBBBoAiG)
+    [APS 3 - Github Classroom](https://classroom.github.com/a/RB7GaxQd)
 
-    A data final de entrega é **{{ data_APS2 }}**. -->
+    A data final de entrega é **{{ data_APS3 }}**. -->
