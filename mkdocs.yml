@@ -90,54 +90,54 @@ nav:
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-      - Módulo 2 - Introdução à ROS 2:
-        - modulos/02-intro-ros/index.md
-        - Atividades:
-          - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
-          - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
-          - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
-          - "4 - Pubshisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
-        - APS 2:
-          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+    #   - Módulo 2 - Introdução à ROS 2:
+    #     - modulos/02-intro-ros/index.md
+    #     - Atividades:
+    #       - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
+    #       - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
+    #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
+    #       - "4 - Pubshisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
+    #     - APS 2:
+    #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
-      - Módulo 3 - Controlando o Robô:
-        - modulos/03-laser-e-robo/index.md
-        - Atividades:
-          - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
-          - "2 - Estrutura Básica de um Nó":
-              - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
-              - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
-              - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
-          - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
-          - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-          - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
-          # - "6 - Salvando Eventos na ROS": modulos/03-laser-e-robo/atividades/6-rosbag.md
-        - APS 3:
-          - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
+    #   - Módulo 3 - Controlando o Robô:
+    #     - modulos/03-laser-e-robo/index.md
+    #     - Atividades:
+    #       - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
+    #       - "2 - Estrutura Básica de um Nó":
+    #           - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
+    #           - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
+    #           - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
+    #       - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
+    #       - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
+    #       - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
+    #       # - "6 - Salvando Eventos na ROS": modulos/03-laser-e-robo/atividades/6-rosbag.md
+    #     - APS 3:
+    #       - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
-    - Unidade 2:
-      - Módulo 4 - Imagens e Matrizes:
-        - modulos/04-visao-p1/index.md
-        - Atividades:
-          - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
-          - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
-          - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
-          - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
-          - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
-        - APS 4:
-          - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+    # - Unidade 2:
+    #   - Módulo 4 - Imagens e Matrizes:
+    #     - modulos/04-visao-p1/index.md
+    #     - Atividades:
+    #       - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+    #       - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
+    #       - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
+    #       - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
+    #       - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
+    #     - APS 4:
+    #       - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
-      - Módulo 5 - Visão Robótica:
-        - modulos/05-visao-p2/index.md
-        - Atividades:
-          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
-          - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
-          - "3 - Exemplo de Resolução de Exercício":
-              - "3.1 - Enunciado": modulos/05-visao-p2/atividades/31-enunciado.md
-              - "3.2 - Resolução": modulos/05-visao-p2/atividades/32-resolucao.ipynb
-              - "Download > script": modulos/05-visao-p2/atividades/util/q1.py
-              - "Download > gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
-          - "1.4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-imagesub.ipynb
-        - APS 5:
-          - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+    #   - Módulo 5 - Visão Robótica:
+    #     - modulos/05-visao-p2/index.md
+    #     - Atividades:
+    #       - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
+    #       - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
+    #       - "3 - Exemplo de Resolução de Exercício":
+    #           - "3.1 - Enunciado": modulos/05-visao-p2/atividades/31-enunciado.md
+    #           - "3.2 - Resolução": modulos/05-visao-p2/atividades/32-resolucao.ipynb
+    #           - "Download > script": modulos/05-visao-p2/atividades/util/q1.py
+    #           - "Download > gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
+    #       - "1.4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-imagesub.ipynb
+    #     - APS 5:
+    #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
