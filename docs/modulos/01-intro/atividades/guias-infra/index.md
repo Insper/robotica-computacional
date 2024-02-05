@@ -8,12 +8,12 @@ A disciplina de Robótica Computacional depende de robôs para funcionar. Logo, 
 
 Um ponto importante da disciplina de Robótica é que a configuração da Infra **não será feita durante a aula**. É claro que dúvidas nos guias de infra serão respondidas durante a aula, mas não haverá uma aula *Cumprir guia Linux 1* em nosso cronograma. É esperado que cada aluno execute os guias de maneira individual até as seguintes datas:
 
-1. **Linux**: {{ data_infra_linux }}
+<!-- 1. **Linux**: {{ data_infra_linux }}
 2. **Simulador**: {{ data_infra_simulador }}
 3. **TurtleBot3**: {{ data_infra_turtlebot3 }}
 
 Quando acabar, é só pedir para fazer a validação do guia com algum dos técnicos da disciplina.
 
 !!! done
-    Executar todos os guias até as datas acima é uma tarefa bônus do curso com valor de 0,5 na media se o aluno já segue os critérios de aprovação.
+    Executar todos os guias até as datas acima é uma tarefa bônus do curso com valor de 0,5 na media se o aluno já segue os critérios de aprovação. -->
 
