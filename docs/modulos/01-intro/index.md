@@ -10,7 +10,7 @@ Neste primeiro módulo vamos aprender a configurar a infraestrutura necessária 
 ## Atividades
 As atividades deste módulo focam em introduzir técnicas úteis para:
 
-1. Introdu;cão aos sistemas operacionais Linux e ROS 2.
+1. Introducão aos sistemas operacionais Linux e ROS 2.
 2. Utilizar o simulador do Turtlebot3 (esse é o nome do nosso robô).
 3. Iniciar e utilizar nosso robô real.
 4. Estudar os conceitos básicos de classe em Python.
