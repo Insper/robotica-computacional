@@ -1,7 +1,10 @@
 # Criando um Pubshisher e um Subscriber na ROS
 
 ## Pubshisher e Subscriber
-Agora que você já sabe como criar um novo pacote, vamos aprender como se inscrever em um tópico para receber mensagens. Primeiro, vamos para algumas definições:
+
+Agora que você já sabe como criar um novo pacote, vamos aprender como se inscrever em um tópico para receber mensagens. 
+
+Primeiro, vamos para algumas definições:
 
 * **Subscriber:** Um subscriber é um nó que recebe mensagens de um tópico específico.
 
@@ -13,7 +16,7 @@ Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que est
 
 ## Criando um Publisher
 
-Vamos começar abrindo um terminal e executando o comando abaixo para abrir o VSCode no diretório do pacote `my_package`:
+Vamos começar abrindo um novo terminal e executando o comando abaixo para abrir o VSCode no diretório do pacote `my_package`:
 
 ```bash
 cd ~/colcon_ws/src/my_package
@@ -22,7 +25,7 @@ code .
 
 Agora vamos criar um novo arquivo chamado `first_node.py` dentro da pasta `my_package`. Esta pasta contém todos os arquivos Python que serão executados como nós ROS. 
 
-No mesmo terminal rode os comandos abaixo para criar o arquivo:
+No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:
 
 ```bash
 cd my_package
@@ -125,7 +128,7 @@ Para rodar o nó precisamos fazer duas coisas:
 
 Vamos criar um arquivo launch chamado `first_node.launch.py` dentro da pasta `my_package`. Este arquivo será responsável por iniciar o nó `first_node.py`.
 
-No mesmo terminal rode os comandos abaixo para criar o arquivo:
+No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:
 
 ```bash
 cd ~/colcon_ws/src/my_package

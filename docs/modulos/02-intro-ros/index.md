@@ -4,14 +4,14 @@
     ![](slides.pdf)
 
 
-Neste módulo vamos estudar sobre os recursos básicos da ROS 2. Aprendendo sobre mensagens, tópicos, como criar e configurar nosso primeiro pacotes na ROS 2 e desenvolver nosso primeiro nó subscritor (subscriber) e publicador (publisher).
+Neste módulo vamos conhecer alguns recursos básicos da ROS 2. Vamos aprender sobre `mensagens`, `tópicos`, `pacote` e desenvolver nosso primeiro `nó` subscritor (`subscriber`) e publicador (`publisher`).
 
 ## Atividades
-As atividades deste módulo focam em introduzir técnicas úteis para 
+As atividades deste módulo focam em introduzir técnicas úteis sobre: 
 
-1. Aos conceitos básicos da ROS 2.
+1. Conceitos básicos da ROS 2.
 2. Criar e configurar um pacote na ROS 2.
-3. Criar um nó subscritor e publicador.
+3. Criar um nó subscritor (`subscriber`) e publicador (`publisher`).
 
 Estes conceitos são explorados nas seguintes atividades,
 
@@ -25,7 +25,7 @@ Estes conceitos são explorados nas seguintes atividades,
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
 
-    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
+    As APSs são realizadas em `duplas` da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
     As entregas da APS 2 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 

@@ -1,16 +1,16 @@
 # Explorando Tópicos e Mensagens
 
-Primeiramente vamos inciar com algumas definições:
+Vamos começar com algumas definições:
 
-* Nodes (Nós): Um nó na ROS é um processo que executa algum tipo de processo. No caso da disciplina, um nó seria um script do python que vamos chamar diretamente.
+* `Nodes` (Nós): Um nó é um processo que executa uma tarefa especifica na ROS. No nosso caso, um nó é um script python que vamos chamar diretamente.
 
-* Topics (Tópicos): Os tópicos na ROS são barramentos onde a informação é trocada entre nós. Através de tópicos, nós podemos publicar e se inscrever para enviar e receber mensagens.
+* `Topics` (Tópicos): Os tópicos na ROS são barramentos onde a informação é trocada entre nós. Através de tópicos, nós podemos publicar e se inscrever para enviar e receber mensagens.
 Quando um nó publica uma mensagem ela é enviada para todos os nós que estão inscritos nesta mensagem.
 Tópicos são identificados por strings únicas.
 
-* Messages (Mensagens): As mensagens são estruturas de dados que carregam informações. Elas são podem ser compostas por tipos primitivos, como inteiros, floats, strings, etc. ou por outras mensagens. As mensagens são usadas para publicar e receber informações nos tópicos.
+* `Messages` (Mensagens): As mensagens são estruturas de dados que carregam informações. Elas são podem ser compostas por tipos primitivos, como inteiros, floats, strings, etc. ou por outras mensagens. As mensagens são usadas para publicar e receber informações nos tópicos.
 
-Se o simulador da última atividade foi fechado, abra novamente, executando cada comando a seguir em seu terminal.
+Se o simulador da última atividade foi fechado, abra novamente, executando cada comando em um terminal diferente:
 
 ```bash 
 ros2 launch my_gazebo pista-23B.launch.py
@@ -18,19 +18,20 @@ ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
 ## Navegando nos Tópicos da ROS
+
 Você pode listar os tópicos disponíveis com o seguinte o comando:
 
 ```bash 
 ros2 topic list
 ```
 
-O comando acima retorna a lista de tópicos disponíveis na ROS no momento. Cada tópico transporta uma mensagem de um tipo específico. Para saber qual o tipo de mensagem que um tópico transporta, execute o seguinte comando:
+O comando `list` retorna a lista de tópicos disponíveis na ROS no momento. Cada tópico transporta uma mensagem de um tipo específico. Para saber qual o tipo de mensagem que um tópico transporta, execute o seguinte comando:
 
 ```bash
 ros2 topic info {nome_do_topico}
 ```
 
-Então, para saber qual o tipo de mensagem que o tópico `/cmd_vel` transporta, execute o seguinte comando:
+O comando `info` informa o tipo de mensagem que o tópico transporta. Vamos testar o `/cmd_vel`, execute o seguinte comando:
 
 ```bash
 ros2 topic info /cmd_vel
@@ -78,7 +79,7 @@ ros2 interface show geometry_msgs/msg/Twist
 
 A saída do comando acima mostra a estrutura da mensagem `Twist`, que é composta por duas mensagens do tipo `Vector3`, `linear` e `angular`. Cada mensagem do tipo `Vector3` é composta por três valores do tipo `float64`, `x`, `y` e `z`. `linear` representa a velocidade linear do robô e `angular` representa a velocidade angular do robô.
 
-# Pratica Topico /odom
+# Pratica Topico `/odom`
 
 !!! exercise long 
     Qual o commando para visualizar as mensagens do tópico `odom`

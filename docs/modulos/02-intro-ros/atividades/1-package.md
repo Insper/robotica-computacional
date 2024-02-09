@@ -1,6 +1,6 @@
 # Pacotes e Comandos da ROS 2
 
-Vamos começar iniciando o simulador novamente. Abra um terminal (`Ctrl` `Alt` `T`) e execute o seguinte comando:
+Vamos começar iniciando o simulador novamente. Abra um novo terminal (`Ctrl` `Alt` `T`) e execute o seguinte comando:
 
 ```bash
 ros2 launch my_gazebo pista-23B.launch.py
@@ -18,7 +18,7 @@ Vamos entender o que esse comando faz:
 
 Na ROS, pacotes (packages) são coleções de arquivos e programas que podem ser usados para realizar uma tarefa específica. O pacote `my_gazebo` contém os arquivos necessários para executar e gerar o mundo de simulação do robô.
 
-Agora, rode novamente o comando para controlar o robô:
+Agora, abra um novo terminal (`Ctrl` `Alt` `T`) e rode novamente o comando para controlar o robô:
 
 ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
