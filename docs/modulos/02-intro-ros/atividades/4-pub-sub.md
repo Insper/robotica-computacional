@@ -10,9 +10,9 @@ Primeiro, vamos para algumas definições:
 
 * **Publisher:** Um publisher é um nó que envia mensagens para um tópico específico.
 
-Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que estiverem inscritos nesse tópico receberão a mensagem. A figura abaixo ilustra esse processo:
+Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que estiverem inscritos nesse tópico receberão a mensagem. O gif abaixo ilustra esse processo:
 
-![ros-pub-sub](imgs/ros-pub-sub.png)
+![ros-pub-sub](imgs/ros-pub-sub.gif)
 
 ## Criando um Publisher
 
