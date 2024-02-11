@@ -65,7 +65,7 @@ Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que rep
 
 **Pergunta:** Qual o indice do vetor `ranges` que representa a leitura do sensor diretamente para frente do robô? E da esquerda? E da direita? E para trás?
 
-## Módulo de Odometria - APS 3
+## Módulo do Laser - APS 3
 
 Vamos criar um módulo para encapsular a leitura do sensor laser, que possa ser facilmente importado em outros programas.
 
@@ -76,7 +76,7 @@ Crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança.
 * definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
     * Utilize o seguinte comando para converter a lista em um array numpy:
     ```python
-    self.laser_msg = np.array(msg.ranges).round(decimals=2) 
+    self.laser_msg = np.array(msg.ranges).round(decimals=2)
     ```
 
     * Utilize o seguinte comando jogar os valores `0` para `inf`, removendo ambiguidades:
@@ -93,5 +93,7 @@ Crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança.
     * Pegue +- 5 valores na direita do robô e armazene na variável `self.right`.
 
     * Pegue +- 5 valores atrás do robô e armazene na variável `self.back`.
+
+    * Por fim, chame uma função chamada `self.custom_laser` e cria essa função vazia (apenas `pass`). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.
 
 Agora siga as instruções da APS 3 para criar um programa que utilize o módulo do sensor laser.

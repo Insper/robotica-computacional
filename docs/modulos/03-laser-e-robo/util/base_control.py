@@ -10,10 +10,10 @@ class BaseControlNode(Node): # Mude o nome da classe
         super().__init__('base_control_node') # Mude o nome do nó
         self.timer = self.create_timer(0.25, self.control)
 
-		self.robot_state = 'stop'
-		self.state_machine = {
-			'stop': self.stop
-		}
+        self.robot_state = 'stop'
+        self.state_machine = {
+            'stop': self.stop
+        }
 
         # Inicialização de variáveis
         self.twist = Twist()
@@ -26,14 +26,14 @@ class BaseControlNode(Node): # Mude o nome da classe
         ## Coloque aqui os publishers
 
     def stop(self):
-		self.twist = Twist()
+        self.twist = Twist()
 
     def control(self):
-		self.twist = Twist()
-		print(f'Estado Atual: {self.robot_state}')
-		self.state_machine[self.robot_state]()
+        self.twist = Twist()
+        print(f'Estado Atual: {self.robot_state}')
+        self.state_machine[self.robot_state]()
 
-		self.cmd_vel_pub.publish(self.twist)
+        self.cmd_vel_pub.publish(self.twist)
         
             
 def main(args=None):
