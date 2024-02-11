@@ -22,7 +22,7 @@ class BaseControlNode(Node): # Mude o nome da classe
         ## Coloque aqui os subscribers
 
         # Publishers
-        self.vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
+        self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
         ## Coloque aqui os publishers
 
     def stop(self):
