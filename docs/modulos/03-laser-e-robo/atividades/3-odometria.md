@@ -93,6 +93,8 @@ Crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. E
 
     * `self.yaw`: orientação do robô no espaço global.
 
+    * `self.yaw_2pi`: orientação do robô no espaço global, mas com valores entre 0 e 2pi. Dica: Google é seu amigo.
+
 * Não inicie um nó nesse arquivo.
 
 Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
