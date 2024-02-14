@@ -28,7 +28,7 @@ A mensagem deve conter:
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
-* Ambos separados por um espaço. Ou seja, a mensagem deve ter o formato: "**tempo atual** **contador**".
+* Ambos separados por um espaço. Ou seja, a mensagem deve ter o formato: "**{tempo_atual}** **{contador}**".
 
 O nó também deve imprimir no terminal uma alerta como na linha a seguir:
 
@@ -55,7 +55,7 @@ tempo_sec = rospy.Time.now().to_sec()
 ## Instruções:
 Baseando-se no código `second_node.py` do módulo 2, crie um nó denominado `subscriber` que se inscreva no tópico `publisher` do tipo `std_msgs/String`. A cada nova mensagem recebida, a função `callback` deve separar o tempo do contador no conteúdo da mensagem. Lembre-se de checar a estrutura da mensagem.
 
-A função `control` deve calcular o tempo que passou e imprimir número da mensagem recebida e o delay entra quando a messagem foi publicada e quando foi recebida, como no exemplo a seguir,
+A função `control` deve calcular o tempo que passou e imprimir número da mensagem recebida e o delay entre quando a messagem foi publicada e quando foi recebida, como no exemplo a seguir,
 
 ```bash
 Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
@@ -77,11 +77,11 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 5. **(+ 1,0)** O nó funciona corretamente.
 
 # Entrega
-Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `subscriber` e o nó `publisher` publicando mensagens no tópico `publisher`.
+Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
 
-## Caso tenha apenas desenvolvido o exercício 1
+## Caso Tenha Apenas Desenvolvido o Exercício 1!
 
 Neste caso, grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro com o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`.
 
