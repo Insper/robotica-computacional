@@ -1,27 +1,54 @@
-# Q3 - Robô quadrado (Dead reckoning)
-Usando o simulador, modifique o arquivo `quadrado.py` para criar um nó da ROS que faça o robô se mova em uma trajetória que se ***aproxima*** de um quadrado.
+# Entregável 4 de Robótica Computacional
 
-**DICA 1** - Para fazer o robô se mover, publique uma mensagem para o tópico `cmd_vel`, verifique o tipo de mensagem que este tópico recebe utilizando o comando `rostopic type cmd_vel`.
+## Instruções gerais
 
-**DICA 2** - Você pode esperar `n` segundos usando `rospy.sleep(n)`. Dessa forma, assumindo que o robô está se deslocando/rotacionando com velocidade constante, é possível prever sua posição final. Este tipo de controle se chama "dead reckoning". É uma forma simples de se controlar o robô, mas tem a desvantagem de "travar" o código, deixando o roubo menos reativo.
+**Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-??? details "Resposta"
-    [Resposta](../modulo4/scripts_resp/quadrado.py){ .ah-button }
+**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
 
-# Q4 - Robô Quase Indeciso
-Usando o simulador e o Laser simulado, modifique o arquivo `indeciso.py`, faça com que o robô se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente.
+**Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**DICA** - Recorte a mensagem do laser para observar um limiar de &plusmn;5&deg; e avalie com base no **menor valor desse limiar**.
+**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/screen_record/), e deve ser postado no Youtube. 
 
-Deixamos no arquivo a função que recebe os dados do Laser.
-```python
-def laser_callback(self, msg: LaserScan) -> None:
-    self.laser_msg = np.array(msg.ranges).round(decimals=2)
-    self.laser_msg[self.laser_msg == 0] = np.inf
-```
-Esta função será chamada sempre que uma mensagem for publicada no tópico `/scan`. O conteúdo da mensagem será convertido para np.array e o valor é arredondado para 2 casas decimais. 
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-Como no robô simulado um objeto muito longe tem o valor `np.inf` e no robô real tem o valor `0`. a segunda linha do `laser_callback` serve para fazer a padronização dos valores.
+## Configuração do Pacote (ROS 2)
 
-??? details "Resposta"
-    [Resposta](../modulo4/scripts_resp/indeciso.py){ .ah-button }
+- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_3`.
+
+# Exercício 1 - Robô quadrado
+Baseando-se no código `base_control.py` do módulo 3, crie um nó denominado `quadrado` que faça o robô **real** se mova em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
+
+* Possui dois estados, `andar` e `girar`
+
+* Utiliza a odometria para `girar` em 90 graus
+
+* Utiliza o metodo `Dead Reckoning` para `andar` os lados do quadrado. Neste metodo, você se desloca em velocidade constante por um tempo fixo, sem receber feedback de quanto, realmente, se deslocou.
+
+* Para os lados, calcule o tempo que passou até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
+
+**DICA 2** - Para girar o robo em 90o, some pi/2... TODO....
+
+
+
+
+
+
+
+# Exercício 2 - Robô Quase Indeciso
+Baseando-se no código `base_control.py` do módulo 3, crie um nó denominado `indeciso` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
+
+* Ter três estados, `frente`, `tras` e `parar`.
+
+* Avalie na função `control` para qual estado o robô deve ir.
+
+
+# Exercício 3 - Robô Limpador
+Baseando-se no código `base_control.py` do módulo 3, crie um nó denominado `indeciso` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamente:
+
+* Mova-se em frente até encontrar um obstáculo a menos de `0.3m` à sua frente.
+
+* Gire até que o obstáculo, mais proximo, esteja em sua traseira.
+
+* Mova-se em frente e repita o processo.
