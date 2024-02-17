@@ -98,9 +98,9 @@ nav:
           - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
           - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
           - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
-        # - APS 2:
-        # - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
-        #   - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+        - APS 2:
+          - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
+          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
       # - Módulo 3 - Controlando o Robô:
       #   - modulos/03-laser-e-robo/index.md
