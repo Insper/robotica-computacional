@@ -88,7 +88,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 Juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
 
-Esse vídeo deve gravado com um proffessor ou monitor do curso, que irá avaliar a pontuação extra.
+Esse vídeo deve ser gravado com um proffessor ou monitor do curso, que irá avaliar a pontuação extra.
 
 Cada grupo deve gravar o vídeo do seu robô e postar no Youtube e incluir o link no README.md com um comentário com o nomes dos outros grupos. Os vídeos devem seguir os critérios de avaliação do exercício 3.
 
