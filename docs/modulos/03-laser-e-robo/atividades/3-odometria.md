@@ -79,13 +79,15 @@ e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
 
 ## Módulo de Odometria - APS 3
 
-Vamos criar um módulo para encapsular a odometria, que possa ser facilmente importado em outros programas.
+Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. Essa classe deve:
+Dentro do pacote `my_package`, crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. Essa classe deve:
 
-* definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+* Não inicie um nó nesse arquivo.
 
-* definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
+* Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+
+* Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
 
     * `self.x`: posição X do robô no espaço global.
 
@@ -94,8 +96,6 @@ Crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. E
     * `self.yaw`: orientação do robô no espaço global.
 
     * `self.yaw_2pi`: orientação do robô no espaço global, mas com valores entre 0 e 2pi. Dica: Google é seu amigo.
-
-* Não inicie um nó nesse arquivo.
 
 Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
 
@@ -125,4 +125,19 @@ Para auxiliar, enviamos uma função que faz conversão de quaternion para ângu
             return roll, pitch, yaw
 ```
 
-Agora siga as instruções da APS 3 para criar um programa que utilize o módulo de odometria.
+### Testando
+
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `my_package`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+
+Lembre-se:
+
+* Importe a classe `Odom` da seguinte forma:
+```python
+from my_package.odom import Odom
+```
+
+* Faça a herança da classe `Odom` no `test_odom_node`.
+
+* Adicione o nó no arquivo `setup.py` e então compile o pacote.
+
+* Rode o nó `test_odom_node` utilizando o comando `ros2 run my_package test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.

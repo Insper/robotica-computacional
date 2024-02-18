@@ -67,13 +67,15 @@ Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que rep
 
 ## Módulo do Laser - APS 3
 
-Vamos criar um módulo para encapsular a leitura do sensor laser, que possa ser facilmente importado em outros programas.
+Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança. Essa classe deve:
+Dentro do pacote `my_package`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança. Essa classe deve:
 
-* definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida.
+* Não inicie um nó nesse arquivo.
 
-* definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
+* Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida.
+
+* Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
     * Utilize o seguinte comando para converter a lista em um array numpy:
     ```python
     self.laser_msg = np.array(msg.ranges).round(decimals=2)
@@ -96,4 +98,19 @@ Crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança.
 
     * Por fim, chame uma função chamada `self.custom_laser` e cria essa função vazia (apenas `pass`). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.
 
-Agora siga as instruções da APS 3 para criar um programa que utilize o módulo do sensor laser.
+### Testando
+
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_laser.py`, dentro do pacote `my_package`. Este arquivo deve conter um nó chamado `test_laser_node` que importa a classe `Laser` do arquivo `laser.py` e imprime as leituras do laser a cada 1 segundo.
+
+Lembre-se:
+
+* Importe a classe `Laser` da seguinte forma:
+```python
+from my_package.laser import Laser
+```
+
+* Faça a herança da classe `Laser` no `test_laser_node`.
+
+* Adicione o nó no arquivo `setup.py` e então compile o pacote.
+
+* Rode o nó `test_laser_node` utilizando o comando `ros2 run my_package test_laser` e mova o robô utilizando o teleop, para ver como o laser é atualizado.
