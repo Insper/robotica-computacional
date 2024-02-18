@@ -31,7 +31,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Utiliza o metodo `Dead Reckoning` para `andar` os lados do quadrado. Neste metodo, você se desloca em velocidade constante por um tempo fixo, sem receber feedback de quanto, realmente, se deslocou.
 
-* Para os lados, calcule o tempo que passou até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
+* Não utilize nenhuma função de `sleep`, calcule o tempo decorrido até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
 
 **DICA 1** - Para somar `pi/2` ao angulo atual: `self.goal_yaw = (self.yaw_2pi + np.pi / 2) % (2 * np.pi)`. E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
 
@@ -68,11 +68,11 @@ ____________________________________________________________________
 # Exercício 3 - Robô Limpador (4 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamente:
 
-* Ter três estados, `forward`, `turn`.
+* Ter dois estados, `forward`, `turn`.
 
 * Mova-se em frente até encontrar um obstáculo a menos de `0.5m` à sua frente (esse valor pode ser ajustado para melhor desempenho).
 
-* Gire até que o obstáculo mais proximo, esteja em direita inferior (aproximadamente `225` graus).
+* Gire até que o obstáculo mais proximo, esteja na direita inferior (aproximadamente `225` graus).
 
 * Mova-se em frente e repita o processo.
 
