@@ -126,7 +126,7 @@ Para rodar o nó precisamos fazer duas coisas:
 
 ## Criando um Arquivo Launch
 
-Vamos criar um arquivo launch chamado `first_node.launch.py` dentro da pasta `my_package`. Este arquivo será responsável por iniciar o nó `first_node.py`.
+Vamos criar um arquivo launch chamado `first_node.launch.py` dentro da pasta `launch` do pacote `my_package`. Este arquivo será responsável por iniciar o nó `first_node.py`.
 
 No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:
 
