@@ -251,6 +251,9 @@ class SecondNode(Node):
     def __init__(self):
         super().__init__('second_node')
         self.timer = self.create_timer(0.25, self.control)
+
+        self.x = 0
+        self.y = 0
         
         self.odom_sub = self.create_subscription(
             Odometry,
