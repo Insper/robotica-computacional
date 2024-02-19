@@ -97,7 +97,7 @@ A saída do comando acima mostra a estrutura da mensagem `Twist`, que é compost
     Qual o comando para visualizar a estrutura da mensagem que o tópico `odom` transporta?
 
     !!! answer
-        ros2 interface show geometry_msgs/msg/Odometry
+        ros2 interface show nav_msgs/msg/Odometry
 
 !!! exercise long 
     No simulador, mova o robô, como a saída do tópico `odom` muda?
