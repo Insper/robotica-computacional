@@ -23,7 +23,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ____________________________________________________________________
 
 # Exercício 1 - Robô quadrado (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mova em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
 
 * Possui dois estados, `andar` e `girar`
 
@@ -37,7 +37,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 ## Critérios de Avaliação:
 
-1. Nó importa corretamente do pacote `my_package`.
+1. Nó importado corretamente do pacote `my_package`.
 2. Desenvolveu o nó `quadrado_node` com os comportamentos corretos.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
 4. Executa a rotação utilizando feedback da odometria.
@@ -66,29 +66,29 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 ____________________________________________________________________
 
 # Exercício 3 - Robô Limpador (4 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamente:
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamento:
 
 * Ter dois estados, `forward`, `turn`.
 
 * Mova-se em frente até encontrar um obstáculo a menos de `0.5m` à sua frente (esse valor pode ser ajustado para melhor desempenho).
 
-* Gire até que o obstáculo mais proximo, esteja na direita inferior (aproximadamente `225` graus).
+* Gire até que o obstáculo mais próximo, esteja na direita inferior (aproximadamente `225` graus).
 
 * Mova-se em frente e repita o processo.
 
 ## Critérios de Avaliação:
 
-1. Nó importa corretamente do pacote `my_package`.
+1. Nó importado corretamente do pacote `my_package`.
 2. Desenvolveu o nó `limpador_node` com os comportamentos corretos.
 3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e desvia de pelo menos **10** obstáculos.
 4. **Vídeo:** O robô não colide com nenhum obstáculo.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
-## Desafio (+2 ponto)
+## Desafio (+2 ponto bônus)
 
 Juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
 
-Esse vídeo deve ser gravado com um proffessor ou monitor do curso, que irá avaliar a pontuação extra.
+Esse vídeo deve ser gravado com um professor ou monitor do curso, que irá avaliar a pontuação extra.
 
 Cada grupo deve gravar o vídeo do seu robô e postar no Youtube e incluir o link no README.md com um comentário com o nomes dos outros grupos. 
 

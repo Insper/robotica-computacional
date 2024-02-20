@@ -8,6 +8,7 @@ Estes atributos são chamados de Pose, que é a posição e orientação do rob�
 No caso do robô utilizado neste curso, a odometria é estimada utilizando os dados dos encoders dos motores.
 
 # Componentes da Pose
+
 ## Posição
 
 A posição é composta por três coordenadas, x, y e z. Existem dois sistemas de coordenadas que podem ser utilizados para representar a posição do robô:
@@ -21,8 +22,10 @@ Isso está ilustrado na figura abaixo:
 ![Sistemas de coordenadas](figs/coordenadas.png)
 
 ## Orientação
+
 ### Orientação - Euler Angles
-A orientação de um objeto pode ser descrita através de ângulos de Euler. Estes são três ângulos que especificam a rotação do objeto em torno dos eixos XX, YY, e ZZ. Geralmente, rotações nos eiros XX, YY, e ZZ são chamadas de roll, pitch, e yaw, respectivamente, como mostrado na imagem abaixo.
+
+A orientação de um objeto pode ser descrita através de ângulos de Euler. Trata-se de três ângulos que especificam a rotação do objeto em torno dos eixos XX, YY, e ZZ. Geralmente, rotações nos eixos XX, YY, e ZZ são chamadas de roll, pitch, e yaw, respectivamente, como mostrado na imagem abaixo.
 
 ![Euler Angles](figs/euler.jpg)
 
@@ -30,7 +33,7 @@ Este método é intuitivo, mas pode sofrer de "gimbal lock". Gimbal lock é um p
 
 ### Orientação - Quaternion
 
-Uma alternativa aos ângulos de Euler é o uso de quaternions. Um quaternion é uma estrutura matemática que evita o problema de gimbal lock e é computacionalmente mais eficiente para algumas operações. Ele é representado como $q=w+xi+yj+zkq=w+xi+yj+zk$.
+Uma alternativa aos ângulos de Euler é o uso de `quaternions`. Um quaternion é uma estrutura matemática que evita o problema de gimbal lock e é computacionalmente mais eficiente para algumas operações. Ele é representado como $q=w+xi+yj+zkq=w+xi+yj+zk$.
 
 Assista o vídeo abaixo para entender como funciona a representação de orientação usando quaternions.
 
@@ -38,12 +41,16 @@ Assista o vídeo abaixo para entender como funciona a representação de orienta
 
 # Tópico de Odometria
 
-Agora que passamos pelos conceitos básicos, vamos ver como a odometria é representada no ROS.
+Agora que passamos pelos conceitos básicos, vamos ver como a odometria é representada na ROS2.
 
 Vamos começar abrindo o simulador e o teleop através dos comandos, um em cada terminal:
 
+- abrir o simulador:
 ```bash
 ros2 launch my_gazebo pista-23B.launch.py
+```
+- Teleop:
+```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
@@ -75,11 +82,13 @@ Por fim, rode o comando abaixo para ver o conteúdo da mensagem:
 ros2 topic echo /odom
 ```
 
-e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
+agora, ande com o robô utilizando o teleop, para ver como a odometria é atualizada.
+
+***Dica*** Para ajudar na compreenção o sistemas de coordenadas, primeiramente ande com o robô em uma direção por vez, primeiro para frente, pare, gire 90 graus, ande novamente e monitore a atualização da odometria.
 
 ## Módulo de Odometria - APS 3
 
-Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+Agora vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
 Dentro do pacote `my_package`, crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. Essa classe deve:
 
@@ -127,7 +136,7 @@ Para auxiliar, enviamos uma função que faz conversão de quaternion para ângu
 
 ### Testando
 
-Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `my_package`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `my_package/my_package`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
 Lembre-se:
 

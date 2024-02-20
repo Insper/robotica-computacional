@@ -6,7 +6,7 @@ Imagine o robô seguidor de linha abaixo:
 
 ![Robô seguidor de linha](figs/linha.png)
 
-Uma forma de implementar o comportamento deste robô é utilizando uma máquina de estados. A máquina de estados é um modelo matemático que descreve o comportamento de um sistema. Ela é formada por um conjunto de estados e transições entre estes estados. Cada estado representa uma condição do sistema e cada transição representa uma mudança de estado.
+Uma forma de implementar o comportamento deste robô é utilizando uma máquina de estados. A máquina de estados é um modelo matemático que descreve o comportamento de um sistema. É formada por um conjunto de estados e transições entre estes estados. Cada estado representa uma condição do sistema e cada transição representa uma mudança de estado.
 
 No caso do robô seguidor de linha, podemos definir os seguintes estados:
 
