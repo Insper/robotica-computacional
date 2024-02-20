@@ -40,7 +40,7 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 
 **DICA 1** - Para pegar o horário atual
 ```python 
-tempo_sec = rospy.Time.now().to_sec()
+tempo_sec = self.get_clock().now().to_msg().sec
 ```
 ## Critérios de Avaliação:
 1. **(+ 0,5)** O pacote foi criado corretamente.
