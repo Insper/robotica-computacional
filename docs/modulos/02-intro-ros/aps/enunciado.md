@@ -40,7 +40,7 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 
 **DICA 1** - Para pegar o horário atual
 ```python 
-tempo_nsec = self.get_clock().now().to_msg().nanosec
+tempo_nsec = self.get_clock().now().to_msg().sec + float(self.get_clock().now().to_msg().nanosec) / 1e9
 ```
 ## Critérios de Avaliação:
 1. **(+ 0,5)** O pacote foi criado corretamente.
