@@ -2,7 +2,7 @@
 
 Nesta atividade vamos explorar o tópico do sensor laser, `scan`. Este sensor se encontra no topo do robô e é utilizado para detectar obstáculos no ambiente.
 
-Para entender como o sensor funciona, vamos primeiro ver o tipo de mensagem que é enviado no tópico `scan`. Para isso, abra um novo terminal e digite:
+Para entender como o sensor funciona, vamos primeiro ver o tipo de mensagem que é enviado no tópico `scan`. Para isso, abra um novo terminal e digite (Certifique-se que o simulador rodando antes):
 
 ```bash
 ros2 topic info /scan
@@ -61,7 +61,7 @@ A mensagem do sensor laser é composta pelos seguintes campos:
 
 * `intensities: [...]`: Vetor com as intensidades das leituras do sensor. Nosso sensor não possui essa informação, portanto, pode desconsiderar esse campo.
 
-Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que representam as leituras da distância do sensor a cada 1 grau. O valor faz medições no sentido anti-horário, começando de frente para o robô. Na **simulação**, valor `inf` indica que o sensor não detectou nada naquela direção, no **robô real**, o valor `0` indica que o sensor não conseguiu fazer a leitura.
+Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que representam as leituras da distância do sensor a cada 1 grau. As medições são no sentido anti-horário, sendo 0 graus na parte de frente do robô. Na **simulação**, valor `inf` indica que o sensor não detectou nada naquela direção, no **robô real**, o valor `0` indica que o sensor não conseguiu fazer a leitura.
 
 **Pergunta:** Qual o indice do vetor `ranges` que representa a leitura do sensor diretamente para frente do robô? E da esquerda? E da direita? E para trás?
 
@@ -69,7 +69,7 @@ Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que rep
 
 Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `my_package`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança. Essa classe deve:
+Dentro do pacote `my_package/my_package`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` sem herança. Essa classe deve:
 
 * Não inicie um nó nesse arquivo.
 
@@ -88,13 +88,13 @@ Dentro do pacote `my_package`, crie um arquivo denominado `laser.py` e uma class
 
     * Converta self.laser_msg para uma lista novamente.
 
-    * Pegue +- 5 valores na frente do robô e armazene na variável `self.front`.
+    * Pegue um range de +- 5 valores na frente do robô e armazene na variável `self.front`.
 
-    * Pegue +- 5 valores na esquerda do robô e armazene na variável `self.left`.
+    * Pegue um range +- 5 valores na esquerda do robô e armazene na variável `self.left`.
 
-    * Pegue +- 5 valores na direita do robô e armazene na variável `self.right`.
+    * Pegue um range +- 5 valores na direita do robô e armazene na variável `self.right`.
 
-    * Pegue +- 5 valores atrás do robô e armazene na variável `self.back`.
+    * Pegue um range +- 5 valores atrás do robô e armazene na variável `self.back`.
 
     * Por fim, chame uma função chamada `self.custom_laser` e cria essa função vazia (apenas `pass`). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.
 

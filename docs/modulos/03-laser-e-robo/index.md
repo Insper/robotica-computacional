@@ -17,8 +17,8 @@ As atividades deste módulo focam em introduzir técnicas úteis para
 Estes conceitos são explorados nas seguintes atividades,
 
 - [Atividade 1](atividades/1-maquina-de-estados.md) - Introdução ao conceito de maquina de estados.
-- [Atividade 2](atividades/2-estrutura-basica.md) - Aqui fornecemos uma estrutura básica um nó qualquer e um nó de controle do robô com maquina de estados.
-- [Atividade 3](atividades/3-odometria.md) - Entendendo o conceito de Pose e Odometria. Também vamos aprender a criar um módulo de odometria para ser facilmente importado em outros programas.
+- [Atividade 2](atividades/2-estrutura-basica.md) - Aqui fornecemos uma estrutura básica composta por um nó qualquer e um nó de controle do robô por meio de maquina de estados.
+- [Atividade 3](atividades/3-odometria.md) - Entendendo o conceito de `Pose` e `Odometria`. Também vamos aprender a criar um módulo de odometria para ser facilmente importado em outros programas.
 - [Atividade 4](atividades/4-laser.md) - Entendendo a leitura do sensor laser. Também vamos aprender a criar um módulo do sensor laser para ser facilmente importado em outros programas.
 - [Atividade 5](atividades/5-visualizacao.md) - Entendendo como visualizar os dados da câmera, utilizando o `rqt_image_view`, e os dados do sensor laser e da odometria, utilizando o `RViz`.
 
