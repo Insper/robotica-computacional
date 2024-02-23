@@ -73,7 +73,16 @@ Dentro do pacote `my_package/my_package`, crie um arquivo denominado `laser.py` 
 
 * Não inicie um nó nesse arquivo.
 
-* Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida.
+* Inicialize uma variável `self.opening`, que será utilizada para armazenar a abertura do sensor laser.
+
+* Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida. Faça o subscriber com o seguinte comando, para o robô real é necessário alterar `reliability` para `BEST_EFFORT`, por limitações de hardware:
+```python
+self.laser_sub = self.create_subscription(
+    LaserScan,
+    '/scan',
+    self.laser_callback,
+    QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
+```
 
 * Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
     * Utilize o seguinte comando para converter a lista em um array numpy:
@@ -85,16 +94,16 @@ Dentro do pacote `my_package/my_package`, crie um arquivo denominado `laser.py` 
     ```python
     self.laser_msg[self.laser_msg == 0] = np.inf
     ```
-
+    
     * Converta self.laser_msg para uma lista novamente.
 
-    * Pegue um range de +- 5 valores na frente do robô e armazene na variável `self.front`.
+    * Pegue um range de +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
 
-    * Pegue um range +- 5 valores na esquerda do robô e armazene na variável `self.left`.
+    * Pegue um range +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
 
-    * Pegue um range +- 5 valores na direita do robô e armazene na variável `self.right`.
+    * Pegue um range +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
 
-    * Pegue um range +- 5 valores atrás do robô e armazene na variável `self.back`.
+    * Pegue um range +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
 
     * Por fim, chame uma função chamada `self.custom_laser` e cria essa função vazia (apenas `pass`). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.
 
