@@ -22,4 +22,12 @@ As atividades deste módulo focam em melhorar nossas habilidades de segmentaçã
 <!-- ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2. -->
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 4.
+
+    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
+
+    As entregas da APS 4 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
+
+    [APS 4 - Github Classroom](https://classroom.github.com/a/WlPtlXfc)
+
+    A data final de entrega é **{{ data_APS4 }}**. -->
