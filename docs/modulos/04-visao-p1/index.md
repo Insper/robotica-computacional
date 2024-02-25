@@ -13,7 +13,7 @@ As atividades deste módulo focam em melhorar nossas habilidades de segmentaçã
 
 - [1.1 - Leitura de Imagem e Webcam](atividades/1-leitura_e_webcam.ipynb) - Leitura de imagem, visualização, transposição e  uso da webcam.
 - [1.2 - Corte e Criação de Imagens](atividades/2-corte_e_criacao.ipynb) - Corte e criação de imagens usando NumPy.
-- [1.3 - ROI e NumPy](atividades/atividades/3-roi_e_numpy.ipynb) - Region of Interest (ROI), desenho de retângulos e operações com NumPy.
+- [1.3 - ROI e NumPy](atividades/3-roi_e_numpy.ipynb) - Region of Interest (ROI), desenho de retângulos e operações com NumPy.
 - [1.4 - Segmentação de Imagens p1](atividades/4-segmentacao_1.ipynb) - Segmentação de imagens por cor usando o modelo RGB no OpenCV.
 - [1.5 - Segmentação de Imagens p2](atividades/5-segmentacao_2.ipynb) - Segmentação usando o modelo HSV no OpenCV e inciando a implementação do modulo de visão.
 
