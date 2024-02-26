@@ -22,7 +22,7 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 4](atividades/4-laser.md) - Entendendo a leitura do sensor laser. Também vamos aprender a criar um módulo do sensor laser para ser facilmente importado em outros programas.
 - [Atividade 5](atividades/5-visualizacao.md) - Entendendo como visualizar os dados da câmera, utilizando o `rqt_image_view`, e os dados do sensor laser e da odometria, utilizando o `RViz`.
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 3.
@@ -33,4 +33,4 @@ Estes conceitos são explorados nas seguintes atividades,
 
     [APS 3 - Github Classroom](https://classroom.github.com/a/WlPtlXfc)
 
-    A data final de entrega é **{{ data_APS3 }}**. -->
+    A data final de entrega é **{{ data_APS3 }}**.

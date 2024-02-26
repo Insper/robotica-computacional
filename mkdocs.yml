@@ -115,7 +115,6 @@ nav:
           - "4 - Entendendo o Laser":
             - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
           - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
-          # - "6 - Salvando Eventos na ROS": modulos/03-laser-e-robo/atividades/6-rosbag.md
         - APS 3:
           - "APS 3 - Classroom" : https://classroom.github.com/a/WlPtlXfc
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
@@ -136,6 +135,7 @@ nav:
     #   - Módulo 5 - Visão Robótica:
     #     - modulos/05-visao-p2/index.md
     #     - Atividades:
+          # - "6 - Salvando Eventos na ROS": modulos/03-laser-e-robo/atividades/6-rosbag.md
     #       - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
     #       - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
     #       - "3 - Exemplo de Resolução de Exercício":
