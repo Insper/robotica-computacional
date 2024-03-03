@@ -124,6 +124,7 @@ nav:
       - Módulo 4 - Imagens e Matrizes:
         - modulos/04-visao-p1/index.md
         - Atividades:
+          - "Download das Atividades": modulos/04-visao-p1/atividades/atividades_modulo_4.zip
           - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
           - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
           - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
