@@ -24,11 +24,13 @@ Você deve ter uma folha com o padrão da imagem abaixo.
 
 **Dica:** Se não tiver, é possível fazer também com um tablet ou *smartphone*
  
-<img src="fig/folha_atividade.png" width=300>
+<!-- <img src="fig/folha_atividade.png" width=300> -->
+![folha_atividade](fig/folha_atividade.png)
 
 Neste exercício vamos aprender a fazer uma conversão 2D->3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, vamos ver o modelo pinhole.
 
-<img src="fig/pinhole.png" width=60%>
+<!-- <img src="fig/pinhole.png" width=60%> -->
+![pinhole](fig/pinhole.png)
 
 A partir da geometria do modelo pinhole, podemos definir a seguinte relação entre a distância focal $f$, o tamanho do objeto virtual $h$, a distância da câmera ao objeto $D$, e o tamanho do objeto real $H$:
 
@@ -72,7 +74,7 @@ Neste exercício você vai trabalhar no arquivo [./ex2.py](./ex2.py).
 
 Primeiramente, baixe o vídeo no link abaixo e salve na pasta `img/q2` do seu repositório. 
 
-[link do video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EVNzpavCn6NPqMfgV0f9X_0Bcbn4SGEHJuudx7W54dJLFQ?e=j6adG7&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19)
+[LINK DO VIDEO](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EVNzpavCn6NPqMfgV0f9X_0Bcbn4SGEHJuudx7W54dJLFQ?e=j6adG7&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19)
 
 Na função `main` altere entre testar com um frame, `rodar_frame`, ou rodar com o vídeo, `rodar_video`, comentando e descomentando a linha apropriada.
 
