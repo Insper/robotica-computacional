@@ -1,40 +1,24 @@
-# APS 2 - Visão Computacional
+# Entregável 4 de Robótica Computacional
 
-**Importante:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
+## Instruções gerais
 
-**Aviso 1:** Não modifique o arquivo de teste, `test.py`.
+**Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar commit e push no seu repositório até o horário limite de entrega.
+**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-## Teste seu código
+**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/screen_record/), e deve ser postado no Youtube. 
 
-Para testar seu código, execute o  teste automático usando o comando abaixo no terminal:
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-```bash
-pytest test.py
-```
+## Configuração do Pacote (ROS 2)
 
-Para testar apenas um exercício:
+- Não será necessário para este entregável.
 
-```bash
-pytest test.py::test_ex1
-```
+____________________________________________________________________
 
-Caso aparece um erro de `ModuleNotFoundError`, execute o comando abaixo no terminal:
-
-```bash
-pip install pytest
-```
-
-Se discordar do resultado do teste, verifique se seu código está seguindo o que foi pedido, leia com atenção o enunciado e a saída do teste. Se ainda assim discordar, entre em contato com os professores ou outro membro da equipe da disciplina.
-
-Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.
-___
-
-
-# Exercício 1
+# Exercício 1 - Conversão 2D->3D (5 pontos)
 
 Você deve ter uma folha com o padrão da imagem abaixo.
 
@@ -42,7 +26,7 @@ Você deve ter uma folha com o padrão da imagem abaixo.
  
 <img src="fig/folha_atividade.png" width=300>
 
-Neste exercício vamos aprender a fazer uma conversão 2D->3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, relembre o modelo pinhole visto em aula.
+Neste exercício vamos aprender a fazer uma conversão 2D->3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, vamos ver o modelo pinhole.
 
 <img src="fig/pinhole.png" width=60%>
 
@@ -52,109 +36,58 @@ $$
 \frac{h}{H} = \frac{f}{D}
 $$
 
-O objetivo deste exercício é estimar a distância $D$ da **sua** câmera até a folha e o ângulo $\theta$ de inclinação da folha em relação a vertical. Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py), ajuste a classe para herdar o módulo de visão e implemente o método `run`. Algumas funções já foram criadas para ajudar vocês, vocês podem criar outras funções se acharem necessário, desde que não modifiquem as entradas e saídas das funções já existentes.
+O objetivo deste exercício é estimar a distância $D$ da **SUA** câmera até a folha.
+
+Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py).
 
 ## Este exercício pede que vocês façam o seguinte:
 
-1. Utilizar a sua câmera para capturar uma imagem da folha em uma distância $D$ conhecida;
-2. Medir a distância $H$ entre os dois círculos da folha;
+1. Na função `run` você deve fazer o seguinte:
 
-Na função `run` você deve fazer o seguinte, chamando as respectivas funções:
+    1.1. Converter a imagem para o modelo de cor HSV;
 
-1. Encontrar o centro dos dois círculos da folha - `encontrar_centros`;
-2. Encontrar a distância $h$ entre os dois círculos da folha* - `calcular_h`;
-3. Calcular o ângulo $\theta$ de inclinação da folha em relação a vertical - `calcular_theta`;
-4. Estimar a distância $D$ - `encontrar_D`;
-5. Escrever na imagem o valor da distância $D$ e do ângulo $\theta$, utilize apenas duas casas decimais**.
-6. Retornar a imagem com as informações escritas, a distância $D$, o ângulo $\theta$ e a distância $h$.
-7. O seu código deve ser robusto para funcionar caso a folha não esteja na imagem - retorne o valor `-1` para a distância $D$ e o ângulo $\theta$.
+    1.2. Obter as máscaras para os círculos `ciano` e `magenta`;
+    
+    1.3. Calcular a area dos círculos `ciano` e `magenta`;
 
-Na função `calibration` você fará a calibração da sua câmera, para isso você deve fazer o seguinte:
+    1.4. Se a diferença entre as áreas for maior do que 20000 (pode alterar esse valor) retorne a distância $D$ entre a câmera e a folha como `-1`. Caso contrário, calcule a média das áreas e o diâmetro do círculo.
 
-1. Modificar a imagem selecionada para a da sua câmera - `rodar_frame`;
-2. Chamar a função `run` para encontrar os centros dos círculos;
-3. Chamar a função `encontrar_foco` com os valores medidos para $D$ e $H$ para encontrar a distância focal $f$ da sua câmera - a variável deve ser armazenada como parâmetro da classe.
+    1.5. Escreva na imagem o valor da distância $D$ e o diâmetro do círculo, utilize apenas duas casas decimais.
 
-Uma vez que seu código passar no pytest, você deve mudar a `main` para rodar a função `rodar_webcam`. Nessa função você deve fazer o seguinte:
+2. Para a imagem `calib01.jpg`, vamos fazer o processo de calibração da camera. Utilize o valor da distância $D$ entre a câmera e a folha descrito na imagem para calcular a distância focal $self.f$ da câmera do professor (valor esperado é ~363).
 
-1. Modificar a imagem selecionada para rodar na sua câmera - `rodar_webcam`;
-2. Chamar a função `calibration` para calibrar a sua câmera;
-3. Dentro do loop da webcam, chamar a função `run` para encontrar a distância $D$ e o ângulo $\theta$ da folha;
-4. Siga o tutorial do [link](https://insper.github.io/robotica-computacional/aps/screen_record/) para aprender como gravar a tela do seu linux.
-5. Grave um vídeo mostrando a sua câmera e a imagem da folha, mostre a distância $D$ e o ângulo $\theta$ na imagem. No vídeo você deve mostrar a folha em diferentes distâncias $D$ e ângulos $\theta$.
-6. De upload do vídeo no youtube e coloque o link no README.md do seu repositório.
+3. Para a imagem `teste01.jpg`, utilize a distância focal $self.f$ para calcular a distância $D$ entre a câmera e a folha. (valor esperado é ~41 cm).
 
-<p>
-<details>
-<summary>Spoiler*</summary>
+4. Agora repita o processo de calibração para a sua câmera, tirando uma foto da folha a uma distância $D$ conhecida.
 
-Distância entre o centro dos círculos: $h = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$
+5. Mude a função `main` para rodar a função `rodar_webcam` e faça um **vídeo** mostrando a sua câmera e a imagem da folha, mostre a distância $D$ e o diâmetro do círculo na imagem.
 
-</details>
-</p>
+6. Adicione o link do vídeo no README.md do seu repositório.
 
-<p>
-<details>
-<summary>Spoiler**</summary>
+__________
 
-Utilize a função `cv2.putText` para escrever na imagem.
+# Exercício 2 - Linha Amarela e Cruzamento (5 pontos)
 
-</details>
-</p>
+Neste exercício você vai trabalhar no arquivo [./ex2.py](./ex2.py).
 
-## Valores Esperados
-
-A imagem [./img/calib01.jpg](./img/calib01.jpg) serve de exemplo para calibrar a sua câmera, essa imagem também é utilizada pelo pytest para verificar se o seu código está correto.
-
-<img src="./img/calib01.jpg" width=300>
-
-Pela legenda, a distância $D$ entre a câmera e a folha é de 80 cm. A distância $H$ entre os dois círculos é de 12.7 cm.
-
-<p>
-<details>
-Saída<summary>Saída Esperada</summary>
-
-* Distância entre os círculos = 161
-
-* Distância focal = 1014.1732283464568
-
-</details>
-</p>
-
-As imagens [./angulo01.jpg](./img/angulo01.jpg), ..., [./angulo04.jpg](./img/angulo04.jpg) servem de exemplo para estimar o ângulo $\theta$ de inclinação da folha em relação a vertical.
-
-<p>
-<details>
-<summary>Saída Esperada</summary>
-
-* angulo01.jpg: Ángulo de -0.18 graos
-
-* angulo02.jpg:  ngulo de -51.98 graus
-
-* angulo03.jpg:  ngulo de -88.93 graus
-
-* angulo04.jpg:  ngulo de 118.57 graus
-
-</details>
-</p>
-___
-
-
-# Exercício 2 - Desafio
-
-Neste exercício você deve modificar o código do exercício 5 da atividade 5 do módulo 2 para um vídeo do robô real no link abaixo.
+Primeiramente, baixe o vídeo no link abaixo e salve na pasta `img/q2` do seu repositório. 
 
 [link do video](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EVNzpavCn6NPqMfgV0f9X_0Bcbn4SGEHJuudx7W54dJLFQ?e=j6adG7&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19)
 
-[link atividade 5](https://insper.github.io/robotica-computacional/modulos/02-modelo-de-camera/atividade5/)
+Na função `main` altere entre testar com um frame, `rodar_frame`, ou rodar com o vídeo, `rodar_video`, comentando e descomentando a linha apropriada.
 
-Uma vez que seu código passar no pytest, você deve mudar a `main` para rodar a função `rodar_video`.
-Além do que foi pedido na atividade 5, você deve:
+Você deve fazer o seguinte:
 
-1. Mostrar na imagem a reta que melhor se ajusta aos segmentos da pista amarela;
-2. Escrever na imagem a inclinação da reta em relação a vertical;
-3. Calcular a distância, na horizontal, do segmento de pista mais perto do robô até o centro da imagem.
-4. Mostrar na imagem essa distância através de uma linha horizontal.
-5. Escreva na imagem a distância calculada.
-6. Grave um vídeo mostrando o seu código funcionando em TODO o percurso do robô.
-7. De upload do vídeo no youtube e coloque o link no README.md do seu repositório.
+1. Filtrar a cor amarela do frame e binarizar a imagem, mostre a mascara em uma janela.
+
+2. Ajuste os valores da mascara para que apenas a linha amarela seja detectada **em praticamente todos os frames**.
+
+3. Corte a imagem em 3 colunas e calcule a area da linha amarela em cada coluna.
+
+4. Se duas colunas tiverem área maior do que `valor` (você deve definir esse valor), então você deve escrever na imagem "Curva Detectada".
+
+5. Se três colunas tiverem área maior do que `valor` (você deve definir esse valor), então você deve escrever na imagem "Cruzamento Detectado".
+
+6. Ajuste cuidadosamente os valores para que o seu programa não detecte curvas e cruzamentos onde não existem (falso positivo) e que detecte corretamente onde existem (verdadeiro positivo).
+
+7. Faça um vídeo mostrando a execução do seu programa e adicione o link do vídeo no README.md do seu repositório.
