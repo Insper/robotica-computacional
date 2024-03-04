@@ -4,20 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSignal, QObject
 from cv_bridge import CvBridge
 from PyQt5.QtWidgets import QApplication, QSlider, QLabel, QVBoxLayout, QWidget, QPushButton, QRadioButton, QHBoxLayout, QFileDialog, QFrame, QCheckBox
-
-class ImageModule():
-    def __init__(self):
-        self.kernel = None
-    
-    def color_filter(self, img: np.ndarray, lower: tuple, upper: tuple) -> np.ndarray:
-        result = cv2.inRange(img, lower, upper)
-        return result
-
-    def run(self, img: np.ndarray, lower: tuple, upper: tuple) -> np.ndarray:
-        result = self.color_filter(img, lower, upper)
-
-        # Convert to 
-        return result
+from image_module import ImageModule
 
 class ImageUpdateSignal(QObject):
     # Define a custom signal
