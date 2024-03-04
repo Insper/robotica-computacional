@@ -1,4 +1,4 @@
-# Gravando Acontecimentos na ROS 2
+# Salvando Eventos na ROS 2
 
 Nesta atividade vamos aprender como gravar acontecimentos na ROS 2. Para isso, vamos utilizar o pacote `rosbag2` que é uma ferramenta para gravação e reprodução de mensagens da ROS 2.
 
