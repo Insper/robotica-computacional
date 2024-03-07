@@ -45,7 +45,7 @@ Se quiser iniciar a reprodução do `ROS BAG` de um dado ponto, execute o seguin
 ros2 bag play my_bag.db3 --pause -s 10
 ```
 
-Se quisermos reproduzir as mensagens com uma velocidade diferente, podemos usar a opção `-rate`, valor padrão é 1.0, então valores menores que 1.0 diminuem a velocidade e valores maiores que 1.0 aumentam a velocidade. Por exemplo, para reproduzir as mensagens com uma velocidade de 2x, execute o seguinte comando:
+Se quisermos reproduzir as mensagens com uma velocidade diferente, podemos usar a opção `-r`, valor padrão é 1.0, então valores menores que 1.0 diminuem a velocidade e valores maiores que 1.0 aumentam a velocidade. Por exemplo, para reproduzir as mensagens com uma velocidade de 2x, execute o seguinte comando:
 
 ```bash
 ros2 bag play my_bag.db3 --pause -r 2
