@@ -32,7 +32,6 @@ class ImageToolNode(Node): # Mude o nome da classe
     def flag_callback(self, msg):
         self.runnable = bool(msg.data)
 
-
     def image_callback(self, msg):
         if self.runnable:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")

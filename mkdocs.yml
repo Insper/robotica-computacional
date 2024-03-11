@@ -144,8 +144,8 @@ nav:
       #     - "2 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
       #     - "3 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
       #     - "4 - Visão na ROS 2":
-      #       - "4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-imagesub.ipynb
-      #       - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/base_vision.py
+      #       - "4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-image_subscriber.ipynb
+      #       - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
       #     - "5 - Ferramentas de Visão":
       #       - "5 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-imagesub.ipynb
       #       - "Download > Ferramenta de Visão": modulos/05-visao-p2/atividades/4-imagesub.ipynb
