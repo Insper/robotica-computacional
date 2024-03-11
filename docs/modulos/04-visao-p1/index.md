@@ -21,7 +21,7 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
     [Download dos Notebooks](atividades_modulo_4.zip)
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 4.
@@ -32,4 +32,4 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 
     [APS 4 - Github Classroom](https://classroom.github.com/a/1v0fXJJD)
 
-    A data final de entrega é **{{ data_APS4 }}**. -->
+    A data final de entrega é **{{ data_APS4 }}**.
