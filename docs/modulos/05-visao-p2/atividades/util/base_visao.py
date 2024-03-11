@@ -3,12 +3,13 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image, CompressedImage
 from cv_bridge import CvBridge
 from rclpy.qos import ReliabilityPolicy, QoSProfile
+from std_msgs.msg import String
 
 class ImageToolNode(Node): # Mude o nome da classe
 
     def __init__(self, image_tuner):
         super().__init__('image_tool_node')
-        self.timer = self.create_timer(0.25, self.control)
+        self.runnable = True
 
         # Subscribers
         ## Coloque aqui os subscribers
@@ -18,16 +19,27 @@ class ImageToolNode(Node): # Mude o nome da classe
             '/camera/image_raw',
             self.image_callback,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
+        
+        self.flag_sub = self.create_subscription(
+            String,
+            '/vision/image_flag', # Mude o nome do tópico
+            self.flag_callback,
+            QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
 
         # Publishers
         ## Coloque aqui os publishers
 
-    def image_callback(self, msg):
-        cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-        # Faça aqui o processamento da imagem
+    def flag_callback(self, msg):
+        self.runnable = bool(msg.data)
 
-    def control(self):
-        print('running...')
+
+    def image_callback(self, msg):
+        if self.runnable:
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+            # Faça aqui o processamento da imagem
+        else:
+            print('Image processing is paused')
+
     
 def main(args=None):
     rclpy.init(args=args)
