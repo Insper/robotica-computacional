@@ -1,4 +1,4 @@
-# Processando Imagens na ROS
+# Processando Imagens na ROS 2
 
 Nesta atividade, vamos aprender a processar imagens na ROS. Para isso, vamos utilizar a biblioteca OpenCV, que é uma das mais utilizadas para processamento de imagens.
 
