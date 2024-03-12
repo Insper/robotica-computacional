@@ -1,15 +1,13 @@
-# Módulo 4 - Imagens e Matrizes
+# Módulo 5 - Identificação e Visão na ROS 2
 
 !!! pdf
     ![](slides.pdf)
 
-Neste módulo vamos explorar a biblioteca OpenCV e aprender a usar alguns de seus recursos para segmentar imagens por cor e identificar objetos de interesse. Com isso, vamos aprender a usar a câmera do robô para resolver problemas de navegação. Também vamos explorar a seguinte questão:
-
-"Dada uma distância (em pixels) entre dois objetos na imagem, qual é a distância entre esses dois objetos no mundo real?"
+Neste módulo vamos continuar nosso estuda com a biblioteca OpenCV e aprender a identificar a posição de objetos de interesse em uma imagem. Também vamos aprender a usar a câmera do robô na ROS 2 para aplicar os conceitos aprendidos.
 
 ## Atividades
 
-As atividades deste módulo focam em melhorar nossas habilidades de segmentação por cor e identificação de aréas de interesse na imagem. Isso será necessário pois o nosso processo simples de calibração de câmera envolve encontrar círculos coloridos em uma imagem. 
+As atividades deste módulo focam em melhorar nossas habilidades de identificação de objetos, a criação de um `subscriber` para a câmera do robô, e a aplicação dos conceitos aprendidos na prática. Nas atividades, vamos aprender a salvar eventos na ROS 2, vamos também explorar a resolução de problemas de visão computacional da AI de 2023-2. Por fim, vamos criar um módulo de visão para visão que pode ser utilizado em conjunto com uma ferramente de visão que vai auxiliar a encontrar o limiar de cor para segmentação de objetos.
 
 - [1.1 - Leitura de Imagem e Webcam](atividades/1-leitura_e_webcam.ipynb) - Leitura de imagem, visualização, transposição e  uso da webcam.
 - [1.2 - Corte e Criação de Imagens](atividades/2-corte_e_criacao.ipynb) - Corte e criação de imagens usando NumPy.
