@@ -144,12 +144,12 @@ nav:
       #     - "2 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
       #     - "3 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
       #     - "4 - Visão na ROS 2":
-      #       - "4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-image_subscriber.ipynb
+      #       - "4 - Visão na ROS 2": modulos/05-visao-p2/atividades/4-image_subscriber.md
       #       - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
       #     - "5 - Ferramentas de Visão":
-      #       - "5 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-imagesub.ipynb
-      #       - "Download > Ferramenta de Visão": modulos/05-visao-p2/atividades/4-imagesub.ipynb
-      #     - "6 - Exemplo de Resolução de Exercício":
+      #       - "5 - Ferramentas de Visão": modulos/05-visao-p2/atividades/5-image_tool.md
+      #       - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
+      #     - "6 - Exemplo de Resolução de Exercício": https://classroom.github.com/a/1v0fXJJD
       #       - "6.1 - Enunciado": modulos/05-visao-p2/atividades/31-enunciado.md
       #       - "6.2 - Resolução": modulos/05-visao-p2/atividades/32-resolucao.ipynb
       #       - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
