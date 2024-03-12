@@ -14,9 +14,9 @@ class ImageToolNode(Node): # Mude o nome da classe
         # Subscribers
         ## Coloque aqui os subscribers
         self.bridge = CvBridge()
-        self.subscription = self.create_subscription(
-            Image,
-            '/camera/image_raw',
+        self.image_sub = self.create_subscription(
+            Image, # or CompressedImage
+            '/camera/image_raw', # or '/camera/image_raw/compressed'
             self.image_callback,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
         
@@ -34,8 +34,11 @@ class ImageToolNode(Node): # Mude o nome da classe
 
     def image_callback(self, msg):
         if self.runnable:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
+            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
+            
             # Faça aqui o processamento da imagem
+            # ou chame uma classe ou função que faça isso
         else:
             print('Image processing is paused')
 
