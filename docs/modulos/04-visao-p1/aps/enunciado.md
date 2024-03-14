@@ -56,7 +56,7 @@ Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py).
 
     1.5. Escreva na imagem o valor da distância $D$ e o diâmetro do círculo, utilize apenas duas casas decimais.
 
-2. Para a imagem `calib01.jpg`, vamos realizar o processo de calibração da câmera. Utilize o valor da distância $D$ entre a câmera e a folha descrito na imagem para calcular a distância focal $self.f$ da câmera do professor (valor esperado é ~363).
+2. Para a imagem `calib01.jpg`, vamos realizar o processo de calibração da câmera. Utilize o valor da distância $D$ entre a câmera e a folha descrito na imagem para calcular a distância focal $self.f$ da câmera do professor (valor esperado é ~726).
 
 3. Para a imagem `teste01.jpg`, utilize a distância focal $self.f$ para calcular a distância $D$ entre a câmera e a folha. (valor esperado é ~41 cm).
 
