@@ -59,13 +59,13 @@ class MobileNetDetector():
                 box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
                 (startX, startY, endX, endY) = box.astype("int")
 
-                label = "{}: {:.2f}%".format(self.CLASSES[idx], confidence * 100)
+                label = "{}: {:.2f}%".format(self.CLASSES[idx], confidence)
 
                 cv2.rectangle(image, (startX, startY), (endX, endY), self.COLORS[idx], 2)
                 y = startY - 15 if startY - 15 > 15 else startY + 15
                 cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.COLORS[idx], 2)
 
-                results.append((self.CLASSES[idx], confidence*100, (startX, startY), (endX, endY)))
+                results.append({'classe':self.CLASSES[idx],'confianca': confidence, 'p1':(startX, startY), 'p2':(endX, endY)})
 
         return image, results
 
