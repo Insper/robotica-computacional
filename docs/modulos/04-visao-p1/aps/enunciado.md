@@ -52,9 +52,11 @@ Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py).
     
     1.3. Calcular a area dos círculos `ciano` e `magenta`;
 
-    1.4. Se a diferença entre as áreas for maior do que 20000 (pode alterar esse valor) retorne a distância $D$ entre a câmera e a folha como `-1`. Caso contrário, calcule a média das áreas e o diâmetro do círculo.
+    1.4. Se a diferença entre as áreas for maior do que 20000 (pode alterar esse valor) retorne a distância $D$ entre a câmera e a folha como `-1`. Caso contrário, calcule a média das áreas **e o diâmetro do círculo**.
 
-    1.5. Escreva na imagem o valor da distância $D$ e o diâmetro do círculo, utilize apenas duas casas decimais.
+    1.5. Escreva na imagem o valor da distância $D$ **e o diâmetro do círculo**, utilize apenas duas casas decimais.
+
+    1.6. Entao `h` sera o diâmetro do círculo e `H` será 5.5 cm (diametro do círculo na folha do exemplo do profesor).
 
 2. Para a imagem `calib01.jpg`, vamos realizar o processo de calibração da câmera. Utilize o valor da distância $D$ entre a câmera e a folha descrito na imagem para calcular a distância focal $self.f$ da câmera do professor (valor esperado é ~726).
 
