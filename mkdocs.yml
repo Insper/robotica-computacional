@@ -151,8 +151,8 @@ nav:
             - "5 - Ferramentas de Visão": modulos/05-visao-p2/atividades/5-image_tool.md
             - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
           - "6 - Exemplo de Resolução de Exercício":
-            - "6.1 - Enunciado": modulos/05-visao-p2/atividades/31-enunciado.md
-            - "6.2 - Resolução": modulos/05-visao-p2/atividades/32-resolucao.ipynb
+            - "6.1 - Enunciado": modulos/05-visao-p2/atividades/61-enunciado.md
+            - "6.2 - Resolução": modulos/05-visao-p2/atividades/62-resolucao.ipynb
             - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
             - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
         - APS 5:
