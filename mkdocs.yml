@@ -156,5 +156,5 @@ nav:
             - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
             - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
         - APS 5:
-          - "APS 5 - Classroom" : https://classroom.github.com/a/zxV99Se5
+          # - "APS 5 - Classroom" : https://classroom.github.com/a/zxV99Se5
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
