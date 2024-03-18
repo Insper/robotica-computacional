@@ -20,7 +20,7 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
     [Download dos Notebooks](atividades_modulo_5.zip)
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 5.
@@ -31,4 +31,4 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 
     [APS 5 - Github Classroom](https://classroom.github.com/a/zxV99Se5)
 
-    A data final de entrega é **{{ data_APS5 }}**. -->
+    A data final de entrega é **{{ data_APS5 }}**.
