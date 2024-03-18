@@ -6,16 +6,18 @@ Em um `ROS BAG` é possível gravar mensagens de tópicos, serviços, parâmetro
 
 ## Parte 1 - Gravando mensagens
 
-Primeiro, ligue a simulação do robô, o `teleop` e `rqt_image_view`.
+Primeiro, `abra` um `mapa` para a simulação do robô, o `teleop` e `rqt_image_view`.
 
-Para gravar mensagens em um `ROS BAG`, execute o seguinte comando:
+- Para `gravar` mensagens em um `ROS BAG`, execute o seguinte comando:
 
 ```bash
 ros2 bag record /topic1 /topic2 -o nome_do_meu_bag
 ```
 
 Onde `/topic1` e `/topic2` são os tópicos que você deseja gravar e `nome_do_meu_bag` é o nome do arquivo do `ROS BAG`.
-Recomendamos que você grave apenas um tópico de imagem por vez, pois a gravação de vários tópicos de imagem pode consumir muita memória e resultar em um arquivo de `ROS BAG` muito grande.
+
+!!!tip
+    Recomendamos que você grave apenas um tópico de imagem por vez, pois a gravação de vários tópicos de imagem pode consumir muita memória e resultar em um arquivo de `ROS BAG` muito grande.
 
 No nosso caso, vamos gravar o tópico de imagem da câmera e do laser, para isso, execute o seguinte comando:
 
@@ -23,35 +25,42 @@ No nosso caso, vamos gravar o tópico de imagem da câmera e do laser, para isso
 ros2 bag record /camera/image_raw /scan -o my_bag
 ```
 
-Agora, movimente o robô com o `teleop` um pouco e visualize a camera no `rqt_image_view`.
-Depois pare a gravação do `ROS BAG` com `Ctrl+C`, isso vai gerar um arquivo chamado `my_bag.db3` no diretório atual.
+- Agora, movimente o robô com o `teleop` um pouco e visualize a camera no `rqt_image_view`.
+
+- Pare a gravação do `ROS BAG` com `Ctrl+C`, isso vai gerar um arquivo chamado `my_bag.db3` no diretório atual.
+
+- Digite `ls` no terminal para verificar a criação do arquivo.
 
 ## Parte 2 - Visualizando mensagens
 
-Primeiro feche o terminal que está rodando a simulação do robô. Agora, para visualizar as mensagens gravadas no `ROS BAG`, execute o seguinte comando:
+Agora que temos uma RosBag criado, vamos executar e vericar o seu funcionamento. 
+
+- Primeiro feche todos os terminais que estão rodando a simulação do robô. Agora, para visualizar as mensagens gravadas no `ROS BAG`, abra um novo terminal e execute o seguinte comando:
 
 ```bash
 ros2 bag play my_bag.db3 --pause
 ```
 
-Isso vai reproduzir as mensagens gravadas no `ROS BAG` e pausar a reprodução. Se estiver com o `rqt_image_view` aberto, se não, abra-o novamente.
+Esse comando irá reproduzir as mensagens gravadas no `ROS BAG` e pausar a reprodução. Para visualizar corretamente abra o `rqt_image_view`.
 
-Para pausar/continuar a reprodução, pressione a barra de espaço. Dessa forma, você pode visualizar o robô se movendo e as mensagens sendo reproduzidas.
+!!!tip
+    Para `pausar/continuar` a reprodução, pressione a `barra de espaço`. Dessa forma, você pode visualizar o robô se movendo e as mensagens sendo reproduzidas.
 
 ### Outras opções
-Se quiser iniciar a reprodução do `ROS BAG` de um dado ponto, execute o seguinte comando:
+
+- Se quiser iniciar a reprodução do `ROS BAG` de um dado ponto, execute o seguinte comando:
 
 ```bash
 ros2 bag play my_bag.db3 --pause -s 10
 ```
 
-Se quisermos reproduzir as mensagens com uma velocidade diferente, podemos usar a opção `-r`, valor padrão é 1.0, então valores menores que 1.0 diminuem a velocidade e valores maiores que 1.0 aumentam a velocidade. Por exemplo, para reproduzir as mensagens com uma velocidade de 2x, execute o seguinte comando:
+- Se quisermos reproduzir as mensagens com uma velocidade diferente, podemos usar a opção `-r`, valor padrão é 1.0, então valores menores que 1.0 diminuem a velocidade e valores maiores que 1.0 aumentam a velocidade. Por exemplo, para reproduzir as mensagens com uma velocidade de 2x, execute o seguinte comando:
 
 ```bash
 ros2 bag play my_bag.db3 --pause -r 2
 ```
 
-Se quiser ver outras opções disponíveis, execute o seguinte comando:
+- Se quiser ver outras opções disponíveis, execute o seguinte comando:
 
 ```bash
 ros2 bag play --h

@@ -12,7 +12,7 @@ Depois de clonar o repositório, faça o build do pacote e execute a ferramenta 
 ros2 run image_tool start_image_tool
 ```
 
-A ferramenta de imagem será aberta e você poderá visualizar as imagens recebidas pela ROS e ajustar os limites de cor para filtrar a imagem.
+A ferramenta de imagem será aberta e você poderá visualizar as imagens recebidas pela ROS 2 e ajustar os limites de cor para filtrar a imagem.
 
 ## Image Module
 

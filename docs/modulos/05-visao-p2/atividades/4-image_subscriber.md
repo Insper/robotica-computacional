@@ -1,6 +1,6 @@
 # Processando Imagens na ROS 2
 
-Nesta atividade, vamos aprender a processar imagens na ROS. Para isso, vamos utilizar a biblioteca OpenCV, que é uma das mais utilizadas para processamento de imagens.
+Nesta atividade, vamos aprender a processar imagens na ROS 2. Para isso, vamos utilizar a biblioteca OpenCV.
 
 No arquivo [base_visao.py](util/image_subscriber.py), você encontrará um código que se inscreve nó tópico de imagem da câmera do robô. Utilize este código como base para realizar as atividades do curso.
 
@@ -27,17 +27,17 @@ No método `image_callback`, vamos processar imagem recebida.
 ```python
     def image_callback(self, msg):
         if self.runnable:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
-            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # Use está linha se estiver usando  `Image`
+            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # Use está linha se estiver usando `CompressedImage`
             
             # Faça aqui o processamento da imagem
             # ou chame uma classe ou função que faça isso
         else:
-            print('Image processing is paused')
+            print('Processamento de imagem pausado')
 ```
 
 Neste método, a imagem recebida é convertida para um objeto do tipo `numpy.ndarray` utilizando a função `imgmsg_to_cv2` ou `compressed_imgmsg_to_cv2` da biblioteca `cv_bridge`. No `__init__` do código, definimos a variável `self.bridge` como `CvBridge()`, essa biblioteca é uma ponte (bridge) entre a biblioteca OpenCV e a ROS, que trabalham com formatos de imagem diferentes.
 
-Outro ponto importante é a variável `self.runnable`, obtida do tópico `/vision/image_flag`. Enquanto o valor dessa variável for `True`, o processamento da imagem é feito, então, um outro nó pode publicar nesse tópico para pausar ou retomar o processamento da imagem. Isso é útil para economizar recursos do robô quando o processamento da imagem não é necessário, será útil para quando estivermos processando imagens usando Redes Neurais ou Aruco.
+Outro ponto importante é a variável `self.runnable`, obtida do tópico `/vision/image_flag`. Enquanto o valor dessa variável for `True`, o processamento da imagem é feito, então, um outro nó pode publicar nesse tópico para pausar ou retomar o processamento da imagem. Isso é útil para economizar recursos do robô quando o processamento da imagem não é necessário, será útil para quando estivermos processando imagens usando `Redes Neurais` ou `Aruco Markers`.
 
 Por ultimo, ainda no método `image_callback`, a variável `cv_image` contém a imagem recebida. Neste ponto, você pode fazer o processamento da imagem ou chamar uma função ou classe que faça isso para manter o código organizado.
