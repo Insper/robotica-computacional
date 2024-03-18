@@ -140,8 +140,8 @@ nav:
       - Módulo 5 - Visão Robótica:
         - modulos/05-visao-p2/index.md
         - Atividades:
-          - "Download > Atividades": modulos/04-visao-p1/atividades_modulo_4.zip
-          - "1 - Salvando Eventos na ROS": modulos/03-laser-e-robo/atividades/1-rosbag.md
+          - "Download > Atividades": modulos/05-visao-p2/atividades_modulo_5.zip
+          - "1 - Salvando Eventos na ROS": modulos/05-visao-p2/atividades/1-rosbag.md
           - "2 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/2-morfologa.ipynb
           - "3 - Identificação de Objetos": modulos/05-visao-p2/atividades/3-identificacao.ipynb
           - "4 - Visão na ROS 2":
