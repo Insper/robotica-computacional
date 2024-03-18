@@ -23,19 +23,21 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ____________________________________________________________________
 
 # Exercício 1 - Segue Linha (5 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça o robô **real** siga a linha amaerla do chão. O nó deve:
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
 
 * O robô deve iniciar no começo da pista, seguindo reto na primeira bifurcação.
 
-* Depois o robô deve seguir e virar a esquerda na trifurcação, dar a volta, seguir reto na trifurcação e retornar para o começo da pista.
+* Depois o robô deve seguir seguir reto na trifurcação.
 
-* Possui pelo menos três estados, `procura`, `forward` e `turn`.
+* E então deve retornar ao começo da pista e **parar**.
+
+* Possui pelo menos três estados, `procura`, `forward` e `stop`.
 
 * No estado `procura`, o robô deve girar até encontrar a linha amarela.
 
 * No estado `forward`, o robô deve seguir a linha amarela.
 
-* No estado `turn`, o robô deve virar quando for necessário.
+* No estado `stop`, o robô deve parar no começo da pista.
 
 ## Critérios de Avaliação:
 
@@ -43,7 +45,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 2. Desenvolveu o nó `seguidor_node` com os comportamentos corretos.
 3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
 4. Armazenou a posição inicial do robô.
-5. Navega corretamente pela pista e retorna para o começo.
+5. Navega corretamente pela pista, retorna e para no começo.
 5. **Vídeo:** Mostra o robô executando o comportamento e navegando pela pista na trajetória correta.
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
 7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
@@ -51,7 +53,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 ____________________________________________________________________
 
 # Exercício 2 - Aproxima Creeper (5 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie dois arquivos, um chamado `aproxima.py` com um nó denominado `aproxima_node` que, faça com que o robô **real** se aproxime do creeper e outro chamado `filtro_cor.py` com um nó denominado `filtro_cor_node` que filtra a cor do creeper e publique uma mensagem do tipo **geometry_msgs/Point** com a **posição do creeper na imagem (x, y) e a largura da imagem (z)**.
+Baseando-se no código `base_control.py` do módulo 3, crie dois arquivos, um chamado `aproxima.py` com um nó denominado `aproxima_node` que, faça com que o robô **real** se aproxime do creeper e outro arquivo chamado `filtro_cor.py` com um nó denominado `filtro_cor_node` que filtra a cor do creeper e publica uma mensagem do tipo **geometry_msgs/Point** com a **posição do creeper na imagem (x, y) e a largura da imagem (z)**.
 O nó `aproxima_node` deve:
 
 * Ter três estados, `forward`, `procura` e `stop`.
@@ -60,13 +62,15 @@ O nó `aproxima_node` deve:
 
 * No estado `forward`, o robô deve se aproximar do creeper.
 
-* Quando o robô estiver a menos de `0.5m` do creeper, ele deve parar.
+* Quando o robô estiver a menos de `0.5m` do creeper, ele deve entrar no estado `stop` e parar.
+
+* Se o creeper for retirado da frente do robô, ele deve voltar para o estado `procura`.
 
 O nó `filtro_cor_node` deve:
 
 * Filtrar a cor do creeper
 
-* Uma mensagem do tipo **geometry_msgs/Point** com,
+* Publicar uma mensagem do tipo **geometry_msgs/Point** com,
 
     * **x:** a posição do creeper na imagem.
 
