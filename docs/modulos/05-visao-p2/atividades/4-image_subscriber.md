@@ -4,6 +4,8 @@ Nesta atividade, vamos aprender a processar imagens na ROS 2. Para isso, vamos u
 
 No arquivo [base_visao.py](util/image_subscriber.py), você encontrará um código que se inscreve nó tópico de imagem da câmera do robô. Utilize este código como base para realizar as atividades do curso.
 
+Baixe esse arquivo e coloque-os na em uma pasta de fácil acesso.
+
 ## Explicação do Código
 Essencialmente o código é o mesmo que já vimos em aulas anteriores, no código abaixo,
 
