@@ -1,12 +1,9 @@
 import cv2
 import numpy as np
-from module import ImageModule
 
-class IdentificadorBandeiras(ImageModule):
+class IdentificadorBandeiras():
     def __init__(self) -> None:
-        super().__init__()
-
-        self.configure_kernel(5, "rect")
+        self.kernel = np.ones((5, 5), np.uint8)
         self.colors = {
             'orange': ((0, 100, 100), (20, 255, 255)),
             'red': ((170, 100, 100), (180, 255, 255)),
@@ -27,17 +24,17 @@ class IdentificadorBandeiras(ImageModule):
             cv2.imshow('crop', cv2.cvtColor(crop, cv2.COLOR_HSV2BGR))
 
             # Irlanda
-            if np.sum(self.color_filter(crop, self.colors['orange'][0], self.colors['orange'][1])) > 0:
+            if np.sum(self.inRange(crop, self.colors['orange'][0], self.colors['orange'][1])) > 0:
                 self.bandeiras.append(('irlanda', (x, y), (x+w, y+h)))
-            elif np.sum(self.color_filter(crop, self.colors['green'][0], self.colors['green'][1])) > 0:
+            elif np.sum(self.inRange(crop, self.colors['green'][0], self.colors['green'][1])) > 0:
                 self.bandeiras.append(('italia', (x, y), (x+w, y+h)))
             else:
                 area = w * h
                 print(area)
-                mask_r = self.color_filter(crop, self.colors['red'][0], self.colors['red'][1])
+                mask_r = self.inRange(crop, self.colors['red'][0], self.colors['red'][1])
                 cv2.imshow('mask_r', mask_r)
                 red = np.sum(mask_r) / 255
-                mask_w = self.color_filter(crop, self.colors['white'][0], self.colors['white'][1])
+                mask_w = self.inRange(crop, self.colors['white'][0], self.colors['white'][1])
                 cv2.imshow('mask_w', mask_w)
                 white = np.sum(mask_w) / 255
                 if white > red:
@@ -49,7 +46,7 @@ class IdentificadorBandeiras(ImageModule):
 
     def get_all_contours(self, bgr):
         gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
-        mask = self.color_filter(gray, 20, 255)
+        mask = cv2.inRange(gray, 20, 255)
         contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         
         rects = []
