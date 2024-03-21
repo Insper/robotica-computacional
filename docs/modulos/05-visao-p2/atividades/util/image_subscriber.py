@@ -4,10 +4,11 @@ from sensor_msgs.msg import Image, CompressedImage
 from cv_bridge import CvBridge
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 from std_msgs.msg import String
+import cv2
 
-class ImageToolNode(Node): # Mude o nome da classe
+class ImageNode(Node): # Mude o nome da classe
 
-    def __init__(self, image_tuner):
+    def __init__(self):
         super().__init__('image_tool_node')
         self.runnable = True
 
@@ -35,6 +36,8 @@ class ImageToolNode(Node): # Mude o nome da classe
     def image_callback(self, msg):
         if self.runnable:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
+            cv2.imshow('Image', cv_image)
+            cv2.waitKey(1)
             # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
             
             # Faça aqui o processamento da imagem
@@ -45,7 +48,7 @@ class ImageToolNode(Node): # Mude o nome da classe
     
 def main(args=None):
     rclpy.init(args=args)
-    ros_node = ImageToolNode() # Mude o nome da classe
+    ros_node = ImageNode() # Mude o nome da classe
 
     rclpy.spin(ros_node)
 
