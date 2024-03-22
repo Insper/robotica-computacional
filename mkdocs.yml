@@ -158,3 +158,14 @@ nav:
         - APS 5:
           - "APS 5 - Classroom" : https://classroom.github.com/a/zxV99Se5
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+
+
+
+
+
+    - Provas:
+      - Simulado AI:
+        - "Enunciado": provas/simulado-ai/enunciado.md
+      # - AI:
+      #   - "Enunciado": 
+      #   - "Gabarito":
