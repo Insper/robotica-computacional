@@ -76,7 +76,7 @@ Baixe o vídeo no seguinte endereço:
 
 Exemplo de peça de dominó:
 
-![Domino](img/domino.jpg)
+![Domino](domino.jpg)
 
 ## Objetivo
 
