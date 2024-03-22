@@ -15,6 +15,18 @@ Observações de avaliações nesta disciplina:
 * Questões de esclarecimento geral podem ser perguntadas.
 * É vedado colaborar ou pedir ajuda a colegas ou qualquer pessoa que conheça os assuntos avaliados nesta prova.
 
+## Atualização dos Pacote (ROS 2)
+Execute os comandos abaixo para atualizar os pacotes da `ros2` obrigatórios para a prova:
+
+```bash
+cd ~/colcon_ws/src/my_simulation
+git stash
+git pull
+cd ~/colcon_ws/src/insperbot
+git pull
+cb
+```
+
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
@@ -26,9 +38,16 @@ ___________________________
 # Exercício 1 (5)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `q1.py` com uma classe chamada `Explorador` com um nó denominado `explorador_node`, que faça o robô **simulado** de uma volta completa dentro do quadrado, ao lado da parede externa, ao final da volta, sai do quadrado e para.
 
+Rode o comando abaixo para iniciar o simulador no mapa da prova:
+
+```bash
+ros2 launch my_gazebo tres_paredes.launch.py
+```
+
+
 O nó deve: 
 
-* Girar o robô e fazer com que ele se mova para frente até encontrar uma parede.
+* Mover para o robô para frente até encontrar uma parede.
 * Quando encontrar a parede, o robô deve girar e seguir a próxima parede.
 * Repetir o processo até completar uma volta e encontrar a abertura na parede externa.
 * Quando encontrar a abertura, o robô deve sair do quadrado e parar.
