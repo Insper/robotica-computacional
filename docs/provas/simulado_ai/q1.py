@@ -13,7 +13,7 @@ class Explorador(Node, Odom, Laser): # Mude o nome da classe
         Node.__init__(self, 'explorador_node')
         Odom.__init__(self)
         Laser.__init__(self)
-        self.timer = self.create_timer(0.25, self.control)
+        self.timer = self.create_timer(0.1, self.control)
         self.counter = 0
 
         self.robot_state = 'girar_anti_horario'
