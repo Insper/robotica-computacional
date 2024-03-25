@@ -7,24 +7,20 @@ from my_package.odom import Odom
 from my_package.laser import Laser
 import numpy as np
 
-"""
-ros2 run my_package quadrado
-"""
-
-class Quadrado(Node, Odom, Laser): # Mude o nome da classe
+class Explorador(Node, Odom, Laser): # Mude o nome da classe
 
     def __init__(self):
-        Node.__init__(self, 'quadrado_node')
+        Node.__init__(self, 'explorador_node')
         Odom.__init__(self)
         Laser.__init__(self)
         self.timer = self.create_timer(0.25, self.control)
         self.counter = 0
 
-        self.robot_state = 'girar_horario'
+        self.robot_state = 'girar_anti_horario'
         self.state_machine = {
             'stop': self.stop,
-            'girar_horario': self.girar_horario,
             'girar_anti_horario': self.girar_anti_horario,
+            'girar_horario': self.girar_horario,
             'andar': self.andar,
             'andar_final': self.andar_final,
         }
@@ -40,7 +36,7 @@ class Quadrado(Node, Odom, Laser): # Mude o nome da classe
         self.wz = 0.2
         self.final = False
     
-    def girar_horario(self):
+    def girar_anti_horario(self):
         if not self.goal_girar:
             self.goal_girar = (self.yaw_2pi + np.pi / 2) % (2 * np.pi)
     
@@ -57,7 +53,7 @@ class Quadrado(Node, Odom, Laser): # Mude o nome da classe
             else:
                 self.robot_state = 'andar_final'
 
-    def girar_anti_horario(self):
+    def girar_horario(self):
         if not self.goal_girar:
             self.goal_girar = (self.yaw_2pi - np.pi / 2) % (2 * np.pi)
     
@@ -78,13 +74,13 @@ class Quadrado(Node, Odom, Laser): # Mude o nome da classe
             self.openning = 15
             if np.min(self.left) == np.inf:
                 self.twist.linear.x = 0.0
-                self.robot_state = 'girar_horario'
+                self.robot_state = 'girar_anti_horario'
                 self.counter = 0
                 self.wz = 0.2
 
         elif np.min(self.front) < 0.9:
             self.twist.linear.x = 0.0
-            self.robot_state = 'girar_anti_horario'
+            self.robot_state = 'girar_horario'
 
     def andar_final(self):
         if not self.goal_andar:
@@ -115,7 +111,7 @@ class Quadrado(Node, Odom, Laser): # Mude o nome da classe
             
 def main(args=None):
     rclpy.init(args=args)
-    ros_node = Quadrado() # Mude o nome da classe
+    ros_node = Explorador() # Mude o nome da classe
 
     rclpy.spin(ros_node)
 
