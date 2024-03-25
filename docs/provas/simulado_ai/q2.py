@@ -36,7 +36,7 @@ class DominoDetector:
                     count += 1
             value.append(count)
 
-        cv2.putText(bgr, f'{value[0]} - {value[1]}', (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(bgr, f'{value[0]} por {value[1]}', (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         return bgr
 
 def main():

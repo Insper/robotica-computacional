@@ -166,6 +166,8 @@ nav:
     - Provas:
       - Simulado AI:
         - "Enunciado": provas/simulado_ai/enunciado.md
+        - "Resposta Q1" : provas/simulado_ai/q1.md
+        - "Resposta Q2" : provas/simulado_ai/q2.md
       # - AI:
       #   - "Enunciado": 
       #   - "Gabarito":
