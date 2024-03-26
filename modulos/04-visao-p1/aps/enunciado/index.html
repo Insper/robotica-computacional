@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Módulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/recursos-legais.md">Para Saber Mais</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/j0Ae3Szi">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Módulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/RB7GaxQd">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Módulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_control.py">Download > Nó de Controle do Robô</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Entendendo a Odometria</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/odom.py">Download > odom</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Entendendo o Laser</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/laser.py">Download > laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/teste_odom_laser.py">Download > teste_odom_laser</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/5-visua lizacao.md">5 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/WlPtlXfc">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 2</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Módulo 4 - Imagens e Matrizes</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../atividades_modulo_4.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../atividades/1-leitura_e_webcam/">1 - Leitura de Imagem e Webcam</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../atividades/2-corte_e_criacao/">2 - Corte e Criação de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../atividades/3-roi_e_numpy/">3 - ROI e NumPy</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../atividades/4-segmentacao_1/">4 - Segmentação de Imagens p1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../atividades/5-segmentacao_2/">5 - Segmentação de Imagens p2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">APS 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/1v0fXJJD">APS 4 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Enunciado</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Módulo 5 - Visão Robótica</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades_modulo_5.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/1-rosbag/">1 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/2-morfologa/">2 - Refinamento de Máscaras de Segmentação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/3-identificacao/">3 - Identificação de Objetos</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Visão na ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/4-image_subscriber/">4 - Visão na ROS 2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/image_subscriber.py">Download > Nó Básico de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">5 - Ferramentas de Visão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/5-image_tool/">5 - Ferramentas de Visão</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://github.com/insper-education/robcomp-image-tool">GitHub > Ferramenta de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">6 - Exemplo de Resolução de Exercício</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/61-enunciado/">6.1 - Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/62-resolucao/">6.2 - Resolução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1.py">Download > Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 5</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/zxV99Se5">APS 5 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/q1.py">Resposta Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/q2.py">Resposta Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 2</li>
+                  
+                
+                  
+                    <li>Módulo 4 - Imagens e Matrizes</li>
+                  
+                
+                  
+                    <li>APS 4</li>
+                  
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="entregavel-4-de-robotica-computacional">Entregável 4 de Robótica Computacional</h1>
+<h2 id="instrucoes-gerais">Instruções gerais</h2>
+<p><strong>Aviso 1:</strong> Sempre desenvolvam nos arquivos <code>.py</code> dos respectivos exercícios.</p>
+<p><strong>Aviso 2:</strong> Lembre-se de dar <code>commit</code> e <code>push</code> no seu repositório até o horário limite de entrega.</p>
+<p><strong>Aviso 3:</strong> Preencha o nome completo dos integrantes do seu grupo no arquivo <code>README.md</code> do seu repositório.</p>
+<p><strong>Aviso 4:</strong> Além de seu repositório, para todas as questões você <strong>deve gravar um vídeo do seu robô executando a tarefa</strong>. O vídeo deve ser feito gravando a tela do linux, <a href="https://insper.github.io/robotica-computacional/screen_record/">tutorial</a>, e deve ser postado no Youtube. </p>
+<p>No arquivo <code>README.md</code> do seu repositório existe o campo <code>Link do Vídeo</code> onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. <code>NUNCA de commit no vídeo</code>, somente adicione o link.</p>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do Pacote (ROS 2)</h2>
+<ul>
+<li>Não será necessário para este entregável.</li>
+</ul>
+<hr />
+<h1 id="exercicio-1-conversao-2d-3d-5-pontos">Exercício 1 - Conversão 2D-&gt;3D (5 pontos)</h1>
+<p>Você deve ter uma folha com o padrão da imagem abaixo.</p>
+<p><strong>Dica:</strong> Se não tiver, é possível fazer também com um tablet ou <em>smartphone</em></p>
+<!-- <img src="fig/folha_atividade.png" width=300> -->
+<p><img alt="folha_atividade" src="../fig/folha_atividade.png" /></p>
+<p>Neste exercício vamos aprender a fazer uma conversão 2D-&gt;3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, vamos entender o modelo pinhole.</p>
+<!-- <img src="fig/pinhole.png" width=60%> -->
+<p><img alt="pinhole" src="../fig/pinhole.png" /></p>
+<p>A partir da geometria do modelo pinhole, podemos definir a seguinte relação entre a distância focal <span class="arithmatex">\(f\)</span>, o tamanho do objeto virtual <span class="arithmatex">\(h\)</span>, a distância da câmera ao objeto <span class="arithmatex">\(D\)</span>, e o tamanho do objeto real <span class="arithmatex">\(H\)</span>:</p>
+<div class="arithmatex">\[
+\frac{h}{H} = \frac{f}{D}
+\]</div>
+<p><strong><em>O objetivo deste exercício é estimar a distância <span class="arithmatex">\(D\)</span> da <code>SUA</code> webcam até a folha.</em></strong></p>
+<p>Vocês vão trabalhar no arquivo <a href="../ex1.py">./ex1.py</a>.</p>
+<h2 id="este-exercicio-solicita-que-voces-facam-o-seguinte">Este exercício solicita que vocês façam o seguinte:</h2>
+<ol>
+<li>
+<p>Na função <code>run</code> você deve fazer o seguinte:</p>
+<p>1.1. Converter a imagem para o modelo de cor HSV;</p>
+<p>1.2. Obter as máscaras para os círculos <code>ciano</code> e <code>magenta</code>;</p>
+<p>1.3. Calcular a area dos círculos <code>ciano</code> e <code>magenta</code>;</p>
+<p>1.4. Se a diferença entre as áreas for maior do que 20000 (pode alterar esse valor) retorne a distância <span class="arithmatex">\(D\)</span> entre a câmera e a folha como <code>-1</code>. Caso contrário, calcule a média das áreas <strong>e o diâmetro do círculo</strong>.</p>
+<p>1.5. Escreva na imagem o valor da distância <span class="arithmatex">\(D\)</span> <strong>e o diâmetro do círculo</strong>, utilize apenas duas casas decimais.</p>
+<p>1.6. Entao <code>h</code> sera o diâmetro do círculo e <code>H</code> será 5.5 cm (diametro do círculo na folha do exemplo do profesor).</p>
+</li>
+<li>
+<p>Para a imagem <code>calib01.jpg</code>, vamos realizar o processo de calibração da câmera. Utilize o valor da distância <span class="arithmatex">\(D\)</span> entre a câmera e a folha descrito na imagem para calcular a distância focal <span class="arithmatex">\(self.f\)</span> da câmera do professor (valor esperado é ~726).</p>
+</li>
+<li>
+<p>Para a imagem <code>teste01.jpg</code>, utilize a distância focal <span class="arithmatex">\(self.f\)</span> para calcular a distância <span class="arithmatex">\(D\)</span> entre a câmera e a folha. (valor esperado é ~41 cm).</p>
+</li>
+<li>
+<p>Agora, <code>repita o processo de calibração para a sua câmera</code>, tirando uma foto da folha a uma distância <span class="arithmatex">\(D\)</span> <strong>conhecida</strong>.</p>
+</li>
+<li>
+<p>Mude a função <code>main</code> para rodar a função <code>rodar_webcam</code> e faça um <strong>vídeo</strong> mostrando a sua câmera e a imagem da folha, mostre a distância <span class="arithmatex">\(D\)</span> e o diâmetro do círculo na imagem.</p>
+</li>
+<li>
+<p>Adicione o link do vídeo no README.md do seu repositório.</p>
+</li>
+</ol>
+<hr />
+<h1 id="exercicio-2-linha-amarela-e-cruzamento-5-pontos">Exercício 2 - Linha Amarela e Cruzamento (5 pontos)</h1>
+<p>Neste exercício você vai trabalhar no arquivo <a href="../ex2.py">./ex2.py</a>.</p>
+<p>Primeiramente, faça o download do vídeo por meio do link a seguir salve na pasta <code>img/q2</code> do seu repositório. </p>
+<p><a href="https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EVNzpavCn6NPqMfgV0f9X_0Bcbn4SGEHJuudx7W54dJLFQ?e=j6adG7&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19">LINK DO VIDEO</a></p>
+<p>Na função <code>main</code> é possivel optar por testar com um frame, <code>rodar_frame</code>, ou rodar com o vídeo, <code>rodar_video</code>, comentando e descomentando a linha apropriada.</p>
+<h2 id="este-exercicio-solicita-que-voces-facam-o-seguinte_1">Este exercício solicita que vocês façam o seguinte:</h2>
+<ol>
+<li>
+<p>Filtrar a cor amarela do frame e binarizar a imagem, mostre a mascara em uma janela.</p>
+</li>
+<li>
+<p>Ajuste os valores da mascara para que apenas a linha amarela seja detectada <strong>em praticamente todos os frames</strong>.</p>
+</li>
+<li>
+<p>Corte a imagem em 3 colunas e calcule a area da linha amarela em cada coluna.</p>
+</li>
+<li>
+<p>Se duas colunas tiverem área maior do que <code>valor</code> (você deve definir esse valor), então você deve escrever na imagem "Curva Detectada".</p>
+</li>
+<li>
+<p>Se três colunas tiverem área maior do que <code>valor</code> (você deve definir esse valor), então você deve escrever na imagem "Cruzamento Detectado".</p>
+</li>
+<li>
+<p>Ajuste cuidadosamente os valores para que o seu programa não detecte curvas e cruzamentos onde não existem (falso positivo) e que detecte corretamente onde existem (verdadeiro positivo).</p>
+</li>
+<li>
+<p>Faça um vídeo mostrando a execução do seu programa e adicione o link do vídeo no README.md do seu repositório.</p>
+</li>
+</ol>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../atividades/5-segmentacao_2/"
+               class="ah-prev"
+               title="5 - Segmentação de Imagens p2">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">5 - Segmentação de Imagens p2</span>
+            </a>
+          
+          
+            <a href="../../../05-visao-p2/"
+               class="ah-next"
+               title="Index">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Index</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
