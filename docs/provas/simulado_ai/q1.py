@@ -18,7 +18,7 @@ class Explorador(Node, Odom, Laser): # Mude o nome da classe
         self.timer = self.create_timer(0.1, self.control)
         self.openning = 15
 
-        self.robot_state = 'girar_horario'
+        self.robot_state = 'girar'
         self.state_machine = {
             'stop': self.stop,
             'girar': self.girar,
@@ -38,6 +38,7 @@ class Explorador(Node, Odom, Laser): # Mude o nome da classe
         ## Coloque aqui os publishers
 
         self.goal_girar = False
+        self.goal_andar = False
         self.hora_de_sair = False
         self.vamos_embora = False
 
