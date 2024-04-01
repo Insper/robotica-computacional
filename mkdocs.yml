@@ -168,6 +168,6 @@ nav:
         - "Enunciado": provas/simulado_ai/enunciado.md
         - "Resposta Q1" : provas/simulado_ai/q1.py
         - "Resposta Q2" : provas/simulado_ai/q2.py
-      # - AI:
-      #   - "Enunciado": 
-      #   - "Gabarito":
+      - AI:
+        - "Enunciado": 
+        - "Gabarito": https://www.youtube.com/watch?v=dQw4w9WgXcQ
