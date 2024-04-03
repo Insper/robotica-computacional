@@ -10,7 +10,7 @@ class ImageNode(Node): # Mude o nome da classe
 
     def __init__(self):
         super().__init__('image_tool_node')
-        self.runnable = True
+        self.running = True
 
         # Subscribers
         ## Coloque aqui os subscribers
@@ -31,10 +31,10 @@ class ImageNode(Node): # Mude o nome da classe
         ## Coloque aqui os publishers
 
     def flag_callback(self, msg):
-        self.runnable = bool(msg.data)
+        self.running = bool(msg.data)
 
     def image_callback(self, msg):
-        if self.runnable:
+        if self.running:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
             cv2.imshow('Image', cv_image)
             cv2.waitKey(1)
