@@ -9,14 +9,14 @@ class DangerDetector(MobileNetDetector):
         # Ajuste o valor de confiança para o valor que você achar melhor
         self.CONFIDENCE = CONFIDENCE
         
-    def separar_caixa_entre_animais(self, img: np.ndarray, resultados: list) -> (np.ndarray, dict):
+    def separar_caixa_entre_animais(self, img: np.ndarray, resultados: list):
         """Não mude ou renomeie esta função
         Combina as caixas dos lobos em uma unica grande caixa e organiza as caixas das vacas em uma lista.
         Isso facilitará a verificação de perigo para cada vaca.
 
         Args:
             img (np.ndarray): Imagem de entrada
-            resultados (list): Lista com as detecções no formato [classe, confiança, (xmin, ymin), (xmax, ymax)]
+            results ( list(dict) ): Lista de dicionários com as detecções (classe, confidence, bbox(x1, y1, x2, y2))
 
         Returns:
             img: Imagem de saída
@@ -24,12 +24,14 @@ class DangerDetector(MobileNetDetector):
         """
         img = img.copy()
         animais = {'vaca': [], 'lobo': []}
-        for i in range(len(resultados)):
-            if resultados[i][0] == 'cow':
-                cv2.rectangle(img, (resultados[i][2][0], resultados[i][2][1]), (resultados[i][3][0], resultados[i][3][1]), [255,0,0], 2)
-                animais['vaca'].append([resultados[i][2][0], resultados[i][2][1], resultados[i][3][0], resultados[i][3][1]])
+        for resultado in resultados:
+            if resultado['classe'] == 'cow':
+                x1, y1, x2, y2 = resultado['bbox']
+                cv2.rectangle(img, (x1, y1), (x2, y2), [0,255,0], 2)
+                animais['vaca'].append([x1, y1, x2, y2])
             else:
-                animais['lobo'].append([resultados[i][2][0], resultados[i][2][1], resultados[i][3][0], resultados[i][3][1]])
+                x1, y1, x2, y2 = resultado['bbox']
+                animais['lobo'].append([x1, y1, x2, y2])
 
         xmin = min([i[0] for i in animais['lobo']])
         ymin = min([i[1] for i in animais['lobo']])

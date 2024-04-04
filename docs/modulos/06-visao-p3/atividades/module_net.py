@@ -23,6 +23,8 @@ class MobileNetDetector():
         self.args_model = args_model
         self.net = self.load_mobilenet()
 
+        self.draw = True
+
     def load_mobilenet(self):
         """Carrega o modelo MobileNetSSD.
         Certifique-se de que os arquivos .prototxt.txt e .caffemodel diretório correto.
@@ -41,11 +43,11 @@ class MobileNetDetector():
             frame (np.ndarray): Imagem de entrada
 
         Returns:
-            image: Imagem de saída com as detecções desenhadas
-            results: Lista com as detecções no formato [classe, confiança, (xmin, ymin), (xmax, ymax)]
+            image (np.ndarray): Imagem de saida - as detecções são desenhadas apenas se "self.draw = True"
+            results ( list(dict) ): Lista de dicionários com as detecções (classe, confidence, bbox(x1, y1, x2, y2))
         """
         image = frame.copy()
-        (h, w) = image.shape[:2]
+        h, w, _ = image.shape
         blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5)
         self.net.setInput(blob)
         detections = self.net.forward()
@@ -61,18 +63,19 @@ class MobileNetDetector():
 
                 label = "{}: {:.2f}%".format(self.CLASSES[idx], confidence)
 
-                cv2.rectangle(image, (startX, startY), (endX, endY), self.COLORS[idx], 2)
-                y = startY - 15 if startY - 15 > 15 else startY + 15
-                cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.COLORS[idx], 2)
+                if self.draw:
+                    cv2.rectangle(image, (startX, startY), (endX, endY), self.COLORS[idx], 2)
+                    y = startY - 15 if startY - 15 > 15 else startY + 15
+                    cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.COLORS[idx], 2)
 
-                results.append({'classe':self.CLASSES[idx],'confianca': confidence, 'p1':(startX, startY), 'p2':(endX, endY)})
+                results.append({'classe':self.CLASSES[idx],'confidence': confidence, 'bbox':(startX, startY, endX, endY)})
 
         return image, results
 
 
 def main():
     import time
-    bgr = cv2.imread("img/cow_wolf03.png")
+    bgr = cv2.imread("img/cow_wolf_3.png")
 
     start = time.perf_counter()
     MOBILE = MobileNetDetector()
