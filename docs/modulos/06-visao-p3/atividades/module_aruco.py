@@ -12,17 +12,7 @@ class Aruco3d():
             #Capturando o caminho da pasta local em que o codigo esta
             calibra_path  = os.path.dirname(os.path.abspath(__file__))
             
-            # =================================== APENAS PARA O ROBO FISICO ===========================================================
-            # ========================================= IMPORTANTE!!!! ================================================================
-            # ===== Se estiver usando o robo fisico, e o seu robo está com a RealSense, troque o arquivo de calibração =====
-            # ===== Verifique se o arquivo cameraDistortion_realsense.txt e cameraMatrix_realsense.txt esta disponivel na pasta arucopath ====
-            # ===== Troque o nome do arquivo nas variaveis camera_matrix e camera_distortion para cameraDistortion_realsense.txt e cameraMatrix_realsense.txt respectivamente. 
-            # ===== SE O SEU ROBO ESTA USANDO A RASPICAM, NAO PRECISA ALTERAR NADA!
-            # ===== Caso não saiba do que eu estou falando, por favor, jogue no google imagens "Camera RealSense D400", essa é a camera RealSense.
-            
-            
-            #Carregando os arquivos de calibracao da camera
-            #Exemplo de calibracao para a raspcam, funciona no robo simulado e no robo real que está com a Raspcam
+            # Carregando os arquivos de calibracao da camera
             self.camera_matrix   = np.loadtxt(calibra_path+'/config/cameraMatrix_realsense.txt', delimiter=',')
             self.camera_distortion   = np.loadtxt(calibra_path+'/config/cameraDistortion_realsense.txt', delimiter=',')
 
@@ -70,9 +60,9 @@ class Aruco3d():
     def writeDistance(self, bgr, distancia):
         cv2.putText(bgr, f"Distancia: {distancia:.2f} cm", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
         return bgr
-         
-            
-def rodar_frame():
+
+    
+def main():
     Arucos = Aruco3d()
 
     bgr = cv2.imread("img/aruco.png")
@@ -86,31 +76,6 @@ def rodar_frame():
 
     cv2.imshow("Aruco", bgr)
     cv2.waitKey(0)
-
-
-def rodar_webcam():
-    Arucos = Aruco3d()
-    cap = cv2.VideoCapture(0) # webcam
-    # cap = cv2.VideoCapture('img/aruco.mp4') # Confira se o video esta na pasta img
-
-    while True:
-        ret, bgr = cap.read()
-        bgr, results = Arucos.detectaAruco(bgr)
-        print(len(results))
-        for result in results:
-            bgr = Arucos.drawAruco(bgr, result)
-            bgr = Arucos.writeDistance(bgr, result['distancia'])
-
-        cv2.imshow("Imagem", bgr)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-            
-def main():
-    # Selecione se deseja rodar seu codigo com uma imagem ou um video:
-
-    # rodar_frame()
-    rodar_webcam()
-
 
 if __name__ == "__main__":
     main()
