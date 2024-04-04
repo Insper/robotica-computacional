@@ -52,20 +52,20 @@ class DangerDetector(MobileNetDetector):
         Returns:
             iou: Retorna o valor da IoU entre as duas caixas
         """
-        xA = min(boxA[0], boxB[0])
-        yA = min(boxA[1], boxB[1])
-        xB = max(boxA[2], boxB[2])
-        yB = max(boxA[3], boxB[3])
+        # Coordenadas de interseção
+        xA = max(boxA[0], boxB[0])
+        yA = max(boxA[1], boxB[1])
+        xB = min(boxA[2], boxB[2])
+        yB = min(boxA[3], boxB[3])
 
-        # compute the area of intersection rectangle
-        interArea = max(0, xB - xA + 1) * max(0, yB - yA + 1)
-        # compute the area of both the prediction and ground-truth
-        # rectangles
-        boxAArea = (boxA[2] - boxA[0] + 1) * (boxA[3] - boxA[1] + 1)
-        boxBArea = (boxB[2] - boxB[0] + 1) * (boxB[3] - boxB[1] + 1)
-        # compute the intersection over union by taking the intersection
-        # area and dividing it by the sum of prediction + ground-truth
-        # areas - the interesection area
+        # Área de interseção
+        interArea = max(0, xB - xA) * max(0, yB - yA)
+
+        # Área das caixas
+        boxAArea = (boxA[2] - boxA[0]) * (boxA[3] - boxA[1])
+        boxBArea = (boxB[2] - boxB[0]) * (boxB[3] - boxB[1])
+
+        # Cálculo do IoU
         iou = interArea / float(boxAArea + boxBArea - interArea)
 
         return iou
@@ -88,6 +88,7 @@ class DangerDetector(MobileNetDetector):
 
         for i in animais['vaca']:
             iou = self.calcula_iou(animais['lobo'], i)
+            print('iou: ', iou)
             if iou > 0.5:
                 image = cv2.putText(image,"Esta em perigo",(i[0], i[1]),cv2.FONT_HERSHEY_SIMPLEX,1.5,[0,0,255],3)
             else:
@@ -98,7 +99,7 @@ class DangerDetector(MobileNetDetector):
 
 def main():
     import time
-    bgr = cv2.imread("img/cow_wolf05.png")
+    bgr = cv2.imread("img/cow_wolf_5.png")
 
     Detector = DangerDetector()
     image, results = Detector.detect(bgr)
