@@ -159,6 +159,19 @@ nav:
           - "APS 5 - Classroom" : https://classroom.github.com/a/zxV99Se5
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
+      # - Módulo 6 - MobileNet e ArUco:
+      #   - modulos/06-visao-p3/index.md
+      #   - Atividades:
+      #     - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
+      #     - "1 - MobileNet": modulos/06-visao-p3/atividades/1-rosbag.md
+      #     - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-morfologa.ipynb
+      #     - "4 - Visão na ROS 2":
+      #       - "4 - Visão na ROS 2": modulos/06-visao-p3/atividades/4-image_subscriber.md
+      #       - "Download > Nó Básico de Visão": modulos/06-visao-p3/atividades/util/image_subscriber.py
+        # - APS 6:
+        #   - "APS 6 - Classroom" : https://classroom.github.com/a/zxV99Se5
+        #   - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+
 
 
 
