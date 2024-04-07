@@ -9,12 +9,12 @@ Neste módulo vamos continuar nosso estudo de processamento de imagens com a bib
 
 As atividades deste módulo focam em melhorar nossas habilidades de identificação de objetos, utilizando a MobileNet, e de estimativa de pose, utilizando marcadores fiduciais do tipo ArUco.
 
-- [1 - Salvando Eventos na ROS 2](atividades/1-mobilenet.ipynb) - Utilização da MobileNet para identificação de objetos em imagens no OpenCV.
-- [2 - Refinamento de Máscaras de Segmentação](atividades/2-aruco.ipynb) - Conceitos de Pose e estimativa de Pose com marcadores feduciais do tipo ArUco.
+- [1 - Identificação com a MobileNet](atividades/1-mobilenet.ipynb) - Utilização da MobileNet para identificação de objetos em imagens no OpenCV.
+- [2 - Marcadores Fiduciais](atividades/2-aruco.ipynb) - Conceitos de Pose e estimativa de Pose com marcadores feduciais do tipo ArUco.
 
-<!-- Clique no link abaixo para realizar o download dos notebooks das atividades.
+Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
-    [Download dos Notebooks](atividades_modulo_6.zip) -->
+    [Download dos Notebooks](atividades_modulo_6.zip)
 
 <!-- ## Para entregar
 
