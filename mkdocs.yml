@@ -165,10 +165,10 @@ nav:
           - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
           - "1 - MobileNet":
             - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
-            - "Download > ModuleNet": modulos/06-visao-p3/atividades/util/module_net.py
+            - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
           - "2 - Marcador ArUco":
             - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
-            - "Download > ModuleArUco": modulos/06-visao-p3/atividades/util/module_aruco.py
+            - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
         # - APS 6:
         #   - "APS 6 - Classroom" : https://classroom.github.com/a/zxV99Se5
         #   - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
