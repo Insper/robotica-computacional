@@ -38,7 +38,7 @@ Será aprovado o estudante que siga as seguites restrições:
 
 1. `NAPS >= 5`;
 2. `AI + AF >= 10`;
-3. `AI >= 4 OU AF >= 4`;
+3. `AI >= 4 E AF >= 4`;
 4. nota de projeto maior que 4.
 
 !!! important "Segundas chances"
