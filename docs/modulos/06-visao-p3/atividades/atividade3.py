@@ -119,10 +119,21 @@ def rodar_webcam():
         cv2.imshow("Imagem", bgr)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-            
+
+def rodar_frame():
+    Arucos = DistanceEstimator()
+    
+    # bgr = cv2.imread("img/aruco.jpg")
+    bgr = cv2.imread("img/aruco2.jpg")
+
+    bgr, ranked_arucos = Arucos.run(bgr)
+    cv2.imshow("Imagem", bgr)
+    cv2.waitKey(0)
+
 def main():
     # Selecione se deseja rodar seu codigo com uma imagem ou um video:
-    rodar_webcam()
+    # rodar_webcam()
+    rodar_frame()
 
 
 if __name__ == "__main__":
