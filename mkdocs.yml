@@ -170,7 +170,7 @@ nav:
             - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
             - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
           - "3 - Reconhecimento dos Creepers":
-            - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.ipynb
+            - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
             - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
 
         # - APS 6:
