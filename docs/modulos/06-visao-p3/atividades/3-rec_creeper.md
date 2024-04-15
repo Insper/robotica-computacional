@@ -6,9 +6,11 @@ Na imagem abaixo temos um onde o robô real está olhando para os "creepers". Ne
 
 ![Creeper](img/aruco.jpg)
 
-Voce deve trabalhar no arquivo `ex3.py` e implementar a classe `DistanceEstimator` que vai herdar a classe `ArucoDetector` e da classe `ImageModule`. A função `run` detectar os "creepers" e e calcular o centros dos corpos de cada um deles.
+Voce deve trabalhar no arquivo [atividade3.py](atividade3.py) e implementar a classe `DistanceEstimator` que vai herdar a classe `ArucoDetector` e da classe `ImageModule`. A função `run` detectar os "creepers" e e calcular o centros dos corpos de cada um deles.
 
 Por fim, deve associar os marcadores aruco com os corpos dos "creepers" e então rankear os "creepers" de acordo com a distância até o robô.
+
+Siga as instruções numeradas no arquivo [atividade3.py](atividade3.py) para completar a atividade.
 
 **Grave um video** com o resultado mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo `README.md` do seu repositório.
 
