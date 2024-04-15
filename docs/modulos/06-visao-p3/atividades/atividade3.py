@@ -20,12 +20,12 @@ class DistanceEstimator(Aruco3d, ImageModule):
                 'upper': np.array([180, 255, 255])
             },}
         
-    def find_creeper(self, hsv: np.ndarray, color: str) -> list:
+    def find_creeper(self, bgr: np.ndarray, color: str) -> list:
         """
         Encontra o creeper na imagem com base na cor fornecida.
         
         Args:
-            hsv (numpy.array): imagem no espaço de cor HSV.
+            bgr (numpy.array): imagem no espaço de cor BGR.
             color (str): cor do creeper para identificação.
 
         Returns:
@@ -35,18 +35,11 @@ class DistanceEstimator(Aruco3d, ImageModule):
         
         return creepers
 
-    def distance(self, p1, p2):
+    def distance(self, x1, x2):
         """
-        Calcula a distância euclidiana entre dois pontos.
-        
-        Args:
-            p1 (tuple): primeiro ponto.
-            p2 (tuple): segundo ponto.
-
-        Returns:
-            distance float: distância entre os dois pontos.
+        Calcula a distância horizontal entre duas coordenadas.
         """
-        distance = None
+        distance = 0
         return distance
 
     def match_aruco(self, bgr, creepers, results):
@@ -55,7 +48,7 @@ class DistanceEstimator(Aruco3d, ImageModule):
         
         Args:
             bgr (numpy.array): imagem no espaço de cor BGR.
-            creepers (list): lista de centros dos creepers detectados através da função find_creeper.
+            creepers (list): lista de centros dos creepers detectados através da função `find_creeper`.
             results (list(dicts)): resultados da detecção Aruco.
                 dict_keys(['id', 'rvec', 'tvec', 'distancia', 'corners', 'centro'])
 
@@ -66,17 +59,18 @@ class DistanceEstimator(Aruco3d, ImageModule):
         """
         matched_pairs = []
         for creeper in creepers:
-            closest = None# Use a função sorted para ordenar os resultados por distância com base na função self.distance.
-
-            # Remove o creeper mais próximo dos resultados para evitar que ele seja combinado com outro creeper.
-            results = [res for res in results if not np.array_equal(res['distancia'], closest['distancia'])]
-
-            # Adiciona o centro do creeper mais próximo na chave "body_center" do dicionário closest.
-            # Adiciona a cor do creeper mais próximo na chave "color" do dicionário closest.
             
-            # Desenha uma linha entre o centro do creeper e o centro do marcador Aruco.
+            # 3. Use a função sorted para ordenar os resultados por distância com base na função self.distance.
+            closest = None 
+
+            # 4. Remove da lista `results` o aruco mais próximo do corpo `creeper` para evitar que ele seja combinado novamente.
+
+            # 5. Adiciona na variável o centro do creeper mais próximo na chave "body_center" do dicionário `closest`.
+            # 6. Adiciona a cor do creeper mais próximo na chave "color" do dicionário `closest`.
             
-            # Adiciona o par combinado na lista matched_pairs.
+            # 7. Desenha uma linha entre o centro do creeper e o centro do marcador Aruco.
+            
+            # 8. Adiciona o par combinado na lista `matched_pairs`.
         
         return bgr, matched_pairs
 
@@ -91,25 +85,24 @@ class DistanceEstimator(Aruco3d, ImageModule):
             bgr (numpy.array): imagem no espaço de cor BGR com linhas desenhadas entre Arucos e creepers.
             ranked_arucos (list(dicts)): imagem processada e Arucos classificados por distância.
                 dict_keys(['id', 'rvec', 'tvec', 'distancia', 'corners', 'centro', 'body_center', 'color'])
-            closest_aruco (list): cor e id do Aruco mais próximo.
         """
-        _, results = None# Chame a função self.detect_aruco e armazene os resultados em uma variável.
+        # 1. Chame a função self.detect_aruco e armazene os resultados em uma variável.
+        _, results = None 
         
-        hsv = None# Converta a imagem BGR para HSV.
         creepers = []
-        creepers += self.find_creeper(hsv, "green")
-        creepers += self.find_creeper(hsv, "blue")
+        creepers += self.find_creeper(bgr, "green")
+        creepers += self.find_creeper(bgr, "blue")
 
-        matched_pairs = None# Faz match entre os marcadores Aruco e os creepers.
+        # 2. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
+        matched_pairs = None
 
         for result in matched_pairs:
             bgr = self.drawAruco(bgr, result)
             
-        ranked_arucos = None# Classifica os Arucos por distância.
+        # 9. Utilize a função `sorted` para classificar os Arucos por distância.
+        ranked_arucos = None
 
-        closest_aruco = None# Retorna o Aruco mais próximo.
-
-        return bgr, ranked_arucos, closest_aruco
+        return bgr, ranked_arucos
     
 
 def rodar_webcam():
@@ -119,10 +112,9 @@ def rodar_webcam():
 
     while True:
         ret, bgr = cap.read()
-        bgr, ranked_arucos, closest_aruco = Arucos.run(bgr)
+        bgr, ranked_arucos = Arucos.run(bgr)
 
-        # Imprime o id e a cor do Aruco mais próximo.
-
+        # 10. Imprime a distância e o id do creeper mais próximo da camera.
 
         cv2.imshow("Imagem", bgr)
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -130,7 +122,6 @@ def rodar_webcam():
             
 def main():
     # Selecione se deseja rodar seu codigo com uma imagem ou um video:
-
     rodar_webcam()
 
 
