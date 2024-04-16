@@ -1,13 +1,10 @@
 from module_aruco import Aruco3d
-from module import ImageModule
 import cv2
 import numpy as np
 
-class DistanceEstimator(Aruco3d, ImageModule):
+class DistanceEstimator(Aruco3d):
     def __init__(self):
         Aruco3d.__init__(self)
-        ImageModule.__init__(self)
-
         # configure o kernel
 
         self.filters = {
