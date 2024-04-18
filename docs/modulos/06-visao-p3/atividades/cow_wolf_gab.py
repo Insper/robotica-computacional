@@ -89,7 +89,7 @@ class DangerDetector(MobileNetDetector):
         for i in animais['vaca']:
             iou = self.calcula_iou(animais['lobo'], i)
             print('iou: ', iou)
-            if iou > 0.5:
+            if iou > 0.1:
                 image = cv2.putText(image,"Esta em perigo",(i[0], i[1]),cv2.FONT_HERSHEY_SIMPLEX,1.5,[0,0,255],3)
             else:
                 image = cv2.putText(image,'Esta sem perigo', (i[0], i[1]), cv2.FONT_HERSHEY_SIMPLEX, 1.5, [255, 0, 0], 3)
@@ -99,7 +99,7 @@ class DangerDetector(MobileNetDetector):
 
 def main():
     import time
-    bgr = cv2.imread("img/cow_wolf_5.png")
+    bgr = cv2.imread("img/cow_wolf_2.png")
 
     Detector = DangerDetector()
     image, results = Detector.detect(bgr)
