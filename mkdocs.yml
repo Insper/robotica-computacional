@@ -166,12 +166,14 @@ nav:
           - "1 - MobileNet":
             - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
             - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
+            - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
           - "2 - Marcador ArUco":
             - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
             - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
           - "3 - Reconhecimento dos Creepers":
             - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
             - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
+            - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
 
         # - APS 6:
         #   - "APS 6 - Classroom" : https://classroom.github.com/a/zxV99Se5
