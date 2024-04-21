@@ -22,76 +22,80 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Robô quadrado (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
+# Exercício 1 - GoTo (4 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **simulado** `=)` se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
 
-* Possui dois estados, `andar` e `girar`
+* A classe `GoTo` deve herdar de `Node` e `Odom`.
 
-* Utiliza a odometria para `girar` em 90 graus
+* A classe `GoTo` deve ter um método `__init__` que recebe a posição uma variável do tipo `Point` e salva em uma variável `self.point`.
 
-* Utiliza o metodo `Dead Reckoning` para `andar` os lados do quadrado. Neste metodo, você se desloca em velocidade constante por um tempo fixo, sem receber feedback de quanto, realmente, se deslocou.
+* Ter três estados, `center`, `goto` e `stop`.
 
-* Não utilize nenhuma função de `sleep`, calcule o tempo decorrido até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
+* O estado `center` deve ser o estado inicial e faz o robô girar até que ele esteja alinhado com o ponto desejado.
 
-**DICA 1** - Para somar `pi/2` ao angulo atual: `self.goal_yaw = (self.yaw_2pi + np.pi / 2) % (2 * np.pi)`. E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
+* Quando chegar no ponto desejado, o robô deve entrar no estado `stop`.
+
+* Deve ter um função `get_angular_error` que primeiro calcula o angulo entre a posição atual e o ponto desejado `theta` e depois calcula o erro entre o angulo atual e o angulo desejado.
+
+* `get_angular_error` também deve calcular a distância entre o robô e o ponto desejado.
+
+* O estado `goto` deve fazer o robô se mover até o ponto desejado e parar quando estiver **BEM PERTO** do ponto.
+
+* Utilize duas constante proporcionais, `kp_linear` e `kp_angular` para controlar a velocidade linear e angular do robô.
+
+Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`, faça o robô **real** faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
+
+* Ter dois estados, `segue` e `para`.
+
+* **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do quadrado.
+
+* O estado `segue` deve criar um loop que chama a função `control` do `GoTo` até que o robô esteja no ponto desejado - ou seja, `control` da classe `Quadrado` não vai ser chamada porque o código esta preso no loop.
+
+* Quando sair do loop, mude a variável `point` e `robot_state` da classe `GoTo` para, respectivamente, o próximo ponto do quadrado e `center`.
 
 ## Critérios de Avaliação:
 
-1. Nó importado corretamente do pacote `my_package`.
-2. Desenvolveu o nó `quadrado_node` com os comportamentos corretos.
+1. `GoTo` funciona a partir / até qualquer ponto em qualquer quadrante.
+2. A classe `Quadrado` chama a classe `GoTo` corretamente.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
-4. Executa a rotação utilizando feedback da odometria.
-5. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" pelos menos dois quadrados no chão.
-6. **Vídeo:** O robô não colide com nenhum obstáculo.
-7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
-
-____________________________________________________________________
-
-# Exercício 2 - Robô Quase Indeciso (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
-
-* Ter três estados, `forward`, `backward` e `stop`.
-
-* Avalie na função `control` para qual estado o robô deve ir.
-
-**Dica:** Se o robô não parar, tente diminuir a velocidade linear.
-
-## Critérios de Avaliação:
-
-1. Nó importa corretamente do pacote `my_package`.
-2. Desenvolveu o nó `indeciso_node` com os comportamentos corretos.
-3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e afasta pelo menos **2** vezes da parede antes de parar. (ajuste a velocidade para que o robô não pare muito rápido).
-4. **Vídeo:** O robô não colide com nenhum obstáculo.
+4. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 ____________________________________________________________________
 
-# Exercício 3 - Robô Limpador (4 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamento:
+# Exercício 2 - Derruba Creeper (6 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `derrubador.py` com uma classe denominada `Derrubador` e um nó denominado `derrubador_node` que derrube 4 creepers ao redor de uma arena quadrado, em uma ordem pré-definida. O robô sempre inicia no centro do quadrado. O nó deve:
 
-* Ter dois estados, `forward`, `turn`.
+* Recebe corretamente a sequência de creepers que devem ser derrubados.
 
-* Mova-se em frente até encontrar um obstáculo a menos de `0.5m` à sua frente (esse valor pode ser ajustado para melhor desempenho).
+* Se comunicar com um nó `creepers` que identifica o ID/Cor dos creepers e suas posições.
 
-* Gire até que o obstáculo mais próximo, esteja na direita inferior (aproximadamente `225` graus).
+* Não se increver no tópico de visão, mas sim no tópico de creepers.
 
-* Mova-se em frente e repita o processo.
+* Recebe a sequência de cores/ID dos creepers que devem ser derrubados.
+
+* Se aproximar de cada creeper, em ordem, e parar de forma clara e precisa.
+
+* Depois de parar, o robô deve derrubar o creeper com a garra.
+
+* Siga para o próximo creeper até que todos os creepers tenham sido derrubados.
+
+* Retorne para o centro do quadrado e pare.
+
+## Arena
+A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em cada canto do quadrado, há um creeper de **verde** ou **azul** com dois possíveis IDs. A ordem dos creepers que deve ser seguinda é informada na hora da execução, como uma lista de strings, por exemplo, `['verde_17', 'verde_21', 'azul_21', 'azul_17']`.
+
+Tanto a ordem dos creepers quanto a posição deles é aleatória, então o robô deve ser capaz de se adaptar a qualquer situação.
 
 ## Critérios de Avaliação:
 
-1. Nó importado corretamente do pacote `my_package`.
-2. Desenvolveu o nó `limpador_node` com os comportamentos corretos.
-3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e desvia de pelo menos **10** obstáculos.
-4. **Vídeo:** O robô não colide com nenhum obstáculo.
+1. Desenvolveu um nó que publica corremente os creepers.
+2. O nó `derrubador_node` não se inscreve no tópico de visão.
+3. O robô se aproxima de cada creeper e **para** de forma clara e então **derruba** o creeper com a garra.
+4. **Vídeo:** Mostra o robô executando o comportamento desejado e derrubando os creepers na ordem correta.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
-## Desafio (+2 ponto bônus)
+## Competição (+2 ponto bônus)
 
-Juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
+**Para os alunos que completarem o exercício 2 até o dia 29/04/2024** vamos realizar uma competição no estilo "mata-mata". Onde os grupos vão enfrentam-se em pares para ver quem derruba os creepers mais rápido. Os grupos vão disputar na mesma arena e na mesma sequência de creepers. A partir da semifinal, será adicionados creepers da cor **vermelha**.
 
-Esse vídeo deve ser gravado com um professor ou monitor do curso, que irá avaliar a pontuação extra.
-
-Cada grupo deve gravar o vídeo do seu robô e postar no Youtube e incluir o link no README.md com um comentário com o nomes dos outros grupos. 
-
-Os vídeos devem seguir os critérios de avaliação do exercício 3 com uma adiação:
-
-* **Vídeo:** Mostra uma ocasião em que um robô se aproxima de outro robô mas para antes de colidir.
+O vencedor da competição ganhará 2 pontos bônus na nota da APS e os grupos chegarem na semifinal e conseguirem completar com os creepers vermelhos, ganharão 1 ponto bônus.
