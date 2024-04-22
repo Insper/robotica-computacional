@@ -43,7 +43,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Utilize duas constante proporcionais, `kp_linear` e `kp_angular` para controlar a velocidade linear e angular do robô.
 
-Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`, faça o robô **real** faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
+Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`. Usando o robô **real**, faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
 
 * Ter dois estados, `segue` e `para`.
 
@@ -96,6 +96,6 @@ Tanto a ordem dos creepers quanto a posição deles é aleatória, então o rob�
 
 ## Competição (+2 ponto bônus)
 
-**Para os alunos que completarem o exercício 2 até o dia 29/04/2024** vamos realizar uma competição no estilo "mata-mata". Onde os grupos vão enfrentam-se em pares para ver quem derruba os creepers mais rápido. Os grupos vão disputar na mesma arena e na mesma sequência de creepers. A partir da semifinal, será adicionados creepers da cor **vermelha**.
+**Para os alunos que completarem o exercício 2 até o dia 29/04/2024** vamos realizar uma competição no estilo "mata-mata". Onde os grupos vão enfrentam-se em pares para ver quem derruba os creepers mais rápido. Os grupos vão disputar na mesma arena e na mesma sequência de creepers. A partir da semifinal, serão adicionados creepers da cor **vermelha**.
 
-O vencedor da competição ganhará 2 pontos bônus na nota da APS e os grupos chegarem na semifinal e conseguirem completar com os creepers vermelhos, ganharão 1 ponto bônus.
+O vencedor da competição ganhará 2 pontos bônus na nota da APS e os grupos que chegarem na semifinal e conseguirem completar com os creepers vermelhos, ganharão 1 ponto bônus.
