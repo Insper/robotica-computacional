@@ -14,7 +14,7 @@ Esse conceito será explorado nas seguintes atividades,
 - [Atividade 3](atividades/3-controlar-angulo.md) - Aplicações do controle proporcional na orientação do robô.
 - [Atividade 4](atividades/4-garra.md) - Entendendo a utilização da garra.
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 6.
@@ -25,4 +25,4 @@ Esse conceito será explorado nas seguintes atividades,
 
     [APS 6 - Github Classroom](https://classroom.github.com/a/d-jiiY5d)
 
-    A data final de entrega é **{{ data_APS6 }}**. -->
+    A data final de entrega é **{{ data_APS6 }}**.
