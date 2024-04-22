@@ -6,7 +6,7 @@ Dessa forma o robô terá um comportamento mais suave e preciso ao seguir a linh
 
 ## Material Necessário
 
-Primeiramente, vamos começar do seu código do seguir de linha ou você pode baixar o gabarito [aqui](modulos/07-controle/atividades/util/segue_linha.py).
+Primeiramente, vamos começar do seu código do seguir de linha ou você pode baixar o gabarito ao lado <--.
 
 ## Conceito
 
