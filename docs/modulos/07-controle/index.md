@@ -1,36 +1,28 @@
-# Módulo 3 - Controlando o Robô
+# Módulo 7 - Controle Proporcional
 
-!!! pdf
-    ![](slides.pdf)
+Neste módulo vamos aprender uma forma mais elegante de controlar o robô utilizando a ROS 2 implementando controle proporcional. O controle proporcional é uma técnica de controle que utiliza a diferença entre o valor desejado e o valor medido para calcular a ação de controle.
 
-
-Neste módulo vamos aprender a controlar o robô utilizando a ROS 2. Vamos aprender a controlar o robô utilizando maquina de estados, e a ler os dados do sensor laser e da odometria, e utilizar esses dados para controlar o robô. Também vamos aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
+Nesse ponto o seguidor de linha funciona em dois estados, um para seguir a linha e outro para centralizar o robô. O problema é que o movimento do robô é quebrado em pequenos passos. Uma forma mais elegante de controlar o robô é, enquanto o robô anda, ele gira proporcionalmente a distância entre a linha e o centro do robô.
 
 ## Atividades
-As atividades deste módulo focam em introduzir técnicas úteis para 
+As atividades deste módulo focam em introduzir controle proporcional
 
-1. Entender o conceito básico de maquina de estados.
-2. Entender o conceito de odometria.
-3. Entender o conceito de sensor laser.
-4. Aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
+Esse conceito será explorado nas seguintes atividades,
 
-Estes conceitos são explorados nas seguintes atividades,
+- [Atividade 1](atividades/1-controle-proporcional.ipynb) - Introdução ao conceito de controle proporcional.
+- [Atividade 2](atividades/2-seguelinha-proporcional.md) - Aplicação do controle proporcional no seguidor de linha.
+- [Atividade 3](atividades/3-controlar-angulo.md) - Aplicações do controle proporcional na orientação do robô.
+- [Atividade 4](atividades/4-garra.md) - Entendendo a utilização da garra.
 
-- [Atividade 1](atividades/1-maquina-de-estados.md) - Introdução ao conceito de maquina de estados.
-- [Atividade 2](atividades/2-estrutura-basica.md) - Aqui fornecemos uma estrutura básica composta por um nó qualquer e um nó de controle do robô por meio de maquina de estados.
-- [Atividade 3](atividades/3-odometria.md) - Entendendo o conceito de `Pose` e `Odometria`. Também vamos aprender a criar um módulo de odometria para ser facilmente importado em outros programas.
-- [Atividade 4](atividades/4-laser.md) - Entendendo a leitura do sensor laser. Também vamos aprender a criar um módulo do sensor laser para ser facilmente importado em outros programas.
-- [Atividade 5](atividades/5-visualizacao.md) - Entendendo como visualizar os dados da câmera, utilizando o `rqt_image_view`, e os dados do sensor laser e da odometria, utilizando o `RViz`.
-
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 3.
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 6.
 
     As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
-    As entregas da APS 3 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
+    As entregas da APS 6 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 3 - Github Classroom](https://classroom.github.com/a/WlPtlXfc)
+    [APS 6 - Github Classroom](https://classroom.github.com/a/d-jiiY5d)
 
-    A data final de entrega é **{{ data_APS3 }}**.
+    A data final de entrega é **{{ data_APS6 }}**. -->

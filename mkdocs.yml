@@ -179,12 +179,16 @@ nav:
       - Módulo 7 - Controle Propocional:
         - modulos/07-controle/index.md
         - Atividades:
-          - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.md
+          - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
+          - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
           - "2 - Segue-Linha-P":
             - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
             - "Download > Segue-Linha-Gab": modulos/07-controle/atividades/util/segue_linha.py
           - "3 - Rotacionar-P": modulos/07-controle/atividades/3-controlar-angulo.md
           - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
+        # - APS 6:
+        #   - "APS 6 - Classroom" : https://classroom.github.com/a/d-jiiY5d
+        #   - "Enunciado": modulos/07-controle/aps/enunciado.md
 
 
 
