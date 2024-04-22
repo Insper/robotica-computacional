@@ -175,9 +175,16 @@ nav:
             - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
             - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
 
-        # - APS 6:
-        #   - "APS 6 - Classroom" : https://classroom.github.com/a/zxV99Se5
-        #   - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+    - Unidade 3:
+      - Módulo 7 - Controle Propocional:
+        - modulos/07-controle/index.md
+        - Atividades:
+          - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.md
+          - "2 - Segue-Linha-P":
+            - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
+            - "Download > Segue-Linha-Gab": modulos/07-controle/atividades/util/segue_linha.py
+          - "3 - Rotacionar-P": modulos/07-controle/atividades/3-controlar-angulo.md
+          - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
 
 
 
