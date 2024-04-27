@@ -17,7 +17,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_3`.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_6`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ____________________________________________________________________
@@ -43,19 +43,21 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Utilize duas constante proporcionais, `kp_linear` e `kp_angular` para controlar a velocidade linear e angular do robô.
 
+## Quando o nó estiver funcionando corretamente
+
 Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`. Usando o robô **real**, faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
 
 * Ter dois estados, `segue` e `para`.
 
 * **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do quadrado.
 
-* O estado `segue` deve criar um loop que chama a função `control` do `GoTo` até que o robô esteja no ponto desejado - ou seja, `control` da classe `Quadrado` não vai ser chamada porque o código esta preso no loop.
+* O estado `segue` deve criar um loop que chama a função `control` do `GoTo` como no exemplo [aqui](../util/run_rotate2.py).
 
-* Quando sair do loop, mude a variável `point` e `robot_state` da classe `GoTo` para, respectivamente, o próximo ponto do quadrado e `center`.
+* Depois, mude o valor de `point` no `GoTo` para o próximo ponto do quadrado e mude o estado do `GoTo` para `center`.
 
 ## Critérios de Avaliação:
 
-1. `GoTo` funciona a partir / até qualquer ponto em qualquer quadrante.
+1. `GoTo` funciona a partir (até) qualquer ponto em qualquer quadrante.
 2. A classe `Quadrado` chama a classe `GoTo` corretamente.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
 4. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.

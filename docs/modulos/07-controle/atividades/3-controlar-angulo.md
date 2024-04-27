@@ -37,4 +37,4 @@ self.goal_yaw = (ang + np.pi) % (2 * np.pi) - np.pi
 
 6. Mude para o estado `para` quando o erro for menor que um valor de tolerância.
 
-7. **Desafio:** No código do quadrado, chame essa função e substitua o estado `girar` por um loop que chama a função `control`, do `RotateTo`, até que o estado `para` seja atingido.
+7. **Desafio:** No código do quadrado, modifique o estado `girar` para uma chamada do `RotateTo`. Isso pode ser feito como no exemplo [aqui](../util/run_rotate2.py).

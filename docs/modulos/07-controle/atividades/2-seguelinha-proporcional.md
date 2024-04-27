@@ -34,5 +34,5 @@ Com isso em mente, faça as seguintes modificações no código do seguidor de l
 
 6. **DESAFIO:** Ajuste os valores de `self.kp` e o delay da chamada da função `self.control` para que o robô siga a linha o mais rápido possível sem perder a precisão.
 
-7. Adicione um estado `para` que pare o robô quando. Modifique o callback da câmera para não façar nada quando o estado for `para` - vamos utilizar esse estado futuramente.
+7. Adicione um estado `para` que pare o robô. Modifique o callback da câmera para não rodar quando o estado for `para` - no momento, o robô nunca vai chegar nesse estado.
 
