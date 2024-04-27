@@ -24,7 +24,12 @@ APS_UNIDADE_# = ( **MAIOR**(APS_1o ; APS_2o) + APS_3o ) / 2;
 ```
 onde:
 
-* `APS_UNIDADE_#` média aritmética entre a nota da terceira APS (da unidade) e a maior nota entre a primeira e a segunda APS (da unidade). Para a unidade 3, a média é feita entre as duas melhores APSs;
+* `APS_UNIDADE_#` :
+```
+APS_UNIDADE_1 = ( **MAIOR**(APS_1 ; APS_2) + APS_3 ) / 2;
+APS_UNIDADE_2 = ( APS_4 + APS_5 ) / 2;
+APS_UNIDADE_3 = APS_6;
+```
 
 * `NAPS` é a média das notas das APS de cada unidade;
 
