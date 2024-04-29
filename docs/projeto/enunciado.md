@@ -8,7 +8,9 @@ Os grupos, compostos por quatro integrantes, deverão trabalhar juntos utilizand
 
 [Link para tarefa do GH Classroom](https://classroom.github.com/a/NkmSeO1t){ .ah-button }
 
-# **Data de Entrega: 01/12 23:59**
+# **Data de Entrega: 27/05 23:59**
+
+________________________________________________________
 
 ## Instruções gerais
 
@@ -32,6 +34,8 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_robcomp`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
+________________________________________________________
+
 ## Atualização dos Repositórios
 
 ```bash
@@ -48,7 +52,9 @@ catkin_make
 ```bash
 roslaunch my_simulation pista23-B.launch
 ```
------------------------------------------
+
+________________________________________________________
+
 ## Descrição das Missões
 
 O projeto é composto por várias missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
@@ -103,6 +109,8 @@ args = parser.parse_args()
 !!! Atenção
     Se uma missão for completada apenas no simulador, será concedido 25% da diferença dos conceitos de nota. **A missão C é obrigatória no robô real**.
 
+________________________________________________________
+
 ### Missão **C**
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina. Os seguintes passos devem ser realizados:
@@ -138,6 +146,8 @@ creepers = {
 !!! Atenção
     É obrigatório rodar essa missão no robô real
 
+________________________________________________________
+
 ### Missão **B**
 
 Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
@@ -161,6 +171,8 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 * **Subscriber para Aruco**: Crie um nó específico que identifica o creeper pela cor e ID desejados - tanto pode publicar todos os creepers encontrados quanto apenas o creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
 **Nota final desta missão:** 7,0
+
+________________________________________________________
 
 ### Missão **A**
 
@@ -186,6 +198,8 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 **Nota final desta missão:** 9,0
 
+________________________________________________________
+
 ### Missão **A+**
 
 Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
@@ -205,7 +219,7 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 **Nota final desta missão:** 10
 
 
------------------------------------------
+________________________________________________________
 !!! people "Contribuições"
     - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Professor*
     - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
