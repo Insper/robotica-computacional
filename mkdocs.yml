@@ -194,10 +194,6 @@ nav:
           - "APS 6 - Classroom" : https://classroom.github.com/a/d-jiiY5d
           - "Enunciado": modulos/07-controle/aps/enunciado.md
 
-
-
-
-
     - Provas:
       - Simulado AI:
         - "Enunciado": provas/simulado_ai/enunciado.md
@@ -206,3 +202,7 @@ nav:
       - AI:
         - "Enunciado": provas/ai/enunciado.md
         # - "Gabarito": https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+    - Provas:
+      - "Enunciado": projeto/enunciado.md
+      - "APS 6 - Classroom" : https
