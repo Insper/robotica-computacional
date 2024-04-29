@@ -51,9 +51,161 @@ roslaunch my_simulation pista23-B.launch
 -----------------------------------------
 ## Descrição das Missões
 
+O projeto é composto por várias missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
+
+Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
+
+As missões envolvem os seguintes elementos:
+
+* **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
+
+* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São colocadas nos locais ondem aparecem na simulação, mas em disposições (cor/ID) aleatórias.
+
+* **Drop Area**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
+
+* **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
+
+Para completar uma missão, você deve:
+
+1. Capturar a tela do robô realizando a missão no simulador.
+
+2. Gravar o robô realizando a missão na pista real.
+
+    2.1. Para filmar, é necessário agendar a preparação da pista com a equipe técnica, garantindo condições semelhantes para todos os grupos.
+
+3. Incluir o link do vídeo no README do seu repositório e criar um Release com a tag referente ao último conceito alcançado.
+
+4. Cada missão deve ser concluída em menos de 15 minutos.
+
+5. **Deixar** o creeper em uma drop area inclui:
+
+    5.1. Parar próximo à drop area.
+
+    5.2. Posicionar-se de frente para a drop area.
+
+    5.3. Aproximar-se até ficar a 0.5m de distância.
+
+    5.4. Abaixar a garra e soltar o creeper em pé.
+
+    5.5. Retornar à pista sem derrubar o creeper.
+
+As missões podem ser validadas ao longo do projeto. Solicite a validação da parte de requisitos de software antes de gravar.
+
+Os argumentos de linha de comando para o seu código devem ser:
+```python
+parser = argparse.ArgumentParser()
+parser.add_argument('--cor', type=str, default='verde', help='cor do creeper desejado')
+parser.add_argument('--id', type=int, default=10, help='id do creeper desejado')
+parser.add_argument('--drop', type=str, default='bicicleta', help='drop area desejada')
+args = parser.parse_args()
+```
+
+!!! Atenção
+    Se uma missão for completada apenas no simulador, será concedido 25% da diferença dos conceitos de nota. **A missão C é obrigatória no robô real**.
+
+### Missão **C**
+
+Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina. Os seguintes passos devem ser realizados:
+
+* **Nesta missão, vocês podem remover as caixas do Slalom**
+
+1. Crie um dicinário com as cores dos creepers e suas respectivas IDs para armazenar onde estão os creepers, como o exemplo abaixo:
+```python
+creepers = {
+    'verde_10': ...,
+    'verde_11': ...,
+    'azul_10': ...,
+    'azul_11': ...,
+}
+```
+
+2. O robô sai da posição inicial e visita todos os lugares onde os creepers podem aparecer para encontrar os creepers;
+
+3. Ao encontrar um creeper, armazene onde ele está no dicionário - você pode armazenas a posição (x, y) ou referênciar a posição do creeper de outra forma;
+
+4. Ao encontrar todos os creepers, o robô retorna para a posição inicial, **pare** e **imprima** o dicionário com as posições dos creepers.
+
+**Requisitos de projeto de software**:
+
+* **Uso de Classes**: O código deve ser estruturado de forma orientada a objetos, utilizando classes para organizar as funcionalidades
+
+* **Máquina de Estados**: Implemente uma máquina de estados para gerenciar as diferentes etapas da missão;
+
+* **Controle Proporcional**: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.
+
+**Nota final desta missão:** 4,0
+
+!!! Atenção
+    É obrigatório rodar essa missão no robô real
+
+### Missão **B**
+
+Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
+
+* **Nesta missão, vocês podem remover as caixas do Slalom**
+
+1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
+
+1.1. Utilize a biblioteca `argparse` em Python;
+
+2. O robô sai visitando todos os lugares onde os creepers podem aparecer para encontrar o creeper **desejado**;
+
+4. O robô e derruba o creeper **desejado**;
+
+5. Retorna para a posição inicial usando a mesma pista
+
+**Requisitos de projeto de software**:
+
+- Mesmo do **C**
+
+* **Subscriber para Aruco**: Crie um nó específico que identifica o creeper pela cor e ID desejados - tanto pode publicar todos os creepers encontrados quanto apenas o creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
+
+**Nota final desta missão:** 7,0
+
+### Missão **A**
+
+Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
+
+* **Nesta missão, vocês podem remover as caixas do Slalom**
+
+1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
+
+1.1. Utilize a biblioteca `argparse` em Python;
+
+2. O robô sai visitando todos os lugares onde os creepers podem aparecer para encontrar o creeper **desejado**;
+
+4. O robô e derruba o creeper **desejado**;
+
+5. Retorna para a posição inicial usando a mesma pista
+
+**Requisitos de projeto de software**:
+
+- Mesmo do **B**
+
+* **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
+
+**Nota final desta missão:** 9,0
+
+### Missão **A+**
+
+Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
+
+* **Nesta missão, vocês podem remover as caixas do Slalom**
+
+1. Mesmo do **A**
+
+2. Com a adição do Slalom, o robô deve passar por todas as caixas coloridas, sem tocar nelas.
+
+3. No vídeo, o robô deve nescessariamente aparecer realizando o Slalom.
+
+**Requisitos de projeto de software**:
+
+- Mesmo do **A**
+
+**Nota final desta missão:** 10
+
+
 -----------------------------------------
-
-
 !!! people "Contribuições"
     - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Professor*
     - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
