@@ -162,7 +162,7 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 
 4. O robô e derruba o creeper **desejado**;
 
-5. Retorna para a posição inicial usando a mesma pista
+5. Retorna para a posição inicial e para.
 
 **Requisitos de projeto de software**:
 
@@ -180,15 +180,19 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 * **Nesta missão, vocês podem remover as caixas do Slalom**
 
-1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
+1. O programa recebe um argumento na linha de comando: cor eo ID do creeper **desejado** além da drop area **desejada**;
 
 1.1. Utilize a biblioteca `argparse` em Python;
 
 2. O robô sai visitando todos os lugares onde os creepers podem aparecer para encontrar o creeper **desejado**;
 
-4. O robô e derruba o creeper **desejado**;
+4. O robô pega o creeper **desejado**;
 
-5. Retorna para a posição inicial usando a mesma pista
+5. O robô segue para a região onde ficam as drop area;
+
+6. O robô deixa o creeper **desejado** na drop area **desejada**;
+
+7. O robô retorna para a posição inicial e para.
 
 **Requisitos de projeto de software**:
 
