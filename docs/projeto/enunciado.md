@@ -2,7 +2,7 @@
 
 O objetivo deste projeto, realizado no contexto da disciplina, é programar nosso robô para cumprir uma série de missões na sala 404. Utilizaremos o cenário apresentado abaixo.
 
-![](pista.jpeg)
+![](pista.png)
 
 Os grupos, compostos por quatro integrantes, deverão trabalhar juntos utilizando o repositório do GitHub Classroom disponibilizado. 
 
@@ -50,7 +50,7 @@ catkin_make
 ## Mapa Simulado
 
 ```bash
-roslaunch my_simulation pista23-B.launch
+roslaunch my_simulation pista-24.launch.py
 ```
 
 ________________________________________________________
