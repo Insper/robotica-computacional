@@ -2,7 +2,7 @@
 
 O objetivo do projeto é programar nosso robô para cumprir um conjunto de missões na sala 404. Utilizaremos o cenário apresentado a seguir.
 
-![](pista.jpeg)
+![](pista.png)
 
 Os grupos, compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
 
@@ -50,11 +50,8 @@ cb
 ## Mapa Simulado
 
 ```bash
-ros2 launch my_gazebo pista-23B.launch.py
+roslaunch my_simulation pista-24.launch.py
 ```
-<!--- 
-roslaunch my_simulation pista23-B.launch confirmar o nome da pista
---->
 ________________________________________________________
 
 ## Descrição das Missões
