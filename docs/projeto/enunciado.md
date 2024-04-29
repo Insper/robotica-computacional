@@ -1,14 +1,14 @@
 # Projeto - Missão na 404
 
-O objetivo deste projeto, realizado no contexto da disciplina, é programar nosso robô para cumprir uma série de missões na sala 404. Utilizaremos o cenário apresentado abaixo.
+O objetivo do projeto é programar nosso robô para cumprir um conjunto de missões na sala 404. Utilizaremos o cenário apresentado a seguir.
 
 ![](pista.jpeg)
 
-Os grupos, compostos por quatro integrantes, deverão trabalhar juntos utilizando o repositório do GitHub Classroom disponibilizado. 
+Os grupos, compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
 
-[Link para tarefa do GH Classroom](https://classroom.github.com/a/NkmSeO1t){ .ah-button }
+[Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/NkmSeO1t){ .ah-button }
 
-# **Data de Entrega: 27/05 23:59**
+# **`Data de Entrega: 27/05 23:59`**
 
 ________________________________________________________
 
@@ -16,13 +16,13 @@ ________________________________________________________
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
+**Aviso 2:** Lembre-se de realizar `commit` e `push` no seu repositório até o horário limite de entrega.
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas os conceitos vocês **deveram gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser postado no Youtube. 
+**Aviso 4:** Além de seu repositório, para todas os conceitos vocês **`deveram gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
 
-No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
 **Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo **25%** da diferença de notas entre o último conceito com o robô real.
 
@@ -39,25 +39,27 @@ ________________________________________________________
 ## Atualização dos Repositórios
 
 ```bash
-cd ~/catkin_ws/src/mybot_description
+cd ~/colcon_ws/src/mybot_description
 git pull
-cd ~/catkin_ws/src/my_simulation
+cd ~/colcon_ws/src/my_simulation
 git pull
-cd ~/catkin_ws
-catkin_make
+cd ~/colcon_ws
+cb
 ```
 
 ## Mapa Simulado
 
 ```bash
-roslaunch my_simulation pista23-B.launch
+ros2 launch my_gazebo pista-23B.launch.py
 ```
-
+<!--- 
+roslaunch my_simulation pista23-B.launch confirmar o nome da pista
+--->
 ________________________________________________________
 
 ## Descrição das Missões
 
-O projeto é composto por várias missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
+O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
 
 Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
@@ -65,11 +67,13 @@ As missões envolvem os seguintes elementos:
 
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
-* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São colocadas nos locais ondem aparecem na simulação, mas em disposições (cor/ID) aleatórias.
+* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São posicionados de forma fixa no mapa, mas em ordem (cor/ID) aleatória.
 
 * **Drop Area**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
+<!--- Vai manter o slalom?
 * **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
+--->
 
 Para completar uma missão, você deve:
 
@@ -98,6 +102,7 @@ Para completar uma missão, você deve:
 As missões podem ser validadas ao longo do projeto. Solicite a validação da parte de requisitos de software antes de gravar.
 
 Os argumentos de linha de comando para o seu código devem ser:
+
 ```python
 parser = argparse.ArgumentParser()
 parser.add_argument('--cor', type=str, default='verde', help='cor do creeper desejado')
@@ -106,18 +111,22 @@ parser.add_argument('--drop', type=str, default='bicicleta', help='drop area des
 args = parser.parse_args()
 ```
 
+<!--- 
 !!! Atenção
     Se uma missão for completada apenas no simulador, será concedido 25% da diferença dos conceitos de nota. **A missão C é obrigatória no robô real**.
-
+--->
 ________________________________________________________
 
 ### Missão **C**
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina. Os seguintes passos devem ser realizados:
 
+<!--- 
 * **Nesta missão, vocês podem remover as caixas do Slalom**
+--->
 
-1. Crie um dicinário com as cores dos creepers e suas respectivas IDs para armazenar onde estão os creepers, como o exemplo abaixo:
+1. Crie um dicinário com as cores dos creepers e seus respectivas IDs para armazenar onde estão os creepers, como o exemplo abaixo:
+
 ```python
 creepers = {
     'verde_10': ...,
@@ -129,7 +138,7 @@ creepers = {
 
 2. O robô sai da posição inicial e visita todos os lugares onde os creepers podem aparecer para encontrar os creepers;
 
-3. Ao encontrar um creeper, armazene onde ele está no dicionário - você pode armazenas a posição (x, y) ou referênciar a posição do creeper de outra forma;
+3. Ao encontrar um creeper, armazene onde ele está no dicionário - você pode armazenar a posição (x, y) ou referênciar a posição do creeper de outra forma;
 
 4. Ao encontrar todos os creepers, o robô retorna para a posição inicial, **pare** e **imprima** o dicionário com as posições dos creepers.
 
@@ -143,7 +152,7 @@ creepers = {
 
 **Nota final desta missão:** 4,0
 
-!!! Atenção
+!!! warning
     É obrigatório rodar essa missão no robô real
 
 ________________________________________________________
@@ -152,7 +161,9 @@ ________________________________________________________
 
 Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
 
+<!--- 
 * **Nesta missão, vocês podem remover as caixas do Slalom**
+--->
 
 1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
 
@@ -162,7 +173,7 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 
 4. O robô e derruba o creeper **desejado**;
 
-5. Retorna para a posição inicial e para.
+5. Volta para a pista e retorna a posição inicial e para.
 
 **Requisitos de projeto de software**:
 
@@ -178,7 +189,9 @@ ________________________________________________________
 
 Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
 
+<!--- 
 * **Nesta missão, vocês podem remover as caixas do Slalom**
+--->
 
 1. O programa recebe um argumento na linha de comando: cor eo ID do creeper **desejado** além da drop area **desejada**;
 
@@ -208,11 +221,12 @@ ________________________________________________________
 
 Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
 
-* **Nesta missão, vocês podem remover as caixas do Slalom**
+* **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
+
 
 1. Mesmo do **A**
 
-2. Com a adição do Slalom, o robô deve passar por todas as caixas coloridas, sem tocar nelas.
+2. Com a adição do `Slalom`, o robô deve passar por todas as caixas coloridas, sem tocar nelas.
 
 3. No vídeo, o robô deve nescessariamente aparecer realizando o Slalom.
 
@@ -221,13 +235,3 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 - Mesmo do **A**
 
 **Nota final desta missão:** 10
-
-
-________________________________________________________
-!!! people "Contribuições"
-    - ![Diego](equipe/diego.jpg) **Diego Pavan Soler** *Professor*
-    - ![Arnaldo](equipe/arnaldo.jpeg) **Arnaldo Alves Viana Junior** *Prof. Auxiliar*
-    - ![Rogério](/robotica-computacional/equipe/rogerio.jpeg) **Rogério Cuenca** *Técnico de lab*
-    - ![Igor](/robotica-computacional/equipe/igor.jpg) **Igor Montagner** *Professor-23a*
-
-
