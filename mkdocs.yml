@@ -193,6 +193,10 @@ nav:
         - APS 6:
           - "APS 6 - Classroom" : https://classroom.github.com/a/d-jiiY5d
           - "Enunciado": modulos/07-controle/aps/enunciado.md
+          
+      - Gabarito do Mypackage:
+        - modulos/my_package/index.md
+        - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
     - Provas:
       - Simulado AI:
