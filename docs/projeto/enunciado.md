@@ -47,7 +47,7 @@ cb
 ## Mapa Simulado
 
 ```bash
-ros2 launch my_simulation pista-24.launch.py
+ros2 launch my_gazebo pista-24.launch.py
 ```
 ________________________________________________________
 
