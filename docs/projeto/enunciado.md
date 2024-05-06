@@ -39,18 +39,15 @@ ________________________________________________________
 ## Atualização dos Repositórios
 
 ```bash
-cd ~/colcon_ws/src/mybot_description
-git pull
 cd ~/colcon_ws/src/my_simulation
 git pull
-cd ~/colcon_ws
 cb
 ```
 
 ## Mapa Simulado
 
 ```bash
-roslaunch my_simulation pista-24.launch.py
+ros2 launch my_simulation pista-24.launch.py
 ```
 ________________________________________________________
 
