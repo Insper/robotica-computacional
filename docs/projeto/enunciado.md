@@ -147,7 +147,7 @@ creepers = {
 
 * **Controle Proporcional**: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.
 
-**Nota final desta missão:** 4,0
+**Nota final desta missão:** 5,0
 
 !!! warning
     É obrigatório rodar essa missão no robô real
@@ -178,7 +178,7 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 
 * **Subscriber para Aruco**: Crie um nó específico que identifica o creeper pela cor e ID desejados - tanto pode publicar todos os creepers encontrados quanto apenas o creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
-**Nota final desta missão:** 7,0
+**Nota final desta missão:** 8,0
 
 ________________________________________________________
 
@@ -210,11 +210,11 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 * **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
-**Nota final desta missão:** 9,0
+**Nota final desta missão:** 10,0
 
-________________________________________________________
+<!-- ________________________________________________________ -->
 
-### Missão **A+**
+<!-- ### Missão **A+**
 
 Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
 
@@ -231,4 +231,4 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 - Mesmo do **A**
 
-**Nota final desta missão:** 10
+**Nota final desta missão:** 10 -->

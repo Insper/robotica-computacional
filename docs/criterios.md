@@ -16,11 +16,9 @@ section.progress-section.show iframe {
 A nota será composta da seguinte forma:
 
 ```
-N = 0,3*NAPS + 0,3*Projeto + 0,2*AI + 0,2*AF;
+N = 0,3*NAPS + 0,2*Projeto + 0,2*AI + 0,3*AF;
 
-NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
-
-APS_UNIDADE_# = ( **MAIOR**(APS_1o ; APS_2o) + APS_3o ) / 2;
+NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + 0,5*APS_UNIDADE_3) / 2,5;
 ```
 onde:
 
