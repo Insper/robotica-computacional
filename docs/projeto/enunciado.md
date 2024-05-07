@@ -209,9 +209,9 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 **Nota final desta missão:** 10,0
 
-<!-- ________________________________________________________ -->
+________________________________________________________
 
-<!-- ### Missão **A+**
+### Missão **Desafio**
 
 Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
 
@@ -228,4 +228,4 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 - Mesmo do **A**
 
-**Nota final desta missão:** 10 -->
+**Nota final desta missão:** PF + 1,0
