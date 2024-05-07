@@ -57,17 +57,21 @@ O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto
 
 Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
+![](pista_numero.png)
+
 As missões envolvem os seguintes elementos:
 
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
-* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São posicionados de forma fixa no mapa, mas em ordem (cor/ID) aleatória.
+* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São posicionados de forma fixa no mapa, como na imagem acima, mas em ordem (cor/ID) aleatória.
 
 * **Drop Area**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
-<!--- Vai manter o slalom?
+* **Placas**: Arucos de ID 100, 150, 250. O grupo pode colocalos em qualquer lugar, fora da linha branca, para auxiliar na navegação.
+
+- Vai manter o slalom?
 * **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
---->
+-
 
 Para completar uma missão, você deve:
 
