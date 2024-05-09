@@ -69,7 +69,6 @@ As missões envolvem os seguintes elementos:
 
 * **Placas**: Arucos de ID 100, 150, 250. O grupo pode colocalos em qualquer lugar, fora da linha branca, para auxiliar na navegação.
 
-- Vai manter o slalom?
 * **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
 -
 
