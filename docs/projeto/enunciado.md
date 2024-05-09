@@ -57,7 +57,7 @@ O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto
 
 Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
-![](pista_numero.png)
+![](pista_numero.jpg)
 
 As missões envolvem os seguintes elementos:
 
