@@ -205,7 +205,8 @@ nav:
         - "Resposta Q2" : provas/simulado_ai/q2.py
       - AI:
         - "Enunciado": provas/ai/enunciado.md
-        # - "Gabarito": https://www.youtube.com/watch?v=dQw4w9WgXcQ
+      - Simulado PF:
+        - "Enunciado": provas/simulado_pf/enunciado.md
 
     - Projeto:
       - "Enunciado": projeto/enunciado.md
