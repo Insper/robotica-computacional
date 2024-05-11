@@ -1,4 +1,4 @@
-# Robótica Computacional 2024.1 - Simulado AI
+# Robótica Computacional 2024.1 - Simulado PF
 
 Observações de avaliações nesta disciplina:
 
