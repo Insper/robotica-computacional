@@ -8,7 +8,7 @@ Os grupos, compostos por `até quatro integrantes`, deverão trabalhar em conjut
 
 [Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/H90gUDvK){ .ah-button }
 
-# **`Data de Entrega: 27/05 23:59`**
+# **`Data de Entrega: 27/05`**
 
 ________________________________________________________
 
@@ -24,9 +24,10 @@ ________________________________________________________
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo **25%** da diferença de notas entre o último conceito com o robô real.
+**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **B**.
 
-**Aviso 6:** O conceito **C** é o mínimo para aprovação e **deve ser feito com o robô real**.
+**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
+<!-- **Aviso 6:** O conceito **C** é o mínimo para aprovação e **deve ser feito com o robô real**. -->
 
 ## Configuração do Pacote (ROS 2)
 
@@ -149,8 +150,13 @@ creepers = {
 
 **Nota final desta missão:** 5,0
 
-!!! warning
-    É obrigatório rodar essa missão no robô real
+<!-- !!! warning
+    É obrigatório rodar essa missão no robô real -->
+
+#### Entrega Parcial
+1. O robô segue a linha amarela;
+2. O robô segue a linha amarela da uma volta na pista e retorna a posição inicial;
+3. O robô segue a linha amarela e imprime a posição dos creepers.
 
 ________________________________________________________
 
@@ -165,12 +171,11 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
 
 1.1. Utilize a biblioteca `argparse` em Python;
+1.2. Ou outro método de sua escolha.
 
-2. O robô sai visitando todos os lugares onde os creepers podem aparecer para encontrar o creeper **desejado**;
+2. O robô e derruba o creeper **desejado**;
 
-4. O robô e derruba o creeper **desejado**;
-
-5. Volta para a pista e retorna a posição inicial e para.
+3. Volta para a pista e retorna a posição inicial e para.
 
 **Requisitos de projeto de software**:
 
@@ -179,6 +184,11 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 * **Subscriber para Aruco**: Crie um nó específico que identifica o creeper pela cor e ID desejados - tanto pode publicar todos os creepers encontrados quanto apenas o creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
 **Nota final desta missão:** 8,0
+
+#### Entrega Parcial
+1. O robô para ao encontrar um creeper em uma posição específica (1 dos 4 creepers);
+2. O robô derruba um creeper em uma posição específica;
+3. O robô derruba um creeper em uma posição específica e retorna a posição inicial.
 
 ________________________________________________________
 
@@ -211,6 +221,10 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 * **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
 **Nota final desta missão:** 10,0
+
+#### Entrega Parcial
+1. O robô para ao encontrar um creeper e se move para a drop area;
+2. O robô consegue pegar um creeper em um ambiente controlado;
 
 ________________________________________________________
 
