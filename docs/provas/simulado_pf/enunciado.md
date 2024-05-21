@@ -102,7 +102,9 @@ O nó criado deve:
 
 ___
 
-Extra
+# Extra
+
+O robô deve seguir a linha no sentido da imagem abaixo, e ao completar uma volta, deve mudar de pista até completar uma volta em todas as pistas e parar.
 
 ```bash
 ros2 launch my_gazebo pista_circulos.launch.py
