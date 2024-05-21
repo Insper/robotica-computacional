@@ -207,6 +207,8 @@ nav:
         - "Enunciado": provas/ai/enunciado.md
       - Simulado PF:
         - "Enunciado": provas/simulado_pf/enunciado.md
+        - "Resposta Q1" : provas/simulado_pf/q1.py
+        - "Resposta Q2" : provas/simulado_pf/q2.py
 
     - Projeto:
       - "Enunciado": projeto/enunciado.md
