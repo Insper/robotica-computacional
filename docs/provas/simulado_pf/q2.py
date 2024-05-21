@@ -60,6 +60,8 @@ class Aleatorio(Node, Odom, Laser):
         self.atual = False
         self.kp = 0.005
         self.vai_ate = GoTo(point=Point())
+        self.vai_ate.kp_linear = 0.4 # Ajustar de acordo
+        self.vai_ate.kp_angular = 0.5 # Ajustar de acordo
 
 
         # Inicialização de variáveis
