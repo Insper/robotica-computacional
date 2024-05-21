@@ -99,3 +99,13 @@ O nó criado deve:
 5. A função `control` deve ser a única a publicar no tópico `/cmd_vel`.
 6. A função `control` deve ser idêntica à do arquivo `base_control.py`. Todas as decisões de controle devem ocorrer dentro dos nós, sem alterações na função `control`.
 7. Não utilizar loops infinitos ou `sleep` durante o controle do robô.
+
+___
+
+Extra
+
+```bash
+ros2 launch my_gazebo pista_circulos.launch.py
+```
+
+![pistas](pistas.png)
