@@ -73,6 +73,8 @@ class Circuito(Node, Odom, Laser):
 
         self.rotate_ate = Rotate2(90, deg=True)
         self.vai_ate = GoTo(point=Point())
+        self.vai_ate.kp_angular = 0.5
+        self.vai_ate.kp_linear = 0.4
 
         # Inicialização de variáveis
         self.twist = Twist()
@@ -94,10 +96,6 @@ class Circuito(Node, Odom, Laser):
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
 
-        cv2.imshow('bgr', cv_image)
-        cv2.imshow('mask', mask)
-        cv2.waitKey(1)
-
         contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         if len(contours) > 0:
@@ -109,9 +107,6 @@ class Circuito(Node, Odom, Laser):
             self.caixa_y = int(M["m01"] / M["m00"])
 
             cv2.circle(cv_image, (self.caixa_x, self.caixa_y), 5, (0, 0, 255), -1)
-
-            cv2.imshow("cv_image", mask)
-            cv2.waitKey(1)
         else:
             return -1
         
@@ -149,7 +144,7 @@ class Circuito(Node, Odom, Laser):
         self.twist.linear.x = 0.5
         self.twist.angular.z = self.rot 
 
-        if np.min(self.front) < 0.4:
+        if np.min(self.front) < 0.5:
             self.robot_state = 'vorta'
             self.vai_ate.point = Point(x=self.x_inicial, y=self.y_inicial)
     
