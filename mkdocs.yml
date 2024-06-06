@@ -211,6 +211,8 @@ nav:
         - "Resposta Q2" : provas/simulado_pf/q2.py
       - AF:
         - "Enunciado": provas/af/enunciado.md
+      - DELTA:
+        - "Enunciado": provas/delta/enunciado.md
 
     - Projeto:
       - "Enunciado": projeto/enunciado.md
