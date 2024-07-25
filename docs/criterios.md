@@ -18,15 +18,15 @@ A nota será composta da seguinte forma:
 ```
 N = 0,3*NAPS + 0,2*Projeto + 0,2*AI + 0,3*AF;
 
-NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + 0,5*APS_UNIDADE_3) / 2,5;
+NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
 ```
 onde:
 
 * `APS_UNIDADE_#` :
 ```
-APS_UNIDADE_1 = ( **MAIOR**(APS_1 ; APS_2) + APS_3 ) / 2;
-APS_UNIDADE_2 = ( APS_4 + APS_5 ) / 2;
-APS_UNIDADE_3 = APS_6;
+APS_UNIDADE_1 = APS_1 * 0,25 + APS_2 * 0,25 + APS_3 * 0,5;
+APS_UNIDADE_2 = APS_4 * 0,20 + APS_5 * 0,30 + APS_6 * 0,5;
+APS_UNIDADE_3 = (APS_7 + APS_8 + APS_9) / 3;
 ```
 
 * `NAPS` é a média das notas das APS de cada unidade;
@@ -37,15 +37,12 @@ APS_UNIDADE_3 = APS_6;
 
 * `AF` é a nota da Avaliação Final. Será realizada na semana do dia {{ data_PF }}.
 
-Será aprovado o estudante que siga as seguites restrições:
+Alunos que não atingirem a média para aprovação poderão fazer uma prova DELTA para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. A prova DELTA será a mesma que a prova SUB.
 
 1. `NAPS >= 5`;
-2. `AI + AF >= 10`;
-3. `AI >= 4 E AF >= 4`;
-4. nota de projeto maior que 4.
+2. `AI >= 4 OU AF >= 4`;
+3. nota de projeto maior que 4.
 
-!!! important "Segundas chances"
-    1. Alunos que não atenderem ao critério 2 ou ao critério 3, mas atenderem o critério 1, poderão fazer uma prova DELTA para substituir a nota da menor avaliação;
-    2. Podem também fazer uma prova DELTA alunos que precisarem de nota na média para serem aprovados - desde que atendam a todos os outros critérios de aprovação;
+Neste caso, a nota da prova DELTA substituirá a menor nota entre `AI` e `AF`, limitada ao mínimo necessário para aprovação.
 
 
