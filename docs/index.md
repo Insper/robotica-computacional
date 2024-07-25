@@ -44,17 +44,17 @@ Dentro de cada módulo, os alunos participarão de:
 
 * **Unidade 2 - Visão Computacional**
 
-    * Módulo 4 - Tópicos de Processamento Digital de Imagem
+    * Módulo 4 - Visão em Robótica
 
-    * Módulo 5 - Visão Robótica
+    * Módulo 5 - Tópicos de Processamento Digital de Imagem
 
     * Módulo 6 - Tópicos de Visão Computacional
 
 * **Unidade 3 - Controle Robótico**
 
-    * Módulo 7 - Ação Robótica e Visão
+    * Módulo 7 - Controle Proporcional
 
-    * Módulo 8 - Controle Proporcional
+    * Módulo 8 - Ação de Controle
 
     * Módulo 9 - Sistema de Localização
 
