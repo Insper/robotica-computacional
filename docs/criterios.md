@@ -16,10 +16,11 @@ section.progress-section.show iframe {
 A nota será composta da seguinte forma:
 
 ```
-N = 0,3*NAPS + 0,2*Projeto + 0,2*AI + 0,3*AF;
+N = 0,3 * NAPS + 0,2 * Projeto + 0,2 * AI + 0,3 * AF;
 
 NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
 ```
+
 onde:
 
 * `APS_UNIDADE_#` :
@@ -37,7 +38,7 @@ APS_UNIDADE_3 = (APS_7 + APS_8 + APS_9) / 3;
 
 * `AF` é a nota da Avaliação Final. Será realizada na semana do dia {{ data_PF }}.
 
-Alunos que não atingirem a média para aprovação poderão fazer uma prova DELTA para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. A prova DELTA será a mesma que a prova SUB.
+Alunos que não atingirem a média para aprovação poderão fazer uma prova DELTA para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. **A prova DELTA será a mesma que a prova SUB.**
 
 1. `NAPS >= 5`;
 2. `AI >= 4 OU AF >= 4`;
