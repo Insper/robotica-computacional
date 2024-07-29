@@ -19,7 +19,7 @@ extra:
     data_APS6: 02/05 às 23:59
     data_AI: 01/04
     data_PF: 27/05
-    semestre: 2024-1
+    semestre: 2024-2
 
 markdown_extensions:
   - toc:
