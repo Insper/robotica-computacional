@@ -36,8 +36,8 @@ Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode test
 1. **(+ 0,5)** Faz a herança da classe `Mapa` corretamente. 
 2. **(+ 1,0)** Na função `control`, implementa a lógica para escolher a ação do carro, modificando a variavel `self.robot_state` de acordo com a situação.
 3. **(+ 1,0)** Desenvolve corretamente as ações do carro, chamando o método `atualizar_posicao` da classe `Mapa`.
-4. **(+ 1,0)** Dentro da função `control`, chama corretamente a ação atraves da maquina de estados, pelo dicionário `self.state_machine`.
-5. **(+ 0,5)** O carro chega na primeira linha e entra no estado `stop`.
+4. **(+ 0,5)** Dentro da função `control`, chama corretamente a ação atraves da maquina de estados, pelo dicionário `self.state_machine`.
+5. **(+ 1,0)** O carro chega na primeira linha e entra no estado `stop`, **sem nunca ultrapassar as laterais do mapa**.
 
 A entrega será feita pelo repositório do grupo no github e por um vídeo no youtube.
 
