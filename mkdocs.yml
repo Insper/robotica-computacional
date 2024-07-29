@@ -9,8 +9,7 @@ extra_css:
 
 extra:
   custom_variables:
-    repo_aps: https://github.com/Insper/robotica-computacional-aps
-    repo_aps_git: https://github.com/Insper/robotica-computacional-aps.git
+    escolha_turma: https://forms.office.com/r/mAGHZzgGPr
     data_APS1: 19/02 às 12:00
     data_APS2: 26/02 às 12:00
     data_APS3: 11/03 às 12:00
