@@ -10,15 +10,23 @@ extra_css:
 extra:
   custom_variables:
     escolha_turma: https://forms.office.com/r/mAGHZzgGPr
-    data_APS1: 19/02 às 12:00
-    data_APS2: 26/02 às 12:00
-    data_APS3: 11/03 às 12:00
-    data_APS4: 18/03 às 12:00
-    data_APS5: 25/03 às 12:00
-    data_APS6: 02/05 às 23:59
-    data_AI: 01/04
-    data_PF: 27/05
     semestre: 2024-2
+    data_APS1: TBA
+    link_APS1: TBA
+    data_APS2: TBA
+    link_APS2: TBA
+    data_APS3: TBA
+    link_APS3: TBA
+    data_APS4: TBA
+    link_APS4: TBA
+    data_APS5: TBA
+    link_APS5: TBA
+    data_APS6: TBA
+    link_APS6: TBA
+    data_AI: TBA
+    link_AI: TBA
+    data_PF: TBA
+    link_PF: TBA
 
 markdown_extensions:
   - toc:
