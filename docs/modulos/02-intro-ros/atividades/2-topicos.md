@@ -45,7 +45,8 @@ Vamos entender a saída do comando acima:
 
 * Subscription count: 1 - Quantidade de nós que estão inscritos neste tópico.
 
-**Dica:** Se a saída do comando acima for `Publisher count: 0`, inicie o programa `teleop_keyboard` novamente.
+!!! dica
+    **Dica:** Se a saída do comando acima for `Publisher count: 0`, inicie o programa `teleop_keyboard` novamente.
 
 ## Visualizando as Mensagens dos Tópicos
 
