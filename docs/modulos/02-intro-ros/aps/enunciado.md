@@ -39,7 +39,7 @@ Ola, são 1677878366175707817 e estou publicando pela 117 vez
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
 !!! dica
-    **DICA 1** - Para pegar o horário atual
+    **DICA:** - Para pegar o horário atual
 
     ```python 
     current_time = self.get_clock().now().to_msg()
@@ -64,8 +64,6 @@ A função `control` deve calcular o tempo que passou e imprimir número da mens
 ```bash
 Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
 ```
-
-**DICA 1** - Pode carregar um valor float referente a um tempo da seguinte forma:
 
 !!! exercise long 
     Qual a estrutura da mensagem do tipo `String`?
