@@ -1,14 +1,14 @@
-# Módulo 1 - Introdução ao Curso
+# Capítulo 1 - Introdução ao Curso
 
 !!! pdf
     ![](slides.pdf)
 
 Bem vindos ao curso de Robótica Computacional! Neste curso vamos aprender a programar robôs móveis, utilizando a linguagem Python e o sistema operacional ROS 2.
 
-Neste primeiro módulo vamos aprender a configurar a infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
+Neste primeiro capítulo vamos aprender a configurar a infraestrutura necessária para o curso e estudar os conceitos básicos python que serão utilizados durante o curso.
 
 ## Atividades
-As atividades deste módulo focam em introduzir técnicas úteis para:
+As atividades deste capítulo focam em introduzir técnicas úteis para:
 
 1. Introducão aos sistemas operacionais Linux e ROS 2.
 2. Utilizar o simulador do Turtlebot3 (esse é o nome do nosso robô).
