@@ -62,25 +62,10 @@ ros2 bag play my_bag
 
 Esse comando irá reproduzir as mensagens gravadas no `ROS BAG` e pausar a reprodução. Para visualizar corretamente abra o `rqt_image_view`.
 
-!!!tip
-    Para `pausar/continuar` a reprodução, pressione a `barra de espaço`. Dessa forma, você pode visualizar o robô se movendo e as mensagens sendo reproduzidas.
+Com o foco no terminal que está rodando o `bag`, você pode:
 
-### Outras opções
+* Parar **pausar/continuar** a reprodução, pressione `barra de espaço`.
 
-- Se quiser iniciar a reprodução do `ROS BAG` de um dado ponto, execute o seguinte comando:
+* **Acelerar** a reprodução pressionando `seta para direita` (rate+0.1).
 
-```bash
-ros2 bag play my_bag -s 10
-```
-
-- Se quisermos reproduzir as mensagens com uma velocidade diferente, podemos usar a opção `-r`, valor padrão é 1.0, então valores menores que 1.0 diminuem a velocidade e valores maiores que 1.0 aumentam a velocidade. Por exemplo, para reproduzir as mensagens com uma velocidade de 2x, execute o seguinte comando:
-
-```bash
-ros2 bag play my_bag -r 2
-```
-
-- Se quiser ver outras opções disponíveis, execute o seguinte comando:
-
-```bash
-ros2 bag play --h
-```
+* **Desacelerar** a reprodução pressionando `seta para esquerda` (rate-0.1).
