@@ -68,7 +68,7 @@ nav:
 
 
     - Unidade 1:
-      - Módulo 1 - Introdução ao Curso: 
+      - Capítulo 1 - Introdução ao Curso: 
         - modulos/01-intro/index.md
         - "Atividade Dia 1": modulos/01-intro/atividades/atividade-dia1.md
         - "Para Saber Mais": modulos/01-intro/recursos-legais.md
@@ -95,18 +95,19 @@ nav:
     #       - "Enunciado": modulos/01-intro/aps/enunciado.md
     #       - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-    #   - Módulo 2 - Introdução à ROS 2:
+    #   - Capítulo 2 - Introdução à ROS 2:
     #     - modulos/02-intro-ros/index.md
     #     - Atividades:
     #       - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
     #       - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
     #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
     #       - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
+    #       - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
     #     - APS 2:
     #       - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
     #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
-    #   - Módulo 3 - Controlando o Robô:
+    #   - Capítulo 3 - Controlando o Robô:
     #     - modulos/03-laser-e-robo/index.md
     #     - Atividades:
     #       - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
@@ -128,7 +129,7 @@ nav:
 
 
     # - Unidade 2:
-    #   - Módulo 4 - Imagens e Matrizes:
+    #   - Capítulo 4 - Imagens e Matrizes:
     #     - modulos/04-visao-p1/index.md
     #     - Atividades:
     #       - "Download > Atividades": modulos/04-visao-p1/atividades_modulo_4.zip
@@ -141,11 +142,10 @@ nav:
     #       - "APS 4 - Classroom" : https://classroom.github.com/a/1v0fXJJD
     #       - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
-    #   - Módulo 5 - Visão Robótica:
+    #   - Capítulo 5 - Visão Robótica:
     #     - modulos/05-visao-p2/index.md
     #     - Atividades:
     #       - "Download > Atividades": modulos/05-visao-p2/atividades_modulo_5.zip
-    #       - "1 - Salvando Eventos na ROS": modulos/05-visao-p2/atividades/1-rosbag.md
     #       - "2 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/2-morfologa.ipynb
     #       - "3 - Identificação de Objetos": modulos/05-visao-p2/atividades/3-identificacao.ipynb
     #       - "4 - Visão na ROS 2":
@@ -163,7 +163,7 @@ nav:
     #       - "APS 5 - Classroom" : https://classroom.github.com/a/sBnkb3w5
     #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
-    #   - Módulo 6 - MobileNet e ArUco:
+    #   - Capítulo 6 - MobileNet e ArUco:
     #     - modulos/06-visao-p3/index.md
     #     - Atividades:
     #       - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
@@ -180,7 +180,7 @@ nav:
     #         - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
 
     # - Unidade 3:
-    #   - Módulo 7 - Controle Propocional:
+    #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
     #     - Atividades:
     #       - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip

@@ -6,7 +6,26 @@ Em um `ROS BAG` é possível gravar mensagens de tópicos, serviços, parâmetro
 
 ## Parte 1 - Gravando mensagens
 
-Primeiro, `abra` um `mapa` para a simulação do robô, o `teleop` e `rqt_image_view`.
+Primeiro, abra a simulação do robô, o `teleop` e o `rqt_image_view`, utilizando os seguintes comandos:
+
+* Mapa do robô:
+
+```bash
+ros2 launch my_gazebo pista-23B.launch.py
+```
+
+* Teleop:
+
+```bash
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+* Rqt_image_view:
+
+```bash
+ros2 run rqt_image_view rqt_image_view
+```
+
 
 - Para `gravar` mensagens em um `ROS BAG`, execute o seguinte comando:
 
