@@ -39,9 +39,12 @@ Ola, são 1677878366175707817 e estou publicando pela 117 vez
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
 **DICA 1** - Para pegar o horário atual
+
 ```python 
-tempo_nsec = self.get_clock().now().to_msg().sec + float(self.get_clock().now().to_msg().nanosec) / 1e9
+current_time = self.get_clock().now().to_msg()
+print(f"Horário atual: {current_time.sec}.{current_time.nanosec}")
 ```
+
 ## Critérios de Avaliação:
 1. **(+ 0,5)** O pacote foi criado corretamente.
 2. **(+ 1,0)** O publicador foi criado corretamente.
