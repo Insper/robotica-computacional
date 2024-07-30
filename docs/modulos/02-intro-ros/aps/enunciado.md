@@ -38,12 +38,13 @@ Ola, são 1677878366175707817 e estou publicando pela 117 vez
 
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
-**DICA 1** - Para pegar o horário atual
+!!! dica
+    **DICA 1** - Para pegar o horário atual
 
-```python 
-current_time = self.get_clock().now().to_msg()
-print(f"Horário atual: {current_time.sec}.{current_time.nanosec}")
-```
+    ```python 
+    current_time = self.get_clock().now().to_msg()
+    print(f"Horário atual: {current_time.sec}.{current_time.nanosec}")
+    ```
 
 ## Critérios de Avaliação:
 1. **(+ 0,5)** O pacote foi criado corretamente.
