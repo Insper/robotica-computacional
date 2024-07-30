@@ -9,12 +9,12 @@ class Mapa:
         self.linhas = linhas
         self.colunas = colunas
         # self.grade = np.ones((linhas, colunas))  # Inicializa a grade com zeros (espaço livre)
-        np.random.seed(0) # Para garantir a reprodutibilidade
+        # np.random.seed(0) # Para garantir a reprodutibilidade
         self.grade = np.random.choice([0, 1], size=(linhas, colunas), p=[0.9, 0.1]) * 2
         self.grade[-2:, :] = 0  # A última linha deve ser livre
         self.grade_init = self.grade.copy()
 
-        self.posicao = (-1, 3)
+        self.posicao = (self.linhas - 1, 3)
         self.atualizar_posicao(self.posicao)
 
     def atualizar_posicao(self, nova_posicao):
@@ -23,6 +23,10 @@ class Mapa:
         """
         if self.grade[nova_posicao] == 1:
             raise ValueError("Movimento inválido: encontrou uma parede.")
+        # check if the new position dosent exceed the grid
+        if nova_posicao[1] < 0 or nova_posicao[1] >= self.colunas:
+            raise ValueError("Movimento inválido: posição fora da grade.")
+        
         # Limpa a posição antiga do carro
         self.grade = self.grade_init.copy()
         # Atualiza para a nova posição
