@@ -33,7 +33,33 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Não utilize nenhuma função de `sleep`, calcule o tempo decorrido até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
 
-**DICA 1** - Para somar `pi/2` ao angulo atual: `self.goal_yaw = (self.yaw_2pi + np.pi / 2) % (2 * np.pi)`. E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
+## Intruções:
+### **Estado `girar`:**
+Para rodar o robô, primeiro calcule o ângulo desejado, somando `pi/2` ao angulo atual:
+
+```python
+self.goal_yaw = self.yaw + np.pi/2
+```
+
+E depois, a cada iteração, calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
+
+```python
+erro = self.goal_yaw - self.yaw
+erro = np.arctan2(np.sin(erro), np.cos(erro))
+```
+
+A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`. Dessa forma, quando o erro for menor que 0 o robô deve girar no sentido horário, e quando for maior que 0, no sentido anti-horário.
+E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
+
+### **Estado `andar`:**
+Para andar, defina a velocidade linear, calcule o tempo necessário para percorrer a distância desejada e armazene o tempo inicial.
+
+E a cada iteração, calcule o tempo decorrido e compare com o tempo necessário para percorrer a distância desejada.
+
+!!! dica
+    **DICA:** A grande questão desse exercício é quando você deve armazenar o tempo inicial e o ângulo desejado. Pense em como você pode fazer isso de forma que o robô não fique atualizando o alvo a cada iteração.
+
+
 
 ## Critérios de Avaliação:
 

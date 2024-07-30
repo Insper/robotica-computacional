@@ -39,7 +39,7 @@ Ola, são 1677878366175707817 e estou publicando pela 117 vez
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
 !!! dica
-    **DICA:** - Para pegar o horário atual
+    **DICA:** Para pegar o horário atual
 
     ```python 
     current_time = self.get_clock().now().to_msg()
