@@ -87,6 +87,9 @@ A saída do comando acima mostra a estrutura da mensagem `Twist`, que é compost
 
     !!! answer
         ros2 topic echo /odom
+        
+        Você pode também enviar o atributo `--once` para visualizar apenas uma mensagem.
+        ros2 topic echo /odom --once
 
 !!! exercise long 
     Qual o tipo de mensagem que o tópico `odom` transporta?
