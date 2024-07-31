@@ -102,9 +102,7 @@ Dentro do pacote `my_package`, crie um arquivo denominado `odom.py` e uma classe
 
     * `self.y`: posição Y do robô no espaço global.
 
-    * `self.yaw`: orientação do robô no espaço global.
-
-    * `self.yaw_2pi`: orientação do robô no espaço global, mas com valores entre 0 e 2pi. Dica: Google é seu amigo.
+    * `self.yaw`: orientação do robô no espaço global. Valor em radianos e no intervalo de `-pi` a `pi`.
 
 Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
 
