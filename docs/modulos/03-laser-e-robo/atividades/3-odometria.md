@@ -7,6 +7,12 @@ Estes atributos são chamados de Pose, que é a posição e orientação do rob�
 
 No caso do robô utilizado neste curso, a odometria é estimada utilizando os dados dos encoders dos motores.
 
+!!! Importante
+    Antes de começar, crie um novo pacote chamado `robcomp_util` com as seguintes dependências:
+    ```bash
+    ros2 pkg create robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
+    ```
+
 # Componentes da Pose
 
 ## Posição
@@ -90,7 +96,10 @@ agora, ande com o robô utilizando o teleop, para ver como a odometria é atuali
 
 Agora vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `my_package`, crie um arquivo denominado `odom.py` e uma classe chamada `Odom` sem herança. Essa classe deve:
+Dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e uma classe chamada `Odom` **sem nenhuma herança**, ou seja, não herde da classe `Node`. Essa classe deve:
+
+!!! info
+    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Odom` herda-se de `Node`.
 
 * Não inicie um nó nesse arquivo.
 
@@ -134,17 +143,17 @@ Para auxiliar, enviamos uma função que faz conversão de quaternion para ângu
 
 ### Testando
 
-Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `my_package/my_package`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util/robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
 Lembre-se:
 
 * Importe a classe `Odom` da seguinte forma:
 ```python
-from my_package.odom import Odom
+from robcomp_util.odom import Odom
 ```
 
 * Faça a herança da classe `Odom` no `test_odom_node`.
 
 * Adicione o nó no arquivo `setup.py` e então compile o pacote.
 
-* Rode o nó `test_odom_node` utilizando o comando `ros2 run my_package test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
+* Rode o nó `test_odom_node` utilizando o comando `ros2 run robcomp_util test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
