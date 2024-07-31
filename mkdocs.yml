@@ -38,7 +38,7 @@ extra:
 
     data_projeto: ~24/11 - antes da prova final
     link_projeto: TBA
-    
+
     data_PF: ~25/11
     link_PF: TBA
 
@@ -109,14 +109,14 @@ nav:
     #       - "Enunciado": modulos/01-intro/aps/enunciado.md
     #       - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-    #   - Capítulo 2 - Introdução à ROS 2:
-    #     - modulos/02-intro-ros/index.md
-    #     - Atividades:
-    #       - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
-    #       - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
-    #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
-    #       - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
-    #       - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
+      - Capítulo 2 - Introdução à ROS 2:
+        - modulos/02-intro-ros/index.md
+        - Atividades:
+          - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
+          - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
+          - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
+          - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
+          - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
     #     - APS 2:
     #       - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
     #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
