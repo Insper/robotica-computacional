@@ -11,21 +11,35 @@ extra:
   custom_variables:
     escolha_turma: https://forms.office.com/r/9Zp3cDNReB
     semestre: 2024-2
-    data_APS1: TBA
+    
+    data_APS1: Segunda - 12/08 às 12:00
     link_APS1: TBA
-    data_APS2: TBA
+    data_APS2: Segunda - 19/08 às 12:00
     link_APS2: TBA
-    data_APS3: TBA
+    data_APS3: Segunda - 26/08 às 12:00
     link_APS3: TBA
-    data_APS4: TBA
+    
+    data_APS4: Segunda - 02/09 às 12:00
     link_APS4: TBA
-    data_APS5: TBA
+    data_APS5: Segunda - 09/09 às 12:00
     link_APS5: TBA
-    data_APS6: TBA
+    data_APS6: Terça - 24/09 às 12:00
     link_APS6: TBA
-    data_AI: 30/09
+    
+    data_AI: ~30/09
     link_AI: TBA
-    data_PF: 25/11
+
+    data_APS7: Segunda - 14/10 às 12:00
+    link_APS7: TBA
+    data_APS8: Segunda - 21/10 às 12:00
+    link_APS8: TBA
+    data_APS9: Segunda - 28/10 às 12:00
+    link_APS9: TBA
+
+    data_projeto: ~24/11 - antes da prova final
+    link_projeto: TBA
+    
+    data_PF: ~25/11
     link_PF: TBA
 
 markdown_extensions:
