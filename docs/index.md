@@ -13,7 +13,7 @@ O curso é estruturado em três unidades principais, seguidas por um projeto fin
 
 Cada unidade é dividida em **três capítulos**, com cada capítulo tendo a duração de uma semana.
 
-### Detalhes dos Módulos
+### Detalhes dos Capítulos
 
 Dentro de cada capítulo, os alunos participarão de:
 
