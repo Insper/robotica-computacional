@@ -23,9 +23,9 @@ extra:
     link_APS5: TBA
     data_APS6: TBA
     link_APS6: TBA
-    data_AI: TBA
+    data_AI: 30/09
     link_AI: TBA
-    data_PF: TBA
+    data_PF: 25/11
     link_PF: TBA
 
 markdown_extensions:
