@@ -13,11 +13,17 @@ Com este tutorial vamos guiar você por alguns exercícios práticos usando coma
 
 ## Conhecendo e utilizando o Terminal
 
-O Terminal do Linux é uma ferramenta que facilita a manipulação do sistema, interpretando os comandos do usuário, fazendo a ponte com o hardware do seu computador
+O Terminal do Linux é uma ferramenta que facilita a manipulação do sistema, interpretando os comandos do usuário, fazendo a ponte com o hardware do seu computador.
+
+Quando usamos o terminal dentro da interface gráfica do sistema, chamamos de **emulador de terminal**, pois estamos dentro da interfáce gráfica. Existem diversos emuladores de terminais e também existem diversos tipos de terminais. Então vamos padronizar duas informações a partir deste ponto:
+- **Terminal** será o nome dado à janela do terminal dentro do ambiente gráfico. No caso do seu SSD será o Terminator.
+- **Bash** será o único tipo de terminal que usamos. 
+Existem outros tipos de terminal como o **ZSH** ou **ZShell** mas estes são assuntos para outro momento.
+
 
 ### Abrindo o terminal
 
-A forma mais facil de abrir o terminal é atraves do atalho:
+A forma mais facil de abrir o terminal, como já foi visto no tutorial anterior, é atraves do atalho:
 
 Super  +  T
 
@@ -125,7 +131,7 @@ O comando **cd** , vem de Change Directory, ele é um dos comandos mais utilizad
 Abra um terminal Super + T e execute o comando para entrar na pasta de Elementos de Sistemas:
 
 ```
-cd /$HOME/Z01.1
+cd ~/Z01.1
 
 ```
 
@@ -153,7 +159,9 @@ tree -d -L 4
 
 ```
 
-Esta ferramenta é útil para navegar de forma mais eficiente dentro do sistema, se não sabemos aonde determinado repositório está, é possivel consultar a árvore para localizar o seu caminho visualmente.
+Esta ferramenta é útil para navegar de forma mais eficiente dentro do sistema, se não sabemos aonde determinado repositório está, é possivel consultar a árvore para localizar o seu caminho visualmente. Veja abaixo como é mostrada a árvore do nosso diretório base do repositório da disciplina:
+
+![Comando tree](imgs/tree.png){width="800"}
 
 Os paramentros -d -L 2 indica que que queremos listar (-L )até o quarto (4) nível na hierarquia de pastas, apenas as pastas (-d)
 
@@ -166,16 +174,15 @@ Na pasta em home, Z01.1 -> Projetos -> B-LogicaCombinacional -> src  estão os a
 ```
 cd ~
 cd Z01.1
-cd Projetos
-cd B-LogicaCombinacional
-cd src
+cd Exercicios
+cd Extras
 
 ```
 
 ou de forma mais ágil, digite:
 
 ```
-cd /home/borg/Z01.1/Projetos/B-LogicaCombinacional/src
+cd ~/Z01.1/Exercicios/Extras
 
 ```
 
@@ -336,7 +343,6 @@ mv /home/borg/Documents/nome_da_pasta/testando_outra_extensao.txt /home/borg/Doc
 
 No exemplo acima o arquivo "testando_outra_extensao.txt" foi movido para dentro do diretório Documents (recortado e colado).
 
-### Comando "mv"
 
 O comando **mv** tambem serve tanto para mover, com para renomear arquivos e diretorios:
 
@@ -452,6 +458,30 @@ code /home/borg/Documents/nome_da_pasta/roda_tartaruga.py
 
 ```
 
+Uma forma bastante eficiente de trabalho é abrir um diretório no **vscode** ao invés de um arquivo.
+
+Vamos experimentar abrir o diretório um dos diretórios de trabalho de robótica. 
+
+Utilize seus conhecimentos adquiridos neste tutorial e entre no diterório my_simulation, que pode ser visto na imagem a seguir:
+
+![Untitled](imgs/tree_colcon.png){width="800"}
+
+Se você conseguiu entender a visualização acima, entrou no seguinte diretório:
+
+![Untilted](imgs/terminal_simulation.png){width="800"}
+
+Agora vamos abrir o vscode com toda a pasta de trabalho, usando a pasta onde estamos:
+
+```
+code .
+```
+![Untitled](imgs/terminal_simulation2.png){width="800"}
+
+Agora é só clicar em **Yes, Itrust the authors** e você verá ao lado esquerdo que todos os arquivos deste diretório estão disponíveis para visualização/edição.
+
+![Untitled](imgs/code1.png){width="800"}
+![Untitled](imgs/code2.png){width="800"}
+
 ### Localizar palavra
 
 Para fazer uma busca no texto pressione Ctrl + F, digite a palavra e tecle Enter.
@@ -498,6 +528,48 @@ pkill terminal
 
 ```
 
+### Procurar um comando já utilizado no terminal
+
+Você quer usar quele mesmo comando enorme que já usou antes? Você pode usar o comando CTRL+R no seu terminal, então digitar uma parte do comando que você queria. Veja no exemplo abaixo, onde há a busca de um comando que tem a palavar "disk" no meio:
+
+![Passo11](imgs/passo11.png){width="800"}
+
+Após esta pesquisa e teclar ENTER o comando "antigo" é executado:
+
+![Passo12](imgs/passo12.png){width="800"}
+
+
+### Mudando o tamnanho da fonte do terminal
+
+Em alguns casos há a vontade de alterar o tamanho da fonte do terminal. Este processo é bastante simples. Basta clicar com o botão direito em uma área livre do terminal e clicar em **Preferences**:
+
+![Passo13](imgs/passo13.png){width="800"}
+
+Na tela que abrir, clique em **Profiles** e em seguida retire o "check" da caixa **Use the system fixed width font**. Então clique na caixa **Font** e altere tanto a fonte quanto o seu tamanho.
+
+![Passo14](imgs/passo14.png){width="800"}
+
+!!! tip
+    Lembre-se que usamos um utilitário chamado oh-my-bash, que nos ajuda muito a navegar em pastas com repositórios git. Porém algumas fontes **não têm** os caracteres especiais necessários. Estamos usando a Fonte: **Cousine for Powerline Regular 12** mas você pode experimentar outras fontes e tamanhos para ver o que mais lhe agrada.
+
+### Instalando e usando o HTOP
+
+Outra aplicação bastante útil é o **htop**. Ele não vem instalado por padrão, mas é facilmente instlado com o apt.
+
+Para instalar o htop vamos usar o seguinte comando:
+
+```
+sudo apt install htop
+```
+
+Após a instalação, digite o comando ```htop``` e você poderá ver o quanto está sendo usado de memória RAM, de Procesamento e os processos que estão rodando (junto de outras informações):
+
+![Passo15](imgs/passo15.png){width="800"}
+
+Para sair, basta apertar a tecla **q**
+
+
+
 Espero que você esteja se sentindo mais confortável para explorar e personalizar o seu Ubuntu, divirta-se!
 
 
@@ -507,3 +579,4 @@ Espero que você esteja se sentindo mais confortável para explorar e personaliz
 [O que é open source?](https://www.redhat.com/pt-br/topics/open-source/what-is-open-source)
 [Código Aberto e Software Livre não significam a mesma coisa!](https://www.tecmundo.com.br/linux/1739-codigo-aberto-e-software-livre-nao-significam-a-mesma-coisa-.htm)
 [The Linux command line for beginners](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
+[Oh-My-Bash](https://github.com/ohmybash/oh-my-bash)
