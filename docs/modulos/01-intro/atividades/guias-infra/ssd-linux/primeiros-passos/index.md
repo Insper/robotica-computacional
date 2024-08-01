@@ -97,7 +97,13 @@ O primeiro passo é clicar nos ícones no canto superior direito, depois clicar 
 ![Untitled](imgs/img9.png){width="800"}
 
 !!! dica
-    Se não aparecer o ícone de rede sem fio, conecte seu computador com um cabo de rede e utilize o comando sudo ubuntu-drivers install. Se tiver dúvidas ou dificuldades, peça ajuda ao técnico.
+    Se não aparecer o ícone de rede sem fio, conecte seu computador com um cabo de rede e utilize o seguinte comando:
+    
+    ```bash
+    sudo ubuntu-drivers install
+    ```
+    
+    Se tiver dúvidas ou dificuldades, peça ajuda ao técnico.
 
 Na tela que se abrirá, escolha a rede que deseja conectar e clique em “Connect”.
 
