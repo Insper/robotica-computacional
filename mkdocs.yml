@@ -9,23 +9,37 @@ extra_css:
 
 extra:
   custom_variables:
-    escolha_turma: https://forms.office.com/r/mAGHZzgGPr
+    escolha_turma: https://forms.office.com/r/9Zp3cDNReB
     semestre: 2024-2
-    data_APS1: TBA
+    
+    data_APS1: Segunda - 12/08 às 12:00
     link_APS1: TBA
-    data_APS2: TBA
+    data_APS2: Segunda - 19/08 às 12:00
     link_APS2: TBA
-    data_APS3: TBA
+    data_APS3: Segunda - 26/08 às 12:00
     link_APS3: TBA
-    data_APS4: TBA
+    
+    data_APS4: Segunda - 02/09 às 12:00
     link_APS4: TBA
-    data_APS5: TBA
+    data_APS5: Segunda - 09/09 às 12:00
     link_APS5: TBA
-    data_APS6: TBA
+    data_APS6: Terça - 24/09 às 12:00
     link_APS6: TBA
-    data_AI: TBA
+    
+    data_AI: ~30/09
     link_AI: TBA
-    data_PF: TBA
+
+    data_APS7: Segunda - 14/10 às 12:00
+    link_APS7: TBA
+    data_APS8: Segunda - 21/10 às 12:00
+    link_APS8: TBA
+    data_APS9: Segunda - 28/10 às 12:00
+    link_APS9: TBA
+
+    data_projeto: ~24/11 - antes da prova final
+    link_projeto: TBA
+
+    data_PF: ~25/11
     link_PF: TBA
 
 markdown_extensions:
@@ -103,26 +117,26 @@ nav:
     #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
     #       - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
     #       - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
-    #     - APS 2:
-    #       - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
-    #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+    # #     - APS 2:
+    # #       - "APS 2 - Classroom" : https://classroom.github.com/a/RB7GaxQd
+    # #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
-    #   - Capítulo 3 - Controlando o Robô:
-    #     - modulos/03-laser-e-robo/index.md
-    #     - Atividades:
-    #       - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
-    #       - "2 - Estrutura Básica de um Nó":
-    #           - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
-    #           - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
-    #           - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
-    #       - "3 - Entendendo a Odometria":
-    #         - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
-    #         - "Download > odom": modulos/03-laser-e-robo/util/odom.py
-    #       - "4 - Entendendo o Laser":
-    #         - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-    #         - "Download > laser": modulos/03-laser-e-robo/util/laser.py
-    #         - "Download > teste_odom_laser": modulos/03-laser-e-robo/util/teste_odom_laser.py
-    #       - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visua lizacao.md
+      # - Capítulo 3 - Controlando o Robô:
+      #   - modulos/03-laser-e-robo/index.md
+      #   - Atividades:
+      #     - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
+      #     - "2 - Estrutura Básica de um Nó":
+      #         - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
+      #         - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
+      #         - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
+      #     - "3 - Entendendo a Odometria":
+      #       - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
+      #       - "Download > odom": modulos/03-laser-e-robo/util/odom.py
+      #     - "4 - Entendendo o Laser":
+      #       - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
+      #       - "Download > laser": modulos/03-laser-e-robo/util/laser.py
+      #       - "Download > teste_odom_laser": modulos/03-laser-e-robo/util/teste_odom_laser.py
+      #     - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visua lizacao.md
     #     - APS 3:
     #       - "APS 3 - Classroom" : https://classroom.github.com/a/WlPtlXfc
     #       - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md

@@ -11,11 +11,11 @@ O curso é estruturado em três unidades principais, seguidas por um projeto fin
 - **Unidade 3**
 - **Projeto Final**
 
-Cada unidade é dividida em **três módulos**, com cada módulo tendo a duração de uma semana.
+Cada unidade é dividida em **três capítulos**, com cada capítulo tendo a duração de uma semana.
 
-### Detalhes dos Módulos
+### Detalhes dos Capítulos
 
-Dentro de cada módulo, os alunos participarão de:
+Dentro de cada capítulo, os alunos participarão de:
 
 - Aulas expositivas;
 - Atividades práticas guiadas para o desenvolvimento da APS.
@@ -36,27 +36,27 @@ Dentro de cada módulo, os alunos participarão de:
 
 * **Unidade 1 - Introdução**
 
-    * Módulo 1 - Introdução ao curso
+    * Capítulo 1 - Introdução ao curso
 
-    * Módulo 2 - Introdução ao ROS 2
+    * Capítulo 2 - Introdução ao ROS 2
 
-    * Módulo 3 -  Controlando o Robô
+    * Capítulo 3 -  Controlando o Robô
 
 * **Unidade 2 - Visão Computacional**
 
-    * Módulo 4 - Visão em Robótica
+    * Capítulo 4 - Visão em Robótica
 
-    * Módulo 5 - Tópicos de Processamento Digital de Imagem
+    * Capítulo 5 - Tópicos de Processamento Digital de Imagem
 
-    * Módulo 6 - Tópicos de Visão Computacional
+    * Capítulo 6 - Tópicos de Visão Computacional
 
 * **Unidade 3 - Controle Robótico**
 
-    * Módulo 7 - Controle Proporcional
+    * Capítulo 7 - Controle Proporcional
 
-    * Módulo 8 - Ação de Controle
+    * Capítulo 8 - Ação de Controle
 
-    * Módulo 9 - Sistema de Localização
+    * Capítulo 9 - Sistema de Localização
 
 ## Repositório 
 

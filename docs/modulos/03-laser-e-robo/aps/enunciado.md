@@ -22,7 +22,26 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Robô quadrado (3 pontos)
+# Exercício 1 - Robô Quase Indeciso (3 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
+
+* Ter três estados, `forward`, `backward` e `stop`.
+
+* Avalie na função `control` para qual estado o robô deve ir.
+
+**Dica:** Se o robô não parar, tente diminuir a velocidade linear.
+
+## Critérios de Avaliação:
+
+1. Nó importa corretamente do pacote `my_package`.
+2. Desenvolveu o nó `indeciso_node` com os comportamentos corretos.
+3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e afasta pelo menos **2** vezes da parede antes de parar. (ajuste a velocidade para que o robô não pare muito rápido).
+4. **Vídeo:** O robô não colide com nenhum obstáculo.
+5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+
+____________________________________________________________________
+
+# Exercício 2 - Robô quadrado (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
 
 * Possui dois estados, `andar` e `girar`
@@ -75,24 +94,6 @@ E a cada iteração, calcule o tempo decorrido e compare com o tempo necessário
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
 7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
-____________________________________________________________________
-
-# Exercício 2 - Robô Quase Indeciso (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
-
-* Ter três estados, `forward`, `backward` e `stop`.
-
-* Avalie na função `control` para qual estado o robô deve ir.
-
-**Dica:** Se o robô não parar, tente diminuir a velocidade linear.
-
-## Critérios de Avaliação:
-
-1. Nó importa corretamente do pacote `my_package`.
-2. Desenvolveu o nó `indeciso_node` com os comportamentos corretos.
-3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e afasta pelo menos **2** vezes da parede antes de parar. (ajuste a velocidade para que o robô não pare muito rápido).
-4. **Vídeo:** O robô não colide com nenhum obstáculo.
-5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 ____________________________________________________________________
 
 # Exercício 3 - Robô Limpador (4 pontos)

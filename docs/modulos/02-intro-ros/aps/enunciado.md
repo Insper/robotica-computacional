@@ -17,7 +17,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_2`.
 
-# Exercício 1 (5 pontos)
+# Exercício 1 (4 pontos)
 
 ## Instruções:
 Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `publisher` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/String`. 
@@ -49,12 +49,12 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 ## Critérios de Avaliação:
 1. **(+ 0,5)** O pacote foi criado corretamente.
 2. **(+ 1,0)** O publicador foi criado corretamente.
-4. **(+ 2,0)** A mensagem foi criada e publicada corretamente.
+4. **(+ 1,0)** A mensagem foi criada e publicada corretamente.
 5. **(+ 0,5)** O arquivo `setup.py` foi configurado corretamente.
 6. **(+ 1,0)** O nó funciona corretamente.
 
 
-# Exercício 2 (5 pontos)
+# Exercício 2 (4 pontos)
 
 ## Instruções:
 Baseando-se no código `second_node.py` do módulo 2, crie um nó denominado `subscriber` que se inscreva no tópico `publisher` do tipo `std_msgs/String`. A cada nova mensagem recebida, a função `callback` deve separar o tempo do contador no conteúdo da mensagem. Lembre-se de checar a estrutura da mensagem.
@@ -73,7 +73,7 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 
 ## Critérios de Avaliação:
 1. **(+ 0,5)** Definiu corretamente o subscriber.
-2. **(+ 2,0)** A função `callback` foi implementada corretamente.
+2. **(+ 1,0)** A função `callback` foi implementada corretamente.
 3. **(+ 1,0)** A função `control` foi implementada corretamente.
 4. **(+ 0,5)** O arquivo `setup.py` foi configurado corretamente.
 5. **(+ 1,0)** O nó funciona corretamente.
@@ -82,6 +82,12 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
+
+# Exercício 3 ( 2 pontos)
+Crie um `bag` com as mensagens publicadas e grave um novo vídeo mostrando o nó `subscriber` recebendo as mensagens do bag. Lembre-se de parar a execução do nó `publisher` antes de rodar o nó `subscriber` e o `ros2 bag play`.
+
+O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
+
 
 ## Caso Tenha Apenas Desenvolvido o Exercício 1!
 
