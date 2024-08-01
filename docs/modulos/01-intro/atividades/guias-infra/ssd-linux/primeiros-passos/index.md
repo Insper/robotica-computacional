@@ -53,14 +53,47 @@ Com o terminal aberto (não importa qual dos dois você escolheu), você digitar
     É normal não aparecer nada no terminal quando você digita a senha, é uma medida de segurança do terminal esconder o display de caracteres.
 
 ![Untitled](imgs/img8.png){width="800"}
+## Adicionando Teclado PT-BR
+
+Estamos usando o Ubuntu no idimoa Inglês para facilitar a compreenção dos termos e palavras-chave, uma vez que o sistema é desenvolvido originlmante em inglês e depois traduzido para outros idiomas.
+
+Para podermos utilizar as teclas das derivações do layout ABNT (aqueles teclados físicos que possuem as teclas de "ç" utilizados no idioma Português do Brasil), precisamos adicionar um novo layout. 
+
+Clique, então no canto superior direito e em **Settings**, como na figura abaixo.
+
+![Untitled](imgs/teclado1.png){width="800"}
+
+Na tela de configurações, clique em **Keyboard** e depois no sinal de **+** encontrado abaixo do layout English (US) no item **Input Sources**.
+
+![Untitled](imgs/teclado2.png){width="800"}
+
+Agora clique nos três pontos que aparece após as possibilidades apresentadas:
+
+![Untitled](imgs/teclado3.png){width="800"}
+
+Role a tela até aparecer **Portugeses** e clique nesta opção:
+
+![Untitled](imgs/teclado4.png){width="800"}
+
+Então selecione **Porguese (Brazil)** e clque em **Add**
+
+![Untitled](imgs/teclado5.png){width="800"}
+
+Após adicionar o novo Layout que, ao selecionar, você troca o layout do seu teclado e o idioma de digitação, você encontrará um ícone com as iniciais do idioma em uso na parte superior direita da Área de Trabalho. Ela será **en** ou **pt** neste caso. Para trocar o idioma que está utilizando, você pode clicar neste ícione, como mostrado na figura a seguir, ou pressionando simultaneamente as teclas CTRL+SPACE.
+
+![Untitled](imgs/teclado6.png){width="800"}
+
 
 ## Configurando a Rede
 
-Esta etapa não é difícil mas requer atenção em alguns detalhes. Você precisará usar uma rede diferente para esta disciplina, chamada **Robotica**. É nesta rede que nossos robôs se conectam para serem controlados. A credencial desta rede é a mesma que você usa na rede **insper_alunos** e as configurações de conexão são iguais também. Então após este tutorial você estará apto a logar em qualquer rede do INSPER com sua máquina.
+Esta etapa não é difícil mas requer atenção em alguns detalhes. Você utilizará a rede **insper_alunos** e as configurações de conexão são um pouco diferentes das que utiliza em sua casa ou locais públicos. Então após este tutorial você estará apto a logar em qualquer rede do INSPER com sua máquina.
 
 O primeiro passo é clicar nos ícones no canto superior direito, depois clicar no item da Wi-fi seguido de “Select Network”, como visto na imagem abaixo.
 
 ![Untitled](imgs/img9.png){width="800"}
+
+!!! dica
+    Se não aparecer o ícone de rede sem fio, conecte seu computador com um cabo de rede e utilize o comando sudo ubuntu-drivers install. Se tiver dúvidas ou dificuldades, peça ajuda ao técnico.
 
 Na tela que se abrirá, escolha a rede que deseja conectar e clique em “Connect”.
 
@@ -102,6 +135,47 @@ sudo apt update && sudo apt upgrade -y
 
 !!! dica
     Use o TAB para autocompletar os comandos no terminal
+
+
+Você tem um "alias" já adicionado no seu SSD chamado **update**. Este alias corresponde a concatenação de três comandos: 
+```bash
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove
+```
+Este terceiro comando remove tudo o que ficou obsoleto e foi substituído no comando de upgrade.
+
+Para chamar este comando, asta digitar **update** no seu terminal e fornecer a senha de usuário na sequência. 
+
+## Terminator
+
+Vamos aproveitar que você acabou de utilizar o Terminator, que é um emulador de terminal com diversos recursos interessantes, e aprender três recursos que serão extremamente úteis nas aulas de Robótica.
+
+Abra o terminator utilizando a tecla de atalho (SUPER+T) e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas dus opçoes de Split que encontrará. 
+
+![Untitled](imgs/terminal1.png){width="800"}
+
+Primeiro vamos clicar em **Split Horizontally** e ver a tela ser dividia horizontalemnte como se fossem dois terminais, com a vantagem de conseguir observar os dois terminais simultaneamente.
+
+![Untitled](imgs/terminal2.png){width="800"}
+
+Repita o processo e abra uma divisão vertical agora. Para isso, clique com o botão direito numa área livre do terminal e clique em **Split Vertically**
+
+![Untitled](imgs/terminal3.png){width="800"}
+
+Você pode organizar da forma que for mais conveniente. Veja este exemplo com diversas divisões da tela:
+
+![Untitled](imgs/terminal4.png){width="800"}
+
+O último recurso que veremos agora é a divisão por "tabs", onde você pode ter dois terminais na mesma janela, mas sem a visualização simultânea.
+
+Você deve clicar com o botão direito do mouse em uma parte livre do terminal e escolher **Open Tab** no menu que apaece:
+
+![Untitled](imgs/terminal5.png){width="800"}
+
+E você verá que o terminal ganhará outra **Tab** da mesma forma que acontece com os navegadores web.
+
+![Untitled](imgs/terminal6.png){width="800"}
+
+
 
 ## Finalizando
 
