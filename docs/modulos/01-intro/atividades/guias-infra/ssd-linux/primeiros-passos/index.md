@@ -6,9 +6,13 @@ Assumindo que você seguiu o [tutorial anterior](../recebi-meu-ssd/index.md), es
 
 **2.** Trocar a senha
 
-**3.** Configurar a rede
+**3.** Adicionar Teclado PT-BR
 
-**4.** Atualizar o Sistema
+**4.** Configurar a rede
+
+**5.** Atualizar o Sistema
+
+**6.** Terminator
 
 ## Fazendo Login
 
