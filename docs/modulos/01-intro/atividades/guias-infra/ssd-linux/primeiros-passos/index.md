@@ -144,7 +144,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 !!! dica
-    Use o TAB para autocompletar os comandos no terminal
+    Use a tecla `TAB` para autocompletar os comandos no terminal
 
 
 Você tem um "alias" já adicionado no seu SSD chamado **update**. Este alias corresponde a concatenação de três comandos: 
@@ -159,7 +159,7 @@ Para chamar este comando, asta digitar **update** no seu terminal e fornecer a s
 
 Vamos aproveitar que você acabou de utilizar o Terminator, que é um emulador de terminal com diversos recursos interessantes, e aprender três recursos que serão extremamente úteis nas aulas de Robótica.
 
-Abra o terminator utilizando a tecla de atalho (SUPER+T) e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas dus opçoes de Split que encontrará. 
+Abra o terminator utilizando a tecla de atalho `SUPER+T` e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas dus opçoes de Split que encontrará. 
 
 ![Untitled](imgs/terminal1.png){width="800"}
 
@@ -184,8 +184,6 @@ Você deve clicar com o botão direito do mouse em uma parte livre do terminal e
 E você verá que o terminal ganhará outra **Tab** da mesma forma que acontece com os navegadores web.
 
 ![Untitled](imgs/terminal6.png){width="800"}
-
-
 
 ## Finalizando
 
