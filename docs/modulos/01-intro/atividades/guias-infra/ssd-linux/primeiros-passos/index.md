@@ -159,7 +159,7 @@ Para chamar este comando, asta digitar **update** no seu terminal e fornecer a s
 
 Vamos aproveitar que você acabou de utilizar o Terminator, que é um emulador de terminal com diversos recursos interessantes, e aprender três recursos que serão extremamente úteis nas aulas de Robótica.
 
-Abra o terminator utilizando a tecla de atalho `SUPER+T` e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas dus opçoes de Split que encontrará. 
+Abra o terminator utilizando a tecla de atalho `SUPER+T` e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas duas opções de **Split** que encontrará. 
 
 ![Untitled](imgs/terminal1.png){width="800"}
 
