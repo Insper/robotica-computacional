@@ -13,7 +13,7 @@ extra:
     semestre: 2024-2
     
     data_APS1: Segunda - 12/08 às 12:00
-    link_APS1: TBA
+    link_APS1: https://classroom.github.com/a/Ne9Z8fsD
     data_APS2: Segunda - 19/08 às 12:00
     link_APS2: TBA
     data_APS3: Segunda - 26/08 às 12:00
@@ -105,7 +105,7 @@ nav:
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
         - APS 1:
-          - "APS 1 - Classroom" : TBA
+          - "APS 1 - Classroom" : https://classroom.github.com/a/Ne9Z8fsD
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
@@ -117,9 +117,9 @@ nav:
           - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
           - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
           - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
-        - APS 2:
-          - "APS 2 - Classroom" : TBA
-          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+        # - APS 2:
+        #   - "APS 2 - Classroom" : TBA
+        #   - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
       # - Capítulo 3 - Controlando o Robô:
       #   - modulos/03-laser-e-robo/index.md

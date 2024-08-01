@@ -28,7 +28,7 @@ Sua tarefa é implementar a lógica de movimentação do carro usando a classe C
 
 As ações do carro devem achamar o método da classe `Mapa` `atualizar_posicao`, que recebe como parâmetro a ação do carro uma nova posição para o carro (y,x) ou (linhas, colunas). Quando chegar na primeira linha, o carro deve entrar no estado `stop`, finalizando o programa.
 
-**DICA: ** Note que o carro começa na ultima linha e deve chegar na primeira linha, ou seja, o valor da linha deve diminuir.
+**DICA:** Note que o carro começa na ultima linha e deve chegar na primeira linha, ou seja, o valor da linha deve diminuir até chegar em 0.
 
 Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode testar seu código executando o arquivo `ex1.py`.
 
