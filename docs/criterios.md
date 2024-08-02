@@ -38,12 +38,29 @@ APS_UNIDADE_3 = (APS_7 + APS_8 + APS_9) / 3;
 
 * `AF` é a nota da Avaliação Final. Será realizada na semana do dia {{ data_PF }}.
 
-Alunos que não atingirem a média para aprovação poderão fazer uma prova DELTA para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. **A prova DELTA será a mesma que a prova SUB.**
+Alunos que não atingirem a média para aprovação poderão fazer uma prova **DELTA** para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. **A prova DELTA será a aplicada logo após a prova SUB.**
 
 1. `NAPS >= 5`;
 2. `AI >= 4 OU AF >= 4`;
 3. nota de projeto maior que 4.
 
 Neste caso, a nota da prova DELTA substituirá a menor nota entre `AI` e `AF`, limitada ao mínimo necessário para aprovação.
+
+## Datas das avaliações
+
+Algumas datas importantes para o semestre:
+
+!!! info
+    Datas com `~` estão sujeitas a alterações.
+
+* **Avaliação Intermediária**: {{ data_AI }};
+
+* **Avaliação Final**: {{ data_PF }}.
+
+* **Prova SUB**: {{ data_SUB }}.
+
+* **Prova DELTA**: {{ data_DELTA }}.
+
+
 
 

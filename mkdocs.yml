@@ -42,6 +42,11 @@ extra:
     data_PF: ~25/11
     link_PF: TBA
 
+    data_SUB: ~2/12
+    link_SUB: TBA
+    data_DELTA: ~5/12
+    link_DELTA: TBA
+
 markdown_extensions:
   - toc:
       toc_depth: 0
