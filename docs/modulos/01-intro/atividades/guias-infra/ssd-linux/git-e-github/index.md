@@ -131,5 +131,84 @@ Preencha o campo **Title** com um nome descritivo para a chave, por exemplo, **S
 
 Agora não será mais nescessario digitar seu usuário e senha toda vez que você executar um comando git, o GitHub vai reconhecer a sua chave SSH e vai autenticar você automaticamente.
 
-### Clonando repositorios
-Agora, quando for clonar um repositório do github, pegue o link clicando no botão **SSH**
+### Clonando repositorios com a chave SSH
+
+Agora que a chave SSH já está configurada, vamos usar para clonar um repositório usando a chave.
+
+Para este primeiro uso, vamos clonar o repositório de robótica. Você o acessará através de uma página no github, mas é um reposítório possível de ser clonado.
+
+O endereço do repositório é: https://github.com/insper/robotica-computacional
+
+Ao acessar a página, verá um botão escrito **<> Code**, clicando nele verá três opoções: HHTPS, **SSH** e GitHubCLI. Você deve clicarm em **SSH**. Ao lado do endereço que aparecerá, tem um íconde cópia, clique nele.
+
+![Clone_SSH](imgs/ssh1.png){width="800"}
+
+Abra um terminal e vá até o diretório que será feito o clone do repositório. 
+Lá digite o comando git clone adicionado pelo endereço de clonagem:
+
+```
+git clone git@github.com:Insper/robotica-computacional.git
+```
+
+!!! tip
+    Você pode colar no terminal usando o botão direito e escolhendi colar ou utilizando as teclas CTRL+SHIFT+V
+
+![Git_clone](imgs/ssh2.png){width="800"}
+
+Quando usar a chave SSH pela primeira vez, terá de confirmar a dição dela ao uso no temrinal. basta digitar **yes** e teclar enter.
+
+![ssh_primeiro_uso](imgs/ssh3.png){width="800"}
+
+Imediatamente antes do início da clonagem você verá a adição de github.com à lista de hosts conhecidos. Agora, é só aguardar o termino.
+
+![ssh_hosts](imgs/ssh4.png){width="800"}
+
+### Salvando trabalho local 
+
+Por vezes é preciso realizar uma atualização no repositório por movimentação de outro desenvolvedor, mas temos trabalhos locais que não queremos perder. 
+
+Para esta situação podemos usar o comando stash do git. Ele move todo o trabalho local para um cache oculto e mantém o repositório inalterado para fazer a atualização.
+
+Com a finalidade de demonstrar como funciona, você seguirá uma série de prompts, mas você **não deve tentar alterar este repositório** que acabou de clonar.
+
+Como este repositório não permite que você envie as alterações, mas é necessário atualizar com as atualizações feita pelo professor, você precisa "guardar" suas alterações para não perder seu estudo. Então vamos usar o comando **git stash** para guardar em um cache oculto do git:
+
+![git_stash](imgs/ssh5.png){width="800"}
+
+É possǘel verificar a mensagem que o seu trabalho local foi salvo e indice desta situação. Ao lado da branch você percebe um número dentre chaves, ele significa que tem trabalho local guardado em cache.
+
+Se listarmos o diretório veremos que os arquivos alterados não existem no repositório local:
+
+![git_stash_ls](imgs/ssh6.png){width="800"}
+
+Para retonar o trabalho, basta usar o comando **git stash pop**. Aparecerá um aviso com os arquivos restaurados e ao listar o diretório teremos os arquivos de volta.
+
+![git_stash_pop](imgs/ssh7.png){width="800"}
+
+### Atualizando o repositório
+
+Quando precisar atualizar um repositório, com conteúdos que existem no repositório on-line, você precisará usar o comando pull. Basta entrar no diretório que o repositório está e digitar **git pull**.
+
+![git_pull](imgs/ssh8.png){width="800"}
+
+É possível observar as mensagens de quantos e quais arquivos foram alterados.
+
+### Atualizando o repositório remoto (enviando as alterações)
+
+Após realizar suas alterações no repositório, é necessário enviar estas alterações para o respositório remoto. 
+
+A sequencia de comandos que é nessária para esta situação é:
+- Adicionar o(s) arquivo(s) alterados
+- Realizar o commit com uma mensagem que é possível entender futuramente
+- Enviar as alterações.
+
+Para adicionar os arquivos é possível adicionar um a um ou adicionar todos os arquivos. vamos ver as duas situações.
+
+!!! tip
+    Se você clonou o repositório utilizando **SSH** você não precisará utilizar credenciais, mas se clonar utilizando **HTTPS** você precisará fornecer o seu usuário do github e o seu token de acesso (não é a senha!)
+
+Adicionando um arquivo em específico:
+![git_add_arquivo](imgs/ssh9.png){width="800"}
+
+Adicionando todos os arquivos:
+![git_add_all](imgs/ssh10.png){width="800"}
