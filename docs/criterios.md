@@ -34,9 +34,9 @@ APS_UNIDADE_3 = (APS_7 + APS_8 + APS_9) / 3;
 
 * `Projeto` é a nota do projeto;
 
-* `AI` é a nota da Avaliação Intermediária. Será realizada na semana do dia {{ data_AI }};
+* `AI` é a nota da Avaliação Intermediária.
 
-* `AF` é a nota da Avaliação Final. Será realizada na semana do dia {{ data_PF }}.
+* `AF` é a nota da Avaliação Final.
 
 Alunos que não atingirem a média para aprovação poderão fazer uma prova **DELTA** para substituir a nota da menor avaliação, desde que atendam aos seguintes critérios. **A prova DELTA será a aplicada logo após a prova SUB.**
 
