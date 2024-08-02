@@ -44,7 +44,7 @@ Alunos que não atingirem a média para aprovação poderão fazer uma prova **D
 2. `AI >= 4 OU AF >= 4`;
 3. nota de projeto maior que 4.
 
-Neste caso, a nota da prova DELTA substituirá a menor nota entre `AI` e `AF`, limitada ao mínimo necessário para aprovação.
+Neste caso, a nota da prova **DELTA** substituirá a menor nota entre `AI` e `AF`, limitada ao mínimo necessário para aprovação.
 
 ## Datas das avaliações
 
