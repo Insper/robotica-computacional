@@ -16,8 +16,11 @@ Com este tutorial vamos guiar você por alguns exercícios práticos usando coma
 O Terminal do Linux é uma ferramenta que facilita a manipulação do sistema, interpretando os comandos do usuário, fazendo a ponte com o hardware do seu computador.
 
 Quando usamos o terminal dentro da interface gráfica do sistema, chamamos de **emulador de terminal**, pois estamos dentro da interfáce gráfica. Existem diversos emuladores de terminais e também existem diversos tipos de terminais. Então vamos padronizar duas informações a partir deste ponto:
+
 - **Terminal** será o nome dado à janela do terminal dentro do ambiente gráfico. No caso do seu SSD será o Terminator.
+
 - **Bash** será o único tipo de terminal que usamos. 
+
 Existem outros tipos de terminal como o **ZSH** ou **ZShell** mas estes são assuntos para outro momento.
 
 
@@ -25,7 +28,7 @@ Existem outros tipos de terminal como o **ZSH** ou **ZShell** mas estes são ass
 
 A forma mais facil de abrir o terminal, como já foi visto no tutorial anterior, é atraves do atalho:
 
-Super  +  T
+`Super  +  T`
 
 Neste momento nos deparamos com a janela do terminal aberta no ambiente do usuário (home ou ~) pronta para receber os primeiros comandos:
 
@@ -187,7 +190,7 @@ cd ~/Z01.1/Exercicios/Extras
 ```
 
 !!! tip  
-    Utilize a tecla TAB para autocompletar ou sugerir comandos no terminal.
+    Utilize a tecla `TAB` para autocompletar ou sugerir comandos no terminal.
 
 
 Para acessar o diretório anterior podemos digitar:
@@ -477,18 +480,18 @@ code .
 ```
 ![Untitled](imgs/terminal_simulation2.png){width="800"}
 
-Agora é só clicar em **Yes, Itrust the authors** e você verá ao lado esquerdo que todos os arquivos deste diretório estão disponíveis para visualização/edição.
+Agora é só clicar em **Yes, I trust the authors** e você verá ao lado esquerdo que todos os arquivos deste diretório estão disponíveis para visualização/edição.
 
 ![Untitled](imgs/code1.png){width="800"}
 ![Untitled](imgs/code2.png){width="800"}
 
 ### Localizar palavra
 
-Para fazer uma busca no texto pressione Ctrl + F, digite a palavra e tecle Enter.
+Para fazer uma busca no texto pressione `Ctrl + F`, digite a palavra e tecle `Enter`.
 
 ### Salvar e Sair
 
-Para salvar e sair, pressione  Ctrl + S ou clique em salvar para salvar e para sair Alt + F4
+Para salvar e sair, pressione  `Ctrl + S` ou clique em salvar para salvar e para sair `Alt + F4`
 
 ## BONUS
 
@@ -530,11 +533,11 @@ pkill terminal
 
 ### Procurar um comando já utilizado no terminal
 
-Você quer usar quele mesmo comando enorme que já usou antes? Você pode usar o comando CTRL+R no seu terminal, então digitar uma parte do comando que você queria. Veja no exemplo abaixo, onde há a busca de um comando que tem a palavar "disk" no meio:
+Você quer usar quele mesmo comando enorme que já usou antes? Você pode usar o comando `CTRL + R` no seu terminal, então digitar uma parte do comando que você queria. Veja no exemplo abaixo, onde há a busca de um comando que tem a palavar "disk" no meio:
 
 ![Passo11](imgs/passo11.png){width="800"}
 
-Após esta pesquisa e teclar ENTER o comando "antigo" é executado:
+Após esta pesquisa e teclar `ENTER` o comando "antigo" é executado:
 
 ![Passo12](imgs/passo12.png){width="800"}
 
@@ -562,17 +565,13 @@ Para instalar o htop vamos usar o seguinte comando:
 sudo apt install htop
 ```
 
-Após a instalação, digite o comando ```htop``` e você poderá ver o quanto está sendo usado de memória RAM, de Procesamento e os processos que estão rodando (junto de outras informações):
+Após a instalação, digite o comando `htop` e você poderá ver o quanto está sendo usado de memória RAM, de Procesamento e os processos que estão rodando (junto de outras informações):
 
 ![Passo15](imgs/passo15.png){width="800"}
 
 Para sair, basta apertar a tecla **q**
 
-
-
 Espero que você esteja se sentindo mais confortável para explorar e personalizar o seu Ubuntu, divirta-se!
-
-
 
 ### Fontes:
 [Linux: conheça o Linux OS](https://www.redhat.com/pt-br/topics/linux)

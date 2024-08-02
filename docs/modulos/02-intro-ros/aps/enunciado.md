@@ -46,14 +46,6 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
     print(f"Horário atual: {current_time.sec}.{current_time.nanosec}")
     ```
 
-## Critérios de Avaliação:
-1. **(+ 0,5)** O pacote foi criado corretamente.
-2. **(+ 1,0)** O publicador foi criado corretamente.
-4. **(+ 1,0)** A mensagem foi criada e publicada corretamente.
-5. **(+ 0,5)** O arquivo `setup.py` foi configurado corretamente.
-6. **(+ 1,0)** O nó funciona corretamente.
-
-
 # Exercício 2 (4 pontos)
 
 ## Instruções:
@@ -70,13 +62,6 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 
     !!! answer
         `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
-
-## Critérios de Avaliação:
-1. **(+ 0,5)** Definiu corretamente o subscriber.
-2. **(+ 1,0)** A função `callback` foi implementada corretamente.
-3. **(+ 1,0)** A função `control` foi implementada corretamente.
-4. **(+ 0,5)** O arquivo `setup.py` foi configurado corretamente.
-5. **(+ 1,0)** O nó funciona corretamente.
 
 # Entrega
 Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
