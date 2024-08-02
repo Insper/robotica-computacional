@@ -139,7 +139,7 @@ Para este primeiro uso, vamos clonar o repositório de robótica. Você o acessa
 
 O endereço do repositório é: https://github.com/insper/robotica-computacional
 
-Ao acessar a página, verá um botão escrito **<> Code**, clicando nele verá três opoções: HHTPS, **SSH** e GitHubCLI. Você deve clicarm em **SSH**. Ao lado do endereço que aparecerá, tem um íconde cópia, clique nele.
+Ao acessar a página, verá um botão escrito **<> Code**, clicando nele verá três opoções: HHTPS, **SSH** e GitHubCLI. Você deve clicar em **SSH**. Ao lado do endereço que aparecerá, tem um íconde cópia, clique nele.
 
 ![Clone_SSH](imgs/ssh1.png){width="800"}
 
@@ -151,15 +151,15 @@ git clone git@github.com:Insper/robotica-computacional.git
 ```
 
 !!! tip
-    Você pode colar no terminal usando o botão direito e escolhendi colar ou utilizando as teclas CTRL+SHIFT+V
+    Você pode colar no terminal usando o `botão direito do mouse` e selecionar **parte** ou utilizando as teclas `CTRL+SHIFT+V`. Pode colar também com o `botão do meio do mouse`.
 
 ![Git_clone](imgs/ssh2.png){width="800"}
 
-Quando usar a chave SSH pela primeira vez, terá de confirmar a dição dela ao uso no temrinal. basta digitar **yes** e teclar enter.
+Quando usar a chave SSH pela primeira vez, terá de confirmar a dição dela ao uso no terminal. basta digitar **yes** e apertar `enter`.
 
 ![ssh_primeiro_uso](imgs/ssh3.png){width="800"}
 
-Imediatamente antes do início da clonagem você verá a adição de github.com à lista de hosts conhecidos. Agora, é só aguardar o termino.
+Imediatamente antes do início da clonagem você verá a adição de `github.com` à lista de hosts conhecidos. Agora, é só aguardar o termino.
 
 ![ssh_hosts](imgs/ssh4.png){width="800"}
 
@@ -175,7 +175,7 @@ Como este repositório não permite que você envie as alterações, mas é nece
 
 ![git_stash](imgs/ssh5.png){width="800"}
 
-É possǘel verificar a mensagem que o seu trabalho local foi salvo e indice desta situação. Ao lado da branch você percebe um número dentre chaves, ele significa que tem trabalho local guardado em cache.
+É possivel verificar a mensagem que o seu trabalho local foi salvo e indice desta situação. Ao lado da branch você percebe um número dentre chaves, ele significa que tem trabalho local guardado em cache.
 
 Se listarmos o diretório veremos que os arquivos alterados não existem no repositório local:
 
@@ -187,7 +187,7 @@ Para retonar o trabalho, basta usar o comando **git stash pop**. Aparecerá um a
 
 ### Atualizando o repositório
 
-Quando precisar atualizar um repositório, com conteúdos que existem no repositório on-line, você precisará usar o comando pull. Basta entrar no diretório que o repositório está e digitar **git pull**.
+Quando precisar atualizar um repositório, com conteúdos que existem no repositório on-line, você precisará usar o comando `pull`. Basta entrar no diretório que o repositório está e digitar **git pull**.
 
 ![git_pull](imgs/ssh8.png){width="800"}
 
@@ -198,8 +198,11 @@ Quando precisar atualizar um repositório, com conteúdos que existem no reposit
 Após realizar suas alterações no repositório, é necessário enviar estas alterações para o respositório remoto. 
 
 A sequencia de comandos que é nessária para esta situação é:
+
 - Adicionar o(s) arquivo(s) alterados
+
 - Realizar o commit com uma mensagem que é possível entender futuramente
+
 - Enviar as alterações.
 
 Para adicionar os arquivos é possível adicionar um a um ou adicionar todos os arquivos. vamos ver as duas situações.
