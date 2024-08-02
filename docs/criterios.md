@@ -53,14 +53,12 @@ Algumas datas importantes para o semestre:
 !!! info
     Datas com `~` estão sujeitas a alterações.
 
-* **Avaliação Intermediária**: {{ data_AI }};
+* **Avaliação Intermediária**: {{ data_AI }}
 
-* **Avaliação Final**: {{ data_PF }}.
+* **Avaliação Final**: {{ data_PF }}
 
-* **Prova SUB**: {{ data_SUB }}.
+* **Prova SUB**: {{ data_SUB }}
 
-* **Prova DELTA**: {{ data_DELTA }}.
-
-
+* **Prova DELTA**: {{ data_DELTA }}
 
 
