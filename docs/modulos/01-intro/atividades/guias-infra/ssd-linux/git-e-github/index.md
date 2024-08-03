@@ -187,28 +187,28 @@ Para retornar o trabalho, basta usar o comando **git stash pop**. Aparecerá um 
 
 ### Atualizando o repositório
 
-Quando precisar atualizar um repositório, com conteúdos que existem no repositório on-line, você precisará usar o comando `pull`. Basta entrar no diretório que o repositório está e digitar **git pull**.
+Para atualizar um repositório com os conteúdos do repositório online, você precisará usar o comando `pull`. Basta entrar no diretório do repositório e digitar **git pull**.
 
 ![git_pull](imgs/ssh8.png){width="800"}
 
-É possível observar as mensagens de quantos e quais arquivos foram alterados.
+Você verá mensagens indicando quantos e quais arquivos foram alterados.
 
 ### Atualizando o repositório remoto (enviando as alterações)
 
 Após realizar suas alterações no repositório, é necessário enviar estas alterações para o respositório remoto. 
 
-A sequencia de comandos que é nessária para esta situação é:
+A sequência de comandos necessária para isso é:
 
-- Adicionar o(s) arquivo(s) alterados
+1. Adicionar os arquivos alterados
 
-- Realizar o commit com uma mensagem que é possível entender futuramente
+2. Realizar o commit com uma mensagem clara e informativa
 
-- Enviar as alterações.
+3. Enviar as alterações para o repositório remoto.
 
-Para adicionar os arquivos é possível adicionar um a um ou adicionar todos os arquivos. vamos ver as duas situações.
+Para adicionar os arquivos, você pode adicionar um a um ou todos de uma vez. Vamos ver as duas situações.
 
 !!! tip
-    Se você clonou o repositório utilizando **SSH** você não precisará utilizar credenciais, mas se clonar utilizando **HTTPS** você precisará fornecer o seu usuário do github e o seu token de acesso (não é a senha!)
+    Se você clonou o repositório utilizando **SSH**, não precisará usar credenciais. Porém, se tiver clonado utilizando **HTTPS**, será necessário fornecer seu usuário do GitHub e seu token de acesso (não é a senha!).
 
 Adicionando um arquivo em específico:
 ![git_add_arquivo](imgs/ssh9.png){width="800"}
