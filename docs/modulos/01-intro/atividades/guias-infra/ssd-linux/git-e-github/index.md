@@ -159,29 +159,29 @@ Quando usar a chave SSH pela primeira vez, terá de confirmar a dição dela ao 
 
 ![ssh_primeiro_uso](imgs/ssh3.png){width="800"}
 
-Imediatamente antes do início da clonagem você verá a adição de `github.com` à lista de hosts conhecidos. Agora, é só aguardar o termino.
+Imediatamente antes do início da clonagem você verá a adição do `github.com` à lista de hosts conhecidos. Agora, é só aguardar o termino.
 
 ![ssh_hosts](imgs/ssh4.png){width="800"}
 
 ### Salvando trabalho local 
 
-Por vezes é preciso realizar uma atualização no repositório por movimentação de outro desenvolvedor, mas temos trabalhos locais que não queremos perder. 
+Às vezes, temos trabalhos locais que não queremos perder, mas precisamos atualizar o repositório devido a alterações feitas por outro desenvolvedor.
 
-Para esta situação podemos usar o comando stash do git. Ele move todo o trabalho local para um cache oculto e mantém o repositório inalterado para fazer a atualização.
+Para essa situação, podemos usar o comando `git stash`. Ele move todo o trabalho local para um cache oculto e mantém o repositório inalterado para que você possa fazer a atualização.
 
-Com a finalidade de demonstrar como funciona, você seguirá uma série de prompts, mas você **não deve tentar alterar este repositório** que acabou de clonar.
+Para demonstrar como isso funciona, você seguirá uma série de prompts. No entanto, você não deve tentar alterar este repositório que acabou de clonar.
 
-Como este repositório não permite que você envie as alterações, mas é necessário atualizar com as atualizações feita pelo professor, você precisa "guardar" suas alterações para não perder seu estudo. Então vamos usar o comando **git stash** para guardar em um cache oculto do git:
+Como este repositório não permite que você envie alterações, mas é necessário atualizar com as modificações feitas pelo professor, você precisa **"guardar"** suas alterações para não perder seu progresso. Vamos usar o comando `git stash` para armazenar suas alterações em um cache oculto do git:
 
 ![git_stash](imgs/ssh5.png){width="800"}
 
-É possivel verificar a mensagem que o seu trabalho local foi salvo e indice desta situação. Ao lado da branch você percebe um número dentre chaves, ele significa que tem trabalho local guardado em cache.
+É possível verificar uma mensagem indicando que seu trabalho local foi salvo, juntamente com um índice dessa situação. Ao lado da branch, você verá um número entre chaves, indicando que há trabalho local guardado em cache.
 
-Se listarmos o diretório veremos que os arquivos alterados não existem no repositório local:
+Se listarmos o diretório, veremos que os arquivos alterados não estão presentes no repositório local:
 
 ![git_stash_ls](imgs/ssh6.png){width="800"}
 
-Para retonar o trabalho, basta usar o comando **git stash pop**. Aparecerá um aviso com os arquivos restaurados e ao listar o diretório teremos os arquivos de volta.
+Para retornar o trabalho, basta usar o comando **git stash pop**. Aparecerá um aviso com os arquivos restaurados e, ao listar o diretório, os arquivos estarão de volta.
 
 ![git_stash_pop](imgs/ssh7.png){width="800"}
 
