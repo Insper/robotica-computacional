@@ -20,7 +20,7 @@ Para treinar o uso de classes e funções, vamos criar um programa que simula um
 A parte visual do programa já está pronta, no arquivo `util.py`. A classe `Mapa` cria uma grade 2D de 30 linhas e 7 colunas, com paredes representadas por células com valor 2. O carro é representado por uma célula com valor 1, inicialmente posicionado na penúltima linha e na coluna do meio.
 
 ![mapa](./mapa.png)
-A cor branca representa células com obstáculos (2), a cor vermelha representa o carro (1) e a cor branca representa células livres (0).
+A cor branca representa células com obstáculos (2), a cor vermelha representa o carro (1) e a cor preta representa células livres (0).
 
 ## Instruções:
 
