@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/Ne9Z8fsD">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="entregavel-3-de-robotica-computacional">Entregável 3 de Robótica Computacional</h1>
+<h2 id="instrucoes-gerais">Instruções gerais</h2>
+<p><strong>Aviso 1:</strong> Sempre desenvolvam nos arquivos <code>.py</code> dos respectivos exercícios.</p>
+<p><strong>Aviso 2:</strong> Lembre-se de dar <code>commit</code> e <code>push</code> no seu repositório até o horário limite de entrega.</p>
+<p><strong>Aviso 3:</strong> Preencha o nome completo dos integrantes do seu grupo no arquivo <code>README.md</code> do seu repositório.</p>
+<p><strong>Aviso 4:</strong> Além de seu repositório, para todas as questões você <strong>deve gravar um vídeo do seu robô executando a tarefa</strong>. O vídeo deve ser feito gravando a tela do linux, <a href="https://insper.github.io/robotica-computacional/screen_record/">tutorial</a>, e deve ser postado no Youtube. </p>
+<p>No arquivo <code>README.md</code> do seu repositório existe o campo <code>Link do Vídeo</code> onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. <code>NUNCA de commit no vídeo</code>, somente adicione o link.</p>
+<p><strong>Aviso 5:</strong> Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.</p>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do Pacote (ROS 2)</h2>
+<ul>
+<li><strong>Preparação Inicial:</strong> Primeiro, aceite o convite do GitHub Classroom e clone o repositório <strong>dentro da pasta</strong> <code>colcon_ws/src/</code> no seu SSD.</li>
+<li><strong>Criação do Pacote ROS 2:</strong> <strong>Dentro do diretório do seu repositório</strong>, crie um novo pacote nomeado <code>entregavel_6</code>.<ul>
+<li><strong>Dica:</strong> Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote <code>my_package</code> como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="exercicio-1-goto-4-pontos">Exercício 1 - GoTo (4 pontos)</h1>
+<p>Baseando-se no código <code>base_control.py</code> do módulo 3, crie um arquivo chamado <code>goto.py</code>, com uma classe <code>GoTo</code> e com um nó denominado <code>goto_node</code>, que, dado uma posição, faça o robô <strong>simulado</strong> <code>=)</code> se mova <strong><em>precisamente</em></strong> para este ponto em qualquer posição. O nó deve:</p>
+<ul>
+<li>
+<p>A classe <code>GoTo</code> deve herdar de <code>Node</code> e <code>Odom</code>.</p>
+</li>
+<li>
+<p>A classe <code>GoTo</code> deve ter um método <code>__init__</code> que recebe a posição uma variável do tipo <code>Point</code> e salva em uma variável <code>self.point</code>.</p>
+</li>
+<li>
+<p>Ter três estados, <code>center</code>, <code>goto</code> e <code>stop</code>.</p>
+</li>
+<li>
+<p>O estado <code>center</code> deve ser o estado inicial e faz o robô girar até que ele esteja alinhado com o ponto desejado.</p>
+</li>
+<li>
+<p>Quando chegar no ponto desejado, o robô deve entrar no estado <code>stop</code>.</p>
+</li>
+<li>
+<p>Deve ter um função <code>get_angular_error</code> que primeiro calcula o angulo entre a posição atual e o ponto desejado <code>theta</code> e depois calcula o erro entre o angulo atual e o angulo desejado.</p>
+</li>
+<li>
+<p><code>get_angular_error</code> também deve calcular a distância entre o robô e o ponto desejado.</p>
+</li>
+<li>
+<p>O estado <code>goto</code> deve fazer o robô se mover até o ponto desejado e parar quando estiver <strong>BEM PERTO</strong> do ponto.</p>
+</li>
+<li>
+<p>Utilize duas constante proporcionais, <code>kp_linear</code> e <code>kp_angular</code> para controlar a velocidade linear e angular do robô.</p>
+</li>
+</ul>
+<h2 id="quando-o-no-estiver-funcionando-corretamente">Quando o nó estiver funcionando corretamente</h2>
+<p>Quando o nó estiver funcionando corretamente, baseando-se no código <code>base_control.py</code> do módulo 3, crie um arquivo chamado <code>quadrado_preciso.py</code>, com uma classe <code>Quadrado</code> e com um nó denominado <code>quadrado_node</code>. Usando o robô <strong>real</strong>, faça um quadrado <strong><em>preciso</em></strong> nas arestas de um ladrilho do nosso laboratório. O nó deve:</p>
+<ul>
+<li>
+<p>Ter dois estados, <code>segue</code> e <code>para</code>.</p>
+</li>
+<li>
+<p><strong>Chame</strong> (não herde) a classe <code>GoTo</code> com as coordenadas do primeiro ponto do quadrado.</p>
+</li>
+<li>
+<p>O estado <code>segue</code> deve criar um loop que chama a função <code>control</code> do <code>GoTo</code> como no exemplo <a href="../../util/run_rotate2.py">aqui</a>.</p>
+</li>
+<li>
+<p>Depois, mude o valor de <code>point</code> no <code>GoTo</code> para o próximo ponto do quadrado e mude o estado do <code>GoTo</code> para <code>center</code>.</p>
+</li>
+</ul>
+<h2 id="criterios-de-avaliacao">Critérios de Avaliação:</h2>
+<ol>
+<li><code>GoTo</code> funciona a partir (até) qualquer ponto em qualquer quadrante.</li>
+<li>A classe <code>Quadrado</code> chama a classe <code>GoTo</code> corretamente.</li>
+<li>Não utiliza nenhuma função de <code>sleep</code> para controlar o tempo de execução.</li>
+<li><strong>Vídeo:</strong> Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.</li>
+<li><strong>Vídeo:</strong> Link do vídeo do robô em ação no Youtube.</li>
+</ol>
+<hr />
+<h1 id="exercicio-2-derruba-creeper-6-pontos">Exercício 2 - Derruba Creeper (6 pontos)</h1>
+<p>Baseando-se no código <code>base_control.py</code> do módulo 3, crie um arquivo chamado <code>derrubador.py</code> com uma classe denominada <code>Derrubador</code> e um nó denominado <code>derrubador_node</code> que derrube 4 creepers ao redor de uma arena quadrado, em uma ordem pré-definida. O robô sempre inicia no centro do quadrado. O nó deve:</p>
+<ul>
+<li>
+<p>Recebe corretamente a sequência de creepers que devem ser derrubados.</p>
+</li>
+<li>
+<p>Se comunicar com um nó <code>creepers</code> que identifica o ID/Cor dos creepers e suas posições.</p>
+</li>
+<li>
+<p>Não se increver no tópico de visão, mas sim no tópico de creepers.</p>
+</li>
+<li>
+<p>Recebe a sequência de cores/ID dos creepers que devem ser derrubados.</p>
+</li>
+<li>
+<p>Se aproximar de cada creeper, em ordem, e parar de forma clara e precisa.</p>
+</li>
+<li>
+<p>Depois de parar, o robô deve derrubar o creeper com a garra.</p>
+</li>
+<li>
+<p>Siga para o próximo creeper até que todos os creepers tenham sido derrubados.</p>
+</li>
+<li>
+<p>Retorne para o centro do quadrado e pare.</p>
+</li>
+</ul>
+<h2 id="arena">Arena</h2>
+<p>A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em cada canto do quadrado, há um creeper de <strong>verde</strong> ou <strong>azul</strong> com dois possíveis IDs. A ordem dos creepers que deve ser seguinda é informada na hora da execução, como uma lista de strings, por exemplo, <code>['verde_17', 'verde_21', 'azul_21', 'azul_17']</code>.</p>
+<p>Tanto a ordem dos creepers quanto a posição deles é aleatória, então o robô deve ser capaz de se adaptar a qualquer situação.</p>
+<h2 id="criterios-de-avaliacao_1">Critérios de Avaliação:</h2>
+<ol>
+<li>Desenvolveu um nó que publica corremente os creepers.</li>
+<li>O nó <code>derrubador_node</code> não se inscreve no tópico de visão.</li>
+<li>O robô se aproxima de cada creeper e <strong>para</strong> de forma clara e então <strong>derruba</strong> o creeper com a garra.</li>
+<li><strong>Vídeo:</strong> Mostra o robô executando o comportamento desejado e derrubando os creepers na ordem correta.</li>
+<li><strong>Vídeo:</strong> Link do vídeo do robô em ação no Youtube.</li>
+</ol>
+<h2 id="competicao-2-ponto-bonus">Competição (+2 ponto bônus)</h2>
+<p><strong>Para os alunos que completarem o exercício 2 até o dia 29/04/2024</strong> vamos realizar uma competição no estilo "mata-mata". Onde os grupos vão enfrentam-se em pares para ver quem derruba os creepers mais rápido. Os grupos vão disputar na mesma arena e na mesma sequência de creepers. A partir da semifinal, serão adicionados creepers da cor <strong>vermelha</strong>.</p>
+<p>O vencedor da competição ganhará 2 pontos bônus na nota da APS e os grupos que chegarem na semifinal e conseguirem completar com os creepers vermelhos, ganharão 1 ponto bônus.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
