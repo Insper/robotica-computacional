@@ -14,7 +14,8 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ## Configuração do Pacote (ROS 2)
 
-- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
+- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom.
+- Você deve fazer o clone do repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_2`.
 
 # Exercício 1 (4 pontos)
@@ -38,7 +39,7 @@ Ola, são 1677878366175707817 e estou publicando pela 117 vez
 
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
-!!! dica
+!!! tip
     **DICA:** Para pegar o horário atual
 
     ```python 
@@ -76,7 +77,7 @@ O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `RE
 
 ## Caso Tenha Apenas Desenvolvido o Exercício 1!
 
-Neste caso, grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro com o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`.
+Neste caso, grave um vídeo com dois terminais, no primeiro terminal com o comando rodando o nó `publisher` e no segundo terminal execute o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
 
