@@ -23,7 +23,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ## Instruções:
 Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `publisher` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/String`. 
 
-A mensagem deve conter:
+**A mensagem deve conter:**
 
 * O horário atual em segundos;
 
@@ -31,11 +31,14 @@ A mensagem deve conter:
 
 * Ambos separados por um espaço. Ou seja, a mensagem deve ter o formato: "**{tempo_atual}** **{contador}**".
 
-O nó também deve imprimir no terminal uma alerta como na linha a seguir:
+O nó **também deve imprimir no terminal** uma alerta como na linha a seguir:
 
 ```bash
 Ola, são 1677878366175707817 e estou publicando pela 117 vez
 ```
+
+!!! alert
+    Note que a mensagem e o que deve ser impresso no terminal são diferentes. A mensagem deve conter o tempo atual e o contador separados por um espaço. Já o que deve ser impresso no terminal é uma string mais descritiva.
 
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
