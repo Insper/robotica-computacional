@@ -37,8 +37,9 @@ O nó **também deve imprimir no terminal** uma alerta como na linha a seguir:
 Ola, são 1677878366175707817 e estou publicando pela 117 vez
 ```
 
-!!! alert
-    Note que a mensagem e o que deve ser impresso no terminal são diferentes. A mensagem deve conter o tempo atual e o contador separados por um espaço. Já o que deve ser impresso no terminal é uma string mais descritiva.
+!!! importante
+    Note que a mensagem e o que deve ser impresso no terminal são diferentes!
+    A **mensagem** deve conter o tempo atual e o contador separados por um espaço. Já o que deve ser impresso no terminal é uma string mais descritiva.
 
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
