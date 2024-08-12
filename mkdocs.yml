@@ -15,7 +15,7 @@ extra:
     data_APS1: Segunda - 12/08 às 12:00
     link_APS1: https://classroom.github.com/a/Ne9Z8fsD
     data_APS2: Segunda - 19/08 às 12:00
-    link_APS2: TBA
+    link_APS2: https://classroom.github.com/a/x6CEGJYO
     data_APS3: Segunda - 26/08 às 12:00
     link_APS3: TBA
     
@@ -123,7 +123,7 @@ nav:
           - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
           - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
         - APS 2:
-          - "APS 2 - Classroom" : TBA
+          - "APS 2 - Classroom" : https://classroom.github.com/a/x6CEGJYO
           - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
       # - Capítulo 3 - Controlando o Robô:
