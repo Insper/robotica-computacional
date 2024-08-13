@@ -48,7 +48,8 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 
     ```python 
     current_time = self.get_clock().now().to_msg()
-    print(f"Horário atual: {current_time.sec}.{current_time.nanosec}")
+    current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
+    print(f"Horário atual: {current_time}")
     ```
 
 # Exercício 2 (4 pontos)
