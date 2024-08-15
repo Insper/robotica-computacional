@@ -82,9 +82,6 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
     ros2 run entregaval_2 subscriber
     ```
 
-   
-    ```
-
 Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
