@@ -25,7 +25,7 @@ Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `pub
 
 **A mensagem deve conter:**
 
-* O horário atual em segundos;
+* O horário atual;
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
@@ -70,6 +70,21 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
         `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 # Entrega
+
+!!! tip
+    Como desejamos ver a saída do terminal do `subscriber.py` e do `publisher.py`, é importante executá-los utilizando os comandos para as saída aparecerem corretamente.
+    
+    ```bash
+    ros2 run entregaval_2 publisher
+    ```
+    e
+    ```bash
+    ros2 run entregaval_2 subscriber
+    ```
+
+   
+    ```
+
 Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
