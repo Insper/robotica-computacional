@@ -119,7 +119,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 4. **Vídeo:** O robô não colide com nenhum obstáculo.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
-## Desafio (+2 ponto bônus)
+## Desafio (+2 pontos bônus)
 
 Juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
 
