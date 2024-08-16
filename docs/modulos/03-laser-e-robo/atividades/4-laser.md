@@ -15,9 +15,9 @@ ros2 interface show sensor_msgs/msg/LaserScan
 ```
 
 Agora utilize o comando `echo` para ver o conteúdo do tópico `scan`:
-
+Apenas uma vez
 ```bash
-ros2 topic echo /scan
+ros2 topic echo /scan 
 ```
 
 Um exemplo de mensagem é mostrado abaixo:

@@ -82,15 +82,16 @@ A mensagem é composta por:
 
 * `twist.twist.angular`: A velocidade angular do robô no espaço. Neste caso, a velocidade angular local e global são iguais, pois o robô só pode girar em torno do eixo Z.
 
-Por fim, rode o comando abaixo para ver o conteúdo da mensagem:
+Por fim, rode o `second_node` utilizando comando abaixo para ver o conteúdo da mensagem:
 
 ```bash
-ros2 topic echo /odom
+ros2 run my_package second_node
 ```
 
 agora, ande com o robô utilizando o teleop, para ver como a odometria é atualizada.
 
-***Dica*** Para ajudar na compreenção o sistemas de coordenadas, primeiramente ande com o robô em uma direção por vez, primeiro para frente, pare, gire 90 graus, ande novamente e monitore a atualização da odometria.
+!!! tip
+    Para ajudar na compreenção o sistemas de coordenadas, primeiramente ande com o robô em uma direção por vez, primeiro para frente, pare, gire 90 graus, ande novamente e monitore a atualização da odometria.
 
 ## Módulo de Odometria - APS 3
 
