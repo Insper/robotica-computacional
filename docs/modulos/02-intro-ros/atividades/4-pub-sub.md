@@ -324,5 +324,3 @@ ros2 run my_package second_node
 ```
 
 Você deve ver a posição x e y do robô sendo impressa no terminal a cada 0.25 segundos.
-
-Com isso você já está pronto para desenvolver a APS 2.

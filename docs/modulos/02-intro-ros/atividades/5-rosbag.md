@@ -69,3 +69,5 @@ Com o foco no terminal que está rodando o `bag`, você pode:
 * **Acelerar** a reprodução pressionando `seta para direita` (rate+0.1).
 
 * **Desacelerar** a reprodução pressionando `seta para esquerda` (rate-0.1).
+
+Com isso você já está pronto para desenvolver a APS 2.
