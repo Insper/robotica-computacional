@@ -143,7 +143,7 @@ nav:
       #       - "Download > teste_odom_laser": modulos/03-laser-e-robo/util/teste_odom_laser.py
       #     - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
     #     - APS 3:
-    #       - "APS 3 - Classroom" : {{ link_APS3 }}
+    #       - "APS 3 - Classroom" : TODO
     #       - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 

@@ -31,6 +31,6 @@ Estes conceitos são explorados nas seguintes atividades,
 
     As entregas da APS 3 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 3 - Github Classroom](https://classroom.github.com/a/WlPtlXfc)
+    [APS 3 - Github Classroom]( {{ link_APS3 }} )
 
     A data final de entrega é **{{ data_APS3 }}**.
