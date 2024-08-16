@@ -107,6 +107,10 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Mova-se em frente e repita o processo.
 
+!!! tip
+    Rescreva a função `custom_laser` do `Laser`, adicionado `lower_right`.
+    Enquanto estiver girando, utilize a função `np.min` para encontrar o menor valor e verificar se ele está na lista `lower_right`.
+
 ## Critérios de Avaliação:
 
 1. Nó importado corretamente do pacote `my_package`.
