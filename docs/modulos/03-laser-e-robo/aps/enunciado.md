@@ -22,7 +22,20 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Robô Quase Indeciso (3 pontos)
+# Exercício 1 - Organização & Qualidade (1 pontos)
+Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
+
+## Critérios de Avaliação:
+* **Vídeo:** O vídeo foi gravado na **horizontal**.
+* **Vídeo:** O vídeo foi gravado em um ambiente bem iluminado.
+* **Vídeo:** O audio está claro e sem ruídos, se desejar, remova o audio e adicione uma música de fundo.
+* **Vídeo:** Na descrição do vídeo no Youtube, está descrito o que o robô está fazendo.
+* **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
+* **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
+* **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
+
+____________________________________________________________________
+# Exercício 2 - Robô Quase Indeciso (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
 
 * Ter três estados, `forward`, `backward` e `stop`.
@@ -41,7 +54,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 ____________________________________________________________________
 
-# Exercício 2 - Robô quadrado (3 pontos)
+# Exercício 3 - Robô quadrado (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
 
 * Possui dois estados, `andar` e `girar`
@@ -96,7 +109,7 @@ E a cada iteração, calcule o tempo decorrido e compare com o tempo necessário
 
 ____________________________________________________________________
 
-# Exercício 3 - Robô Limpador (4 pontos)
+# Exercício 4 - Robô Limpador (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamento:
 
 * Ter dois estados, `forward`, `turn`.
@@ -118,6 +131,8 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e desvia de pelo menos **10** obstáculos.
 4. **Vídeo:** O robô não colide com nenhum obstáculo.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+
+____________________________________________________________________
 
 ## Desafio (+2 pontos bônus)
 
