@@ -144,7 +144,7 @@ Para auxiliar, enviamos uma função que faz conversão de quaternion para ângu
 
 ### Testando
 
-Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util/robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
 Lembre-se:
 
