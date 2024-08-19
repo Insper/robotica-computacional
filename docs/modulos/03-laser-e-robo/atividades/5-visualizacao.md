@@ -17,8 +17,8 @@ Agora, realize as seguites modificações:
 
 Para capturar o frame atual da image, clique no botão `Save as image`.
 
-<!-- ![rqt_image_view](img/rqt_image_view.png)
--->
+![rqt_image_view](figs/rqt_image_view.png)
+
 Na Unidade 2, vamos explorar mais a fundo como processar imagens, nesse momento, vamos apenas observar a imagem da câmera do robô.
 
 ## Visualizando o Tópico do laser Scan
@@ -51,7 +51,7 @@ Você deve ter algo parecido com a imagem abaixo:
 
 ![Rviz](figs/rviz.png)
 
-A sexta representa a `Pose` atual do robô, que é a posição e orientação do robô no espaço. Cada um dos circulos representa uma leitura do sensor de distância.
+A **seta** está apontando para onde o robô está olhando, ela representa a `Pose` atual do robô, que é a posição e orientação do robô no espaço. Cada um dos circulos representa uma leitura do sensor de distância.
 
 Agora pilote o robô utilizando o `teleop` e observe como os dados do sensor de distância e a pose do robô mudam.
 
