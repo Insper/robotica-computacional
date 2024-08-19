@@ -10,7 +10,7 @@ No caso do robô utilizado neste curso, a odometria é estimada utilizando os da
 !!! Importante
     Antes de começar, crie um novo pacote chamado `robcomp_util` com as seguintes dependências:
     ```bash
-    ros2 pkg create robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
+    ros2 pkg create --build-type ament_python robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
     ```
 
 # Componentes da Pose
