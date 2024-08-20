@@ -136,11 +136,11 @@ nav:
               - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
           - "3 - Entendendo a Odometria":
             - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
-            - "Download > odom": modulos/03-laser-e-robo/util/odom.py
+            # - "Download > odom": modulos/03-laser-e-robo/util/odom.py
           - "4 - Entendendo o Laser":
             - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-            - "Download > laser": modulos/03-laser-e-robo/util/laser.py
-            - "Download > teste_odom_laser": modulos/03-laser-e-robo/util/teste_odom_laser.py
+            # - "Download > laser": modulos/03-laser-e-robo/util/laser.py
+            # - "Download > teste_odom_laser": modulos/03-laser-e-robo/util/teste_odom_laser.py
           - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
         - APS 3:
           - "APS 3 - Classroom" : https://classroom.github.com/a/94ldeOwJ
