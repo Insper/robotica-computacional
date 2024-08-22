@@ -1,20 +1,22 @@
-from rclpy.qos import ReliabilityPolicy, QoSProfile
-from nav_msgs.msg import Odometry
 import numpy as np
+import rclpy
+from rclpy.node import Node
+from nav_msgs.msg import Odometry
+from rclpy.qos import ReliabilityPolicy, QoSProfile
 
-class Odom(): # Mude o nome da classe
-
+class Odom():
     def __init__(self):
-        # Inicialização de variáveis
-        
-        # Subscribers
+        self.x = 0
+        self.y = 0
+        self.yaw = 0
+
         self.odom_sub = self.create_subscription(
             Odometry,
             '/odom',
             self.odom_callback,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))
 
-    def euler_from_quaternion(self, quaternion : list):
+    def euler_from_quaternion(self, quaternion):
             """
             Converts quaternion (w in last place) to euler roll, pitch, yaw
             quaternion = [x, y, z, w]
@@ -43,9 +45,10 @@ class Odom(): # Mude o nome da classe
         self.y = data.pose.pose.position.y
 
         quaternion = [
-            data.pose.pose.orientation.x,
-            data.pose.pose.orientation.y,
-            data.pose.pose.orientation.z,
-            data.pose.pose.orientation.w]
-        
-        self.roll, self.pitch, self.yaw = self.euler_from_quaternion(quaternion)
+             data.pose.pose.orientation.x,
+             data.pose.pose.orientation.y,
+             data.pose.pose.orientation.z,
+             data.pose.pose.orientation.w,
+        ]
+
+        _, _, self.yaw = self.euler_from_quaternion(quaternion)
