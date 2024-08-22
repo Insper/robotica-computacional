@@ -40,9 +40,9 @@ Então, o a estrutura do código ficaria assim:
 
 		self.robot_state = 'frente'
 		self.state_machine = {
-			'frente': self.andar_frente,
-            'direita': self.virar_direita,
-            'esquerda': self.virar_esquerda,
+			'frente': self.frente,
+            'direita': self.direita,
+            'esquerda': self.esquerda,
             'parar': self.parar
 		}
     
