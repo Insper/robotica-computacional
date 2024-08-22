@@ -97,7 +97,7 @@ agora, ande com o robô utilizando o teleop, para ver como a odometria é atuali
 
 Agora vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e uma classe chamada `Odom` **sem nenhuma herança**, ou seja, não herde da classe `Node`. Essa classe deve:
+Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e muda o nome da classe para `Odom`, e **remova a herança**, ou seja, remova `Node` e seu `__init__`. Essa classe deve:
 
 !!! info
     Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Odom` herda-se de `Node`.
