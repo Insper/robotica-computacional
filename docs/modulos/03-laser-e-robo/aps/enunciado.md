@@ -80,11 +80,11 @@ erro = self.goal_yaw - self.yaw
 erro = np.arctan2(np.sin(erro), np.cos(erro))
 ```
 
-A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`. Dessa forma,
-E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`+-2` graus.
+A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`. E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`+-2` graus. Dessa forma:
 
 1. Quando o erro for **menor** que 0 o robô deve girar no **sentido horário**;
 2. Quando for **maior** que 0, no **sentido anti-horário**.
+
 
 
 ### **Estado andar:**
