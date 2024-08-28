@@ -24,11 +24,11 @@ Os exercícios deste entregável estão relacionados ao conteúdo das atividades
 
 ## Práticas
 
-* **Prática 1:** [1 ponto] Atividade 1 - Arquivo: `first_image.py`
-* **Prática 2:** [2 pontos] Atividade 1 - Arquivo: `webcam.py`
-* **Prática 3:** [2 pontos] Atividade 2 - Arquivo: `arara.py`
-* **Prática 4:** [2 pontos] Atividade 3 - Arquivo: `webcam_BW.py`
-* **Prática 5:** [3 pontos] Atividade 5 - Arquivo: `creepers.py`
+* **Prática 1:** [1 ponto] [Atividade 1](https://insper.github.io/robotica-computacional/modulos/04-visao-p1/atividades/1-leitura_e_webcam/) - Arquivo: `first_image.py`
+* **Prática 2:** [2 pontos] [Atividade 1](https://insper.github.io/robotica-computacional/modulos/04-visao-p1/atividades/1-leitura_e_webcam/) - Arquivo: `webcam.py`
+* **Prática 3:** [2 pontos] [Atividade 2](https://insper.github.io/robotica-computacional/modulos/04-visao-p1/atividades/2-corte_e_criacao/) - Arquivo: `arara.py`
+* **Prática 4:** [2 pontos] [Atividade 3](https://insper.github.io/robotica-computacional/modulos/04-visao-p1/atividades/3-roi_e_numpy/) - Arquivo: `webcam_BW.py`
+* **Prática 5:** [3 pontos] [Atividade 5](https://insper.github.io/robotica-computacional/modulos/04-visao-p1/atividades/5-segmentacao_2/) - Arquivo: `creepers.py`
 
 ## Entrega
 
