@@ -18,80 +18,19 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Conversão 2D->3D (5 pontos)
+# Exercícios
 
-Você deve ter uma folha com o padrão da imagem abaixo.
+Os exercícios deste entregável estão relacionados ao conteúdo das atividades deste capítulo. Adicione os scripts gerados nas 5 práticas mencionadas abaixo ao seu repositório.
 
-**Dica:** Se não tiver, é possível fazer também com um tablet ou *smartphone*
- 
-<!-- <img src="fig/folha_atividade.png" width=300> -->
-![folha_atividade](fig/folha_atividade.png)
+## Práticas
 
-Neste exercício vamos aprender a fazer uma conversão 2D->3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, vamos entender o modelo pinhole.
+* **Prática 1:** [1 ponto] Atividade 1 - Arquivo: `first_image.py`
+* **Prática 2:** [2 pontos] Atividade 1 - Arquivo: `webcam.py`
+* **Prática 3:** [2 pontos] Atividade 2 - Arquivo: `arara.py`
+* **Prática 4:** [2 pontos] Atividade 3 - Arquivo: `webcam_BW.py`
+* **Prática 5:** [3 pontos] Atividade 5 - Arquivo: `creepers.py`
 
-<!-- <img src="fig/pinhole.png" width=60%> -->
-![pinhole](fig/pinhole.png)
+## Entrega
 
-A partir da geometria do modelo pinhole, podemos definir a seguinte relação entre a distância focal $f$, o tamanho do objeto virtual $h$, a distância da câmera ao objeto $D$, e o tamanho do objeto real $H$:
+Além de adicionar os scripts no seu repositório, você deve gravar **APENAS UM VÍDEO** mostrando a execução de todos os scripts. O vídeo deve ser postado no YouTube e o link deve ser incluído no arquivo `README.md` do seu repositório.
 
-$$
-\frac{h}{H} = \frac{f}{D}
-$$
-
-***O objetivo deste exercício é estimar a distância $D$ da `SUA` webcam até a folha.***
-
-Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py).
-
-## Este exercício solicita que vocês façam o seguinte:
-
-1. Na função `run` você deve fazer o seguinte:
-
-    1.1. Converter a imagem para o modelo de cor HSV;
-
-    1.2. Obter as máscaras para os círculos `ciano` e `magenta`;
-    
-    1.3. Calcular a area dos círculos `ciano` e `magenta`;
-
-    1.4. Se a diferença entre as áreas for maior do que 20000 (pode alterar esse valor) retorne a distância $D$ entre a câmera e a folha como `-1`. Caso contrário, calcule a média das áreas **e o diâmetro do círculo**.
-
-    1.5. Escreva na imagem o valor da distância $D$ **e o diâmetro do círculo**, utilize apenas duas casas decimais.
-
-    1.6. Entao `h` sera o diâmetro do círculo e `H` será 5.5 cm (diametro do círculo na folha do exemplo do profesor).
-
-2. Para a imagem `calib01.jpg`, vamos realizar o processo de calibração da câmera. Utilize o valor da distância $D$ entre a câmera e a folha descrito na imagem para calcular a distância focal $self.f$ da câmera do professor (valor esperado é ~726).
-
-3. Para a imagem `teste01.jpg`, utilize a distância focal $self.f$ para calcular a distância $D$ entre a câmera e a folha. (valor esperado é ~41 cm).
-
-4. Agora, `repita o processo de calibração para a sua câmera`, tirando uma foto da folha a uma distância $D$ **conhecida**.
-
-5. Mude a função `main` para rodar a função `rodar_webcam` e faça um **vídeo** mostrando a sua câmera e a imagem da folha, mostre a distância $D$ e o diâmetro do círculo na imagem.
-
-6. Adicione o link do vídeo no README.md do seu repositório.
-
-__________
-
-# Exercício 2 - Linha Amarela e Cruzamento (5 pontos)
-
-Neste exercício você vai trabalhar no arquivo [./ex2.py](./ex2.py).
-
-Primeiramente, faça o download do vídeo por meio do link a seguir salve na pasta `img/q2` do seu repositório. 
-
-[LINK DO VIDEO](https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EVNzpavCn6NPqMfgV0f9X_0Bcbn4SGEHJuudx7W54dJLFQ?e=j6adG7&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19)
-
-Na função `main` é possivel optar por testar com um frame, `rodar_frame`, ou rodar com o vídeo, `rodar_video`, comentando e descomentando a linha apropriada.
-
-## Este exercício solicita que vocês façam o seguinte:
-
-1. Filtrar a cor amarela do frame e binarizar a imagem, mostre a mascara em uma janela.
-
-2. Ajuste os valores da mascara para que apenas a linha amarela seja detectada **em praticamente todos os frames**.
-
-3. Corte a imagem em 3 colunas e calcule a area da linha amarela em cada coluna.
-
-4. Se duas colunas tiverem área maior do que `valor` (você deve definir esse valor), então você deve escrever na imagem "Curva Detectada".
-
-5. Se três colunas tiverem área maior do que `valor` (você deve definir esse valor), então você deve escrever na imagem "Cruzamento Detectado".
-
-6. Ajuste cuidadosamente os valores para que o seu programa não detecte curvas e cruzamentos onde não existem (falso positivo) e que detecte corretamente onde existem (verdadeiro positivo).
-
-7. Faça um vídeo mostrando a execução do seu programa e adicione o link do vídeo no README.md do seu repositório.
