@@ -19,7 +19,7 @@ As atividades deste módulo focam em melhorar nossas habilidades de segmentaçã
 
 Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
-    [Download dos Notebooks](atividades_modulo_4.zip)
+    [Download dos Notebooks](atividades_cap_4.zip)
 
 ## Para entregar
 
@@ -30,6 +30,6 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 
     As entregas da APS 4 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 4 - Github Classroom](https://classroom.github.com/a/1v0fXJJD)
+    [APS 4 - Github Classroom](TODO)
 
     A data final de entrega é **{{ data_APS4 }}**.
