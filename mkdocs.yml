@@ -19,9 +19,9 @@ extra:
     data_APS3: Segunda - 02/09 às 12:00
     link_APS3: https://classroom.github.com/a/94ldeOwJ
     
-    data_APS4: Segunda - 02/09 às 12:00
+    data_APS4: Segunda - 09/09 às 12:00
     link_APS4: TBA
-    data_APS5: Segunda - 09/09 às 12:00
+    data_APS5: Segunda - 16/09 às 12:00
     link_APS5: TBA
     data_APS6: Terça - 24/09 às 12:00
     link_APS6: TBA
@@ -147,19 +147,19 @@ nav:
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
-    # - Unidade 2:
-    #   - Capítulo 4 - Imagens e Matrizes:
-    #     - modulos/04-visao-p1/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/04-visao-p1/atividades_modulo_4.zip
-    #       - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
-    #       - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
-    #       - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
-    #       - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
-    #       - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
-    #     - APS 4:
-    #       - "APS 4 - Classroom" : {{ link_APS4 }}
-    #       - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+    - Unidade 2:
+      - Capítulo 4 - Imagens e Matrizes:
+        - modulos/04-visao-p1/index.md
+        - Atividades:
+          - "Download > Atividades": modulos/04-visao-p1/atividades_modulo_4.zip
+          - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+          - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
+          - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
+          - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
+          - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
+        # - APS 4:
+        #   - "APS 4 - Classroom" : TODO
+        #   - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
     #   - Capítulo 5 - Visão Robótica:
     #     - modulos/05-visao-p2/index.md
