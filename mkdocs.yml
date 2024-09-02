@@ -20,7 +20,7 @@ extra:
     link_APS3: https://classroom.github.com/a/94ldeOwJ
     
     data_APS4: Segunda - 09/09 às 12:00
-    link_APS4: TBA
+    link_APS4: https://classroom.github.com/a/R1grL7pT
     data_APS5: Segunda - 16/09 às 12:00
     link_APS5: TBA
     data_APS6: Terça - 24/09 às 12:00
@@ -157,9 +157,9 @@ nav:
           - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
           - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
           - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
-        # - APS 4:
-        #   - "APS 4 - Classroom" : TODO
-        #   - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+        - APS 4:
+          - "APS 4 - Classroom" : https://classroom.github.com/a/R1grL7pT
+          - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
     #   - Capítulo 5 - Visão Robótica:
     #     - modulos/05-visao-p2/index.md
