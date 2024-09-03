@@ -23,6 +23,15 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ____________________________________________________________________
 
 # Exercício 1 - Segue Linha (5 pontos)
+Resolva o exercicio na atividade [2 - Identificação de Objetos](atividades/2-identificacao.ipynb).
+
+Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
+
+Grave um vídeo da execução do código nas 3 imagens de teste e adicione o link no arquivo `README.md` do seu repositório.
+
+____________________________________________________________________
+
+# Exercício 2 - Segue Linha (5 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
 
 * O nó deve ter estados, `centraliza` e `segue`.
@@ -49,7 +58,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 ____________________________________________________________________
 
-# Exercício 2 - Aproxima Creeper (5 pontos)
+# Exercício 3 - Aproxima Creeper (5 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie dois arquivos, um chamado `aproxima.py` com um nó denominado `aproxima_node` que, faça com que o robô **real** se aproxime do creeper e outro arquivo chamado `filtro_cor.py` com um nó denominado `filtro_cor_node` que filtra a cor do creeper e publica uma mensagem do tipo **geometry_msgs/Point** com a **posição do creeper na imagem (x, y) e a largura da imagem (z)**.
 O nó `aproxima_node` deve:
 
