@@ -34,7 +34,7 @@ ____________________________________________________________________
 # Exercício 2 - Segue Linha (5 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
 
-* O nó deve ter estados, `centraliza` e `segue`.
+* O nó deve ter estados, `centraliza` e `segue` e `para`.
 
 * Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
 
@@ -46,13 +46,17 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
 
+* Depois de completar uma volta na pista, o robô deve parar.
+
+**Dica:** Ao iniciar a execução do nó, guarde a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
+
 ## Critérios de Avaliação:
 
 1. Nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
 2. Desenvolveu o nó `seguidor_node` com os comportamentos corretos.
 3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
 5. Navega corretamente pela pista.
-5. **Vídeo:** Mostra o robô executando o comportamento e navegando por uma volta completa na `pista`.
+5. **Vídeo:** Mostra o robô executando o comportamento e navegando por uma volta completa na pista e parando.
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
 7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
