@@ -18,11 +18,11 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_5`.
-    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
+    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ____________________________________________________________________
 
-# Exercício 1 - Segue Linha (5 pontos)
+# Exercício 1 - latinhas (5 pontos)
 Resolva o exercicio na atividade [2 - Identificação de Objetos](atividades/2-identificacao.ipynb).
 
 Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
@@ -46,9 +46,9 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
 
-* Depois de completar uma volta na pista, o robô deve parar.
+* O estado `para` deve ser chamado depois de completar uma volta na pista, e o robô deve parar.
 
-**Dica:** Ao iniciar a execução do nó, guarde a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
+**Dica:** Ao iniciar a execução do nó, armazene em uma variavel a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
 
 ## Critérios de Avaliação:
 
@@ -72,7 +72,7 @@ O nó `aproxima_node` deve:
 
 * No estado `segue`, o robô deve se aproximar do creeper.
 
-* Quando o robô estiver a menos de `0.5m` do creeper, ele deve entrar no estado `stop` e parar.
+* No estado `stop`, o robô deve parar quando estiver a menos de `0.5m` do creeper.
 
 * Se o creeper for retirado da frente do robô, ele deve voltar para o estado `centraliza`.
 
@@ -88,6 +88,7 @@ O nó `filtro_cor_node` deve:
 
     * **z:** a largura da imagem.
 
+**Dica:** leia a documentação oficial: [https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html](https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html).
 
 ## Critérios de Avaliação:
 
