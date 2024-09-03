@@ -42,4 +42,4 @@ Neste método, a imagem recebida é convertida para um objeto do tipo `numpy.nda
 
 Outro ponto importante é a variável `self.runnable`, obtida do tópico `/vision/image_flag`. Enquanto o valor dessa variável for `True`, o processamento da imagem é feito, então, um outro nó pode publicar nesse tópico para pausar ou retomar o processamento da imagem. Isso é útil para economizar recursos do robô quando o processamento da imagem não é necessário, será útil para quando estivermos processando imagens usando `Redes Neurais` ou `Aruco Markers`.
 
-Por ultimo, ainda no método `image_callback`, a variável `cv_image` contém a imagem recebida. Neste ponto, você pode fazer o processamento da imagem ou chamar uma função ou classe que faça isso para manter o código organizado.
+Por ultimo, ainda no método `image_callback`, a variável `cv_image` contém a imagem recebida. **Neste ponto, você pode fazer o processamento da imagem ou chamar uma função ou classe que faça isso para manter o código organizado.**
