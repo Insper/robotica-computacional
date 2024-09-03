@@ -14,25 +14,19 @@ Essa questão consiste em identificar bandeiras de vários países em imagens. U
 
 Você deverá editar a classe `IdentificadorBandeiras` do arquivo [q1.py](/docs/modulos/05-visao-p2/atividades/util/q1.py) para realizar essa questão. Nesta classe, você deve implementar a função `run` para identificar as bandeiras. A função `run` recebe uma imagem e modifica a variável da classe `self.bandeiras` que é uma lista de tuplas no formato
 
-
 ```
 (PAIS, (x1, y2), (x2, y2)`)
 ```
 
-
 onde
-
 
 - `PAIS` é uma string com o nome do país tratado (em minúsculas e sem espaços). Se você não conseguiu identificar uma bandeira, pode retornar uma lista.
 - `(x1, y1)` é o ponto do topo esquerdo do retângulo em que a bandeira está inserida
 - `(x2, y2)` é o ponto baixo direito do retângulo em que a bandeira está inserida
 
-
 **A ordem dos elementos da lista não é importante, apenas seu conteúdo**
 
-
 Os critérios de avaliação são os seguintes:
-
 
 * **1,0** encontrou o canto de todas as bandeiras
 * **1,5** identificou uma bandeira e acertou seus cantos em todas imagens de testes do arquivo `test_simples.py`
