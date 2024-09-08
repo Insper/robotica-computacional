@@ -42,13 +42,13 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * A função `image_callback` só deve executar se a variável `self.running` for `True`.
 
-* o estado `centraliza` deve centralizar o robô na linha amarela.
+* o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
 
 * o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
 
 * O estado `para` deve ser chamado depois de completar uma volta na pista, e o robô deve parar.
 
-**Dica:** Ao iniciar a execução do nó, armazene em uma variavel a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
+**Dica:** Ao iniciar a execução do nó, armazene em uma variável a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
 
 ## Critérios de Avaliação:
 
