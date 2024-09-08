@@ -22,7 +22,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - latinhas (5 pontos)
+# Exercício 1 - Latinhas (5 pontos)
 Resolva o exercicio na atividade [2 - Identificação de Objetos](atividades/2-identificacao.ipynb).
 
 Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
@@ -78,6 +78,10 @@ O nó `aproxima_node` deve:
 
 O nó `filtro_cor_node` deve:
 
+* Receber a cor do creeper como `string` no parâmetro `cor`.
+
+* Os limites HSV devem ser definidos em um dicionário, `self.cores` no método `__init__`, com os nomes das cores como chave e um segundo dicionário com as chaves `inferior` e `superior` com os valores dos limites inferior e superior da cor no espaço HSV.
+
 * Filtrar a cor do creeper
 
 * Publicar uma mensagem do tipo **geometry_msgs/Point** com,
@@ -96,3 +100,4 @@ O nó `filtro_cor_node` deve:
 2. Desenvolveu o nó `aproxima_node` com os comportamentos corretos.
 3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
 4. **Vídeo:** Mostra o robô executando o comportamento e se aproximando de **2** creepers. Assim que ele parar a menos de `0.5m` do primeiro creeper, tire o creeper da frente do robô e coloque outro do outro lado do robô a uma distância de `2m`.
+5. Repita o processo para cada cor de creeper, ou seja, devem ser gravados **3 vídeos**.
