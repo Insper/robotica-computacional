@@ -22,7 +22,19 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Latinhas (5 pontos)
+# Exercício 0 - Organização & Qualidade (1 pontos)
+Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
+
+## Critérios de Avaliação:
+* **Vídeo:** O vídeo foi gravado na **horizontal**.
+* **Vídeo:** O vídeo foi gravado em um ambiente bem iluminado.
+* **Vídeo:** O audio está claro e sem ruídos, se desejar, remova o audio e adicione uma música de fundo.
+* **Vídeo:** Na descrição do vídeo no Youtube, está descrito o que o robô está fazendo.
+* **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
+* **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
+* **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.____________________________________________________________________
+
+# Exercício 1 - Latinhas (2 pontos)
 Resolva o exercicio na atividade [2 - Identificação de Objetos](https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/2-identificacao/).
 
 Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
@@ -31,7 +43,7 @@ Grave um vídeo da execução do código nas 3 imagens de teste e adicione o lin
 
 ____________________________________________________________________
 
-# Exercício 2 - Segue Linha (5 pontos)
+# Exercício 2 - Segue Linha (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
 
 * O nó deve ter estados, `centraliza` e `segue` e `para`.
@@ -62,7 +74,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 ____________________________________________________________________
 
-# Exercício 3 - Aproxima Creeper (5 pontos)
+# Exercício 3 - Aproxima Creeper (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie dois arquivos, um chamado `aproxima.py` com um nó denominado `aproxima_node` que, faça com que o robô **real** se aproxime do creeper e outro arquivo chamado `filtro_cor.py` com um nó denominado `filtro_cor_node` que filtra a cor do creeper e publica uma mensagem do tipo **geometry_msgs/Point** com a **posição do creeper na imagem (x, y) e a largura da imagem (z)**.
 O nó `aproxima_node` deve:
 
