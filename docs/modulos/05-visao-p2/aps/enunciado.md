@@ -23,7 +23,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ____________________________________________________________________
 
 # Exercício 1 - Latinhas (5 pontos)
-Resolva o exercicio na atividade [2 - Identificação de Objetos](atividades/2-identificacao.ipynb).
+Resolva o exercicio na atividade [2 - Identificação de Objetos](https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/2-identificacao/).
 
 Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
 

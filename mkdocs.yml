@@ -165,7 +165,7 @@ nav:
         - modulos/05-visao-p2/index.md
         - Atividades:
           - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
-          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologa.ipynb
+          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
           - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
           - "3 - Visão na ROS 2":
             - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
