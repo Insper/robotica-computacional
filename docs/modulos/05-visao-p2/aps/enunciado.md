@@ -92,7 +92,7 @@ O nó `filtro_cor_node` deve:
 
     * **z:** a largura da imagem.
 
-**Dica:** leia a documentação oficial: [https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html](https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html).
+**Dica:** leia a documentação oficial: [geometry_msgs/msg/Point](https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html).
 
 ## Critérios de Avaliação:
 
