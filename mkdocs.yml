@@ -22,7 +22,7 @@ extra:
     data_APS4: Segunda - 09/09 às 12:00
     link_APS4: https://classroom.github.com/a/R1grL7pT
     data_APS5: Segunda - 16/09 às 12:00
-    link_APS5: TBA
+    link_APS5: https://classroom.github.com/a/GiXfZmlw
     data_APS6: Terça - 24/09 às 12:00
     link_APS6: TBA
     
@@ -179,7 +179,7 @@ nav:
             - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
             - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
         - APS 5:
-          - "APS 5 - Classroom" : {{ link_APS5 }}
+          - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
     #   - Capítulo 6 - MobileNet e ArUco:
