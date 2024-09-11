@@ -43,8 +43,8 @@ Grave um vídeo da execução do código nas 3 imagens de teste e adicione o lin
 
 ____________________________________________________________________
 
-# Exercício 2 - Segue Linha (3 pontos)
-Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo chamado `segmenta_linha.py` com um nó denominado `segmenta_linha_node`, que segmenta a linha amarela do chão e imprime a posição do segmento de linha mais próximo ao robô na imagem.
+# Exercício 2 - Segmenta Linha (3 pontos)
+Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo chamado `segmenta_linha.py` com um nó denominado `segmenta_linha_node`, que segmenta a linha amarela do chão e imprime a posição do segmento de linha mais próximo ao robô **real** na imagem.
 
 * Adicione um subscriber que se inscreva no tópico de imagem **comprimida** e direcione para a função `image_callback`.
 
@@ -60,6 +60,6 @@ Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo cha
 
 1. O nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
 2. O nó `segmenta_linha_node` foi desenvolvido com os comportamentos corretos.
-3. **Vídeo:** Mostre o robô executando o comportamento; para isso, controle o robô com o teclado e exiba as imagens e o terminal com as informações.
+3. **Vídeo:** Mostre o robô **real** executando o comportamento; para isso, controle o robô com o teclado e exiba as imagens e o terminal com as informações.
 4. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
