@@ -44,72 +44,22 @@ Grave um vídeo da execução do código nas 3 imagens de teste e adicione o lin
 ____________________________________________________________________
 
 # Exercício 2 - Segue Linha (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
+Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo chamado `segmenta_linha.py` com um nó denominado `segmenta_linha_node`, que segmenta a linha amarela do chão e imprime a posição do segmento de linha mais próximo ao robô na imagem.
 
-* O nó deve ter estados, `centraliza` e `segue` e `para`.
+* Adicione um subscriber que se inscreva no tópico de imagem **comprimida** e direcione para a função `image_callback`.
 
-* Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
+* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha mais próximo nas variáveis `self.x`, `self.y`, e a metade da largura da imagem na variável `self.w`.
 
-* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha na variável `self.x`, `self.y` e a largura da imagem na variável `self.w`.
+* A função `image_callback` deve ser executada apenas se a variável `self.running` for `True`.
 
-* A função `image_callback` só deve executar se a variável `self.running` for `True`.
+* Exiba a imagem com o contorno da máscara amarela e o centro do segmento de linha mais próximo ao robô.
 
-* o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
-
-* o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
-
-* O estado `para` deve ser chamado depois de completar uma volta na pista, e o robô deve parar.
-
-**Dica:** Ao iniciar a execução do nó, armazene em uma variável a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
+* Calcule também a distância do centro da linha ao centro da imagem.
 
 ## Critérios de Avaliação:
 
-1. Nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
-2. Desenvolveu o nó `seguidor_node` com os comportamentos corretos.
-3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
-5. Navega corretamente pela pista.
-5. **Vídeo:** Mostra o robô executando o comportamento e navegando por uma volta completa na pista e parando.
-6. **Vídeo:** O robô não colide com nenhum obstáculo.
-7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+1. O nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
+2. O nó `segmenta_linha_node` foi desenvolvido com os comportamentos corretos.
+3. **Vídeo:** Mostre o robô executando o comportamento; para isso, controle o robô com o teclado e exiba as imagens e o terminal com as informações.
+4. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
-____________________________________________________________________
-
-# Exercício 3 - Aproxima Creeper (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie dois arquivos, um chamado `aproxima.py` com um nó denominado `aproxima_node` que, faça com que o robô **real** se aproxime do creeper e outro arquivo chamado `filtro_cor.py` com um nó denominado `filtro_cor_node` que filtra a cor do creeper e publica uma mensagem do tipo **geometry_msgs/Point** com a **posição do creeper na imagem (x, y) e a largura da imagem (z)**.
-O nó `aproxima_node` deve:
-
-* Ter três estados, `segue`, `centraliza` e `stop`.
-
-* No estado `centraliza`, o robô deve girar até encontrar o creeper da cor selecionada.
-
-* No estado `segue`, o robô deve se aproximar do creeper.
-
-* No estado `stop`, o robô deve parar quando estiver a menos de `0.5m` do creeper.
-
-* Se o creeper for retirado da frente do robô, ele deve voltar para o estado `centraliza`.
-
-O nó `filtro_cor_node` deve:
-
-* Receber a cor do creeper como `string` no parâmetro `cor`.
-
-* Os limites HSV devem ser definidos em um dicionário, `self.cores` no método `__init__`, com os nomes das cores como chave e um segundo dicionário com as chaves `inferior` e `superior` com os valores dos limites inferior e superior da cor no espaço HSV.
-
-* Filtrar a cor do creeper
-
-* Publicar uma mensagem do tipo **geometry_msgs/Point** com,
-
-    * **x:** a posição do creeper na imagem.
-
-    * **y:** a posição do creeper na imagem.
-
-    * **z:** a largura da imagem.
-
-**Dica:** leia a documentação oficial: [geometry_msgs/msg/Point](https://docs.ros2.org/latest/api/geometry_msgs/msg/Point.html).
-
-## Critérios de Avaliação:
-
-1. Desenvolveu o `filtro_cor_node` para filtra e publicar as informações do creeper.
-2. Desenvolveu o nó `aproxima_node` com os comportamentos corretos.
-3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
-4. **Vídeo:** Mostra o robô executando o comportamento e se aproximando de **2** creepers. Assim que ele parar a menos de `0.5m` do primeiro creeper, tire o creeper da frente do robô e coloque outro do outro lado do robô a uma distância de `2m`.
-5. Repita o processo para cada cor de creeper, ou seja, devem ser gravados **3 vídeos**.
