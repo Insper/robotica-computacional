@@ -56,7 +56,7 @@ Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo cha
 
 * Calcule também a distância do centro da linha ao centro da imagem.
 
-* Caso o robô não veja nenhum contorno, retorne o centro como `(-1,-1)`, ou seja,`self.x = -1`, `self.y = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
+* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.x = -1`, `self.y = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
 
 ## Critérios de Avaliação:
 
