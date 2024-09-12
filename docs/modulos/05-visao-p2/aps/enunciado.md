@@ -56,10 +56,13 @@ Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo cha
 
 * Calcule também a distância do centro da linha ao centro da imagem.
 
+* Caso o robô não veja nenhum contorno, retorne o centro como `(-1,-1)`, ou seja,`self.x = -1`, `self.y = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
+
 ## Critérios de Avaliação:
 
 1. O nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
 2. O nó `segmenta_linha_node` foi desenvolvido com os comportamentos corretos.
 3. **Vídeo:** Mostre o robô **real** executando o comportamento; para isso, controle o robô com o teclado e exiba as imagens e o terminal com as informações.
-4. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+4. **Vídeo:** Em algum momento, vire o robô para que ele não encontre nenhum contorno.
+5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
