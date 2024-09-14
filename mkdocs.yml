@@ -182,21 +182,21 @@ nav:
           - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
-    #   - Capítulo 6 - MobileNet e ArUco:
-    #     - modulos/06-visao-p3/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
-    #       - "1 - MobileNet":
-    #         - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
-    #         - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
-    #         - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
-    #       - "2 - Marcador ArUco":
-    #         - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
-    #         - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
-    #       - "3 - Reconhecimento dos Creepers":
-    #         - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
-    #         - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
-    #         - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
+      - Capítulo 6 - MobileNet e ArUco:
+        - modulos/06-visao-p3/index.md
+        - Atividades:
+          - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
+          - "1 - MobileNet":
+            - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
+            - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
+            # - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
+          - "2 - Marcador ArUco":
+            - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
+            - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
+          - "3 - Reconhecimento dos Creepers":
+            - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
+            - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
+            # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
 
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
