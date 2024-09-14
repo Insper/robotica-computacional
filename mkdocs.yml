@@ -185,7 +185,7 @@ nav:
       - Capítulo 6 - MobileNet e ArUco:
         - modulos/06-visao-p3/index.md
         - Atividades:
-          - "Download > Atividades": modulos/06-visao-p3/atividades_modulo_6.zip
+          - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
           - "1 - MobileNet":
             - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
             - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py

@@ -14,7 +14,7 @@ As atividades deste módulo focam em melhorar nossas habilidades de identificaç
 
 Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
-    [Download dos Notebooks](atividades_modulo_6.zip)
+    [Download dos Notebooks](atividades_cap_6.zip)
 
 <!-- ## Para entregar
 
