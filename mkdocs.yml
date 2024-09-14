@@ -193,11 +193,13 @@ nav:
           - "2 - Marcador ArUco":
             - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
             - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
-          - "3 - Reconhecimento dos Creepers":
-            - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
-            - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
+          # - "3 - Reconhecimento dos Creepers":
+          #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
+          #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
             # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
-
+        - APS 6:
+          - "APS 6 - Classroom" : TODO
+          - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
