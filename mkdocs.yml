@@ -23,8 +23,8 @@ extra:
     link_APS4: https://classroom.github.com/a/R1grL7pT
     data_APS5: Segunda - 16/09 às 12:00
     link_APS5: https://classroom.github.com/a/GiXfZmlw
-    data_APS6: Terça - 24/09 às 12:00
-    link_APS6: TBA
+    data_APS6: Sexta - 27/09 às 23:59
+    link_APS6: https://classroom.github.com/a/v8iEYUMT
     
     data_AI: ~30/09
     link_AI: TBA
@@ -198,7 +198,7 @@ nav:
           #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
             # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
         - APS 6:
-          - "APS 6 - Classroom" : TODO
+          - "APS 6 - Classroom" : https://classroom.github.com/a/v8iEYUMT
           - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:

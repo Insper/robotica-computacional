@@ -16,7 +16,7 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
     [Download dos Notebooks](atividades_cap_6.zip)
 
-<!-- ## Para entregar
+## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 6.
@@ -25,6 +25,6 @@ Clique no link abaixo para realizar o download dos notebooks das atividades.
 
     As entregas da APS 6 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 6 - Github Classroom](https://classroom.github.com/a/zxV99Se5)
+    [APS 6 - Github Classroom]( {{ link_APS6 }} )
 
-    A data final de entrega é **{{ data_APS6 }}**. -->
+    A data final de entrega é **{{ data_APS6 }}**.
