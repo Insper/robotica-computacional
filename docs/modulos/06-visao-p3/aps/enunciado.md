@@ -35,6 +35,7 @@ ____________________________________________________________________
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
+* Os nós foram configurados corretamente.
 * **Vídeo:** O vídeo foi gravado na **horizontal**.
 * **Vídeo:** O vídeo foi gravado em um ambiente bem iluminado.
 * **Vídeo:** O audio está claro e sem ruídos, se desejar, remova o audio e adicione uma música de fundo.
