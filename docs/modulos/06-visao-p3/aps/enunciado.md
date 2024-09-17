@@ -21,6 +21,14 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ____________________________________________________________________
+# **IMPORTANTE**
+Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
+```bash
+cd ~/colcon_ws/src/my_simulation/robcomp_interfaces
+git pull
+cb
+```
+____________________________________________________________________
 
 # Exercício 0 - Organização & Qualidade (1 pontos)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
@@ -45,7 +53,7 @@ Com base no código `image_subscriber.py` do capítulo 5, crie um arquivo chamad
 
 - Inscrever-se no tópico de imagens.
 - Identificar objetos nas imagens utilizando o modelo MobileNet.
-- Publicar, no tópico `/mobilenet_detection`, a classe, o centro_x e o centro_y de cada objeto identificado, utilizando o formato de mensagem `robcomp_util/msgs/DetectionArray`.
+- Publicar, no tópico `/mobilenet_detection`, a classe, o centro_x e o centro_y de cada objeto identificado, utilizando o formato de mensagem `robcomp_interfaces/msg/DetectionArray`.
 - Ouvir o tópico `/vision/mobilenet_flag` e, ao receber uma mensagem `False`, interromper o processamento de imagens.
 
 ## 1.2 - Identificação de Marcadores ArUco
@@ -55,7 +63,7 @@ Com base no código `image_subscriber.py` do capítulo 5, crie um arquivo chamad
 
 - Inscrever-se no tópico de imagens.
 - Identificar marcadores ArUco nas imagens.
-- Publicar, no tópico `/aruco_detection`, a id (como string), o centro_x e o centro_y de cada marcador identificado, utilizando o formato de mensagem `robcomp_util/msgs/DetectionArray`.
+- Publicar, no tópico `/aruco_detection`, a id (como string), o centro_x e o centro_y de cada marcador identificado, utilizando o formato de mensagem `robcomp_interfaces/msg/DetectionArray`.
 - Ouvir o tópico `/vision/aruco_flag` e, ao receber uma mensagem `False`, interromper o processamento de imagens.
 
 ## Critérios de Avaliação:
