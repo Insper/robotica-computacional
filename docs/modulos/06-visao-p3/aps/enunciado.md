@@ -24,7 +24,8 @@ ____________________________________________________________________
 # **IMPORTANTE**
 Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
 ```bash
-cd ~/colcon_ws/src/my_simulation/robcomp_interfaces
+cd ~/colcon_ws/src/my_simulation/
+git stash
 git pull
 cb
 ```
