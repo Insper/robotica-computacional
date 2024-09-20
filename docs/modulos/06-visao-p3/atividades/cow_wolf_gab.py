@@ -91,6 +91,7 @@ class DangerDetector(MobileNetDetector): # Esta classe deve herdar da classe Mob
         """
         for vaca in animais['vaca']:
             iou = self.calcula_iou(vaca, animais['lobo'])
+            print('IOU: ', iou)
             if iou > 0:
                 cv2.rectangle(image, (vaca[0], vaca[1]), (vaca[2], vaca[3]), (0, 0, 255), 2)
                 cv2.putText(image, 'PERIGO', (vaca[0], vaca[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
@@ -104,7 +105,7 @@ class DangerDetector(MobileNetDetector): # Esta classe deve herdar da classe Mob
 
 def main():
     import time
-    bgr = cv2.imread("img/cow_wolf_4.png")
+    bgr = cv2.imread("img/cow_wolf_5.png")
 
     Detector = DangerDetector()
     image, results = Detector.detect(bgr)
