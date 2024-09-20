@@ -11,14 +11,14 @@ class DangerDetector(MobileNetDetector): # Esta classe deve herdar da classe Mob
         # Ajuste o valor de confiança para o valor que você achar melhor
         self.CONFIDENCE = CONFIDENCE
         
-    def separar_caixa_entre_animais(self, img: np.ndarray, resultados: list) -> (np.ndarray, dict):
+    def separar_caixa_entre_animais(self, img: np.ndarray, resultados: list[dict]):
         """Não mude ou renomeie esta função
         Combina as caixas dos lobos em uma unica grande caixa e organiza as caixas das vacas em uma lista.
         Isso facilitará a verificação de perigo para cada vaca.
 
         Args:
             img (np.ndarray): Imagem de entrada
-            resultados (list): Lista com as detecções no formato [classe, confiança, (xmin, ymin), (xmax, ymax)]
+            resultados (list): Lista de dicionários das as detecções com as chaves 'classe', 'confiança', 'bbox'
 
         Returns:
             img: Imagem de saída
