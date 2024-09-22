@@ -226,9 +226,9 @@ nav:
     #     - modulos/my_package/index.md
     #     - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
-    # - Provas:
-    #   - Simulado AI:
-    #     - "Enunciado": provas/simulado_ai/enunciado.md
+    - Provas:
+      - Simulado AI:
+        - "Enunciado": provas/simulado_ai/enunciado.md
     #     - "Resposta Q1" : provas/simulado_ai/q1.py
     #     - "Resposta Q2" : provas/simulado_ai/q2.py
     #   - AI:
