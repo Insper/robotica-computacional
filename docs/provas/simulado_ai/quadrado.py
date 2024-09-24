@@ -36,6 +36,7 @@ class Quadrado(Node, Laser, Odom):
         current_time = self.get_clock().now().to_msg()
         current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
 
+        print(f'Diff: {self.goal_time - current_time}')
         if current_time >= self.goal_time:
             self.goal_yaw = self.yaw + np.pi/2
             self.robot_state = "gira"
@@ -46,6 +47,7 @@ class Quadrado(Node, Laser, Odom):
         erro = self.goal_yaw - self.yaw
         erro = np.arctan2(np.sin(erro), np.cos(erro))
 
+        print(f'Erro: {erro}')
         if abs(erro) < np.deg2rad(1):
             self.robot_state = "anda"
             current_time = self.get_clock().now().to_msg()
