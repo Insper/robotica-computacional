@@ -109,8 +109,10 @@ Exemplo de conversa entre o robô e o **Handler**:
 
 """bash
     history:
+
     - 'Robo: Estou pronto para explorar!'
     - 'Handler: Vá por cima!'
+    
     message: Encontrei um obstáculo
     ---
 """
