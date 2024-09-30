@@ -234,7 +234,7 @@ nav:
         - "Resposta Q2" : provas/simulado_ai/q2.py
       - AI:
         - "Enunciado": provas/ai/enunciado.md
-        - "AI - Classroom" : TODO
+        - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
         - "Gabarito AI" : https://www.youtube.com/watch?v=dQw4w9WgXcQ
     #   - Simulado PF:
     #     - "Enunciado": provas/simulado_pf/enunciado.md
