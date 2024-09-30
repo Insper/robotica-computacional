@@ -113,7 +113,7 @@ Exemplo de conversa entre o robô e o **Handler**:
     - 'Robo: Estou pronto para explorar!'
     - 'Handler: Vá por cima!'
 
-    message: Encontrei um obstáculo
+    message: Robo: Encontrei um obstáculo
     ---
 ```
 
