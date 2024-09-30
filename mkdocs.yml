@@ -234,7 +234,7 @@ nav:
         - "Resposta Q2" : provas/simulado_ai/q2.py
       - AI:
         - "Enunciado": provas/ai/enunciado.md
-        - "AI - Classroom" : {{ TODO }}
+        - "AI - Classroom" : TODO
     #   - Simulado PF:
     #     - "Enunciado": provas/simulado_pf/enunciado.md
     #     - "Resposta Q1" : provas/simulado_pf/q1.py
