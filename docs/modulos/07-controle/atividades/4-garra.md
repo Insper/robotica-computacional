@@ -14,9 +14,9 @@ Para mover a **garra** publique no tópico `/joint2_position_controller/command`
 
 Vamos encapsular a os comandos da garra em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `my_package/my_package`, crie um arquivo denominado `garra.py` e uma classe chamada `Garra` sem herança. Essa classe deve:
+Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma classe chamada `Garra` sem herança. Essa classe deve:
 
-* Não inicie um nó nesse arquivo.
+* Não iniciar um nó.
 
 * Inicialize uma variável `self.delay`, que será utilizada para controlar o tempo de espera enquanto a garra se move.
 

@@ -209,11 +209,10 @@ nav:
     #       - "2 - Segue-Linha-P":
     #         - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
     #         - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
-    #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
-    #       - "3 - Rotacionar-P":
-    #         - "3 - Rotacionar-P": modulos/07-controle/atividades/3-controlar-angulo.md
-    #         - "Download > RotateTo": modulos/07-controle/util/rotate2.py
-    #         - "Download > Rodar RotateTo": modulos/07-controle/util/run_rotate2.py
+    # #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
+    #       - "3 - Identifica Creepers":
+    #         - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica-creepers.md
+    # #         - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/identifica_creepers.py
     #       - "4 - Controlando a Garra":
     #         - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
     #         - "Download > Garra": modulos/07-controle/util/garra.py
