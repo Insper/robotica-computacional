@@ -1,14 +1,11 @@
-from my_package.module_aruco import Aruco3d
+from robcomp_util.module_aruco import Aruco3d
 import cv2
 import numpy as np
 
 
-class DistanceEstimator(Aruco3d):
+class CreeperDetector(Aruco3d):
     def __init__(self):
-        Aruco3d.__init__(self,
-                         camera_matrix='/home/borg/colcon_ws/src/robcomp-util/my_package/my_package/config/cameraMatrix_realsense.txt',
-                         camera_distortion='/home/borg/colcon_ws/src/robcomp-util/my_package/my_package/config/cameraDistortion_realsense.txt'
-                         )
+        Aruco3d.__init__(self)
         self.kernel = np.ones((5,5),np.uint8)
 
         self.filters = {
@@ -123,9 +120,6 @@ class DistanceEstimator(Aruco3d):
 
         for result in matched_pairs:
             bgr = self.drawAruco(bgr, result)
-            
-        # 9. Utilize a função `max` para classificar os Arucos por distância.
-        ranked_arucos = max(matched_pairs, key=lambda x: x['distancia'])
 
         return bgr, matched_pairs
     

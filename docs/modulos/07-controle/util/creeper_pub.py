@@ -1,70 +1,40 @@
-import time
-import rclpy
-from rclpy.node import Node
 from rclpy.qos import ReliabilityPolicy, QoSProfile
-from sensor_msgs.msg import CompressedImage
-from std_msgs.msg import String
-from cv_bridge import CvBridge
-from my_package.atividade3 import DistanceEstimator
-import cv2
-import json
+from sensor_msgs.msg import LaserScan
+import numpy as np
+import rclpy
 
-class BaseNode(Node, DistanceEstimator): # Mude o nome da classe
-
+class Laser(): # Mude o nome da classe
     def __init__(self):
-        Node.__init__(self, 'base_node') # Mude o nome do nó
-        DistanceEstimator.__init__(self)
-        self.bridge = CvBridge()
-        self.subcomp = self.create_subscription(
-            CompressedImage,
-            '/camera/image_raw/compressed',
-            self.image_callback,
-            QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
-        )
-        self.ranked_arucos = {}
-        time.sleep(3)
-        self.timer = self.create_timer(0.25, self.control)
+
+        print("Laser Inciado")
 
         # Inicialização de variáveis
+        self.front = [0]
+        self.openning = 5
         
         # Subscribers
-        ## Coloque aqui os subscribers
-
-        # Publishers
-        self.creeper_pub = self.create_publisher(String, 'creeper', 10)
-                                                 
-
-    def image_callback(self, msg):
-        cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")
-        bgr, self.ranked_arucos = self.run(cv_image)
-
-        # convert tvec to tuple
-        for i, creeper in enumerate(self.ranked_arucos):
-            for key in creeper:
-                try:
-                    self.ranked_arucos[i][key] = tuple(creeper[key].tolist())
-                except:
-                    pass
-        print(self.ranked_arucos)
-
-        # cv2.imshow("Imagem", bgr)
-        # cv2.waitKey(1)
-
-
-    def control(self):
-        msg = String()
-        msg.data = json.dumps(self.ranked_arucos)
-        self.creeper_pub.publish(msg)
+        self.laser_sub = self.create_subscription(
+            LaserScan,
+            '/scan',
+            self.laser_callback,
+            QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
         
-            
-def main(args=None):
-    rclpy.init(args=args)
-    ros_node = BaseNode() # Mude o nome da classe
+        rclpy.spin_once(self, timeout_sec=1.0) # Executa uma vez para pegar a primeira leitura
 
-    rclpy.spin(ros_node)
+    def custom_laser(self):
+        pass
+    
+    def laser_callback(self, data: LaserScan):
+        self.laser_msg = np.array(data.ranges).round(decimals=2)
+        self.laser_msg[self.laser_msg == 0] = np.inf
+        self.laser_msg = list(self.laser_msg)
 
-    ros_node.destroy_node()
-    rclpy.shutdown()
+        # +- 5 degrees
+        self.front = self.laser_msg[:self.openning] + self.laser_msg[-self.openning:]
+        self.left = self.laser_msg[90-self.openning:90+self.openning]
+        self.right = self.laser_msg[275-self.openning:275+self.openning]
+        self.back = self.laser_msg[180-self.openning:180+self.openning]
 
-if __name__ == '__main__':
-    main()
+        self.custom_laser()
+
+
