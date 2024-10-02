@@ -2,25 +2,20 @@ from robcomp_util.module_aruco import Aruco3d
 import cv2
 import numpy as np
 
-class CreeperDetector(): # Importe a classe Aruco3d
+class CreeperDetector(Aruco3d):
     def __init__(self):
-        # Inicialize a classe Aruco3d
+        Aruco3d.__init__(self)
         self.kernel = np.ones((5,5),np.uint8)
 
         self.filters = {
             'blue': {
-                'lower': (0,0,0),
-                'upper': (255,255,255)
+                'lower': np.array([100, 50, 50]),
+                'upper': np.array([140, 255, 255])
             },
             'green': {
-                'lower': (0,0,0),
-                'upper': (255,255,255)
-            },
-            'red': {
-                'lower': (0,0,0),
-                'upper': (255,255,255)
-            },
-            }
+                'lower': np.array([40, 50, 20]),
+                'upper': np.array([80, 255, 255])
+            },}
         
     def find_creeper(self, bgr: np.ndarray, color: str) -> list:
         """
@@ -31,14 +26,23 @@ class CreeperDetector(): # Importe a classe Aruco3d
             color (str): cor do creeper para identificação.
 
         Returns:
-            list: lista de centros dos creepers detectados e a cor atual.
-                   No formato list( [(cx,cy), color], [...]... ).
+            list: lista de centros dos creepers detectados e a cor atual. No formato list( [(cx,cy), color], [...]... ).
         """
         creepers = []
-        # 1. Converter para hsv e filtrar a partir da chave `color` do dicionário `self.filters`.
-        # 2. Utilize a função cv2.morphologyEx para aplicar a operação de abertura e fechamento.
-        # 3. Encontre os contornos e adicione o centro do creeper e o nome da cor na lista `creepers`.
-        
+        hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, self.filters[color]['lower'], self.filters[color]['upper'])
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
+
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        for cnt in contours:
+            area = cv2.contourArea(cnt)
+            if area < 1000:
+                continue
+            x, y, w, h = cv2.boundingRect(cnt)
+            cx, cy = x + w//2, y + h//2
+            creepers.append([(cx, cy), color])
+
         return creepers
 
     def distance(self, x1, x2):
@@ -66,24 +70,22 @@ class CreeperDetector(): # Importe a classe Aruco3d
         matched_pairs = []
         for creeper in creepers:
             
-            # 1. Use a função min para ordenar os resultados por distância com base na função self.distance.
-                #   Dica: Utilize a função lambda para acessar a chave 'centro' do dicionário `results`.
-            closest = min(...)
+            # 3. Use a função min para ordenar os resultados por distância com base na função self.distance.
+            closest = min(results, key=lambda x: self.distance(x['centro'][0], creeper[0][0]))
 
-            # 2. Remove da lista `results` o aruco mais próximo do corpo `creeper` para evitar que ele seja combinado novamente.
-                #   Dica: Pode ser feito utilizando list comprehension.
-            results = ...
+            # 4. Remove da lista `results` o aruco mais próximo do corpo `creeper` para evitar que ele seja combinado novamente.
+            results = [result for result in results if result['distancia'] != closest['distancia']]
 
-            # 3. Adiciona na variável o centro do creeper mais próximo na chave "body_center" do dicionário `closest`.
-            closest['body_center'] = ...
-            # 4. Adiciona a cor do creeper mais próximo na chave "color" do dicionário `closest`.
-            closest['color'] = ...
+            # 5. Adiciona na variável o centro do creeper mais próximo na chave "body_center" do dicionário `closest`.
+            closest['body_center'] = creeper[0]
+            # 6. Adiciona a cor do creeper mais próximo na chave "color" do dicionário `closest`.
+            closest['color'] = creeper[1]
             
-            # 5. Desenha uma linha entre o centro do creeper e o centro do marcador Aruco.
-            cv2.line()
+            # 7. Desenha uma linha entre o centro do creeper e o centro do marcador Aruco.
+            cv2.line(bgr, tuple(closest['centro']), tuple(closest['body_center']), (0, 0, 255), 2)
             
-            # 6. Adiciona o par combinado na lista `matched_pairs`.
-            matched_pairs...
+            # 8. Adiciona o par combinado na lista `matched_pairs`.
+            matched_pairs.append(closest)
 
             if len(results) == 0:
                 break
@@ -103,23 +105,20 @@ class CreeperDetector(): # Importe a classe Aruco3d
                 dict_keys(['id', 'rvec', 'tvec', 'distancia', 'corners', 'centro', 'body_center', 'color'])
         """
         # 1. Chame a função self.detect_aruco e armazene os resultados em uma variável.
-        _, results = ...
-
-        # 2. Chame a função self.find_creeper para encontrar os creepers na imagem de cada cor.        
+        _, results = self.detectaAruco(bgr) 
+        
         creepers = []
-        creepers += ...
-        creepers += ...
-        creepers += ...
+        creepers += self.find_creeper(bgr, "green")
+        creepers += self.find_creeper(bgr, "blue")
 
-        if len(creepers) == 0 or len(results) == 0: # Verifica se não há creepers ou arucos na imagem.
+        if len(creepers) == 0 or len(results) == 0:
             return bgr, []
 
-        # 3. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
-        bgr, matched_pairs = ...
+        # 2. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
+        bgr, matched_pairs = self.match_aruco(bgr, creepers, results)
 
-        # 4. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
         for result in matched_pairs:
-            bgr = ...
+            bgr = self.drawAruco(bgr, result)
 
         return bgr, matched_pairs
     
