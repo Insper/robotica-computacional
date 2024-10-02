@@ -1,40 +1,57 @@
-from rclpy.qos import ReliabilityPolicy, QoSProfile
-from sensor_msgs.msg import LaserScan
-import numpy as np
+import time
 import rclpy
+from rclpy.node import Node
+from rclpy.qos import ReliabilityPolicy, QoSProfile
+from sensor_msgs.msg import CompressedImage
+from std_msgs.msg import String
+from cv_bridge import CvBridge
+from robcomp_util.creeper_detector import CreeperDetector
+import cv2
+import json
+from robcomp_interfaces.msg import DetectionArray, Detection
 
-class Laser(): # Mude o nome da classe
+class BaseNode(Node, CreeperDetector): # Mude o nome da classe
+
     def __init__(self):
+        Node.__init__(self, 'creeper_detector_node') # Mude o nome do nó
+        CreeperDetector.__init__(self)
+        self.bridge = CvBridge()
+        self.subcomp = self.create_subscription(
+            CompressedImage,
+            '/camera/image_raw/compressed',
+            self.image_callback,
+            QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
+        )
 
-        print("Laser Inciado")
+        # Publishers
+        self.creeper_pub = self.create_publisher(DetectionArray, 'creeper', 10)
+                                                 
 
-        # Inicialização de variáveis
-        self.front = [0]
-        self.openning = 5
+    def image_callback(self, msg):
+        cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")
+        _, self.ranked_arucos = self.run(cv_image)
+
+        # convert tvec to tuple
+        msg = DetectionArray()
+        for i, creeper in enumerate(self.ranked_arucos):
+            detection = Detection()
+            detection.classe = str(creeper['color']) + '-' + str(creeper['id'][0])
+            detection.cx = float(cv_image.shape[1]) / 2 - float(creeper['body_center'][0])
+            detection.cy = 0.
+
+            msg.deteccoes.append(detection)
         
-        # Subscribers
-        self.laser_sub = self.create_subscription(
-            LaserScan,
-            '/scan',
-            self.laser_callback,
-            QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
-        
-        rclpy.spin_once(self, timeout_sec=1.0) # Executa uma vez para pegar a primeira leitura
+        if len(msg.deteccoes) > 0:
+            self.creeper_pub.publish(msg)
+            
+def main(args=None):
+    rclpy.init(args=args)
+    ros_node = BaseNode() # Mude o nome da classe
 
-    def custom_laser(self):
-        pass
-    
-    def laser_callback(self, data: LaserScan):
-        self.laser_msg = np.array(data.ranges).round(decimals=2)
-        self.laser_msg[self.laser_msg == 0] = np.inf
-        self.laser_msg = list(self.laser_msg)
+    rclpy.spin(ros_node)
 
-        # +- 5 degrees
-        self.front = self.laser_msg[:self.openning] + self.laser_msg[-self.openning:]
-        self.left = self.laser_msg[90-self.openning:90+self.openning]
-        self.right = self.laser_msg[275-self.openning:275+self.openning]
-        self.back = self.laser_msg[180-self.openning:180+self.openning]
+    ros_node.destroy_node()
+    rclpy.shutdown()
 
-        self.custom_laser()
-
-
+if __name__ == '__main__':
+    main()
