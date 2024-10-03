@@ -43,7 +43,8 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **Vídeo:** Na descrição do vídeo no Youtube, está descrito o que o robô está fazendo.
 * **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
 * **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
-* **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.____________________________________________________________________
+* **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
+____________________________________________________________________
 
 # Exercício 1 - Nós de Visão (3 pontos)
 
