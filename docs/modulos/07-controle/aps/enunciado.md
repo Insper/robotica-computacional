@@ -48,47 +48,43 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
 ____________________________________________________________________
 
-# Exercício 1 - Segue Linha P (2 pontos)
+# Exercício 1 - Segue Linha P (4 pontos)
 Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional.md/).
 
-Repita o vídeo do 
+Repita o vídeo do Exercício 2 - Segue Linha da APS 5 e adicione o link no arquivo `README.md` do seu repositório.
 
 ____________________________________________________________________
 
-# Exercício 2 - Pega Creeper (6 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `derrubador.py` com uma classe denominada `Derrubador` e um nó denominado `derrubador_node` que derrube 4 creepers ao redor de uma arena quadrado, em uma ordem pré-definida. O robô sempre inicia no centro do quadrado. O nó deve:
+# Exercício 2 - Pega Creeper (5 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `pega.py` com uma classe denominada `PegaCreeper` e um nó denominado `pega_creeper_node` que olhe para 3 creepers, com duas cores possíveis e dois IDs possíveis e pegue o crreeper desejado.
 
-* Recebe corretamente a sequência de creepers que devem ser derrubados.
+* Recebe como atributo da classe `PegaCreeper` a cor e o ID do creeper que deve ser pego.
 
-* Se comunicar com um nó `creepers` que identifica o ID/Cor dos creepers e suas posições.
+* Se comunica com um nó `creepers` que identifica os ID/Cor dos creepers e suas posições.
 
 * Não se increver no tópico de visão, mas sim no tópico de creepers.
 
-* Recebe a sequência de cores/ID dos creepers que devem ser derrubados.
+* Se aproxima do creeper reduzindo a velocidade linear conforme se aproxima. (ou seja, controle proporcional)
 
-* Se aproximar de cada creeper, em ordem, e parar de forma clara e precisa.
+* Ao chegar perto do creeper, para e desce a garra.
 
-* Depois de parar, o robô deve derrubar o creeper com a garra.
+* Continua a se aproximar do creeper até que esteja bem perto.
 
-* Siga para o próximo creeper até que todos os creepers tenham sido derrubados.
+* Fecha a garra e levanta o creeper.
 
-* Retorne para o centro do quadrado e pare.
+* Gire 180 graus e vá para o centro da arena.
+
+* Desça o creeper e pare.
 
 ## Arena
-A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em cada canto do quadrado, há um creeper de **verde** ou **azul** com dois possíveis IDs. A ordem dos creepers que deve ser seguinda é informada na hora da execução, como uma lista de strings, por exemplo, `['verde_17', 'verde_21', 'azul_21', 'azul_17']`.
-
-Tanto a ordem dos creepers quanto a posição deles é aleatória, então o robô deve ser capaz de se adaptar a qualquer situação.
+A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em um dos cantos da arena, há um conjunto de 3 creepers, dois de mesma cor e id diferentes e dois de mesmo id e cores diferentes. O robô deve ser capaz de pegar qualquer um dos creepers.
 
 ## Critérios de Avaliação:
 
 1. Desenvolveu um nó que publica corremente os creepers.
-2. O nó `derrubador_node` não se inscreve no tópico de visão.
-3. O robô se aproxima de cada creeper e **para** de forma clara e então **derruba** o creeper com a garra.
-4. **Vídeo:** Mostra o robô executando o comportamento desejado e derrubando os creepers na ordem correta.
+2. O nó `pega_creeper_node` não se inscreve no tópico de visão.
+3. O robô se aproxima de cada creeper e pegar o creeper desejado.
+4. O robô gira 180 graus e retorna ao centro com o creeper em suas garras.
+5. O robô desce o creeper e para.
+4. **Vídeo:** Mostra o robô executando o comportamento desejado e pegando o creeper correto.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
-
-## Competição (+2 ponto bônus)
-
-**Para os alunos que completarem o exercício 2 até o dia 29/04/2024** vamos realizar uma competição no estilo "mata-mata". Onde os grupos vão enfrentam-se em pares para ver quem derruba os creepers mais rápido. Os grupos vão disputar na mesma arena e na mesma sequência de creepers. A partir da semifinal, serão adicionados creepers da cor **vermelha**.
-
-O vencedor da competição ganhará 2 pontos bônus na nota da APS e os grupos que chegarem na semifinal e conseguirem completar com os creepers vermelhos, ganharão 1 ponto bônus.
