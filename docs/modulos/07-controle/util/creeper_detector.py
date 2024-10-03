@@ -55,6 +55,7 @@ class CreeperDetector(): # Importe a classe Aruco3d
         Args:
             bgr (numpy.array): imagem no espaço de cor BGR.
             creepers (list): lista de centros dos creepers detectados através da função `find_creeper`.
+                list( [(cx,cy), color], [...]... ).
             results (list(dicts)): resultados da detecção Aruco.
                 dict_keys(['id', 'rvec', 'tvec', 'distancia', 'corners', 'centro'])
 
@@ -117,7 +118,11 @@ class CreeperDetector(): # Importe a classe Aruco3d
         # 3. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
         bgr, matched_pairs = ...
 
-        # 4. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
+        # 4. Passe novamente por creepers e adicione cores sem correspondência caso não exista um marcador Aruco visível.
+            # Deixe a chave 'id' como '0'
+        matched_pairs = ...
+
+        # 5. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
         for result in matched_pairs:
             bgr = ...
 
