@@ -39,6 +39,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * As dependências do pacote estão corretas.
 * A configuração dos nós foi realizada corretamente.
 * Os diretórios e arquivos estão organizados de forma adequada.
+* **Vídeo:** Utilize o comando `ros2 run` para executar o nó, mostre o comando sendo executado no terminal.
 * **Vídeo:** O vídeo foi gravado na **horizontal**.
 * **Vídeo:** O vídeo foi gravado em um ambiente bem iluminado.
 * **Vídeo:** O audio está claro e sem ruídos, se desejar, remova o audio e adicione uma música de fundo.
