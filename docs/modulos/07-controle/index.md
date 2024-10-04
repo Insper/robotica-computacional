@@ -11,18 +11,18 @@ Esse conceito será explorado nas seguintes atividades,
 
 - [Atividade 1](atividades/1-controle-proporcional.ipynb) - Introdução ao conceito de controle proporcional.
 - [Atividade 2](atividades/2-seguelinha-proporcional.md) - Aplicação do controle proporcional no seguidor de linha.
-- [Atividade 3](atividades/3-controlar-angulo.md) - Aplicações do controle proporcional na orientação do robô.
+- [Atividade 3](atividades/3-identifica_creeper.md) - Desenvolvimento de um nó que identifica os creepers, combinando a detecção de cor e ID.
 - [Atividade 4](atividades/4-garra.md) - Entendendo a utilização da garra.
 
 ## Para entregar
 
-!!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 6.
+<!-- !!! exercise
+    Clique no link abaixo para ser direcionado para o Github Classroom da APS 7.
 
     As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
-    As entregas da APS 6 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
+    As entregas da APS 7 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
     [APS 6 - Github Classroom](https://classroom.github.com/a/d-jiiY5d)
 
-    A data final de entrega é **{{ data_APS6 }}**.
+    A data final de entrega é **{{ data_APS7 }}**. -->
