@@ -221,9 +221,9 @@ nav:
     #       - "APS 7 - Classroom" : {{ link_APS7 }}
           - "Enunciado": modulos/07-controle/aps/enunciado.md
           
-      - Gabarito do robcomp_util:
-        - modulos/robcomp_util/index.md
-        - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
+    - Gabarito do robcomp_util (até APS 5):
+      - modulos/robcomp_util/index.md
+      - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
     - Provas:
       - Simulado AI:
