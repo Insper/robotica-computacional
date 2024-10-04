@@ -50,9 +50,9 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 ____________________________________________________________________
 
 # Exercício 1 - Segue Linha P (4 pontos)
-Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional.md/).
+Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
 
-Repita o vídeo do Exercício 2 - Segue Linha da APS 5 e adicione o link no arquivo `README.md` do seu repositório.
+Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 5**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
 
 ____________________________________________________________________
 
@@ -78,7 +78,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 * Desça o creeper e pare.
 
 ## Arena
-A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em um dos cantos da arena, há um conjunto de 3 creepers, dois de mesma cor e id diferentes e dois de mesmo id e cores diferentes. O robô deve ser capaz de pegar qualquer um dos creepers.
+A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em um dos cantos da arena, há um conjunto de 3 creepers, **dois de mesma cor e id diferentes** e **dois de mesmo id e cores diferentes**. O robô deve ser capaz de pegar qualquer um dos creepers.
 
 ## Critérios de Avaliação:
 
