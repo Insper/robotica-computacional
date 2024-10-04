@@ -26,8 +26,9 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
 
 * Definir um método `controla_garra` que recebe um commando do tipo `str` e executa o movimento da garra de acordo com o comando recebido. O método deve:
 
-    * Se receber o comando **abrir** abre a garra.
-    * Se receber o comando **fechar** fecha a garra.
-    * Se receber o comando **cima** move o ombro para cima.
-    * Se receber o comando **baixo** move o ombro para baixo.
-    * Se receber o comando **frente** move o ombro para frente.
+    * Se receber o comando **abrir** abre a garra e espera `self.delay` segundos.
+    * Se receber o comando **fechar** fecha a garra e espera `self.delay` segundos.
+    * Se receber o comando **cima** move o ombro para cima e espera `self.delay` segundos.
+    * Se receber o comando **baixo** move o ombro para baixo e espera `self.delay` segundos.
+    * Se receber o comando **frente** move o ombro para frente e espera `self.delay` segundos.
+    * Para esperar `self.delay` segundos, utilize a função `time.sleep(self.delay)`.
