@@ -31,7 +31,11 @@ class ImageNode(Node): # Mude o nome da classe
         ## Coloque aqui os publishers
 
     def flag_callback(self, msg):
-        self.running = bool(msg.data)
+        if msg.data.lower() == 'false':
+            self.running = False
+        elif msg.data.lower() == 'true':
+            self.running = True
+        print(self.running )
 
     def image_callback(self, msg):
         if self.running:
