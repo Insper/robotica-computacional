@@ -86,7 +86,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
 
-* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha na variável `self.x`, `self.y` e a largura da imagem na variável `self.w`.
+* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha na variável `self.cx`, `self.cy` e a largura da imagem na variável `self.w`.
 
 * A função `image_callback` só deve executar se a variável `self.running` for `True`.
 
