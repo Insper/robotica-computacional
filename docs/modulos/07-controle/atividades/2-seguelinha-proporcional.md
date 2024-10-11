@@ -22,9 +22,9 @@ Onde a variável `rot` é a velocidade angular do robô, `K_p` é a constante pr
 
 Com isso em mente, faça as seguintes modificações no código do seguidor de linha:
 
-1. Adicione uma variável `self.kp` no método `__init__` para armazenar a constante proporcional - lembre-se de inicializá-la com um valor adequado (considere a largura da imagem e as limitações do robô).
+1. Adicione uma variável `self.kp` no método `__init__` para armazenar a constante proporcional - lembre-se de inicializá-la com um valor adequado (considere a largura da imagem e as limitações do robô) e remova o estado `centraliza`.
 
-2. No estado `segue`, se `self.x == np.inf`, o robô deve apenas girar para encontrar a linha.
+2. No estado `segue`, se `self.cx == np.inf`, o robô deve apenas girar para encontrar a linha.
 
 3. No estado `segue`, defina uma velocidade linear constante e calcule o erro como a diferença entre a posição do centro de massa do segmento de linha detectado e o centro da imagem, por fim, utilize a fórmula do controle proporcional para calcular a velocidade angular do robô.
 
