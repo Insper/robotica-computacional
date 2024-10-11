@@ -86,9 +86,15 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
 
-* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha na variável `self.cx`, `self.cy` e a largura da imagem na variável `self.w`.
+* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha mais próximo nas variáveis `self.cx`, `self.cy`, e a metade da largura da imagem na variável `self.w`.
 
-* A função `image_callback` só deve executar se a variável `self.running` for `True`.
+* A função `image_callback` deve ser executada apenas se a variável `self.running` for `True`.
+
+* Calcule também a distância do centro da linha ao centro da imagem.
+
+<!-- # Calcular erro no callback -->
+
+* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
 
 * o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
 
