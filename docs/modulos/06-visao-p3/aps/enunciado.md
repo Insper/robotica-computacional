@@ -94,7 +94,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 <!-- # Calcular erro no callback -->
 
-* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
+* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`.
 
 * o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
 
