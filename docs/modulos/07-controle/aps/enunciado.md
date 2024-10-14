@@ -32,7 +32,7 @@ cb
 ____________________________________________________________________
 
 # Exercício 0 - Organização & Qualidade (1 pontos)
-Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
+Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
 * O pacote foi corretamente configurado.
