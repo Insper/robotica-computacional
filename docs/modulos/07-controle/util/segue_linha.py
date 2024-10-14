@@ -3,7 +3,6 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 from geometry_msgs.msg import Twist
-# Adicione aqui os imports necessários
 from sensor_msgs.msg import CompressedImage
 import cv2
 import numpy as np
@@ -71,7 +70,7 @@ class Seguidor(Node):
             cv2.imshow("cv_image", mask)
             cv2.waitKey(1)
         else:
-            return -1
+            self.cx = np.inf
 
     def centraliza(self):
         erro = self.w - self.cx
