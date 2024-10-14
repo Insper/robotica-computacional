@@ -16,7 +16,7 @@ Esse conceito será explorado nas seguintes atividades,
 
 ## Para entregar
 
-<!-- !!! exercise
+!!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 7.
 
     As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
@@ -25,4 +25,4 @@ Esse conceito será explorado nas seguintes atividades,
 
     [APS 6 - Github Classroom](https://classroom.github.com/a/d-jiiY5d)
 
-    A data final de entrega é **{{ data_APS7 }}**. -->
+    A data final de entrega é **{{ data_APS7 }}**.

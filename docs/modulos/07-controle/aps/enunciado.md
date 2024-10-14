@@ -61,7 +61,7 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Recebe como atributo da classe `PegaCreeper` a cor e o ID do creeper que deve ser pego.
 
-* Se comunica com um nó `creepers` que identifica os ID/Cor dos creepers e suas posições.
+* Se comunica com o nó `creepers` que identifica os ID/Cor dos creepers e suas posições.
 
 * Não se increver no tópico de visão, mas sim no tópico de creepers.
 

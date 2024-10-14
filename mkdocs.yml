@@ -29,7 +29,7 @@ extra:
     data_AI: Segunda - 30/09 às 13:30
     link_AI: TBA
 
-    data_APS7: Segunda - 14/10 às 12:00
+    data_APS7: Segunda - 28/10 às 12:00
     link_APS7: TBA
     data_APS8: Segunda - 21/10 às 12:00
     link_APS8: TBA
@@ -217,9 +217,9 @@ nav:
             - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
     #         - "Download > Garra": modulos/07-controle/util/garra.py
 
-    #     - APS 7:
-    # #       - "APS 7 - Classroom" : {{ link_APS7 }}
-    #       - "Enunciado": modulos/07-controle/aps/enunciado.md
+        - APS 7:
+    #       - "APS 7 - Classroom" : {{ link_APS7 }}
+          - "Enunciado": modulos/07-controle/aps/enunciado.md
           
     - Gabarito do robcomp_util (até APS 5 + mobilenetDetector):
       - modulos/robcomp_util/index.md
