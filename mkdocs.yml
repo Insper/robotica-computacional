@@ -204,11 +204,11 @@ nav:
       - Capítulo 7 - Controle Propocional:
         - modulos/07-controle/index.md
         - Atividades:
-    #       - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
+          - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
           - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
           - "2 - Segue-Linha-P":
             - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
-    #         - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
+            - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
     # #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
           - "3 - Identifica Creepers":
             - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
