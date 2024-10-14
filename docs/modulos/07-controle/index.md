@@ -23,6 +23,6 @@ Esse conceito será explorado nas seguintes atividades,
 
     As entregas da APS 7 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 6 - Github Classroom](https://classroom.github.com/a/d-jiiY5d)
+    [APS 7 - Github Classroom](https://classroom.github.com/a/hhzm8IPL)
 
     A data final de entrega é **{{ data_APS7 }}**.

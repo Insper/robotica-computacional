@@ -52,7 +52,7 @@ ____________________________________________________________________
 # Exercício 1 - Segue Linha P (4 pontos)
 Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
 
-Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 5**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
+Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 6**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
 
 ____________________________________________________________________
 

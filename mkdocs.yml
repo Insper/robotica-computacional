@@ -30,7 +30,7 @@ extra:
     link_AI: TBA
 
     data_APS7: Segunda - 28/10 às 12:00
-    link_APS7: TBA
+    link_APS7: https://classroom.github.com/a/hhzm8IPL
     data_APS8: Segunda - 21/10 às 12:00
     link_APS8: TBA
     data_APS9: Segunda - 28/10 às 12:00
@@ -218,7 +218,7 @@ nav:
     #         - "Download > Garra": modulos/07-controle/util/garra.py
 
         - APS 7:
-    #       - "APS 7 - Classroom" : {{ link_APS7 }}
+          - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
           - "Enunciado": modulos/07-controle/aps/enunciado.md
           
     - Gabarito do robcomp_util (até APS 5 + mobilenetDetector):
