@@ -65,20 +65,20 @@ class CreeperDetector(): # Importe a classe Aruco3d
             e a cor do creeper na chave "color". Remova creepers sem correspondência.
         """
         matched_pairs = []
-        for cabeca in results:
+        for creeper in creepers:
             
-            # 1. Use a função min para ordenar os corpinhos (creepers) por distância com base na função self.distance.
+            # 1. Use a função min para ordenar os resultados por distância com base na função self.distance.
                 #   Dica: Utilize a função lambda para acessar a chave 'centro' do dicionário `results`.
             closest = min(...)
 
-            # 2. Remove da lista `creepers` o corpinho mais próximo da cabeca `creeper` para evitar que ele seja combinado novamente.
+            # 2. Remove da lista `results` o aruco mais próximo do corpo `creeper` para evitar que ele seja combinado novamente.
                 #   Dica: Pode ser feito utilizando list comprehension.
-            creepers = ...
+            results = ...
 
-            # 3. Adiciona na variável o centro do creeper mais próximo na chave "body_center" do dicionário `cabeca`.
-            cabeca['body_center'] = ...
-            # 4. Adiciona a cor do creeper mais próximo na chave "color" do dicionário `cabeca`.
-            cabeca['color'] = ...
+            # 3. Adiciona na variável o centro do creeper mais próximo na chave "body_center" do dicionário `closest`.
+            closest['body_center'] = ...
+            # 4. Adiciona a cor do creeper mais próximo na chave "color" do dicionário `closest`.
+            closest['color'] = ...
             
             # 5. Desenha uma linha entre o centro do creeper e o centro do marcador Aruco.
             cv2.line()
