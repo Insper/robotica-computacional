@@ -4,7 +4,7 @@ Nesta atividade, vamos criar um nó que identifica os Creeper e publica as detec
 ## Identificação Offline
 Para facilitar o desenvolvimento, vamos começar criando uma classe que identifica os Creeper através de uma imagem. Para desenvolver essa classe, complete as intruções nos comentários do código [creeper_detector.py](../util/creeper_detector.py).
 
-Uma vez funcional, mova o arquivo `creeper_detector.py` para o pacote `robcomp_interfaces` e compile novamente o pacote.
+Uma vez funcional, mova o arquivo `creeper_detector.py` para o pacote `robcomp_util` e compile novamente o pacote.
 
 ## Identificação Online (Publisher)
 Agora que temos a classe que identifica os Creeper, vamos criar um nó que publica as detecções sincronizadas. 
