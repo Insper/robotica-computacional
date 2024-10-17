@@ -107,19 +107,21 @@ class CreeperDetector(Aruco3d):
             ranked_arucos (list(dicts)): imagem processada e Arucos classificados por distância.
                 dict_keys(['id', 'rvec', 'tvec', 'distancia', 'corners', 'centro', 'body_center', 'color'])
         """
-        # 1. Chame a função self.detect_aruco e armazene os resultados em uma variável.
+        # 1. Chame a função self.detectaAruco e armazene os resultados em uma variável.
         _, results = self.detectaAruco(bgr) 
         
+        # 2. Chame a função self.find_creeper para encontrar os creepers na imagem de cada cor.        
         creepers = []
         creepers += self.find_creeper(bgr, "green")
         creepers += self.find_creeper(bgr, "blue")
 
-        if len(creepers) == 0 or len(results) == 0:
+        if len(creepers) == 0 or len(results) == 0: # Verifica se não há creepers ou arucos na imagem.
             return bgr, []
 
-        # 2. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
+        # 3. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
         bgr, matched_pairs = self.match_aruco(bgr, creepers, results)
 
+        # 4. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
         for result in matched_pairs:
             bgr = self.drawAruco(bgr, result)
 
