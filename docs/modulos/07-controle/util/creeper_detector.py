@@ -118,13 +118,14 @@ class CreeperDetector(): # Importe a classe Aruco3d
         # 3. Desenvolva a função `match_aruco` para combinar os marcadores Aruco com os corpos dos creepers.
         bgr, matched_pairs = ...
 
-        # 4. Passe novamente por creepers e adicione cores sem correspondência caso não exista um marcador Aruco visível.
-            # Deixe a chave 'id' como '0'
-        matched_pairs = ...
 
-        # 5. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
+        # 4. Desenha os marcadores Aruco na imagem utilizando a função `drawAruco`.
         for result in matched_pairs:
             bgr = ...
+
+        # 5. Passe novamente por creepers e adicione cores sem correspondência caso não exista um marcador Aruco visível.
+            # Deixe a chave 'id' como '0'
+        matched_pairs = ...
 
         return bgr, matched_pairs
     

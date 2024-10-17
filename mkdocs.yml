@@ -212,7 +212,7 @@ nav:
     # #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
           - "3 - Identifica Creepers":
             - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
-    # #         - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/identifica_creepers.py
+            - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
           - "4 - Controlando a Garra":
             - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
     #         - "Download > Garra": modulos/07-controle/util/garra.py
