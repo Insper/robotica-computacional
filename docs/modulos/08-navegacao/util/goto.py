@@ -2,10 +2,9 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 from geometry_msgs.msg import Twist, Point
-# Adicione aqui os imports necessários
 import numpy as np
 import time
-from my_package.odom import Odom
+from robcomp_util.odom import Odom
 
 class GoTo(Node, Odom): # Mude o nome da classe
     def __init__(self, point: Point = Point()):

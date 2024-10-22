@@ -2,41 +2,24 @@ import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
 from rclpy.action import CancelResponse, GoalResponse
-from geometry_msgs.msg import Twist, Point
-from robcomp_util.odom import Odom
-from robcomp_interfaces.action import GoToPoint  # Importe sua ação
-
+from geometry_msgs.msg import Twist
 import numpy as np
-import time
+from robcomp_interfaces.action import GoToPoint  # Importe sua ação
+from robcomp_util.odom import Odom
 
-class GoToActionServer(Node, Odom):
+
+class GoToActionServer(BaseActionServer, Odom):
     """
-    Este nó implementa um Action Server para mover o robô até um ponto específico.
-    Ele herda de Node e Odom, onde Node é o componente básico do ROS2 e Odom lida
-    com informações de odometria.
+    Este nó implementa a lógica específica para mover o robô até um ponto objetivo.
+    Herda funcionalidades de BaseActionServer e Odom.
     """
 
     def __init__(self):
         """
-        Inicializa o Action Server, define parâmetros de controle e cria
-        os publicadores e timers necessários.
+        Inicializa o Action Server específico de 'GoToPoint'.
         """
-        Node.__init__(self, 'goto_action_server')
+        super().__init__('goto_action_server', GoToPoint, 'goto_point')
         Odom.__init__(self)
-
-        # Cria o servidor de ação para o 'GoToPoint'
-        self._action_server = ActionServer(
-            self, # Nó
-            GoToPoint, # Tipo da ação
-            'goto_point', # Nome do tópico de ação
-            execute_callback=self.execute_callback, # LOOP PRINCIPAL
-            goal_callback=self.goal_callback, # Aceita ou rejeita o objetivo
-            handle_accepted_callback=self.handle_accepted_callback, # Inicia a execução
-            cancel_callback=self.cancel_callback # Lidar com pedidos de cancelamento
-            )
-
-        self._goal_handle = None
-        self._result_msg = GoToPoint.Result()
 
         # Inicializa parâmetros de controle
         self.twist = Twist()
@@ -56,36 +39,6 @@ class GoToActionServer(Node, Odom):
         # Cria um timer para controlar o robô
         self.timer = self.create_timer(0.25, self.control)
 
-        # Publicador para enviar comandos de velocidade ao robô
-        self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
-
-    def goal_callback(self, goal_request):
-        """
-        Função chamada quando um novo objetivo é recebido.
-        Retorna a aceitação do objetivo.
-        """
-        self.get_logger().info('Recebeu um novo objetivo')
-        return GoalResponse.ACCEPT
-
-    def handle_accepted_callback(self, goal_handle):
-        """
-        Função chamada quando o objetivo é aceito. Inicia a execução do objetivo.
-        """
-        self._goal_handle = goal_handle
-        goal_handle.execute()
-
-    def cancel_callback(self, goal_handle):
-        """
-        Função chamada quando um cancelamento de objetivo é solicitado.
-        Cancela a execução e para o robô.
-        """
-        self.get_logger().info('Recebeu um pedido de cancelamento')
-        self._goal_handle = None
-        goal_handle.abort()
-        self.robot_state = 'stop'
-        self.cmd_vel_pub.publish(Twist())
-        return CancelResponse.ACCEPT
-
     def execute_callback(self, goal_handle):
         """
         Função que executa a movimentação do robô até o ponto solicitado.
@@ -94,9 +47,9 @@ class GoToActionServer(Node, Odom):
         self.get_logger().info('Iniciando movimento para o ponto')
         self.point = goal_handle.request.goal
 
-        while rclpy.ok(): # Enquanto o ROS2 estiver rodando
+        while rclpy.ok():  # Enquanto o ROS2 estiver rodando
             rclpy.spin_once(self)
-            if self.robot_state == 'stop': # Finaliza quando o estado é 'stop'
+            if self.robot_state == 'stop':  # Finaliza quando o estado é 'stop'
                 break
 
         self._result_msg.success = True
@@ -163,8 +116,7 @@ class GoToActionServer(Node, Odom):
 
 def main(args=None):
     """
-    Função principal que inicializa o ROS2, cria o Action Server
-    e mantém o nó rodando até ser encerrado.
+    Função principal que inicializa o ROS2, cria o Action Server específico e mantém o nó rodando até ser encerrado.
     """
     rclpy.init(args=args)
     action_server = GoToActionServer()
