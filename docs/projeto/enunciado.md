@@ -67,11 +67,12 @@ As missões envolvem os seguintes elementos:
 
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
-* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. São posicionados de forma fixa no mapa, como na imagem acima, mas em ordem (cor/ID) aleatória.
+* **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. 
+    São posicionados no **creeper_place** em ordem (cor/ID) aleatória, com excessão de 1 que está perdido.
 
-* **Drop Area**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
+* **"Drop Area"**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
-* **Labirinto**: Um dos Creepers está dentro de um labirinto, que deve ser percorrido pelo robô para encontrá-lo e resgatá-lo.
+* **Labirinto**: Um dos creepers está dentro de um labirinto, que deve ser percorrido pelo robô para encontrá-lo e resgatá-lo.
 
 * **Placas**: Arucos de ID 100, 150, 250. O grupo pode coloca-las em qualquer lugar, fora da linha branca, para auxiliar na navegação.
 
@@ -87,17 +88,15 @@ Para completar uma missão, você deve:
 
 2. Gravar o robô realizando a missão na pista real.
 
-    2.1. Para filmar, é necessário agendar a preparação da pista com a equipe técnica, garantindo condições semelhantes para todos os grupos.
-
 3. Incluir o link do vídeo no README do seu repositório e criar um Release com a tag referente ao último conceito alcançado.
 
 4. Cada missão deve ser concluída em menos de 15 minutos.
 
-5. **Deixar** o creeper em uma drop area inclui:
+5. **Deixar** o creeper em uma "Drop Area" inclui:
 
-    5.1. Parar próximo à drop area.
+    5.1. Parar próximo à "Drop Area".
 
-    5.2. Posicionar-se de frente para a drop area.
+    5.2. Posicionar-se de frente da "Drop Area".
 
     5.3. Aproximar-se até ficar a 0.5m de distância.
 
@@ -107,15 +106,7 @@ Para completar uma missão, você deve:
 
 As missões podem ser validadas ao longo do projeto. Solicite a validação da parte de requisitos de software antes de gravar.
 
-Os argumentos de linha de comando para o seu código devem ser:
-
-```python
-parser = argparse.ArgumentParser()
-parser.add_argument('--cor', type=str, default='verde', help='cor do creeper desejado')
-parser.add_argument('--id', type=int, default=10, help='id do creeper desejado')
-parser.add_argument('--drop', type=str, default='bicicleta', help='drop area desejada')
-args = parser.parse_args()
-```
+Sua classe deve receber como entrada, cor do creeper, ID do creeper e "Drop Area".
 
 <!--- 
 !!! Atenção
@@ -125,24 +116,41 @@ ________________________________________________________
 
 ### Missão **C**
 
-Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina. Os seguintes passos devem ser realizados:
+Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina, para criar um mapa da pista e a localização dos creepers e das "Drop Area".
+Os seguintes passos devem ser realizados:
 
-1. Crie um dicinário com as cores dos creepers e seus respectivas IDs para armazenar onde estão os creepers, como o exemplo abaixo:
+0. Inicie o `cartographer` com um mapa vázio e o nó do robô.
+
+1. Crie um dicinário com as cores dos creepers e seus respectivas IDs e as o objeto das "Drop Area", como o exemplo abaixo:
+    
+    * Para os creepers, armazene como 
 
 ```python
 creepers = {
-    'verde_10': ...,
-    'verde_11': ...,
-    'azul_10': ...,
-    'azul_11': ...,
+    'verde_10': '',
+    'verde_11': '',
+    'azul_10': '',
+    'azul_11': '',
+    'bicicleta': (0,0),
+    'cavalo': (0,0),
+    ...
 }
 ```
 
-2. O robô sai da posição inicial e visita todos os lugares onde os creepers podem aparecer para encontrar os creepers;
+2. O robô sai da posição inicial e visita o local onde estão os creepers.
 
-3. Ao encontrar um creeper, armazene onde ele está no dicionário - você pode armazenar a posição (x, y) ou referênciar a posição do creeper de outra forma;
+3. Para cada creepers presente no local, salve sua posição como a string `creeper_place`
 
-4. Ao encontrar todos os creepers, o robô retorna para a posição inicial, **pare** e **imprima** o dicionário com as posições dos creepers.
+4. O creeper que não está no `creeper_place` está no labirinto, anote sua posição como `labirinto`
+
+5. Depois continue andando pela pista até encontrar todas as "Drop Area".
+
+6. Ao encontrar uma "Drop Area", armazene onde ela está no dicionário guardando a posição `(x, y)` do robô quando o viu ou estime sua posição no mapa.
+
+7. Ao encontrar todas as "Drop Area", o robô retorna para a posição inicial, **para** e **imprime** o dicionário com as posições dos creepers.
+
+8. Salve o mapa da pista
+
 
 **Requisitos de projeto de software**:
 
@@ -157,29 +165,24 @@ creepers = {
 <!-- !!! warning
     É obrigatório rodar essa missão no robô real -->
 
-#### Entrega Parcial
-1. O robô segue a linha amarela;
-2. O robô segue a linha amarela da uma volta na pista e retorna a posição inicial;
-3. O robô segue a linha amarela e imprime a posição dos creepers.
 
 ________________________________________________________
 
 ### Missão **B**
 
-Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
+Essa missão utiliza os o mapa e a localização dos artefatos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
 
-<!--- 
-* **Nesta missão, vocês podem remover as caixas do Slalom**
---->
+0. Iniciar o `navigator` e o nó do robô.
 
-1. O programa recebe um argumento na linha de comando: cor e o ID do creeper **desejado**;
+1. A classe recebe a cor e o ID do creeper **desejado** com excessão do creeper perdido no labirinto e a "Drop Area" **desejada**;
 
-1.1. Utilize a biblioteca `argparse` em Python;
-1.2. Ou outro método de sua escolha.
+2. O robô navega diretamente até o `creeper_place` e pega o creeper **desejado**; 
 
-2. O robô e derruba o creeper **desejado**;
+3. Depois navega até a "Drop Area".
 
-3. Volta para a pista e retorna a posição inicial e para.
+4. O robô deixa o creeper **desejado** na "Drop Area" **desejada**;
+
+5. Volta para a pista e retorna a posição inicial e para.
 
 **Requisitos de projeto de software**:
 
@@ -187,34 +190,34 @@ Essa missão utiliza os conceitos da missão anterior e adiciona a capacidade de
 
 * **Subscriber para Aruco**: Crie um nó específico que identifica o creeper pela cor e ID desejados - tanto pode publicar todos os creepers encontrados quanto apenas o creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
+* **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
+
 **Nota final desta missão:** 8,0
 
 #### Entrega Parcial
-1. O robô para ao encontrar um creeper em uma posição específica (1 dos 4 creepers);
-2. O robô derruba um creeper em uma posição específica;
-3. O robô derruba um creeper em uma posição específica e retorna a posição inicial.
+1. O robô derruba um creeper em uma posição específica;
+2. O robô derruba um creeper em uma posição específica e retorna a posição inicial.
+3. O robô derruba um creeper e se move para a "Drop Area".
+4. O robô consegue pegar um creeper em um ambiente controlado;
+
 
 ________________________________________________________
 
 ### Missão **A**
 
-Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
+Essa missão utiliza os conceitos das missões anteriores e adiciona de resgatar o creeper do labirinto e levar ele para a "Drop Area". Os seguintes passos devem ser realizados:
 
-<!--- 
-* **Nesta missão, vocês podem remover as caixas do Slalom**
---->
+0. Iniciar o `navigator`, o `cartografer` e o nó do robô.
 
-1. O programa recebe um argumento na linha de comando: cor eo ID do creeper **desejado** além da drop area **desejada**;
+1. A classe recebe a cor e o ID do creeper **desejado** (no caso o que está perdido no labirinto) e a "Drop Area" **desejada**;
 
-1.1. Utilize a biblioteca `argparse` em Python;
-
-2. O robô sai visitando todos os lugares onde os creepers podem aparecer para encontrar o creeper **desejado**;
+2. O robô vai até o labirinto, navegando pelo labirinto até encontrar o o creeper **desejado**;
 
 4. O robô pega o creeper **desejado**;
 
-5. O robô segue para a região onde ficam as drop area;
+5. O robô sai do labirinto e segue para a "Drop Area";
 
-6. O robô deixa o creeper **desejado** na drop area **desejada**;
+6. O robô deixa o creeper **desejado** na "Drop Area" **desejada**;
 
 7. O robô retorna para a posição inicial e para.
 
@@ -222,31 +225,7 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidad
 
 - Mesmo do **B**
 
-* **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
-
 **Nota final desta missão:** 10,0
 
 #### Entrega Parcial
-1. O robô para ao encontrar um creeper e se move para a drop area;
-2. O robô consegue pegar um creeper em um ambiente controlado;
-
-________________________________________________________
-
-### Missão **Desafio**
-
-Essa missão utiliza os conceitos das missões anteriores e adiciona a capacidade de entregar os creepers na drop area. Os seguintes passos devem ser realizados:
-
-* **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
-
-
-1. Mesmo do **A**
-
-2. Com a adição do `Slalom`, o robô deve passar por todas as caixas coloridas, sem tocar nelas.
-
-3. No vídeo, o robô deve nescessariamente aparecer realizando o Slalom.
-
-**Requisitos de projeto de software**:
-
-- Mesmo do **A**
-
-**Nota final desta missão:** PF + 1,0
+1. O robô consegue entrar e sair do labirinto sem ter o mapa do labirinto.
