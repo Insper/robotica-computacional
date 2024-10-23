@@ -6,9 +6,9 @@ O objetivo do projeto é programar nosso robô para cumprir um conjunto de miss�
 
 Os grupos, compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
 
-[Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/H90gUDvK){ .ah-button }
+[Link para repositório do projeto GitHub Classroom](TODO){ .ah-button }
 
-# **`Data de Entrega: 27/05`**
+# **`Data de Entrega: Dia da AF às 12h`**
 
 ________________________________________________________
 
@@ -20,19 +20,19 @@ ________________________________________________________
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas os conceitos vocês **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
+**Aviso 4:** Além de seu repositório, para todos os conceitos vocês **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
 **Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **C**.
 
-**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
+**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_robcomp`.
-    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
+    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ________________________________________________________
 
@@ -40,6 +40,7 @@ ________________________________________________________
 
 ```bash
 cd ~/colcon_ws/src/my_simulation
+git stash
 git pull
 cb
 ```
@@ -47,18 +48,18 @@ cb
 ## Mapa Simulado
 
 ```bash
-ros2 launch my_gazebo pista-24.launch.py
+ros2 launch my_gazebo pista-24B.launch.py
 ```
 ________________________________________________________
 
-Change ARUCO: # /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
+
 
 
 ## Descrição das Missões
 
 O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
 
-Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
+Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e o codigo deve ser versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
 ![](pista_numero.jpg)
 
@@ -70,14 +71,19 @@ As missões envolvem os seguintes elementos:
 
 * **Drop Area**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
-* **Placas**: Arucos de ID 100, 150, 250. O grupo pode colocalos em qualquer lugar, fora da linha branca, para auxiliar na navegação.
+* **Labirinto**: Um dos Creepers está dentro de um labirinto, que deve ser percorrido pelo robô para encontrá-lo e resgatá-lo.
 
-* **Slalom**: Sequência de três caixas coloridas dispostas em zigue-zague.
--
+* **Placas**: Arucos de ID 100, 150, 250. O grupo pode coloca-las em qualquer lugar, fora da linha branca, para auxiliar na navegação.
+
+No simulador, você pode alterar a posição das placas no arquivo `pista24B.world`:
+
+```cmd
+code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
+```
 
 Para completar uma missão, você deve:
 
-1. Capturar a tela do robô realizando a missão no simulador.
+1. Capturar a tela do robô realizando a missão no simulador (até o conceito **C**).
 
 2. Gravar o robô realizando a missão na pista real.
 
