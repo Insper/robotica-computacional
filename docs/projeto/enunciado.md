@@ -24,7 +24,7 @@ ________________________________________________________
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real.
+**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **C**.
 
 **Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
 
@@ -120,10 +120,6 @@ ________________________________________________________
 ### Missão **C**
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina. Os seguintes passos devem ser realizados:
-
-<!--- 
-* **Nesta missão, vocês podem remover as caixas do Slalom**
---->
 
 1. Crie um dicinário com as cores dos creepers e seus respectivas IDs para armazenar onde estão os creepers, como o exemplo abaixo:
 
