@@ -26,7 +26,9 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 **Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **C**.
 
-**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
+**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. 
+
+- É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
 
 ## Configuração do Pacote (ROS 2)
 
@@ -68,7 +70,8 @@ As missões envolvem os seguintes elementos:
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
 * **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. 
-    São posicionados no **creeper_place** em ordem (cor/ID) aleatória, com excessão de 1 que está perdido.
+    
+    - Eles estão posicionados no **creeper_place** em ordem (cor/ID) aleatória, com excessão de um que está perdido.
 
 * **"Drop Area"**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
