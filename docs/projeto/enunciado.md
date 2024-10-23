@@ -63,21 +63,19 @@ O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto
 
 Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e o codigo deve ser versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
-![](pista_numero.jpg)
-
 As missões envolvem os seguintes elementos:
 
 * **Pista**: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.
 
 * **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. 
     
-    - Eles estão posicionados no **creeper_place** em ordem (cor/ID) aleatória, com excessão de um que está perdido.
+    - Eles estão posicionados no **creeper_place** em cor/ID aleatória, com excessão de um que está perdido.
 
 * **"Drop Area"**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
 * **Labirinto**: Um dos creepers está dentro de um labirinto, que deve ser percorrido pelo robô para encontrá-lo e resgatá-lo.
 
-* **Placas**: Arucos de ID 100, 150, 250. O grupo pode coloca-las em qualquer lugar, fora da linha branca, para auxiliar na navegação.
+* **Placas**: Arucos de ID 100, 150, 250. **O grupo pode coloca-las em qualquer lugar**, fora da linha branca, para auxiliar na navegação.
 
 No simulador, você pode alterar a posição das placas no arquivo `pista24B.world`:
 
