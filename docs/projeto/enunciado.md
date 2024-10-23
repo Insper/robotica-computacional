@@ -20,14 +20,13 @@ ________________________________________________________
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas os conceitos vocês **`deveram gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
+**Aviso 4:** Além de seu repositório, para todas os conceitos vocês **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **B**.
+**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real.
 
 **Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README. - É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
-<!-- **Aviso 6:** O conceito **C** é o mínimo para aprovação e **deve ser feito com o robô real**. -->
 
 ## Configuração do Pacote (ROS 2)
 
@@ -51,6 +50,9 @@ cb
 ros2 launch my_gazebo pista-24.launch.py
 ```
 ________________________________________________________
+
+Change ARUCO: # /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
+
 
 ## Descrição das Missões
 
