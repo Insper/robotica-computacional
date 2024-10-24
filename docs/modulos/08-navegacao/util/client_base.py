@@ -4,11 +4,6 @@ from rclpy.action import ActionClient
 from geometry_msgs.msg import Twist
 
 class BaseActionClientNode(Node):
-    """
-    Classe base para um cliente de ação em ROS2.
-    Contém a lógica genérica de envio e gerenciamento de objetivos de ação.
-    """
-
     def __init__(self, node_name, action_type, action_name):
         """
         Inicializa o cliente de ação e os publishers.

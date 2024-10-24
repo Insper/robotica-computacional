@@ -5,11 +5,6 @@ from rclpy.action import CancelResponse, GoalResponse
 from geometry_msgs.msg import Twist
 
 class BaseActionServer(Node):
-    """
-    Este nó base implementa as funcionalidades comuns de um Action Server.
-    Ele pode ser herdado para criar servidores de ação específicos.
-    """
-
     def __init__(self, node_name, action_type, action_name):
         """
         Inicializa o Action Server, cria publicadores e timers necessários.

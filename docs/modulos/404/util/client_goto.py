@@ -4,12 +4,6 @@ import rclpy
 from geometry_msgs.msg import Twist
 
 class GoToActionClient(BaseActionClientNode):
-    """
-    Cliente de ação específico para enviar objetivos de movimentação para um ponto.
-    Herda da classe BaseActionClientNode e implementa a lógica específica do GoTo.
-    Inclui a máquina de estados e controle.
-    """
-
     def __init__(self):
         """
         Inicializa o cliente de ação específico de 'GoToPoint'.
