@@ -4,7 +4,7 @@ O objetivo do projeto é programar nosso robô para cumprir um conjunto de miss�
 
 ![](pista.png)
 
-Os grupos, compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
+Os grupos, que podem ser compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
 
 [Link para repositório do projeto GitHub Classroom](TODO){ .ah-button }
 
@@ -20,25 +20,27 @@ ________________________________________________________
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todos os conceitos vocês **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
+**Aviso 4:** Além de seu repositório, para todos os conceitos os grupos **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **C**.
+**Aviso 5:** Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas, conquistando no máximo o conceito **D**.
 
-**Aviso 6:** Serão aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. 
+**Aviso 6:** São aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. 
 
-- É possível realizar a entrega parcial de conceitos superiores, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
+- É possível realizar a entrega parcial de conceitos avançados, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_robcomp`.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `projeto_robcomp`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ________________________________________________________
 
 ## Atualização dos Repositórios
+
+Em um novo terminal, execute os comandos a seguir linha por linha.
 
 ```bash
 cd ~/colcon_ws/src/my_simulation
@@ -49,19 +51,19 @@ cb
 
 ## Mapa Simulado
 
+Para inicializar o mapa do desafio, em um terminal digite:
+
 ```bash
 ros2 launch my_gazebo pista-24B.launch.py
 ```
 ________________________________________________________
 
 
-
-
 ## Descrição das Missões
 
 O projeto é composto por 4 missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. **É preciso concluir todas as missões anteriores para obter a nota da missão subsequente**.
 
-Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo README e o codigo deve ser versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
+Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo `README` e o codigo deve ser versionado utilizando o **Releases** do GitHub, com a tag do conceito atingido.
 
 As missões envolvem os seguintes elementos:
 
@@ -75,15 +77,16 @@ As missões envolvem os seguintes elementos:
 
 * **Labirinto**: Um dos creepers está dentro de um labirinto, que deve ser percorrido pelo robô para encontrá-lo e resgatá-lo.
 
-* **Placas**: Arucos de ID 100, 150, 250. **O grupo pode coloca-las em qualquer lugar**, fora da linha branca, para auxiliar na navegação.
+* **Placas**: Arucos de `ID` `100`, `150` e `250`. **O grupo pode coloca-las em qualquer lugar**, fora da linha branca, para auxiliar na navegação.
 
-No simulador, você pode alterar a posição das placas no arquivo `pista24B.world`:
+!!!tip
+    No simulador, você pode alterar a posição das placas no arquivo `pista24B.world`, em um terminal digite:
 
-```cmd
-code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
-```
+    ```cmd
+    code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
+    ```
 
-Para completar uma missão, você deve:
+### Para completar uma missão, o grupo deve:
 
 1. Capturar a tela do robô realizando a missão no simulador (até o conceito **C**).
 
@@ -115,7 +118,10 @@ Sua classe deve receber como entrada, cor do creeper, ID do creeper e "Drop Area
 --->
 ________________________________________________________
 
-### Missão **C**
+### Missão **D**
+
+!!! warning
+    Missão no robô simulado
 
 Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina, para criar um mapa da pista e a localização dos creepers e das "Drop Area".
 Os seguintes passos devem ser realizados:
@@ -161,17 +167,34 @@ creepers = {
 
 * **Controle Proporcional**: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.
 
-**Nota final desta missão:** 5,0
+**Nota final desta missão:** 4,0
 
-<!-- !!! warning
-    É obrigatório rodar essa missão no robô real -->
+________________________________________________________
+
+
+### Missão **C**
+
+!!! warning
+    Realizar a Missão no robô real
+
+Essa missão se resume a executar a missão D no robô real.
+
+**Requisitos de projeto de software**:
+
+- Mesmo desafio da missão **C**
+- Utilizar o robô real
+
+**Nota final desta missão:** 5,0
 
 
 ________________________________________________________
 
 ### Missão **B**
 
-Essa missão utiliza os o mapa e a localização dos artefatos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
+!!! warning
+    Realizar a Missão no robô real
+
+Essa missão utiliza o mapa e a localização dos artefatos da missão anterior e adiciona a capacidade de derubar os creepers. Os seguintes passos devem ser realizados:
 
 0. Iniciar o `navigator` e o nó do robô.
 
@@ -206,7 +229,10 @@ ________________________________________________________
 
 ### Missão **A**
 
-Essa missão utiliza os conceitos das missões anteriores e adiciona de resgatar o creeper do labirinto e levar ele para a "Drop Area". Os seguintes passos devem ser realizados:
+!!! warning
+    Realizar a Missão no robô real
+
+Essa missão utiliza os conceitos das missões anteriores adicionando `resgatar o creeper` do labirinto e levar ele para a "Drop Area". Os seguintes passos devem ser realizados:
 
 0. Iniciar o `navigator`, o `cartografer` e o nó do robô.
 
