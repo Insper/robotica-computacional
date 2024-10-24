@@ -2,8 +2,9 @@ from geometry_msgs.msg import Point
 from robcomp_interfaces.action import SimpleStart  # Import the correct action definition
 import rclpy
 from geometry_msgs.msg import Twist
-from robcomp_util import Odom
+from robcomp_util.odom import Odom
 import numpy as np
+from robcomp_util.client_base import BaseActionClientNode
 
 class GoToActionClient(BaseActionClientNode, Odom):
     def __init__(self):

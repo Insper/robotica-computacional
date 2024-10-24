@@ -7,9 +7,9 @@ import cv2
 import numpy as np
 from cv_bridge import CvBridge
 from robcomp_interfaces.action import SimpleStart
-from goto_action_server import GoToActionServer  # Import your custom GoToActionServer
+from robcomp_util.action_base import BaseActionServer
 
-class SeguidorLinhaAction(GoToActionServer):  # Inherit from GoToActionServer
+class SeguidorLinhaAction(BaseActionServer):
 
     def __init__(self):
         super().__init__('seguidor_action_server', SimpleStart, 'segue_linha')  # Use the base constructor
