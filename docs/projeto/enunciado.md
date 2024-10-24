@@ -230,3 +230,16 @@ Essa missão utiliza os conceitos das missões anteriores e adiciona de resgatar
 
 #### Entrega Parcial
 1. O robô consegue entrar e sair do labirinto sem ter o mapa do labirinto.
+
+
+________________________________________________________
+
+### Bonus
+
+Boas práticas de Python e ROS que podem render pontos bônus no projeto:
+
+- Utilização de Launch Files para execução do projeto
+- Implementação de um Action Server
+- Configuração eficiente de parâmetros ROS
+- POO, Modularização e reusabilidade de código.
+
