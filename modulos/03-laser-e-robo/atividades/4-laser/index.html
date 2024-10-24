@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>4 - Entendendo o Laser - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/Ne9Z8fsD">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/x6CEGJYO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base_control.py">Download > Nó de Controle do Robô</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Entendendo a Odometria</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/odom.py">Download > odom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/teste_odom.py">Download > teste_odom</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">4 - Entendendo o Laser</span>
+    <ul>
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">4 - Entendendo o Laser</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/laser.py">Download > laser</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../5-visualizacao/">5 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/94ldeOwJ">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 2</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 4 - Imagens e Matrizes</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades_cap_4.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/1-leitura_e_webcam/">1 - Leitura de Imagem e Webcam</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/2-corte_e_criacao/">2 - Corte e Criação de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/3-roi_e_numpy/">3 - ROI e NumPy</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/4-segmentacao_1/">4 - Segmentação de Imagens p1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/5-segmentacao_2/">5 - Segmentação de Imagens p2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/R1grL7pT">APS 4 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 5 - Visão Robótica</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades_cap_5.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/1-morfologia/">1 - Refinamento de Máscaras de Segmentação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/2-identificacao/">2 - Identificação de Objetos</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Visão na ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/3-image_subscriber/">3 - Visão na ROS 2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/image_subscriber.py">Download > Nó Básico de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Ferramentas de Visão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/4-image_tool/">4 - Ferramentas de Visão</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://github.com/insper-education/robcomp-image-tool">GitHub > Ferramenta de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">5 - Exemplo de Resolução de Exercício</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/51-enunciado/">5.1 - Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/52-resolucao/">5.2 - Resolução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1.py">Download > Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 5</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/GiXfZmlw">APS 5 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 6 - MobileNet e ArUco</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades_cap_6.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - MobileNet</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/1-mobilenet/">1 - MobileNet</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/module_net.py">Download > ModuleNet</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/cow_wolf_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Marcador ArUco</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/2-aruco/">2 - Marcador ArUco</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/module_aruco.py">Download > ModuleArUco</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 6</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/v8iEYUMT">APS 6 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 3</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 7 - Controle Propocional</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/atividades_modulo_7.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/atividades/1-controle-proporcional/">1 - Controle Básico</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Segue-Linha-P</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/atividades/2-seguelinha-proporcional/">2 - Segue-Linha-P</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/util/segue_linha.py">Download > Segue-Linha</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Identifica Creepers</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/atividades/3-identifica_creeper/">3 - Identifica Creepers</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/util/creeper_detector_gab.py">Download > Identifica-Creepers-Gab</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Controlando a Garra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/atividades/4-garra/">4 - Controlando a Garra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 7</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/hhzm8IPL">APS 7 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../07-controle/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Gabarito do robcomp_util (até creeper_detector do Cap 7 + odom_load_or_die)</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../robcomp_util/index.md">None</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://github.com/insper-classroom/robcomp-util">Link do Repositório</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/q2.zip">Download > Imagens Q2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/q1.py">Resposta Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../provas/simulado_ai/q2.py">Resposta Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AI</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../provas/ai/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/mevKeP_u">AI - Classroom</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 3 - Controlando o Robô</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                  
+                    <li>4 - Entendendo o Laser</li>
+                  
+                
+                <li>4 - Entendendo o Laser</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="entendendo-o-sensor-laser">Entendendo o Sensor Laser</h1>
+<p>Nesta atividade vamos explorar o tópico do sensor laser, <code>scan</code>. Este sensor se encontra no topo do robô e é utilizado para detectar obstáculos no ambiente.</p>
+<p>Para entender como o sensor funciona, vamos primeiro ver o tipo de mensagem que é enviado no tópico <code>scan</code>. Para isso, abra um novo terminal e digite (Certifique-se que o simulador rodando antes):</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/scan
+</code></pre></div>
+<p>O tipo da mensagem é <code>sensor_msgs/msg/LaserScan</code>, que é um tipo de mensagem padrão para sensores laser. Para ver o conteúdo da mensagem, digite:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>sensor_msgs/msg/LaserScan
+</code></pre></div>
+<p>Agora utilize o comando <code>echo</code> para ver o conteúdo do tópico <code>scan</code>:
+Apenas uma vez
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/scan<span class="w"> </span>
+</code></pre></div></p>
+<p>Um exemplo de mensagem é mostrado abaixo:</p>
+<p><div class="highlight"><pre><span></span><code>header:<span class="w"> </span>
+<span class="w">  </span>seq:<span class="w"> </span><span class="m">7</span>
+<span class="w">  </span>stamp:<span class="w"> </span>
+<span class="w">    </span>secs:<span class="w"> </span><span class="m">808</span>
+<span class="w">    </span>nsecs:<span class="w"> </span><span class="m">154000000</span>
+<span class="w">  </span>frame_id:<span class="w"> </span><span class="s2">&quot;base_scan&quot;</span>
+angle_min:<span class="w"> </span><span class="m">0</span>.0
+angle_max:<span class="w"> </span><span class="m">6</span>.28318977355957
+angle_increment:<span class="w"> </span><span class="m">0</span>.017501922324299812
+time_increment:<span class="w"> </span><span class="m">0</span>.0
+scan_time:<span class="w"> </span><span class="m">0</span>.0
+range_min:<span class="w"> </span><span class="m">0</span>.11999999731779099
+range_max:<span class="w"> </span><span class="m">3</span>.5
+ranges:<span class="w"> </span><span class="o">[</span>inf,<span class="w"> </span>inf,<span class="w"> </span>inf,<span class="w"> </span>...<span class="o">]</span>
+intensities:<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+</code></pre></div>
+A mensagem no exemplo acima foi cortada por ser muito grande.</p>
+<p>A mensagem do sensor laser é composta pelos seguintes campos:</p>
+<ul>
+<li>
+<p><code>header</code>: Cabeçalho da mensagem, que contém informações como o tempo de envio da mensagem e o frame de referência.</p>
+</li>
+<li>
+<p><code>angle_min: 0.0</code>: Ângulo inicial do sensor. O valor <code>0.0</code> corresponde a leiura do sensor diretamente para frente do robô.</p>
+</li>
+<li>
+<p><code>angle_max: 6.28...</code>: Ângulo final do sensor. O valor <code>6.28...</code> equivale a uma volta completa (360 graus).</p>
+</li>
+<li>
+<p><code>angle_increment: 0.017...</code>: Incremento angular entre cada leitura do sensor. O valor <code>0.017...</code> equivale a um ângulo de 1 grau.</p>
+</li>
+<li>
+<p><code>scan_time &amp; time_increment: 0.0</code>: Tempo de varredura do sensor e tempo entre cada leitura. O valor <code>0.0</code> indica que o sensor está configurado para enviar as leituras o mais rápido possível.</p>
+</li>
+<li>
+<p><code>range_min: 0.119...</code> [m]: Distância mínima que o sensor consegue detectar. O valor <code>0.119...</code> equivale a 11.9 cm.</p>
+</li>
+<li>
+<p><code>range_max: 3.5</code> [m]: Distância máxima que o sensor consegue detectar. O valor <code>3.5</code> equivale a 3.5 m.</p>
+</li>
+<li>
+<p><code>ranges: [inf, inf, inf, ...]</code>: Vetor com as leituras do sensor. O tamanho do vetor é igual a <code>angle_max/angle_increment</code>, ou seja, a lista de leituras é composta por 360 elementos que representam as leituras do sensor a cada 1 grau. O valor <code>inf</code> indica que o sensor não detectou nada naquela direção.</p>
+</li>
+<li>
+<p><code>intensities: [...]</code>: Vetor com as intensidades das leituras do sensor. Nosso sensor não possui essa informação, portanto, pode desconsiderar esse campo.</p>
+</li>
+</ul>
+<p>Portanto, no valor <code>ranges</code>, o sensor retonar um vetor de 360 elementos, que representam as leituras da distância do sensor a cada 1 grau. As medições são no sentido anti-horário, sendo 0 graus na parte de frente do robô. Na <strong>simulação</strong>, valor <code>inf</code> indica que o sensor não detectou nada naquela direção, no <strong>robô real</strong>, o valor <code>0</code> indica que o sensor não conseguiu fazer a leitura.</p>
+<p><strong>Pergunta:</strong> Qual o indice do vetor <code>ranges</code> que representa a leitura do sensor diretamente para frente do robô? E da esquerda? E da direita? E para trás?</p>
+<h2 id="modulo-do-laser-aps-3">Módulo do Laser - APS 3</h2>
+<p>Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.</p>
+<p>Dentro do pacote <code>robcomp_util/robcomp_util</code>, crie um arquivo denominado <code>laser.py</code> e uma classe chamada <code>Laser</code> <strong>sem nenhuma herança</strong>, ou seja, não herde da classe <code>Node</code>. Essa classe deve:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se <code>Laser</code> herda-se de <code>Node</code>.</p>
+</div>
+<ul>
+<li>
+<p>Não inicie um nó nesse arquivo.</p>
+</li>
+<li>
+<p>Inicialize uma variável <code>self.opening</code>, que será utilizada para armazenar a abertura do sensor laser.</p>
+</li>
+<li>
+<p>Definir um subscriver para o tópico <code>laser</code> que chama a função <code>laser_callback</code> quando uma mensagem é recebida. Faça o subscriber com o seguinte comando, para o robô real é necessário alterar <code>reliability</code> para <code>BEST_EFFORT</code>, por limitações de hardware:
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">laser_sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+    <span class="n">LaserScan</span><span class="p">,</span>
+    <span class="s1">&#39;/scan&#39;</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">laser_callback</span><span class="p">,</span>
+    <span class="n">QoSProfile</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">reliability</span><span class="o">=</span><span class="n">ReliabilityPolicy</span><span class="o">.</span><span class="n">BEST_EFFORT</span><span class="p">))</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Definir uma função <code>laser_callback</code> que recebe uma mensagem do tipo <code>sensor_msgs/msg/LaserScan</code> e armazena os seguintes parâmetros:</p>
+<ul>
+<li>
+<p>Utilize o seguinte comando para converter a lista em um array numpy:
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">laser_msg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Utilize o seguinte comando jogar os valores <code>0</code> para <code>inf</code>, removendo ambiguidades:
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">laser_msg</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">laser_msg</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Converta self.laser_msg para uma lista novamente.</p>
+</li>
+<li>
+<p>Pegue um range de +- <code>self.opening</code> valores na frente do robô e armazene na variável <code>self.front</code>.</p>
+</li>
+<li>
+<p>Pegue um range +- <code>self.opening</code> valores na esquerda do robô e armazene na variável <code>self.left</code>.</p>
+</li>
+<li>
+<p>Pegue um range +- <code>self.opening</code> valores na direita do robô e armazene na variável <code>self.right</code>.</p>
+</li>
+<li>
+<p>Pegue um range +- <code>self.opening</code> valores atrás do robô e armazene na variável <code>self.back</code>.</p>
+</li>
+<li>
+<p>Por fim, chame uma função chamada <code>self.custom_laser</code> e cria essa função vazia (apenas <code>pass</code>). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="testando">Testando</h3>
+<p>Para testar, baseado-se no arquivo <code>base.py</code> crie um arquivo chamado <code>test_laser.py</code>, dentro do pacote <code>robcomp_util</code>. Este arquivo deve conter um nó chamado <code>test_laser_node</code> que importa a classe <code>Laser</code> do arquivo <code>laser.py</code> e imprime as leituras do laser a cada 1 segundo.</p>
+<p>Lembre-se:</p>
+<ul>
+<li>
+<p>Importe a classe <code>Laser</code> da seguinte forma:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">robcomp_util.laser</span> <span class="kn">import</span> <span class="n">Laser</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Faça a herança da classe <code>Laser</code> no <code>test_laser_node</code>.</p>
+</li>
+<li>
+<p>Adicione o nó no arquivo <code>setup.py</code> e então compile o pacote.</p>
+</li>
+<li>
+<p>Rode o nó <code>test_laser_node</code> utilizando o comando <code>ros2 run robcomp_util test_laser</code> e mova o robô utilizando o teleop, para ver como o laser é atualizado.</p>
+</li>
+</ul>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../util/teste_odom.py"
+               class="ah-prev"
+               title="Download > teste_odom">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Download > teste_odom</span>
+            </a>
+          
+          
+            <a href="../../util/laser.py"
+               class="ah-next"
+               title="Download > laser">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Download > laser</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
