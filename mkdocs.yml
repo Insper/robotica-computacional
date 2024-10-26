@@ -209,18 +209,34 @@ nav:
           - "2 - Segue-Linha-P":
             - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
             - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
-    # #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
+            - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
           - "3 - Identifica Creepers":
             - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
             - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
           - "4 - Controlando a Garra":
             - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
-    #         - "Download > Garra": modulos/07-controle/util/garra.py
-
+            - "Download > Garra": modulos/07-controle/util/garra.py
         - APS 7:
           - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
           - "Enunciado": modulos/07-controle/aps/enunciado.md
-          
+      
+      - Capítulo 8 - Navegação:
+        - modulos/08-navegacao/index.md
+        - Atividades:
+          - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
+          - "2 - Action Server":
+            - "2 - Action Server": modulos/08-navegacao/atividades/2-action_server.md
+            - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
+            - "Download > Action Segue Linha": modulos/08-navegacao/util/action_segue_linha.py
+          - "3 - Action Client":
+            - "2 - Action Client": modulos/08-navegacao/atividades/2-action_client.md
+            - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
+            - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
+
+
+
+
+   
     - Gabarito do robcomp_util (até creeper_detector do Cap 7 + odom_load_or_die):
       - modulos/robcomp_util/index.md
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util

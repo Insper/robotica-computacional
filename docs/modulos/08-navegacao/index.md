@@ -11,7 +11,7 @@ Esse conceito será explorado nas seguintes atividades,
 - [Atividade 2](atividades/2-action_server.md) - Introdução ao Action Server na ROS 2.
 - [Atividade 3](atividades/3-action-client.md) - Introdução ao Action Client na ROS 2.
 
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 8.
@@ -22,4 +22,4 @@ Esse conceito será explorado nas seguintes atividades,
 
     [APS 7 - Github Classroom](https://classroom.github.com/a/hhzm8IPL)
 
-    A data final de entrega é **{{ data_APS8 }}**.
+    A data final de entrega é **{{ data_APS8 }}**. -->
