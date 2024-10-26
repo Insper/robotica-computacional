@@ -44,6 +44,12 @@ class GoToActionClient(BaseActionClientNode, Odom):
         self.send_goal(goal_msg)
         self.robot_state = 'waiting_for_result'
 
+    def feedback_callback(self, feedback_msg):
+        """
+        Callback para receber feedback contínuo do servidor de ação.
+        """
+        self.get_logger().info(f'Feedback: {feedback_msg}')
+
     def waiting_for_result(self):
         """
         Verifica se o objetivo foi concluído e muda para o estado 'stop' se terminado.
@@ -56,7 +62,7 @@ class GoToActionClient(BaseActionClientNode, Odom):
             self.hora_de_parar = True
 
         elif self.hora_de_parar is True and dist < 0.5:
-            self.get_logger().info('Cancelando objetivo, o robô está perto demais.')
+            self.get_logger().info('Cancelando objetivo, o robô completou uma volta.')
             if self._goal_handle is not None:
                 self._goal_handle.cancel_goal_async()  # Envia o comando para cancelar o objetivo
             self.robot_state = 'stop'
@@ -67,7 +73,6 @@ class GoToActionClient(BaseActionClientNode, Odom):
         """
         self.get_logger().info('Parando o robô...')
         self.twist = Twist()
-        self.cmd_vel_pub.publish(self.twist)
 
     def control(self):
         """
@@ -75,6 +80,8 @@ class GoToActionClient(BaseActionClientNode, Odom):
         """
         self.twist = Twist()
         self.state_machine[self.robot_state]()
+        if not self.robot_state == "waiting_for_result":
+            self.cmd_vel_pub.publish(self.twist)
 
 def main(args=None):
     """

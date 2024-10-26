@@ -61,30 +61,31 @@ class SeguidorLinhaAction(BaseActionServer):
     ### Segue Linha
 
     def image_callback(self, msg):
-        cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")  # if CompressedImage
-        h, w, _ = cv_image.shape
-        self.w = w / 2
-        hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
-        
-        mask = cv2.inRange(hsv, self.cyellow['lower'], self.cyellow['upper'])
-        mask[:int(h/2), :] = 0
-        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
-        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
-        
-        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if self._goal_handle is not None:
+            cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8")  # if CompressedImage
+            h, w, _ = cv_image.shape
+            self.w = w / 2
+            hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+            
+            mask = cv2.inRange(hsv, self.cyellow['lower'], self.cyellow['upper'])
+            mask[:int(h/2), :] = 0
+            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
+            
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-        if len(contours) > 0:
-            contour = max(contours, key=cv2.contourArea)
-            cv2.drawContours(cv_image, contour, -1, [255, 0, 0], 3)
+            if len(contours) > 0:
+                contour = max(contours, key=cv2.contourArea)
+                cv2.drawContours(cv_image, contour, -1, [255, 0, 0], 3)
 
-            M = cv2.moments(contour)
-            self.cx = int(M["m10"] / M["m00"])
-            self.cy = int(M["m01"] / M["m00"])
+                M = cv2.moments(contour)
+                self.cx = int(M["m10"] / M["m00"])
+                self.cy = int(M["m01"] / M["m00"])
 
-            cv2.circle(cv_image, (self.cx, self.cy), 5, (0, 0, 255), -1)
+                cv2.circle(cv_image, (self.cx, self.cy), 5, (0, 0, 255), -1)
 
-        else:
-            self.cx = np.inf
+            else:
+                self.cx = np.inf
 
     def calc_erro(self):
         self.erro = self.w - self.cx
