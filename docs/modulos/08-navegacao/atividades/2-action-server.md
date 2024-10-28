@@ -6,6 +6,7 @@
 Um **Action Server** no ROS2 é uma abstração que permite a execução de tarefas de longa duração que precisam de monitoramento e controle. Ele é utilizado quando o tempo de execução de uma tarefa pode variar, permitindo o envio de feedback contínuo ao cliente que solicitou a tarefa. Um exemplo clássico é mover um robô para um ponto específico, o que pode levar algum tempo e, durante esse período, é útil fornecer atualizações ao cliente ou até mesmo permitir o cancelamento da tarefa.
 
 Os Action Servers são particularmente úteis em três cenários:
+
 1. **Tarefas Longas**: A tarefa pode demorar mais do que uma simples chamada de serviço, como mover um robô para um destino ou realizar uma varredura de sensores.
 2. **Feedback**: O cliente que requisita a ação pode precisar de informações contínuas sobre o progresso da tarefa.
 3. **Cancelamento**: A tarefa pode ser cancelada antes de sua conclusão, e o sistema precisa tratar o cancelamento adequadamente.
@@ -13,6 +14,7 @@ Os Action Servers são particularmente úteis em três cenários:
 ### Componentes de um Action Server
 
 O Action Server no ROS2 tem quatro partes principais:
+
 1. **Objetivo (Goal)**: O cliente envia um objetivo (goal) para o Action Server, que representa a tarefa a ser realizada.
 2. **Feedback**: O Action Server pode enviar feedback ao cliente sobre o progresso do objetivo.
 3. **Resultado**: Quando o objetivo é alcançado (ou falha), o Action Server envia o resultado para o cliente.
@@ -24,11 +26,13 @@ Para auxiliar no desenvolvimento de Action Servers, o arquivo (action_base.py )[
 ### Métodos da Classe `BaseActionServer`
 A classe `BaseActionServer` fornece os seguintes métodos para lidar com a comunicação entre o Action Server e o cliente:
 - O construtor da classe recebe as seguintes informações:
+
     - `node`: O nó do Action Server.
     - `action_type`: O tipo da ação que será registrada no sistema ROS2.
     - `action_name`: Nome da ação que será registrada no sistema ROS2, semelhante ao nome de um tópico.
 
 - O construtor da classe inicializa o Action Server `ActionServer()` que recebe:
+
     - `self`: O nó do Action Server.
     - `action_type`: O tipo da ação que será registrada no sistema ROS2.
     - `action_name`: Nome da ação que será registrada no sistema ROS2, semelhante ao nome de um tópico.

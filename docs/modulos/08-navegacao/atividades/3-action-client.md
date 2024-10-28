@@ -11,11 +11,13 @@ Para auxiliar no desenvolvimento de Action Client, o arquivo (client_base.py )[.
 ### Métodos da Classe `BaseActionClientNode`
 A classe `BaseActionClientNode` fornece os seguintes métodos para lidar com a comunicação entre o Action Server e o cliente:
 - O construtor da classe recebe as seguintes informações:
+
     - `node`: O nó do Action Server.
     - `action_type`: O tipo da ação que será registrada no sistema ROS2.
     - `action_name`: Nome da ação que será registrada no sistema ROS2, semelhante ao nome de um tópico.
 
 - O construtor da classe inicializa o Action Server `ActionClient()` que recebe:
+
     - `self`: O nó do Action Server.
     - `action_type`: O tipo da ação que será registrada no sistema ROS2.
     - `action_name`: Nome da ação que será registrada no sistema ROS2, semelhante ao nome de um tópico.
