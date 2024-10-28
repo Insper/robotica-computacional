@@ -7,7 +7,7 @@ class Garra(): # Mude o nome da classe
     def __init__(self):
         # Inicialização de variáveis
 
-        self.delay = 1.0
+        self.delay = 2.0
         
         # Publishers
         self.ombro_pub = self.create_publisher(
@@ -22,20 +22,26 @@ class Garra(): # Mude o nome da classe
         )
 
     def controla_garra(self, command: str):
+        msg = Float64()
         if command == 'open':
-            self.garra.publish(-1.0)
-            self.garra.publish(-1.0)
+            msg.data = -1.0
+            self.garra.publish(msg)
+            self.garra.publish(msg)
         elif command == 'close':
-            self.garra.publish(0.0)
-            self.garra.publish(0.0)
+            msg.data = 0.0
+            self.garra.publish(msg)
+            self.garra.publish(msg)
         elif command == 'up':
-            self.ombro.publish(1.5)
-            self.ombro.publish(1.5)
+            msg.data = 1.5
+            self.ombro.publish(msg)
+            self.ombro.publish(msg)
         elif command == 'mid':
-            self.ombro.publish(0.0)
-            self.ombro.publish(0.0)
+            msg.data = 0.0
+            self.ombro.publish(msg)
+            self.ombro.publish(msg)
         elif command == 'down':
-            self.ombro.publish(-1.0)
-            self.ombro.publish(-1.0)
+            msg.data = -1.0
+            self.ombro.publish(msg)
+            self.ombro.publish(msg)
         time.sleep(self.delay)
 
