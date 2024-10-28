@@ -41,8 +41,8 @@ class BaseNode(Node, CreeperDetector): # Mude o nome da classe
 
             msg.deteccoes.append(detection)
         
-        if len(msg.deteccoes) > 0:
-            self.creeper_pub.publish(msg)
+        self.creeper_pub.publish(msg)
+            
             
 def main(args=None):
     rclpy.init(args=args)
