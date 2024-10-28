@@ -225,11 +225,11 @@ nav:
         - Atividades:
           - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
           - "2 - Action Server":
-            - "2 - Action Server": modulos/08-navegacao/atividades/2-action_server.md
+            - "2 - Action Server": modulos/08-navegacao/atividades/2-action-server.md
             - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
             - "Download > Action Segue Linha": modulos/08-navegacao/util/action_segue_linha.py
           - "3 - Action Client":
-            - "2 - Action Client": modulos/08-navegacao/atividades/2-action_client.md
+            - "2 - Action Client": modulos/08-navegacao/atividades/3-action-client.md
             - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
             - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
 
@@ -260,6 +260,6 @@ nav:
     #   - DELTA:
     #     - "Enunciado": provas/delta/enunciado.md
 
-    # - Projeto:
-    #   - "Enunciado": projeto/enunciado.md
-    #   - "Projeto - Classroom" : https://classroom.github.com/a/H90gUDvK
+    - Projeto:
+      - "Enunciado": projeto/enunciado.md
+      - "Projeto - Classroom" : TODO
