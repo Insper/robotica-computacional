@@ -8,7 +8,7 @@ As atividades deste capítulo focam em introduzir os conceitos de navegação e 
 Esse conceito será explorado nas seguintes atividades,
 
 - [Atividade 1](atividades/1-goto.md) - Implementação de um nó capaz de navegar até um ponto específico.
-- [Atividade 2](atividades/2-action_server.md) - Introdução ao Action Server na ROS 2.
+- [Atividade 2](atividades/2-action-server.md) - Introdução ao Action Server na ROS 2.
 - [Atividade 3](atividades/3-action-client.md) - Introdução ao Action Client na ROS 2.
 
 <!-- ## Para entregar
