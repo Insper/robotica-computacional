@@ -15,7 +15,7 @@ class Garra(): # Mude o nome da classe
             "/joint1_position_controller/command",
             10
         )
-        self.ombro_pub = self.create_publisher(
+        self.garra_pub = self.create_publisher(
             Float64,
             "/joint2_position_controller/command",
             10
@@ -25,23 +25,23 @@ class Garra(): # Mude o nome da classe
         msg = Float64()
         if command == 'open':
             msg.data = -1.0
-            self.garra.publish(msg)
-            self.garra.publish(msg)
+            self.garra_pub.publish(msg)
+            self.garra_pub.publish(msg)
         elif command == 'close':
             msg.data = 0.0
-            self.garra.publish(msg)
-            self.garra.publish(msg)
+            self.garra_pub.publish(msg)
+            self.garra_pub.publish(msg)
         elif command == 'up':
             msg.data = 1.5
-            self.ombro.publish(msg)
-            self.ombro.publish(msg)
+            self.ombro_pub.publish(msg)
+            self.ombro_pub.publish(msg)
         elif command == 'mid':
             msg.data = 0.0
-            self.ombro.publish(msg)
-            self.ombro.publish(msg)
+            self.ombro_pub.publish(msg)
+            self.ombro_pub.publish(msg)
         elif command == 'down':
             msg.data = -1.0
-            self.ombro.publish(msg)
-            self.ombro.publish(msg)
+            self.ombro_pub.publish(msg)
+            self.ombro_pub.publish(msg)
         time.sleep(self.delay)
 
