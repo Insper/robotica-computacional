@@ -50,49 +50,40 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
 ____________________________________________________________________
 
-# Exercício 1 - Explorar Labirinto (4 pontos)
-Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto do nosso laboratório, a partir do ponto interno do labirinto.
+# Exercício 1 - Explorar Labirinto (3 pontos)
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto do nosso laboratório, a partir do ponto interno do labirinto, enviando comandos de navegação para o robô. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
 
-##
+!!! dica
+    O `Navigation` autualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
+
+## Vídeo
+
+Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
 ____________________________________________________________________
 
-# Exercício 1 - Labirinto-GoTo (9 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **simulado** `=)` se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
+# Exercício 2 - Map2World e World2Map (2 pontos)
+Neste exercício, você deve criar um script que:
+1. Abre o arquivo `map.yaml` e lê as informações de resolução e origem do mapa.
+2. Utilizando o OpenCV, abre a figura `map.pgm` e exibe a imagem como um gráfico, através da biblioteca `matplotlib`.
+3. Crie duas funções, `map2world` e `world2map`, que convertem as coordenadas do mapa para o mundo e do mundo para o mapa, respectivamente.
+4. As funções devem estar em uma classe chamada `Map2World`.
+5. A classe só deve ser executada se o script for executado diretamente.
+____________________________________________________________________
 
-* A classe `GoTo` deve herdar de `Node` e `Odom`.
+# Exercício 3 - Labirinto-GoTo (4 pontos)
 
-* A classe `GoTo` deve ter um método `__init__` que recebe a posição uma variável do tipo `Point` e salva em uma variável `self.point`.
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, a partir de uma sequência de pontos, obtidas do mapa do labirinto, faça o robô **real** escape do labirinto. O nó deve:
 
-* Ter três estados, `center`, `goto` e `stop`.
+* Receber uma sequência de pontos do labirinto.
 
-* O estado `center` deve ser o estado inicial e faz o robô girar até que ele esteja alinhado com o ponto desejado.
+* Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
 
-* Quando chegar no ponto desejado, o robô deve entrar no estado `stop`.
-
-* Deve ter um função `get_angular_error` que primeiro calcula o angulo entre a posição atual e o ponto desejado `theta` e depois calcula o erro entre o angulo atual e o angulo desejado.
-
-* `get_angular_error` também deve calcular a distância entre o robô e o ponto desejado.
-
-* O estado `goto` deve fazer o robô se mover até o ponto desejado e parar quando estiver **BEM PERTO** do ponto.
-
-* Utilize duas constante proporcionais, `kp_linear` e `kp_angular` para controlar a velocidade linear e angular do robô.
-
-## Quando o nó estiver funcionando corretamente
-
-Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`. Usando o robô **real**, faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
-
-* Ter dois estados, `segue` e `para`.
-
-* **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do quadrado.
-
-* O estado `segue` deve criar um loop que chama a função `control` do `GoTo` como no exemplo [aqui](../util/run_rotate2.py).
-
-* Depois, mude o valor de `point` no `GoTo` para o próximo ponto do quadrado e mude o estado do `GoTo` para `center`.
+* Ao chegar no último ponto, o robô deve entrar em um estado `stop` e parar.
 
 ## Critérios de Avaliação:
 
-1. `GoTo` funciona a partir (até) qualquer ponto em qualquer quadrante.
-2. A classe `Quadrado` chama a classe `GoTo` corretamente.
+1. Execute o pacote `Navigation` para navegar no labirinto.
+2. Execute o nó `teseu_node` para fazer o robô escapar do labirinto.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
-4. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.
+4. **Vídeo:** Mostra o robô executando o comportamento e escapando do labirinto.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.

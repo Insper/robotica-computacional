@@ -59,6 +59,12 @@ Uma vez que o pacote de navegação esteja em execução, vamos primeiro definir
 
 ![2D Pose Estimate](../util/2d_pose_estimate.png)
 
+### Extraindo a Posição do robô no Mapa
+
+Quando estamos utilizando o `Navigation`, o tópico `/odom` por si só não é suficiente para extrair a posição do robô no mapa. Para isso, devemos utilizar combinar o tópico `/odom` com o tópico `/tf` para extrair a posição do robô no mapa. O tópico `/tf` contém as transformações entre os diferentes frames do Turtlebot3, incluindo a transformação entre o frame `odom` e o frame `map`. 
+
+Felizmente, isso já foi implementado e está disponível no `robcomp_util`, bastando apenas utilizar herdar do arquivo `amcl.py` a classe `AMCL` no lugar da classe `Odom` para extrair a posição do robô no mapa.
+
 ## Definindo o Ponto de Destino da Navegação
 
 Agora, para definir o ponto de destino da navegação, clique no botão `2D Nav Goal` no Rviz e clique e segure o botão esquerdo do mouse no local onde deseja que o Turtlebot3 vá. Em seguida, arraste o mouse para a direção que deseja que o Turtlebot3 esteja apontando e solte o botão esquerdo do mouse.
