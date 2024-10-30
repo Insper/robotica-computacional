@@ -1,6 +1,8 @@
+import math
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy, HistoryPolicy
 from nav_msgs.msg import Odometry
+from tf2_msgs.msg import TFMessage
 import numpy as np
 import rclpy
 
@@ -8,6 +10,8 @@ class AMCL(): # Mude o nome da classe
 
     def __init__(self):
         # Subscribers
+        self.odom_ready = False
+
         qos_profile = QoSProfile(
             reliability=ReliabilityPolicy.RELIABLE,
             history=HistoryPolicy.KEEP_LAST,
@@ -15,18 +19,22 @@ class AMCL(): # Mude o nome da classe
             durability=DurabilityPolicy.VOLATILE
         )
         # odom
-        self.odom_sub = self.create_subscription(
+        self.subscription = self.create_subscription(
             Odometry,
             '/odom',
             self.odom_callback,
             qos_profile)
+        # tf
+        self.subscription = self.create_subscription(
+            TFMessage,
+            '/tf',
+            self.tf_callback,
+            qos_profile)
         
-        self.odom = False
-        while not self.odom:
-            rclpy.spin_once(self, timeout_sec=1.0)
+        while not self.odom_ready:
+            rclpy.spin_once(self)
             print("odom: retrying")
-
-        print("Odom Inciado")
+        print("Odom ready")
 
     def euler_from_quaternion(self, quaternion : list):
             """
@@ -52,18 +60,34 @@ class AMCL(): # Mude o nome da classe
 
             return roll, pitch, yaw
 
-    def odom_callback(self, data: Odometry):
-        self.x = data.pose.pose.position.x
-        self.y = data.pose.pose.position.y
+    def odom_callback(self, msg):
+        self.odom_x = msg.pose.pose.position.x
+        self.odom_y = msg.pose.pose.position.y
+        orientation_q = msg.pose.pose.orientation
+        # Get the yaw (rotation around z-axis) from the quaternion
+        _, _, self.odom_yaw = self.euler_from_quaternion([orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w])
 
-        quaternion = [
-            data.pose.pose.orientation.x,
-            data.pose.pose.orientation.y,
-            data.pose.pose.orientation.z,
-            data.pose.pose.orientation.w]
-        
-        self.roll, self.pitch, self.yaw = self.euler_from_quaternion(quaternion)
+    def tf_callback(self, msg):
+        # frame id needs to be /map
+        for tf in msg.transforms:
+            if tf.child_frame_id == 'odom':
+                try:
+                    # Translation
+                    x_map = tf.transform.translation.x
+                    y_map = tf.transform.translation.y
 
-        self.yaw_2pi = (self.yaw + 2 * np.pi) % (2 * np.pi)
+                    # Rotation (orientation in the map frame)
+                    orientation_q = tf.transform.rotation
+                    _, _, yaw_map = self.euler_from_quaternion([orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w])
 
-        self.odom = True
+                    # Find the estimated robot pose in the map frame using tf and odom
+                    delta_x = self.odom_x * math.cos(yaw_map) - self.odom_y * math.sin(yaw_map)
+                    delta_y = self.odom_x * math.sin(yaw_map) + self.odom_y * math.cos(yaw_map)
+
+                    self.x = x_map + delta_x
+                    self.y = y_map + delta_y
+                    self.get_logger().info(f'Current pose: ({self.x:.2f}, {self.y:.2f})')
+
+                    self.odom_ready = True
+                except Exception as e:
+                    self.get_logger().error(f"Error in tf_callback: {e}")

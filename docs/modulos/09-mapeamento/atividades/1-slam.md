@@ -78,23 +78,3 @@ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True \
 map:='topic://map'
 ```
-
-## Se inscrevendo no tópico do Mapa
-
-Para criar um nó que se inscreve no tópico do mapa, faça o seguinte:
-
-```python
-        # Matching QoS settings to the publisher's profile
-        qos_profile = QoSProfile(
-            reliability=ReliabilityPolicy.RELIABLE,
-            history=HistoryPolicy.KEEP_LAST,
-            depth=1,
-            durability=DurabilityPolicy.TRANSIENT_LOCAL
-        )
-        self.subscription = self.create_subscription(
-            OccupancyGrid,
-            '/map',
-            self.map_callback,
-            qos_profile)  # Using the custom QoS profile
-```
-
