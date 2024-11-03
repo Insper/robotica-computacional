@@ -14,7 +14,10 @@ Veja o vídeo abaixo de demonstração do SLAM no Turtlebot3:
 Para instalar os pacotes necessários para o SLAM, execute os comandos abaixo:
 
 ```bash
-TODO
+cd /home/borg/colcon_ws/src/my_simulation/atualiza_infra
+git stash
+git pull
+./atualiza_infra_2024.sh
 ```
 
 ## Executando o Mapeamento
