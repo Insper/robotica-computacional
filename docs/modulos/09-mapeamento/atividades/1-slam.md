@@ -64,9 +64,11 @@ Uma vez que o pacote de navegação esteja em execução, vamos primeiro definir
 
 ### Extraindo a Posição do robô no Mapa
 
-Quando estamos utilizando o `Navigation`, o tópico `/odom` por si só não é suficiente para extrair a posição do robô no mapa. Para isso, devemos utilizar combinar o tópico `/odom` com o tópico `/tf` para extrair a posição do robô no mapa. O tópico `/tf` contém as transformações entre os diferentes frames do Turtlebot3, incluindo a transformação entre o frame `odom` e o frame `map`. 
+Quando estamos utilizando o `Navigation`, o tópico `/odom` por si só não é suficiente para extrair a posição do robô no mapa, porque representa uma abstração da posição LOCAL do robô.
 
-Felizmente, isso já foi implementado e está disponível no `robcomp_util`, bastando apenas utilizar herdar do arquivo `amcl.py` a classe `AMCL` no lugar da classe `Odom` para extrair a posição do robô no mapa.
+Para utilizar a posição GLOBAL do robô, devemos combinar o tópico `/odom` com o tópico `/tf` extraindo assim a posição do robô no mapa. O tópico `/tf` contém as transformações entre os diferentes frames do Turtlebot3, incluindo a transformação entre o frame `odom` e o frame `map`. 
+
+Felizmente, isso já foi implementado e está disponível no `robcomp_util`, bastando apenas herdar do arquivo `amcl.py` a classe `AMCL` no lugar da classe `Odom` para extrair a posição GLOBAL do robô.
 
 ## Definindo o Ponto de Destino da Navegação
 
