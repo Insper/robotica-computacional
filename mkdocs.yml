@@ -233,7 +233,12 @@ nav:
             - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
             - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
 
-
+      - Capítulo 9 - Mapeamento:
+        - modulos/09-mapeamento/index.md
+        - Atividades:
+          - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
+          - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
+          - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
 
 
    
