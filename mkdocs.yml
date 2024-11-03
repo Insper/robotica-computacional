@@ -239,7 +239,9 @@ nav:
           - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
           - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
           - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
-
+        - APS 8:
+          - "APS 8 - Classroom" : TODO
+          - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
 
    
     - Gabarito do robcomp_util (até creeper_detector do APS 7 + Cap 8):
