@@ -59,10 +59,18 @@ Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto 
 ## Vídeo
 
 Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
-
 ____________________________________________________________________
 
-# Exercício 2 - Labirinto-GoTo (6 pontos)
+# Exercício 2 - Map2World e World2Map (2 pontos)
+Neste exercício, você deve criar um script que:
+1. Abre o arquivo `map.yaml` e lê as informações de resolução e origem do mapa.
+2. Utilizando o OpenCV, abre a figura `map.pgm` e exibe a imagem como um gráfico, através da biblioteca `matplotlib`.
+3. Crie duas funções, `map2world` e `world2map`, que convertem as coordenadas do mapa para o mundo e do mundo para o mapa, respectivamente.
+4. As funções devem estar em uma classe chamada `Map2World`.
+5. A classe só deve ser executada se o script for executado diretamente.
+____________________________________________________________________
+
+# Exercício 2 - Labirinto-GoTo (4 pontos)
 
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, a partir de uma sequência de pontos, obtidas do mapa do labirinto, faça o robô **real** escape do labirinto. O nó deve:
 
