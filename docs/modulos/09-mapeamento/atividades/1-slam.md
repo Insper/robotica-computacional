@@ -43,7 +43,7 @@ O mapa será salvo no diretório `~/map` com os arquivos `map.pgm` e `map.yaml`.
 
 O mapa será salvo como um arquivo de imagem no formato `pgm`. Como no exemplo abaixo:
 
-![Mapa](../util/map.pgm)
+![Mapa](../util/map_.pgm)
 
 O mapa ilustra o ambiente mapeado, onde os pixels pretos representam obstáculos, os pixels brancos representam áreas livres e os pixels cinzas representam áreas desconhecidas.
 
