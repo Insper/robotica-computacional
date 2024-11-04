@@ -21,7 +21,6 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ____________________________________________________________________
-____________________________________________________________________
 # **IMPORTANTE**
 Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
 ```bash

@@ -29,11 +29,11 @@ extra:
     data_AI: Segunda - 30/09 às 13:30
     link_AI: TBA
 
-    data_APS7: Segunda - 28/10 às 12:00
+    data_APS7: Segunda - 04/11 às 23:59
     link_APS7: https://classroom.github.com/a/hhzm8IPL
-    data_APS8: Segunda - 21/10 às 12:00
-    link_APS8: TBA
-    data_APS9: Segunda - 28/10 às 12:00
+    data_APS8: Segunda - 11/11 às 23:59
+    link_APS8: https://classroom.github.com/a/nXMHOUth
+    data_APS9: Segunda - 11/11 às 23:59
     link_APS9: TBA
 
     data_projeto: ~24/11 - antes da prova final
@@ -240,7 +240,7 @@ nav:
           - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
           - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
         - APS 8:
-          - "APS 8 - Classroom" : TODO
+          - "APS 8 - Classroom" : https://classroom.github.com/a/nXMHOUth
           - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
 
    

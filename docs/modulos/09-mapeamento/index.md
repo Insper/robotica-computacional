@@ -21,6 +21,6 @@ Esse conceito será explorado nas seguinte atividade,
 
     As entregas da APS 8 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 8 - Github Classroom](TODO)
+    [APS 8 - Github Classroom](https://classroom.github.com/a/nXMHOUth)
 
     A data final de entrega é **{{ data_APS8 }}**.
