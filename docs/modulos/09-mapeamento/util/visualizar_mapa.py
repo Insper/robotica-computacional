@@ -74,7 +74,9 @@ def main():
         point = input("Digite as coordenadas do ponto x,y do mapa, e.g 50,17: ")
         point = tuple([int(i) for i in point.split(',')])
         print(map_to_world(point[0], point[1], height, width, resolution, origin_x, origin_y))
-        plot_path(map, point)
+        plot_path(map, point) # start:  (17, 27)
+        # -0.7211045276996666 1.0238163536730722
+
 
 
 if __name__ == '__main__':
