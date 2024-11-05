@@ -5,7 +5,7 @@ import cv2
 def map_to_world( map_x, map_y, height, width, resolution, origin_x, origin_y):
     # Convert map coordinates (pixels) to world coordinates (meters)
     world_x = map_x * resolution + origin_x
-    world_y = (height - map_y) * resolution + origin_y
+    world_y = map_y * resolution + origin_y
     return world_x, world_y
 
 def world_to_map( world_x, world_y, height, width, resolution, origin_x, origin_y):
