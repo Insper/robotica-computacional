@@ -17,8 +17,8 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_6`.
-    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_8`.
+    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ____________________________________________________________________
 # **IMPORTANTE**
@@ -53,7 +53,7 @@ ____________________________________________________________________
 Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto do nosso laboratório, a partir do ponto interno do labirinto, enviando comandos de navegação para o robô. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
 
 !!! dica
-    O `Navigation` autualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
+    O `Navigation` atualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
 
 ## Vídeo
 

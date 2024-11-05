@@ -55,11 +55,11 @@ def plot_path(map, point):
     plt.show()
 
 def main():
-    map = prep_map('map.pgm')
+    map = prep_map('/home/borg/Documents/robotica-computacional/docs/modulos/09-mapeamento/util/map.pgm')
     height, width = map.shape
     
     # open yaml file and get map metadata
-    with open('map.yaml', 'r') as file:
+    with open('/home/borg/Documents/robotica-computacional/docs/modulos/09-mapeamento/util/map.yaml', 'r') as file:
         for line in file:
             if 'resolution' in line:
                 resolution = float(line.split(': ')[1])
