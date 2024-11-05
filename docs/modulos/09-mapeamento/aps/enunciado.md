@@ -67,11 +67,25 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 9)
 
-* Receber uma sequência de pontos do labirinto.
+* Modifique o `goto.py` para receber uma lista de `Points()`
 
 * Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
 
+* Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
+
+* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
+
 * Ao chegar no último ponto, o robô deve entrar em um estado `stop` e parar.
+
+!!! dica
+    Rode o Navigator pelo comando
+
+    ```bash
+    ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
+    ```
+
+    Assumindo que o mapa ainda esta em sua HOME
+
 
 ## Critérios de Avaliação:
 
