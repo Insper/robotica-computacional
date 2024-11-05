@@ -65,7 +65,7 @@ ____________________________________________________________________
 
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, a partir de uma sequência de pontos, obtidas do mapa do labirinto, faça o robô **real** escape do labirinto. O nó deve:
 
-* Utilize o script `plot_map.py` para obter a sequência de pontos do labirinto.
+* Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 9)
 
 * Receber uma sequência de pontos do labirinto.
 
