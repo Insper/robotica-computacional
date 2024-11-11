@@ -261,7 +261,7 @@ nav:
         - 23-B:
           - "Enunciado": provas/simulado_af_23b/enunciado.md
           - "Gabarito Q1" : provas/simulado_af_23b/q1.py
-          - "Gabarito Q2" : provas/simulado_af_23b/q1.py
+          - "Gabarito Q2" : provas/simulado_af_23b/q2.py
         - 24-A:
           - "Enunciado": provas/simulado_af_24a/enunciado.md
         - Delta 24-A:
