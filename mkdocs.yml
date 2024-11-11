@@ -257,11 +257,15 @@ nav:
       - AI:
         - "Enunciado": provas/ai/enunciado.md
         - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
-        # - "Gabarito AI" : https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    #   - Simulado PF:
-    #     - "Enunciado": provas/simulado_pf/enunciado.md
-    #     - "Resposta Q1" : provas/simulado_pf/q1.py
-    #     - "Resposta Q2" : provas/simulado_pf/q2.py
+      - Simulado AF:
+        - 23-B:
+          - "Enunciado": provas/simulado_af_23b/enunciado.md
+          - "Gabarito Q1" : provas/simulado_af_23b/q1.py
+          - "Gabarito Q2" : provas/simulado_af_23b/q1.py
+        - 24-A:
+          - "Enunciado": provas/simulado_af_24a/enunciado.md
+        - Delta 24-A:
+          - "Enunciado": provas/delta_24a/enunciado.md
     #   - AF:
     #     - "Enunciado": provas/af/enunciado.md
     #   - DELTA:
