@@ -118,7 +118,7 @@ Sua classe deve receber como entrada, cor do creeper, ID do creeper e "Drop Area
 --->
 ________________________________________________________
 
-### Missão **C**
+### Missão **D**
 
 !!! warning
     Missão no robô simulado
@@ -167,12 +167,12 @@ creepers = {
 
 * **Controle Proporcional**: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.
 
-**Nota final desta missão:** 5,0
+**Nota final desta missão:** 4,0
 
 ________________________________________________________
 
 
-### Missão **B**
+### Missão **C**
 
 !!! warning
     Realizar a Missão no robô real
@@ -184,12 +184,12 @@ Essa missão se resume a executar a missão D no robô real.
 - Mesmo desafio da missão **C**
 - Utilizar o robô real
 
-**Nota final desta missão:** 7,0
+**Nota final desta missão:** 5,0
 
 
 ________________________________________________________
 
-### Missão **A**
+### Missão **B**
 
 !!! warning
     Realizar a Missão no robô real
@@ -216,7 +216,7 @@ Essa missão utiliza o mapa e a localização dos artefatos da missão anterior 
 
 * **Subscriber para MobileNet**: Crie um nó para a leitura da MobileNet. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
 
-**Nota final desta missão:** 10,0
+**Nota final desta missão:** 8,0
 
 #### Entrega Parcial
 1. O robô derruba um creeper em uma posição específica;
@@ -227,7 +227,7 @@ Essa missão utiliza o mapa e a localização dos artefatos da missão anterior 
 
 ________________________________________________________
 
-### Missão **A++**
+### Missão **A**
 
 !!! warning
     Realizar a Missão no robô real
@@ -252,7 +252,7 @@ Essa missão utiliza os conceitos das missões anteriores adicionando `resgatar 
 
 - Mesmo do **B**
 
-**Nota final desta missão:** 12,0
+**Nota final desta missão:** 10,0
 
 #### Entrega Parcial
 1. O robô consegue entrar e sair do labirinto sem ter o mapa do labirinto.
