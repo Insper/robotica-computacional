@@ -266,8 +266,8 @@ nav:
           - "Enunciado": provas/simulado_af_24a/enunciado.md
         - Delta 24-A:
           - "Enunciado": provas/delta_24a/enunciado.md
-    #   - AF:
-    #     - "Enunciado": provas/af/enunciado.md
+      - AF:
+        - "Enunciado": provas/af/enunciado.md
     #   - DELTA:
     #     - "Enunciado": provas/delta/enunciado.md
 
