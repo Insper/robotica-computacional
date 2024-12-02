@@ -268,6 +268,8 @@ nav:
           - "Enunciado": provas/delta_24a/enunciado.md
       - AF:
         - "Enunciado": provas/af/enunciado.md
+      - SUB:
+        - "Enunciado": provas/sub/enunciado.md
     #   - DELTA:
     #     - "Enunciado": provas/delta/enunciado.md
 
