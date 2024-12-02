@@ -62,7 +62,7 @@ Baseando-se no código `base_control.py` do capitulo 3, crie um arquivo chamado 
 Utilize o comando abaixo para iniciar o simulador no mapa da prova:
 
 ```bash
-ros2 launch my_gazebo divisoes.launch.py
+ros2 launch my_gazebo divisoes_2.launch.py
 ```
 
 O nó criado deve: 
