@@ -1,6 +1,6 @@
 # Bem vindo disciplina de robotica-computacional
 
-Olá, neste repositório você irá encontrar os conteúdos ministrados em sala de aula.
+Olá, neste repositório você irá encontrar os conteúdos ministrados em sala de aula.   
 
 ## Acesse o site:
 
