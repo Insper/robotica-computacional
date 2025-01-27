@@ -109,170 +109,170 @@ nav:
           - 2 - Revisão Python: 
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
-        - APS 1:
-          - "APS 1 - Classroom" : https://classroom.github.com/a/Ne9Z8fsD
-          - "Enunciado": modulos/01-intro/aps/enunciado.md
-          - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
+        # - APS 1:
+        #   - "APS 1 - Classroom" : https://classroom.github.com/a/Ne9Z8fsD
+        #   - "Enunciado": modulos/01-intro/aps/enunciado.md
+        #   - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-      - Capítulo 2 - Introdução à ROS 2:
-        - modulos/02-intro-ros/index.md
-        - Atividades:
-          - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
-          - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
-          - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
-          - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
-          - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
-        - APS 2:
-          - "APS 2 - Classroom" : https://classroom.github.com/a/x6CEGJYO
-          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+    #   - Capítulo 2 - Introdução à ROS 2:
+    #     - modulos/02-intro-ros/index.md
+    #     - Atividades:
+    #       - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
+    #       - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
+    #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
+    #       - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
+    #       - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
+    #     - APS 2:
+    #       - "APS 2 - Classroom" : https://classroom.github.com/a/x6CEGJYO
+    #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
-      - Capítulo 3 - Controlando o Robô:
-        - modulos/03-laser-e-robo/index.md
-        - Atividades:
-          - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
-          - "2 - Estrutura Básica de um Nó":
-              - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
-              - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
-              - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
-          - "3 - Entendendo a Odometria":
-            - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
-            - "Download > odom": modulos/03-laser-e-robo/util/odom.py
-            - "Download > teste_odom": modulos/03-laser-e-robo/util/teste_odom.py
-          - "4 - Entendendo o Laser":
-            - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-            - "Download > laser": modulos/03-laser-e-robo/util/laser.py
-          - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
-        - APS 3:
-          - "APS 3 - Classroom" : https://classroom.github.com/a/94ldeOwJ
-          - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
+    #   - Capítulo 3 - Controlando o Robô:
+    #     - modulos/03-laser-e-robo/index.md
+    #     - Atividades:
+    #       - "1 - Máquina de Estados": modulos/03-laser-e-robo/atividades/1-maquina-de-estados.md
+    #       - "2 - Estrutura Básica de um Nó":
+    #           - "2 - Estrutura Básica de um Nó": modulos/03-laser-e-robo/atividades/2-estrutura-basica.md
+    #           - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
+    #           - "Download > Nó de Controle do Robô": modulos/03-laser-e-robo/util/base_control.py
+    #       - "3 - Entendendo a Odometria":
+    #         - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
+    #         - "Download > odom": modulos/03-laser-e-robo/util/odom.py
+    #         - "Download > teste_odom": modulos/03-laser-e-robo/util/teste_odom.py
+    #       - "4 - Entendendo o Laser":
+    #         - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
+    #         - "Download > laser": modulos/03-laser-e-robo/util/laser.py
+    #       - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
+    #     - APS 3:
+    #       - "APS 3 - Classroom" : https://classroom.github.com/a/94ldeOwJ
+    #       - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
-    - Unidade 2:
-      - Capítulo 4 - Imagens e Matrizes:
-        - modulos/04-visao-p1/index.md
-        - Atividades:
-          - "Download > Atividades": modulos/04-visao-p1/atividades_cap_4.zip
-          - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
-          - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
-          - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
-          - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
-          - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
-        - APS 4:
-          - "APS 4 - Classroom" : https://classroom.github.com/a/R1grL7pT
-          - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+    # - Unidade 2:
+    #   - Capítulo 4 - Imagens e Matrizes:
+    #     - modulos/04-visao-p1/index.md
+    #     - Atividades:
+    #       - "Download > Atividades": modulos/04-visao-p1/atividades_cap_4.zip
+    #       - "1 - Leitura de Imagem e Webcam": modulos/04-visao-p1/atividades/1-leitura_e_webcam.ipynb
+    #       - "2 - Corte e Criação de Imagens": modulos/04-visao-p1/atividades/2-corte_e_criacao.ipynb
+    #       - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
+    #       - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
+    #       - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
+    #     - APS 4:
+    #       - "APS 4 - Classroom" : https://classroom.github.com/a/R1grL7pT
+    #       - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
-      - Capítulo 5 - Visão Robótica:
-        - modulos/05-visao-p2/index.md
-        - Atividades:
-          - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
-          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
-          - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
-          - "3 - Visão na ROS 2":
-            - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
-            - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
-          - "4 - Ferramentas de Visão":
-            - "4 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-image_tool.md
-            - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
-          - "5 - Exemplo de Resolução de Exercício":
-            - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
-            - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
-            - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
-            - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
-        - APS 5:
-          - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
-          - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+    #   - Capítulo 5 - Visão Robótica:
+    #     - modulos/05-visao-p2/index.md
+    #     - Atividades:
+    #       - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
+    #       - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
+    #       - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
+    #       - "3 - Visão na ROS 2":
+    #         - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
+    #         - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
+    #       - "4 - Ferramentas de Visão":
+    #         - "4 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-image_tool.md
+    #         - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
+    #       - "5 - Exemplo de Resolução de Exercício":
+    #         - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
+    #         - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
+    #         - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
+    #         - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
+    #     - APS 5:
+    #       - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
+    #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
-      - Capítulo 6 - MobileNet e ArUco:
-        - modulos/06-visao-p3/index.md
-        - Atividades:
-          - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
-          - "1 - MobileNet":
-            - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
-            - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
-            - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
-          - "2 - Marcador ArUco":
-            - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
-            - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
-          # - "3 - Reconhecimento dos Creepers":
-          #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
-          #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
-            # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
-        - APS 6:
-          - "APS 6 - Classroom" : https://classroom.github.com/a/v8iEYUMT
-          - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
-    - Unidade 3:
-      - Capítulo 7 - Controle Propocional:
-        - modulos/07-controle/index.md
-        - Atividades:
-          - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
-          - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
-          - "2 - Segue-Linha-P":
-            - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
-            - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
-            - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
-          - "3 - Identifica Creepers":
-            - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
-            - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
-          - "4 - Controlando a Garra":
-            - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
-            - "Download > Garra": modulos/07-controle/util/garra.py
-        - APS 7:
-          - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
-          - "Enunciado": modulos/07-controle/aps/enunciado.md
+    #   - Capítulo 6 - MobileNet e ArUco:
+    #     - modulos/06-visao-p3/index.md
+    #     - Atividades:
+    #       - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
+    #       - "1 - MobileNet":
+    #         - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
+    #         - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
+    #         - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
+    #       - "2 - Marcador ArUco":
+    #         - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
+    #         - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
+    #       # - "3 - Reconhecimento dos Creepers":
+    #       #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
+    #       #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
+    #         # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
+    #     - APS 6:
+    #       - "APS 6 - Classroom" : https://classroom.github.com/a/v8iEYUMT
+    #       - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+    # - Unidade 3:
+    #   - Capítulo 7 - Controle Propocional:
+    #     - modulos/07-controle/index.md
+    #     - Atividades:
+    #       - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
+    #       - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
+    #       - "2 - Segue-Linha-P":
+    #         - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
+    #         - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
+    #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
+    #       - "3 - Identifica Creepers":
+    #         - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
+    #         - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
+    #       - "4 - Controlando a Garra":
+    #         - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
+    #         - "Download > Garra": modulos/07-controle/util/garra.py
+    #     - APS 7:
+    #       - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
+    #       - "Enunciado": modulos/07-controle/aps/enunciado.md
       
-      - Capítulo 8 - Navegação:
-        - modulos/08-navegacao/index.md
-        - Atividades:
-          - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
-          - "2 - Action Server":
-            - "2 - Action Server": modulos/08-navegacao/atividades/2-action-server.md
-            - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
-            - "Download > Action Segue Linha": modulos/08-navegacao/util/action_segue_linha.py
-          - "3 - Action Client":
-            - "2 - Action Client": modulos/08-navegacao/atividades/3-action-client.md
-            - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
-            - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
+    #   - Capítulo 8 - Navegação:
+    #     - modulos/08-navegacao/index.md
+    #     - Atividades:
+    #       - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
+    #       - "2 - Action Server":
+    #         - "2 - Action Server": modulos/08-navegacao/atividades/2-action-server.md
+    #         - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
+    #         - "Download > Action Segue Linha": modulos/08-navegacao/util/action_segue_linha.py
+    #       - "3 - Action Client":
+    #         - "2 - Action Client": modulos/08-navegacao/atividades/3-action-client.md
+    #         - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
+    #         - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
 
-      - Capítulo 9 - Mapeamento:
-        - modulos/09-mapeamento/index.md
-        - Atividades:
-          - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
-          - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
-          - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
-        - APS 8:
-          - "APS 8 - Classroom" : https://classroom.github.com/a/nXMHOUth
-          - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
+    #   - Capítulo 9 - Mapeamento:
+    #     - modulos/09-mapeamento/index.md
+    #     - Atividades:
+    #       - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
+    #       - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
+    #       - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
+    #     - APS 8:
+    #       - "APS 8 - Classroom" : https://classroom.github.com/a/nXMHOUth
+    #       - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
 
    
-    - Gabarito do robcomp_util (até creeper_detector do APS 7 + Cap 8):
-      - modulos/robcomp_util/index.md
-      - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
+    # - Gabarito do robcomp_util (até creeper_detector do APS 7 + Cap 8):
+    #   - modulos/robcomp_util/index.md
+    #   - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
-    - Provas:
-      - Simulado AI:
-        - "Enunciado": provas/simulado_ai/enunciado.md
-        - "Download > Imagens Q2": provas/simulado_ai/q2.zip
-        - "Resposta Q1" : provas/simulado_ai/q1.py
-        - "Resposta Q2" : provas/simulado_ai/q2.py
-      - AI:
-        - "Enunciado": provas/ai/enunciado.md
-        - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
-      - Simulado AF:
-        - 23-B:
-          - "Enunciado": provas/simulado_af_23b/enunciado.md
-          - "Gabarito Q1" : provas/simulado_af_23b/q1.py
-          - "Gabarito Q2" : provas/simulado_af_23b/q2.py
-        - 24-A:
-          - "Enunciado": provas/simulado_af_24a/enunciado.md
-        - Delta 24-A:
-          - "Enunciado": provas/delta_24a/enunciado.md
-      - AF:
-        - "Enunciado": provas/af/enunciado.md
-      - SUB:
-        - "Enunciado": provas/sub/enunciado.md
-    #   - DELTA:
-    #     - "Enunciado": provas/delta/enunciado.md
+    # - Provas:
+    #   - Simulado AI:
+    #     - "Enunciado": provas/simulado_ai/enunciado.md
+    #     - "Download > Imagens Q2": provas/simulado_ai/q2.zip
+    #     - "Resposta Q1" : provas/simulado_ai/q1.py
+    #     - "Resposta Q2" : provas/simulado_ai/q2.py
+    #   - AI:
+    #     - "Enunciado": provas/ai/enunciado.md
+    #     - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
+    #   - Simulado AF:
+    #     - 23-B:
+    #       - "Enunciado": provas/simulado_af_23b/enunciado.md
+    #       - "Gabarito Q1" : provas/simulado_af_23b/q1.py
+    #       - "Gabarito Q2" : provas/simulado_af_23b/q2.py
+    #     - 24-A:
+    #       - "Enunciado": provas/simulado_af_24a/enunciado.md
+    #     - Delta 24-A:
+    #       - "Enunciado": provas/delta_24a/enunciado.md
+    #   - AF:
+    #     - "Enunciado": provas/af/enunciado.md
+    #   - SUB:
+    #     - "Enunciado": provas/sub/enunciado.md
+    # #   - DELTA:
+    # #     - "Enunciado": provas/delta/enunciado.md
 
-    - Projeto:
-      - "Enunciado": projeto/enunciado.md
-      - "Projeto - Classroom" : https://classroom.github.com/a/dUQfOhqf
+    # - Projeto:
+    #   - "Enunciado": projeto/enunciado.md
+    #   - "Projeto - Classroom" : https://classroom.github.com/a/dUQfOhqf
