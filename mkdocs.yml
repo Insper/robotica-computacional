@@ -10,21 +10,21 @@ extra_css:
 extra:
   custom_variables:
     escolha_turma: https://forms.office.com/r/9Zp3cDNReB
-    semestre: 2024-2
+    semestre: 2025-1
     
-    data_APS1: Segunda - 12/08 às 12:00
-    link_APS1: https://classroom.github.com/a/Ne9Z8fsD
+    data_APS1: Segunda - 10/02 às 12:00
+    link_APS1: https://classroom.github.com/a/VtCSBzyf
     data_APS2: Segunda - 19/08 às 12:00
-    link_APS2: https://classroom.github.com/a/x6CEGJYO
+    link_APS2: TODO
     data_APS3: Segunda - 02/09 às 12:00
-    link_APS3: https://classroom.github.com/a/94ldeOwJ
+    link_APS3: TODO
     
     data_APS4: Segunda - 09/09 às 12:00
-    link_APS4: https://classroom.github.com/a/R1grL7pT
+    link_APS4: TODO
     data_APS5: Segunda - 16/09 às 12:00
-    link_APS5: https://classroom.github.com/a/GiXfZmlw
+    link_APS5: TODO
     data_APS6: Segunda - 07/10 às 12:00
-    link_APS6: https://classroom.github.com/a/v8iEYUMT
+    link_APS6: TODO
     
     data_AI: Segunda - 30/09 às 13:30
     link_AI: TBA
@@ -110,7 +110,7 @@ nav:
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
         # - APS 1:
-        #   - "APS 1 - Classroom" : https://classroom.github.com/a/Ne9Z8fsD
+        #   - "APS 1 - Classroom" : https://classroom.github.com/a/VtCSBzyf
         #   - "Enunciado": modulos/01-intro/aps/enunciado.md
         #   - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
