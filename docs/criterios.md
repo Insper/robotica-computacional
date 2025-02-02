@@ -16,7 +16,7 @@ section.progress-section.show iframe {
 A nota será composta da seguinte forma:
 
 ```
-N = 0,3 * NAPS + 0,2 * Projeto + 0,2 * AI + 0,3 * AF;
+N = 0,2 * NAPS + 0,2 * Projeto + 0,3 * AI + 0,3 * AF;
 
 NAPS = (APS_UNIDADE_1 + APS_UNIDADE_2 + APS_UNIDADE_3) / 3;
 ```
