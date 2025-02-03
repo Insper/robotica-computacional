@@ -317,6 +317,15 @@ Uma vez que o arquivo `setup.py` foi configurado, **compile** o pacote novamente
 ros2 launch my_package first_node.launch.py
 ```
 
+ou utilizando o comando abaixo para executar com `ros2 run`:
+
+```bash
+ros2 run my_package first_node
+```
+No ROS, os arquivos do tipo `launch` são usados para iniciar um ou mais nós de forma organizada em um único terminal. No entanto, como vários nós podem estar rodando simultaneamente, o sistema armazena temporariamente as saídas do terminal e as exibe em blocos após certo tempo.  
+
+Por isso, quando executamos apenas um nó ou estamos realizando testes, geralmente preferimos usar `ros2 run`, que exibe a saída imediatamente.
+
 E agora, em um novo terminal, execute o comando abaixo para rodar o nó `second_node.py`:
 
 ```bash
