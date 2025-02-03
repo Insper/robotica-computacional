@@ -109,10 +109,10 @@ nav:
           - 2 - Revisão Python: 
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
-        # - APS 1:
-        #   - "APS 1 - Classroom" : https://classroom.github.com/a/VtCSBzyf
-        #   - "Enunciado": modulos/01-intro/aps/enunciado.md
-        #   - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
+        - APS 1:
+          - "APS 1 - Classroom" : https://classroom.github.com/a/VtCSBzyf
+          - "Enunciado": modulos/01-intro/aps/enunciado.md
+          - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
     #   - Capítulo 2 - Introdução à ROS 2:
     #     - modulos/02-intro-ros/index.md
