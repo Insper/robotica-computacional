@@ -72,7 +72,7 @@ Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser r
 # Entrega
 
 !!! tip
-    Como desejamos ver a saída do terminal do `subscriber.py` e do `publisher.py`, é importante executá-los utilizando os comandos para as saída aparecerem corretamente.
+    Como desejamos ver a saída do terminal do `subscriber.py` e do `publisher.py`, é importante executá-los utilizando os comandos abaixo para as saída aparecerem corretamente (utilizando `ros2 run`).
     
     ```bash
     ros2 run entregaval_2 publisher
