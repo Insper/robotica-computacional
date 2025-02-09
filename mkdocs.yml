@@ -12,18 +12,18 @@ extra:
     escolha_turma: https://forms.office.com/r/9Zp3cDNReB
     semestre: 2025-1
     
-    data_APS1: Segunda - 10/02 às 12:00
+    data_APS1: Segunda - 10/02 às 23:59
     link_APS1: https://classroom.github.com/a/VtCSBzyf
-    data_APS2: Segunda - 19/08 às 12:00
-    link_APS2: TODO
-    data_APS3: Segunda - 02/09 às 12:00
+    data_APS2: Segunda - 17/02 às 23:59
+    link_APS2: https://classroom.github.com/a/DSoynr-D
+    data_APS3: Segunda - 02/09 às 23:59
     link_APS3: TODO
     
-    data_APS4: Segunda - 09/09 às 12:00
+    data_APS4: Segunda - 09/09 às 23:59
     link_APS4: TODO
-    data_APS5: Segunda - 16/09 às 12:00
+    data_APS5: Segunda - 16/09 às 23:59
     link_APS5: TODO
-    data_APS6: Segunda - 07/10 às 12:00
+    data_APS6: Segunda - 07/10 às 23:59
     link_APS6: TODO
     
     data_AI: Segunda - 30/09 às 13:30
@@ -114,17 +114,17 @@ nav:
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
-    #   - Capítulo 2 - Introdução à ROS 2:
-    #     - modulos/02-intro-ros/index.md
-    #     - Atividades:
-    #       - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
-    #       - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
-    #       - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
-    #       - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
-    #       - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
-    #     - APS 2:
-    #       - "APS 2 - Classroom" : https://classroom.github.com/a/x6CEGJYO
-    #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+      - Capítulo 2 - Introdução à ROS 2:
+        - modulos/02-intro-ros/index.md
+        - Atividades:
+          - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
+          - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
+          - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
+          - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
+          - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
+        - APS 2:
+          - "APS 2 - Classroom" : https://classroom.github.com/a/DSoynr-D
+          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
     #   - Capítulo 3 - Controlando o Robô:
     #     - modulos/03-laser-e-robo/index.md
