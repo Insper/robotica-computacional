@@ -6,7 +6,7 @@ Para facilitar o desenvolvimento de um nó, a fornecemos uma estrutura básica d
 
 * Nó base de controle: [main.py](../util/base_control.py)
 
-Baixe os arquivos e coloque-os na em uma pasta de fácil acesso. 
+Baixe os arquivos e coloque-os em uma pasta de fácil acesso. 
 
 Agora vamos entender o que cada parte do código faz.
 
@@ -19,7 +19,11 @@ Este script, não existe novidade em relação ao que já vimos anteriormente. Q
 
 ## Nó Base de Controle
 
-Neste script, definimos a máquina de estados do robô (no dicionário `self.state_machine`), o estado inicial (no atributo `self.robot_state`) e a função de controle (no método `self.control()`), que a cada 0,25 segundos, executa a função `self.state_machine[self.robot_state]()` e publica a ação de controle no tópico `cmd_vel` (`self.cmd_vel_pub.publish(self.twist)`).
+Neste script, definimos a máquina de estados do robô (no dicionário `self.state_machine`), o estado inicial (no atributo `self.robot_state`) e a função de controle (no método `self.control()`), que a cada 0,25 segundos:
+
+1. Executa a função `self.check_danger()`, que verifica se o robô está em alguma forma de perigo, como colisão ou proximidade de obstáculos e atualiza o estado do robô de acordo.
+2. Executa a função `self.state_machine[self.robot_state]()`, que executa a função correspondente ao estado atual do robô.
+3. Publica a ação de controle no tópico `cmd_vel` (`self.cmd_vel_pub.publish(self.twist)`).
 
 !!! importante
     A função de controle **é a única função que publica no tópico `cmd_vel`**. Isso é importante para garantir que o robô não receba comandos conflitantes.
