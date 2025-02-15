@@ -116,13 +116,9 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Mova-se em frente até encontrar um obstáculo a menos de `0.5m` à sua frente (esse valor pode ser ajustado para melhor desempenho).
 
-* Gire até que o obstáculo mais próximo, esteja na direita inferior (aproximadamente `225` graus).
+* Gire `225` graus.
 
 * Mova-se em frente e repita o processo.
-
-!!! tip
-    Rescreva a função `custom_laser` do `Laser`, adicionado `lower_right`.
-    Enquanto estiver girando, utilize a função `np.min` para encontrar o menor valor e verificar se ele está na lista `lower_right`.
 
 ## Critérios de Avaliação:
 
