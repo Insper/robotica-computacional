@@ -22,7 +22,7 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 4](atividades/4-pub-sub.md) - Criando um nó subscritor e publicador e configurando o pacote.
 - [Atividade 5](atividades/5-rosbag.md) - Gravando e visualizando eventos na ROS 2.
 
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
@@ -33,4 +33,4 @@ Estes conceitos são explorados nas seguintes atividades,
 
     [APS 2 - Github Classroom]( {{ link_APS2 }} )
 
-    A data final de entrega é **{{ data_APS2 }}**.
+    A data final de entrega é **{{ data_APS2 }}**. -->
