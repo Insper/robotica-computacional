@@ -11,5 +11,5 @@ site/**
 exercise_data.json
 pf
 *.db3
-
+ 
 .vscode/
