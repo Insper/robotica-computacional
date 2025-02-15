@@ -7,12 +7,6 @@ Estes atributos são chamados de Pose, que é a posição e orientação do rob�
 
 No caso do robô utilizado neste curso, a odometria é estimada utilizando os dados dos encoders dos motores.
 
-!!! Importante
-    Antes de começar, crie um novo pacote chamado `robcomp_util` com as seguintes dependências:
-    ```bash
-    ros2 pkg create --build-type ament_python robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
-    ```
-
 # Componentes da Pose
 
 ## Posição
@@ -93,9 +87,21 @@ agora, ande com o robô utilizando o teleop, para ver como a odometria é atuali
 !!! tip
     Para ajudar na compreenção o sistemas de coordenadas, primeiramente ande com o robô em uma direção por vez, primeiro para frente, pare, gire 90 graus, ande novamente e monitore a atualização da odometria.
 
-## Módulo de Odometria - APS 3
+## Robcomp Util
 
-Agora vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+Primeiramente, clone o seguinte repositório dentro da pasta `src` (por enquanto, não tem nada dentro deste repositório):
+
+[robcomp_util](https://github.com/insper-classroom/robcomp_util/)
+
+Agora, dentro deste repositório, crie um novo pacote chamado `robcomp_util` com as seguintes dependências:
+
+```bash
+ros2 pkg create --build-type ament_python robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
+```
+
+Agora, vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+
+## Módulo de Odometria - APS 3
 
 Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e muda o nome da classe para `Odom`, e **remova a herança**, ou seja, remova `Node` e seu `__init__`. Essa classe deve:
 
