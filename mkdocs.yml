@@ -142,9 +142,9 @@ nav:
             - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
             # - "Download > laser": modulos/03-laser-e-robo/util/laser.py
           - "5 - Visualização na ROS": modulos/03-laser-e-robo/atividades/5-visualizacao.md
-    #     - APS 3:
-    #       - "APS 3 - Classroom" : https://classroom.github.com/a/94ldeOwJ
-    #       - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
+        - APS 3:
+          - "APS 3 - Classroom" : https://classroom.github.com/a/94ldeOwJ
+          - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
     # - Unidade 2:
