@@ -51,7 +51,7 @@ ros2 launch my_gazebo pista-23B.launch.py
 ```
 - Teleop:
 ```bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard
+ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
 Antes de se increver no tópico `odom`, vamos olhar o tipo de mensagem e o conteúdo da mensagem. Para isso, abra um novo terminal e digite:
