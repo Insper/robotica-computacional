@@ -48,15 +48,15 @@ Baseando-se no código `image_subscriber.py` do capítulo 5, crie um arquivo cha
 
 * Adicione um subscriber que se inscreva no tópico de imagem **comprimida** e direcione para a função `image_callback`.
 
-* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha mais próximo nas variáveis `self.cx`, `self.cy`, e a metade da largura da imagem na variável `self.w`.
+* A função `image_callback` deve filtrar a faixa amarela na pista e identificar a posição do segmento de linha mais próximo na imagem.
+
+* Calcule a distância horizontal do ponto central do segmento de linha ao centro da imagem e armazene esse valor na variável `self.distancia_linha`.
 
 * A função `image_callback` deve ser executada apenas se a variável `self.running` for `True`.
 
-* Exiba a imagem com o contorno da máscara amarela e o centro do segmento de linha mais próximo ao robô.
+* Exiba a imagem com o contorno da máscara amarela e uma linha que liga o centro do segmento de linha ao centro da imagem (que represente o a distancia `self.distancia_linha`).
 
-* Calcule também a distância do centro da linha ao centro da imagem.
-
-* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`. Nesse caso, ainda deve mostrar a imagem sem nada desenhada.
+* Caso o robô não veja nenhum contorno, defina `self.distancia_centro = None`. Nesse caso, a imagem ainda deve ser exibida sem nada desenhado.
 
 ## Critérios de Avaliação:
 
