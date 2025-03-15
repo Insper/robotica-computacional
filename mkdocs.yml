@@ -259,27 +259,27 @@ nav:
     #   - DELTA:
     #     - "Enunciado": provas/delta/enunciado.md
       - Simulado AI:
-        - "Enunciado": provas/simulado_ai/enunciado.md
-        - "Download > Imagens Q2": provas/simulado_ai/q2.zip
-        - "Resposta Q1" : provas/simulado_ai/q1.py
-        - "Resposta Q2" : provas/simulado_ai/q2.py
+        - "Enunciado": simulados/simulado_ai/enunciado.md
+        - "Download > Imagens Q2": simulados/simulado_ai/q2.zip
+        - "Resposta Q1" : simulados/simulado_ai/q1.py
+        - "Resposta Q2" : simulados/simulado_ai/q2.py
       - Simulado AF:
-        - "Enunciado": provas/simulado_af/enunciado.md
-        - "Gabarito Q1" : provas/simulado_af/q1.py
-        - "Gabarito Q2" : provas/simulado_af/q2.py
+        - "Enunciado": simulados/simulado_af/enunciado.md
+        - "Gabarito Q1" : simulados/simulado_af/q1.py
+        - "Gabarito Q2" : simulados/simulado_af/q2.py
       - Provas Antigas:
         - AI 24b:
-          - "Enunciado": provas/ai_24b/enunciado.md
+          - "Enunciado": simulados/ai_24b/enunciado.md
         - AF 24b:
-          - "Enunciado": provas/af_24b/enunciado.md
+          - "Enunciado": simulados/af_24b/enunciado.md
         - SUB 24b:
-          - "Enunciado": provas/sub_24b/enunciado.md
+          - "Enunciado": simulados/sub_24b/enunciado.md
         - AI 24a:
-          - "Enunciado": provas/ai_24a/enunciado.md
+          - "Enunciado": simulados/ai_24a/enunciado.md
         - AF 24a:
-          - "Enunciado": provas/af_24a/enunciado.md
+          - "Enunciado": simulados/af_24a/enunciado.md
         - Delta 24a:
-          - "Enunciado": provas/delta_24a/enunciado.md
+          - "Enunciado": simulados/delta_24a/enunciado.md
 
     # - Projeto:
     #   - "Enunciado": projeto/enunciado.md
