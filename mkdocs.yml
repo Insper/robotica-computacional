@@ -161,26 +161,26 @@ nav:
           - "APS 4 - Classroom" : https://classroom.github.com/a/n1do085W
           - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
-    #   - Capítulo 5 - Visão Robótica:
-    #     - modulos/05-visao-p2/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
-    #       - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
-    #       - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
-    #       - "3 - Visão na ROS 2":
-    #         - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
-    #         - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
-    #       - "4 - Ferramentas de Visão":
-    #         - "4 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-image_tool.md
-    #         - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
-    #       - "5 - Exemplo de Resolução de Exercício":
-    #         - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
-    #         - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
-    #         - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
-    #         - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
-    #     - APS 5:
-    #       - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
-    #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+      - Capítulo 5 - Visão Robótica:
+        - modulos/05-visao-p2/index.md
+        - Atividades:
+          - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
+          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
+          - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
+          - "3 - Visão na ROS 2":
+            - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
+            - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
+          - "4 - Ferramentas de Visão":
+            - "4 - Ferramentas de Visão": modulos/05-visao-p2/atividades/4-image_tool.md
+            - "GitHub > Ferramenta de Visão": https://github.com/insper-education/robcomp-image-tool
+          - "5 - Exemplo de Resolução de Exercício":
+            - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
+            - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
+            - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
+            - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
+        # - APS 5:
+        #   - "APS 5 - Classroom" : https://classroom.github.com/a/GiXfZmlw
+        #   - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
     #   - Capítulo 6 - MobileNet e ArUco:
     #     - modulos/06-visao-p3/index.md
