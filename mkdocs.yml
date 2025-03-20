@@ -275,6 +275,8 @@ nav:
           - "Enunciado": simulados/sub_24b/enunciado.md
         - AI 24a:
           - "Enunciado": simulados/ai_24a/enunciado.md
+          - "Resposta Q1" : simulados/ai_24a/q1.py
+          - "Resposta Q2" : simulados/ai_24a/q2.py
         - AF 24a:
           - "Enunciado": simulados/af_24a/enunciado.md
         - Delta 24a:
