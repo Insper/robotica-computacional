@@ -269,6 +269,7 @@ nav:
       - Provas Antigas:
         - AI 24b:
           - "Enunciado": simulados/ai_24b/enunciado.md
+          - "Gabarito Q1 (quase)" : simulados/simulado_af/q1.py
         - AF 24b:
           - "Enunciado": simulados/af_24b/enunciado.md
         - SUB 24b:
