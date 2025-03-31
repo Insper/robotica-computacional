@@ -248,9 +248,11 @@ nav:
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
     - Provas:
-      # - AI:
-      #   - "Enunciado": provas/ai/enunciado.md
-      #   - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
+      - AI:
+        - "Enunciado": provas/ai/enunciado.md
+        # - "Gabarito": https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
+      
       # - AF:
       #   - "Enunciado": provas/af/enunciado.md
       # - SUB:
