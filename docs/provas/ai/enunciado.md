@@ -80,7 +80,7 @@ ros2 launch my_gazebo run_turtle.launch.py
 O nó criado deve: 
 
 * Criar um publisher para o tópico `/young_hee` que publica mensagens do tipo `robcomp_interfaces.msg.GameStatus`.
-* Ao iniciar, o nó deve publicar uma mensagem com o status START, com o horário atual e o nome do aluno nos campos apropriados.
+* Ao iniciar, o nó deve publicar uma mensagem com o status READY, com o horário atual e o nome do aluno nos campos apropriados.
 * Com isso, **Young-Hee** vai começar o jogo, mudando o status para IN_PROGRESS e publicando as palavras em sequenciais em loop.
     * **Young-Hee** demora de 0.5 a 2 segundos para publicar cada palavra.
     * Após publicar a palavra "3", **Young-Hee** vai aguardar entre 2 a 5 segundos antes de voltar a publicar a mesma sequência.
