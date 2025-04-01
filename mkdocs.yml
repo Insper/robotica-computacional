@@ -251,7 +251,7 @@ nav:
       - AI:
         - "Enunciado": provas/ai/enunciado.md
         - "Gabarito": https://www.youtube.com/watch?v=dQw4w9WgXcQ
-        - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
+        # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
       
       # - AF:
       #   - "Enunciado": provas/af/enunciado.md
