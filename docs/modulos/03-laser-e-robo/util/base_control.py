@@ -28,14 +28,9 @@ class BaseControlNode(Node): # Mude o nome da classe
     def stop(self):
         self.twist = Twist()
     
-    def check_danger(self):
-        ## Implemente aqui a lógica de verificação de obstáculos
-        # Mude o valor de self.robot_state de acordo
-        pass
 
     def control(self):
         self.twist = Twist()
-        self.check_danger()
         print(f'Estado Atual: {self.robot_state}')
         self.state_machine[self.robot_state]()
 
