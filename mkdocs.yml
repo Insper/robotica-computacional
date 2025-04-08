@@ -21,10 +21,10 @@ extra:
     
     data_APS4: Segunda - 17/03 às 23:59
     link_APS4: https://classroom.github.com/a/n1do085W
-    data_APS5: Segunda - 24/03 às 23:59
+    data_APS5: Segunda - 14/03 às 23:59
     link_APS5: https://classroom.github.com/a/1_L01tY4
-    data_APS6: Segunda - 07/10 às 23:59
-    link_APS6: TODO
+    data_APS6: Segunda - 21/04 às 23:59
+    link_APS6: https://classroom.github.com/a/TYkG7Aze
     
     data_AI: Segunda - 30/09 às 13:30
     link_AI: TBA
@@ -182,24 +182,24 @@ nav:
           - "APS 5 - Classroom" : https://classroom.github.com/a/1_L01tY4
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
-    #   - Capítulo 6 - MobileNet e ArUco:
-    #     - modulos/06-visao-p3/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
-    #       - "1 - MobileNet":
-    #         - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
-    #         - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
-    #         - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
-    #       - "2 - Marcador ArUco":
-    #         - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
-    #         - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
-    #       # - "3 - Reconhecimento dos Creepers":
-    #       #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
-    #       #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
-    #         # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
-    #     - APS 6:
-    #       - "APS 6 - Classroom" : https://classroom.github.com/a/v8iEYUMT
-    #       - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+      - Capítulo 6 - MobileNet e ArUco:
+        - modulos/06-visao-p3/index.md
+        - Atividades:
+          - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
+          - "1 - MobileNet":
+            - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
+            - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
+            - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
+          - "2 - Marcador ArUco":
+            - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
+            - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
+          # - "3 - Reconhecimento dos Creepers":
+          #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
+          #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
+            # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
+        - APS 6:
+          - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
+          - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
