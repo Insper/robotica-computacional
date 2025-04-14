@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>4 - Publisher e Subscriber na ROS - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/VtCSBzyf">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">4 - Publisher e Subscriber na ROS</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/DSoynr-D">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_control.py">Download > Nó de Controle do Robô</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Entendendo a Odometria</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Entendendo o Laser</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/5-visualizacao/">5 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/_M7zdJg8">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 2</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 4 - Imagens e Matrizes</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades_cap_4.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/1-leitura_e_webcam/">1 - Leitura de Imagem e Webcam</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/2-corte_e_criacao/">2 - Corte e Criação de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/3-roi_e_numpy/">3 - ROI e NumPy</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/4-segmentacao_1/">4 - Segmentação de Imagens p1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/atividades/5-segmentacao_2/">5 - Segmentação de Imagens p2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/n1do085W">APS 4 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../04-visao-p1/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 5 - Visão Robótica</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades_cap_5.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/1-morfologia/">1 - Refinamento de Máscaras de Segmentação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/2-identificacao/">2 - Identificação de Objetos</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Visão na ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/3-image_subscriber/">3 - Visão na ROS 2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/image_subscriber.py">Download > Nó Básico de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">4 - Ferramentas de Visão</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/4-image_tool/">4 - Ferramentas de Visão</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://github.com/insper-education/robcomp-image-tool">GitHub > Ferramenta de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">5 - Exemplo de Resolução de Exercício</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/51-enunciado/">5.1 - Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/52-resolucao/">5.2 - Resolução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1.py">Download > Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/atividades/util/q1_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 5</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/1_L01tY4">APS 5 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../05-visao-p2/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 6 - MobileNet e ArUco</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades_cap_6.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - MobileNet</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/1-mobilenet/">1 - MobileNet</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/module_net.py">Download > ModuleNet</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/cow_wolf_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Marcador ArUco</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/2-aruco/">2 - Marcador ArUco</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/atividades/module_aruco.py">Download > ModuleArUco</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 6</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/TYkG7Aze">APS 6 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../06-visao-p3/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Gabarito do robcomp_util (até Cap 3)</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://github.com/insper-classroom/robcomp-util">Link do Repositório</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AI</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../provas/ai/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_ai/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_ai/q2.zip">Download > Imagens Q2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_ai/q1.py">Resposta Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_ai/q2.py">Resposta Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AF</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_af/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_af/q1.py">Gabarito Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_af/q2.py">Gabarito Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas Antigas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AI 24b</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/ai_24b/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/simulado_af/q1.py">Gabarito Q1</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AF 24b</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/af_24b/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">SUB 24b</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/sub_24b/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AI 24a</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/ai_24a/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/ai_24a/q1.py">Resposta Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/ai_24a/q2.py">Resposta Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">AF 24a</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/af_24a/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Delta 24a</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../simulados/delta_24a/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 2 - Introdução à ROS 2</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                <li>4 - Publisher e Subscriber na ROS</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="criando-um-pubshisher-e-um-subscriber-na-ros">Criando um Pubshisher e um Subscriber na ROS</h1>
+<h2 id="pubshisher-e-subscriber">Pubshisher e Subscriber</h2>
+<p>Agora que você já sabe como criar um novo pacote, vamos aprender como se inscrever em um tópico para receber mensagens. </p>
+<p>Primeiro, vamos para algumas definições:</p>
+<ul>
+<li>
+<p><strong>Subscriber:</strong> Um subscriber é um nó que recebe mensagens de um tópico específico.</p>
+</li>
+<li>
+<p><strong>Publisher:</strong> Um publisher é um nó que envia mensagens para um tópico específico.</p>
+</li>
+</ul>
+<p>Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que estiverem inscritos nesse tópico receberão a mensagem. O gif abaixo ilustra esse processo:</p>
+<p><img alt="ros-pub-sub" src="../imgs/ros-pub-sub.gif" /></p>
+<h2 id="criando-um-publisher">Criando um Publisher</h2>
+<p>Vamos começar abrindo um novo terminal e executando o comando abaixo para abrir o VSCode no diretório do pacote <code>my_package</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_package
+code<span class="w"> </span>.
+</code></pre></div>
+<p>Agora vamos criar um novo arquivo chamado <code>first_node.py</code> dentro da pasta <code>my_package</code>. Esta pasta contém todos os arquivos Python que serão executados como nós ROS. </p>
+<p>No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>my_package
+touch<span class="w"> </span>first_node.py
+chmod<span class="w"> </span>+x<span class="w"> </span>*.py
+</code></pre></div>
+<p>Os comandos acima fazem o seguinte:</p>
+<ul>
+<li>
+<p><code>cd my_package</code>: entra na pasta <code>my_package</code>.</p>
+</li>
+<li>
+<p><code>touch first_node.py</code>: cria o arquivo <code>first_node.py</code>.</p>
+</li>
+<li>
+<p><code>chmod +x *.py</code>: dá permissão de execução para todos os arquivos Python da pasta. Este comando é necessário para que o ROS consiga executar o arquivo Python como um nó ROS.</p>
+</li>
+</ul>
+<p>Agora vamos abrir o arquivo <code>first_node.py</code> e adicionar o seguinte código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nav_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Odometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.qos</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReliabilityPolicy</span><span class="p">,</span> <span class="n">QoSProfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ros2 launch my_package first_node.launch.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FirstNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;first_node&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vel_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">vel_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">first_node</span> <span class="o">=</span> <span class="n">FirstNode</span><span class="p">()</span>
+
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">first_node</span><span class="p">)</span>
+
+    <span class="n">first_node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="explicacao-do-codigo">Explicação do Código</h3>
+<p>Vamos entender o que cada linha do código acima faz:</p>
+<ul>
+<li>
+<p><code>super().__init__('first_node')</code>: cria um nó com o nome <code>first_node</code>.</p>
+</li>
+<li>
+<p><code>self.create_publisher(Twist, 'cmd_vel', 10)</code>: recebe três argumentos:</p>
+<ul>
+<li>
+<p><code>Twist</code>: tipo da mensagem que será publicada.</p>
+</li>
+<li>
+<p><code>'cmd_vel'</code>: nome do tópico que será publicado.</p>
+</li>
+<li>
+<p><code>10</code>: tamanho da fila de mensagens. Este argumento é opcional e o valor padrão é 10.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>self.create_timer(0.25, self.control)</code>: recebe dois argumentos:</p>
+<ul>
+<li>
+<p><code>0.25</code>: tempo entre execuções da função <code>self.control</code>.</p>
+</li>
+<li>
+<p><code>self.control</code>: função que será executada a cada 0.25 segundos.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>A função <code>self.control</code> será chamada a cada 0.25 segundos, e em cada chamada, ela cria uma mensagem do tipo <code>Twist</code>, altera o valor da velocidade linear para 0.2 e publica a mensagem no tópico <code>cmd_vel</code>.</p>
+<p>Por fim, a função <code>main</code> faz o seguinte:</p>
+<ul>
+<li>
+<p><code>rclpy.init(args=args)</code>: inicializa o módulo <code>rclpy</code> (ROS Client Library for Python).</p>
+</li>
+<li>
+<p><code>first_node = FirstNode()</code>: cria uma instância da classe <code>FirstNode</code>.</p>
+</li>
+<li>
+<p><code>rclpy.spin(first_node)</code>: mantém o nó em execução até que ele seja finalizado.</p>
+</li>
+<li>
+<p><code>first_node.destroy_node()</code>: finaliza o nó.</p>
+</li>
+<li>
+<p><code>rclpy.shutdown()</code>: finaliza o módulo <code>rclpy</code>.</p>
+</li>
+</ul>
+<p>Para rodar o nó precisamos fazer duas coisas:</p>
+<ul>
+<li>
+<p>Criar um arquivo launch.</p>
+</li>
+<li>
+<p>Configurar o arquivo <code>setup.py</code> para que a ROS consiga encontrar o nó.</p>
+</li>
+</ul>
+<h2 id="criando-um-arquivo-launch">Criando um Arquivo Launch</h2>
+<p>Vamos criar um arquivo launch chamado <code>first_node.launch.py</code> dentro da pasta <code>launch</code> do pacote <code>my_package</code>. Este arquivo será responsável por iniciar o nó <code>first_node.py</code>.</p>
+<p>No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_package
+mkdir<span class="w"> </span>launch
+<span class="nb">cd</span><span class="w"> </span>launch
+touch<span class="w"> </span>first_node.launch.py
+</code></pre></div>
+<p>Agora vamos abrir o arquivo <code>first_node.launch.py</code> e adicionar o seguinte código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+        <span class="n">Node</span><span class="p">(</span>
+            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;my_package&#39;</span><span class="p">,</span>
+            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;first_node&#39;</span><span class="p">,</span>
+            <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">),</span>
+    <span class="p">],)</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>Node</code> recebe três argumentos:</p>
+<ul>
+<li>
+<p><code>package='my_package'</code>: nome do pacote que contém o nó.</p>
+</li>
+<li>
+<p><code>executable='first_node'</code>: nome do nó que será executado.</p>
+</li>
+<li>
+<p><code>output='screen'</code>: imprime a saída do nó no terminal.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="configurando-o-arquivo-setuppy">Configurando o Arquivo setup.py</h2>
+<p>Agora precisamos configurar o arquivo <code>setup.py</code> para que a ROS consiga encontrar o nó. Para isso, abra o arquivo <code>setup.py</code> e adicione o seguinte código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">setuptools</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+
+<span class="n">package_name</span> <span class="o">=</span> <span class="s1">&#39;my_package&#39;</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">package_name</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0.0&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="n">package_name</span><span class="p">],</span>
+    <span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;share/ament_index/resource_index/packages&#39;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s1">&#39;resource/&#39;</span> <span class="o">+</span> <span class="n">package_name</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s1">&#39;share/&#39;</span> <span class="o">+</span> <span class="n">package_name</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;package.xml&#39;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;launch/*.launch.py&#39;</span><span class="p">))</span>
+    <span class="p">],</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;setuptools&#39;</span><span class="p">],</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">maintainer</span><span class="o">=</span><span class="s1">&#39;somebody very awesome&#39;</span><span class="p">,</span>
+    <span class="n">maintainer_email</span><span class="o">=</span><span class="s1">&#39;user@user.com&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;TODO: Package description&#39;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;TODO: License declaration&#39;</span><span class="p">,</span>
+    <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pytest&#39;</span><span class="p">],</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;first_node = my_package.first_node:main&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>O que foi alterado no arquivo <code>setup.py</code> foi o seguinte:</p>
+<ul>
+<li>
+<p>Adicionamos dois novos imports:</p>
+</li>
+<li>
+<p>Dentro da lista <code>data_files</code> adicionamos a seguinte linha:</p>
+<ul>
+<li><code>(os.path.join('share', package_name), glob('launch/*.launch.py'))</code>: adiciona todos os arquivos launch da pasta <code>launch</code> ao pacote.</li>
+</ul>
+</li>
+<li>
+<p>Dentro do diciário <code>entry_points</code> na chave <code>console_scripts</code> adicionamos a seguinte linha:</p>
+<ul>
+<li><code>'first_node = my_package.first_node:main'</code>: cria um comando chamado <code>first_node</code> que executa a função <code>main</code> do arquivo <code>first_node.py</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="rodando-o-no">Rodando o Nó</h3>
+<p>Antes de rodar o nó, precisamos compilar o pacote novamente. Para isso, abra um novo terminal e rode os comandos abaixo:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws
+colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>my_package
+</code></pre></div>
+<p>Dessa vez, enviamos o argumento <code>--packages-select</code> para o comando <code>colcon build</code>. Este argumento faz com que o comando compile apenas o pacote <code>my_package</code>.</p>
+<p>Rode o nó com o comando abaixo:
+<strong>IMPORTANTE:</strong> Certifique-se de que o simulador está rodando antes de executar o comando abaixo!</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_package<span class="w"> </span>first_node.launch.py
+</code></pre></div>
+<h2 id="criando-um-subscriber">Criando um Subscriber</h2>
+<p>Com isso, o nó <code>first_node</code> será executado e publicará mensagens no tópico <code>cmd_vel</code>, movendo o robô para frente. Agora vamos criar um novo nó que se inscreve no tópico <code>odom</code> e imprime as mensagens recebidas no terminal.</p>
+<p>Crie um novo arquivo chamado <code>second_node.py</code> dentro da pasta <code>my_package</code> e então, faça com que o arquivo seja <strong>executável</strong> com os mesmos comandos que usamos anteriormente para criar o arquivo <code>first_node.py</code>.</p>
+<p>Primeiro, cheque o tipo de mensagem que o tópico <code>odom</code> transporta com o comando abaixo:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/odom
+</code></pre></div>
+<p>Podemos ver que o tópico <code>odom</code> transporta mensagens do tipo <code>Odometry</code>. Agora vamos abrir o arquivo <code>second_node.py</code> e adicionar o seguinte código:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nav_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Odometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.qos</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReliabilityPolicy</span><span class="p">,</span> <span class="n">QoSProfile</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SecondNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;second_node&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">odom_sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+            <span class="n">Odometry</span><span class="p">,</span>
+            <span class="s1">&#39;/odom&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">odom_callback</span><span class="p">,</span>
+            <span class="n">QoSProfile</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">reliability</span><span class="o">=</span><span class="n">ReliabilityPolicy</span><span class="o">.</span><span class="n">RELIABLE</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">odom_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Odometry</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posição x: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Posição y: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">second_node</span> <span class="o">=</span> <span class="n">SecondNode</span><span class="p">()</span>
+
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">second_node</span><span class="p">)</span>
+
+    <span class="n">second_node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="explicacao-do-codigo_1">Explicação do Código</h3>
+<p>Vamos entender o que as linhas novas do código acima fazem:</p>
+<ul>
+<li>
+<p><code>self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_callback, QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))</code>: recebe quatro argumentos:</p>
+<ul>
+<li>
+<p><code>Odometry</code>: tipo da mensagem que será recebida. Descobrimos o tipo da mensagem verificando as informações do tópico <code>/odom</code>.</p>
+</li>
+<li>
+<p><code>'/odom'</code>: nome do tópico que será inscrito.</p>
+</li>
+<li>
+<p><code>self.odom_callback</code>: função que será executada quando uma mensagem for recebida.</p>
+</li>
+<li>
+<p><code>QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)</code>: configura a qualidade de serviço do tópico. Este argumento é opcional e o valor padrão é <code>QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>self.odom_callback</code>: coleta a posição x e y do robô a partir da mensagem recebida.</p>
+</li>
+<li>
+<p><code>self.control</code>: imprime a posição x e y do robô no terminal.</p>
+</li>
+</ul>
+<h3 id="configurando-o-arquivo-setuppy_1">Configurando o Arquivo setup.py</h3>
+<p>Agora precisamos configurar o arquivo <code>setup.py</code> para que a ROS consiga encontrar o nó e então compilar o pacote novamente. Para isso, abra o arquivo <code>setup.py</code> e adicione a seguinte linha dentro do dicionário <code>entry_points</code> na chave <code>console_scripts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;second_node = my_package.second_node:main&#39;</span><span class="p">,</span>
+</code></pre></div>
+<h3 id="rodando-o-no_1">Rodando o Nó</h3>
+<p>Uma vez que o arquivo <code>setup.py</code> foi configurado, <strong>compile</strong> o pacote novamente com o mesmo comando que usamos anteriormente e rode o arquivo launch <code>first_node.launch.py</code>, isso vai iniciar apenas o nó <code>first_node.py</code>.</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_package<span class="w"> </span>first_node.launch.py
+</code></pre></div>
+<p>ou utilizando o comando abaixo para executar com <code>ros2 run</code>:</p>
+<p><div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>my_package<span class="w"> </span>first_node
+</code></pre></div>
+No ROS, os arquivos do tipo <code>launch</code> são usados para iniciar um ou mais nós de forma organizada em um único terminal. No entanto, como vários nós podem estar rodando simultaneamente, o sistema armazena temporariamente as saídas do terminal e as exibe em blocos após certo tempo.  </p>
+<p>Por isso, quando executamos apenas um nó ou estamos realizando testes, geralmente preferimos usar <code>ros2 run</code>, que exibe a saída imediatamente.</p>
+<p>E agora, em um novo terminal, execute o comando abaixo para rodar o nó <code>second_node.py</code>:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>my_package<span class="w"> </span>second_node
+</code></pre></div>
+<p>Você deve ver a posição x e y do robô sendo impressa no terminal a cada 0.25 segundos.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../3-creating-package/"
+               class="ah-prev"
+               title="3 - Criando um Pacote">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">3 - Criando um Pacote</span>
+            </a>
+          
+          
+            <a href="../5-rosbag/"
+               class="ah-next"
+               title="5 - Salvando Eventos na ROS">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">5 - Salvando Eventos na ROS</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
