@@ -53,39 +53,3 @@ ____________________________________________________________________
 Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
 
 Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 6**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
-
-____________________________________________________________________
-
-# Exercício 2 - Pega Creeper (5 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `pega.py` com uma classe denominada `PegaCreeper` e um nó denominado `pega_creeper_node` que olhe para 3 creepers, com duas cores possíveis e dois IDs possíveis e pegue o crreeper desejado.
-
-* Recebe como atributo da classe `PegaCreeper` a cor e o ID do creeper que deve ser pego.
-
-* Se comunica com o nó `creepers` que identifica os ID/Cor dos creepers e suas posições.
-
-* Não se increver no tópico de visão, mas sim no tópico de creepers.
-
-* Se aproxima do creeper reduzindo a velocidade linear conforme se aproxima. (ou seja, controle proporcional)
-
-* Ao chegar perto do creeper, para e desce a garra.
-
-* Continua a se aproximar do creeper até que esteja bem perto.
-
-* Fecha a garra e levanta o creeper.
-
-* Gire 180 graus e vá para o centro da arena.
-
-* Desça o creeper e pare.
-
-## Arena
-A arena é um quadrado de 2m x 2m, com o robô iniciando no centro. Em um dos cantos da arena, há um conjunto de 3 creepers, **dois de mesma cor e id diferentes** e **dois de mesmo id e cores diferentes**. O robô deve ser capaz de pegar qualquer um dos creepers.
-
-## Critérios de Avaliação:
-
-1. Desenvolveu um nó que publica corremente os creepers.
-2. O nó `pega_creeper_node` não se inscreve no tópico de visão.
-3. O robô se aproxima de cada creeper e pegar o creeper desejado.
-4. O robô gira 180 graus e retorna ao centro com o creeper em suas garras.
-5. O robô desce o creeper e para.
-4. **Vídeo:** Mostra o robô executando o comportamento desejado e pegando o creeper correto.
-5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
