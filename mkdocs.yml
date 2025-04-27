@@ -224,6 +224,12 @@ nav:
     #     - modulos/08-navegacao/index.md
     #     - Atividades:
     #       - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
+      #       - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
+    #       - "2 - slam": modulos/09-mapeamento/atividades/2-slam.md
+    #       - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
+
+    #   - Capítulo 9 - Mapeamento:
+    #     - modulos/09-mapeamento/index.md
     #       - "2 - Action Server":
     #         - "2 - Action Server": modulos/08-navegacao/atividades/2-action-server.md
     #         - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
@@ -232,19 +238,14 @@ nav:
     #         - "2 - Action Client": modulos/08-navegacao/atividades/3-action-client.md
     #         - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
     #         - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
-
-    #   - Capítulo 9 - Mapeamento:
-    #     - modulos/09-mapeamento/index.md
-    #     - Atividades:
-    #       - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
-    #       - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
-    #       - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
     #     - APS 8:
     #       - "APS 8 - Classroom" : https://classroom.github.com/a/nXMHOUth
     #       - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
+    #     - Atividades:
+    #       - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
 
    
-    - Gabarito do robcomp_util (até Cap 3):
+    - Gabarito do robcomp_util (até Cap 5):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
     - Provas:

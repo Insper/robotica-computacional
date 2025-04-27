@@ -49,7 +49,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
 ____________________________________________________________________
 
-# Exercício 1 - Segue Linha P (4 pontos)
+# Exercício 1 - Segue Linha P (9 pontos)
 Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
 
 Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 6**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
