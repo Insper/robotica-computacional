@@ -30,7 +30,7 @@ extra:
     link_AI: TBA
 
     data_APS7: Segunda - 04/11 às 23:59
-    link_APS7: TBA
+    link_APS7: https://classroom.github.com/a/-uL16vc-
     data_APS8: Segunda - 11/11 às 23:59
     link_APS8: TBA
     data_APS9: Segunda - 11/11 às 23:59
@@ -217,7 +217,7 @@ nav:
             - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
             - "Download > Garra": modulos/07-controle/util/garra.py
         - APS 7:
-          - "APS 7 - Classroom" : TODO
+          - "APS 7 - Classroom" : https://classroom.github.com/a/-uL16vc-
           - "Enunciado": modulos/07-controle/aps/enunciado.md
       
     #   - Capítulo 8 - Navegação:
