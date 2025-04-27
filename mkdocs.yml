@@ -200,25 +200,25 @@ nav:
         - APS 6:
           - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
           - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
-    # - Unidade 3:
-    #   - Capítulo 7 - Controle Propocional:
-    #     - modulos/07-controle/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
-    #       - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
-    #       - "2 - Segue-Linha-P":
-    #         - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
-    #         - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
-    #         - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
-    #       - "3 - Identifica Creepers":
-    #         - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
-    #         - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
-    #       - "4 - Controlando a Garra":
-    #         - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
-    #         - "Download > Garra": modulos/07-controle/util/garra.py
-    #     - APS 7:
-    #       - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
-    #       - "Enunciado": modulos/07-controle/aps/enunciado.md
+    - Unidade 3:
+      - Capítulo 7 - Controle Propocional:
+        - modulos/07-controle/index.md
+        - Atividades:
+          - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
+          - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
+          - "2 - Segue-Linha-P":
+            - "2 - Segue-Linha-P": modulos/07-controle/atividades/2-seguelinha-proporcional.md
+            # - "Download > Segue-Linha": modulos/07-controle/util/segue_linha.py
+            # - "Download > Segue-Linha-Gab": modulos/07-controle/util/segue_linha_p.py
+          - "3 - Identifica Creepers":
+            - "3 - Identifica Creepers": modulos/07-controle/atividades/3-identifica_creeper.md
+            # - "Download > Identifica-Creepers-Gab": modulos/07-controle/util/creeper_detector_gab.py
+          - "4 - Controlando a Garra":
+            - "4 - Controlando a Garra": modulos/07-controle/atividades/4-garra.md
+            - "Download > Garra": modulos/07-controle/util/garra.py
+        - APS 7:
+          - "APS 7 - Classroom" : https://classroom.github.com/a/hhzm8IPL
+          - "Enunciado": modulos/07-controle/aps/enunciado.md
       
     #   - Capítulo 8 - Navegação:
     #     - modulos/08-navegacao/index.md
