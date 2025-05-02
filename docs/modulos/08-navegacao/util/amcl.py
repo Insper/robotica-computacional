@@ -80,6 +80,9 @@ class AMCL(): # Mude o nome da classe
                     orientation_q = tf.transform.rotation
                     _, _, yaw_map = self.euler_from_quaternion([orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w])
 
+                    self.yaw = yaw_map + self.odom_yaw
+                    self.yaw = math.atan2(math.sin(self.yaw), math.cos(self.yaw))
+
                     # Find the estimated robot pose in the map frame using tf and odom
                     delta_x = self.odom_x * math.cos(yaw_map) - self.odom_y * math.sin(yaw_map)
                     delta_y = self.odom_x * math.sin(yaw_map) + self.odom_y * math.cos(yaw_map)
@@ -88,6 +91,7 @@ class AMCL(): # Mude o nome da classe
                     self.y = y_map + delta_y
                     self.get_logger().info(f'Current pose: ({self.x:.2f}, {self.y:.2f})')
 
+                    self.start = self.world_to_map(self.x, self.y)
                     self.odom_ready = True
                 except Exception as e:
                     self.get_logger().error(f"Error in tf_callback: {e}")
