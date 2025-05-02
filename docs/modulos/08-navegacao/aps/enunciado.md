@@ -56,51 +56,57 @@ Utilize o comando abaixo para iniciar o simulador no mapa do projeto:
 `ros2 launch my_gazebo tres_paredes.launch.py`
 
 
-# Parte 1 - Explorar Labirinto (2 pontos)
+# Parte 1 - Explorar Labirinto (3 pontos)
 Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa e então salve o mapa.
 
-Depois, anote manualmente as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (cima ou baixo) e o valor é uma lista de coordenadas.
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
+
+!!! dica
+    O `Navigation` atualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
+
+## Vídeo
+
+Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
 
 ##
 ____________________________________________________________________
 
-# Parte 2 - Labirinto-GoTo (8 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **simulado** `=)` se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
+# Parte 2 - Labirinto-GoTo (7 pontos)
 
-* A classe `GoTo` deve herdar de `Node` e `Odom`.
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, este nó deve resolver conversar com o `Handler` e seguir o caminho das paredes a partir de uma sequência de pontos, obtidas do mapa do labirinto. O nó deve:
 
-* A classe `GoTo` deve ter um método `__init__` que recebe a posição uma variável do tipo `Point` e salva em uma variável `self.point`.
+* Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 8)
+    * Depois, anote as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (**cima** ou **baixo**) e o valor é uma lista de coordenadas.
 
-* Ter três estados, `center`, `goto` e `stop`.
+* Modifique o `goto.py` para receber uma lista de `Points()`
 
-* O estado `center` deve ser o estado inicial e faz o robô girar até que ele esteja alinhado com o ponto desejado.
+* Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
 
-* Quando chegar no ponto desejado, o robô deve entrar no estado `stop`.
+* Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
 
-* Deve ter um função `get_angular_error` que primeiro calcula o angulo entre a posição atual e o ponto desejado `theta` e depois calcula o erro entre o angulo atual e o angulo desejado.
+* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
 
-* `get_angular_error` também deve calcular a distância entre o robô e o ponto desejado.
+* Seguir as intruções do Handler e caminhar pelas paredes à partir de uma sequência de pontos, obtidas do mapa do labirinto.
 
-* O estado `goto` deve fazer o robô se mover até o ponto desejado e parar quando estiver **BEM PERTO** do ponto.
+* Como no exercício, deve retornar ao encontrar a força desconhecida e retornar ao ponto inicial.
 
-* Utilize duas constante proporcionais, `kp_linear` e `kp_angular` para controlar a velocidade linear e angular do robô.
+* Ao chegar no ponto inical, o robô deve entrar em um estado `stop` e parar.
 
-## Quando o nó estiver funcionando corretamente
+!!! dica
+    Rode o Navigator pelo comando
 
-Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `labirinto_preciso.py`, com uma classe `Labirinto` e com um nó denominado `labirinto_node`. Usando o robô **real**, faça um labirinto ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
+    ```bash
+    ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
+    ```
 
-* Ter dois estados, `segue` e `para`.
+    Assumindo que o mapa ainda esta em sua HOME
 
-* **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do labirinto.
-
-* O estado `segue` deve criar um loop que chama a função `control` do `GoTo` como no exemplo [aqui](../util/run_rotate2.py).
-
-* Depois, mude o valor de `point` no `GoTo` para o próximo ponto do labirinto e mude o estado do `GoTo` para `center`.
 
 ## Critérios de Avaliação:
 
-1. `GoTo` funciona a partir (até) qualquer ponto em qualquer quadrante.
-2. A classe `Labirinto` chama a classe `GoTo` corretamente.
+1. Execute o pacote `Navigation` para navegar no labirinto.
+2. Execute o nó `teseu_node` para fazer o robô escapar do labirinto.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
-4. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.
+4. Todas as exigências e rúbricas do exercício 1 foram atendidas.
+4. **Vídeo:** Mostra o robô executando o comportamento e escapando do labirinto.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
