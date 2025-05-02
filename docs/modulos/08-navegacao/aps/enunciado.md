@@ -1,4 +1,4 @@
-# Entregável 3 de Robótica Computacional
+# Projeto-1 de Robótica Computacional
 
 ## Instruções gerais
 
@@ -12,15 +12,13 @@
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.
+**Aviso 5:** Para este projeto, você vai utilizar o robô simulado.
 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_6`.
-    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
-
-____________________________________________________________________
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_1`.
+    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 ____________________________________________________________________
 # **IMPORTANTE**
 Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
@@ -32,7 +30,7 @@ cb
 ```
 ____________________________________________________________________
 
-# Exercício 0 - Organização & Qualidade (1 pontos)
+# Exercício 0 - Organização & Qualidade (0 para correto e -2 para incorreto)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -50,13 +48,23 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
 ____________________________________________________________________
 
-# Exercício 1 - Explorar Labirinto (4 pontos)
-Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto do nosso laboratório, a partir do ponto interno do labirinto.
+# Objetivo
+
+Neste primeiro projeto vamos trabalhar com exploração e navegação do robô simulado. Seu objetivo é resolver o exercício 1 da [AI-24b](https://insper.github.io/robotica-computacional/simulados/ai_24b/enunciado/), mas utilizando o `GOTO` para navegar no labirinto.
+
+Utilize o comando abaixo para iniciar o simulador no mapa do projeto:
+`ros2 launch my_gazebo tres_paredes.launch.py`
+
+
+# Parte 1 - Explorar Labirinto (2 pontos)
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa e então salve o mapa.
+
+Depois, anote manualmente as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (cima ou baixo) e o valor é uma lista de coordenadas.
 
 ##
 ____________________________________________________________________
 
-# Exercício 1 - Labirinto-GoTo (9 pontos)
+# Parte 2 - Labirinto-GoTo (8 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **simulado** `=)` se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
 
 * A classe `GoTo` deve herdar de `Node` e `Odom`.
@@ -79,20 +87,20 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 ## Quando o nó estiver funcionando corretamente
 
-Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado_preciso.py`, com uma classe `Quadrado` e com um nó denominado `quadrado_node`. Usando o robô **real**, faça um quadrado ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
+Quando o nó estiver funcionando corretamente, baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `labirinto_preciso.py`, com uma classe `Labirinto` e com um nó denominado `labirinto_node`. Usando o robô **real**, faça um labirinto ***preciso*** nas arestas de um ladrilho do nosso laboratório. O nó deve:
 
 * Ter dois estados, `segue` e `para`.
 
-* **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do quadrado.
+* **Chame** (não herde) a classe `GoTo` com as coordenadas do primeiro ponto do labirinto.
 
 * O estado `segue` deve criar um loop que chama a função `control` do `GoTo` como no exemplo [aqui](../util/run_rotate2.py).
 
-* Depois, mude o valor de `point` no `GoTo` para o próximo ponto do quadrado e mude o estado do `GoTo` para `center`.
+* Depois, mude o valor de `point` no `GoTo` para o próximo ponto do labirinto e mude o estado do `GoTo` para `center`.
 
 ## Critérios de Avaliação:
 
 1. `GoTo` funciona a partir (até) qualquer ponto em qualquer quadrante.
-2. A classe `Quadrado` chama a classe `GoTo` corretamente.
+2. A classe `Labirinto` chama a classe `GoTo` corretamente.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
 4. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" e seguindo um ladrilho do laboratório com precisão.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
