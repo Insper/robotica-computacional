@@ -84,6 +84,8 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 
 * Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
 
+    * Baixe o código do `AMCL` no capítulo 8 da unidade 3, ou pelo [link]()
+
 * Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
 
 * Seguir as intruções do Handler e caminhar pelas paredes à partir de uma sequência de pontos, obtidas do mapa do labirinto.

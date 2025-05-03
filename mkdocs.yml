@@ -227,6 +227,7 @@ nav:
             # - "Gabarito GoTo": modulos/09-slam/util/goto.py"
           - "2 - slam": modulos/08-slam/atividades/2-slam.md
           - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
+          - "AMCL": modulos/08-slam/util/amcl.py
 
     - Gabarito do robcomp_util (até Cap 5):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
