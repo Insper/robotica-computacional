@@ -5,7 +5,7 @@
 Neste capítulo vamos aprender a vamos aprender a utilizar os pacotes `Cartographer` e `Navigation` para realizar SLAM (Navegação Simultânea e Mapeamento) para mapear um ambiente desconhecido e navegar dentro dele.
 
 ## Atividades
-A atividade deste capítulo foca em introduzir o conceito de SLAM na ROS 2.
+As atividades deste capítulo focam em introduzir o conceito de SLAM na ROS 2 e controlar o robô precisamente para um ponto específico.
 
 Esse conceito será explorado nas seguinte atividade,
 
