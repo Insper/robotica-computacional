@@ -221,12 +221,12 @@ nav:
           - "Enunciado": modulos/07-controle/aps/enunciado.md
       
       - Capítulo 8 - SLAM:
-        - modulos/08-navegacao/index.md
+        - modulos/08-slam/index.md
         - Atividades:
-          - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
-            # - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
-          - "2 - slam": modulos/09-mapeamento/atividades/2-slam.md
-          - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
+          - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
+            # - "Gabarito GoTo": modulos/09-slam/util/goto.py"
+          - "2 - slam": modulos/08-slam/atividades/2-slam.md
+          - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
 
     - Gabarito do robcomp_util (até Cap 5):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util

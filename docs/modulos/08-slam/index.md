@@ -1,5 +1,4 @@
-# Capítulo 9 - SLAM e Navegação
-
+# Capítulo 8 - SLAM
 !!! pdf
     ![](slides.pdf)
 
@@ -13,7 +12,7 @@ Esse conceito será explorado nas seguinte atividade,
 - [Atividade 1](atividades/1-goto.md) - Implementação de um nó capaz de navegar até um ponto específico.
 - [Atividade 2](atividades/2-slam.md) - SLAM com Turtlebot3
 
-## Para entregar
+<!-- ## Para entregar
 
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 8.
@@ -24,4 +23,4 @@ Esse conceito será explorado nas seguinte atividade,
 
     [APS 8 - Github Classroom](https://classroom.github.com/a/nXMHOUth)
 
-    A data final de entrega é **{{ data_APS8 }}**.
+    A data final de entrega é **{{ data_APS8 }}**. -->
