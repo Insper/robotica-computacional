@@ -33,7 +33,7 @@ cb
 ```
 ____________________________________________________________________
 
-# Exercício 0 - Organização & Qualidade (0 para correto e -2 para incorreto)
+# Exercício 0 - Organização & Qualidade
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -53,7 +53,7 @@ ____________________________________________________________________
 
 # Objetivo
 
-Neste primeiro projeto vamos trabalhar com exploração e navegação do robô simulado. Seu objetivo é resolver o exercício 1 da [AI-24b](https://insper.github.io/robotica-computacional/simulados/ai_24b/enunciado/), mas utilizando o `GOTO` para navegar no labirinto.
+Neste primeiro projeto vamos trabalhar com exploração e navegação do robô simulado. Seu objetivo é resolver o exercício 1 da [AI-24b](https://insper.github.io/robotica-computacional/simulados/ai_24b/enunciado/), mas utilizando o `GOTO` para navegar entre as paredes.
 
 Utilize o comando abaixo para iniciar o simulador no mapa do projeto:
 `ros2 launch my_gazebo tres_paredes.launch.py`
@@ -76,20 +76,20 @@ ____________________________________________________________________
 
 # Parte 2 - Labirinto-GoTo (7 pontos)
 
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, este nó deve resolver conversar com o `Handler` e seguir o caminho das paredes a partir de uma sequência de pontos, obtidas do mapa do labirinto. O nó deve:
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, este nó deve conversar com o `Handler` e seguir o caminho das paredes a partir de uma sequência de pontos, obtidas do mapa do labirinto. O nó deve:
 
 * Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 8)
-    * Depois, anote as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (**cima** ou **baixo**) e o valor é uma lista de coordenadas.
+    * Depois, anote as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (**cima** ou **baixo**) e o valor é uma lista de coordenadas. Lembrando que a força desconhecida está sempre na mesma posição, entre as duas paredes mais distantes de onde o robô começa.
 
-* Modifique o `goto.py` para receber uma lista de `Points()`
+* Use seu código do `goto.py`.
 
-* Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
+* Modifique, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre uma lista de pontos.
 
 * Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
 
-    * Baixe o código do `AMCL` no capítulo 8 da unidade 3, ou pelo [link]()
+    * Baixe o código do `AMCL` no capítulo 8 da unidade 3, ou pelo [link](https://insper.github.io/robotica-computacional/modulos/08-slam/util/amcl.py)
 
-* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
+* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior para iniciar o mapa.
 
 * Seguir as intruções do Handler e caminhar pelas paredes à partir de uma sequência de pontos, obtidas do mapa do labirinto.
 
@@ -115,3 +115,9 @@ Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `
 4. Todas as exigências e rúbricas do exercício 1 foram atendidas.
 4. **Vídeo:** Mostra o robô executando o comportamento e escapando do labirinto.
 5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+
+# Parte 3 - Extra Labirinto-GoTo-Robo-Real (+2 pontos)
+
+Repita o código a parte 2, mas agora utilizando o robô real. O robô deve ser capaz de escapar do labirinto e retornar ao ponto inicial. Não precisa se comunicar com o `Handler`, seguindo apenas os pontos obtidos do mapa. Mude o nome do arquivo para `teseu_real.py` e o nó para `teseu_real_node`.
+
+A entrega deve ser feita em um vídeo, do robô real escapando do labirinto e seu repositório deve conter o mapa do labirinto.
