@@ -1,4 +1,4 @@
-# Projeto 1 de Robótica Computacional
+# Projeto-1 de Robótica Computacional
 
 ## Instruções gerais
 
@@ -12,12 +12,13 @@
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
+**Aviso 5:** Para este projeto, você vai utilizar o robô simulado.
+
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_1`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
-
 ____________________________________________________________________
 # **IMPORTANTE**
 Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
@@ -29,7 +30,7 @@ cb
 ```
 ____________________________________________________________________
 
-# Exercício 0 - Organização & Qualidade (1 pontos)
+# Exercício 0 - Organização & Qualidade (0 para correto e -2 para incorreto)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -45,43 +46,67 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
 * **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
-
 ____________________________________________________________________
-# Exercício 0 - Projeto 1 - Mapeamento (1 pontos)
 
-Nesta questão usaremos o cenário `roslaunch my_simulation corrida_de_obstaculos.launch` e vamos trabalha no arquivo `q3.py`:
+# Objetivo
 
+Neste primeiro projeto vamos trabalhar com exploração e navegação do robô simulado. Seu objetivo é resolver o exercício 1 da [AI-24b](https://insper.github.io/robotica-computacional/simulados/ai_24b/enunciado/), mas utilizando o `GOTO` para navegar no labirinto.
 
-![](obstaculos.png)
-
-
-Seu robô deverá ter os seguintes comportamentos:
+Utilize o comando abaixo para iniciar o simulador no mapa do projeto:
+`ros2 launch my_gazebo tres_paredes.launch.py`
 
 
-1. Sortear um tempo aleatório entre 0.0 e 6.0 segundos.
-2. Girar o robô em uma velocidade constante de 0.4 rads/s.
-3. Ao longo da execução do giro deve exibir o log "girei $$ segundos de ## segundos" onde: `#` representa o tempo decorrido em segundos com 1 casa decimal e `$` representa o valor sorteado em segundo com 1 casa decimal.
-4. O robô deve parar e exibir o log "giro aleatório de ## segundos concluído!"
-5. O robô deve girar novamente até encontrar a pista mais próxima, independente da cor.
-6. Seguir a pista detectada até encontrar um portal, que está identificado no mapa pela cor amarela.
-7. O robô deve identificar quando passa por baixo de um portal e exibir o log "passei pelo portal".
-8. Com o auxilio da garra o robô deve derrubar o portal.
-9. O robô deve seguir a pista e parar quando completar uma volta.
-10. Após completar a volta completa, um gráfico deve ser exibido com as coordenadas de posição (x,y) de todos os portais derrubados com um círculo da cor correspondente a pista que o robô estava seguindo quando derrubou o portal, por exemplo: portal derrubado na pista magenta, plota circulo da cor magenta.
-9. Salvar o gráfico em um arquivo `png` com o nome `obstaculos_derrubados.png` no diretório `scripts`.
-10. O robô deve imprimir `FIM` no terminal e **encerrar** a operação.
+# Parte 1 - Explorar Labirinto (3 pontos)
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa e então salve o mapa.
+
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
+
+!!! dica
+    O `Navigation` atualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
+
+## Vídeo
+
+Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
+
+##
+____________________________________________________________________
+
+# Parte 2 - Labirinto-GoTo (7 pontos)
+
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, este nó deve resolver conversar com o `Handler` e seguir o caminho das paredes a partir de uma sequência de pontos, obtidas do mapa do labirinto. O nó deve:
+
+* Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 8)
+    * Depois, anote as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (**cima** ou **baixo**) e o valor é uma lista de coordenadas.
+
+* Modifique o `goto.py` para receber uma lista de `Points()`
+
+* Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
+
+* Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
+
+* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
+
+* Seguir as intruções do Handler e caminhar pelas paredes à partir de uma sequência de pontos, obtidas do mapa do labirinto.
+
+* Como no exercício, deve retornar ao encontrar a força desconhecida e retornar ao ponto inicial.
+
+* Ao chegar no ponto inical, o robô deve entrar em um estado `stop` e parar.
+
+!!! dica
+    Rode o Navigator pelo comando
+
+    ```bash
+    ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
+    ```
+
+    Assumindo que o mapa ainda esta em sua HOME
 
 
-**AVISO:** Os portais podem ser deslocados para qualquer posição dentro da pista - inclusive em pistas de cores diferentes. A distância mínima entre os portais é de 0,5m.
+## Critérios de Avaliação:
 
-
-Os seguintes critérios de correção serão usados:
-
-
-- **R0)(até 0,5)** Robô completa o giro aleatório e encontra a pista mais próxima.
-- **R1)(até +0,5)**  Realiza **R0** e completa uma volta na pista parando no ponto de partida.
-- **R2)(até +0,5)**  Realiza **R1** e identifica quando passa por baixo de um portal, identifica corretamente todos os portais mas não derruba.
-- **R3)(até +0,5)** Realiza **R2** e derruba ao menos um portal ao passar por baixo deles.
-- **R4)(até +1,0)** Realiza **R3** e derruba corretamente todos os portais ao passar por baixo deles.
-- **R5)(até +0,5)** Realiza **R2** exibe e salva o gráfico com todas as posições e cores dos portais corretamente.
-- **R6)(até +0,5)** Realiza **R4** e **R5** e exibe o log `FIM` e encerra a operação finalizando o nó.
+1. Execute o pacote `Navigation` para navegar no labirinto.
+2. Execute o nó `teseu_node` para fazer o robô escapar do labirinto.
+3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
+4. Todas as exigências e rúbricas do exercício 1 foram atendidas.
+4. **Vídeo:** Mostra o robô executando o comportamento e escapando do labirinto.
+5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
