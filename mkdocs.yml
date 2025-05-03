@@ -220,33 +220,20 @@ nav:
           - "APS 7 - Classroom" : https://classroom.github.com/a/-uL16vc-
           - "Enunciado": modulos/07-controle/aps/enunciado.md
       
-    #   - Capítulo 8 - Navegação:
-    #     - modulos/08-navegacao/index.md
-    #     - Atividades:
-    #       - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
-      #       - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
-    #       - "2 - slam": modulos/09-mapeamento/atividades/2-slam.md
-    #       - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
+      - Capítulo 8 - SLAM:
+        - modulos/08-navegacao/index.md
+        - Atividades:
+          - "1 - GoTo": modulos/08-navegacao/atividades/1-goto.md
+            # - "Gabarito GoTo": modulos/09-mapeamento/util/goto.py"
+          - "2 - slam": modulos/09-mapeamento/atividades/2-slam.md
+          - "Visualizar Mapa": modulos/09-mapeamento/util/visualizar_mapa.py
 
-    #   - Capítulo 9 - Mapeamento:
-    #     - modulos/09-mapeamento/index.md
-    #       - "2 - Action Server":
-    #         - "2 - Action Server": modulos/08-navegacao/atividades/2-action-server.md
-    #         - "Download > Action Server Base": modulos/08-navegacao/util/action_base.py
-    #         - "Download > Action Segue Linha": modulos/08-navegacao/util/action_segue_linha.py
-    #       - "3 - Action Client":
-    #         - "2 - Action Client": modulos/08-navegacao/atividades/3-action-client.md
-    #         - "Download > Action Client Base": modulos/08-navegacao/util/client_base.py
-    #         - "Download > Client Segue Linha": modulos/08-navegacao/util/client_segue_linha.py
-    #     - APS 8:
-    #       - "APS 8 - Classroom" : https://classroom.github.com/a/nXMHOUth
-    #       - "Enunciado": modulos/09-mapeamento/aps/enunciado.md
-    #     - Atividades:
-    #       - "1 - slam": modulos/09-mapeamento/atividades/1-slam.md
-
-   
     - Gabarito do robcomp_util (até Cap 5):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
+
+    - Projeto-1:
+      - "Enunciado": projeto/enunciado.md
+      - "Projeto - Classroom" : https://classroom.github.com/a/dUQfOhqf
 
     - Provas:
       - AI:
@@ -285,7 +272,3 @@ nav:
           - "Enunciado": simulados/af_24a/enunciado.md
         - Delta 24a:
           - "Enunciado": simulados/delta_24a/enunciado.md
-
-    # - Projeto:
-    #   - "Enunciado": projeto/enunciado.md
-    #   - "Projeto - Classroom" : https://classroom.github.com/a/dUQfOhqf
