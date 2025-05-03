@@ -1,12 +1,15 @@
 # Projeto-1 de Robótica Computacional
 
 ## Instruções gerais
+* O projeto deve ser realizada em duplas.
+* Contribuir com outras duplas é aceitável, mas não serão aceitas copias de código entre duplas.
+* **Qualquer suspeita de plágio será investigada e, se confirmada, resultará em nota zero para ambas as duplas envolvidas.**
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
 **Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
 
-**Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
+**Aviso 3:** Preencha o nome completo dos integrantes da sua dupla no arquivo `README.md` do seu repositório.
 
 **Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/screen_record/), e deve ser postado no Youtube. 
 
