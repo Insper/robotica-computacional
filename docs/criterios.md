@@ -26,8 +26,8 @@ onde:
 * `APS_UNIDADE_#` :
 ```
 APS_UNIDADE_1 = APS_1 * 0,25 + APS_2 * 0,25 + APS_3 * 0,5;
-APS_UNIDADE_2 = APS_4 * 0,20 + APS_5 * 0,30 + APS_6 * 0,5;
-APS_UNIDADE_3 = (APS_7 + APS_8) / 2;
+APS_UNIDADE_2 = APS_4 * 0,20 + APS_5 * 0,30 + APS_7 * 0,5;
+APS_UNIDADE_3 = APS_6;
 ```
 
 * `NAPS` é a média das notas das APS de cada unidade;
