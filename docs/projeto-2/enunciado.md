@@ -54,7 +54,7 @@ cb
 Para inicializar o mapa do desafio, em um terminal digite:
 
 ```bash
-ros2 launch my_gazebo pista-23B.launch.py
+ros2 launch my_gazebo pista-24B.launch.py
 ```
 ________________________________________________________
 
@@ -71,7 +71,7 @@ As missões envolvem os seguintes elementos:
 
 * **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até a área de entrega. 
     
-    - Eles estão posicionados no **creeper_place** em cor/ID aleatória, com excessão de um que está perdido.
+    - Quatro creepers estão posicionados no **creeper_place** em com dois cores diferentes e dois ids diferentes.
 
 * **"Drop Area"**: Caixas com imagens detectáveis pela MobileNet, local onde os creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
 
