@@ -8,7 +8,7 @@ Os grupos, que podem ser compostos por `até quatro integrantes`, deverão traba
 
 [Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/4fM2pHCF){ .ah-button }
 
-# **`Data de Entrega: Dia da AF às 12h`**
+# **`Data de Entrega: 26/05 às 23:59h`**
 
 ________________________________________________________
 
