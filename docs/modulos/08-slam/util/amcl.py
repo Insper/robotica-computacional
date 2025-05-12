@@ -91,7 +91,6 @@ class AMCL(): # Mude o nome da classe
                     self.y = y_map + delta_y
                     self.get_logger().info(f'Current pose: ({self.x:.2f}, {self.y:.2f})')
 
-                    self.start = self.world_to_map(self.x, self.y)
                     self.odom_ready = True
                 except Exception as e:
                     self.get_logger().error(f"Error in tf_callback: {e}")
