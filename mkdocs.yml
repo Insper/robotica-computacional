@@ -36,8 +36,8 @@ extra:
     data_APS9: Segunda - 11/11 às 23:59
     link_APS9: TBA
 
-    data_projeto: ~24/11 - antes da prova final
-    link_projeto: TBA
+    data_projeto: ~03/06 - antes da prova final
+    link_projeto: https://classroom.github.com/a/4fM2pHCF
 
     data_PF: ~25/11
     link_PF: TBA
@@ -236,9 +236,9 @@ nav:
       - "Enunciado": projeto-1/enunciado.md
       - "Projeto - Classroom" : https://classroom.github.com/a/yhMYPwY6
     
-    # - Projeto-2:
-    #   - "Enunciado": projeto-2/enunciado.md
-    #   - "Projeto - Classroom" : https://classroom.github.com/a/4fM2pHCF
+     - Projeto-2:
+       - "Enunciado": projeto-2/enunciado.md
+       - "Projeto - Classroom" : https://classroom.github.com/a/4fM2pHCF
 
     - Provas:
       - AI:
