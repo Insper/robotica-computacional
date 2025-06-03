@@ -39,7 +39,7 @@ cb
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `avaliacao_ai`.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `avaliacao_af`.
 
     - **Dica:** Para utilizar os módulos desenvolvidos no capitulo 3, inclua o pacote `robcomp_util` e o pacote `robcomp_interfaces` como dependência do seu pacote, e então, importe como nos exemplos do capitulo 3.
 
@@ -162,6 +162,7 @@ ros2 launch my_gazebo box_of_colors.launch.py
 ```
 
 O nó criado deve:
+
 * Criar um publisher para o tópico `/handler_af_25a`, publicando mensagens do tipo `robcomp_interfaces.msg.HandlerAF25a`.
 * Se inscrever no mesmo tópico para receber mensagens do tipo `robcomp_interfaces.msg.HandlerAF25a`.
 * Ao iniciar, o nó deve publicar uma mensagem com o **status** `STOP` para reiniciar o **Handler**.
