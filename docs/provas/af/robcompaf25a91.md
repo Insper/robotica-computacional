@@ -53,7 +53,7 @@ Este exercício avalia a organização e a qualidade dos vídeos dos exercícios
     * O pacote foi corretamente configurado.
     * As dependências estão declaradas corretamente e funcionando.
     * Os diretórios e arquivos estão organizados de forma adequada.
-    * Todos os scripts estão na pasta `avaliacao_ai` do pacote `avaliacao_ai`.
+    * Todos os scripts estão na pasta `avaliacao_af` do pacote `avaliacao_af`.
 2. Execução dos Nós:
     * A configuração dos nós foi realizada corretamente.
     * Os nós da ROS 2 foram executados utilizando o comando `ros2 run`.
