@@ -35,7 +35,7 @@ APS_UNIDADE_3 = APS_6;
 * `Projeto` é a nota dos projetos, calculada da seguinte forma:
 
 ```
-Projeto = Projeto_1 * 0,4 + Projeto_2 * 0,6;
+Projeto = Projeto_1 * 0,5 + Projeto_2 * 0,5;
 ```
 
 * `AI` é a nota da Avaliação Intermediária.
