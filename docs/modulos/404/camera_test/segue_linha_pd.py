@@ -81,7 +81,7 @@ class Seguidor(Node):
 
         hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
         
-        mask = cv2.inRange(hsv, (20,50,90), (55,255,255))
+        mask = cv2.inRange(hsv, (10,120,90), (40,255,255))
         mask[:int(h/3),:] = 0
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, self.kernel)
@@ -126,10 +126,7 @@ class Seguidor(Node):
         
     def segue(self):
         if self.cx == np.inf:
-            if self.last_erro == 0:
-                self.twist.angular.z = -0.3
-            else:
-                self.twist.angular.z = self.last_erro * self.kp
+            self.twist.angular.z = -0.3
         else:
             self.calc_erro()
             self.twist.linear.x = 0.3
@@ -142,7 +139,7 @@ class Seguidor(Node):
         self.twist = Twist()
         print(f'Estado Atual: {self.robot_state}')
         self.state_machine[self.robot_state]()
-        self.cmd_vel_pub.publish(self.twist)
+        # self.cmd_vel_pub.publish(self.twist)
 
 
 def main(args=None):
