@@ -14,18 +14,18 @@ class Control(): # Herdando de Mapa
         }
     
     def forward(self) -> None:
-        # Move subtraindo 1 uma linha
-        # Atualiza a posição
+        # Move pra cima subtraindo 1 de i
+        # Chama o método de atualização de posição
         pass
 
     def left(self) -> None:
-        # Move subtraindo 1 uma coluna
-        # Atualiza a posição
+        # Move pra esquerda subtraindo 1 de j
+        # Chama o método de atualização de posição
         pass
 
     def right(self) -> None:
-        # Move somando 1 uma coluna
-        # Atualiza a posição
+        # Move pra direita somando 1 a j
+        # Chama o método de atualização de posição
         pass
     
     def stop(self) -> None:
@@ -33,17 +33,20 @@ class Control(): # Herdando de Mapa
         pass
 
     def control(self) -> None:
-        # Verifique se a posição acima está livre, se sim, mova para cima.
-        # Se não, verifique se a posição à esquerda ou à direita está livre, se sim, mova para um dos lados.
-        # Pare quando estiver na primeira linha.
+        # A lógica de controle do carro deve mudar o estado do carro (self.robot_state)
+        # Não chame direto os métodos de movimento, mas sim mude o estado do carro.
+
+        # Verifique se a posição acima está livre, se sim, mude o estado para 'forward'.
+        # Se não, verifique se a posição à esquerda ou à direita está livre, se sim, mude o estado para 'left' ou 'right'.
+        # Pare quando estiver na primeira linha mudando o estado para 'stop'.
+
+        # IMPORTANTE: Certifique-se de que o carro não saia dos limites do mapa.
         
         # Chamada do método de movimento a partir do dicionário
-        # self.state_machine...
+        self.state_machine[self.robot_state]()
 
-        # Mostre a grade atual
-        
-        pass
-        
+        # Mostra a grade atual
+        self.mostrar()
 def main():
     control = Control()
     control.mostrar()
