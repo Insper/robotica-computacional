@@ -32,6 +32,8 @@ As ações do carro devem achamar o método da classe `Mapa` `atualizar_posicao`
 
 Desenvolva seu código no arquivo `ex1.py`, na classe `Control`. Você pode testar seu código executando o arquivo `ex1.py`.
 
+**DICA:** Comece verificando na onde está a posição atual do carro, em seguida, use o valor da posição no mapa, você deve ver o valor 1.
+
 ## Critérios de Avaliação:
 1. Faz a herança da classe `Mapa` corretamente. 
 2. Na função `control`, implementa a lógica para escolher a ação do carro, modificando a variavel `self.robot_state` de acordo com a situação.
