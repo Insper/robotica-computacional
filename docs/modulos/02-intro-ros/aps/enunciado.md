@@ -75,34 +75,19 @@ A função `control` deve calcular o tempo que passou e imprimir número da mens
 Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
 ```
 
-
-
 # Entrega
 
 !!! tip
-    Como desejamos ver a saída do terminal do `subscriber.py` e do `publisher.py`, é importante executá-los utilizando os comandos abaixo para as saída aparecerem corretamente (utilizando `ros2 run`).
+    O subscriber so vai receber as mensagens se o publisher estiver rodando, então cerifique se o nó `publisher` está rodando antes de iniciar o nó `subscriber`.
     
     ```bash
-    ros2 run entregaval_2 publisher
+    ros2 run entregavel_2 publisher
     ```
     e
     ```bash
-    ros2 run entregaval_2 subscriber
+    ros2 run entregavel_2 subscriber
     ```
 
 Grave um vídeo com dois terminais, um com o comando rodando o nó `publisher` e outro rodando o nó `subscriber`. O vídeo deve mostrar o funcionamento do nó `publisher` e o nó `subscriber` recebendo as mensagens e imprimindo o delay entre a publicação e a recepção da mensagem.
 
 O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
-
-# Exercício 3 ( 2 pontos)
-Crie um `bag` com as mensagens publicadas e grave um novo vídeo mostrando o nó `subscriber` recebendo as mensagens do bag. Lembre-se de parar a execução do nó `publisher` antes de rodar o nó `subscriber` e o `ros2 bag play`.
-
-O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
-
-
-## Caso Tenha Apenas Desenvolvido o Exercício 1!
-
-Neste caso, grave um vídeo com dois terminais, no primeiro terminal com o comando rodando o nó `publisher` e no segundo terminal execute o comando `ros2 topic echo /publisher`. O vídeo deve mostrar o funcionamento do nó `publisher`.
-
-O vídeo deve ser postado no Youtube e o link deve ser adicionado no arquivo `README.md` do seu repositório.
-
