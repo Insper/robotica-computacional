@@ -21,41 +21,53 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 # Exercício 1 (4 pontos)
 
 ## Instruções:
-Baseando-se no código `first_node.py` do módulo 2, crie um nó denominado `publisher` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/String`. 
+Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/PubSub`. 
 
 **A mensagem deve conter:**
 
-* O horário atual;
+* O horário atual em segundos desde a época Unix (1 de janeiro de 1970) com precisão de nanossegundos;
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
-* Ambos separados por um espaço. Ou seja, a mensagem deve ter o formato: "**{tempo_atual}** **{contador}**".
+* Todos nos campos apropriados para o tipo `robcomp_interfaces/PubSub`.
 
 O nó **também deve imprimir no terminal** uma alerta como na linha a seguir:
 
 ```bash
-Ola, são 1677878366175707817 e estou publicando pela 117 vez
+Ola, são 1677878366175707817.935347013 e estou publicando pela 217 vez
 ```
 
-!!! importante
-    Note que a mensagem e o que deve ser impresso no terminal são diferentes!
-    A **mensagem** deve conter o tempo atual e o contador separados por um espaço. Já o que deve ser impresso no terminal é uma string mais descritiva.
-
+O nó pode ser iniciado com o comando `ros2 run entregavel_2 publisher`.
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
 !!! tip
-    **DICA:** Para pegar o horário atual
+    **DICA 1:** Verifique a estrutura da mensagem do tipo `PubSub` na ROS 2 usando o comando:
+
+    ```bash
+    ros2 interface show robcomp_interfaces/PubSub
+    ```
+
+!!! tip
+    **DICA 2:** Para pegar o horário atual
 
     ```python 
     current_time = self.get_clock().now().to_msg()
     current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
     print(f"Horário atual: {current_time}")
     ```
+!!! exercise long 
+    Qual a estrutura da mensagem do tipo `PubSub`?
+
+    !!! answer
+        Esse tipo de mensagem contém os seguintes campos:
+        - `float time`
+        - `int counter`
+        ou seja, a mensagem é composta por um campo de tempo do tipo `float` e um contador do tipo `int`.
 
 # Exercício 2 (4 pontos)
 
 ## Instruções:
-Baseando-se no código `second_node.py` do módulo 2, crie um nó denominado `subscriber` que se inscreva no tópico `publisher` do tipo `std_msgs/String`. A cada nova mensagem recebida, a função `callback` deve separar o tempo do contador no conteúdo da mensagem. Lembre-se de checar a estrutura da mensagem.
+Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSub`.
 
 A função `control` deve calcular o tempo que passou e imprimir número da mensagem recebida e o delay entre quando a messagem foi publicada e quando foi recebida, como no exemplo a seguir,
 
@@ -63,11 +75,7 @@ A função `control` deve calcular o tempo que passou e imprimir número da mens
 Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
 ```
 
-!!! exercise long 
-    Qual a estrutura da mensagem do tipo `String`?
 
-    !!! answer
-        `string data`. O conteúdo da mensagem é armazenado na variável `data`. Então para acessar o conteúdo, deve-se utilizar `msg.data`. Depois pode separar o tempo do contador utilizando o comando `msg.data.split()`.
 
 # Entrega
 
