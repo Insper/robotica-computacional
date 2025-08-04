@@ -1,16 +1,16 @@
 # Entregável 4 de Robótica Computacional
 
-## Instruções gerais
+## Instruções Gerais
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
+**Aviso 2:** Lembrem-se de fazer `commit` e `push` no seu repositório até o horário limite de entrega.
 
-**Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
+**Aviso 3:** Preencham o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todas as questões você **deve gravar um vídeo do seu robô executando a tarefa**. O vídeo deve ser feito gravando a tela do linux, [tutorial](https://insper.github.io/robotica-computacional/screen_record/), e deve ser postado no Youtube. 
+**Aviso 4:** Além do seu repositório, para todas as questões vocês **devem gravar um vídeo do robô executando a tarefa**. O vídeo deve ser feito gravando a tela do Linux ([tutorial](https://insper.github.io/robotica-computacional/screen_record/)) e deve ser postado no YouTube. 
 
-No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
+No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo`, onde vocês devem inserir o link do vídeo no YouTube. Certifiquem-se de que o vídeo está público e que o link está correto. **NUNCA façam commit do vídeo**, apenas adicionem o link.
 
 ## Configuração do Pacote (ROS 2)
 
@@ -21,7 +21,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 # Exercício 1 (4 pontos)
 
 ## Instruções:
-Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `std_msgs/PubSub`. 
+Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `robcomp_interfaces/PubSub`. 
 
 **A mensagem deve conter:**
 
@@ -29,12 +29,12 @@ Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `pu
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
-* Todos nos campos apropriados para o tipo `robcomp_interfaces/PubSub`.
+* Todos os campos apropriados para o tipo `robcomp_interfaces/PubSub`.
 
-O nó **também deve imprimir no terminal** uma alerta como na linha a seguir:
+O nó **também deve imprimir no terminal** um alerta como na linha a seguir:
 
 ```bash
-Ola, são 1677878366175707817.935347013 e estou publicando pela 217 vez
+Olá, são 1677878366175707817.935347013 e estou publicando pela 217ª vez
 ```
 
 O nó pode ser iniciado com o comando `ros2 run entregavel_2 publisher`.
@@ -69,16 +69,16 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 ## Instruções:
 Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSub`.
 
-A função `control` deve calcular o tempo que passou e imprimir número da mensagem recebida e o delay entre quando a messagem foi publicada e quando foi recebida, como no exemplo a seguir,
+A função `control` deve calcular o tempo decorrido e imprimir o número da mensagem recebida e o delay entre quando a mensagem foi publicada e quando foi recebida, como no exemplo a seguir:
 
 ```bash
-Ola, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
+Olá, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
 ```
 
 # Entrega
 
 !!! tip
-    O subscriber so vai receber as mensagens se o publisher estiver rodando, então cerifique se o nó `publisher` está rodando antes de iniciar o nó `subscriber`.
+    O subscriber só vai receber as mensagens se o publisher estiver rodando, então certifique-se de que o nó `publisher` está rodando antes de iniciar o nó `subscriber`.
     
     ```bash
     ros2 run entregavel_2 publisher
