@@ -1,4 +1,4 @@
-# Entregável 4 de Robótica Computacional
+# Entregável 2 de Robótica Computacional
 
 ## Instruções Gerais
 
@@ -18,7 +18,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo`, onde
 - Você deve fazer o clone do repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_2`.
 
-# Exercício 1 (4 pontos)
+# Exercício 1 (5 pontos)
 
 ## Instruções:
 Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `robcomp_interfaces/PubSub`. 
@@ -64,7 +64,7 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
         - `int counter`
         ou seja, a mensagem é composta por um campo de tempo do tipo `float` e um contador do tipo `int`.
 
-# Exercício 2 (4 pontos)
+# Exercício 2 (5 pontos)
 
 ## Instruções:
 Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSub`.
