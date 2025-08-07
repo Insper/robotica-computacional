@@ -49,10 +49,10 @@ O objetivo deste exercício é completar os tutoriais relacionados a Linux, Simu
 
 ## Instruções:
 
-* Acesse os tutoriais através do link fornecido: [Guias-Infratestrutura]().
+* Acesse os tutoriais através do link fornecido: [Guias-Infratestrutura](https://insper.github.io/robotica-computacional/modulos/01-intro/atividades/guias-infra/).
 
 * Complete cada tutorial com atenção, seguindo todas as instruções e procedimentos detalhados.
 
 ## Critérios de Avaliação:
 
-A conclusão deste exercício será avaliada por um professor ou técnico. Para isso, você deverá demonstrar que completou cada tutorial de acordo com a planilha de checagem disponível no seguinte link: [Planilha de Checagem]().
+A conclusão deste exercício será avaliada por um professor ou técnico. Para isso, você deverá demonstrar que completou cada tutorial de acordo com a planilha de checagem disponível no seguinte link: [Planilha de Checagem](https://insper.github.io/robotica-computacional/modulos/01-intro/atividades/guias-infra/checagem/).
