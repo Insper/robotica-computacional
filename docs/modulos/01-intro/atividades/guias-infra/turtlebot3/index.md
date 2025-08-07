@@ -14,6 +14,7 @@ O primeiro passo para usarmos o Insperbot é ligar o robô. São três passos si
 ![Passo 3](imgs/passo003.jpg)
 4. Por último você deve aguardar o robô ligar completamente. Quando o processo de iniciar estiver completo ou próximo de se completar, o seu nome e endereço IP aparecerão na telinha na parte de trás.
 ![Passo 4](imgs/passo004.jpg)
+
 !!! warning 
     Em geral demora cerca de 2-3 minutos até o robô inicializar por completo. 
 
@@ -40,7 +41,8 @@ Você verá a seguinte resposta:
 
 ![Passo 8](imgs/passo008.png)
 
-Caso o comando não retorne nada, mesmo depois de muito tempo, você pode tentar **reiniciar os serviços** do robô, para isso, aperte o **botão da esquerda** e então o **botão para cima** para confirmar o comando.
+!!! warning 
+    Caso o comando não retorne nada, mesmo depois de muito tempo, você pode tentar **reiniciar os serviços** do robô, para isso, aperte o **botão da esquerda** e então o **botão para cima** para confirmar o comando.
 
 ## Teleoperando o robô
 
