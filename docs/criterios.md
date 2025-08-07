@@ -32,7 +32,7 @@ APS_UNIDADE_3 = APS_7 * 0,5 + APS_8 * 0,5;
 
 * `NAPS` é a média das notas das APS de cada unidade;
 
-* `Projeto` é a nota dos projetos, calculada da seguinte forma:
+* `Projeto` é a nota dos projetos.
 
 * `AI` é a nota da Avaliação Intermediária.
 
