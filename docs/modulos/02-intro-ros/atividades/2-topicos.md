@@ -104,8 +104,8 @@ A saída do comando acima mostra a estrutura da mensagem `Twist`, que é compost
         ros2 interface show nav_msgs/msg/Odometry
 
 !!! exercise long 
-    No simulador, mova o robô, como a saída do tópico `odom` muda?
+    O que você imagina que vai acontecer com os valores do tópico `odom` enquanto o robô se move?
 
     !!! answer
-        Se o robô estiver se deslocando os valores do pose.pose.position vão variar de acordo com a direção do deslocamento. Se o robô estiver girando, os valores do pose.pose.orientation vão variar, no caso a orientação está sendo representada no formato de `quaternion`, isso será explorado melhor no futuro.
+        Se o robô estiver se deslocando os valores do pose.pose.position vão variar de acordo com a direção do deslocamento. Se o robô estiver girando, os valores do pose.pose.orientation vão variar. No caso a orientação está sendo representada no formato de `quaternion`, isso será explorado melhor no futuro.
 
