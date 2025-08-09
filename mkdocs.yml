@@ -13,7 +13,7 @@ extra:
     semestre: 2025-2
     
     data_APS1: Segunda - 18/08 às 12:00
-    link_APS1: TBA
+    link_APS1: https://classroom.github.com/a/B-tptaiO
     data_APS2: TBA
     link_APS2: TBA
     data_APS3: TBA
@@ -110,7 +110,7 @@ nav:
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
         - APS 1:
-          # - "APS 1 - Classroom" : https://classroom.github.com/a/VtCSBzyf
+          - "APS 1 - Classroom" : https://classroom.github.com/a/B-tptaiO
           - "Enunciado": modulos/01-intro/aps/enunciado.md
           - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
