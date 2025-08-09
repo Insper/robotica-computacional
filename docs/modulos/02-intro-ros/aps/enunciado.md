@@ -21,7 +21,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo`, onde
 # Exercício 1 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `robcomp_interfaces/PubSub`. 
+Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `robcomp_interfaces/PubSubAPS`. 
 
 **A mensagem deve conter:**
 
@@ -29,7 +29,7 @@ Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `pu
 
 * Um contador que começa em 0 e é incrementado a cada mensagem publicada;
 
-* Todos os campos apropriados para o tipo `robcomp_interfaces/PubSub`.
+* Todos os campos apropriados para o tipo `robcomp_interfaces/PubSubAPS`.
 
 O nó **também deve imprimir no terminal** um alerta como na linha a seguir:
 
@@ -41,10 +41,10 @@ O nó pode ser iniciado com o comando `ros2 run entregavel_2 publisher`.
 Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
 
 !!! tip
-    **DICA 1:** Verifique a estrutura da mensagem do tipo `PubSub` na ROS 2 usando o comando:
+    **DICA 1:** Verifique a estrutura da mensagem do tipo `PubSubAPS` na ROS 2 usando o comando:
 
     ```bash
-    ros2 interface show robcomp_interfaces/PubSub
+    ros2 interface show robcomp_interfaces/msg/PubSubAPS
     ```
 
 !!! tip
@@ -56,18 +56,18 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
     print(f"Horário atual: {current_time}")
     ```
 !!! exercise long 
-    Qual a estrutura da mensagem do tipo `PubSub`?
+    Qual a estrutura da mensagem do tipo `PubSubAPS`?
 
     !!! answer
         Esse tipo de mensagem contém os seguintes campos:
-        - `float time`
-        - `int counter`
-        ou seja, a mensagem é composta por um campo de tempo do tipo `float` e um contador do tipo `int`.
+        - `int8 counter`
+        - `float34 time`
+        ou seja, a mensagem é composta por um campo de tempo do tipo `float32` e um contador do tipo `int8`.
 
 # Exercício 2 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSub`.
+Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSubAPS`.
 
 A função `control` deve calcular o tempo decorrido e imprimir o número da mensagem recebida e o delay entre quando a mensagem foi publicada e quando foi recebida, como no exemplo a seguir:
 
