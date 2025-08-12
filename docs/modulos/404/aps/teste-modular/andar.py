@@ -20,6 +20,7 @@ class Andar(Node,): # Mude o nome da classe
         self.velocidade = 0.2
 
         # Publishers
+        # Criação do publisher para o tópico que controla a velocidade do robô
         self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
     
     def reset(self):
