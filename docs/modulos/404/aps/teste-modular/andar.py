@@ -28,23 +28,27 @@ class Andar(Node,): # Mude o nome da classe
         if self.timer is None:
             self.timer = self.create_timer(0.25, self.control)
         ### Iniciar variaveis da ação
+        # Tempo inicial
         self.tempo_inicial = self.get_clock().now().to_msg()
         self.tempo_inicial = float(self.tempo_inicial.sec)
 
     def andar(self):
+        # Definar a velocidade linear do robô na variável twist
         self.twist.linear.x = self.velocidade
+        # Recolher o tempo atual
         self.tempo_atual = self.get_clock().now().to_msg()
-        self.tempo_atual = float(self.tempo_atual.sec) 
+        self.tempo_atual = float(self.tempo_atual.sec)
+        # Calcular o delta de tempo
         delta = self.tempo_atual - self.tempo_inicial
         print(f'Delta: {delta} segundos')
-
+        # Se o delta é maior ou igual a t segundos, pare o robô
         if delta >= 4.0:
                 self.twist.linear.x = 0.0
                 self.robot_state = 'stop'
 
     def stop(self):
         self.twist = Twist()
-        print("Andar: Parando o robô.")
+        print("Parando o robô.")
         self.timer.cancel()
         self.timer = None
         self.robot_state = 'done'
@@ -59,7 +63,6 @@ def main(args=None):
     ros_node = Andar()
 
     rclpy.spin_once(ros_node)
-    # Reset the node to initialize the goal yaw
     ros_node.reset()
 
     while not ros_node.robot_state == 'done':
