@@ -6,7 +6,7 @@ Para facilitar o desenvolvimento de um nó, a fornecemos uma estrutura básica d
 
 * Nó de ação base [base_action.py](../util/base_action.py)
 
-* Nó base de controle: [main.py](../util/base_control.py)
+* Nó "cliente" da ação: [main.py](../util/main.py)
 
 Baixe os arquivos e coloque-os em uma pasta de fácil acesso. 
 
@@ -91,14 +91,58 @@ Outra função importante é a `control()`, que é chamada pelo timer a cada 0,2
 **A função control deve ser a única função que publica no tópico `cmd_vel`**. Isso é importante para garantir que o robô não receba comandos conflitantes.
 
 
-## Nó Base de Controle
+## Nó "Cliente" da Ação
 
-Neste script, definimos a máquina de estados do robô (no dicionário `self.state_machine`), o estado inicial (no atributo `self.robot_state`) e a função de controle (no método `self.control()`), que a cada 0,25 segundos:
+Neste script, apresentamos uma estrutura básica para um nó que chama a ação definida no nó base de ação. 
+Geralmente, esse nó é o nó principal do seu pacote, que inicia a ação e decide quando a ação deve ser iniciada ou parada.
 
-1. Executa a função `self.state_machine[self.robot_state]()`, que executa a função correspondente ao estado atual do robô.
-2. Publica a ação de controle no tópico `cmd_vel` (`self.cmd_vel_pub.publish(self.twist)`).
+Vamos estudar as partes relevantes:
 
-!!! importante
-    A função de controle **é a única função que publica no tópico `cmd_vel`**. Isso é importante para garantir que o robô não receba comandos conflitantes.
-    
-    Portanto, a função de controle não precisa ser alterada.
+```python
+class BaseControlNode(Node): # Mude o nome da classe
+
+    def __init__(self):
+        super().__init__('base_control_node') # Mude o nome do nó
+        self.timer = self.create_timer(0.1, self.control)
+
+        self.acao_node = Acao() # Cria o nó da Acao
+
+        self.robot_state = 'stop'
+        self.state_machine = {
+            'acao': self.acao, # Estado para GERENCIAR a ação
+            'stop': self.stop
+        }
+
+        # Inicialização de variáveis
+        self.twist = Twist()
+        
+        # Subscribers
+        ## Coloque aqui os subscribers
+
+        # Publishers
+        self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
+        ## Coloque aqui os publishers
+```
+Essa parte é bem similar ao nó base de ação, mas com algumas diferenças importantes:
+1. Não vamos cancelar o timer, portanto já iniciamos o timer no construtor do nó.
+2. Vamos criar um todos os nós necessários para a ação, e atribuí-los a variáveis de instância, como `self.acao_node`.
+
+Em seguida, vamos definir a função cliente da ação :
+```python
+    def acao(self):
+        print("\nIniciando movimento de ação...")
+        rclpy.spin_once(self.acao_node) # Processa as callbacks uma vez
+        self.acao_node.reset() # Reseta o nó para iniciar a ação
+
+        while not self.acao_node.robot_state == 'done': # Enquanto a ação não estiver finalizada
+            rclpy.spin_once(self.acao_node) # Processa os callbacks e o timer
+
+        # Quando a ação estiver finalizada, o 
+        #   estado do robô deve ser alterado para o próximo estado ou finalizar mudando para 'stop'
+        self.robot_state = 'stop'
+```
+Essa função é responsável por
+1. iniciar a ação, chamando o método `reset()` do nó de ação 
+2. Processar os callbacks da ação uma unica vez
+3. Aguardar até que a ação esteja concluída.
+4. Quando a ação é concluída, o estado do robô é alterado dependendo da lógica do sistema, nesse caso vamos simplesmente mudar para 'stop', finalizando a execução do robô.
