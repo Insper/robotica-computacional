@@ -2,10 +2,8 @@ import rclpy
 import numpy as np
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from robcomp_util.odom import Odom
-from robcomp_util.laser import Laser
 
-class Andar(Node, Odom, Laser): # Mude o nome da classe
+class Andar(Node,): # Mude o nome da classe
 
     def __init__(self):
         super().__init__('andar_node') # Mude o nome do nó
