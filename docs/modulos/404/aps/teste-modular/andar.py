@@ -9,7 +9,7 @@ class Andar(Node,): # Mude o nome da classe
         super().__init__('andar_node') # Mude o nome do nó
         self.timer = None
 
-        self.robot_state = 'stop'
+        self.robot_state = 'done'
         self.state_machine = {
             'andar': self.andar,
             'stop': self.stop,
