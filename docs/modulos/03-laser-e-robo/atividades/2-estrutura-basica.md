@@ -146,3 +146,34 @@ Essa função é responsável por
 2. Processar os callbacks da ação uma unica vez
 3. Aguardar até que a ação esteja concluída.
 4. Quando a ação é concluída, o estado do robô é alterado dependendo da lógica do sistema, nesse caso vamos simplesmente mudar para 'stop', finalizando a execução do robô.
+
+# Ação de Mover
+
+Nesta atividade vamos aprender nossa primeira ação, a ação de andar uma distancia `d`.
+Como estudamos em `Explorando Tópicos e Mensagens`, a velocidade linear do robo pode ser controlada se publicarmos uma mensagem de um certo tipo para um tpoico, mas, em robotica, muitas vezes queremos mover uma distacia conhecidada, mas como fazer isso apenas com a velocidade?
+
+Em robotica uma forma de controlar o robo para se deslocar uma distancia `d` é utilizando um metodo conechecido como `Dead Reckoning`, Neste metodo, você se desloca em **velocidade constante** por um **tempo fixo**, sem receber feedback de quanto, realmente, se deslocou.
+
+Para desenvolver essa ação, vamos começar do codigo base de ação, que podera ser utilizada como uma etapa inicial para açoes.
+
+Nesta atividade, faça o seguinte:
+1. Mude o nome da classe para `Andar` e o nome do nó para `andar_node`.
+2. Mude também a chamada da classe na função `main()` para `Andar()`.
+3. Mude o nome do estado de ação para `andar`.
+4. Na função `reset()`, 
+    * mude o estado do robô para `andar` e inicie a variável `self.velocidade` com um valor de 0.2 m/s.
+    * Inclua a variável `self.tempo_inicial` como o seguinte:
+    ```python
+        self.tempo_inicial = self.get_clock().now().to_msg()
+        self.tempo_inicial = float(self.tempo_inicial.sec)
+    ```
+5. Na função `andar`(antiga função `acao`), 
+    * defina a velocidade linear do robô na variável `twist` como `self.twist.linear.x = self.velocidade`.
+    * Recolha o tempo atual e armazene em `self.tempo_atual`.
+    * Calcule o delta de tempo entre o tempo atual e o tempo inicial, e imprima esse valor.
+    * Se o delta for maior ou igual a 4 segundos, pare o robô (defina `self.twist.linear.x = 0.0`) e mude o estado do robô para `stop`.
+
+A ideia do metodo `Dead Reckoning` é que você se desloca em velocidade constante por um tempo fixo, dessa forma, voce se deslocou uma distancia `d = v * t`, onde `v` é a velocidade e `t` é o tempo. Com isso em mente,
+
+6. Modifique o codigo do andar para andar `2m`.
+7. Teste esta ação, executando o nó no simuldor e verificando se o robô se move a distância correta.
