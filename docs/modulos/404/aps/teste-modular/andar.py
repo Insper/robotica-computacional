@@ -12,7 +12,8 @@ class Andar(Node,): # Mude o nome da classe
         self.robot_state = 'stop'
         self.state_machine = {
             'andar': self.andar,
-            'stop': self.stop
+            'stop': self.stop,
+            'done': self.stop
         }
 
         # Inicialização de variáveis
@@ -23,12 +24,12 @@ class Andar(Node,): # Mude o nome da classe
     
     def reset(self):
         self.twist = Twist()
-        self.done = False
-        self.tempo_inicial = self.get_clock().now().to_msg()
-        self.tempo_inicial = float(self.tempo_inicial.sec)
         self.robot_state = 'andar'
         if self.timer is None:
             self.timer = self.create_timer(0.25, self.control)
+        ### Iniciar variaveis da ação
+        self.tempo_inicial = self.get_clock().now().to_msg()
+        self.tempo_inicial = float(self.tempo_inicial.sec)
 
     def andar(self):
         self.twist.linear.x = self.velocidade
@@ -46,7 +47,7 @@ class Andar(Node,): # Mude o nome da classe
         print("Andar: Parando o robô.")
         self.timer.cancel()
         self.timer = None
-        self.done = True
+        self.robot_state = 'done'
 
     def control(self):
         print(f'Estado Atual: {self.robot_state}')
@@ -61,7 +62,7 @@ def main(args=None):
     # Reset the node to initialize the goal yaw
     ros_node.reset()
 
-    while not ros_node.robot_state == 'stop':
+    while not ros_node.robot_state == 'done':
         rclpy.spin_once(ros_node)
 
     ros_node.destroy_node()
