@@ -12,6 +12,17 @@
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo`, onde vocês devem inserir o link do vídeo no YouTube. Certifiquem-se de que o vídeo está público e que o link está correto. **NUNCA façam commit do vídeo**, apenas adicionem o link.
 
+## Atualização do Pacote (ROS 2)
+
+Execute os comandos abaixo para atualizar os pacotes da `ros2` obrigatórios para a prova:
+
+```bash
+cd ~/colcon_ws/src/my_simulation
+git stash
+git pull
+cb
+```
+
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom.
