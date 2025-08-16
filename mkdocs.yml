@@ -15,7 +15,7 @@ extra:
     data_APS1: Segunda - 18/08 às 23:59
     link_APS1: https://classroom.github.com/a/B-tptaiO
     data_APS2: Segunda - 25/08 às 12:00
-    link_APS2: TBA
+    link_APS2: https://classroom.github.com/a/L5EOrG7x
     data_APS3: TBA
     link_APS3: TBA
 
@@ -122,9 +122,9 @@ nav:
           - "3 - Criando um Pacote": modulos/02-intro-ros/atividades/3-creating-package.md
           - "4 - Publisher e Subscriber na ROS": modulos/02-intro-ros/atividades/4-pub-sub.md
           - "5 - Salvando Eventos na ROS": modulos/02-intro-ros/atividades/5-rosbag.md
-    #     - APS 2:
-    #       - "APS 2 - Classroom" : https://classroom.github.com/a/DSoynr-D
-    #       - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
+        - APS 2:
+          - "APS 2 - Classroom" : https://classroom.github.com/a/L5EOrG7x
+          - "Enunciado": modulos/02-intro-ros/aps/enunciado.md
 
     #   - Capítulo 3 - Controlando o Robô:
     #     - modulos/03-laser-e-robo/index.md
