@@ -1,31 +1,28 @@
-# Criando um Pubshisher e um Subscriber na ROS
+# Criando um Publisher e um Subscriber na ROS 2
 
-## Pubshisher e Subscriber
+## Publisher e Subscriber
 
-Agora que você já sabe como criar um novo pacote, vamos aprender como se inscrever em um tópico para receber mensagens. 
+Agora que você já sabe como criar um novo pacote, vamos aprender como **publicar** e **assinar** tópicos para enviar/receber mensagens.
 
-Primeiro, vamos para algumas definições:
+Primeiro, algumas definições:
 
-* **Subscriber:** Um subscriber é um nó que recebe mensagens de um tópico específico.
+* **Subscriber:** nó que **recebe** mensagens de um tópico específico (assina no tópico).
+* **Publisher:** nó que **envia** mensagens para um tópico específico (publica no tópico).
 
-* **Publisher:** Um publisher é um nó que envia mensagens para um tópico específico.
-
-Na ROS, quando um nó enviar uma mensagem para um tópico, todos os nós que estiverem inscritos nesse tópico receberão a mensagem. O gif abaixo ilustra esse processo:
+Na ROS 2, quando um nó publica uma mensagem em um tópico, **todos** os nós assinantes nesse tópico a recebem. O gif abaixo ilustra esse processo:
 
 ![ros-pub-sub](imgs/ros-pub-sub.gif)
 
 ## Criando um Publisher
 
-Vamos começar abrindo um novo terminal e executando o comando abaixo para abrir o VSCode no diretório do pacote `my_package`:
+Abra um novo terminal (`Ctrl+Alt+T`) e inicie o VS Code no diretório do pacote `my_package`:
 
 ```bash
 cd ~/colcon_ws/src/my_package
 code .
 ```
 
-Agora vamos criar um novo arquivo chamado `first_node.py` dentro da pasta `my_package`. Esta pasta contém todos os arquivos Python que serão executados como nós ROS. 
-
-No mesmo terminal rode os comandos abaixo, um de cada vez, para criar o arquivo:
+Crie um arquivo chamado `first_node.py` dentro da pasta **`my_package/`** (essa pasta contém os arquivos Python executados como nós ROS):
 
 ```bash
 cd my_package
@@ -35,65 +32,48 @@ chmod +x *.py
 
 Os comandos acima fazem o seguinte:
 
-* `cd my_package`: entra na pasta `my_package`.
+* `cd my_package`: entra na pasta do módulo Python do pacote `my_package`.
+* `touch first_node.py`: cria o arquivo do nó.
+* `chmod +x *.py`: concede permissão de execução aos arquivos Python (necessário para executá‑los como nós). **Lembre-se sempre de usar este comando após criar um novo arquivo Python que será executado como nó ROS.**
 
-* `touch first_node.py`: cria o arquivo `first_node.py`.
-
-* `chmod +x *.py`: dá permissão de execução para todos os arquivos Python da pasta. Este comando é necessário para que o ROS consiga executar o arquivo Python como um nó ROS. Lembre-se sempre de usar este comando após criar um novo arquivo Python que será executado como nó ROS.
-
-Agora vamos abrir o arquivo `first_node.py` e adicionar o seguinte código:
+Abra `first_node.py` e cole o código abaixo:
 
 ```python
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from nav_msgs.msg import Odometry
-from rclpy.qos import ReliabilityPolicy, QoSProfile
-import numpy as np
-
-"""
-ros2 launch my_package first_node.launch.py
-"""
 
 class FirstNode(Node):
-
     def __init__(self):
         super().__init__('first_node')
-        self.vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
-
+        self.vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.timer = self.create_timer(0.25, self.control)
-        
-    def control(self):
-        self.twist = Twist()
-        self.twist.linear.x = -0.2
 
-        self.vel_pub.publish(self.twist)
-        
-            
+    def control(self):
+        msg = Twist()
+        msg.linear.x = 0.2  # m/s
+        self.vel_pub.publish(msg)
+
+
 def main(args=None):
     rclpy.init(args=args)
-    first_node = FirstNode()
-
-    rclpy.spin(first_node)
-    
-    first_node.destroy_node()
+    node = FirstNode()
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
 ```
 
-
 ### Explicação do Código
-Vamos entender o que cada linha do código acima faz:
 
-* `super().__init__('first_node')`: cria um nó com o nome `first_node`.
-
-* `self.create_publisher(Twist, 'cmd_vel', 10)`: recebe três argumentos:
+* `super().__init__('first_node')`: cria um nó chamado `first_node`.
+* `self.create_publisher(Twist, '/cmd_vel', 10)`: recebe três argumentos:
 
     * `Twist`: tipo da mensagem que será publicada.
 
-    * `'cmd_vel'`: nome do tópico que será publicado.
+    * `'/cmd_vel'`: nome do tópico que será publicado.
 
     * `10`: tamanho da fila de mensagens. Este argumento é opcional e o valor padrão é 10.
 
@@ -118,39 +98,36 @@ Por fim, a função `main` faz o seguinte:
 
 * `rclpy.shutdown()`: finaliza o módulo `rclpy`.
 
-Para rodar o nó precisamos fazer duas coisas:
+Para executar o nó, precisamos fazer duas coisas:
 
-* Criar um arquivo launch.
+* Criar uma entrada em `setup.py` para expor o executável.
+* Compilar o pacote e atualizar o ambiente.
 
-* Configurar o arquivo `setup.py` para que a ROS consiga encontrar o nó.
+## Configurando o Arquivo `setup.py`
 
-## Configurando o Arquivo setup.py
-
-Agora precisamos configurar o arquivo `setup.py` para que a ROS consiga encontrar o nó. Para isso, abra o arquivo `setup.py` e modifique a seguinte linha:
+Abra `setup.py` e garanta que a entrada a seguir exista dentro de `entry_points -> console_scripts`:
 
 ```python
-...
     entry_points={
         'console_scripts': [
             'first_node = my_package.first_node:main', # Adiciona o nó first_node
         ],
     },
-)
 ```
 
-O que foi alterado no arquivo `setup.py` foi o seguinte:
-
-* Dentro do diciário `entry_points` na chave `console_scripts` adicionamos a seguinte linha:
-
-    * `'first_node = my_package.first_node:main'`: cria um comando chamado `first_node` que executa a função `main` do arquivo `first_node.py`.
+Essa linha cria o comando `first_node` que executa a função `main` em `my_package/first_node.py`.
 
 ### Rodando o Nó
 
-Antes de rodar o nó, precisamos compilar o pacote novamente. Para isso, abra um novo terminal e rode os comandos abaixo:
+!!! atenção
+    Para evitar conflito, **não** rode o `teleop_keyboard` ao mesmo tempo que este publisher no mesmo tópico. Caso rode ambos, as mensagens podem competir.
+
+Compile e rode apenas o pacote `my_package`:
 
 ```bash
 cd ~/colcon_ws
 colcon build --packages-select my_package
+source ~/colcon_ws/install/setup.bash
 ```
 
 Dessa vez, enviamos o argumento `--packages-select` para o comando `colcon build`. Este argumento faz com que o comando compile apenas o pacote `my_package`.
@@ -164,17 +141,17 @@ ros2 run my_package first_node
 
 ## Criando um Subscriber
 
-Com isso, o nó `first_node` será executado e publicará mensagens no tópico `cmd_vel`, movendo o robô para frente. Agora vamos criar um novo nó que se inscreve no tópico `odom` e imprime as mensagens recebidas no terminal.
+Com o `first_node` em execução, o robô publicará comandos no `/cmd_vel`. Agora criaremos um nó que **assina** o tópico `/odom` e imprime a posição recebida.
 
-Crie um novo arquivo chamado `second_node.py` dentro da pasta `my_package` e então, faça com que o arquivo seja **executável** com os mesmos comandos que usamos anteriormente para criar o arquivo `first_node.py`.
+Crie `second_node.py` em `my_package/` e torne o arquivo executável (como feito para o `first_node.py`).
 
-Primeiro, cheque o tipo de mensagem que o tópico `odom` transporta com o comando abaixo:
+Antes, confirme o tipo do tópico `odom`:
 
 ```bash
 ros2 topic info /odom
 ```
 
-Podemos ver que o tópico `odom` transporta mensagens do tipo `Odometry`. Agora vamos abrir o arquivo `second_node.py` e adicionar o seguinte código:
+O tópico `/odom` usa mensagens do tipo `nav_msgs/msg/Odometry`. Abra `second_node.py` e adicione o código:
 
 ```python
 import rclpy
@@ -183,36 +160,34 @@ from nav_msgs.msg import Odometry
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 
 class SecondNode(Node):
-
     def __init__(self):
         super().__init__('second_node')
-        self.timer = self.create_timer(0.25, self.control)
+        self.x = 0.0
+        self.y = 0.0
 
-        self.x = 0
-        self.y = 0
-        
         self.odom_sub = self.create_subscription(
             Odometry,
             '/odom',
             self.odom_callback,
-            QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))
+            QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
+        )
 
-    def odom_callback(self, data: Odometry):
-        self.x = data.pose.pose.position.x
-        self.y = data.pose.pose.position.y
+        self.timer = self.create_timer(0.25, self.control)
+
+    def odom_callback(self, msg: Odometry):
+        self.x = msg.pose.pose.position.x
+        self.y = msg.pose.pose.position.y
 
     def control(self):
-        print(f'Posição x: {self.x}')
-        print(f'Posição y: {self.y}\n')
-        
-            
+        print(f'Posição x: {self.x:.3f}')
+        print(f'Posição y: {self.y:.3f}\n')
+
+
 def main(args=None):
     rclpy.init(args=args)
-    second_node = SecondNode()
-
-    rclpy.spin(second_node)
-
-    second_node.destroy_node()
+    node = SecondNode()
+    rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
@@ -221,23 +196,19 @@ if __name__ == '__main__':
 
 ### Explicação do Código
 
-Vamos entender o que as linhas novas do código acima fazem:
+* `create_subscription(...)`: assina o tópico `/odom` recebendo mensagens `Odometry`.
 
-* `self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_callback, QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))`: recebe quatro argumentos:
+  * **Tipo**: `Odometry` - obtido com `ros2 topic info /odom`.
+  * **Tópico**: `'/odom'` - nome do tópico assinado.
+  * **Callback**: `self.odom_callback` - executada a cada mensagem recebida.
+  * **QoS**: `QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)` - perfil de qualidade de serviço (opcional).
+* `odom_callback`: atualiza `x` e `y` com a posição do robô.
+* `control`: imprime periodicamente as posições.
 
-    * `Odometry`: tipo da mensagem que será recebida. Descobrimos o tipo da mensagem verificando as informações do tópico `/odom`.
+!!! dica
+    Você pode substituir `print(...)` por `self.get_logger().info(...)` para usar o sistema de **logs** do ROS 2.
 
-    * `'/odom'`: nome do tópico que será inscrito.
-
-    * `self.odom_callback`: função que será executada quando uma mensagem for recebida.
-
-    * `QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)`: configura a qualidade de serviço do tópico. Este argumento é opcional e o valor padrão é `QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)`.
-
-* `self.odom_callback`: coleta a posição x e y do robô a partir da mensagem recebida.
-
-* `self.control`: imprime a posição x e y do robô no terminal.
-
-### Configurando o Arquivo setup.py
+### Configurando o Arquivo `setup.py`
 
 Agora precisamos configurar o arquivo `setup.py` para que a ROS consiga encontrar o nó e então compilar o pacote novamente. Para isso, abra o arquivo `setup.py` e adicione a seguinte linha dentro do dicionário `entry_points` na chave `console_scripts`:
 
@@ -250,6 +221,10 @@ Agora precisamos configurar o arquivo `setup.py` para que a ROS consiga encontra
 Uma vez que o arquivo `setup.py` foi configurado, **compile** o pacote novamente com o mesmo comando que usamos anteriormente e rode o nó `first_node.py` com o comando mencionado anteriormente:
 
 ```bash
+cd ~/colcon_ws
+colcon build --packages-select my_package
+source ~/colcon_ws/install/setup.bash
+
 ros2 run my_package first_node
 ```
 
@@ -259,4 +234,4 @@ E agora, em um novo terminal, execute o comando abaixo para rodar o nó `second_
 ros2 run my_package second_node
 ```
 
-Você deve ver a posição x e y do robô sendo impressa no terminal a cada 0.25 segundos. Teste movendo o robô e observe as mudanças nas posições exibidas.
+Você deverá ver as posições **x** e **y** do robô sendo impressas a cada 0,25 segundos. Mova o robô e observe as mudanças nos valores.
