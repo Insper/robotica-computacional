@@ -32,24 +32,32 @@ cb
 # Exercício 1 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `first_node.py` do módulo 2, crie um arquivo chamado `publisher.py` com um nó denominado `publisher_node` que publique uma mensagem no tópico `publisher` do tipo `robcomp_interfaces/PubSubAPS`. 
+
+Com base no `first_node.py` do módulo 2, crie `publisher.py` com um nó chamado **`publisher_node`** que **publique** no tópico **`/publisher`** mensagens do tipo `robcomp_interfaces/PubSubAPS`.
 
 **A mensagem deve conter:**
 
-* O horário atual em segundos desde a época Unix (1 de janeiro de 1970) com precisão de nanossegundos;
+* O **horário atual** em segundos desde a época Unix (1/1/1970), com fração de **nanossegundos**;
+* Um **contador** que começa em `0` e é incrementado a cada publicação;
+* **Todos os campos obrigatórios** definidos em `robcomp_interfaces/PubSubAPS`.
 
-* Um contador que começa em 0 e é incrementado a cada mensagem publicada;
-
-* Todos os campos apropriados para o tipo `robcomp_interfaces/PubSubAPS`.
-
-O nó **também deve imprimir no terminal** um alerta como na linha a seguir:
+O nó também deve **imprimir no terminal** uma linha como:
 
 ```bash
-Olá, são 1677878366175707817.935347013 e estou publicando pela 217ª vez
+Olá, são 1677878366.175707817 e estou publicando pela 217ª vez
 ```
 
-O nó pode ser iniciado com o comando `ros2 run entregavel_2 publisher`.
-Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício está correto.
+O nó pode ser iniciado com:
+
+```bash
+ros2 run entregavel_2 publisher
+```
+
+Use para verificar se o nó está publicando:
+
+```bash
+ros2 topic echo /publisher
+```
 
 !!! tip
     **DICA 1:** Verifique a estrutura da mensagem do tipo `PubSubAPS` na ROS 2 usando o comando:
@@ -59,13 +67,14 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
     ```
 
 !!! tip
-    **DICA 2:** Para pegar o horário atual
+    **DICA 2:** Tempo atual em segundos (com nanos):
 
     ```python 
     current_time = self.get_clock().now().to_msg()
     current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
     print(f"Horário atual: {current_time}")
     ```
+
 !!! exercise long 
     Qual a estrutura da mensagem do tipo `PubSubAPS`?
 
@@ -78,13 +87,21 @@ Utilize o comando `ros2 topic echo /publisher` para verificar se o exercício es
 # Exercício 2 (5 pontos)
 
 ## Instruções:
-Baseando-se no código `second_node.py` do módulo 2, crie um arquivo chamado `subscriber.py` com um nó denominado `subscriber_node` que se inscreva no tópico `publisher` do tipo `robcomp_interfaces/PubSubAPS`.
 
-A função `control` deve calcular o tempo decorrido e imprimir o número da mensagem recebida e o delay entre quando a mensagem foi publicada e quando foi recebida, como no exemplo a seguir:
+Com base no `second_node.py` do módulo 2, crie `subscriber.py` com um nó chamado **`subscriber_node`** que **assine** o tópico **`/publisher`** do tipo `robcomp_interfaces/PubSubAPS`.
+
+A função `control` deve calcular o **tempo decorrido** e **imprimir** o número da mensagem recebida e o **delay** entre a publicação e a recepção, como no exemplo:
 
 ```bash
 Olá, estou recebendo a mensagem: 217 que demorou 0.005347013 segundos para ser recebida
 ```
+
+Para executar:
+
+```bash
+ros2 run entregavel_2 subscriber
+```
+---
 
 # Entrega
 
