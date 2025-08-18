@@ -1,35 +1,30 @@
 # Estrutura Básica de um Nó
 
-Para facilitar o desenvolvimento de um nó, a fornecemos uma estrutura básica de um nó da ROS 2 em python. Também fornecemos uma estrutura básica de um nó que controla o robô, incluindo a definição da maquina de estados, a função de controle e o publisher do `cmd_vel`.
+Para facilitar o desenvolvimento, fornecemos uma **estrutura base** de um nó da ROS 2, uma estrutura base para **nós de ação** e uma estrutura base para **nós de controle** ou clientes da ação.
 
 * Nó base: [base.py](../util/base.py)
-
-* Nó de ação base [base_action.py](../util/base_action.py)
-
+* Nó de ação base: [base_action.py](../util/base_action.py)
 * Nó "cliente" da ação: [base_control.py](../util/base_control.py)
 
-Baixe os arquivos e coloque-os em uma pasta de fácil acesso. 
+Baixe os arquivos e coloque-os em uma pasta de fácil acesso.
 
-Agora vamos entender o que cada parte do código faz.
+Agora, vamos entender o papel de cada parte.
 
 ## Nó Base
 
-Este script, não existe novidade em relação ao que já vimos anteriormente. Com execeçao de dois pontos:
+Este script não traz novidades em relação ao que já vimos, com **duas exceções** importantes:
 
-1. A linha `rclpy.spin_once(self)` é utilizada para processar os callbacks uma vez, ou seja, ela processa as mensagens recebidas e executa as funções de callback que já foram definidas inciiando variaveis intermediarias.
+1. `rclpy.spin_once(self)` - processa **uma vez** a fila de callbacks (mensagens recebidas, timers, etc.), atualizando variáveis intermediárias antes do próximo passo de controle.
+2. `self.create_timer(0.25, self.control)` - cria um **timer** que chama `control()` a cada **0,25 s**.
 
-2. A linha `self.create_timer(0.25, self.control)` cria um timer que chama a função `control()` a cada 0,25 segundos.
-
-
-!!! tip
-    Nó Base é útil para desenvolver módulos que se inscrevem em um tópico e publica o resultado em outro tópico, como por exemplo, um nó de visão computacional.
+!!! dica
+    O **Nó Base** é útil para módulos que **assinam** um tópico, processam os dados e **publicam** o resultado em outro (ex.: um nó de visão computacional).
 
 ## Nó Base de Ação
 
-Esse script é mais complexo, pois define uma estrutura básica para desenvolver ações que o robô deve executar.
-Uma ação deve ter um início, meio e fim. Nesta estrutura básica, a ação começa quando a função `reset()` é chamada. A ação termina quando o estado do robô é alterado para 'done' (feito).
+Este script define uma estrutura para ações com **início, meio e fim**. A ação inicia quando `reset()` é chamada e termina quando o estado chega a `'done'`.
 
-Vamos entender cada parte do código:
+Trecho (simplificado):
 
 ```python
 class Acao(Node,): # Mude o nome da classe
@@ -42,7 +37,7 @@ class Acao(Node,): # Mude o nome da classe
         self.state_machine = { # Adicione quantos estados forem necessários
             'acao': self.acao,
             'stop': self.stop,
-            'done': self.stop
+            'done': self.stop,
         }
 
         # Inicialização de variáveis
@@ -55,7 +50,7 @@ class Acao(Node,): # Mude o nome da classe
         # ...
 ```
 
-Nesta parte, definimos o nome do nó, definimos a máquina de estados do robô (no dicionário `self.state_machine`), o estado inicial (no atributo `self.robot_state`) e criamos os publishers e subscribers necessários, por padrão, o publisher do `cmd_vel` já está criado.
+Nesta parte, definimos o **nome do nó**, a **máquina de estados** (`self.state_machine`), o **estado inicial** (`self.robot_state`) e os **publishers/subscribers** necessários, por padrão, o publisher do `cmd_vel` já está definido.
 
 ```python
     def reset(self):
@@ -66,10 +61,11 @@ Nesta parte, definimos o nome do nó, definimos a máquina de estados do robô (
         ### Iniciar variaveis da ação
 ```
 
-Nesta parte, definimos a função `reset()`, essa função deve ser chamada para iniciar a ação. Ela inicializa 
-1. a variável `self.twist`,
-2. define o estado do robô para o estado inicial da ação (pode mudar para a sua ação)
-3. inicia o timer, `self.timer` que chama a função `control()` a cada 0,25 segundos.
+Nesta parte, definimos a função `reset()`, essa função deve ser chamada para iniciar a ação. A função `reset()` faz o seguinte:
+
+1. Inicializa a variável `self.twist`,
+2. Define o estado do robô para o estado inicial da ação (mude para o estado inicial da sua ação)
+3. Inicia o timer, `self.timer` que chama a função `control()` a cada 0,25 segundos.
 4. Por fim, você deve inicializar as variáveis necessárias para a ação.
 
 A partir desse ponto, vamos seguir uma máquina de estado padrão, até o fim da ação.
@@ -83,7 +79,11 @@ A partir desse ponto, vamos seguir uma máquina de estado padrão, até o fim da
         self.robot_state = 'done' # Ação finalizada
 ```
 
-Ao final da ação, o estado do robô deve ser alterado para `stop`, o estado `stop` deve parar o robô e cancelar o timer. E então, o estado do robô deve ser alterado para `done`, indicando que a ação foi concluída.
+Ao final da ação, o estado do robô deve ser alterado para `stop`. Este estado deve:
+
+1. Parar o robô;
+2. Cancelar o timer;
+3. Em seguida, mudar para o estado `'done'` (finalização).
 
 ```python
     def control(self): # Controla a máquina de estados - eh chamado pelo timer
@@ -93,13 +93,13 @@ Ao final da ação, o estado do robô deve ser alterado para `stop`, o estado `s
 ```
 
 Outra função importante é a `control()`, que é chamada pelo timer a cada 0,25 segundos. Ela imprime o estado atual do robô e chama o método correspondente ao estado atual do robô na máquina de estados (`self.state_machine[self.robot_state]()`). Por fim, ela publica a velocidade do robô no tópico `cmd_vel`.
-**A função control deve ser a única função que publica no tópico `cmd_vel`**. Isso é importante para garantir que o robô não receba comandos conflitantes.
 
+!!! importante
+    **A função control deve ser a única função que publica no tópico `cmd_vel`**. Isso é importante para garantir que o robô não receba comandos conflitantes.
 
 ## Nó "Cliente" da Ação
 
-Neste script, apresentamos uma estrutura básica para um nó que chama a ação definida no nó base de ação. 
-Geralmente, esse nó é o nó principal do seu pacote, que inicia a ação e decide quando a ação deve ser iniciada ou parada.
+Este script é um **gerenciador** que pode ou não chamar a ação definida no nó de ação. Normalmente, ele é o **nó principal** do pacote que decide quando iniciar/parar uma ação.
 
 Vamos estudar as partes relevantes:
 
@@ -130,13 +130,15 @@ class BaseControlNode(Node): # Mude o nome da classe
 
         ## Por fim, inicialize o timer
         self.timer = self.create_timer(0.1, self.control)
-
 ```
-Essa parte é bem similar ao nó base de ação, mas com algumas diferenças importantes:
-1. Não vamos cancelar o timer, portanto já iniciamos o timer no construtor do nó.
-2. Vamos criar um todos os nós necessários para a ação, e atribuí-los a variáveis de instância, como `self.acao_node`.
 
-Em seguida, vamos definir a função cliente da ação :
+Diferenças chave em relação ao nó de ação:
+
+1. **Não cancelamos** o timer do gerenciador (ele roda o tempo todo).
+2. Instanciamos e guardamos os nós auxiliares (ex.: `self.acao_node`).
+
+Função que **aciona** a ação:
+
 ```python
     def acao(self):
         print("\nIniciando movimento de ação...")
@@ -150,18 +152,19 @@ Em seguida, vamos definir a função cliente da ação :
         #   estado do robô deve ser alterado para o próximo estado ou finalizar mudando para 'stop'
         self.robot_state = 'stop'
 ```
-Essa função é responsável por
-1. iniciar a ação, chamando o método `reset()` do nó de ação 
-2. Processar os callbacks da ação uma unica vez
-3. Aguardar até que a ação esteja concluída.
-4. Quando a ação é concluída, o estado do robô é alterado dependendo da lógica do sistema, nesse caso vamos simplesmente mudar para 'stop', finalizando a execução do robô.
+Essa função:
+1. inicia a ação, chamando o método `reset()` do nó de ação
+2. Processa os callbacks da ação uma única vez
+3. Aguarda até que a ação esteja concluída.
+4. Quando a ação é concluída, o estado do robô é alterado dependendo da lógica do sistema, nesse caso vamos simplesmente mudar para `stop`, finalizando a execução do robô.
 
 # Ação de Mover
 
-Nesta atividade vamos aprender nossa primeira ação, a ação de andar uma distancia `d`.
-Como estudamos em `Explorando Tópicos e Mensagens`, a velocidade linear do robo pode ser controlada se publicarmos uma mensagem de um certo tipo para um tpoico, mas, em robotica, muitas vezes queremos mover uma distacia conhecidada, mas como fazer isso apenas com a velocidade?
+Vamos criar a primeira ação: **andar uma distância** `d`.
 
-Em robotica uma forma de controlar o robo para se deslocar uma distancia `d` é utilizando um metodo conechecido como `Dead Reckoning`, Neste metodo, você se desloca em **velocidade constante** por um **tempo fixo**, sem receber feedback de quanto, realmente, se deslocou.
+Como estudamos em `Explorando Tópicos e Mensagens`, a velocidade linear do robo pode ser controlada publicando uma mensagem do tipo `Twist` em `cmd_vel`. Porém, muitas vezes queremos percorrer uma **distância conhecida**, mas como fazer isso apenas com a velocidade?
+
+Em robotica uma estratégia comum é o método de **Dead Reckoning** que consiste em deslocar-se com **velocidade constante** por um **tempo fixo**, sem receber feedback de quanto, realmente, se deslocou.
 
 Para desenvolver essa ação, vamos começar do codigo base de ação, que podera ser utilizada como uma etapa inicial para açoes.
 
