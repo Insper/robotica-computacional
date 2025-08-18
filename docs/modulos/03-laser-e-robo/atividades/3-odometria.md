@@ -1,11 +1,13 @@
 # Entendendo a Odometria
 
-Nesta atividade vamos explorar o tópico de odometria, `odom`, que é um dos tópicos mais importantes para navegação de robôs móveis.
+Nesta atividade, vamos explorar o tópico de odometria, **`/odom`**, um dos mais importantes para a navegação de robôs móveis.
 
 Odometria é a estimativa da posição e orientação de um robô móvel utilizando dados de sensores.
 Estes atributos são chamados de Pose, que é a posição e orientação do robô no espaço. 
 
 No caso do robô utilizado neste curso, a odometria é estimada utilizando os dados dos encoders dos motores.
+
+---
 
 # Componentes da Pose
 
@@ -23,13 +25,13 @@ Isso está ilustrado na figura abaixo:
 
 ## Orientação
 
-### Orientação - Euler Angles
+### Orientação - Ângulos de Euler
 
 A orientação de um objeto pode ser descrita através de ângulos de Euler. Trata-se de três ângulos que especificam a rotação do objeto em torno dos eixos XX, YY, e ZZ. Geralmente, rotações nos eixos XX, YY, e ZZ são chamadas de roll, pitch, e yaw, respectivamente, como mostrado na imagem abaixo.
 
 ![Euler Angles](figs/euler.jpg)
 
-Este método é intuitivo, mas pode sofrer de "gimbal lock". Gimbal lock é um problema que ocorre quando dois dos eixos de rotação estão alinhados. Neste caso, a rotação em torno de um eixo é perdida, gerando ambiguidade na orientação do objeto.
+Esse método é intuitivo, mas pode sofrer de **gimbal lock** (quando dois eixos se alinham e uma rotação efetiva é perdida).
 
 ### Orientação - Quaternion
 
@@ -39,9 +41,11 @@ Assista o vídeo abaixo para entender como funciona a representação de orienta
 
 [Quaternions and 3d rotation, explained interactively](https://www.youtube.com/watch?v=zjMuIxRvygQ&t=233s)
 
+---
+
 # Tópico de Odometria
 
-Agora que passamos pelos conceitos básicos, vamos ver como a odometria é representada na ROS2.
+Agora veremos como a odometria é representada na **ROS 2**.
 
 Vamos começar abrindo o simulador e o teleop através dos comandos, um em cada terminal:
 
@@ -49,18 +53,19 @@ Vamos começar abrindo o simulador e o teleop através dos comandos, um em cada 
 ```bash
 ros2 launch my_gazebo pista-23B.launch.py
 ```
+
 - Teleop:
 ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
-Antes de se increver no tópico `odom`, vamos olhar o tipo de mensagem e o conteúdo da mensagem. Para isso, abra um novo terminal e digite:
+Antes de se **inscrever** em `/odom`, verifique o **tipo** e a **estrutura** da mensagem:
 
 ```bash
 ros2 topic info /odom
 ```
 
-O tipo da mensagem é `nav_msgs/msg/Odometry`, que é um tipo de mensagem padrão para odometria. Para ver o conteúdo da mensagem, digite:
+O tipo é `nav_msgs/msg/Odometry`. Para ver o formato:
 
 ```bash
 ros2 interface show nav_msgs/msg/Odometry
@@ -76,13 +81,13 @@ A mensagem é composta por:
 
 * `twist.twist.angular`: A velocidade angular do robô no espaço. Neste caso, a velocidade angular local e global são iguais, pois o robô só pode girar em torno do eixo Z.
 
-Por fim, rode o `second_node` utilizando comando abaixo para ver o conteúdo da mensagem:
+Para inspecionar valores em tempo real, rode seu `second_node`:
 
 ```bash
 ros2 run my_package second_node
 ```
 
-agora, ande com o robô utilizando o teleop, para ver como a odometria é atualizada.
+agora, ande com o robô utilizando o teleop, para ver como a odometria é atualizada no terminal rodando o `second_node`.
 
 !!! tip
     Para ajudar na compreenção o sistemas de coordenadas, primeiramente ande com o robô em uma direção por vez, primeiro para frente, pare, gire 90 graus, ande novamente e monitore a atualização da odometria.
@@ -99,9 +104,9 @@ Agora, dentro deste repositório, crie um novo pacote chamado `robcomp_util` com
 ros2 pkg create --build-type ament_python robcomp_util --dependencies rclpy std_msgs geometry_msgs sensor_msgs
 ```
 
-Agora, vamos encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+Agora, vamos encapsular a odometria em uma classe que pode ser facilmente importado e herdada em qualquer nó na ROS 2.
 
-## Módulo de Odometria - APS 3
+## Módulo de Odometria - APS 3
 
 Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e muda o nome da classe para `Odom`, e **remova a herança**, ou seja, remova `Node` e seu `__init__`. Essa classe deve:
 
@@ -125,45 +130,42 @@ Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo d
 Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
 
 ```python
-    def euler_from_quaternion(self, orientation):
-            """
-            Converts quaternion (w in last place) to euler roll, pitch, yaw
-            Assumed quaternion format: [x, y, z, w]
-            """
-            x = orientation.x
-            y = orientation.y
-            z = orientation.z
-            w = orientation.w
+def euler_from_quaternion(self, orientation):
+    """Converte quaternion (formato [x, y, z, w]) para roll, pitch, yaw."""
+    x = orientation.x
+    y = orientation.y
+    z = orientation.z
+    w = orientation.w
 
-            sinr_cosp = 2 * (w * x + y * z)
-            cosr_cosp = 1 - 2 * (x * x + y * y)
-            roll = np.arctan2(sinr_cosp, cosr_cosp)
+    sinr_cosp = 2 * (w * x + y * z)
+    cosr_cosp = 1 - 2 * (x * x + y * y)
+    roll = np.arctan2(sinr_cosp, cosr_cosp)
 
-            sinp = 2 * (w * y - z * x)
-            pitch = np.arcsin(sinp)
+    sinp = 2 * (w * y - z * x)
+    pitch = np.arcsin(sinp)
 
-            siny_cosp = 2 * (w * z + x * y)
-            cosy_cosp = 1 - 2 * (y * y + z * z)
-            yaw = np.arctan2(siny_cosp, cosy_cosp)
+    siny_cosp = 2 * (w * z + x * y)
+    cosy_cosp = 1 - 2 * (y * y + z * z)
+    yaw = np.arctan2(siny_cosp, cosy_cosp)
 
-            return roll, pitch, yaw
+    return roll, pitch, yaw
 ```
 
 ### Testando
 
 Para testar o modulo que criamos, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
-Lembre-se:
+Você deve:
 
-* Importe a classe `Odom` do pacote `robcomp_util` da seguinte forma:
+* Importar a classe `Odom` do pacote `robcomp_util` da seguinte forma:
 
-```python
-from robcomp_util.odom import Odom
-```
+    ```python
+    from robcomp_util.odom import Odom
+    ```
 
-* Faça a herança da classe `Odom` no `test_odom_node`.
+* Fazer a herança da classe `Odom` no `test_odom_node`.
 
-* Adicione o nó no arquivo `setup.py` e então compile o pacote.
+* Adicionar o nó no arquivo `setup.py` e então compile o pacote.
 * Modifique a função `control()` do arquivo `base.py` para imprimir a posição e orientação do robô.
 
 * Rode o nó `test_odom_node` utilizando o comando `ros2 run robcomp_util test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
