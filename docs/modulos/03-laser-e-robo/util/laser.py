@@ -14,10 +14,7 @@ class Laser(): # Mude o nome da classe
             '/scan',
             self.laser_callback,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
-
-    def custom_laser(self):
-        pass
-    
+   
     def laser_callback(self, data: LaserScan):
         self.laser_msg = np.array(data.ranges).round(decimals=2)
         self.laser_msg[self.laser_msg == 0] = np.inf
@@ -28,7 +25,5 @@ class Laser(): # Mude o nome da classe
         self.left = self.laser_msg[90-self.openning:90+self.openning]
         self.right = self.laser_msg[275-self.openning:275+self.openning]
         self.back = self.laser_msg[180-self.openning:180+self.openning]
-
-        self.custom_laser()
 
 

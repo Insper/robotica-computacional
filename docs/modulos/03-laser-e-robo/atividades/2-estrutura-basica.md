@@ -14,7 +14,12 @@ Agora vamos entender o que cada parte do código faz.
 
 ## Nó Base
 
-Este script, não existe novidade em relação ao que já vimos anteriormente. Quando executado, ele chama a função `control()` a cada 0,25 segundos. Este script é útil para criar um nó que se inscreve em um tópico e executa uma função a cada nova mensagem recebida, publicando uma mensagem em outro tópico.
+Este script, não existe novidade em relação ao que já vimos anteriormente. Com execeçao de dois pontos:
+
+1. A linha `rclpy.spin_once(self)` é utilizada para processar os callbacks uma vez, ou seja, ela processa as mensagens recebidas e executa as funções de callback que já foram definidas inciiando variaveis intermediarias.
+
+2. A linha `self.create_timer(0.25, self.control)` cria um timer que chama a função `control()` a cada 0,25 segundos.
+
 
 !!! tip
     Nó Base é útil para desenvolver módulos que se inscrevem em um tópico e publica o resultado em outro tópico, como por exemplo, um nó de visão computacional.

@@ -7,7 +7,9 @@ class BaseNode(Node): # Mude o nome da classe
 
     def __init__(self):
         super().__init__('base_node') # Mude o nome do nó
-        self.timer = self.create_timer(0.25, self.control)
+        # Outra Herança que você queira fazer
+        rclpy.spin_once(self) # Roda pelo menos uma vez para pegar os valores de x, y e front
+
 
         # Inicialização de variáveis
         
@@ -16,6 +18,9 @@ class BaseNode(Node): # Mude o nome da classe
 
         # Publishers
         ## Coloque aqui os publishers
+
+        # Por fim, inicialize o timer
+        self.timer = self.create_timer(0.25, self.control)
 
     def control(self):
         print('running...')

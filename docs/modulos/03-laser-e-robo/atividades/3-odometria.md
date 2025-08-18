@@ -108,11 +108,13 @@ Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo d
 !!! info
     Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Odom` herda-se de `Node`.
 
-* Não inicie um nó nesse arquivo.
+1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
 
-* Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
 
-* Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
+3. Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+
+4. Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
 
     * `self.x`: posição X do robô no espaço global.
 
@@ -123,16 +125,15 @@ Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo d
 Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
 
 ```python
-    def euler_from_quaternion(self, quaternion):
+    def euler_from_quaternion(self, orientation):
             """
             Converts quaternion (w in last place) to euler roll, pitch, yaw
-            quaternion = [x, y, z, w]
-            Below should be replaced when porting for ROS2 Python tf_conversions is done.
+            Assumed quaternion format: [x, y, z, w]
             """
-            x = quaternion[0]
-            y = quaternion[1]
-            z = quaternion[2]
-            w = quaternion[3]
+            x = orientation.x
+            y = orientation.y
+            z = orientation.z
+            w = orientation.w
 
             sinr_cosp = 2 * (w * x + y * z)
             cosr_cosp = 1 - 2 * (x * x + y * y)
@@ -150,11 +151,12 @@ Para auxiliar, enviamos uma função que faz conversão de quaternion para ângu
 
 ### Testando
 
-Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+Para testar o modulo que criamos, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
 Lembre-se:
 
-* Importe a classe `Odom` da seguinte forma:
+* Importe a classe `Odom` do pacote `robcomp_util` da seguinte forma:
+
 ```python
 from robcomp_util.odom import Odom
 ```
@@ -162,5 +164,6 @@ from robcomp_util.odom import Odom
 * Faça a herança da classe `Odom` no `test_odom_node`.
 
 * Adicione o nó no arquivo `setup.py` e então compile o pacote.
+* Modifique a função `control()` do arquivo `base.py` para imprimir a posição e orientação do robô.
 
 * Rode o nó `test_odom_node` utilizando o comando `ros2 run robcomp_util test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.

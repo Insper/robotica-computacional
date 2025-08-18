@@ -74,11 +74,13 @@ Dentro do pacote `robcomp_util/robcomp_util`, crie um arquivo denominado `laser.
 !!! info
     Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Laser` herda-se de `Node`.
 
-* Não inicie um nó nesse arquivo.
+1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
 
-* Inicialize uma variável `self.opening`, que será utilizada para armazenar a abertura do sensor laser.
+2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
 
-* Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida. Faça o subscriber com o seguinte comando, para o robô real é necessário alterar `reliability` para `BEST_EFFORT`, por limitações de hardware:
+3. Inicialize uma variável `self.opening`, que será utilizada para armazenar a abertura do sensor laser.
+
+4. Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida. Faça o subscriber com o seguinte comando, para o robô real é necessário alterar `reliability` para `BEST_EFFORT`, por limitações de hardware:
 ```python
 self.laser_sub = self.create_subscription(
     LaserScan,
@@ -87,7 +89,7 @@ self.laser_sub = self.create_subscription(
     QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
 ```
 
-* Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
+5. Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
     * Utilize o seguinte comando para converter a lista em um array numpy:
     ```python
     self.laser_msg = np.array(msg.ranges).round(decimals=2)
@@ -98,17 +100,16 @@ self.laser_sub = self.create_subscription(
     self.laser_msg[self.laser_msg == 0] = np.inf
     ```
     
-    * Converta self.laser_msg para uma lista novamente.
+    5.1. Converta self.laser_msg para uma lista novamente.
 
-    * Pegue um range de +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
+    5.2. Pegue um range de +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
 
-    * Pegue um range +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
+    5.3. Pegue um range +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
 
-    * Pegue um range +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
+    5.4. Pegue um range +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
 
-    * Pegue um range +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
+    5.5. Pegue um range +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
 
-    * Por fim, chame uma função chamada `self.custom_laser` e cria essa função vazia (apenas `pass`). Essa função será utilizada para criar um comportamento customizado para callback do laser caso seja necessário.
 
 ### Testando
 
