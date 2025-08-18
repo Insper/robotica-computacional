@@ -32,10 +32,15 @@ class Girar(Node, Odom, Laser): # Mude o nome da classe
         self.twist = Twist()
         self.goal_yaw = self.yaw + np.pi / 2
     
+    def ajuste_angulo(self, angulo):
+        """
+        Ajusta o ângulo para o intervalo [-pi, pi].
+        """
+        return np.arctan2(np.sin(angulo), np.cos(angulo))
+
     def girar(self):
-        
-        self.erro = self.goal_yaw - self.yaw 
-        self.erro = np.arctan2(np.sin(self.erro), np.cos(self.erro)) 
+
+        self.erro = self.ajuste_angulo(self.goal_yaw - self.yaw)
 
         print(f'Erro: {np.degrees(self.erro)}')
 

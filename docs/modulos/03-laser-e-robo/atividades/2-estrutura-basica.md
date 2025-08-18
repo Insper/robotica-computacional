@@ -166,7 +166,7 @@ Como estudamos em `Explorando Tópicos e Mensagens`, a velocidade linear do robo
 
 Em robotica uma estratégia comum é o método de **Dead Reckoning** que consiste em deslocar-se com **velocidade constante** por um **tempo fixo**, sem receber feedback de quanto, realmente, se deslocou.
 
-Para desenvolver essa ação, vamos começar do codigo base de ação, que podera ser utilizada como uma etapa inicial para açoes.
+Para desenvolver essa ação, vamos começar do codigo [base de ação](../util/base_action.py), que podera ser utilizada como uma etapa inicial para açoes.
 
 Nesta atividade, faça o seguinte:
 1. Mude o nome da classe para `Andar` e o nome do nó para `andar_node`.

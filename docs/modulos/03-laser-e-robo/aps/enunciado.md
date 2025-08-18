@@ -64,62 +64,74 @@ O nó deve:
 
 ____________________________________________________________________
 
-# Exercício 3 - Robô quadrado (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado. O nó deve:
+# Exercício 2 - Robô quadrado (3 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado.
 
-* Possui dois estados, `andar` e `girar`
+O nó principal deve:
 
-* Utiliza a odometria para `girar` em 90 graus
+* Instanciar duas ações, `andar` e `girar`
 
-* Utiliza o metodo `Dead Reckoning` para `andar` os lados do quadrado. Neste metodo, você se desloca em velocidade constante por um tempo fixo, sem receber feedback de quanto, realmente, se deslocou.
+* Ter três estados, `andar`, `girar`, `done`.
 
-* Não utilize nenhuma função de `sleep`, calcule o tempo decorrido até chegar no tempo desejado. Exemplo `v=0.5 [m/s] por t=1 [s]` equivale a um quadrado de `lado= 0.5 [m]`
+* Os estados `andar` e `girar` devem **iniciar** e **aguardar** a conclusão de suas respectivas ações antes de mudar para o próximo estado.
 
-## Intruções:
-### **Estado girar:**
+* O nó deve começar no estado `andar`.
+
+* O nó deve alternar entre os estados `andar` e `girar`, até que o robô tenha **completado UM quadrado completo**, ou seja, 4 execuções de `andar` e 4 execuções de `girar`.
+
+* **Não utilize nenhuma função de `sleep` em nenhum lugar do código!**
+
+## Ação de Andar
+
+Na atividade [Estrutura Básica](../atividades/2-estrutura-basica.md) você implementou a ação de andar uma distância `d`. Teste a ação no simulador para verificar se o robô anda a distância correta.
+
+## Ação de Girar
+Baseando-se no código `base_action.py` do módulo 3, crie um arquivo chamado `girar.py` com uma classe denominada de `Girar` e um nó denominado `girar_node`, que faça o robô **real** gire 90 graus no sentido anti-horário.
+
+Crie a seguinte função auxiliar para ajustar o ângulo no limite de `[-pi, pi]`, isso é importante para evitar problemas de ângulo quando o robô gira mais de uma volta ou voltas negativas:
+A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`.
+
+```python
+    def ajuste_angulo(self, angulo):
+        """
+        Ajusta o ângulo para o intervalo [-pi, pi].
+        """
+        return np.arctan2(np.sin(angulo), np.cos(angulo))
+```
+
 Para rodar o robô, primeiro calcule o ângulo desejado, somando `pi/2` ao angulo atual:
 
 ```python
-self.goal_yaw = self.yaw + np.pi/2
+self.goal_yaw = self.ajuste_angulo(self.yaw + np.pi/2)
 ```
 
 E depois, a cada iteração, calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
 
 ```python
-erro = self.goal_yaw - self.yaw
-erro = np.arctan2(np.sin(erro), np.cos(erro))
+erro = self.ajuste_angulo(self.goal_yaw - self.yaw)
 ```
 
-A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`. E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`+-2` graus. Dessa forma:
+E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`+-2` graus, finalizando a ação ao entrar no estado `stop`. Caso o erro seja maior do que o limiar, faça o seguinte:
 
 1. Quando o erro for **menor** que 0 o robô deve girar no **sentido horário**;
 2. Quando for **maior** que 0, no **sentido anti-horário**.
 
 
-
-### **Estado andar:**
-Para andar, defina a velocidade linear, calcule o tempo necessário para percorrer a distância desejada e armazene o tempo inicial.
-
-E a cada iteração, calcule o tempo decorrido e compare com o tempo necessário para percorrer a distância desejada.
-
-!!! dica
-    **DICA:** A grande questão desse exercício é quando você deve armazenar o tempo inicial e o ângulo desejado. Pense em como você pode fazer isso de forma que o robô não fique atualizando o alvo a cada iteração.
-
-
-
 ## Critérios de Avaliação:
 
-1. Nó importado corretamente do pacote `my_package`.
-2. Desenvolveu o nó `quadrado_node` com os comportamentos corretos.
-3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
+1. Nó importado corretamente do pacote `robcomp_util`.
+2. Desenvolver a ação `Andar` que funciona idependentemente do nó principal.
+3. Desenvolver a ação `Girar` que funciona independentemente do nó principal.
 4. Executa a rotação utilizando feedback da odometria.
+2. Desenvolveu o nó `quadrado_node` que alterna entre as açoes `andar` e `girar`, até completar um quadrado.
+3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
 5. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" pelos menos dois quadrados no chão.
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
 7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
 ____________________________________________________________________
 
-# Exercício 4 - Robô Limpador (3 pontos)
+# Exercício 3 - Robô Limpador (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamento:
 
 * Ter dois estados, `forward`, `turn`.
