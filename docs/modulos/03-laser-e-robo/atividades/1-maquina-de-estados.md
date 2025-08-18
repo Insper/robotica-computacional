@@ -1,66 +1,82 @@
 # Máquina de Estados em Robótica
 
-Nesta atividade vamos aprender o conceito de máquina de estados e como implementá-la em um robô.
+Nesta atividade, vamos revisar o conceito de **máquina de estados finitos (FSM)** e como implementá‑la para controlar um robô.
 
 Imagine o robô seguidor de linha abaixo:
 
 ![Robô seguidor de linha](figs/linha.png)
 
-Uma forma de implementar o comportamento deste robô é utilizando uma máquina de estados. A máquina de estados é um modelo matemático que descreve o comportamento de um sistema. É formada por um conjunto de estados e transições entre estes estados. Cada estado representa uma condição do sistema e cada transição representa uma mudança de estado.
+Uma forma de implementar o comportamento desse robô é utilizar uma **máquina de estados**: um modelo que descreve o comportamento do sistema a partir de **estados** e **transições**. Cada estado representa uma condição do sistema; cada transição, uma mudança de estado disparada por entradas/sensores.
 
 No caso do robô seguidor de linha, podemos definir os seguintes estados:
 
-* **Andar pra frente:** O robô anda pra frente rodando os dois motores em velocidade máxima.
+* **Andar para frente:** o robô avança acionando ambos os motores em velocidade desejada.
+* **Virar para a direita:** o robô gira para a direita acionando o motor esquerdo mais forte que o direito.
+* **Virar para a esquerda:** o robô gira para a esquerda acionando o motor direito mais forte que o esquerdo.
+* **Parar:** o robô desliga ambos os motores.
 
-* **Virar pra direita:** O robô vira para a direita rodando o motor esquerdo em velocidade máxima e o motor direito em velocidade mínima.
+Agora, definimos as **transições** entre estados (de acordo com a leitura dos sensores de linha):
 
-* **Virar pra esquerda:** O robô vira para a esquerda rodando o motor direito em velocidade máxima e o motor esquerdo em velocidade mínima.
+* **Andar para frente:** quando **ambos** os sensores detectam a linha.
+* **Virar para a direita:** quando **apenas o sensor direito** detecta a linha.
+* **Virar para a esquerda:** quando **apenas o sensor esquerdo** detecta a linha.
+* **Parar:** quando **nenhum** sensor detecta a linha.
 
-* **Parar:** O robô para ambos os motores.
+Em Python, podemos implementar a máquina de estados com uma variável que guarda o **estado atual** (string) e uma **função por estado**, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar. 
 
-Agora podemos definir as transições entre os estados:
+Em vez de um grande bloco `if/elif`,essa é uma abordagem mais elegante que usa um **dicionário** que mapeia `estado → função`.
 
-* **Andar pra frente:** O robô entra neste estado quando ambos os sensores estão detectando a linha.
-
-* **Virar pra direita:** O robô entra neste estado quando apenas o sensor direito está detectando a linha.
-
-* **Virar pra esquerda:** O robô entra neste estado quando apenas o sensor esquerdo está detectando a linha.
-
-* **Parar:** O robô entra neste estado quando nenhum dos sensores está detectando a linha.
-
-Em python, podemos implementar a máquina de estados definindo uma variável que armazena o estado atual do robô (string) e uma função para cada estado, que executa as ações necessárias para aquele estado. 
-
-A função principal do robô deve executar a função do estado atual e verificar se o estado deve ser alterado. Isso poderia ser feito com um grande bloco de `if` e `elif`, mas uma forma mais elegante é utilizar um dicionário, onde a chave é o estado atual e o valor é uma função que deve ser executada.
-
-Então, o a estrutura do código ficaria assim:
+Então, a estrutura do código ficaria assim:
 
 ```python
+class SeguidorDeLinha:
     def __init__(self):
-        ...
-
-		self.robot_state = 'frente'
-		self.state_machine = {
-			'frente': self.frente,
+        # Estado inicial
+        self.robot_state = 'frente'
+        
+        # Tabela de despacho: estado → método
+        self.state_machine = {
+            'frente': self.frente,
             'direita': self.direita,
             'esquerda': self.esquerda,
-            'parar': self.parar
-		}
-    
+            'parar': self.parar,
+        }
+
+    # ===== Comportamentos por estado =====
     def frente(self):
-        # Código para andar pra frente
+        # Código para andar para frente
+        pass
+
     def direita(self):
-        # Código para virar pra direita
+        # Código para virar para a direita
+        pass
+
     def esquerda(self):
-        # Código para virar pra esquerda
+        # Código para virar para a esquerda
+        pass
+
     def parar(self):
         # Código para parar
-    
+        pass
+
+    # ===== Laço de controle =====
     def control(self):
+        # Executa a ação do estado atual
         self.state_machine[self.robot_state]()
 
-        # Código para verificar se o estado deve ser alterado
+        # Verifica leituras dos sensores e avalia transições
+        # if sensores == ...:
+        #     self.robot_state = 'direita'  # exemplo
 ```
 
-No código acima, definimos o estado inicial como `frente` e criamos um dicionário chamado `state_machine` que associa cada estado a uma função. A função `control` executa a função do estado atual e o código para verificar se o estado deve ser alterado.
+No código acima, definimos o estado inicial como `frente` e criamos o dicionário `state_machine` que associa cada estado a uma função. A função `control` chama a função do **estado atual** e, em seguida, avalia as condições de **transição** para possivelmente atualizar `self.robot_state`.
 
-Outro ponto importante em máquinas de estados é a **definição do estado inicial**. No caso do robô seguidor de linha, o estado inicial é `frente`, pois se o robô `parar` ou `virar` ele pode não encontrar a linha.
+Outro ponto importante em máquinas de estados é a **definição do estado inicial**. No seguidor de linha, utilizar `frente` como estado inicial costuma ser adequado: se o robô começar em `parar` ou já `virando`, ele pode **não reencontrar a linha** com facilidade.
+
+## Robô Quase Indeciso
+
+Agora vamos aplicar o conceito de máquina de estado para o seguinte comportamento:
+
+Um robô que se afasta da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproxima quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado.
+
+Quais seriam os estados e transições para esse comportamento?
