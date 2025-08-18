@@ -116,6 +116,7 @@ nav:
 
       - Capítulo 2 - Introdução à ROS 2:
         - modulos/02-intro-ros/index.md
+        - Chat Capítulo 2: https://chatgpt.com/share/68a3511c-5bd8-8010-bfa0-ed24fdd491bd
         - Atividades:
           - "1 - Pacotes e Comandos": modulos/02-intro-ros/atividades/1-package.md
           - "2 - Topicos na ROS": modulos/02-intro-ros/atividades/2-topicos.md
