@@ -81,32 +81,32 @@ A saída mostra que `Twist` possui dois campos do tipo `Vector3`: `linear` e `an
 !!! exercise long
     Qual o **comando** para visualizar as mensagens do tópico `odom`?
 
-        !!! answer
-            ```bash
-            ros2 topic echo /odom
-            ```
-            
-            Você também pode usar o argumento `--once` para exibir apenas **uma** mensagem:
-            
-            ```bash
-            ros2 topic echo /odom --once
-            ```
+    !!! answer
+        ```bash
+        ros2 topic echo /odom
+        ```
+        
+        Você também pode usar o argumento `--once` para exibir apenas **uma** mensagem:
+        
+        ```bash
+        ros2 topic echo /odom --once
+        ```
 
 !!! exercise long
     Qual o **tipo de mensagem** que o tópico `odom` transporta?
 
-        !!! answer
-            ```
-            `nav_msgs/msg/Odometry`
-            ```
+    !!! answer
+        ```
+        `nav_msgs/msg/Odometry`
+        ```
 
 !!! exercise long
     Qual o **comando** para visualizar a **estrutura** da mensagem transportada em `odom`?
 
-        !!! answer
-            ```bash
-            ros2 interface show nav_msgs/msg/Odometry
-            ```
+    !!! answer
+        ```bash
+        ros2 interface show nav_msgs/msg/Odometry
+        ```
 
 !!! exercise long
     O que você imagina que acontece com os valores publicados em `odom` enquanto o robô se move?
