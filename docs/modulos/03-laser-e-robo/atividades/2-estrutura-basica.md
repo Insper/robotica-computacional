@@ -6,7 +6,7 @@ Para facilitar o desenvolvimento de um nó, a fornecemos uma estrutura básica d
 
 * Nó de ação base [base_action.py](../util/base_action.py)
 
-* Nó "cliente" da ação: [main.py](../util/main.py)
+* Nó "cliente" da ação: [base_control.py](../util/base_control.py)
 
 Baixe os arquivos e coloque-os em uma pasta de fácil acesso. 
 
@@ -108,8 +108,8 @@ class BaseControlNode(Node): # Mude o nome da classe
 
     def __init__(self):
         super().__init__('base_control_node') # Mude o nome do nó
-        self.timer = self.create_timer(0.1, self.control)
-
+        # Outra Herança que você queira fazer
+        rclpy.spin_once(self) # Roda pelo menos uma vez para pegar os valores
         self.acao_node = Acao() # Cria o nó da Acao
 
         self.robot_state = 'stop'
@@ -127,6 +127,10 @@ class BaseControlNode(Node): # Mude o nome da classe
         # Publishers
         self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
         ## Coloque aqui os publishers
+
+        ## Por fim, inicialize o timer
+        self.timer = self.create_timer(0.1, self.control)
+
 ```
 Essa parte é bem similar ao nó base de ação, mas com algumas diferenças importantes:
 1. Não vamos cancelar o timer, portanto já iniciamos o timer no construtor do nó.

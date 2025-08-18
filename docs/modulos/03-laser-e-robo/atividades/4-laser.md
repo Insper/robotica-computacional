@@ -110,7 +110,6 @@ self.laser_sub = self.create_subscription(
 
     5.5. Pegue um range +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
 
-
 ### Testando
 
 Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_laser.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_laser_node` que importa a classe `Laser` do arquivo `laser.py` e imprime as leituras do laser a cada 1 segundo.

@@ -22,7 +22,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ____________________________________________________________________
 
-# Exercício 1 - Organização & Qualidade (1 pontos)
+# Exercício 0 - Organização & Qualidade (1 pontos)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -35,12 +35,22 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
 
 ____________________________________________________________________
-# Exercício 2 - Robô Quase Indeciso (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. Portanto o robô deve parar eventualmente. O nó deve:
+# Exercício 1 - Robô Quase Indeciso (3 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. 
 
-* Ter três estados, `forward`, `backward` e `stop`.
+Portanto o robô deve parar eventualmente.
 
-* Avalie na função `control` para qual estado o robô deve ir.
+O nó deve:
+
+* Ter três estados, `forward`, `backward`, `stop` e `done`.
+
+* O nó deve começar no estado `forward`.
+
+* Em cada estado, o robô deve definir a velocidade linear e angular com base na leitura do laser.
+
+* Não modifique a função `control()` do módulo base.
+
+
 
 **Dica:** Se o robô não parar, tente diminuir a velocidade linear.
 
