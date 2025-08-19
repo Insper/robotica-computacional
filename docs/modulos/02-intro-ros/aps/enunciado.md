@@ -72,7 +72,6 @@ ros2 topic echo /publisher
     ```python 
     current_time = self.get_clock().now().to_msg()
     current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
-    print(f"Horário atual: {current_time}")
     ```
 
 !!! exercise long 
