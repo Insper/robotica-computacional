@@ -27,10 +27,10 @@ Este script define uma estrutura para ações com **início, meio e fim**. A aç
 Trecho (simplificado):
 
 ```python
-class Acao(Node,): # Mude o nome da classe
+class Acao(Node): # Mude o nome da classe
 
-    def __init__(self):
-        super().__init__('acao_node') # Mude o nome do nó
+    def __init__(self, node = 'acao_node'): # Mude o nome do nó
+        super().__init__(node)
         self.timer = None
 
         self.robot_state = 'done' # Comece em 'done' - reset iniciará a ação
@@ -50,7 +50,9 @@ class Acao(Node,): # Mude o nome da classe
         # ...
 ```
 
-Nesta parte, definimos o **nome do nó**, a **máquina de estados** (`self.state_machine`), o **estado inicial** (`self.robot_state`) e os **publishers/subscribers** necessários, por padrão, o publisher do `cmd_vel` já está definido.
+Nesta parte, passamos para o construtor o **nome do nó** e iniciamos a **máquina de estados** (`self.state_machine`), o **estado inicial** (`self.robot_state`) e os **publishers/subscribers** necessários, por padrão, o publisher do `cmd_vel` já está definido.
+
+**Quando mais de um nó forem utilizar a mesma ação, será necessário mudar o nome do nó para algo mais específico.**
 
 ```python
     def reset(self):

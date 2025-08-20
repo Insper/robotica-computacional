@@ -3,10 +3,10 @@ import numpy as np
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
-class Acao(Node,): # Mude o nome da classe
+class Acao(Node): # Mude o nome da classe
 
-    def __init__(self):
-        super().__init__('acao_node') # Mude o nome do nó
+    def __init__(self, node = 'acao_node'): # Mude o nome do nó
+        super().__init__(node)
         self.timer = None
 
         self.robot_state = 'done' # Comece em 'done' - reset iniciará a ação
