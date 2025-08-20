@@ -36,9 +36,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 
 ____________________________________________________________________
 # Exercício 1 - Robô Quase Indeciso (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado. 
-
-Portanto o robô deve parar eventualmente.
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `indeciso.py` com um nó denominado `indeciso_node` que, utilizando o laser, faça com que o robô **real** se afaste da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproximar quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado.
 
 O nó deve:
 
@@ -46,11 +44,13 @@ O nó deve:
 
 * O nó deve começar no estado `forward`.
 
-* Em cada estado, o robô deve definir a velocidade linear e angular com base na leitura do laser.
+* Em cada estado, o robô deve decidir se permanece no estado atual ou muda para outro estado com base nas leituras do laser.
+
+* Se permanecer no estado atual, o robô deve definir a velocidade linear.
 
 * Não modifique a função `control()` do módulo base.
 
-
+* Apenas a função `control()` deve publicar o comando de velocidade.
 
 **Dica:** Se o robô não parar, tente diminuir a velocidade linear.
 
