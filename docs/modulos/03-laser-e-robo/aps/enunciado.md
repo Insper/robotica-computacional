@@ -67,6 +67,8 @@ ____________________________________________________________________
 # Exercício 2 - Robô quadrado (3 pontos)
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `quadrado.py` com um nó denominado `quadrado_node`, que faça o robô **real** se mover em uma trajetória que se ***aproxima*** de um quadrado.
 
+## Ação Cliente (Principal)
+
 O nó principal deve:
 
 * Instanciar duas ações, `andar` e `girar`
@@ -86,10 +88,10 @@ O nó principal deve:
 Na atividade [Estrutura Básica](../atividades/2-estrutura-basica.md) você implementou a ação de andar uma distância `d`. Teste a ação no simulador para verificar se o robô anda a distância correta.
 
 ## Ação de Girar
-Baseando-se no código `base_action.py` do módulo 3, crie um arquivo chamado `girar.py` com uma classe denominada de `Girar` e um nó denominado `girar_node`, que faça o robô **real** gire 90 graus no sentido anti-horário.
+Baseando-se no código `base_action.py` do módulo 3, crie um arquivo chamado `girar.py` com uma classe denominada de `Girar` e um nó denominado `girar_node`, que faça o robô **real** gire `rotacao`, onde a variavel `rotacao` é a quantidade de graus que o robô deve girar e será fornecida pelo cliente da ação, na função `reset()`.
 
-Crie a seguinte função auxiliar para ajustar o ângulo no limite de `[-pi, pi]`, isso é importante para evitar problemas de ângulo quando o robô gira mais de uma volta ou voltas negativas:
-A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` e `pi`.
+Crie a seguinte função auxiliar para ajustar o ângulo no limite de `[-pi, pi]`, isso é importante para evitar problemas de ângulo quando o robô gira mais de uma volta ou número de voltas negativas:
+A função `np.arctan2` é utilizada para fazer a normalização do ângulo entre `-pi` e `pi`.
 
 ```python
     def ajuste_angulo(self, angulo):
@@ -99,22 +101,22 @@ A função `np.arctan2` é utilizada para normalizar o erro angular entre `-pi` 
         return np.arctan2(np.sin(angulo), np.cos(angulo))
 ```
 
-Para rodar o robô, primeiro calcule o ângulo desejado, somando `pi/2` ao angulo atual:
+Para rodar o robô, primeiro calcule o ângulo desejado, somando o valor da rotação **em radianos** ao ângulo atual:
 
 ```python
-self.goal_yaw = self.ajuste_angulo(self.yaw + np.pi/2)
+self.goal_yaw = self.ajuste_angulo(self.yaw + rotacao)
 ```
 
-E depois, a cada iteração, calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus.
+Este será nosso objetivo angular, em seguida, a cada iteração, calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`2` graus, lembre-se que os ângulos estão em radianos.
 
 ```python
 erro = self.ajuste_angulo(self.goal_yaw - self.yaw)
 ```
 
-E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja menor que ~`+-2` graus, finalizando a ação ao entrar no estado `stop`. Caso o erro seja maior do que o limiar, faça o seguinte:
+Quando o erro for menor que ~`+-2` graus podemos finalizar a ação mudando o estado para `stop`. Caso o erro seja maior do que o limiar de `+-2` graus, faça o seguinte:
 
 1. Quando o erro for **menor** que 0 o robô deve girar no **sentido horário**;
-2. Quando for **maior** que 0, no **sentido anti-horário**.
+2. Quando for **maior** que 0, o robô deve girar no **sentido anti-horário**.
 
 
 ## Critérios de Avaliação:
@@ -125,7 +127,8 @@ E depois calcule o erro entre o angulo atual e o desejado, até que o erro seja 
 4. Executa a rotação utilizando feedback da odometria.
 2. Desenvolveu o nó `quadrado_node` que alterna entre as açoes `andar` e `girar`, até completar um quadrado.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
-5. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" pelos menos dois quadrados no chão.
+5. **Vídeo:** Executa apenas o nó `quadrado_node`.
+5. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" um quadrado no chão.
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
 7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
