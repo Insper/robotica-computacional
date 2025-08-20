@@ -67,20 +67,23 @@ Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que rep
 
 ## Módulo do Laser - APS 3
 
-Vamos criar encapsular a odometria em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+Vamos criar encapsular a leitura do laser em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `robcomp_util/robcomp_util`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` **sem nenhuma herança**, ou seja, não herde da classe `Node`. Essa classe deve:
-
-!!! info
-    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Laser` herda-se de `Node`.
+Dentro do pacote `robcomp_util/robcomp_util`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` e siga os seguintes passos:
 
 1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
 
+!!! info
+    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, criando um módulo, o que não seria possível se `Odom` herda-se de `Node`.
+
 2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
 
-3. Inicialize uma variável `self.opening`, que será utilizada para armazenar a abertura do sensor laser.
+3. Remova a função `main()` e a condição `if __name__ == '__main__':`.
 
-4. Definir um subscriver para o tópico `laser` que chama a função `laser_callback` quando uma mensagem é recebida. Faça o subscriber com o seguinte comando, para o robô real é necessário alterar `reliability` para `BEST_EFFORT`, por limitações de hardware:
+4. Inicialize uma variável `self.opening` no construtor `__init__`, que será utilizada para armazenar a abertura do sensor laser, ao mudar esse valor, podemos modificar o que consideramos como "frente" do robô, por exemplo.
+
+5. Defina um subscriber para o tópico `/scan` que chama a função `laser_callback` quando uma mensagem é recebida. O subscriber terá o seguinte formato, a diferença da `Odometry` é que para o robô real é necessário alterar `reliability` para `BEST_EFFORT`, por limitações de hardware.
+
 ```python
 self.laser_sub = self.create_subscription(
     LaserScan,
@@ -90,29 +93,32 @@ self.laser_sub = self.create_subscription(
 ```
 
 5. Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
-    * Utilize o seguinte comando para converter a lista em um array numpy:
+
+    5.1. Utilize o seguinte comando para converter a lista em um array numpy:
+
     ```python
     self.laser_msg = np.array(msg.ranges).round(decimals=2)
     ```
 
-    * Utilize o seguinte comando jogar os valores `0` para `inf`, removendo ambiguidades:
+    5.2. Utilize o seguinte comando jogar os valores `0` para `inf`, removendo ambiguidades, entre o que o robo real e o robo simulado entende por "fora de alcance".
+
     ```python
     self.laser_msg[self.laser_msg == 0] = np.inf
     ```
     
-    5.1. Converta self.laser_msg para uma lista novamente.
+    5.3. Converta `self.laser_msg` para uma lista novamente.
 
-    5.2. Pegue um range de +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
+    5.4. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
 
-    5.3. Pegue um range +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
+    5.5. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
 
-    5.4. Pegue um range +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
+    5.6. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
 
-    5.5. Pegue um range +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
+    5.7. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
 
 ### Testando
 
-Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_laser.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_laser_node` que importa a classe `Laser` do arquivo `laser.py` e imprime as leituras do laser a cada 1 segundo.
+Para testar, baseado-se no arquivo `base.py` crie um arquivo chamado `test_laser.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_laser_node` que importa a classe `Laser` do arquivo `laser.py` e imprime as leituras do laser a cada **1 segundo**.
 
 Lembre-se:
 

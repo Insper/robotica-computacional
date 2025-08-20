@@ -108,18 +108,20 @@ Agora, vamos encapsular a odometria em uma classe que pode ser facilmente import
 
 ## Módulo de Odometria - APS 3
 
-Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e muda o nome da classe para `Odom`, e **remova a herança**, ou seja, remova `Node` e seu `__init__`. Essa classe deve:
-
-!!! info
-    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, o que não seria possível se `Odom` herda-se de `Node`.
+Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e siga os seguintes passos:
 
 1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
 
+!!! info
+    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, criando um módulo, o que não seria possível se `Odom` herda-se de `Node`.
+
 2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
 
-3. Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+3. Remova a função `main()` e a condição `if __name__ == '__main__':`.
 
-4. Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
+4. Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+
+5. Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
 
     * `self.x`: posição X do robô no espaço global.
 
@@ -127,7 +129,7 @@ Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo d
 
     * `self.yaw`: orientação do robô no espaço global. Valor em radianos e no intervalo de `-pi` a `pi`.
 
-Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser utilizada na função `odom_callback`:
+Para auxiliar, enviamos uma função que faz conversão de quaternion para ângulos de Euler, que deve ser adicionada a classe `Odom` e chamada na função `odom_callback`, **note que a função recebe um objeto `orientation` do tipo `Quaternion`**.
 
 ```python
 def euler_from_quaternion(self, orientation):
@@ -153,7 +155,7 @@ def euler_from_quaternion(self, orientation):
 
 ### Testando
 
-Para testar o modulo que criamos, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
+Para testar o módulo que criamos, baseado-se no arquivo `base.py` crie um arquivo chamado `test_odom.py`, dentro do pacote `robcomp_util`. Este arquivo deve conter um nó chamado `test_odom_node` que importa a classe `Odom` do arquivo `odom.py` e imprime a posição e orientação do robô no espaço global a cada 1 segundo.
 
 Você deve:
 
