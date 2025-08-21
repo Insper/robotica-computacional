@@ -150,7 +150,7 @@ O nó principal deve:
 * O estado `esperar` deve fazer com que o robô espere até encontrar uma direção (direita, esquerda ou traseira) onde não exista obstáculos.
 * A ação de girar deve levar o robô a girar até a direção livre escolhida.
 
-Mais detalhes sobre as ações e transições estão no handout na atividade [1-maquina-de-estados](../atividades/1-maquina-de-estados-v2.md).
+Mais detalhes sobre as ações e transições estão no handout na atividade [1-maquina-de-estados](../atividades/1-maquina-de-estados.md).
 
 ## Critérios de Avaliação:
 
