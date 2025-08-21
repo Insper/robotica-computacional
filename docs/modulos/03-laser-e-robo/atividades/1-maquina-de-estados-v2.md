@@ -67,7 +67,7 @@ Em vez de um grande bloco `if/elif`, essa é uma abordagem mais elegante que usa
 Considerando os estados, podemos desenhar o esqueleto do codigo como abaixo:
 
 ```python
-class RoboLimpador:
+class Limpador:
     def __init__(self):
         # Estado inicial
         self.robot_state = 'procurar'

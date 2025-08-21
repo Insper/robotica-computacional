@@ -127,6 +127,7 @@ Quando o erro for menor que ~`+-2` graus podemos finalizar a ação mudando o es
 4. Executa a rotação utilizando feedback da odometria.
 2. Desenvolveu o nó `quadrado_node` que alterna entre as açoes `andar` e `girar`, até completar um quadrado.
 3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
+5. **Vídeo: Desenhe o quadrado na referência do laboratório**
 5. **Vídeo:** Executa apenas o nó `quadrado_node`.
 5. **Vídeo:** Mostra o robô executando o comportamento e "desenhando" um quadrado no chão.
 6. **Vídeo:** O robô não colide com nenhum obstáculo.
@@ -135,34 +136,46 @@ Quando o erro for menor que ~`+-2` graus podemos finalizar a ação mudando o es
 ____________________________________________________________________
 
 # Exercício 3 - Robô Limpador (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o seguinte comportamento:
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `limpador.py` com uma classe denominada `Limpador` e um nó denominado `limpador_node` que, utilizando o laser, faça com que o robô **real** tenha o comportamento de um robô limpador equipado com um laser 2D (então, sem colisões).
 
-* Ter dois estados, `forward`, `turn`.
+## Ação Cliente (Principal)
 
-* Mova-se em frente até encontrar um obstáculo a menos de `0.5m` à sua frente (esse valor pode ser ajustado para melhor desempenho).
+O nó principal deve:
 
-* Gire `225` graus.
+* Instanciar a ação de `girar`.
+* Ter quatro estados, `procurar`, `limpar`, `esperar` e `girar`.
+* O estado `girar` deve **iniciar** e **aguardar** a conclusão de suas ação antes de mudar para o próximo estado.
+* O estado `procurar` deve fazer com que o robô gire em trajetória elíptica até encontrar um obstáculo à frente ou à direita.
+* O estado `limpar` deve fazer com que o robô se mova para frente, limpando a área à sua frente até que o sensor detecte um obstáculo em sua trajetória (frente).
+* O estado `esperar` deve fazer com que o robô espere até encontrar uma direção (direita, esquerda ou traseira) onde não exista obstáculos.
+* A ação de girar deve levar o robô a girar até a direção livre escolhida.
 
-* Mova-se em frente e repita o processo.
+Mais detalhes sobre as ações e transições estão no handout na atividade [1-maquina-de-estados](../atividades/1-maquina-de-estados-v2.md).
 
 ## Critérios de Avaliação:
 
-1. Nó importado corretamente do pacote `my_package`.
+1. Nó importado corretamente do pacote `robcomp_util`.
 2. Desenvolveu o nó `limpador_node` com os comportamentos corretos.
-3. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e desvia de pelo menos **10** obstáculos.
-4. **Vídeo:** O robô não colide com nenhum obstáculo.
-5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+3. Executa a rotação utilizando feedback da odometria.
+4. **Vídeo:** Mostra o robô executando o comportamento e se aproxima e desvia de pelo menos **10** obstáculos.
+5. **Vídeo:** Mostra que robô o robô fica parado eternamente se não estirem direções livres (demonstre colocando objetos em volta do robô).
+6. **Vídeo:** O robô não colide com nenhum obstáculo.
+7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
 
 ____________________________________________________________________
 
 ## Desafio (+2 pontos bônus)
 
-Juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
+Uma vez finalizado os outros exercicios da APS, juntem-se com pelo menos **4** outros grupos e gravem um vídeo dos **5** robôs limpadores em ação. Cada robô deve ter um comportamento independente, mas todos devem estar no mesmo ambiente e **não podem colidir.**.
 
-Esse vídeo deve ser gravado com um professor ou monitor do curso, que irá avaliar a pontuação extra.
+O vídeo deve  ter duração minima de 2 minutos e ser gravado com um professor ou monitor do curso, que irá avaliar a pontuação extra.
 
 Cada grupo deve gravar o vídeo do seu robô e postar no Youtube e incluir o link no README.md com um comentário com o nomes dos outros grupos. 
 
 Os vídeos devem seguir os critérios de avaliação do exercício 3 com uma adiação:
 
 * **Vídeo:** Mostra uma ocasião em que um robô se aproxima de outro robô mas para antes de colidir.
+* **Vídeo:** Mostra pelo menos um robô esperando outros saírem do caminho antes de começar a se mover.
+
+!!! importante
+    Está atividade é uma atividade em grupo de grupos, neste ponto, os grupos devem se organizar e colaborar para garantir que TODOS os robôs funcionem corretamente e não colidam entre si.
