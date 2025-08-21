@@ -4,53 +4,55 @@ Nesta atividade, vamos revisar o conceito de **máquina de estados finitos (FSM)
 
 ## Conceito de Máquina de Estados Finitos (FSM)
 
-Uma máquina de estados finitos (FSM) é um modelo computacional que descreve o comportamento do sistema a partir de **estados** e **transições**, permitindo que sistemas complexos sejam modelados de forma mais simples.
+Uma máquina de estados finitos (FSM) é um modelo computacional que descreve o comportamento de um sistema a partir de **estados** e **transições**, permitindo que sistemas complexos sejam modelados de forma clara e modular.
 
-* **Estados:** representam condições atuais do sistema.
-* **Transições:** representam mudanças de estado que ocorrem em resposta a eventos ou condições.
+* **Estados:** representam as condições atuais do sistema.
+* **Transições:** representam mudanças de estado em resposta a eventos ou condições.
 
-Essa abordagem é muito útil em robótica, pois organiza o fluxo de decisões do robô de forma clara e modular.
+Essa abordagem é muito útil em robótica, pois organiza o fluxo de decisões do robô de forma **clara**, **reutilizável** e **testável**.
 
 ---
 
 ## Exemplo: Robô Limpador com Laser 2D
 
-Agora, vamos aplicar o conceito de máquina de estados finitos (FSM) ao para um robô limpador que navega em um ambiente, procurando por áreas para limpar e desviando de obstáculos. Para melhorar a capacidade do nosso robô, equipamos ele com um sensor laser 2D.
+Agora,, vamos aplicar o conceito de FSM a um **robô limpador** que navega no ambiente, procura áreas para limpar e **desvia** de obstáculos. Para melhorar a capacidade do nosso robô, equipamos‑no com um **sensor laser 2D**.
 
 ### Estados principais
 
-Nosso robô pode ser caracterizado pelos estados principais:
+![Robô Limpador](figs/robo_limpador.png)
 
-1. **Procurar** - o robô gira em trajetória elíptica até encontrar um obstáculo à frente ou à direita.
-2. **Limpar** - o robô se move para frente, limpando a área à sua frente até que o sensor detecte um obstáculo em sua trajetória (frente).
-3. **Esperar (Desviar)** - o robô espera até encontrar uma direção onde não exista obstáculos.
-4. **Girar (Desviar)** - o robô gira até encontrar uma direção livre.
+Como mostra a figura acima, nosso robô pode ser caracterizado pelos estados principais:
 
-### Sub-estados da Ação "Desviar"
+1. **Procurar** - o robô gira em trajetória elíptica até encontrar um obstáculo à **frente** ou à **direita**.
+2. **Limpar** - o robô avança, limpando a área à frente até que o sensor detecte um obstáculo **frontal**.
+3. **Esperar (Desviar)** - o robô aguarda enquanto avalia se existe uma direção livre.
+4. **Girar (Desviar)** - o robô gira até alinhar‑se com uma direção livre.
 
-No caso do nosso robô, podemos explorar mais o estado de **Desviar**.
+### Sub‑estados da ação "Desviar"
 
-1. Esperar e Escolher - espera até avaliar encontrar direções livres (direita, esquerda, traseira).
+No caso do nosso robô, detalhamos a ação **Desviar**:
 
-    1.1. Se nenhuma → continua esperando e tenta novamente.
+1. **Esperar e escolher** - avalia direções livres (direita, esquerda, traseira):
 
-    1.2. Se uma → seleciona essa.
+   1.1. Se **nenhuma** estiver livre → permanece em **Esperar** e tenta novamente.
 
-    1.3. Se mais de uma → seleciona aleatoriamente.
+   1.2. Se **uma** estiver livre → **seleciona** essa direção.
 
-2. Girar - o robô gira até encontrar uma direção livre.
+   1.3. Se **mais de uma** estiver livre → **seleciona aleatoriamente** uma delas.
+
+2. **Girar** - gira até o **ângulo** aproximado da direção escolhida.
 
 ### Transições
 
-Dado o ambiente do robô limpador, podemos definir as transições entre os estados como na tabela abaixo:
+Dado o ambiente do robô limpador, podemos definir as transições entre estados como na tabela abaixo:
 
-| Origem   | Condição                               | Destino             | Observação         |
-| -------- | -------------------------------------- | ------------------- | ------------------ |
-| Procurar | obstáculo em **frente** ou **direita** | Esperar             | ação Desviar       |
-| Limpar   | obstáculo em **frente**                | Esperar             | ação Desviar       |
-| Esperar  | **sem direção livre** (aguardar)       | Esperar             | tentar novamente   |
-| Desviar  | pelo menos uma direção livre           | Girar               | ação Desviar       |
-| Girar    | Girar até a direção livre              | Limpar              | fim ação Desviar   |
+| Origem   | Condição                               | Destino | Observação         |
+| -------- | -------------------------------------- | ------- | ------------------ |
+| Procurar | obstáculo em **frente** ou **direita** | Esperar | ação **Desviar**   |
+| Limpar   | obstáculo em **frente**                | Esperar | ação **Desviar**   |
+| Esperar  | **sem direção livre** (aguardar)       | Esperar | tentar novamente   |
+| Esperar  | pelo menos **uma direção livre**       | Girar   | ação **Desviar**   |
+| Girar    | atingiu **ângulo/direção livre**       | Limpar  | fim da **Desviar** |
 
 **Estado inicial:** `Procurar`.
 
@@ -58,13 +60,13 @@ Dado o ambiente do robô limpador, podemos definir as transições entre os esta
 
 ### Estrutura de código em Python
 
-Em Python, podemos implementar a máquina de estados com uma variável que guarda o **estado atual** `string` e uma **função por estado**, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar.
+Em Python, podemos implementar a FSM com uma variável que guarda o **estado atual** (string) e **uma função por estado**, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar.
 
-Em vez de um grande bloco `if/elif`, essa é uma abordagem mais elegante que usa um **dicionário** que mapeia `estado → função`.
+Em vez de um grande bloco `if/elif`, usamos um **dicionário** que mapeia `estado → função`.
 
-### Robo Limpador
+### Robô Limpador
 
-Considerando os estados, podemos desenhar o esqueleto do codigo como abaixo:
+Considerando os estados, podemos desenhar o esqueleto do código como abaixo:
 
 ```python
 class Limpador:
@@ -81,26 +83,31 @@ class Limpador:
         }
 
     def procurar(self):
-        # Código para procurar
-        # Gira em trajetória elíptica (v=0.1) e (rz=0.1)
-        # Para de girar quando encontra um obstáculo na frente ou direita
+        """Gira em trajetória elíptica (ex.: v=0.1, rz=0.1).
+        Transição quando há obstáculo à frente/direita → 'esperar'."""
+        # TODO: ler sensores, decidir transição
+        # mude para 'esperar'  # quando condição atendida
         pass
 
     def limpar(self):
-        # Código para limpar / verificar se frente está livre
+        """Avança limpando até detectar obstáculo frontal → 'esperar'."""
+        # TODO: publicar velocidade para frente; checar obstáculo
+        # mude para 'esperar'
         pass
 
     def esperar(self):
-        # Estado para esperar
-        # Avalia as direções livres (direita, esquerda, traseira)
-        # Se nenhuma direção estiver livre, permanecer em "esperar"
-        # Se uma direção estiver livre, selecionar essa direção
-        # Se mais de uma direção estiver livre, selecionar aleatoriamente
+        """Avalia direções livres (dir/esq/trás).
+        0 opções → permanece 'esperar';
+        1 opção → escolhe; >1 → escolhe aleatoriamente → 'girar'."""
+        # TODO: computar direções livres e escolher alvo
+        # mude 'girar'
         pass
 
     def girar(self):
-        # Executar a rotação até o ângulo desejado e retornar sucesso.
-        # Estado que chama a ação externa de Girar e espera sua execução
+        """Executa rotação até o ângulo desejado (ação externa).
+        Ao alinhar → 'limpar'."""
+        # TODO: chamar ação/serviço de giro e monitorar conclusão
+        # return 'limpar'
         pass
 
     def control(self):
