@@ -62,9 +62,9 @@ Em Python, podemos implementar a máquina de estados com uma variável que guard
 
 Em vez de um grande bloco `if/elif`, essa é uma abordagem mais elegante que usa um **dicionário** que mapeia `estado → função`.
 
-### RoboLimpador
+### Robo Limpador
 
-Então, a estrutura do código principal ficaria assim:
+Considerando os estados, podemos desenhar o esqueleto do codigo como abaixo:
 
 ```python
 class RoboLimpador:
@@ -76,12 +76,13 @@ class RoboLimpador:
         self.state_machine = {
             'procurar': self.procurar,
             'limpar': self.limpar,
-            'desviar': self.desviar,
+            'esperar': self.esperar,
+            'girar': self.girar,
         }
 
     def procurar(self):
         # Código para procurar
-        # Gira em trajetória elíptica (v=0.1) e rz=0.1
+        # Gira em trajetória elíptica (v=0.1) e (rz=0.1)
         # Para de girar quando encontra um obstáculo na frente ou direita
         pass
 
@@ -89,34 +90,6 @@ class RoboLimpador:
         # Código para limpar / verificar se frente está livre
         pass
 
-    def desviar(self):
-        # Código que chama a ação externa de Desviar e espera sua execução
-        pass
-
-    def control(self):
-        # ...
-        # Executa a ação do estado atual
-        self.state_machine[self.robot_state]()
-```
-
-### Ação "Desviar"
-
-No caso da ação de desviar, o robô deve:
-
-```python
-class Desviar:
-    def __init__(self):
-        # Estado inicial
-        self.robot_state = 'esperar'
-
-        # Tabela de despacho: estado → método
-        self.state_machine = {
-            'esperar': self.esperar,
-            'girar': self.girar,
-            'stop': self.stop,
-            'done': self.done
-        }
-...
     def esperar(self):
         # Estado para esperar
         # Avalia as direções livres (direita, esquerda, traseira)
@@ -129,4 +102,10 @@ class Desviar:
         # Executar a rotação até o ângulo desejado e retornar sucesso.
         # Estado que chama a ação externa de Girar e espera sua execução
         pass
+
+    def control(self):
+        # ...
+        # Executa a ação do estado atual
+        self.state_machine[self.robot_state]()
+
 ```
