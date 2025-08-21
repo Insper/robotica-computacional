@@ -23,21 +23,22 @@ Nosso robô pode ser caracterizado pelos estados principais:
 
 1. **Procurar** - o robô gira em trajetória elíptica até encontrar um obstáculo à frente ou à direita.
 2. **Limpar** - o robô se move para frente, limpando a área à sua frente até que o sensor detecte um obstáculo em sua trajetória (frente).
-3. **Desviar** - o robô e gira em até uma direção onde não exista obstáculos.
+3. **Esperar (Desviar)** - o robô espera até encontrar uma direção onde não exista obstáculos.
+4. **Girar (Desviar)** - o robô gira até encontrar uma direção livre.
 
 ### Sub-estados da Ação "Desviar"
 
 No caso do nosso robô, podemos explorar mais o estado de **Desviar**.
 
-1. Escolher - avalia direções livres (direita, esquerda, traseira).
+1. Esperar e Escolher - espera até avaliar encontrar direções livres (direita, esquerda, traseira).
 
-    1.1. Se nenhuma → retorna “aguardar”.
+    1.1. Se nenhuma → continua esperando e tenta novamente.
 
     1.2. Se uma → seleciona essa.
 
     1.3. Se mais de uma → seleciona aleatoriamente.
 
-2. Girar - executa a ação de rotação até o ângulo desejado e retorna sucesso.
+2. Girar - o robô gira até encontrar uma direção livre.
 
 ### Transições
 
@@ -45,10 +46,11 @@ Dado o ambiente do robô limpador, podemos definir as transições entre os esta
 
 | Origem   | Condição                               | Destino             | Observação         |
 | -------- | -------------------------------------- | ------------------- | ------------------ |
-| Procurar | obstáculo em **frente** ou **direita** | Desviar             | chama ação         |
-| Limpar   | obstáculo em **frente**                | Desviar             | chama ação         |
-| Desviar  | ação **concluída com direção válida**  | Limpar              | pós-girar          |
-| Desviar  | **sem direção livre** (aguardar)       | esperar             | tentar novamente   |
+| Procurar | obstáculo em **frente** ou **direita** | Esperar             | ação Desviar       |
+| Limpar   | obstáculo em **frente**                | Esperar             | ação Desviar       |
+| Esperar  | **sem direção livre** (aguardar)       | Esperar             | tentar novamente   |
+| Desviar  | pelo menos uma direção livre           | Girar               | ação Desviar       |
+| Girar    | Girar até a direção livre              | Limpar              | fim ação Desviar   |
 
 **Estado inicial:** `Procurar`.
 
