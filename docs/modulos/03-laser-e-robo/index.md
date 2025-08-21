@@ -4,7 +4,7 @@
     ![](slides.pdf)
 
 
-Neste módulo vamos aprender a controlar o robô utilizando a ROS 2. Vamos aprender a controlar o robô utilizando maquina de estados, e a ler os dados do sensor laser e da odometria, e utilizar esses dados para controlar o robô. Também vamos aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
+Neste módulo vamos aprender a controlar o robô utilizando a ROS 2. Vamos aprender a controlar o robô utilizando maquina de estados e ações, a ler os dados do sensor laser e da odometria, e utilizar esses dados para controlar o robô. Também vamos aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
 
 ## Atividades
 As atividades deste módulo focam em introduzir técnicas úteis para 
@@ -12,7 +12,8 @@ As atividades deste módulo focam em introduzir técnicas úteis para
 1. Entender o conceito básico de maquina de estados.
 2. Entender o conceito de odometria.
 3. Entender o conceito de sensor laser.
-4. Aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
+4. Entender o conceito de ações e **como implementá-las**.
+5. Aprender a visualizar os dados dos sensores utilizando o `rqt_image_view` e o `RViz`.
 
 Estes conceitos são explorados nas seguintes atividades,
 
@@ -20,7 +21,8 @@ Estes conceitos são explorados nas seguintes atividades,
 - [Atividade 2](atividades/2-estrutura-basica.md) - Aqui fornecemos uma estrutura básica composta por um nó qualquer e um nó de controle do robô por meio de maquina de estados.
 - [Atividade 3](atividades/3-odometria.md) - Entendendo o conceito de `Pose` e `Odometria`. Também vamos aprender a criar um módulo de odometria para ser facilmente importado em outros programas.
 - [Atividade 4](atividades/4-laser.md) - Entendendo a leitura do sensor laser. Também vamos aprender a criar um módulo do sensor laser para ser facilmente importado em outros programas.
-- [Atividade 5](atividades/5-visualizacao.md) - Entendendo como visualizar os dados da câmera, utilizando o `rqt_image_view`, e os dados do sensor laser e da odometria, utilizando o `RViz`.
+- [Atividade 5](atividades/5-acao-andar.md) - Entendendo como implementar a ação de andar.
+- [Atividade 6](atividades/6-visualizacao.md) - Entendendo como visualizar os dados da câmera, utilizando o `rqt_image_view`, e os dados do sensor laser e da odometria, utilizando o `RViz`.
 
 ## Para entregar
 
