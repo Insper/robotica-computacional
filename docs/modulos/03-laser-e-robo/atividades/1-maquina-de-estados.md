@@ -2,81 +2,110 @@
 
 Nesta atividade, vamos revisar o conceito de **máquina de estados finitos (FSM)** e como implementá‑la para controlar um robô.
 
-Imagine o robô seguidor de linha abaixo:
+## Conceito de Máquina de Estados Finitos (FSM)
 
-![Robô seguidor de linha](figs/linha.png)
+Uma máquina de estados finitos (FSM) é um modelo computacional que descreve o comportamento do sistema a partir de **estados** e **transições**, permitindo que sistemas complexos sejam modelados de forma mais simples.
 
-Uma forma de implementar o comportamento desse robô é utilizar uma **máquina de estados**: um modelo que descreve o comportamento do sistema a partir de **estados** e **transições**. Cada estado representa uma condição do sistema; cada transição, uma mudança de estado disparada por entradas/sensores.
+* **Estados:** representam condições atuais do sistema.
+* **Transições:** representam mudanças de estado que ocorrem em resposta a eventos ou condições.
 
-No caso do robô seguidor de linha, podemos definir os seguintes estados:
+Essa abordagem é muito útil em robótica, pois organiza o fluxo de decisões do robô de forma clara e modular.
 
-* **Andar para frente:** o robô avança acionando ambos os motores em velocidade desejada.
-* **Virar para a direita:** o robô gira para a direita acionando o motor esquerdo mais forte que o direito.
-* **Virar para a esquerda:** o robô gira para a esquerda acionando o motor direito mais forte que o esquerdo.
-* **Parar:** o robô desliga ambos os motores.
+---
 
-Agora, definimos as **transições** entre estados (de acordo com a leitura dos sensores de linha):
+## Exemplo: Robô Limpador com Laser 2D
 
-* **Andar para frente:** quando **ambos** os sensores detectam a linha.
-* **Virar para a direita:** quando **apenas o sensor direito** detecta a linha.
-* **Virar para a esquerda:** quando **apenas o sensor esquerdo** detecta a linha.
-* **Parar:** quando **nenhum** sensor detecta a linha.
+Agora, vamos aplicar o conceito de máquina de estados finitos (FSM) ao para um robô limpador que navega em um ambiente, procurando por áreas para limpar e desviando de obstáculos. Para melhorar a capacidade do nosso robô, equipamos ele com um sensor laser 2D.
 
-Em Python, podemos implementar a máquina de estados com uma variável que guarda o **estado atual** (string) e uma **função por estado**, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar. 
+### Estados principais
 
-Em vez de um grande bloco `if/elif`,essa é uma abordagem mais elegante que usa um **dicionário** que mapeia `estado → função`.
+Nosso robô pode ser caracterizado pelos estados principais:
 
-Então, a estrutura do código ficaria assim:
+1. **Procurar** - o robô gira em trajetória elíptica até encontrar um obstáculo à frente ou à direita.
+2. **Limpar** - o robô se move para frente, limpando a área à sua frente até que o sensor detecte um obstáculo em sua trajetória (frente).
+3. **Esperar (Desviar)** - o robô espera até encontrar uma direção onde não exista obstáculos.
+4. **Girar (Desviar)** - o robô gira até encontrar uma direção livre.
+
+### Sub-estados da Ação "Desviar"
+
+No caso do nosso robô, podemos explorar mais o estado de **Desviar**.
+
+1. Esperar e Escolher - espera até avaliar encontrar direções livres (direita, esquerda, traseira).
+
+    1.1. Se nenhuma → continua esperando e tenta novamente.
+
+    1.2. Se uma → seleciona essa.
+
+    1.3. Se mais de uma → seleciona aleatoriamente.
+
+2. Girar - o robô gira até encontrar uma direção livre.
+
+### Transições
+
+Dado o ambiente do robô limpador, podemos definir as transições entre os estados como na tabela abaixo:
+
+| Origem   | Condição                               | Destino             | Observação         |
+| -------- | -------------------------------------- | ------------------- | ------------------ |
+| Procurar | obstáculo em **frente** ou **direita** | Esperar             | ação Desviar       |
+| Limpar   | obstáculo em **frente**                | Esperar             | ação Desviar       |
+| Esperar  | **sem direção livre** (aguardar)       | Esperar             | tentar novamente   |
+| Desviar  | pelo menos uma direção livre           | Girar               | ação Desviar       |
+| Girar    | Girar até a direção livre              | Limpar              | fim ação Desviar   |
+
+**Estado inicial:** `Procurar`.
+
+![Robô Limpador](figs/robo_limpador.png)
+
+### Estrutura de código em Python
+
+Em Python, podemos implementar a máquina de estados com uma variável que guarda o **estado atual** `string` e uma **função por estado**, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar.
+
+Em vez de um grande bloco `if/elif`, essa é uma abordagem mais elegante que usa um **dicionário** que mapeia `estado → função`.
+
+### Robo Limpador
+
+Considerando os estados, podemos desenhar o esqueleto do codigo como abaixo:
 
 ```python
-class SeguidorDeLinha:
+class Limpador:
     def __init__(self):
         # Estado inicial
-        self.robot_state = 'frente'
-        
+        self.robot_state = 'procurar'
+
         # Tabela de despacho: estado → método
         self.state_machine = {
-            'frente': self.frente,
-            'direita': self.direita,
-            'esquerda': self.esquerda,
-            'parar': self.parar,
+            'procurar': self.procurar,
+            'limpar': self.limpar,
+            'esperar': self.esperar,
+            'girar': self.girar,
         }
 
-    # ===== Comportamentos por estado =====
-    def frente(self):
-        # Código para andar para frente
+    def procurar(self):
+        # Código para procurar
+        # Gira em trajetória elíptica (v=0.1) e (rz=0.1)
+        # Para de girar quando encontra um obstáculo na frente ou direita
         pass
 
-    def direita(self):
-        # Código para virar para a direita
+    def limpar(self):
+        # Código para limpar / verificar se frente está livre
         pass
 
-    def esquerda(self):
-        # Código para virar para a esquerda
+    def esperar(self):
+        # Estado para esperar
+        # Avalia as direções livres (direita, esquerda, traseira)
+        # Se nenhuma direção estiver livre, permanecer em "esperar"
+        # Se uma direção estiver livre, selecionar essa direção
+        # Se mais de uma direção estiver livre, selecionar aleatoriamente
         pass
 
-    def parar(self):
-        # Código para parar
+    def girar(self):
+        # Executar a rotação até o ângulo desejado e retornar sucesso.
+        # Estado que chama a ação externa de Girar e espera sua execução
         pass
 
-    # ===== Laço de controle =====
     def control(self):
+        # ...
         # Executa a ação do estado atual
         self.state_machine[self.robot_state]()
 
-        # Verifica leituras dos sensores e avalia transições
-        # if sensores == ...:
-        #     self.robot_state = 'direita'  # exemplo
 ```
-
-No código acima, definimos o estado inicial como `frente` e criamos o dicionário `state_machine` que associa cada estado a uma função. A função `control` chama a função do **estado atual** e, em seguida, avalia as condições de **transição** para possivelmente atualizar `self.robot_state`.
-
-Outro ponto importante em máquinas de estados é a **definição do estado inicial**. No seguidor de linha, utilizar `frente` como estado inicial costuma ser adequado: se o robô começar em `parar` ou já `virando`, ele pode **não reencontrar a linha** com facilidade.
-
-## Robô Quase Indeciso
-
-Agora vamos aplicar o conceito de máquina de estado para o seguinte comportamento:
-
-Um robô que se afasta da parede quando o obstáculo à sua frente estiver a menos de `0.95m` e se aproxima quando estiver a mais de `1.05m`, caso contrário, o robô deve ficar parado.
-
-Quais seriam os estados e transições para esse comportamento?
