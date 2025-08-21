@@ -172,5 +172,5 @@ Os vídeos devem seguir os critérios do Exercício 3, com as seguintes **adiç�
 * **Vídeo:** Mostra pelo menos um robô **aguardando** outros saírem do caminho antes de voltar a se mover.
 
 !!! importante
-    Está atividade é uma atividade em **grupo de grupos**, neste ponto, os grupos devem se organizar e colaborar para garantir que TODOS os robôs funcionem corretamente e não colidam entre si.
+    Está atividade é uma atividade de **colaboração entre grupos**, neste ponto, os grupos devem se organizar e **colaborar** para garantir que **todos** os robôs funcionem corretamente e **não colidam entre si**.
 
