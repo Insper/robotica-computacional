@@ -16,8 +16,8 @@ extra:
     link_APS1: https://classroom.github.com/a/B-tptaiO
     data_APS2: Segunda - 25/08 às 12:00
     link_APS2: https://classroom.github.com/a/L5EOrG7x
-    data_APS3: TBA
-    link_APS3: TBA
+    data_APS3: Segunda - 08/09 às 12:00
+    link_APS3: https://classroom.github.com/a/nqzvX0Z9
 
     data_APS4: TBA
     link_APS4: TBA
@@ -136,17 +136,12 @@ nav:
               - "Download > Nó Básico": modulos/03-laser-e-robo/util/base.py
               - "Download > Nó Base de Ação": modulos/03-laser-e-robo/util/base_action.py
               - "Download > Nó Cliente da Ação": modulos/03-laser-e-robo/util/base_control.py
-          - "3 - Entendendo a Odometria":
-            - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
-            # - "Download > odom": modulos/03-laser-e-robo/util/odom.py
-            # - "Download > teste_odom": modulos/03-laser-e-robo/util/teste_odom.py
-          - "4 - Entendendo o Laser":
-            - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
-            # - "Download > laser": modulos/03-laser-e-robo/util/laser.py
+          - "3 - Entendendo a Odometria": modulos/03-laser-e-robo/atividades/3-odometria.md
+          - "4 - Entendendo o Laser": modulos/03-laser-e-robo/atividades/4-laser.md
           - "5 - Ação de Andar": modulos/03-laser-e-robo/atividades/5-acao-andar.md
           - "6 - Visualização na ROS": modulos/03-laser-e-robo/atividades/6-visualizacao.md
         - APS 3:
-          # - "APS 3 - Classroom" : https://classroom.github.com/a/_M7zdJg8
+          # - "APS 3 - Classroom" : https://classroom.github.com/a/nqzvX0Z9
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
