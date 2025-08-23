@@ -22,7 +22,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ---
 
-# Exercício 0 - Organização & Qualidade (1 pontos)
+# Exercício 0 - Organização & Qualidade (0 pontos)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -60,7 +60,7 @@ O nó deve:
 
 ---
 
-# Exercício 2 - Robô Quadrado (3 pontos)
+# Exercício 2 - Robô Quadrado (4 pontos)
 
 Com base em `base_control.py` (Módulo 3), crie `quadrado.py` com um nó `quadrado_node` que faça o robô **real** movimentar‑se em uma trajetória que **se aproxima** de um quadrado.
 
