@@ -24,8 +24,6 @@ Este script não traz novidades em relação ao que já vimos, com **duas exceç
 
 Este script define uma estrutura para ações com **início, meio e fim**. A ação inicia quando `reset()` é chamada e termina quando o estado chega a `'done'`.
 
-Trecho (simplificado):
-
 ```python
 class Acao(Node): # Mude o nome da classe
 
@@ -155,6 +153,7 @@ Função que **aciona** a ação:
         self.robot_state = 'stop'
 ```
 Essa função:
+
 1. inicia a ação, chamando o método `reset()` do nó de ação
 2. Processa os callbacks da ação uma única vez
 3. Aguarda até que a ação esteja concluída.
