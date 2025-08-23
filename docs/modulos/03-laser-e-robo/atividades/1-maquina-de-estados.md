@@ -50,9 +50,7 @@ Dado o ambiente do robô limpador, podemos definir as transições entre estados
 | Esperar  | pelo menos **uma direção livre**       | Girar   | ação **Desviar**   |
 | Girar    | atingiu **ângulo/direção livre**       | Limpar  | fim da **Desviar** |
 
-**Estado inicial:** `Procurar`.
-
-![Robô Limpador](figs/robo_limpador.png)
+**Estado inicial:** Procurar.
 
 ### Estrutura de código em Python
 
