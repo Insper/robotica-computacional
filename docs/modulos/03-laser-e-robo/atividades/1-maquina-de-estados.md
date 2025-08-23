@@ -33,9 +33,9 @@ Como mostra a figura acima, nosso robô pode ser caracterizado pelos estados pri
 No caso do nosso robô, detalhamos a ação **Desviar**:
 
 1. **Esperar e escolher** - avalia direções livres (direita, esquerda, traseira):
-   1.1. Se **nenhuma** estiver livre → permanece em **Esperar** e tenta novamente.
-   1.2. Se **uma** estiver livre → **seleciona** essa direção.
-   1.3. Se **mais de uma** estiver livre → **seleciona aleatoriamente** uma delas.
+1.1. Se **nenhuma** estiver livre → permanece em **Esperar** e tenta novamente.
+1.2. Se **uma** estiver livre → **seleciona** essa direção.
+1.3. Se **mais de uma** estiver livre → **seleciona aleatoriamente** uma delas.
 2. **Girar** - gira até o **ângulo** aproximado da direção escolhida.
 
 ### Transições
