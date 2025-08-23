@@ -18,7 +18,7 @@ Este script não traz novidades em relação ao que já vimos, com **duas exceç
 2. `self.create_timer(0.25, self.control)` - cria um **timer** que chama `control()` a cada **0,25 s**.
 
 !!! dica
-    O **Nó Base** é útil para módulos que **assinam** um tópico, processam os dados e **publicam** o resultado em outro (ex.: um nó de visão computacional).
+    O **Nó Base** é útil para módulos que **assinam** um tópico, processam os dados e **publicam** o resultado em outro tópico (ex.: um nó de visão computacional).
 
 ## Nó Base de Ação
 
