@@ -19,7 +19,7 @@ Agora,, vamos aplicar o conceito de FSM a um **robô limpador** que navega no am
 
 ### Estados principais
 
-![Robô Limpador](figs/robo_limpador.png)
+![Robô Limpador](figs/robo_limpador.jpg)
 
 Como mostra a figura acima, nosso robô pode ser caracterizado pelos estados principais:
 
