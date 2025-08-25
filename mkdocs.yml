@@ -141,7 +141,7 @@ nav:
           - "5 - Ação de Andar": modulos/03-laser-e-robo/atividades/5-acao-andar.md
           - "6 - Visualização na ROS": modulos/03-laser-e-robo/atividades/6-visualizacao.md
         - APS 3:
-          # - "APS 3 - Classroom" : https://classroom.github.com/a/nqzvX0Z9
+          - "APS 3 - Classroom" : https://classroom.github.com/a/nqzvX0Z9
           - "Enunciado": modulos/03-laser-e-robo/aps/enunciado.md
 
 
