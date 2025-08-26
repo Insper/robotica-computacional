@@ -108,14 +108,14 @@ Agora, vamos encapsular a odometria em uma classe que pode ser facilmente import
 
 ## Módulo de Odometria - APS 3
 
-Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py` e siga os seguintes passos:
+Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo denominado `odom.py`, mude o nome da classe de `SecondNode` para `Odom` e siga os seguintes passos:
 
 1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
 
 !!! info
     Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, criando um módulo, o que não seria possível se `Odom` herda-se de `Node`.
 
-2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
+2. Remova a função `control()` da classe `Odom` e o **timer** que chama essa função.
 
 3. Remova a função `main()` e a condição `if __name__ == '__main__':`.
 
@@ -171,9 +171,21 @@ Você deve:
     from robcomp_util.odom import Odom
     ```
 
-* Fazer a herança da classe `Odom` no `test_odom_node`.
+* Fazer a herança da classe `Odom` no `test_odom_node`, mantendo a herança de `Node`, ou seja, faça a herança múltipla:
+
+    ```python
+    class TestOdomNode(Node, Odom):
+    ```
+
+* Inicializar ambas as classes no construtor `__init__()` do `test_odom_node`:
+
+    ```python
+    super().__init__('test_odom_node')
+    Odom.__init__(self)
+    ```
+
+* Modifique a função `control()` do arquivo `base.py` para imprimir a posição e orientação do robô (`self.x`, `self.y`, `self.yaw`) a cada 0.25 segundo.
 
 * Adicionar o nó no arquivo `setup.py` e então compile o pacote.
-* Modifique a função `control()` do arquivo `base.py` para imprimir a posição e orientação do robô.
 
 * Rode o nó `test_odom_node` utilizando o comando `ros2 run robcomp_util test_odom` e mova o robô utilizando o teleop, para ver como a odometria é atualizada.
