@@ -69,14 +69,14 @@ Portanto, no valor `ranges`, o sensor retonar um vetor de 360 elementos, que rep
 
 Vamos criar encapsular a leitura do laser em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
 
-Dentro do pacote `robcomp_util/robcomp_util`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` e siga os seguintes passos:
+Dentro do pacote `robcomp_util/robcomp_util`, crie um arquivo denominado `laser.py` e uma classe chamada `Laser` (renomeada de `SecondNode`) e siga os seguintes passos:
 
-1. Remova a herança de `Node` da classe `Odom` e a inicialização do nó, `super().__init__('second_node')`.
+1. Remova a herança de `Node` da classe `Laser` e a inicialização do nó, `super().__init__('second_node')`.
 
 !!! info
-    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, criando um módulo, o que não seria possível se `Odom` herda-se de `Node`.
+    Estamos removendo a herança para que você possa reutilizar a classe em qualquer nó, criando um módulo, o que não seria possível se `Laser` herda-se de `Node`.
 
-2. Remova a função `control()` da classe `Odom` e o timer que chama essa função.
+2. Remova a função `control()` da classe `Laser` e o timer que chama essa função.
 
 3. Remova a função `main()` e a condição `if __name__ == '__main__':`.
 
