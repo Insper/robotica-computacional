@@ -92,29 +92,35 @@ self.laser_sub = self.create_subscription(
     QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
 ```
 
-5. Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
+5. Depois adicione a seguinte linha no final do construtor `__init__` para processar as mensagens recebidas pela primeira vez:
 
-    5.1. Utilize o seguinte comando para converter a lista em um array numpy:
+```python
+rclpy.spin_once(self)
+```
+
+6. Definir uma função `laser_callback` que recebe uma mensagem do tipo `sensor_msgs/msg/LaserScan` e armazena os seguintes parâmetros:
+
+    6.1. Utilize o seguinte comando para converter a lista em um array numpy:
 
     ```python
     self.laser_msg = np.array(msg.ranges).round(decimals=2)
     ```
 
-    5.2. Utilize o seguinte comando jogar os valores `0` para `inf`, removendo ambiguidades, entre o que o robo real e o robo simulado entende por "fora de alcance".
+    6.2. Utilize o seguinte comando jogar os valores `0` para `inf`, removendo ambiguidades, entre o que o robo real e o robo simulado entende por "fora de alcance".
 
     ```python
     self.laser_msg[self.laser_msg == 0] = np.inf
     ```
-    
-    5.3. Converta `self.laser_msg` para uma lista novamente.
 
-    5.4. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
+    6.3. Converta `self.laser_msg` para uma lista novamente.
 
-    5.5. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
+    6.4. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na frente do robô e armazene na variável `self.front`.
 
-    5.6. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
+    6.5. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na esquerda do robô e armazene na variável `self.left`.
 
-    5.7. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
+    6.6. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores na direita do robô e armazene na variável `self.right`.
+
+    6.7. Faça um fatiamento na lista `self.laser_msg` com os +- `self.opening` valores atrás do robô e armazene na variável `self.back`.
 
 ### Testando
 

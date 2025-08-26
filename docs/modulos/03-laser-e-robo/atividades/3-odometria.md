@@ -119,9 +119,15 @@ Baseando-se no `second_node`, dentro do pacote `robcomp_util`, crie um arquivo d
 
 3. Remova a função `main()` e a condição `if __name__ == '__main__':`.
 
-4. Definir um subscriver para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
+4. Definir um subscriber para o tópico `odom` que chama a função `odom_callback` quando uma mensagem é recebida.
 
-5. Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
+5. Depois adicione a seguinte linha no final do construtor `__init__` para processar as mensagens recebidas pela primeira vez:
+
+```python
+rclpy.spin_once(self)
+```
+
+6. Definir uma função `odom_callback` que recebe uma mensagem do tipo `nav_msgs/msg/Odometry` e armazena os seguintes parâmetros:
 
     * `self.x`: posição X do robô no espaço global.
 
