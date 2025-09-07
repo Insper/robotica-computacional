@@ -3,7 +3,7 @@
 !!! pdf
     ![](slides.pdf)
 
-Neste módulo vamos continuar nosso estudo de processamento de imagens com a biblioteca OpenCV e aprender a `identificar a posição de objetos` de interesse em uma imagem. Também vamos aprender os conceitos de convolução e o modelo de câmera pinhole. Usaremos esses conceitos para `estimar a distância de objetos` capturados pela câmera.
+Neste módulo vamos continuar nosso estudo de processamento de imagens com a biblioteca OpenCV e aprender a `identificar a posição de objetos` de interesse em uma imagem. Também vamos aprender a `usar a câmera do robô na ROS 2` para aplicar os conceitos aprendidos.
 
 ## Atividades
 
