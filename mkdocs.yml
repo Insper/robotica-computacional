@@ -228,8 +228,8 @@ nav:
     #       - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
     #       - "AMCL": modulos/08-slam/util/amcl.py
 
-    # - Gabarito do robcomp_util (até Cap 5):
-    #   - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
+    - Gabarito do robcomp_util (até Cap 3):
+      - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
     # - Projeto-1:
     #   - "Enunciado": projeto-1/enunciado.md
@@ -239,40 +239,41 @@ nav:
     #   - "Enunciado": projeto-2/enunciado.md
     #   - "Projeto - Classroom" : https://classroom.github.com/a/4fM2pHCF
 
-    # - Provas:
-    #   - AI:
-    #     - "Enunciado": provas/ai/enunciado.md
-    #     # - "Gabarito": TODO
-    #     # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
+    - Provas:
+      # - AI:
+      #   - "Enunciado": provas/ai/enunciado.md
+        # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
       
-    #   # - AF:
-    #   #   - "Enunciado": provas/af/enunciado.md
-    #   # - SUB:
-    #   #   - "Enunciado": provas/sub/enunciado.md
-    # #   - DELTA:
-    # #     - "Enunciado": provas/delta/enunciado.md
-    #   - Simulado AI:
-    #     - "Enunciado": simulados/simulado_ai/enunciado.md
-    #     - "Download > Imagens Q2": simulados/simulado_ai/q2.zip
-    #     - "Resposta Q1" : simulados/simulado_ai/q1.py
-    #     - "Resposta Q2" : simulados/simulado_ai/q2.py
-    #   - Simulado AF:
-    #     - "Enunciado": simulados/simulado_af/enunciado.md
-    #     - "Gabarito Q1" : simulados/simulado_af/q1.py
-    #     - "Gabarito Q2" : simulados/simulado_af/q2.py
-    #   - Provas Antigas:
-    #     - AI 24b:
-    #       - "Enunciado": simulados/ai_24b/enunciado.md
-    #       - "Gabarito Q1 (quase)" : simulados/simulado_af/q1.py
-    #     - AF 24b:
-    #       - "Enunciado": simulados/af_24b/enunciado.md
-    #     - SUB 24b:
-    #       - "Enunciado": simulados/sub_24b/enunciado.md
-    #     - AI 24a:
-    #       - "Enunciado": simulados/ai_24a/enunciado.md
-    #       - "Resposta Q1" : simulados/ai_24a/q1.py
-    #       - "Resposta Q2" : simulados/ai_24a/q2.py
-    #     - AF 24a:
-    #       - "Enunciado": simulados/af_24a/enunciado.md
-    #     - Delta 24a:
-    #       - "Enunciado": simulados/delta_24a/enunciado.md
+      # - AF:
+      #   - "Enunciado": provas/af/enunciado.md
+      # - SUB:
+      #   - "Enunciado": provas/sub/enunciado.md
+    #   - DELTA:
+    #     - "Enunciado": provas/delta/enunciado.md
+      - Simulado AI:
+        - "Enunciado": simulados/simulado_ai/enunciado.md
+        - "Download > Imagens Q2": simulados/simulado_ai/q2.zip
+        - "Resposta Q1" : simulados/simulado_ai/q1.py
+        - "Resposta Q2" : simulados/simulado_ai/q2.py
+      - Simulado AF:
+        - "Enunciado": simulados/simulado_af/enunciado.md
+        - "Gabarito Q1" : simulados/simulado_af/q1.py
+        - "Gabarito Q2" : simulados/simulado_af/q2.py
+      - Provas Antigas:
+        - AI 25a:
+          - "Enunciado": simulados/ai_25a/enunciado.md
+        - AI 24b:
+          - "Enunciado": simulados/ai_24b/enunciado.md
+          - "Gabarito Q1 (quase)" : simulados/simulado_af/q1.py
+        - AF 24b:
+          - "Enunciado": simulados/af_24b/enunciado.md
+        - SUB 24b:
+          - "Enunciado": simulados/sub_24b/enunciado.md
+        - AI 24a:
+          - "Enunciado": simulados/ai_24a/enunciado.md
+          - "Resposta Q1" : simulados/ai_24a/q1.py
+          - "Resposta Q2" : simulados/ai_24a/q2.py
+        - AF 24a:
+          - "Enunciado": simulados/af_24a/enunciado.md
+        - Delta 24a:
+          - "Enunciado": simulados/delta_24a/enunciado.md
