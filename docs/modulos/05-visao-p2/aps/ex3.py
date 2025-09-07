@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-class Atividade1(): # Essa classe deve herdar da classe ImageModule
+class Atividade1():
     def __init__(self):
         # Inicializar a classe pai
 
@@ -147,6 +147,7 @@ def rodar_frame():
     # bgr = cv2.imread("img/angulo03.jpg")
     # bgr = cv2.imread("img/angulo04.jpg")
 
+    # Chame a função run ou calibration
     bgr, D, angulo, h, f = RodaAtividade.calibration(bgr)
 
     # Mostre a imagem final usando o OpenCV

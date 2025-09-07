@@ -52,7 +52,9 @@ $$
 \frac{h}{H} = \frac{f}{D}
 $$
 
-O objetivo deste exercício é estimar a distância $D$ da **sua** câmera até a folha e o ângulo $\theta$ de inclinação da folha em relação a vertical. Vocês vão trabalhar no arquivo [./ex1.py](./ex1.py), ajuste a classe para herdar o módulo de visão e implemente o método `run`. Algumas funções já foram criadas para ajudar vocês, vocês podem criar outras funções se acharem necessário, desde que não modifiquem as entradas e saídas das funções já existentes.
+O objetivo deste exercício é estimar a distância $D$ da **sua** câmera até a folha e o ângulo $\theta$ de inclinação da folha em relação a vertical. 
+
+Voce vai trabalhar no arquivo [./ex3.py](./ex3.py). Algumas funções já foram criadas para ajuda-lo, mas voce pode criar outras funções se achar necessário.
 
 ## Este exercício pede que vocês façam o seguinte:
 
@@ -104,7 +106,7 @@ Utilize a função `cv2.putText` para escrever na imagem.
 
 ## Valores Esperados
 
-A imagem [./img/calib01.jpg](./img/calib01.jpg) serve de exemplo para calibrar a sua câmera, essa imagem também é utilizada pelo pytest para verificar se o seu código está correto.
+A imagem [./img/calib01.jpg](./img/calib01.jpg) de como você deveria tirar uma foto de calibração. Utilizando a sua camera, tire uma foto similar a essa, com a folha posicionada a uma distância $D$ conhecida.
 
 <img src="./img/calib01.jpg" width=300>
 
