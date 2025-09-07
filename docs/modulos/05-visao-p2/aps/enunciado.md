@@ -54,111 +54,109 @@ Resolva o exercicio no final da atividade [4 - Detecção de Retas e Círculos](
 
 Procure uma nova imagem da internet, salve no seu repositório e rode o código para detectar os pontos de fuga (vanishing points) na nova imagem.
 
-Salve a imagem com o ponto de fuga detectado e adicione no seu repositório.
+Salve a imagem com o ponto de fuga desenhado detectado e adicione no seu repositório.
 
 ---
 
 # Exercício 3 - Estimando Pose (4 pontos)
 
-Você deve ter uma folha com o padrão da imagem abaixo.
+Você vai precisar de uma folha com o padrão abaixo.
+**Dica:** se não tiver impressa, pode exibir a imagem em um tablet ou smartphone.
 
-**Dica:** Se não tiver, é possível fazer também com um tablet ou *smartphone*
- 
-<img src="fig/folha_atividade.png" width=300>
+<img src="fig/folha_atividade.png" width="300">
 
-Neste exercício vamos aprender a fazer uma conversão 2D->3D, ou seja, estimar a distância da câmera até objetos capturados na imagem. Para isso, relembre o modelo pinhole visto em aula.
+Neste exercício vamos estimar a distância da câmera até a folha e o ângulo de inclinação da folha em relação à direção da câmera, realizando a conversão 2D para 3D com o modelo pinhole visto em aula.
 
-<img src="fig/pinhole.png" width=60%>
+<img src="fig/pinhole.png" width="60%">
 
-A partir da geometria do modelo pinhole, podemos definir a seguinte relação entre a distância focal $f$, o tamanho do objeto virtual $h$, a distância da câmera ao objeto $D$, e o tamanho do objeto real $H$:
+Pela geometria do modelo pinhole, vale a relação entre distância focal $f$, distância entre os centros dos círculos na imagem $h$, distância da câmera ao objeto $D$ e distância real entre os centros na folha $H$:
 
 $$
 \frac{h}{H} = \frac{f}{D}
+\qquad\Rightarrow\qquad
+D = \frac{f \cdot H}{h}
 $$
 
-O objetivo deste exercício é estimar a distância $D$ da **sua** câmera até a folha e o ângulo $\theta$ de inclinação da folha em relação a vertical. 
+> **Objetivo:** estimar $D$ (distância câmera-folha) e $\theta$ (inclinação da folha em relação à vertical).
+> **Arquivo de trabalho:** `./ex3.py`.
 
-Voce vai trabalhar no arquivo [./ex3.py](./ex3.py). Algumas funções já foram criadas para ajuda-lo, mas voce pode criar outras funções se achar necessário.
+---
 
-## Este exercício pede que vocês façam o seguinte:
+## O que fazer
 
-1. Utilizar a sua câmera para capturar uma imagem da folha em uma distância $D$ conhecida;
-2. Medir a distância $H$ entre os dois círculos da folha;
+### 1) Medições iniciais
 
-Na função `run` você deve fazer o seguinte, chamando as respectivas funções:
+1. Use a sua câmera para capturar **uma imagem da folha** a uma distância conhecida $D$ (meça com régua ou trena).
+2. Meça a distância real $H$ entre os **centros** dos dois círculos na folha.
+   **Atenção:** $D$ e $H$ devem estar **na mesma unidade** (por exemplo, centímetros).
 
-1. Encontrar o centro dos dois círculos da folha - `encontrar_centros`;
-2. Encontrar a distância $h$ entre os dois círculos da folha* - `calcular_h`;
-3. Calcular o ângulo $\theta$ de inclinação da folha em relação a vertical - `calcular_theta`;
-4. Estimar a distância $D$ - `encontrar_D`;
-5. Escrever na imagem o valor da distância $D$ e do ângulo $\theta$, utilize apenas duas casas decimais**.
-6. Retornar a imagem com as informações escritas, a distância $D$, o ângulo $\theta$ e a distância $h$.
-7. O seu código deve ser robusto para funcionar caso a folha não esteja na imagem - retorne o valor `-1` para a distância $D$ e o ângulo $\theta$.
+### 2) Função `run`
 
-Na função `calibration` você fará a calibração da sua câmera, para isso você deve fazer o seguinte:
+Implemente a lógica principal chamando as funções auxiliares indicadas:
 
-1. Modificar a imagem selecionada para a da sua câmera - `rodar_frame`;
-2. Chamar a função `run` para encontrar os centros dos círculos;
-3. Chamar a função `encontrar_foco` com os valores medidos para $D$ e $H$ para encontrar a distância focal $f$ da sua câmera - a variável deve ser armazenada como parâmetro da classe.
+1. **Encontrar os centros** dos dois círculos na imagem da folha - `encontrar_centros`.
+2. **Calcular $h$**, a distância em pixels entre os centros - `calcular_h`.
 
-Uma vez que seu código passar no pytest, você deve mudar a `main` para rodar a função `rodar_webcam`. Nessa função você deve fazer o seguinte:
+   <details>
+   <summary>Spoiler*</summary>
+   Distância entre os centros: \(h = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)
+   </details>
+3. **Calcular o ângulo $\theta$** da folha em relação à vertical - `calcular_theta`.
+4. **Estimar $D$** usando o modelo pinhole - `encontrar_D`.
+5. **Escrever na imagem** os valores de $D$ e $\theta$ com **duas casas decimais**.
 
-1. Modificar a imagem selecionada para rodar na sua câmera - `rodar_webcam`;
-2. Chamar a função `calibration` para calibrar a sua câmera;
-3. Dentro do loop da webcam, chamar a função `run` para encontrar a distância $D$ e o ângulo $\theta$ da folha;
-4. Grave um vídeo mostrando a sua câmera e a imagem da folha, mostre a distância $D$ e o ângulo $\theta$ na imagem. No vídeo você deve mostrar a folha em diferentes distâncias $D$ e ângulos $\theta$.
-5. De upload do vídeo no youtube e coloque o link no README.md do seu repositório.
+   <details>
+   <summary>Spoiler**</summary>
+   Utilize `cv2.putText` para escrever na imagem.
+   </details>
+6. **Retornar**: a imagem anotada, $D$, $\theta$ e $h$.
+7. **Robustez**: se a folha **não** estiver presente na imagem, retorne `-1` para $D$ e para $\theta$.
 
-<p>
+### 3) Função `calibration`
+
+Implemente o processo de calibração da câmera:
+
+1. Ajuste a fonte de imagem para **a sua câmera** - `rodar_frame`.
+2. Chame `run` para obter os centros dos círculos e $h$.
+3. Chame `encontrar_foco` com os valores medidos de $D$ e $H$ para obter a distância focal $f$.
+   Armazene $f$ como **parâmetro da classe**.
+
+### 4) Execução em tempo real
+
+Após passar no `pytest`, altere a `main` para executar `rodar_webcam`:
+
+1. Ajuste a fonte de imagem para **a webcam** - `rodar_webcam`.
+2. Chame `calibration` para **calibrar a câmera**.
+3. Dentro do loop da webcam, chame `run` a cada frame para obter $D$ e $\theta$.
+4. **Grave um vídeo** mostrando a câmera e a folha com **várias distâncias $D$** e **vários ângulos $\theta$**. Exiba $D$ e $\theta$ na imagem.
+5. Faça **upload no YouTube** e coloque o **link no `README.md`** do seu repositório.
+
+---
+
+## Valores esperados
+
+A imagem `./img/calib01.jpg` ilustra como tirar a foto de calibração. Com a sua câmera, capture uma foto similar, posicionando a folha a uma distância conhecida $D$.
+
+<img src="./img/calib01.jpg" width="300">
+
+Na legenda de exemplo: $D = 80\ \text{cm}$ e $H = 12{,}7\ \text{cm}$.
+
 <details>
-<summary>Spoiler*</summary>
+<summary>Saída esperada da calibração</summary>
 
-Distância entre o centro dos círculos: $h = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$
+* Distância entre os círculos na imagem $h$ ≈ **161** pixels
+* Distância focal estimada $f$ ≈ **1014.1732283464568**
 
 </details>
-</p>
 
-<p>
+As imagens `./img/angulo01.jpg` a `./img/angulo04.jpg` exemplificam a estimativa do ângulo $\theta$.
+
 <details>
-<summary>Spoiler**</summary>
+<summary>Saídas esperadas de ângulo</summary>
 
-Utilize a função `cv2.putText` para escrever na imagem.
+* `angulo01.jpg`: **Ângulo de -0,18 graus**
+* `angulo02.jpg`: **Ângulo de -51,98 graus**
+* `angulo03.jpg`: **Ângulo de -88,93 graus**
+* `angulo04.jpg`: **Ângulo de 118,57 graus**
 
 </details>
-</p>
-
-## Valores Esperados
-
-A imagem [./img/calib01.jpg](./img/calib01.jpg) de como você deveria tirar uma foto de calibração. Utilizando a sua camera, tire uma foto similar a essa, com a folha posicionada a uma distância $D$ conhecida.
-
-<img src="./img/calib01.jpg" width=300>
-
-Pela legenda, a distância $D$ entre a câmera e a folha é de 80 cm. A distância $H$ entre os dois círculos é de 12.7 cm.
-
-<p>
-<details>
-Saída<summary>Saída Esperada</summary>
-
-* Distância entre os círculos = 161
-
-* Distância focal = 1014.1732283464568
-
-</details>
-</p>
-
-As imagens [./angulo01.jpg](./img/angulo01.jpg), ..., [./angulo04.jpg](./img/angulo04.jpg) servem de exemplo para estimar o ângulo $\theta$ de inclinação da folha em relação a vertical.
-
-<p>
-<details>
-<summary>Saída Esperada</summary>
-
-* angulo01.jpg: Ángulo de -0.18 graos
-
-* angulo02.jpg:  ngulo de -51.98 graus
-
-* angulo03.jpg:  ngulo de -88.93 graus
-
-* angulo04.jpg:  ngulo de 118.57 graus
-
-</details>
-</p>
