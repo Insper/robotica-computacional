@@ -15,8 +15,9 @@ Neste módulo vamos continuar nosso estudo de processamento de imagens com a bib
 
 Clique no link abaixo para realizar o download dos notebooks das atividades.
 !!! download
-    [Download dos Notebooks](atividades_cap_5.zip)
-    [Download das Imagens de Teste da APS](fig_aps5.zip)
+    1. [Download dos Notebooks](atividades_cap_5.zip)
+
+    2. [Download das Imagens de Teste da APS](fig_aps5.zip)
 
 ## Para entregar
 
