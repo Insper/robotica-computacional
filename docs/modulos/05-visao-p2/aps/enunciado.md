@@ -49,8 +49,6 @@ Adicione o arquivo `vanishing_point.py` no seu repositório juntamente com a ima
 ## Video
 Grave um vídeo da execução do código na imagem de teste do handout e na sua foto da pista, e adicione o link no arquivo `README.md` do seu repositório.
 
-No mesmo vídeo, grave também a execução do código do exercício 1 (latinhas).
-
 Faça upload no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
 ---
