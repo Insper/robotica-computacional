@@ -20,29 +20,19 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_5`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
-____________________________________________________________________
-
-# Exercício 0 - Organização & Qualidade (1 pontos)
-Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios 2, 3 e 4, do desafio e do arquivo `README.md`.
-
-## Critérios de Avaliação:
-* **Vídeo:** O vídeo foi gravado na **horizontal**.
-* **Vídeo:** O vídeo foi gravado em um ambiente bem iluminado.
-* **Vídeo:** O audio está claro e sem ruídos, se desejar, remova o audio e adicione uma música de fundo.
-* **Vídeo:** Na descrição do vídeo no Youtube, está descrito o que o robô está fazendo.
-* **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
-* **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
-* **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.____________________________________________________________________
+---
 
 # Baixe o zip com as imagens de teste
-Clique no link abaixo para baixar o zip com as imagens de teste dos exercícios 1 e 2.
+Clique no link abaixo para baixar o zip com as imagens de teste dos exercícios.
 !!! download
     [Download das Imagens de Teste](fig_aps5.zip)
+
+---
 
 # Exercício 1 - Latinhas (3 pontos)
 Resolva o exercicio na atividade [2 - Identificação de Objetos](https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/2-identificacao/).
 
-Mesmo não sendo um nó da ROS 2, adicione o arquivo `latinhas.py` no diretório `entregavel_5` do seu repositório juntamente com as imagens de teste.
+Adicione o arquivo `latinhas.py` no seu repositório juntamente com as imagens de teste.
 
 Grave um vídeo da execução do código nas 3 imagens de teste e adicione o link no arquivo `README.md` do seu repositório.
 
@@ -50,11 +40,18 @@ Grave um vídeo da execução do código nas 3 imagens de teste e adicione o lin
 
 # Exercício 2 - Vanishing Point (3 pontos)
 
-Resolva o exercicio no final da atividade [4 - Detecção de Retas e Círculos](https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/4-retas-circulos/).
+Resolva o exercicio na atividade [4 - Detecção de Retas e Círculos](https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/4-retas-circulos/).
 
-Procure uma nova imagem da internet, salve no seu repositório e rode o código para detectar os pontos de fuga (vanishing points) na nova imagem.
+Tire uma foto da pista no laboratório e salve no seu repositório. No vídeo, mostre o código para detectar os pontos de fuga (vanishing points) em execução.
 
-Salve a imagem com o ponto de fuga desenhado detectado e adicione no seu repositório.
+Adicione o arquivo `vanishing_point.py` no seu repositório juntamente com a imagem de teste do handout e a sua foto da pista, salve também a sua foto com o ponto de fuga desenhado detectado.
+
+## Video
+Grave um vídeo da execução do código na imagem de teste do handout e na sua foto da pista, e adicione o link no arquivo `README.md` do seu repositório.
+
+No mesmo vídeo, grave também a execução do código do exercício 1 (latinhas).
+
+Faça upload no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
 ---
 
@@ -160,3 +157,7 @@ As imagens `./img/angulo01.jpg` a `./img/angulo04.jpg` exemplificam a estimativa
 * `angulo04.jpg`: **Ângulo de 118,57 graus**
 
 </details>
+
+## Video 
+
+Grave um vídeo da execução do código utilizando a webcam, mostrando a distância estimada $D$ e o ângulo $\theta$ na imagem. Faça upload no YouTube e coloque o link no arquivo `README.md` do seu repositório.
