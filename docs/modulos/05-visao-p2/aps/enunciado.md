@@ -59,12 +59,11 @@ Você vai precisar de uma folha com o padrão abaixo.
 
 **Dica:** se não tiver impressa, pode exibir a imagem em um tablet ou smartphone.
 
-<img src="figs/folha_atividade.png" width="300">
-!
+![Folha com padrão de círculos](figs/folha_atividade.png)
 
 Neste exercício vamos estimar a distância da câmera até a folha e o ângulo de inclinação da folha em relação à direção da câmera, realizando a conversão 2D para 3D com o modelo pinhole visto em aula.
 
-<img src="figs/pinhole.png" width="60%">
+![Modelo Pinhole](figs/pinhole.png)
 
 Pela geometria do modelo pinhole, vale a relação entre distância focal $f$, distância entre os centros dos círculos na imagem $h$, distância da câmera ao objeto $D$ e distância real entre os centros na folha $H$:
 
