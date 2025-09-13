@@ -73,8 +73,9 @@ $$
 D = \frac{f \cdot H}{h}
 $$
 
-> **Objetivo:** estimar $D$ (distância câmera-folha) e $\theta$ (inclinação da folha em relação à vertical).
-> **Arquivo de trabalho:** `./ex3.py`.
+**Objetivo:** estimar $D$ (distância câmera-folha) e $\theta$ (inclinação da folha em relação à vertical).
+
+**Arquivo de trabalho:** `./ex3.py`.
 
 ---
 
@@ -106,7 +107,7 @@ Implemente a lógica principal chamando as funções auxiliares indicadas:
    Utilize `cv2.putText` para escrever na imagem.
    </details>
 6. **Retornar**: a imagem anotada, $D$, $\theta$ e $h$.
-7. **Robustez**: se a folha **não** estiver presente na imagem, retorne `-1` para $D$ e para $\theta$.
+7. **Robustez**: se a folha **não** estiver presente na imagem, retorne `-1` para $D$ e para $\theta$. Ou seja, seu código não deve quebrar se a folha não for detectada.
 
 ### 3) Função `calibration`
 
@@ -115,6 +116,7 @@ Implemente o processo de calibração da câmera:
 1. Ajuste a fonte de imagem para **a sua câmera** - `rodar_frame`.
 2. Chame `run` para obter os centros dos círculos e $h$.
 3. Chame `encontrar_foco` com os valores medidos de $D$ e $H$ para obter a distância focal $f$.
+
    Armazene $f$ como **parâmetro da classe**.
 
 ### 4) Execução em tempo real
