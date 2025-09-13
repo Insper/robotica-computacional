@@ -174,9 +174,9 @@ nav:
             - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
             - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
             - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
-    #     - APS 5:
+        - APS 5:
     #       - "APS 5 - Classroom" : https://classroom.github.com/a/1_L01tY4
-    #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+          - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
 
     #   - Capítulo 6 - Visão Robótica & Deep Learning:
     #     - modulos/06-visao-p3/index.md
