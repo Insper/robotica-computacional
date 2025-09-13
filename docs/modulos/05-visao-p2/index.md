@@ -14,10 +14,12 @@ Neste módulo vamos continuar nosso estudo de processamento de imagens com a bib
 - [5 - Resolução de Exercício - Visão Computacional](atividades/51-enunciado.md) - Resolução de um exercício de visão computacional.
 
 Clique no link abaixo para realizar o download dos notebooks das atividades.
-!!! download
-    1. [Download dos Notebooks](atividades_cap_5.zip)
 
-    2. [Download das Imagens de Teste da APS](fig_aps5.zip)
+### Downloads
+
+1. [Download dos Notebooks](atividades_cap_5.zip)
+
+2. [Download das Imagens de Teste da APS](fig_aps5.zip)
 
 ## Para entregar
 
