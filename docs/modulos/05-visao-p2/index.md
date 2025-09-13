@@ -9,8 +9,8 @@ Neste módulo vamos continuar nosso estudo de processamento de imagens com a bib
 
 - [1 - Refinamento de Máscaras de Segmentação](atividades/1-morfologia.ipynb) - Operações morfológicas para refinamento de máscaras de segmentação.
 - [2 - Identificação de Objetos](atividades/2-identificacao.ipynb) - Identificação de objetos em uma imagem.
-- [3 - Convolução e Filtragem de Imagens](atividades/3-canny-filtros.md) - Convolução e filtragem de imagens.
-- [4 - Detecção de Retas e Círculos](atividades/4-retas-circulos.md) - Detecção de retas e círculos em imagens usando transformada de Hough.
+- [3 - Convolução e Filtragem de Imagens](atividades/3-canny-filtros.ipynb) - Convolução e filtragem de imagens.
+- [4 - Detecção de Retas e Círculos](atividades/4-retas-circulos.ipynb) - Detecção de retas e círculos em imagens usando transformada de Hough.
 - [5 - Resolução de Exercício - Visão Computacional](atividades/51-enunciado.md) - Resolução de um exercício de visão computacional.
 
 Clique no link abaixo para realizar o download dos notebooks das atividades.
