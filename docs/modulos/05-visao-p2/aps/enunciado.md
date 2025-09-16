@@ -14,12 +14,6 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 **Aviso 5:** Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.
 
-## Configuração do Pacote (ROS 2)
-
-- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_5`.
-    - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
-
 ---
 
 # Baixe o zip com as imagens de teste
