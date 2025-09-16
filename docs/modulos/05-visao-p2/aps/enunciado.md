@@ -129,7 +129,7 @@ Após passar no `pytest`, altere a `main` para executar `rodar_webcam`:
 
 A imagem `./img/calib01.jpg` ilustra como tirar a foto de calibração. Com a sua câmera, capture uma foto similar, posicionando a folha a uma distância conhecida $D$.
 
-<img src="./img/calib01.jpg" width="300">
+![Modelo Pinhole](img/calib01.jpg)
 
 Na legenda de exemplo: $D = 80\ \text{cm}$ e $H = 12{,}7\ \text{cm}$.
 
