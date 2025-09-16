@@ -1,4 +1,3 @@
-from module import ImageModule
 import cv2
 import numpy as np
 
@@ -21,7 +20,7 @@ class Atividade1():
 
         # Configure o kernel para operações morfológicas
 
-    def encontrar_foco(self, D: float, H: float, h: float) -> float:
+    def encontrar_foco(self, D: float, H: float, h: float):
         """Não mude ou renomeie esta função
         Entradas:
         D - distancia real da câmera até o objeto [m]
@@ -34,7 +33,7 @@ class Atividade1():
 
         return f
     
-    def encontrar_centros(self, bgr: np.ndarray) -> (tuple, tuple):
+    def encontrar_centros(self, bgr: np.ndarray):
         """Não mude ou renomeie esta função
         Entrada:
             bgr - imagem de entrada no formato BGR
@@ -47,7 +46,7 @@ class Atividade1():
 
         return centro_ciano, centro_magenta
     
-    def calcular_h(self, centro_ciano: tuple, centro_magenta: tuple) -> float:
+    def calcular_h(self, centro_ciano: tuple, centro_magenta: tuple):
         """Não mude ou renomeie esta função
         Entradas:
             centro_ciano - ponto no formato (X,Y)
@@ -59,7 +58,7 @@ class Atividade1():
         distancia = None
         return distancia
 
-    def encontrar_D(self, f: float, H: float, h: float) -> float:
+    def encontrar_D(self, f: float, H: float, h: float):
         """Não mude ou renomeie esta função
         Entrada:
             f - a distância focal da câmera [px]
@@ -71,7 +70,7 @@ class Atividade1():
         D = None
         return D
 
-    def calcular_theta(self, centro_ciano: tuple, centro_magenta: tuple) -> float:
+    def calcular_theta(self, centro_ciano: tuple, centro_magenta: tuple):
         """Não mude ou renomeie esta função
             Deve calcular o angulo, em graus, entre o vetor formato com os centros do circulos e a vertical.
         Entradas:
@@ -84,7 +83,7 @@ class Atividade1():
     
         return angulo
 
-    def escrever_texto(self, bgr: np.ndarray, distancia: float, angulo: float) -> np.ndarray:
+    def escrever_texto(self, bgr: np.ndarray, distancia: float, angulo: float):
         """Não mude ou renomeie esta função
         Entradas:
             bgr - imagem de entrada no formato BGR
@@ -96,7 +95,7 @@ class Atividade1():
         # Escreva o texto na imagem
         return bgr
 
-    def calibration(self, bgr: np.ndarray, D: float = None, H: float = None) -> (np.ndarray, float, float, float, float):
+    def calibration(self, bgr: np.ndarray, D: float = None, H: float = None):
         """Não mude ou renomeie esta função
         Essa função deve ser usada para calibrar a câmera e encontrar os valore da distância focal da SUA câmera.
         Primeiro, tire uma foto de um objeto com o qual você conhece a distância real (por exemplo, uma régua) e o tamanho real (por exemplo, 30 cm).
@@ -118,7 +117,7 @@ class Atividade1():
 
         return bgr, D, angulo, h, self.f
 
-    def run(self, bgr: np.ndarray) -> (np.ndarray, float, float, float):
+    def run(self, bgr: np.ndarray):
         """Não mude ou renomeie esta função
         Esta função deve ser processar o frame de entrada chamando as funções necessárias para executar o exercicio 1 da APS 2. 
         Crie quantas funções auxiliares achar necessário dentro dessa classe ou dentro da classe ImageModule.
