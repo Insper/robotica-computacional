@@ -19,7 +19,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 # Baixe o zip com as imagens de teste
 Clique no link abaixo para baixar o zip com as imagens de teste dos exercícios.
 !!! download
-    [Download das Imagens de Teste](fig_aps5.zip)
+    [Download das Imagens de Teste](../fig_aps5.zip)
 
 ---
 
