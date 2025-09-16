@@ -177,6 +177,7 @@ nav:
         - APS 5:
           - "APS 5 - Classroom" : https://classroom.github.com/a/8HCjiGTo
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+          - "Q3 base": modulos/05-visao-p2/aps/ex3.py
 
     #   - Capítulo 6 - Visão Robótica & Deep Learning:
     #     - modulos/06-visao-p3/index.md
