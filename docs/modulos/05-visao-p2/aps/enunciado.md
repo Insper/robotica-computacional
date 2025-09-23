@@ -133,25 +133,19 @@ A imagem `./img/calib01.jpg` ilustra como tirar a foto de calibração. Com a su
 
 Na legenda de exemplo: $D = 80\ \text{cm}$ e $H = 12{,}7\ \text{cm}$.
 
-<details>
-<summary>Saída esperada da calibração</summary>
-
-* Distância entre os círculos na imagem $h$ ≈ **161** pixels
-* Distância focal estimada $f$ ≈ **1014.1732283464568**
-
-</details>
+> **Saída esperada da calibração**
+>
+> - Distância entre os círculos na imagem $h$ ≈ **161** pixels
+> - Distância focal estimada $f$ ≈ **1014.1732283464568**
 
 As imagens `./img/angulo01.jpg` a `./img/angulo04.jpg` exemplificam a estimativa do ângulo $\theta$.
 
-<details>
-<summary>Saídas esperadas de ângulo</summary>
-
-* `angulo01.jpg`: **Ângulo de -0,18 graus**
-* `angulo02.jpg`: **Ângulo de -51,98 graus**
-* `angulo03.jpg`: **Ângulo de -88,93 graus**
-* `angulo04.jpg`: **Ângulo de 118,57 graus**
-
-</details>
+> **Saídas esperadas de ângulo**
+>
+> - `angulo01.jpg`: **Ângulo de -0,18 graus**
+> - `angulo02.jpg`: **Ângulo de -51,98 graus**
+> - `angulo03.jpg`: **Ângulo de -88,93 graus**
+> - `angulo04.jpg`: **Ângulo de 118,57 graus**
 
 ## Video 
 
