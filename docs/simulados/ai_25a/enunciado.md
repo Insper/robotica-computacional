@@ -61,9 +61,7 @@ ____________________________________________________________________
 
 # Exercício 1 - Batatinha-Frita-1-2-3 (6)
 
-<div style="text-align: center;">
-    <img src="figs/young_hee.png" alt="Young Hee" style="width: 25%;">
-</div>
+![Young-Hee](figs/young_hee.png)
 
 Baseando-se no código `base_control.py` do capitulo 3, crie um arquivo chamado `q1.py` contendo uma classe denominada `Jogador`. Esta classe deve implementar um **nó** chamado `jogador_node`, responsável por fazer com que o robô **simulado** jogue o jogo da batatinha-frita-1-2-3 com **Young-Hee**.
 
@@ -95,9 +93,7 @@ O nó criado deve:
 !!! dica
     Durante a execução do nó, você terá que interroper algum estado do robô, enquanto **Young-Hee** não estiver publicando. Portanto, armazene o estado do robô em uma variável, enquanto o robô não estiver se movendo e então, retorne o estado do robô para o valor original quando **Young-Hee** voltar a publicar.
 
-<div style="text-align: center;">
-    <img src="figs/run_turtle.jpeg" alt="Run_turtle" style="width: 50%;">
-</div>
+![Mapa](figs/run_turtle.jpeg)
 
 ## Requisitos
 
