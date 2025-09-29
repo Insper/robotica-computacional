@@ -32,41 +32,47 @@ Assista o vídeo abaixo para entender como funciona a representação de orienta
 [Quaternions and 3d rotation, explained interactively](https://www.youtube.com/watch?v=zjMuIxRvygQ&t=233s)
 
 ## Marcadores AprilTag
-Marcadores ArUco são marcadores quadrados binários que são muito eficazes para determinar a pose. Eles são frequentemente usados em realidade aumentada e robótica para rastreamento de posição e orientação.
+Marcadores AprilTag são marcadores quadrados binários que são muito eficazes para determinar a pose. Eles são frequentemente usados em realidade aumentada e robótica para rastreamento de posição e orientação.
 
-No arquivo [module_aruco.py](module_aruco.py), temos uma classe que encapsula as funções necessárias para detectar marcadores AprilTag e estimar a pose do marcador em relação a câmera, ou seja, no sistema de coordenadas da **câmera**.
-A classe também possui uma função para desenhar o marcador na imagem.
+Como vimos na APS 4, é possível estimar a distância da camera até um objeto conhecido usando visão computacional. Marcadores como o AprilTag facilitam esse processo, pois possuem um padrão único que pode ser facilmente detectado e identificado.
 
 Cada marcador AprilTag possui um ID único. O ID é um número inteiro que varia de 0 a 249.
 
-O exemplo abaixo mostra como usar a classe AprilTag para detectar marcadores AprilTag e desenhar o marcador na imagem.
+## Utilizando Marcadores AprilTag no Robô
 
-Pelo exemplo, podemos ver que a podemos detectar todos os marcadores AprilTag na imagem usando o atributo da classe `detectaAprilTag`.
-A saida é uma lista de dicionários, onde cada dicionário contém as seguintes chaves:
+Assim como a YOLOv8, a detecção de marcadores AprilTag também está instalada dentro do robô, mas se mantêm ligada, não sendo nescessário ligar ou desligar. Você pode se inscrever no tópico `/tag_list`, que publica mensagens do tipo `robcomp_interfaces/TaginfoArray`.
 
-* `id`: ID do marcador
+Novamente, agora vamos ver qual é a estrutura da mensagem `robcomp_interfaces/TaginfoArray`:
 
-* `corners`: coordenadas dos cantos do marcador na imagem
+```
+Taginfo.msg 
+int32 id
+geometry_msgs/Point center
+float32 distance
+```
 
-* `centro`: coordenadas do centro do marcador na imagem
+### Como interpretar a saída
 
-* `tvec`: vetor de translação do marcador em relação a câmera [tx, ty, tz]
+Para cada objeto detectado, você terá uma mensagem do tipo `Taginfo.msg`, que contém as seguintes informações:
 
-* `rvec`: vetor de rotação do marcador em relação a câmera [rx, ry, rz]
+* id: ID do marcador
+* center: coordenadas do centro do marcador na imagem
+* distance: distância REAL [m] do marcador em relação a câmera
 
-* `distancia`: distância do marcador em relação a câmera - calculada usando o vetor de translação
+## Prática 2
+Agora vamos praticar o uso dos marcadores AprilTag e desenvolver um código para identificar os creepers (combinar ID com CORES).
+Baseado no código do arquivo [image_subscriber.py](/docs/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `creepers.py` com uma classe chamada `IdentificaCreeper`, com um nó chamado `identifica_creeper_node` que se inscreva no tópico `/tag_list` e:
 
-Você pode também rodar diretamente o arquivo [module_aruco.py](module_aruco.py) para ver o resultado da detecção de marcadores AprilTag.
+1. Desenhe um círculo no centro do marcador.
+2. Segmenta as cores dos creepers (vermelho, verde e azul) e marca o centro de cada objeto segmentado. Para cada cor de objeto detectado deve ser armazenado em um dicionário com a cor do creeper e o centro do objeto.
+3. Combine todas as cores em uma lista de dicionários. `[{'color': 'red', 'center': (x1, y1)}, {'color': 'green', 'center': (x2, y2)}, ...]`
+4. Para cada marcador detectado, verifique o creeper mais próximo (pode utilizar distância horizontal, pois os marcadores são sempre verticais). Combine o dicionario do creeper com o ID e centro do marcador e salve em uma nova lista. Exemplo: `{'id': 23, 'tag_center': (x_tag, y_tag), 'color': 'red', 'center': (x_creeper, y_creeper)}`.
+5. Quando acaberem os marcadores, desenhe uma linha entre o centro do marcador e o centro do creeper mais próximo. Escreva o ID do marcador e a cor do creeper mais próximo acima da linha.
+6. No mundo real, coloque o robô no centro do quadrado desenhado na sala de aula e espalhe TODOS os creepers (vermelho, verde e azul) ao redor do robô.
+7. Grave um vídeo do seu robô girando 360 graus lentamente, enquanto identifica os creepers e desenha as linhas entre o marcador e cada creeper.
 
-Modifique a função `main` para rodar usando a webcam do seu computador e verifique o mesmo efeito desenvolvido na APS 2.
+### Observação
+Essa é uma atividade complexa, então tende quebar em partes menores e ir testando cada parte. Por exemplo, certifique-se que você consegue detectar os marcadores e desenhar o círculo no centro. Depois, certifique-se que você consegue segmentar as cores e marcar o centro de cada objeto segmentado. E assim por diante.
 
-**Pergunta:** A distância do marcador em relação a câmera está correta? Por que?
-
-<p>
-<details>
-<summary>Spoiler</summary>
-
-A distância do marcador em relação a câmera não está correta. Porque o arquivo de calibração utilizado foi gerado para a câmera do robô e não para a webcam do seu computador.
-
-</details>
-</p>
+## Video
+Grave um vídeo do seu robô realizando a atividade, de upload no YouTube e adicione o link no arquivo README.md do seu repositório.
