@@ -28,14 +28,17 @@ No método `image_callback`, vamos processar imagem recebida.
 
 ```python
     def image_callback(self, msg):
-        if self.runnable:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # Use está linha se estiver usando  `Image`
-            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # Use está linha se estiver usando `CompressedImage`
-            
+        if self.running:
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
+            cv2.imshow('Image', cv_image)
+            cv2.waitKey(1)
+            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
+            cv2.imshow("Image", cv_image)
+            cv2.waitKey(1)
             # Faça aqui o processamento da imagem
             # ou chame uma classe ou função que faça isso
         else:
-            print('Processamento de imagem pausado')
+            print('Image processing is paused')
 ```
 
 Neste método, a imagem recebida é convertida para um objeto do tipo `numpy.ndarray` utilizando a função `imgmsg_to_cv2` ou `compressed_imgmsg_to_cv2` da biblioteca `cv_bridge`. No `__init__` do código, definimos a variável `self.bridge` como `CvBridge()`, essa biblioteca é uma ponte (bridge) entre a biblioteca OpenCV e a ROS, que trabalham com formatos de imagem diferentes.
