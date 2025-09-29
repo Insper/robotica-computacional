@@ -1,6 +1,6 @@
-# Pose e Transformação Coordenada Usando Marcadores Aruco
+# Pose e Transformação Coordenada Usando Marcadores AprilTag
 
-Nesta atividade, vamos aprender sobre o conceito de pose e transformação coordenada. Vamos também aprender como usar marcadores Aruco para estimar a distância e orientação de um objeto em relação a câmera. Depois, vamos usar essa informação para transformar a coordenada do objeto para a coordenada da câmera.
+Nesta atividade, vamos aprender sobre o conceito de pose e transformação coordenada. Vamos também aprender como usar marcadores AprilTag para estimar a distância e orientação de um objeto em relação a câmera. Depois, vamos usar essa informação para transformar a coordenada do objeto para a coordenada da câmera.
 
 ## O que é Pose?
 Pose é a posição e orientação de um objeto em relação a um sistema de coordenada. Sistema de coordenada é um conjunto de eixos que definem a posição e orientação de um objeto.
@@ -31,17 +31,17 @@ Assista o vídeo abaixo para entender como funciona a representação de orienta
 
 [Quaternions and 3d rotation, explained interactively](https://www.youtube.com/watch?v=zjMuIxRvygQ&t=233s)
 
-## Marcadores Aruco
+## Marcadores AprilTag
 Marcadores ArUco são marcadores quadrados binários que são muito eficazes para determinar a pose. Eles são frequentemente usados em realidade aumentada e robótica para rastreamento de posição e orientação.
 
-No arquivo [module_aruco.py](module_aruco.py), temos uma classe que encapsula as funções necessárias para detectar marcadores Aruco e estimar a pose do marcador em relação a câmera, ou seja, no sistema de coordenadas da **câmera**.
+No arquivo [module_aruco.py](module_aruco.py), temos uma classe que encapsula as funções necessárias para detectar marcadores AprilTag e estimar a pose do marcador em relação a câmera, ou seja, no sistema de coordenadas da **câmera**.
 A classe também possui uma função para desenhar o marcador na imagem.
 
-Cada marcador Aruco possui um ID único. O ID é um número inteiro que varia de 0 a 249.
+Cada marcador AprilTag possui um ID único. O ID é um número inteiro que varia de 0 a 249.
 
-O exemplo abaixo mostra como usar a classe Aruco para detectar marcadores Aruco e desenhar o marcador na imagem.
+O exemplo abaixo mostra como usar a classe AprilTag para detectar marcadores AprilTag e desenhar o marcador na imagem.
 
-Pelo exemplo, podemos ver que a podemos detectar todos os marcadores Aruco na imagem usando o atributo da classe `detectaAruco`.
+Pelo exemplo, podemos ver que a podemos detectar todos os marcadores AprilTag na imagem usando o atributo da classe `detectaAprilTag`.
 A saida é uma lista de dicionários, onde cada dicionário contém as seguintes chaves:
 
 * `id`: ID do marcador
@@ -56,7 +56,7 @@ A saida é uma lista de dicionários, onde cada dicionário contém as seguintes
 
 * `distancia`: distância do marcador em relação a câmera - calculada usando o vetor de translação
 
-Você pode também rodar diretamente o arquivo [module_aruco.py](module_aruco.py) para ver o resultado da detecção de marcadores Aruco.
+Você pode também rodar diretamente o arquivo [module_aruco.py](module_aruco.py) para ver o resultado da detecção de marcadores AprilTag.
 
 Modifique a função `main` para rodar usando a webcam do seu computador e verifique o mesmo efeito desenvolvido na APS 2.
 
