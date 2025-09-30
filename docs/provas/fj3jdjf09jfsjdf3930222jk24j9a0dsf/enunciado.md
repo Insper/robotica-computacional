@@ -86,7 +86,7 @@ Utilize o comando abaixo para iniciar o simulador no mapa da prova:
 ros2 launch my_gazebo empty_world.launch.py
 ```
 
-Verifique se o orquestrator está rodando com a presença do topico `/orquestrator` e com a presença de prints no terminal da simulação.
+Verifique se o orquestrator está rodando com a presença do topico `/showbot` e com a presença de prints no terminal da simulação.
 
 Caso o orquestrator não esteja rodando, feche TODOS os terminais e atualize os pacotes com o comando acima.
 
