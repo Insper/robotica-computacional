@@ -197,6 +197,12 @@ Para somar duas imagens, você pode usar a função `cv2.add()`.
 result = cv2.add(img1, img2)
 ```
 
+Inverter uma máscara pode ser feito com a função `cv2.bitwise_not()`.
+
+```python
+mask_inv = cv2.bitwise_not(mask)
+```
+
 ### Restrições 
 
 - A logomarca pode ter diferentes resoluções e proporções, mas o método deve funcionar em qualquer caso.
