@@ -62,7 +62,7 @@ Este exercício avalia a organização e a qualidade dos vídeos dos exercícios
 
 # Exercício 1 - Show Bot (4) - (Desafio: +1,0)
 
-<img src="figs/show.png" alt="Show Bot" width="400">
+![](figs/show.png)
 
 Baseando-se no código `base_control.py` do capítulo 3, crie um arquivo chamado `q1.py` contendo uma classe denominada `ShowBot`. Esta classe deve implementar um **nó** chamado `showbot_node`, responsável por executar **figuras geométricas** sob comando do **Orquestrator**.
 
