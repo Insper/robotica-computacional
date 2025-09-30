@@ -231,8 +231,10 @@ nav:
     #   - "Enunciado": projeto-2/enunciado.md
     #   - "Projeto - Classroom" : https://classroom.github.com/a/4fM2pHCF
 
-    # - Provas:
-      # - AI:
+    - Provas:
+      - AI:
+        - "Download > IMGS": provas/ai/imgs.zip
+
       #   - "Enunciado": provas/ai/enunciado.md
         # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
       
