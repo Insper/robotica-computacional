@@ -83,7 +83,7 @@ O robô deve:
 Utilize o comando abaixo para iniciar o simulador no mapa da prova:
 
 ```bash
-ros2 launch my_gazebo empty.launch.py
+ros2 launch my_gazebo empty_world.launch.py
 ```
 
 Verifique se o orquestrator está rodando com a presença do topico `/orquestrator` e com a presença de prints no terminal da simulação.
