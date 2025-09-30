@@ -182,13 +182,20 @@ O objetivo é que apenas as partes da logomarca (simbolo e/ou texto) seja substi
 
 Uma nova imagem onde o texto do logotipo aparece com o preenchimento do fundo colorido.
 
-!!! dica
-  Para deixar uma imagem do mesmo tamanho da outra, você pode usar a função `cv2.resize()`.
+### Dicas
 
-  ```python
-  h, w = img.shape[:2]              # altura e largura da imagem de referência
-  background = cv2.resize(background, (w, h)) # redimensiona o background para ter o mesmo tamanho
-  ```
+Para deixar uma imagem do mesmo tamanho da outra, você pode usar a função `cv2.resize()`.
+
+```python
+h, w = img.shape[:2]              # altura e largura da imagem de referência
+background = cv2.resize(background, (w, h)) # redimensiona o background para ter o mesmo tamanho
+```
+
+Para somar duas imagens, você pode usar a função `cv2.add()`.
+
+```python
+result = cv2.add(img1, img2)
+```
 
 ### Restrições 
 
