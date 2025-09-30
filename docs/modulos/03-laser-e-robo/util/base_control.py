@@ -12,7 +12,6 @@ class BaseControlNode(Node): # Mude o nome da classe
     def __init__(self):
         super().__init__('base_control_node') # Mude o nome do nó
         # Outra Herança que você queira fazer
-        rclpy.spin_once(self) # Roda pelo menos uma vez para pegar os valores
         self.acao_node = Acao() # Cria o nó da Acao
 
         self.robot_state = 'acao'
