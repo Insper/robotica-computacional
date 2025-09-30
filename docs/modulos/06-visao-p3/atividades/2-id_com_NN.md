@@ -17,22 +17,22 @@ Pronto para usar: já vem com pesos pré-treinados em classes comuns (COCO), ent
 ## Utilizando o YOLOv8 no Robô
 
 Para reduzir a carga do no seu computador, a YOLOv8 já está instalada dentro do robô, mas se mantêm desligada. Você pode ligar a detecção de objetos no robô, mas lembre-se que isso pode afetar o desempenho do robô, por esse motivo, sugerimos que ligue apenas quando for utilizá-la.
-Para ligar a detecção de objetos, basta publicar uma string true no topico `/poweron_yolo`.
+Para ligar a detecção de objetos, basta publicar uma mensagem do tipo `std_msgs/msg/Bool` com o valor true no topico `/poweron_yolo`.
 
 Depois, para visualizar a saída da detecção de objetos, voce pode se inscrever no tópico `/yolo_info`, que publica mensagens do tipo `robcomp_interfaces/YoloArray`.
 
 Agora vamos ver qual é a estrutura da mensagem `robcomp_interfaces/YoloArray`:
 
 ```
-YoloDetector.msg 
-string classe
-float32[4] boxes
-float32 score
+YoloDetector[] yolos
+	string classe
+	float32[4] boxes
+	float32 score
 ```
 
 ### Como interpretar a saída
 
-Para cada objeto detectado, você terá uma mensagem do tipo `YoloDetector.msg`, que contém as seguintes informações:
+Para cada objeto detectado, dentro do parametro `yolos`, você terá uma mensagem do tipo `YoloDetector`, que contém as seguintes informações:
 
 * classe (ex.: person, car)
 * boxes: x, y, largura, altura (coordenadas do retângulo)

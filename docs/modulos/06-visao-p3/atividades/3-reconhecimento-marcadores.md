@@ -45,15 +45,18 @@ Assim como a YOLOv8, a detecção de marcadores AprilTag também está instalada
 Novamente, agora vamos ver qual é a estrutura da mensagem `robcomp_interfaces/TaginfoArray`:
 
 ```
-Taginfo.msg 
-int32 id
-geometry_msgs/Point center
-float32 distance
+Taginfo[] tags
+	int32 id
+	geometry_msgs/Point center
+		float64 x
+		float64 y
+		float64 z
+	float32 distance
 ```
 
 ### Como interpretar a saída
 
-Para cada objeto detectado, você terá uma mensagem do tipo `Taginfo.msg`, que contém as seguintes informações:
+Para cada objeto detectado, dentro do parametro `tags`, você terá uma mensagem do tipo `Taginfo`, que contém as seguintes informações:
 
 * id: ID do marcador
 * center: coordenadas do centro do marcador na imagem
