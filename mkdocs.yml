@@ -179,27 +179,18 @@ nav:
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
           - "Q3 base": modulos/05-visao-p2/aps/ex3.py
 
-    #   - Capítulo 6 - Visão Robótica & Deep Learning:
-    #     - modulos/06-visao-p3/index.md
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
-    #       - "1 - MobileNet":
-    #         - "1 - MobileNet": modulos/06-visao-p3/atividades/1-mobilenet.ipynb
-    #         - "Download > ModuleNet": modulos/06-visao-p3/atividades/module_net.py
-    #         - "Download > Gabarito": modulos/06-visao-p3/atividades/cow_wolf_gab.py
-    #       - "2 - Marcador ArUco":
-    #         - "2 - Marcador ArUco": modulos/06-visao-p3/atividades/2-aruco.ipynb
-    #         - "Download > ModuleArUco": modulos/06-visao-p3/atividades/module_aruco.py
-    #       # - "3 - Reconhecimento dos Creepers":
-    #       #   - "3 - Reconhecimento dos Creepers": modulos/06-visao-p3/atividades/3-rec_creeper.md
-    #       #   - "Download > Atividade 3": modulos/06-visao-p3/atividades/atividade3.py
-    #         # - "Download > Gabarito": modulos/06-visao-p3/atividades/atividade3_gab.py
-        #       - "3 - Visão na ROS 2":
-    #         - "3 - Visão na ROS 2": modulos/05-visao-p2/atividades/3-image_subscriber.md
-    #         - "Download > Nó Básico de Visão": modulos/05-visao-p2/atividades/util/image_subscriber.py
-    #     - APS 6:
-    #       - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
-    #       - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+      # - Capítulo 6 - Visão Robótica & Deep Learning:
+      #   - modulos/06-visao-p3/index.md
+      #   - Atividades:
+      #     - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
+      #     - "1 - Visão na ROS 2":
+      #       - "1 - Visão na ROS 2": modulos/06-visao-p3/atividades/1-image_subscriber.md
+      #       - "Download > Nó Básico de Visão": modulos/06-visao-p3/atividades/util/image_subscriber.py
+      #     - "2 - Detecção com Redes Neurais": modulos/06-visao-p3/atividades/2-id_com_NN.md
+      #     - "3 - Marcador AprilTag": modulos/06-visao-p3/atividades/3-reconhecimento-marcadores.md
+      #   - APS 6:
+      #     - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
+      #     - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
