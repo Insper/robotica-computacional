@@ -1,20 +1,17 @@
-# Módulo 6 - MobileNet e ArUco
+# Módulo 6 - YOLO e AprilTag
 
 !!! pdf
     ![](slides.pdf)
 
-Neste módulo vamos continuar nosso estudo de processamento de imagens com a biblioteca OpenCV. Vamos aprender a utilizar a MobileNet, uma rede neural pré-treinada, para identificar objetos em imagens. Vamos também aprender a utilizar marcadores fiduciais do tipo ArUco para estimar a posição e orientação de objetos em relação à câmera.
+Neste módulo vamos continuar nosso estudo de processamento de imagens com a biblioteca OpenCV. Primeiro vamos aprender a nos inscrever em tópicos da ROS 2 para receber e processar imagens da câmera do robô. Vamos aprender a utilizar a YOLO, uma rede neural pré-treinada, para identificar objetos em imagens. Vamos também aprender a utilizar marcadores fiduciais do tipo AprilTag para estimar a posição e orientação de objetos em relação à câmera.
 
 ## Atividades
 
-As atividades deste módulo focam em melhorar nossas habilidades de identificação de objetos, utilizando a MobileNet, e de estimativa de pose, utilizando marcadores fiduciais do tipo ArUco.
+As atividades deste módulo focam em melhorar nossas habilidades de identificação de objetos, utilizando a YOLO, e de estimativa de pose, utilizando marcadores fiduciais do tipo AprilTag.
+- [1 - Processando Imagens na ROS 2](atividades/1-image_subscriber.md) - Subscrição de imagens da câmera do robô e processamento de imagens na ROS 2.
+- [2 - Detecção de Objetos Complexos com Redes Neurais](atividades/2-id_com_NN.md) - Utilização da YOLO para identificação de objetos em imagens no OpenCV.
+- [3 - Marcadores Fiduciais](atividades/3-reconhecimento-marcadores.md) - Conceitos de Pose e estimativa de Pose com marcadores feduciais do tipo AprilTag.
 
-- [1 - Identificação com a MobileNet](atividades/1-mobilenet.ipynb) - Utilização da MobileNet para identificação de objetos em imagens no OpenCV.
-- [2 - Marcadores Fiduciais](atividades/2-aruco.ipynb) - Conceitos de Pose e estimativa de Pose com marcadores feduciais do tipo ArUco.
-
-Clique no link abaixo para realizar o download dos notebooks das atividades.
-!!! download
-    [Download dos Notebooks](atividades_cap_6.zip)
 
 ## Para entregar
 
