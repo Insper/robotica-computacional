@@ -3,12 +3,13 @@
 !!! pdf
     ![](slides.pdf)
 
-Neste módulo vamos continuar nosso estudo de processamento de imagens com a biblioteca OpenCV. Primeiro vamos aprender a nos inscrever em tópicos da ROS 2 para receber e processar imagens da câmera do robô. Vamos aprender a utilizar a YOLO, uma rede neural pré-treinada, para identificar objetos em imagens. Vamos também aprender a utilizar marcadores fiduciais do tipo AprilTag para estimar a posição e orientação de objetos em relação à câmera.
+Neste módulo vamos continuar nosso estudo de processamento de imagens. Primeiro vamos aprender a nos inscrever em tópicos da ROS 2 para receber e processar imagens da câmera do robô. Em seguida, vamos aprender a utilizar a [YOLO](https://arxiv.org/abs/1506.02640) (You Only Look Once), uma rede neural pré-treinada, para identificar objetos em imagens. Vamos também aprender a utilizar marcadores fiduciais do tipo [AprilTag](https://ieeexplore.ieee.org/document/5979561) para identificar e estimar a posição e orientação de objetos em relação à câmera.
 
 ## Atividades
 
 As atividades deste módulo focam em melhorar nossas habilidades de identificação de objetos, utilizando a YOLO, e de estimativa de pose, utilizando marcadores fiduciais do tipo AprilTag.
-- [1 - Processando Imagens na ROS 2](atividades/1-image_subscriber.md) - Subscrição de imagens da câmera do robô e processamento de imagens na ROS 2.
+
+- [1 - Processando Imagens na ROS 2](atividades/1-image_subscriber.md) - Assinatura de imagens da câmera do robô e processamento de imagens na ROS 2.
 - [2 - Detecção de Objetos Complexos com Redes Neurais](atividades/2-id_com_NN.md) - Utilização da YOLO para identificação de objetos em imagens no OpenCV.
 - [3 - Marcadores Fiduciais](atividades/3-reconhecimento-marcadores.md) - Conceitos de Pose e estimativa de Pose com marcadores feduciais do tipo AprilTag.
 
