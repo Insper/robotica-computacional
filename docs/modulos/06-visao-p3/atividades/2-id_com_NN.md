@@ -44,7 +44,7 @@ Agora vamos praticar o uso da YOLOv8.
 Baseado no código do arquivo [image_subscriber.py](/docs/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `perigo.py` com uma classe chamada `DetectorPerigo`, com um nó chamado `detector_perigo_node` que se inscreva no tópico `/yolo_info` e:
 
 1. Desenhe os retângulos ao redor dos objetos detectados na imagem.
-2. Escreva a classe acima de cada retângulo.
+2. Escreva a classe da detecção acima de cada retângulo.
 3. Faça o robô girar em velocidade constante sem se deslocar (girar no próprio eixo).
 4. Enquanto o robô gira, se o robô detectar uma vaca perto de um lobo, deve escrever em vermelho "Cuidado! Vaca em Perigo!" na imagem.
 
