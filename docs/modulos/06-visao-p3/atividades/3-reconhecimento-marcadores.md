@@ -75,7 +75,7 @@ Baseado no código do arquivo [image_subscriber.py](/docs/modulos/06-visao-p3/ut
 7. Grave um vídeo do seu robô girando 360 graus lentamente, enquanto identifica os creepers e desenha as linhas entre o marcador e cada creeper.
 
 ### Observação
-Essa é uma atividade complexa, então tende quebar em partes menores e ir testando cada parte. Por exemplo, certifique-se que você consegue detectar os marcadores e desenhar o círculo no centro. Depois, certifique-se que você consegue segmentar as cores e marcar o centro de cada objeto segmentado. E assim por diante.
+Essa é uma atividade complexa, então tente quebrar em partes menores e ir testando cada parte. Por exemplo, certifique-se que você consegue pegar as detecções do tópico e desenhar um círculo no centro de cada marcador. Depois, certifique-se que você consegue segmentar as cores e marcar o centro de cada objeto segmentado. E assim por diante.
 
 ## Video
 Grave um vídeo do seu robô realizando a atividade, de upload no YouTube e adicione o link no arquivo README.md do seu repositório.
