@@ -23,8 +23,8 @@ extra:
     link_APS4: https://classroom.github.com/a/JAHIzlL7
     data_APS5: Terça - 23/09 às 23:59
     link_APS5: https://classroom.github.com/a/8HCjiGTo
-    data_APS6: TBA
-    link_APS6: TBA
+    data_APS6: Segunda - 13/10 às 12:00
+    link_APS6: https://classroom.github.com/a/Z9mNVIwd
     
     data_AI: ~25/09
     link_AI: TBA
@@ -188,7 +188,7 @@ nav:
           - "2 - Detecção com Redes Neurais": modulos/06-visao-p3/atividades/2-id_com_NN.md
           - "3 - Marcador AprilTag": modulos/06-visao-p3/atividades/3-reconhecimento-marcadores.md
         - APS 6:
-      #     - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
+          - "APS 6 - Classroom" : https://classroom.github.com/a/Z9mNVIwd
           - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
