@@ -2,7 +2,7 @@
 
 Nesta atividade, vamos aprender a processar imagens na ROS 2. Para isso, vamos utilizar a biblioteca OpenCV.
 
-No arquivo [base_visao.py](util/image_subscriber.py), você encontrará um código que se inscreve nó tópico de imagem da câmera do robô. Utilize este código como base para realizar as atividades do curso.
+No arquivo [base_visao.py](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/util/image_subscriber.py), você encontrará um código que se inscreve nó tópico de imagem da câmera do robô. Utilize este código como base para realizar as atividades do curso.
 
 Baixe esse arquivo e coloque-os na em uma pasta de fácil acesso.
 
