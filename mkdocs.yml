@@ -179,18 +179,17 @@ nav:
           - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
           - "Q3 base": modulos/05-visao-p2/aps/ex3.py
 
-      # - Capítulo 6 - Visão Robótica & Deep Learning:
-      #   - modulos/06-visao-p3/index.md
-      #   - Atividades:
-      #     - "Download > Atividades": modulos/06-visao-p3/atividades_cap_6.zip
-      #     - "1 - Visão na ROS 2":
-      #       - "1 - Visão na ROS 2": modulos/06-visao-p3/atividades/1-image_subscriber.md
-      #       - "Download > Nó Básico de Visão": modulos/06-visao-p3/atividades/util/image_subscriber.py
-      #     - "2 - Detecção com Redes Neurais": modulos/06-visao-p3/atividades/2-id_com_NN.md
-      #     - "3 - Marcador AprilTag": modulos/06-visao-p3/atividades/3-reconhecimento-marcadores.md
-      #   - APS 6:
+      - Capítulo 6 - Visão Robótica & Deep Learning:
+        - modulos/06-visao-p3/index.md
+        - Atividades:
+          - "1 - Visão na ROS 2":
+            - "1 - Visão na ROS 2": modulos/06-visao-p3/atividades/1-image_subscriber.md
+            - "Download > Nó Básico de Visão": modulos/06-visao-p3/atividades/util/image_subscriber.py
+          - "2 - Detecção com Redes Neurais": modulos/06-visao-p3/atividades/2-id_com_NN.md
+          - "3 - Marcador AprilTag": modulos/06-visao-p3/atividades/3-reconhecimento-marcadores.md
+        - APS 6:
       #     - "APS 6 - Classroom" : https://classroom.github.com/a/TYkG7Aze
-      #     - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
+          - "Enunciado": modulos/06-visao-p3/aps/enunciado.md
     # - Unidade 3:
     #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
