@@ -184,7 +184,7 @@ nav:
         - Atividades:
           - "1 - Visão na ROS 2":
             - "1 - Visão na ROS 2": modulos/06-visao-p3/atividades/1-image_subscriber.md
-            - "Download > Nó Básico de Visão": modulos/06-visao-p3/atividades/util/image_subscriber.py
+            - "Download > Nó Básico de Visão": modulos/06-visao-p3/util/image_subscriber.py
           - "2 - Detecção com Redes Neurais": modulos/06-visao-p3/atividades/2-id_com_NN.md
           - "3 - Marcador AprilTag": modulos/06-visao-p3/atividades/3-reconhecimento-marcadores.md
         - APS 6:
