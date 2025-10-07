@@ -41,7 +41,7 @@ Para cada objeto detectado, dentro do parametro `yolos`, você terá uma mensage
 
 ## Prática 1
 Agora vamos praticar o uso da YOLOv8.
-Baseado no código do arquivo [image_subscriber.py](/docs/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `perigo.py` com uma classe chamada `DetectorPerigo`, com um nó chamado `detector_perigo_node` que se inscreva no tópico `/yolo_info` e:
+Baseado no código do arquivo [image_subscriber.py](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `perigo.py` com uma classe chamada `DetectorPerigo`, com um nó chamado `detector_perigo_node` que se inscreva no tópico `/yolo_info` e:
 
 Mapa de Gazebo:
 ```

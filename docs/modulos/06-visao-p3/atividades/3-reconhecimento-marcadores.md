@@ -64,7 +64,7 @@ Para cada objeto detectado, dentro do parametro `tags`, você terá uma mensagem
 
 ## Prática 2
 Agora vamos praticar o uso dos marcadores AprilTag e desenvolver um código para identificar os creepers (combinar ID com CORES).
-Baseado no código do arquivo [image_subscriber.py](/docs/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `creepers.py` com uma classe chamada `IdentificaCreeper`, com um nó chamado `identifica_creeper_node` que se inscreva no tópico `/tag_list` e:
+Baseado no código do arquivo [image_subscriber.py](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/util/image_subscriber.py), crie um arquivo chamado `creepers.py` com uma classe chamada `IdentificaCreeper`, com um nó chamado `identifica_creeper_node` que se inscreva no tópico `/tag_list` e:
 
 1. Desenhe um círculo no centro do marcador.
 2. Segmenta as cores dos creepers (vermelho, verde e azul) e marca o centro de cada objeto segmentado. Para cada cor de objeto detectado deve ser armazenado em um dicionário com a cor do creeper e o centro do objeto.
