@@ -35,15 +35,12 @@ class ImageNode(Node): # Mude o nome da classe
             self.running = False
         elif msg.data.lower() == 'true':
             self.running = True
-        print(self.running )
 
     def image_callback(self, msg):
         if self.running:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
-            cv2.imshow('Image', cv_image)
-            cv2.waitKey(1)
             # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
-            cv2.imshow("Image", cv_image)
+            cv2.imshow('Image', cv_image)
             cv2.waitKey(1)
             # Faça aqui o processamento da imagem
             # ou chame uma classe ou função que faça isso
