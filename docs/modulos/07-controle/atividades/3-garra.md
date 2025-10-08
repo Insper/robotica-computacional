@@ -34,7 +34,7 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
     * Para esperar `self.delay` segundos, utilize a função `time.sleep(self.delay)`.
 
 ## Prática 2
-Baseando-se no codigo [Nó Base de Ação](../util/base_action.py) e na sua solução do Indentifica Creeper da APS 6 e no desafio da APS 6, implemente a **Ação de Pegar o Creeper** com o seguindo comportamento:
+Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) e na sua solução do "Exercício 2 - Identifica Creeper" e no "Desafio" da [APS 6](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/aps/enunciado/), implemente a **Ação de Pegar o Creeper** com o seguindo comportamento:
 
 1. A Ação de Pegar o Creeper deve finalizar após pegar o creeper.
 2. Mude o nome da classe para `SegueLinha` e o nome do nó para `seguelinha_node`.

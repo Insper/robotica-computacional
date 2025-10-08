@@ -33,7 +33,7 @@ Cuidado com o sinal do erro! Pense quando o robô deve girar para a esquerda ou 
 
 ## Prática 1
 
-Baseando-se no codigo [Nó Base de Ação](../util/base_action.py) e [Nó Base de Visão](../util/vision_sub_base.py), implemente a **Ação Segue Linha** com o seguindo os passos:
+Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) e [Nó Base de Visão](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/util/image_subscriber.py), implemente a **Ação Segue Linha** com o seguindo os passos:
 
 1. A Ação Segue Linha não deve ter fim (ou seja, o robô deve seguir a linha até o Cliente finalizar).
 1. Mude o nome da classe para `SegueLinha` e o nome do nó para `seguelinha_node`.
