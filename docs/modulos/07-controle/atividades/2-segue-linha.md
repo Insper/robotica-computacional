@@ -1,4 +1,40 @@
-# Segue Linha com Controle Proporcional
+# OLD
+# Exercício 2 - Segue Linha (3 pontos)
+Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
+
+* O nó deve ter estados, `centraliza` e `segue` e `para`.
+
+* Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
+
+* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha mais próximo nas variáveis `self.cx`, `self.cy`, e a metade da largura da imagem na variável `self.w`.
+
+* A função `image_callback` deve ser executada apenas se a variável `self.running` for `True`.
+
+* Calcule também a distância do centro da linha ao centro da imagem.
+
+<!-- # Calcular erro no callback -->
+
+* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`.
+
+* o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
+
+* o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
+
+* O estado `para` deve ser chamado depois de completar uma volta na pista, e o robô deve parar.
+
+**Dica:** Ao iniciar a execução do nó, armazene em uma variável a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
+
+## Critérios de Avaliação:
+
+1. Nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
+2. Desenvolveu o nó `seguidor_node` com os comportamentos corretos.
+3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
+5. Navega corretamente pela pista.
+5. **Vídeo:** Mostra o robô executando o comportamento e navegando por uma volta completa na pista e parando.
+6. **Vídeo:** O robô não colide com nenhum obstáculo.
+7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
+
+# Segue Linha
 
 Agora que aprendemos o conceito de controle proporcional, vamos modificar o código do nosso seguidor de linha para que ele controle o ângulo do robô de acordo com a posição do centro de massa do segmendo de linha detectado.
 
