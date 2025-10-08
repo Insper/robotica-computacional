@@ -47,9 +47,30 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
 * **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
-____________________________________________________________________
 
-# Exercício 1 - Segue Linha P (9 pontos)
-Resolva o exercicio na atividade [2 - Segue-Linha-P](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
+---
 
-Repita o vídeo do **Exercício 2 - Segue Linha** da **APS 6**, agora com controle proporcional e adicione o link no arquivo `README.md` do seu repositório. Nesse caso, o robô deve seguir a linha de forma suave e precisa.
+# Exercício 1 - Ação Segue Linha (8 pontos)
+Primeiro resolva o exercicio na atividade [2 - Segue-Linha](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
+
+Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `seguidor_de_linha.py` com um nó `seguidor_de_linha_node` que faça o robô **real** de uma volta completa no exterior do circuito de linha amarela do laboratório e **pare próximo do ponto de partida**.
+
+## Ação Cliente (Principal)
+O nó principal deve:
+1. Ter dois estados: `segue_linha`, `done`.
+2. Herdar de ??.
+3. Instanciar a ação `segue_linha`.
+4. Guardar ???.
+5. Definir uma flag `self.iniciando = True`.
+6. Iniciar a ação `segue_linha` no estado `segue_linha`.
+7. Durante o estado `segue_linha` ele deve calcular ???? usando ???.
+8. Quando ???? for maior que {valor} ele deve mudar a flag `self.iniciando = False`.
+9. Quando a flag `self.iniciando` for `False` e ???? for menor que {valor} ele deve finalizar a ação e mudar para o estado `done`. 
+
+# Desafio - Segue Linha Time Attack (+0 ou +1 ou +2 pontos)
+Modifique o código do exercício 1 para que o robô complete o circuito de linha amarela do laboratório no menor tempo possível durante o desafio na aula. O tempo é contado de quando o aluno incia o robo até quando ele para "perto de onde iniciou". Cada grupo terá 3 tentativas para completar o circuito ou 15 minutos, podendo modificar o código entre as tentativas. O grupo que completar o circuito no menor tempo ganha 2 pontos extras, o segundo lugar e o terceiro lugar ganham 1 ponto.
+
+---
+# Exercício 2 - Ação de Pegar o Creeper (2 pontos + 0.5 extra no projeto (para o individuo, não o grupo do projeto))
+
+Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/).

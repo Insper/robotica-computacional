@@ -45,7 +45,3 @@ Baseando-se no codigo [Nó Base de Ação](../util/base_action.py) e na sua solu
     * `aproximar`: o robô deve se aproximar do creeper, até ficar a uma distância apropriada, centralizando o mesmo na imagem usando controle proporcional.
     * `finaliza`: prepare a garra e assumindo que o creeper está no centro da imagem, pode andar uma distância fixa com base na leitura do laser do front ou continuar se aproximando até utilizando controle proporcional.
     * `pega`: quando crreper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação.
-
-# Exercício 2 - Ação de Pegar o Creeper (2 pontos + 0.5 extra no projeto (para o individuo, não o grupo do projeto))
-
-Resolva o exercicio na atividade [3 - Pose e Transformação Coordenada Usando Marcadores AprilTag](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/).
