@@ -1,14 +1,6 @@
 # Segue Linha
 
-Agora que aprendemos o conceito de controle proporcional, vamos implementar a **Ação Segue Linha** para que o robô controle o ângulo de acordo com a posição do centro de massa do segmento da **linha amarela** detectado.
-Dessa forma o robô terá um comportamento mais suave e preciso ao seguir a linha.
-
-## Material Necessário
-
-* Comece do **`action_base`**.
-* **Incorpore** o **`vision_sub_base`** ao código para assinar a imagem **comprimida** da câmera e disparar o `image_callback`.
-* Não há outra variação de prática neste semestre: use apenas **segue_linha** (não existe mais `segue_linha_p`).
-* O código desta atividade será a **Ação Segue Linha**.
+Agora que aprendemos o conceito de controle proporcional, vamos implementar a **Ação Segue Linha** para que o robô siga a linha amarela do controle de forma suave e precisa.
 
 ## Conceito
 
@@ -20,12 +12,19 @@ rot = K_p * erro
 
 * `rot` é a velocidade angular do robô (ex.: `Twist.angular.z`),
 * `K_p` é a constante proporcional,
-* `erro` é o **deslocamento horizontal** entre o **centro da linha amarela** detectada e o **centro da imagem**.
+* `erro` erro da medição.
 
-**Como calcular o erro (resumo, caso da linha amarela):**
+### Como calcular o erro para seguir a linha:
+Para andar em direção a um alvo, o alvo deve estar **centralizado** na horizontal na imagem, ou seja, o **x do centróide do alvo** deve ser igual ao **x do centro da imagem**. Com isso em mente o erro é a distância horizontal (x) entre o centro da imagem e o centróide do segmento amarelo.
+
+### Como calcular na prática:
 No `image_callback`, após detectar o centróide do segmento amarelo:
 
-* Guarde `self.cx_linha` (x do centróide), `self.cy` e **`self.w` = metade da largura da imagem**.
+* Guarde `self.cx_linha` (x do centróide) e **`self.w` = metade da largura da imagem**.
+* Calcule o erro:
+
+  * `self.erro = self.cx_linha - self.w` (em pixels)
+  * Se a linha amarela não 
 * Então:
 
   * `erro_px = self.cx_linha - self.w` (em pixels)
