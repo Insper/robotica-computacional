@@ -1,18 +1,14 @@
 # Módulo 7 - Controle Proporcional
 
-Neste módulo vamos aprender uma forma mais elegante de controlar o robô utilizando a ROS 2 implementando controle proporcional. O controle proporcional é uma técnica de controle que utiliza a diferença entre o valor desejado e o valor medido para calcular a ação de controle.
-
-Nesse ponto o seguidor de linha funciona em dois estados, um para seguir a linha e outro para centralizar o robô. O problema é que o movimento do robô é quebrado em pequenos passos. Uma forma mais elegante de controlar o robô é, enquanto o robô anda, ele gira proporcionalmente a distância entre a linha e o centro do robô.
+Neste módulo vamos aprender uma forma elegante de controlar o robô utilizando controle proporcional. Controle proporcional é uma técnica de controle que utiliza a diferença entre o valor desejado e o valor medido para calcular uma ação de controle que é proporcional a essa diferença. Também vamos aprender a utilizar a garra do robô para pegar objetos e manipular o ambiente.
 
 ## Atividades
-As atividades deste módulo focam em introduzir controle proporcional
-
+As atividades deste módulo focam em introduzir controle proporcional e a utilização da garra do robô.
 Esse conceito será explorado nas seguintes atividades,
 
 - [Atividade 1](atividades/1-controle-proporcional.ipynb) - Introdução ao conceito de controle proporcional.
-- [Atividade 2](atividades/2-seguelinha-proporcional.md) - Aplicação do controle proporcional no seguidor de linha.
-- [Atividade 3](atividades/3-identifica_creeper.md) - Desenvolvimento de um nó que identifica os creepers, combinando a detecção de cor e ID.
-- [Atividade 4](atividades/4-garra.md) - Entendendo a utilização da garra.
+- [Atividade 2](atividades/2-seguelinha.md) - Desenvolvendo uma ação que segue a linha amarela utilizando controle proporcional.
+- [Atividade 3](atividades/3-garra.md) - Entendendo a utilização da garra. Desenvolvendo uma ação que identifica e pega o creeper desejado utilizando a garra do robô.
 
 ## Para entregar
 
