@@ -53,7 +53,7 @@ Baseando-se no codigo [Nó Base de Ação](../util/base_action.py) e [Nó Base d
 
 ---
 
-# Exercício 1 - Ação Segue Linha (5 pontos)
+# Exercício 1 - Ação Segue Linha (8 pontos)
 Primeiro resolva o exercicio na atividade [1 - Ação Segue Linha](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/).
 
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `seguidor_de_linha.py` com um nó `seguidor_de_linha_node` que faça o robô **real** de uma volta completa no exterior do circuito de linha amarela do laboratório e **pare próximo do ponto de partida**.

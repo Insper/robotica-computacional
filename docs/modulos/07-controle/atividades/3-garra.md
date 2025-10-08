@@ -32,3 +32,20 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
     * Se receber o comando **baixo** move o ombro para baixo e espera `self.delay` segundos.
     * Se receber o comando **frente** move o ombro para frente e espera `self.delay` segundos.
     * Para esperar `self.delay` segundos, utilize a função `time.sleep(self.delay)`.
+
+## Prática 2
+Baseando-se no codigo [Nó Base de Ação](../util/base_action.py) e na sua solução do Indentifica Creeper da APS 6 e no desafio da APS 6, implemente a **Ação de Pegar o Creeper** com o seguindo comportamento:
+
+1. A Ação de Pegar o Creeper deve finalizar após pegar o creeper.
+2. Mude o nome da classe para `SegueLinha` e o nome do nó para `seguelinha_node`.
+3. Mude também a chamada da classe na função `main()` para `SegueLinha()`.
+4. Deve receber a cor e o id do creeper a ser pego como parâmetros na função `reset()`. 
+3. A ação pode ter quantos estados forem nescessários, mas recomendamos ter pelo menos os estados `procura`, `aproximar`, `finaliza`, `pega`, `stop` e `done`.
+    * `procura`: o robô deve procurar o creeper girando no local.
+    * `aproximar`: o robô deve se aproximar do creeper, até ficar a uma distância apropriada, centralizando o mesmo na imagem usando controle proporcional.
+    * `finaliza`: prepare a garra e assumindo que o creeper está no centro da imagem, pode andar uma distância fixa com base na leitura do laser do front ou continuar se aproximando até utilizando controle proporcional.
+    * `pega`: quando crreper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação.
+
+# Exercício 2 - Ação de Pegar o Creeper (2 pontos + 0.5 extra no projeto (para o individuo, não o grupo do projeto))
+
+Resolva o exercicio na atividade [3 - Pose e Transformação Coordenada Usando Marcadores AprilTag](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/).
