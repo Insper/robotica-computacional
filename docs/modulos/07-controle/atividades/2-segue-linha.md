@@ -1,72 +1,123 @@
-# OLD
-# Exercício 2 - Segue Linha (3 pontos)
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `segue_linha.py` com um nó denominado `seguidor_node`, que faça com que robô **real** siga a linha amarela do chão. O nó deve:
-
-* O nó deve ter estados, `centraliza` e `segue` e `para`.
-
-* Adicione um subscriber, que se inscreve no tópico de imagem **comprimida** e direciona para a função `image_callback`.
-
-* A função `image_callback` deve filtrar a faixa amarela na pista e armazenar o centro da linha mais próximo nas variáveis `self.cx`, `self.cy`, e a metade da largura da imagem na variável `self.w`.
-
-* A função `image_callback` deve ser executada apenas se a variável `self.running` for `True`.
-
-* Calcule também a distância do centro da linha ao centro da imagem.
-
-<!-- # Calcular erro no callback -->
-
-* Caso o robô não veja nenhum contorno, defina o centro como `(-1,-1)`, ou seja,`self.cx = -1`, `self.cy = -1`.
-
-* o estado `centraliza` deve centralizar o robô no segmento de linha amarelo mais relevante.
-
-* o estado `segue` deve fazer o robô seguir a linha amarela, se movendo para frente.
-
-* O estado `para` deve ser chamado depois de completar uma volta na pista, e o robô deve parar.
-
-**Dica:** Ao iniciar a execução do nó, armazene em uma variável a posição inicial do robô e compare com a posição atual para saber se o robô completou uma volta.
-
-## Critérios de Avaliação:
-
-1. Nó filtra corretamente a imagem da câmera para encontrar a linha amarela.
-2. Desenvolveu o nó `seguidor_node` com os comportamentos corretos.
-3. Não utiliza nenhuma função de `sleep` e `while` no código. Com exceção do `sleep` para "dar boot" no robô.
-5. Navega corretamente pela pista.
-5. **Vídeo:** Mostra o robô executando o comportamento e navegando por uma volta completa na pista e parando.
-6. **Vídeo:** O robô não colide com nenhum obstáculo.
-7. **Vídeo:** Link do vídeo do robô em ação no Youtube.
-
 # Segue Linha
 
-Agora que aprendemos o conceito de controle proporcional, vamos modificar o código do nosso seguidor de linha para que ele controle o ângulo do robô de acordo com a posição do centro de massa do segmendo de linha detectado.
-
+Agora que aprendemos o conceito de controle proporcional, vamos implementar a **Ação Segue Linha** para que o robô controle o ângulo de acordo com a posição do centro de massa do segmento da **linha amarela** detectado.
 Dessa forma o robô terá um comportamento mais suave e preciso ao seguir a linha.
 
 ## Material Necessário
 
-Primeiramente, vamos começar do seu código do seguir de linha ou você pode baixar o gabarito ao lado <--.
+* Comece do **`action_base`**.
+* **Incorpore** o **`vision_sub_base`** ao código para assinar a imagem **comprimida** da câmera e disparar o `image_callback`.
+* Não há outra variação de prática neste semestre: use apenas **segue_linha** (não existe mais `segue_linha_p`).
+* O código desta atividade será a **Ação Segue Linha**.
 
 ## Conceito
 
-Relembrando o conceito de controle proporcional, temos um sistema de controle que ajusta a saída proporcionalmente ao erro. No caso do seguidor de linha, o erro é a diferença entre a posição do centro de massa do segmento de linha detectado e o centro da imagem.
+Relembrando o controle proporcional: a saída é ajustada **proporcionalmente ao erro**.
 
 ```python
 rot = K_p * erro
 ```
 
-Onde a variável `rot` é a velocidade angular do robô, `K_p` é a constante proporcional e `erro` é a diferença entre a posição do centro de massa do segmento de linha detectado e o centro da imagem.
+* `rot` é a velocidade angular do robô (ex.: `Twist.angular.z`),
+* `K_p` é a constante proporcional,
+* `erro` é o **deslocamento horizontal** entre o **centro da linha amarela** detectada e o **centro da imagem**.
+
+**Como calcular o erro (resumo, caso da linha amarela):**
+No `image_callback`, após detectar o centróide do segmento amarelo:
+
+* Guarde `self.cx_linha` (x do centróide), `self.cy` e **`self.w` = metade da largura da imagem**.
+* Então:
+
+  * `erro_px = self.cx_linha - self.w` (em pixels)
+  * *Opcional (recomendado):* `erro = erro_px / self.w` (normalizado ≈ `[-1, 1]`)
+
+Se **não houver linha**, defina `self.cx_linha = -1` e `self.cy = -1` e trate o erro como ausente (ex.: `erro = None`).
 
 ## Prática
 
-Com isso em mente, faça as seguintes modificações no código do seguidor de linha:
+Implemente a **Ação Segue Linha** a partir do `action_base`, **incorporando** o `vision_sub_base`, seguindo os passos:
 
-1. Adicione uma variável `self.kp` no método `__init__` para armazenar a constante proporcional - lembre-se de inicializá-la com um valor adequado (considere a largura da imagem e as limitações do robô) e remova o estado `centraliza`.
+1. **Estados da Ação**
+   Implemente três estados: `centraliza`, `segue` e `para`.
 
-2. No estado `segue`, se `self.cx == np.inf`, o robô deve apenas girar para encontrar a linha.
+   * `centraliza`: alinha o robô com o segmento amarelo mais relevante.
+   * `segue`: faz o robô avançar seguindo a linha.
+   * `para`: após completar **uma volta** na pista, zera as velocidades e encerra a ação.
 
-3. No estado `segue`, defina uma velocidade linear constante e calcule o erro como a diferença entre a posição do centro de massa do segmento de linha detectado e o centro da imagem, por fim, utilize a fórmula do controle proporcional para calcular a velocidade angular do robô.
+2. **Assinatura da câmera (imagem comprimida)**
+   Use o `vision_sub_base` para adicionar um **subscriber** ao tópico de imagem **comprimida**, chamando `image_callback`.
+   Garanta que o `image_callback` **só execute** se `self.running == True`.
 
-4. Agora teste o robô e ajuste o valor de `self.kp` para que o robô siga a linha de forma suave e precisa.
+3. **`image_callback` (detecção + erro já no callback)**
 
-5. **DESAFIO:** Ajuste os valores de `self.kp` e o delay da chamada da função `self.control` para que o robô siga a linha o mais rápido possível sem perder a precisão.
+   * **Filtre o amarelo** (ex.: HSV com máscara + morfologia).
+   * Selecione o **segmento mais próximo/relevante** e calcule o centróide.
+   * Preencha:
 
-6. Adicione um estado `stop` que pare o robô. Modifique o callback da câmera para não rodar quando o estado for `stop`.
+     * `self.cx_linha` e `self.cy`
+     * `self.w` = metade da largura da imagem (pode salvar uma única vez se fixo)
+   * **Calcule o erro aqui**:
 
+     ```python
+     if self.running:
+         if self.cx_linha != -1:
+             erro_px = self.cx_linha - self.w
+             self.erro = erro_px / self.w      # normalizado (opcional)
+         else:
+             self.erro = None
+     ```
+   * Se **não houver contorno**, defina `self.cx_linha = -1` e `self.cy = -1`.
+
+4. **Parâmetros e inicialização**
+   No `__init__`:
+
+   * Defina `self.kp` (ganho proporcional), `self.v_const` (velocidade linear), `self.w_max` (limite de giro) e `self.running = True`.
+   * Armazene a **posição inicial** do robô (ex.: odometria/TF) em `self.pose_inicial` para detectar o fechamento da volta.
+
+5. **Lógica do estado `centraliza`**
+
+   * Se `self.erro is None` (linha não vista), **gire lentamente** para procurar (ex.: `v = 0.0`, `w = w_busca`).
+   * Se houver erro, use controle proporcional apenas no giro (ex.: `v` pequeno ou `0.0`, `w = clip(-self.kp * self.erro, ±self.w_max)`).
+   * Ao **reduzir |erro| abaixo de um limiar** (ex.: `0.05`), transicione para `segue`.
+
+6. **Lógica do estado `segue`**
+
+   * Use **velocidade linear constante**: `v = self.v_const`.
+   * Controle o giro com P: `w = clip(-self.kp * self.erro, ±self.w_max)`.
+   * Se `self.erro is None` por algumas iterações, volte para `centraliza` (estratégia de busca).
+
+7. **Lógica do estado `para` (volta completa)**
+
+   * Detecte quando o robô retorna próximo de `self.pose_inicial` **após ter percorrido distância/tempo mínimos** (para evitar parar imediatamente).
+   * Ao confirmar a **volta completa**, publique `v = 0.0`, `w = 0.0`, defina `self.running = False` e finalize a Ação.
+
+8. **Restrições importantes**
+
+   * **Não use `while` nem `sleep`** (exceto um `sleep` curto de *boot*, se necessário).
+   * Estruture tudo via **callbacks** e/ou **Timers** do ROS (ex.: `rospy.Timer` ou equivalente) para a função de controle.
+
+9. **Ajuste fino (tuning)**
+
+   * Teste e ajuste `self.kp` para um seguimento **suave e preciso**.
+   * Faça *clamp* em `w` (`±self.w_max`) para evitar giros bruscos.
+   * *Opcional:* use um limiar de erro para decidir a transição `centraliza` → `segue`.
+
+10. **Validações esperadas** (alinhadas ao enunciado)
+
+    * Filtragem correta do **amarelo** e cálculo do **erro** no `image_callback`.
+    * Ação com os três estados (`centraliza`, `segue`, `para`) funcionando.
+    * **Navegação** pela pista sem colisões.
+    * **Parada** após completar **uma volta**.
+
+---
+
+### Observação sobre nomes de variáveis
+
+Para manter consistência com este handout:
+
+* Use `self.cx_linha` para o x do centróide da linha detectada,
+* `self.cy` para o y,
+* `self.w` para **metade da largura** da imagem,
+* `self.erro` para o erro (normalizado, se optar).
+
+Isso facilita a leitura do código da **Ação Segue Linha** e o reuso da lógica de controle.
