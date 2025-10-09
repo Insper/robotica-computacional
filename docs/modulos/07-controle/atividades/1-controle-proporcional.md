@@ -65,40 +65,56 @@ function simular(Kp, dt) {
   const altitudeInicial = 0.0;
   const tempos = [];
   const altitudes = [];
+
   let altitude = altitudeInicial;
   for (let t = 0; t <= 10; t += dt) {
     tempos.push(t.toFixed(2));
+
+    // Cálculo do erro e da ação proporcional
     const erro = setpoint - altitude;
     const W = Kp * erro;
+
+    // Atualiza altitude
     altitude = altitude + W * dt;
+
+    // Evita explosões numéricas e garante limites realistas
+    if (altitude > 2 * setpoint) altitude = 2 * setpoint;
+    if (altitude < 0) altitude = 0;
+
     altitudes.push(altitude);
   }
-  return {tempos, altitudes, setpoint};
+
+  return { tempos, altitudes, setpoint };
 }
 
 function updatePlot() {
   const Kp = parseFloat(document.getElementById("kp").value);
   const dt = parseFloat(document.getElementById("dt").value);
-  const {tempos, altitudes, setpoint} = simular(Kp, dt);
+  const { tempos, altitudes, setpoint } = simular(Kp, dt);
 
-  const trace1 = {
+  const traceDrone = {
     x: tempos, y: altitudes,
     mode: "lines", name: "Altitude do Drone",
-    line: {color: "#0074D9", width: 3}
+    line: { color: "#0074D9", width: 3 }
   };
-  const trace2 = {
+
+  const traceTarget = {
     x: tempos, y: Array(tempos.length).fill(setpoint),
     mode: "lines", name: "Altitude Alvo",
-    line: {color: "red", dash: "dash"}
+    line: { color: "red", dash: "dash" }
   };
+
   const layout = {
     title: `Simulação de Controle Proporcional (Kp=${Kp.toFixed(1)}, Δt=${dt.toFixed(2)}s)`,
-    xaxis: {title: "Tempo (s)"},
-    yaxis: {title: "Altitude (m)"},
-    legend: {orientation: "h", y: -0.2},
-    margin: {t:60, r:10, l:50, b:60}
+    xaxis: { title: "Tempo (s)", range: [0, 10] },
+    yaxis: { title: "Altitude (m)", range: [-1, 20] },
+    legend: { orientation: "h", y: -0.25 },
+    margin: { t: 60, r: 10, l: 50, b: 60 },
+    plot_bgcolor: "#fafafa",
+    paper_bgcolor: "#fafafa"
   };
-  Plotly.newPlot("grafico", [trace1, trace2], layout, {responsive:true});
+
+  Plotly.newPlot("grafico", [traceDrone, traceTarget], layout, { responsive: true });
 }
 
 updatePlot();
