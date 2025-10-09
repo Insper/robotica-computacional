@@ -194,8 +194,7 @@ nav:
     #   - Capítulo 7 - Controle Propocional:
     #     - modulos/07-controle/index.md
     #     - Atividades:
-    #       - "Download > Atividades": modulos/07-controle/atividades_modulo_7.zip
-    #       - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.ipynb
+    #       - "1 - Controle Básico": modulos/07-controle/atividades/1-controle-proporcional.md
     #       - "2 - Segue-Linha": modulos/07-controle/atividades/2-segue-linha.md
     #       - "3 - Controlando a Garra":
     #         - "4 - Controlando a Garra": modulos/07-controle/atividades/3-garra.md

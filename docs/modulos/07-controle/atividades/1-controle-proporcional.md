@@ -39,7 +39,7 @@ Durante seus experimentos, tente responder às seguintes perguntas:
 1. O que acontece se o ganho proporcional for muito baixo? E se for muito alto?
 2. Qual a relação entre o ganho proporcional e a resposta do sistema para o momento em que o sistema nunca atinge o setpoint, ou seja, o sistema é instável?
 
-# 🧠 Simulação Interativa – Controle Proporcional de Altitude (Drone)
+# Controle Proporcional de Altitude (Drone)
 
 Experimente ajustar o ganho proporcional **Kp** e o tempo de atualização do controlador para ver como o drone reage para atingir a altitude desejada.
 
