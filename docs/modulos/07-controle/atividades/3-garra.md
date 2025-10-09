@@ -44,4 +44,4 @@ Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-com
     * `procura`: o robô deve procurar o creeper girando no local.
     * `aproximar`: o robô deve se aproximar do creeper, até ficar a uma distância apropriada, centralizando o mesmo na imagem usando controle proporcional.
     * `finaliza`: prepare a garra e assumindo que o creeper está no centro da imagem, pode andar uma distância fixa com base na leitura do laser do front ou continuar se aproximando até utilizando controle proporcional.
-    * `pega`: quando crreper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação.
+    * `pega`: quando creeper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação.
