@@ -49,6 +49,3 @@ Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-com
 
 6. No. `image_callback`:
    * Siga os passos definidos no inicio do handout para calcular `self.erro`.
-
-
----
