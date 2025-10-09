@@ -39,84 +39,67 @@ Durante seus experimentos, tente responder às seguintes perguntas:
 1. O que acontece se o ganho proporcional for muito baixo? E se for muito alto?
 2. Qual a relação entre o ganho proporcional e a resposta do sistema para o momento em que o sistema nunca atinge o setpoint, ou seja, o sistema é instável?
 
-# Simulação Interativa – Controle Proporcional de Altitude (Drone)
+# 🧠 Simulação Interativa – Controle Proporcional de Altitude (Drone)
 
 Experimente ajustar o ganho proporcional **Kp** e o tempo de atualização do controlador para ver como o drone reage para atingir a altitude desejada.
 
-<!-- Importa PyScript -->
-<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<!-- Bloco PyScript sem indentação para não quebrar no Markdown -->
-<div class="pyscript">
-
-<py-config>
-packages = ["numpy", "matplotlib"]
-</py-config>
-
-<py-script>
-import numpy as np
-import matplotlib.pyplot as plt
-from js import document
-from pyodide.ffi import create_proxy
-from pyodide.ffi.wrappers import add_event_listener
-from pyodide.ffi import to_js
-from pyodide.ffi import JsProxy
-from pyscript import display, HTML
-
-setpoint = 10.0
-altitude_inicial = 0.0
-
-def controle_proporcional(setpoint, altitude_atual, Kp):
-    erro = setpoint - altitude_atual
-    return Kp * erro
-
-def resposta_do_sistema(W, altitude_atual, tempo_de_atualizacao):
-    return altitude_atual + W * tempo_de_atualizacao
-
-def executar_simulacao(Kp, tempo_de_atualizacao):
-    tempos = np.arange(0, 10 + tempo_de_atualizacao, tempo_de_atualizacao)
-    altitudes = [altitude_inicial]
-    altitude_atual = altitude_inicial
-    for _ in tempos[1:]:
-        W = controle_proporcional(setpoint, altitude_atual, Kp)
-        altitude_atual = resposta_do_sistema(W, altitude_atual, tempo_de_atualizacao)
-        altitudes.append(altitude_atual)
-
-    fig, ax = plt.subplots(figsize=(7,4))
-    ax.plot(tempos, altitudes, label="Altitude do Drone")
-    ax.plot(tempos, [setpoint]*len(tempos), 'r--', label="Altitude Alvo")
-    ax.set_xlabel("Tempo (s)")
-    ax.set_ylabel("Altitude (m)")
-    ax.set_title(f"Controle Proporcional: Kp={Kp:.1f}, Δt={tempo_de_atualizacao:.2f}s")
-    ax.legend()
-    ax.grid(True)
-    display(fig, target="grafico")
-
-def atualizar_plot(event=None):
-    Kp = float(document.getElementById("Kp").value)
-    tempo = float(document.getElementById("tempo").value)
-    executar_simulacao(Kp, tempo)
-
-# Interface HTML com sliders
-html = """
-<div style='margin-top:1em; font-family: sans-serif'>
-  <label for="Kp"><b>Kp (Ganho):</b></label>
-  <input type="range" id="Kp" min="0" max="20" value="5" step="0.1" 
-         oninput="this.nextElementSibling.value=this.value; pyodide.runPython('atualizar_plot()')">
-  <output>5</output>
+<div style="margin-top:1em; font-family:sans-serif; max-width:700px">
+  <label for="kp"><b>Kp (Ganho):</b></label>
+  <input type="range" id="kp" min="0" max="20" value="5" step="0.1" style="width:300px"
+         oninput="document.getElementById('kp_val').textContent=this.value; updatePlot()">
+  <span id="kp_val">5</span>
   <br><br>
-  <label for="tempo"><b>Tempo de Atualização (s):</b></label>
-  <input type="range" id="tempo" min="0.05" max="1.0" value="0.25" step="0.05"
-         oninput="this.nextElementSibling.value=this.value; pyodide.runPython('atualizar_plot()')">
-  <output>0.25</output>
+  <label for="dt"><b>Tempo de Atualização (s):</b></label>
+  <input type="range" id="dt" min="0.05" max="1.0" value="0.25" step="0.05" style="width:300px"
+         oninput="document.getElementById('dt_val').textContent=this.value; updatePlot()">
+  <span id="dt_val">0.25</span>
 </div>
-<div id="grafico"></div>
-"""
-display(HTML(html))
 
-# Plot inicial
-executar_simulacao(5.0, 0.25)
-</py-script>
+<div id="grafico" style="width:100%; max-width:700px; height:400px;"></div>
 
-</div>
+<script>
+function simular(Kp, dt) {
+  const setpoint = 10.0;
+  const altitudeInicial = 0.0;
+  const tempos = [];
+  const altitudes = [];
+  let altitude = altitudeInicial;
+  for (let t = 0; t <= 10; t += dt) {
+    tempos.push(t.toFixed(2));
+    const erro = setpoint - altitude;
+    const W = Kp * erro;
+    altitude = altitude + W * dt;
+    altitudes.push(altitude);
+  }
+  return {tempos, altitudes, setpoint};
+}
+
+function updatePlot() {
+  const Kp = parseFloat(document.getElementById("kp").value);
+  const dt = parseFloat(document.getElementById("dt").value);
+  const {tempos, altitudes, setpoint} = simular(Kp, dt);
+
+  const trace1 = {
+    x: tempos, y: altitudes,
+    mode: "lines", name: "Altitude do Drone",
+    line: {color: "#0074D9", width: 3}
+  };
+  const trace2 = {
+    x: tempos, y: Array(tempos.length).fill(setpoint),
+    mode: "lines", name: "Altitude Alvo",
+    line: {color: "red", dash: "dash"}
+  };
+  const layout = {
+    title: `Simulação de Controle Proporcional (Kp=${Kp.toFixed(1)}, Δt=${dt.toFixed(2)}s)`,
+    xaxis: {title: "Tempo (s)"},
+    yaxis: {title: "Altitude (m)"},
+    legend: {orientation: "h", y: -0.2},
+    margin: {t:60, r:10, l:50, b:60}
+  };
+  Plotly.newPlot("grafico", [trace1, trace2], layout, {responsive:true});
+}
+
+updatePlot();
+</script>
