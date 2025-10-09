@@ -14,6 +14,17 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 **Aviso 5:** Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.
 
+## Atualização do Pacote (ROS 2)
+
+Execute os comandos abaixo para atualizar os pacotes da `ros2` obrigatórios para a prova:
+
+```bash
+cd ~/colcon_ws/src/my_simulation
+git stash
+git pull
+cb
+```
+
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
