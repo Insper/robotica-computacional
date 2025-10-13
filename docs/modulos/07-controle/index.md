@@ -6,7 +6,7 @@ Neste módulo vamos aprender uma forma elegante de controlar o robô utilizando 
 As atividades deste módulo focam em introduzir controle proporcional e a utilização da garra do robô.
 Esse conceito será explorado nas seguintes atividades,
 
-- [Atividade 1](atividades/1-controle-proporcional.ipynb) - Introdução ao conceito de controle proporcional.
+- [Atividade 1](atividades/1-controle-proporcional.md) - Introdução ao conceito de controle proporcional.
 - [Atividade 2](atividades/2-segue-linha.md) - Desenvolvendo uma ação que segue a linha amarela utilizando controle proporcional.
 - [Atividade 3](atividades/3-garra.md) - Entendendo a utilização da garra. Desenvolvendo uma ação que identifica e pega o creeper desejado utilizando a garra do robô.
 
