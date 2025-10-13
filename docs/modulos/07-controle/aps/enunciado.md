@@ -56,7 +56,9 @@ Primeiro resolva o exercicio na atividade [2 - Segue-Linha](https://insper.githu
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `seguidor_de_linha.py` com um nó `seguidor_de_linha_node` que faça o robô **real** de uma volta completa no exterior do circuito de linha amarela do laboratório e **pare próximo do ponto de partida**.
 
 ## Ação Cliente (Principal)
+
 O nó principal deve:
+
 1. Ter dois estados: `segue_linha`, `done`.
 2. Herdar de ??.
 3. Instanciar a ação `segue_linha`.
