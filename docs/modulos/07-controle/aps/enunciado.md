@@ -75,4 +75,6 @@ Modifique o código do exercício 1 para que o robô complete o circuito de linh
 ---
 # Exercício 2 - Ação de Pegar o Creeper (2 pontos + 0.5 extra no projeto (para o individuo, não o grupo do projeto))
 
-Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/).
+Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/3-garra/).
+
+Grave um vídeo do robô real pegando um creeper selecionado pelo professor. Os creepers devem estar espelhados na frente do robô com ambiguidades de cor e id com o creeper desejado.
