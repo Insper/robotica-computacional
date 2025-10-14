@@ -77,4 +77,6 @@ Modifique o código do exercício 1 para que o robô complete o circuito de linh
 
 Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/3-garra/).
 
-Grave um vídeo do robô real pegando um creeper selecionado pelo professor. Os creepers devem estar espalhados na frente do robô com ambiguidades de cor e id com o creeper desejado. Finalize o vídeo com o robô segurando o creeper.
+Grave um vídeo do robô real procurando e pegando um creeper selecionado pelo professor. **Pelo menos 9 creepers** devem estar espalhados na frente do robô com ambiguidades de cor e id com o creeper desejado. Finalize o vídeo com o robô segurando o creeper.
+
+Para ganhar o ponto extra, tem 3 chances de pegar dois creepers em sequência ao vivo na aula. Depois de pegar o primeiro, o nó deve finalizar a ação, o aluno pode reposicionar o robô e remover o creeper da garra, e então iniciar a ação novamente para pegar o segundo creeper, **SEM MODIFICAR O CÓDIGO**.
