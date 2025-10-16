@@ -71,9 +71,11 @@ As missões envolvem os seguintes elementos:
 
 * **Creepers**: Bonecos semelhantes aos do Minecraft, que devem ser transportados até as Drop Areas.
     
-    - Quatro Creepers estão posicionados no **Creeper_place** com duas cores diferentes e dois ids diferentes.
+    - Quatro Creepers estão posicionados no **Creeper Place** com duas cores diferentes e dois ids diferentes.
 
-* **Drop Areas**: Placas com imagens detectáveis pela Yolo, local onde os Creepers devem ser depositados. Elas são colocadas em locais fixos da pista.
+* **Slalom**: Um trecho da pista com obstáculos que o robô deve atravessar sem bater.
+
+* **Drop Areas**: Placas com imagens detectáveis pela Yolo, local onde os Creepers devem ser depositados. Elas são colocadas em locais fixos fora da linha branca. Apenas a imagen entre os Slalom é fixa, sendo que as outras duas imagens podem trocar de lugar.
 
 * **Placas**: AprilTags de `ID` `100`, `150` e `250`. **O grupo pode coloca-las em qualquer lugar**, fora da linha branca, para auxiliar na navegação.
 
@@ -98,15 +100,15 @@ As missões envolvem os seguintes elementos:
 
 6. **Deixar** o Creeper em uma "Drop Area" inclui:
 
-    6.1. Parar próximo à "Drop Area".
+    a. Parar próximo à "Drop Area".
 
-    6.2. Posicionar-se de frente da "Drop Area".
+    b. Posicionar-se de frente da "Drop Area".
 
-    6.3. Aproximar-se até ficar a 0.5m de distância.
+    c. Aproximar-se até ficar a 0.5m de distância.
 
-    6.4. Abaixar a garra e soltar o Creeper em pé.
+    d. Abaixar a garra e soltar o Creeper em pé.
 
-    6.5. Retornar à pista sem derrubar o Creeper.
+    e. Retornar à pista sem derrubar o Creeper.
 
 7. **Ao dar commit no vídeo e no código**, peça para um professor ou técnico validar a missão na planilha como "Concluída".
 
@@ -114,20 +116,29 @@ As missões envolvem os seguintes elementos:
 !!! Atenção
     Se uma missão for completada apenas no simulador, será concedido 25% da diferença dos conceitos de nota. **A missão C é obrigatória no robô real**.
 --->
-________________________________________________________
+---
 
 ### Missão **C**
 
 !!! warning
-    Realizar a Missão no robô real - Simulador será limitado ao conceito D
+    Realizar a Missão no robô real - Simulador será limitado ao conceito D ()
 
-Essa missão é a mais simples do projeto e envolve aplicar diretamente os conceitos trabalhados na disciplina, para pegar um Creeper qualquer e retornar para a posição inicial. Os seguintes passos devem ser realizados:
+Nesta missão, o robô deve pegar um Creeper específico (ID e cor) e então retornar para a posição inicial. 
+Os seguintes passos devem ser realizados:
 
-1. O robô sai da posição inicial e visita o local onde estão os Creepers.
+1. A classe recebe a cor e o ID do Creeper **desejado**.
+    a. Adicione `input` na função `main()` para receber a cor e o ID do Creeper desejado.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.
 
-2. O robô deve pegar **qualquer** Creeper.
+2. O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.
 
-3. O robô deve retornar para a posição inicial.
+3. O robô deve pegar o Creeper **desejado**.
+
+4. O robô deve retornar para a posição inicial. 
+
+5. Na posição inicial, o robô deve soltar o Creeper em pé, se posicionar para fechar e abaixar a garra sem derrubar o Creeper.
+
+6. Finalmente o código deve finalizar a execução sem nenhum erro.
 
 **Requisitos de projeto de software**:
 
@@ -139,30 +150,38 @@ Essa missão é a mais simples do projeto e envolve aplicar diretamente os conce
 
 **Nota final desta missão:** 5,0
 
-________________________________________________________
 
+________________________________________________________
 
 ### Missão **B**
 
 !!! warning
     Realizar a Missão no robô real
 
-Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor) e então retornar para a posição inicial. 
+Essa missão expande a missão anterior, mas agora o robô deve pegar o Creeper específico, procurar e entrega-lo em uma "Drop Area" **desejada** e então retornar para a posição inicial. Para este conceito, o robô não precisa passar pelo Slalom, sendo relevante apenas as outras duas pistas.
 Os seguintes passos devem ser realizados:
 
-1. A classe recebe a cor e o ID do Creeper **desejado**.
+1. A classe recebe a cor e o ID do Creeper **desejado** e a "Drop Area" **desejada**.
+    a. Adicione `input` na função `main()` para receber o objetivo da missão.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.
 
-2. O robô sai da posição inicial e visita o local onde estão os Creepers.
+2. O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.
 
 3. O robô deve pegar o Creeper **desejado**.
 
-4. O robô deve retornar para a posição inicial.
+4. O robô deve procurar a "Drop Area" **desejada** dentre as duas pistas, com exceção da pista do Slalom.
+
+5. O robô deve deixar o Creeper na "Drop Area" **desejada**.
+
+6. O robô deve retornar para a posição inicial, sem derrubar o Creeper.
+
+7. Finalmente o código deve finalizar a execução sem nenhum erro.
 
 **Requisitos de projeto de software**:
 
-- Mesmo desafio da missão **C**
+- Mesmo do **C**
 
-**Nota final desta missão:** 7,0
+**Nota final desta missão:** 8,0
 
 
 ________________________________________________________
@@ -172,56 +191,27 @@ ________________________________________________________
 !!! warning
     Realizar a Missão no robô real
 
-Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), entrega-lo em uma "Drop Area" **qualquer** e então retornar para a posição inicial.
+Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), procurar e entrega-lo para a "Drop Area" **desejada** que nessa missão está entre os Slalom, e então retornar para a posição inicial.
 Os seguintes passos devem ser realizados:
 
-1. A classe recebe a cor e o ID do Creeper **desejado**.
+1. A classe recebe a cor e o ID do Creeper **desejado** e a "Drop Area" **desejada**.
+    a. Adicione `input` na função `main()` para receber o objetivo da missão.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.
 
-2. O robô sai da posição inicial e visita o local onde estão os Creepers.
+2. O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.
 
 3. O robô deve pegar o Creeper **desejado**.
 
-4. O robô deve se mover para uma "Drop Area" **qualquer**.
+4. O robô deve passar pelo Slalom até a "Drop Area" **desejada**.
 
-5. O robô deve deixar o Creeper na "Drop Area".
+5. O robô deve deixar o Creeper na "Drop Area" **desejada**.
 
-6. O robô deve retornar para a posição inicial.
+6. O robô deve passar novamente pelo Slalom para retornar para a posição inicial, sem derrubar o Creeper.
+
+7. Finalmente o código deve finalizar a execução sem nenhum erro.
 
 **Requisitos de projeto de software**:
 
 - Mesmo do **C**
-
-* **Subscriber para Aruco**: Crie um nó específico que identifica o Creeper pela cor e ID desejados - tanto pode publicar todos os Creepers encontrados quanto apenas o Creeper desejado - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
-
-* **Subscriber para Yolo**: Crie um nó para a leitura da Yolo. Ele deve publicar um tópico com a posição (na imagem) e classe da caixa detectada - é uma boa prática este nó se inscrever em um tópico *flag* que indica se o nó deve ou não processar.
-
-**Nota final desta missão:** 9,0
-
-
-________________________________________________________
-
-### Missão **A+**
-
-!!! warning
-    Realizar a Missão no robô real
-
-Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), procurar e entrega-lo para uma "Drop Area" **desejada** e então retornar para a posição inicial.
-Os seguintes passos devem ser realizados:
-
-1. A classe recebe a cor e o ID do Creeper **desejado** e a "Drop Area" **desejada**.
-
-2. O robô sai da posição inicial e visita o local onde estão os Creepers.
-
-3. O robô deve pegar o Creeper **desejado**.
-
-4. O robô deve se mover para a "Drop Area" **desejada**.
-
-5. O robô deve deixar o Creeper na "Drop Area".
-
-6. O robô deve retornar para a posição inicial.
-
-**Requisitos de projeto de software**:
-
-- Mesmo do **A**
 
 **Nota final desta missão:** 10,0
