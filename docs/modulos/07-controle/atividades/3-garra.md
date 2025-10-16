@@ -37,9 +37,9 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
 Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) e na sua solução do "Exercício 2 - Identifica Creeper" e no "Desafio" da [APS 6](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/aps/enunciado/), implemente a **Ação de Pegar o Creeper** com o seguindo comportamento:
 
 1. A Ação de Pegar o Creeper deve finalizar após pegar o creeper.
-2. Mude o nome da classe para `SegueLinha` e o nome do nó para `seguelinha_node`.
-3. Mude também a chamada da classe na função `main()` para `SegueLinha()`.
-4. Deve receber a cor e o id do creeper a ser pego como parâmetros na função `reset()`. 
+2. Mude o nome da classe para `PegaCreeper` e o nome do nó para `pega_creeper_node`.
+3. Mude também a chamada da classe na função `main()` para `PegaCreeper()`.
+4. Deve receber a cor e o id do creeper a ser pego como parâmetros na função `reset()`.
 3. A ação pode ter quantos estados forem nescessários, mas recomendamos ter pelo menos os estados `procura`, `aproximar`, `finaliza`, `pega`, `stop` e `done`.
     * `procura`: o robô deve procurar o creeper girando no local.
     * `aproximar`: o robô deve se aproximar do creeper, até ficar a uma distância apropriada, centralizando o mesmo na imagem usando controle proporcional.
