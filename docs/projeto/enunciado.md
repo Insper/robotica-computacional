@@ -94,7 +94,7 @@ As missões envolvem os seguintes elementos:
 
 3. Gravar o robô realizando a missão na pista real.
 
-4. Incluir o link do vídeo no README do seu repositório e criar um Release com a tag referente ao último conceito alcançado.
+4. Incluir o link do vídeo no README do seu repositório e criar um Release com a tag referente a última missão concluída.
 
 5. Cada missão deve ser concluída em menos de 15 minutos.
 
