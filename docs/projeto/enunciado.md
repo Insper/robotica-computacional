@@ -6,9 +6,9 @@ O objetivo do projeto é programar nosso robô para cumprir um conjunto de miss�
 
 Os grupos, que podem ser compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
 
-[Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/4fM2pHCF){ .ah-button }
+[Link para repositório do projeto GitHub Classroom](https://classroom.github.com/a/5yhk7MFN){ .ah-button }
 
-# **`Data de Entrega: 26/05 às 23:59h`**
+# **`Data de Entrega: 03/11 às 23:59h`**
 
 ________________________________________________________
 
