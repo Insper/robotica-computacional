@@ -121,7 +121,7 @@ As missões envolvem os seguintes elementos:
 ### Missão **C**
 
 !!! warning
-    Realizar a Missão no robô real - Simulador será limitado ao conceito D ()
+    Realizar a Missão no robô real - Simulador será limitado ao conceito D (3,0)
 
 Nesta missão, o robô deve pegar um Creeper específico (ID e cor) e então retornar para a posição inicial. 
 Os seguintes passos devem ser realizados:
