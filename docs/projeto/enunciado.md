@@ -51,7 +51,7 @@ cb
 
 ## Mapa Simulado
 
-Para inicializar o mapa do desafio, em um terminal digite:
+Para inicializar o mapa do projeto, em um terminal digite:
 
 ```bash
 ros2 launch my_gazebo pista-24B.launch.py
