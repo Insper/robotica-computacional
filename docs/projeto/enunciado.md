@@ -118,10 +118,10 @@ As missões envolvem os seguintes elementos:
 --->
 ---
 
-### Missão **C**
+### Missão **1**
 
 !!! warning
-    Realizar a Missão no robô real - Simulador será limitado ao conceito D (3,0)
+    Realizar a Missão no robô real - Simulador pode ser entrega, mas a nota é reduzida.
 
 Nesta missão, o robô deve pegar um Creeper específico (ID e cor) e então retornar para a posição inicial. 
 Os seguintes passos devem ser realizados:
@@ -148,12 +148,12 @@ Os seguintes passos devem ser realizados:
 
 * **Controle Proporcional**: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.
 
-**Nota final desta missão:** 5,0
+**Nota final desta missão:** 5,0 - Simulador: 2,5
 
 
 ________________________________________________________
 
-### Missão **B**
+### Missão **2**
 
 !!! warning
     Realizar a Missão no robô real
@@ -179,14 +179,14 @@ Os seguintes passos devem ser realizados:
 
 **Requisitos de projeto de software**:
 
-- Mesmo do **C**
+- Mesmo da missão **1**
 
-**Nota final desta missão:** 8,0
+**Nota final desta missão:** 7,0
 
 
 ________________________________________________________
 
-### Missão **A**
+### Missão **3**
 
 !!! warning
     Realizar a Missão no robô real
@@ -212,6 +212,6 @@ Os seguintes passos devem ser realizados:
 
 **Requisitos de projeto de software**:
 
-- Mesmo do **C**
+- Mesmo da missão **2**
 
 **Nota final desta missão:** 10,0
