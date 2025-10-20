@@ -20,7 +20,7 @@ ________________________________________________________
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
-**Aviso 4:** Além de seu repositório, para todos os conceitos os grupos **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
+**Aviso 4:** Além de seu repositório, para todas as missões os grupos **`devem gravar um vídeo do seu robô executando a tarefa`**. O vídeo deve ser postado no Youtube. 
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
@@ -28,7 +28,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 **Aviso 6:** São aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. 
 
-- É possível realizar a entrega parcial de conceitos avançados, por exemplo, entregar a parte de um conceito **B** antes de entregar a parte de um conceito **C**.
+**Aviso 7:** É possível realizar a entrega parcial de missões avançadas, descrevendo no README o que falta para completar a missão.
 
 ## Configuração do Pacote (ROS 2)
 
