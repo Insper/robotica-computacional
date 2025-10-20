@@ -36,8 +36,8 @@ extra:
     data_APS9: TBA
     link_APS9: TBA
 
-    data_projeto: ~17/06 - antes da prova final
-    link_projeto: https://classroom.github.com/a/4fM2pHCF
+    data_projeto: 03/11 - antes da prova final
+    link_projeto: https://classroom.github.com/a/5yhk7MFN
 
     data_PF: ~17/11
     link_PF: TBA
@@ -215,9 +215,9 @@ nav:
     - Gabarito do robcomp_util (até Cap 3):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
-    # - Projeto:
-    #   - "Enunciado": projeto/enunciado.md
-    #   - "Projeto - Classroom" : https://classroom.github.com/a/yhMYPwY6
+    - Projeto:
+      - "Enunciado": projeto/enunciado.md
+      - "Projeto - Classroom" : https://classroom.github.com/a/5yhk7MFN
 
     - Provas:
       - AI:
