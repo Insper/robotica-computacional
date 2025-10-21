@@ -80,10 +80,10 @@ As missões envolvem os seguintes elementos:
 * **Placas**: AprilTags de `ID` `100`, `150` e `250`. **O grupo pode coloca-las em qualquer lugar**, fora da linha branca, para auxiliar na navegação.
 
 !!!tip
-    No simulador, você pode alterar a posição das placas no arquivo `pista24B.world`, em um terminal digite:
+    No simulador, você pode alterar a posição das placas no arquivo `pista25B.world`, em um terminal digite:
 
     ```cmd
-    code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista24B.world
+    code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista25B.world
     ```
 
 ### Para completar uma missão, o grupo deve:
