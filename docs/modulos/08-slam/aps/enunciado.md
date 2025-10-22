@@ -1,4 +1,4 @@
-# Projeto-1 de Robótica Computacional
+# Entregável 7 de Robótica Computacional
 
 ## Instruções gerais
 
@@ -12,13 +12,14 @@
 
 No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. `NUNCA de commit no vídeo`, somente adicione o link.
 
-**Aviso 5:** Para este projeto, você vai utilizar o robô simulado.
+**Aviso 5:** Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.
 
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `projeto_1`.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_7`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
+
 ____________________________________________________________________
 # **IMPORTANTE**
 Atualize o pacote do `robcomp_interfaces` que existe em seu SSD com os comandos abaixo:
@@ -30,7 +31,7 @@ cb
 ```
 ____________________________________________________________________
 
-# Exercício 0 - Organização & Qualidade (0 para correto e -2 para incorreto)
+# Exercício 0 - Organização & Qualidade (1 pontos)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
@@ -46,20 +47,32 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 * **Vídeo:** Pelo vídeo, é possível entender o que o robô está fazendo.
 * **README.md:** O link do vídeo está correto e foi adicionado no campo específico.
 * **README.md:** O arquivo README.md tem o nome completo e o email de todos os integrantes do grupo.
-____________________________________________________________________
 
-# Objetivo
+---
 
-Neste primeiro projeto vamos trabalhar com exploração e navegação do robô simulado. Seu objetivo é resolver o exercício 1 da [AI-24b](https://insper.github.io/robotica-computacional/simulados/ai_24b/enunciado/), mas utilizando o `GOTO` para navegar no labirinto.
+# Exercício 1 - Robô Quadrado Melhorado (5 pontos)
+Primeiro resolva o exercicio na atividade [1 - GoTo](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/1-goto/).
 
-Utilize o comando abaixo para iniciar o simulador no mapa do projeto:
-`ros2 launch my_gazebo tres_paredes.launch.py`
+Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `quadrado.py` com um nó `quadrado_node` que faça o robô **real** desenhe um quadrado excelente na referência do chão do laboratório. O nó deve:
 
+## Ação Cliente (Principal)
 
-# Parte 1 - Explorar Labirinto (3 pontos)
-Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa e então salve o mapa.
+O nó principal deve:
 
-Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do projeto enquanto controla o robô simulado manualmente, explorando cada canto do mapa. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
+1. Ter dois estados: `goto`, `done`.
+2. Instanciar a ação `GoTo`.
+4. Definir uma flag `self.iniciando = True`.
+5. O estado `goto` deve:
+    * Iterativamente enviar o robô para os quatro pontos que formam o quadrado, utilizando a ação `GoTo`.
+    * Quando o robô chegar no ponto final do quadrado, mude o estado para `done`.
+
+Grave um vídeo do robô real desenhando o quadrado de referência no chão do laboratório. Salve o vídeo no Youtube e adicione o link no arquivo `README.md` do seu repositório.
+
+---
+
+# Exercício 2 - SLAM no Labirinto (5 pontos)
+
+Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto da sala enquanto controla o robô simulado manualmente ou usando a UI, explorando cada canto do labirinto. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
 
 !!! dica
     O `Navigation` atualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
@@ -67,46 +80,3 @@ Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o mapa do pr
 ## Vídeo
 
 Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
-
-##
-____________________________________________________________________
-
-# Parte 2 - Labirinto-GoTo (7 pontos)
-
-Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `teseu.py`, como uma classe `Teseu` e com um nó denominado `teseu_node`, este nó deve resolver conversar com o `Handler` e seguir o caminho das paredes a partir de uma sequência de pontos, obtidas do mapa do labirinto. O nó deve:
-
-* Utilize o script `visualizar_mapa.py` para obter a sequência de pontos do labirinto (Cap. 8)
-    * Depois, anote as coordenadas de cada trajeto que o robô deveria fazer e armazene em um dicionário, onde a chave é o nome do trajeto (**cima** ou **baixo**) e o valor é uma lista de coordenadas.
-
-* Modifique o `goto.py` para receber uma lista de `Points()`
-
-* Utilizar, de alguma forma, a ação `GoTo` para fazer o robô se movimentar entre os pontos.
-
-* Modifique o `goto.py` para herdar do `AMCL` no lugar do `Odom`
-
-* Rode o pacote `Navigator` com o mapa que gravou no ex. anterior.
-
-* Seguir as intruções do Handler e caminhar pelas paredes à partir de uma sequência de pontos, obtidas do mapa do labirinto.
-
-* Como no exercício, deve retornar ao encontrar a força desconhecida e retornar ao ponto inicial.
-
-* Ao chegar no ponto inical, o robô deve entrar em um estado `stop` e parar.
-
-!!! dica
-    Rode o Navigator pelo comando
-
-    ```bash
-    ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
-    ```
-
-    Assumindo que o mapa ainda esta em sua HOME
-
-
-## Critérios de Avaliação:
-
-1. Execute o pacote `Navigation` para navegar no labirinto.
-2. Execute o nó `teseu_node` para fazer o robô escapar do labirinto.
-3. Não utiliza nenhuma função de `sleep` para controlar o tempo de execução.
-4. Todas as exigências e rúbricas do exercício 1 foram atendidas.
-4. **Vídeo:** Mostra o robô executando o comportamento e escapando do labirinto.
-5. **Vídeo:** Link do vídeo do robô em ação no Youtube.
