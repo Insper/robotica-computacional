@@ -203,14 +203,14 @@ nav:
           - "APS 7 - Classroom" : https://classroom.github.com/a/H4YXn39p
           - "Enunciado": modulos/07-controle/aps/enunciado.md
       
-    #   - Capítulo 8 - SLAM:
-    #     - modulos/08-slam/index.md
-    #     - Atividades:
-    #       - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
-    #         # - "Gabarito GoTo": modulos/09-slam/util/goto.py"
-    #       - "2 - slam": modulos/08-slam/atividades/2-slam.md
-    #       - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
-    #       - "AMCL": modulos/08-slam/util/amcl.py
+      # - Capítulo 8 - SLAM:
+      #   - modulos/08-slam/index.md
+      #   - Atividades:
+      #     - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
+      #       # - "Gabarito GoTo": modulos/08-slam/util/goto.py"
+      #     - "2 - slam": modulos/08-slam/atividades/2-slam.md
+      #     - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
+      #     - "AMCL": modulos/08-slam/util/amcl.py
 
     - Gabarito do robcomp_util (até Cap 3):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util

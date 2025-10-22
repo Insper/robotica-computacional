@@ -51,7 +51,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 ---
 
 # Exercício 1 - Robô Quadrado Melhorado (5 pontos)
-Primeiro resolva o exercicio na atividade [1 - GoTo](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/1-goto/).
+Primeiro resolva o exercicio na atividade [1 - GoTo](https://insper.github.io/robotica-computacional/modulos/08-slam/atividades/1-goto/).
 
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `quadrado.py` com um nó `quadrado_node` que faça o robô **real** desenhe um quadrado excelente na referência do chão do laboratório. O nó deve:
 
