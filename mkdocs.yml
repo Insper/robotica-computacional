@@ -31,8 +31,8 @@ extra:
 
     data_APS7: Segunda - 20/10 às 12:00
     link_APS7: https://classroom.github.com/a/H4YXn39p
-    data_APS8: TBA
-    link_APS8: TBA
+    data_APS8: Segunda - 03/11 às 12:00
+    link_APS8: https://classroom.github.com/a/p4qfAjJW
     data_APS9: TBA
     link_APS9: TBA
 
@@ -203,14 +203,17 @@ nav:
           - "APS 7 - Classroom" : https://classroom.github.com/a/H4YXn39p
           - "Enunciado": modulos/07-controle/aps/enunciado.md
       
-      # - Capítulo 8 - SLAM:
-      #   - modulos/08-slam/index.md
-      #   - Atividades:
-      #     - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
-      #       # - "Gabarito GoTo": modulos/08-slam/util/goto.py"
-      #     - "2 - slam": modulos/08-slam/atividades/2-slam.md
+      - Capítulo 8 - SLAM:
+        - modulos/08-slam/index.md
+        - Atividades:
+          - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
+            # - "Gabarito GoTo": modulos/08-slam/util/goto.py"
+          - "2 - slam": modulos/08-slam/atividades/2-slam.md
       #     - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
       #     - "AMCL": modulos/08-slam/util/amcl.py
+        - APS 8:
+          - "APS 8 - Classroom" : https://classroom.github.com/a/p4qfAjJW
+          - "Enunciado": modulos/08-slam/aps/enunciado.md
 
     - Gabarito do robcomp_util (até Cap 3):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
