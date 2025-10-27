@@ -31,7 +31,7 @@ cb
 ```
 ____________________________________________________________________
 
-# Exercício 0 - Organização & Qualidade (1 pontos)
+# Exercício 0 - Organização & Qualidade (0 pontos)
 Este exercício está avaliando a organização e qualidade dos vídeos dos exercícios da APS e do arquivo `README.md`.
 
 ## Critérios de Avaliação:
