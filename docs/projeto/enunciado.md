@@ -118,7 +118,7 @@ As missões envolvem os seguintes elementos:
 --->
 ---
 
-### Missão **1**
+### Missão **1** (Simulador e Robô Real)
 
 !!! warning
     Realizar a Missão no robô real - Simulador pode ser entrega, mas a nota é reduzida.
@@ -153,7 +153,7 @@ Os seguintes passos devem ser realizados:
 
 ________________________________________________________
 
-### Missão **2**
+### Missão **2** (Apenas no Simulador)
 
 !!! warning
     Realizar a Missão no robô real
@@ -181,20 +181,20 @@ Os seguintes passos devem ser realizados:
 
 - Mesmo da missão **1**
 
-**Nota final desta missão:** 7,0
+**Nota final desta missão:** 6,0
 
 
 ________________________________________________________
 
-### Missão **3**
+### Missão **3** (Simulador e Robô Real)
 
 !!! warning
     Realizar a Missão no robô real
 
-Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), procurar e entrega-lo para a "Drop Area" **desejada** que nessa missão está entre os Slalom, e então retornar para a posição inicial.
+Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), procurar e entrega-lo para um ~~"Drop Area"~~ Creeper **desejada** que nessa missão está entre os Slalom, e então retornar para a posição inicial.
 Os seguintes passos devem ser realizados:
 
-1. A classe recebe a cor e o ID do Creeper **desejado** e a "Drop Area" **desejada**.
+1. A classe recebe a cor e o ID do Creeper **desejado** e a ~~"Drop Area"~~ Creeper **desejada**.
     a. Adicione `input` na função `main()` para receber o objetivo da missão.
     b. Passe esses valores ao instanciar a classe que implementa a missão.
 
@@ -202,9 +202,9 @@ Os seguintes passos devem ser realizados:
 
 3. O robô deve pegar o Creeper **desejado**.
 
-4. O robô deve passar pelo Slalom até a "Drop Area" **desejada**.
+4. O robô deve passar pelo Slalom até a ~~"Drop Area"~~ Creeper **desejada**.
 
-5. O robô deve deixar o Creeper na "Drop Area" **desejada**.
+5. O robô deve deixar o Creeper na ~~"Drop Area"~~ Creeper **desejada**.
 
 6. O robô deve passar novamente pelo Slalom para retornar para a posição inicial, sem derrubar o Creeper.
 
@@ -214,4 +214,4 @@ Os seguintes passos devem ser realizados:
 
 - Mesmo da missão **2**
 
-**Nota final desta missão:** 10,0
+**Nota final desta missão:** 10,0 (Real) -- 8,0 (Simulador)
