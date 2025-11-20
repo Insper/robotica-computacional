@@ -81,7 +81,7 @@ Este exercício avalia a organização e a qualidade dos vídeos dos exercícios
 * **README.md:** O arquivo `README.md` contém o nome completo e o e-mail do estudante.
 ---
 
-# Exercício 1 - Segue Circulos (5)
+# Exercício 1 - Segue Circulos (6)
 
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `q1.py` contendo uma classe denominada `MudaPista`. Esta classe deve implementar um **nó** chamado `muda_pista_node`, responsável por fazer com que o robô **simulado** entre na linha vermelha e mude de pista conforme comando de um **Orquestrador**, seguindo as pistas na ordem: vermelha, verde e azul.
 
@@ -109,9 +109,6 @@ ros2 launch my_gazebo pista_circulos.launch.py
 ![pistas](figs/mudar_horario.png)
 
 ![pistas](figs/mudar_antihorario.png)
-
-
-
 
 ## Requisitos
 
