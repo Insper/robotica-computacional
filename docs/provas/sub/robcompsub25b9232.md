@@ -152,4 +152,4 @@ O nó criado deve:
 
 ## Vídeo
 
-Grave **DOIS** vídeos, mostrando o robô executando as intruções com caixas de tamanhos diferentes. Publique os vídeos no YouTube e inclua apenas os `links` no arquivo `README.md` do seu repositório.
+Grave **UM** vídeos, mostrando o robô executando as intruções com caixas de tamanhos diferentes. Publique os vídeos no YouTube e inclua apenas os `links` no arquivo `README.md` do seu repositório.
