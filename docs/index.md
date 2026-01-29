@@ -36,35 +36,33 @@ Dentro de cada capítulo, os alunos participarão de:
 
 * **Unidade 1 - Introdução**
 
-    * Capítulo 1 - Introdução ao curso
+    * Capítulo 1 - Introdução ao Curso
 
-    * Capítulo 2 - Introdução ao ROS 2
+    * Capítulo 2 - Introdução à ROS 2
 
-    * Capítulo 3 -  Controlando o Robô
+    * Capítulo 3 - Controlando o Robô
 
 * **Unidade 2 - Visão Computacional**
 
-    * Capítulo 4 - Visão em Robótica
+    * Capítulo 4 - Imagens e Matrizes
 
-    * Capítulo 5 - Tópicos de Processamento Digital de Imagem
+    * Capítulo 5 - Identificação e Modelo de Câmera
 
-    * Capítulo 6 - Tópicos de Visão Computacional
+    * Capítulo 6 - Visão Robótica & Deep Learning
 
 * **Unidade 3 - Controle Robótico**
 
     * Capítulo 7 - Controle Proporcional
 
-    * Capítulo 8 - Ação de Controle
+    * Capítulo 8 - SLAM
 
-    * Capítulo 9 - Sistema de Localização
-
-## Repositório 
+<!-- ## Repositório 
 
 Github da disciplina, pode ser acessado no link:
 
 - [Github Robotica Computacional](https://github.com/Insper/robotica-computacional). 
 
-Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso **recomendamos apenas o uso dos materiais disponibilizados nesse site**.
+Esse repositório contém todos os códigos e materiais de apoio da disciplina de todos os semestres, mas o conteúdo esta sujeito a alterações sem aviso prévio, por isso **recomendamos apenas o uso dos materiais disponibilizados nesse site**. -->
 
 # Avisos
 
