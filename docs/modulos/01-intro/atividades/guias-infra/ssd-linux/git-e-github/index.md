@@ -137,7 +137,7 @@ Agora que a chave SSH já está configurada, vamos usar para clonar um repositó
 
 Para este primeiro uso, vamos clonar o repositório de robótica. Você o acessará através de uma página no github, mas é um reposítório possível de ser clonado.
 
-O endereço do repositório é: https://github.com/insper/robotica-computacional
+O endereço do repositório é: https://github.com/insper-classroom/robcomp_util
 
 Ao acessar a página, verá um botão escrito **<> Code**, clicando nele verá três opoções: HHTPS, **SSH** e GitHubCLI. Você deve clicar em **SSH**. Ao lado do endereço que aparecerá, tem um íconde cópia, clique nele.
 
@@ -147,7 +147,7 @@ Abra um terminal e vá até o diretório que será feito o clone do repositório
 Lá digite o comando git clone adicionado pelo endereço de clonagem:
 
 ```
-git clone git@github.com:Insper/robotica-computacional.git
+git clone git@github.com:insper-classroom/robcomp_util.git
 ```
 
 !!! tip
