@@ -89,11 +89,10 @@ A disciplina é dividida em duas turmas. [Clique aqui para acessar o formulário
 
 Teremos o seguinte horário de atendimento: 
 
-- **QUI** 18:00 (Diego) - sala 404
+- **SEG** 09:45 - 11:15 (Diego) - sala 404
 
 Além disso, nosso lab estará aberto de Segunda a Sexta nos seguintes horários:
 
-- **Lícia** - 07:00 - 16:00
 - **Rogério** - 12:00 - 21:00
 
 ## Equipe
