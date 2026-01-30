@@ -92,11 +92,11 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 Você receberá uma mensagem parecida com a imagem a seguir, se desejar adicionar uma senha para a chave, digite uma senha e pressione enter, se não quiser adicionar uma senha, pressione enter sem digitar nada. Se adicionar uma senha, você precisará digitar a senha toda vez que usar a chave.
 
-![saida1](imgs/saida1.jpeg)
+![saida1](imgs/saida1.png)
 
 Por fim, você receberá uma mensagem parecida com a imagem a seguir, isso significa que a chave foi criada com sucesso.
 
-![saida2](imgs/saida2.jpeg)
+![saida2](imgs/saida2.png)
 
 Agora vamos adicionar a chave ao ssh-agent, o ssh-agent é um programa que roda em segundo plano e armazena as chaves privadas usadas para autenticação SSH, ele é responsável por segurar as chaves privadas e usar quando necessário.
 
@@ -107,18 +107,20 @@ ssh-add ~/.ssh/id_ed25519
 
 Você receberá uma mensagem parecida com a imagem a seguir.
 
-![saida3](imgs/saida3.jpeg)
+![saida3](imgs/saida3.png)
 
 ### Adicionando a chave SSH ao GitHub
 
-Agora vamos adicionar a chave SSH que criamos ao GitHub, para isso, vamos copiar o conteudo do arquivo `id_ed25519.pub` e cola-lo na sua página de configurações do GitHub. Voce pode fazer isso abri o arquivo com o seu editor de texto favorito e copiar o conteudo, ou pode usar o comando abaixo:
+Agora vamos adicionar a chave SSH que criamos ao GitHub, para isso, vamos copiar o conteudo do arquivo `id_ed25519.pub` e cola-lo na sua página de configurações do GitHub. Voce pode fazer isso abrindo o arquivo com o seu editor de texto favorito e copiar o conteudo, ou pode usar visualizar o conteúdo do arquivo no terminal com o cmando abaixo:
 ```bash
-sudo apt install xclip
-alias pbcopy="xclip -sel clip"
-pbcopy < ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
-Após esse último comando, o conteúdo da sua chave SSH estará na sua área de transferência, agora basta colar na sua página de configurações do GitHub.
+Após esse último comando, o conteúdo da sua chave SSH será exibido no terminal, você só precisa marcar com o mouse o texto todo e clicar como botão direito do mouse sobre a marcação pra copiar:
+
+![saida4](imgs/saida4.png)
+
+Agora basta colar na sua página de configurações do GitHub.
 Para acessar a página de configurações, clique na sua foto de perfil no canto superior direito da página do GitHub, em seguida, clique em **Settings**.
 
 ![passo1](imgs/passo1.png)
@@ -126,6 +128,7 @@ Para acessar a página de configurações, clique na sua foto de perfil no canto
 Depois, na barra lateral esquerda, clique em **SSH and GPG keys**. Em seguida, clique em **New SSH key** ou **Add SSH key**.
 
 ![passo2](imgs/passo2.png)
+![passo2a](imgs/passo2a.png)
 
 Preencha o campo **Title** com um nome descritivo para a chave, por exemplo, **SSD Robotica**. Em seguida, cole a chave no campo **Key**. Finalmente, clique em **Add SSH key**.
 
