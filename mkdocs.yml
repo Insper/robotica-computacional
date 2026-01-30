@@ -12,37 +12,37 @@ extra:
     escolha_turma: https://forms.office.com/r/9Zp3cDNReB
     semestre: 2026-1
     
-    data_APS1: Segunda - 18/08 às 23:59
-    link_APS1: https://classroom.github.com/a/B-tptaiO
-    data_APS2: Segunda - 25/08 às 12:00
-    link_APS2: https://classroom.github.com/a/L5EOrG7x
-    data_APS3: Segunda - 08/09 às 12:00
-    link_APS3: https://classroom.github.com/a/nqzvX0Z9
+    data_APS1: Segunda - 16/02 às 12:00
+    link_APS1: https://classroom.github.com/a/C_JjJjs8
+    data_APS2: TBA
+    link_APS2: TBA
+    data_APS3: TBA
+    link_APS3: TBA
 
-    data_APS4: Segunda - 15/09 às 12:00
-    link_APS4: https://classroom.github.com/a/JAHIzlL7
-    data_APS5: Terça - 23/09 às 23:59
-    link_APS5: https://classroom.github.com/a/8HCjiGTo
-    data_APS6: Segunda - 13/10 às 12:00
-    link_APS6: https://classroom.github.com/a/Z9mNVIwd
+    data_APS4: TBA
+    link_APS4: TBA
+    data_APS5: TBA
+    link_APS5: TBA
+    data_APS6: TBA
+    link_APS6: TBA
     
-    data_AI: ~25/09
+    data_AI: ~01/04
     link_AI: TBA
 
-    data_APS7: Segunda - 20/10 às 12:00
-    link_APS7: https://classroom.github.com/a/H4YXn39p
-    data_APS8: Segunda - 03/11 às 12:00
-    link_APS8: https://classroom.github.com/a/p4qfAjJW
+    data_APS7: TBA
+    link_APS7: TBA
+    data_APS8: TBA
+    link_APS8: TBA
     data_APS9: TBA
     link_APS9: TBA
 
-    data_projeto: 03/11 - antes da prova final
+    data_projeto: ~Junho - antes da prova final
     link_projeto: https://classroom.github.com/a/5yhk7MFN
 
-    data_PF: ~17/11
+    data_PF: ~Junho
     link_PF: TBA
 
-    data_SUB: ~1/12
+    data_SUB: TBA
     link_SUB: TBA
     data_DELTA: ~dois dias depois da SUB
     link_DELTA: TBA
@@ -109,10 +109,10 @@ nav:
           - 2 - Revisão Python: 
             - "2.1 - Introdução à Classes no Python": modulos/01-intro/atividades/21-classes.ipynb
             - "2.2 - Dicionario e Funções": modulos/01-intro/atividades/22-funcoes.ipynb
-    #     - APS 1:
-    #       - "APS 1 - Classroom" : https://classroom.github.com/a/B-tptaiO
-    #       - "Enunciado": modulos/01-intro/aps/enunciado.md
-    #       - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
+        - APS 1:
+          - "APS 1 - Classroom" : https://classroom.github.com/a/C_JjJjs8
+          - "Enunciado": modulos/01-intro/aps/enunciado.md
+          - "Checagem da Infra": modulos/01-intro/atividades/guias-infra/checagem.md
 
     #   - Capítulo 2 - Introdução à ROS 2:
     #     - modulos/02-intro-ros/index.md
