@@ -67,11 +67,10 @@ ros2 topic echo /publisher
     ```
 
 !!! tip
-    **DICA 2:** Tempo atual em segundos (com nanos):
+    **DICA 2:** Para pegar o tempo atual (do tipo `Time`):
 
     ```python 
     current_time = self.get_clock().now().to_msg()
-    current_time = float(current_time.sec) + float(current_time.nanosec)/10**9
     ```
 
 !!! exercise long 
