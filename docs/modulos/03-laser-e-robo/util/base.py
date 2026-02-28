@@ -4,12 +4,10 @@ from rclpy.qos import ReliabilityPolicy, QoSProfile
 # Adicione aqui os imports necessários
 
 class BaseNode(Node): # Mude o nome da classe
-
     def __init__(self):
-        super().__init__('base_node') # Mude o nome do nó
+        super().__init__('node_name_here') # Mude o nome do nó
         # Outra Herança que você queira fazer
         rclpy.spin_once(self) # Roda pelo menos uma vez para pegar os valores de x, y e front
-
 
         # Inicialização de variáveis
         

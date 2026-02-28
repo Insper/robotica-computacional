@@ -27,7 +27,7 @@ Este script define uma estrutura para ações com **início, meio e fim**. A aç
 ```python
 class Acao(Node): # Mude o nome da classe
 
-    def __init__(self, node = 'acao_node'): # Mude o nome do nó
+    def __init__(self, node = 'node_name_here'): # Mude o nome do nó
         super().__init__(node)
         self.timer = None
 
@@ -105,18 +105,18 @@ Vamos estudar as partes relevantes:
 
 ```python
 class BaseControlNode(Node): # Mude o nome da classe
-
     def __init__(self):
-        super().__init__('base_control_node') # Mude o nome do nó
+        super().__init__('node_name_here') # Mude o nome do nó
         # Outra Herança que você queira fazer
-        rclpy.spin_once(self) # Roda pelo menos uma vez para pegar os valores
         self.acao_node = Acao() # Cria o nó da Acao
 
-        self.robot_state = 'stop'
+        self.robot_state = 'acao'
         self.state_machine = {
             'acao': self.acao, # Estado para GERENCIAR a ação
-            'stop': self.stop
+            'done': self.done
         }
+
+        self.estados_clientes = ['acao'] # Coloque aqui os estados que são "cliente de ação".
 
         # Inicialização de variáveis
         self.twist = Twist()
@@ -136,25 +136,40 @@ Diferenças chave em relação ao nó de ação:
 
 1. **Não cancelamos** o timer do gerenciador (ele roda o tempo todo).
 2. Instanciamos e guardamos os nós auxiliares (ex.: `self.acao_node`).
+3. Armazenamos os estados que são "cliente de ação" em `self.estados_clientes`, nestes estados, este nó não publicará no `cmd_vel`, para não conflitar com o nó de ação.
 
 Função que **aciona** a ação:
 
 ```python
     def acao(self):
-        print("\nIniciando movimento de ação...")
-        rclpy.spin_once(self.acao_node) # Processa as callbacks uma vez
-        self.acao_node.reset() # Reseta o nó para iniciar a ação
+        if self.acao_node.robot_state == 'done': # Se a ação NÂO FOI INICIADA
+            print("\nIniciando [ACAO]...")
+            rclpy.spin_once(self.acao_node) # Processa as callbacks uma vez
+            self.acao_node.reset() # Reseta o nó para iniciar a ação
 
-        while not self.acao_node.robot_state == 'done': # Enquanto a ação não estiver finalizada
-            rclpy.spin_once(self.acao_node) # Processa os callbacks e o timer
+        rclpy.spin_once(self.acao_node) # Processa os callbacks e o timer
 
-        # Quando a ação estiver finalizada, o 
-        #   estado do robô deve ser alterado para o próximo estado ou finalizar mudando para 'stop'
-        self.robot_state = 'stop'
+        if self.acao_node.robot_state == 'done': # Se a ação FOI FINALIZADA
+            self.acao_node.control() # Garante que o robo é parado antes de finalizar a ação
+            print("[ACAO] Finalizada.")
+            self.robot_state = 'done' # Muda para o próximo estado da máquina de estados
 ```
 Essa função:
 
-1. inicia a ação, chamando o método `reset()` do nó de ação
-2. Processa os callbacks da ação uma única vez
-3. Aguarda até que a ação esteja concluída.
-4. Quando a ação é concluída, o estado do robô é alterado dependendo da lógica do sistema, nesse caso vamos simplesmente mudar para `stop`, finalizando a execução do robô.
+1. primeiro verifica se a ação já foi iniciada, caso contrário, inicia a ação chamando `reset()` do nó de ação.
+2. Em seguida, processa os callbacks do nó de ação (incluindo o timer) chamando `rclpy.spin_once(self.acao_node)`.
+3. Por fim, verifica se a ação foi finalizada internamente, caso afirmativo, garante que o robô é parado chamando `self.acao_node.control()` e muda o estado para o próximo estado da máquina de estados, nesse caso, `'done'`.
+
+No estado anterior, note a ação só será iniciada uma vez e só passará para o próximo estado quando a ação for finalizada internamente, ou seja, quando o nó de ação mudar seu estado para `'done'`. Assim, o controle da ação é delegado para o nó de ação, enquanto o nó "cliente" apenas gerencia quando iniciar/parar a ação.
+
+Agora, no estado `'control'` temos uma alteração:
+
+```python
+    def control(self): # Controla a máquina de estados - eh chamado pelo timer
+        print(f'Estado Atual: {self.robot_state}')
+        self.state_machine[self.robot_state]() # Chama o método do estado atual 
+        if self.robot_state not in self.estados_clientes: # Se o estado atual não é um estado "cliente de ação"
+            self.cmd_vel_pub.publish(self.twist) # Publica a velocidade
+```
+
+Aqui, o nó "cliente" só publicará no `cmd_vel` se o estado atual **não for um estado cliente de ação**. Isso é importante para evitar conflitos de publicação entre o nó "cliente" e o nó de ação, garantindo que o nó de ação tenha controle total sobre o `cmd_vel` durante a execução da ação.
