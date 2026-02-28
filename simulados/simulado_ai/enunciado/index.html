@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../equipe.css"><link rel="stylesheet" href="../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="robotica-computacional-20241-simulado-ai">Robótica Computacional 2024.1 - Simulado AI</h1>
+<p>Observações de avaliações nesta disciplina:</p>
+<ul>
+<li>A prova tem duração de <strong>4 horas</strong>.</li>
+<li>Inicie a prova no Blackboard para a ferramenta de Proctoring iniciar. Só finalize o Blackboard quando enviar a prova via Github classroom.</li>
+<li>Durante a prova vamos registrar as páginas visitadas e acessos online e o teclado.</li>
+<li>Coloque seu nome e email no README.md do seu repositório.</li>
+<li>Você pode consultar a internet ou qualquer material que utilizado no curso, mas não pode se comunicar com pessoas ou colegas a respeito da prova <em>em qualquer plataforma</em>.</li>
+<li><code>Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot ou similares durante a prova</code>.</li>
+<li>Faça commits e pushes frequentes no seu repositório.</li>
+<li>Eventuais avisos importantes serão realizados em sala durante a prova.</li>
+<li>Escreva o número 42 como a resposta da soma no arquivo <code>README.md</code> como teste de sua atenção.</li>
+<li>A responsabilidade por <em>infraestrutura</em>, <em>configuração</em> e <em>setup</em> em funcionamento pleno, é de cada estudante.</li>
+</ul>
+<h2 id="atualizacao-dos-pacote-ros-2">Atualização dos Pacote (ROS 2)</h2>
+<p>Execute os comandos abaixo para atualizar os pacotes da <code>ros2</code> obrigatórios para a prova:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_simulation
+git<span class="w"> </span>stash
+git<span class="w"> </span>pull
+<span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/insperbot
+git<span class="w"> </span>pull
+cb
+</code></pre></div>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do Pacote (ROS 2)</h2>
+<ul>
+<li>
+<p><strong>Preparação Inicial:</strong> Primeiro, aceite o convite do GitHub Classroom e clone o repositório <strong>dentro da pasta</strong> <code>colcon_ws/src/</code> no seu SSD.</p>
+</li>
+<li>
+<p><strong>Criação do Pacote ROS 2:</strong> <strong>Dentro do diretório do seu repositório</strong>, crie um novo pacote chamado <code>avaliacao_ai</code>.</p>
+<ul>
+<li><strong>Dica:</strong> Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote <code>my_package</code> como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="exercicio-1-5">Exercício 1 (5)</h1>
+<p>Baseando-se no código <code>base_control.py</code> do módulo 3, crie um arquivo chamado <code>q1.py</code> contendo uma classe denominada <code>Fugitivo</code>. Esta classe deve implementar um <strong>nó</strong> chamado <code>fugitivo_node</code>, responsável por fazer com que o robô <strong>simulado</strong> fuja do labirinto e pare do lado de fora.</p>
+<p>Utilize o comando abaixo para iniciar o simulador no mapa da prova:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>labirinto.launch.py
+</code></pre></div>
+<p><code>**Importante**</code>: Note que o robô pode <code>nascer</code> aleatoriamente na posição <code>A</code> ou <code>B</code> do labirinto e independetemente da posição inicial o robô deve ser capaz de fujir do labirinto, como ilustrado na imagem a seguir:</p>
+<p><img alt="Labirinto" src="../labirinto.png" /></p>
+<p>O nó criado deve: </p>
+<ul>
+<li>Criar um publisher para o tópico <code>/watcher</code> que publica mensagens do tipo <code>std_msgs.msg.String</code>.</li>
+<li>Ao iniciar, o nó deve publicar a mensagem <code>start</code> no tópico <code>/watcher</code>.</li>
+<li>Ao sair do labirinto, o nó deve publicar a mensagem <code>stop</code> no tópico <code>/watcher</code>.</li>
+<li>Controlar o robô para que ele saia do labirinto e pare do lado de fora.</li>
+<li>Deve ser capaz de sair independentemente da posição inicial do robô.</li>
+<li>Deve resolver o labirinto em menos de 5 minuto.</li>
+</ul>
+<h2 id="restricoes">Restrições</h2>
+<ol>
+<li>Deve existir o arquivo chamado <code>q1.py</code>.</li>
+<li>O programa deve ser executado sem erros.</li>
+<li>A classe deve se chamar <code>Fugitivo</code>.</li>
+<li>A implementação deve seguir a estrutura da classe <code>Fugitivo</code>, conforme exemplo no <code>base_control.py</code>.</li>
+<li>A função <code>control</code> deve ser a única a publicar no tópico <code>/cmd_vel</code>.</li>
+<li>A função <code>control</code> deve ser idêntica à do arquivo <code>base_control.py</code>. Todas as decisões de controle devem ocorrer dentro dos nós, sem alterações na função <code>control</code>.</li>
+<li>Não utilizar loops infinitos ou <code>sleep</code> durante o controle do robô.</li>
+<li>Publicar a mensagem <code>start</code> ao iniciar e <code>stop</code> ao sair do labirinto no tópico <code>/watcher</code>.</li>
+</ol>
+<h2 id="rubrica">Rúbrica</h2>
+<ol>
+<li>O programa deve respeitar as restrições definidas.</li>
+<li>Nota: ~1,0 - [1] + O robô consegue chegar na posição <code>1</code> de ambos os lados do labirinto e parar.</li>
+<li>Nota: ~2,5 - [1] + O robô consegue chegar na posição <code>2</code> de ambos os lados do labirinto e parar.</li>
+<li>Nota: ~5,0 - [1] + O robô consegue sair do labirinto e parar em menos de 5 minutos.</li>
+</ol>
+<h2 id="video">Vídeo</h2>
+<p>Grave dois vídeos, um para cada posição inicial do robô, mostrando que o robô é capaz de sair do labirinto e parar do lado de fora. Publique os vídeos no YouTube e inclua apenas o <code>link</code> no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="exercicio-2-5">Exercício 2 (5)</h1>
+<p>Essa questão envolve apenas OpenCV Não utiliza ROS2. Crie um arquivo chamado <code>q2.py</code> com uma classe chamada <code>ChessDetector</code>, que possui um método <code>run</code>. Este método deve receber uma imagem e retornar um <code>np.array</code> de dimensão <code>(8, 8)</code> contendo as seguintes siglas para as peças de xadrez no tabuleiro:</p>
+<ul>
+<li>Brancas:<ul>
+<li>Peão: <code>WP</code></li>
+<li>Torre: <code>WT</code></li>
+<li>Cavalo: <code>WC</code></li>
+<li>Bispo: <code>WB</code></li>
+<li>Rainha: <code>WQ</code></li>
+<li>Rei: <code>WK</code></li>
+</ul>
+</li>
+<li>Pretas:<ul>
+<li>Peão: <code>BP</code></li>
+<li>Torre: <code>BT</code></li>
+<li>Cavalo: <code>BC</code></li>
+<li>Bispo: <code>BB</code></li>
+<li>Rainha: <code>BQ</code></li>
+<li>Rei: <code>BK</code></li>
+</ul>
+</li>
+</ul>
+<p>Coloque <code>--</code> onde não houver peças.</p>
+<p>Todas as peças de xadrez possuem um tag para auxiliar na identificação. Os tags estão presentes na imagem a seguir:</p>
+<p><img alt="Tags" src="../tags.png" /></p>
+<p>O tabuleiro de xadrez tem o formato e peças tradicionais. Na imagem, o tabuleiro pode estar em qualquer posição e tamanho (limitado entre o tabuleiro do <code>exemplo2.png</code> e do <code>exemplo3.png</code>). As peças não estão necessariamente no centro de um quadrado do tabuleiro.</p>
+<p>Exemplo de tabuleiro de xadrez:</p>
+<p><img alt="Tabuleiro" src="../q2/exemplo1.png" /></p>
+<p>Saída esperada:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;BT&#39;</span><span class="p">,</span> <span class="s1">&#39;BC&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;BQ&#39;</span><span class="p">,</span> <span class="s1">&#39;BK&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;BC&#39;</span><span class="p">,</span> <span class="s1">&#39;BT&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">,</span> <span class="s1">&#39;WP&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;WT&#39;</span><span class="p">,</span> <span class="s1">&#39;WC&#39;</span><span class="p">,</span> <span class="s1">&#39;WB&#39;</span><span class="p">,</span> <span class="s1">&#39;WQ&#39;</span><span class="p">,</span> <span class="s1">&#39;WK&#39;</span><span class="p">,</span> <span class="s1">&#39;WB&#39;</span><span class="p">,</span> <span class="s1">&#39;WC&#39;</span><span class="p">,</span> <span class="s1">&#39;WT&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+</code></pre></div>
+<h2 id="objetivo">Objetivo</h2>
+<p>Desenvolver um programa capaz de identificar todas as peças do tabuleiro de xadrez e retornar um <code>np.array</code> com as siglas das peças presentes no tabuleiro, colocando <code>--</code> onde não houver peça.</p>
+<h2 id="restricoes_1">Restrições</h2>
+<ol>
+<li>Deve existir um arquivo chamado <code>q2.py</code></li>
+<li>O programa deve ser executado sem erros.</li>
+<li>A classe deve se chamar <code>ChessDetector</code></li>
+<li>A classe deve possuir um método <code>run</code> que, ao receber uma imagem, identifica retorna um <code>np.array</code> com as siglas das peças de xadrez presentes no tabuleiro.</li>
+<li>O programa deve conter uma função <code>main</code> que lê a imagem, chama o método <code>run</code>, escreve o resultado na tela e exibe a imagem original.</li>
+<li>A função <code>main</code> deve ser executada apenas se o arquivo for rodado diretamente, não quando importado como módulo.</li>
+</ol>
+<h2 id="rubrica_1">Rúbrica</h2>
+<ol>
+<li>O programa respeitar as restrições definidas.</li>
+<li>Nota: ~1,0 - [1] + O programa consegue identificar o tabuleiro de xadrez.</li>
+<li>Nota: ~1,5 - [0,5] + O programa identifica corretamente <strong>1</strong> das peças do tabuleiro e retorna o <code>np.array</code> correto contendo a peça e sua posição.</li>
+<li>Nota: ~2,5 - [3] + O programa identifica corretamente a peça e a posição de 25% das peças do tabuleiro.</li>
+<li>Nota: ~3,5 - [3] + O programa identifica corretamente a peça e a posição de 50% das peças do tabuleiro.</li>
+<li>Nota: ~5,0 - [3] + O programa identifica corretamente a peça e a posição de todas (100%) as peças do tabuleiro.</li>
+</ol>
+<h2 id="video_1">Vídeo</h2>
+<p>Grave um vídeo mostrando o funcionamento do programa para cada uma das 6 imagens de exemplo, mostrando a imagem de entrada e o <code>np.array</code> de saída. Publique os vídeos no YouTube e inclua apenas o <code>link</code> no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="desafio-1-ou-2">Desafio (+1 ou +2)</h1>
+<p>Neste desafio, dentre os alunos que finalizarem a questão 1, aquele com o melhor tempo receberá um bônus de 2 pontos na nota de AI. Além disso, os 50% melhores classificados ganharão 1 ponto extra na nota de AI.</p>
+<p>Para participar da competição, após o robô sair do labirinto e a mensagem "Watcher stopped - run time: …" ser exibida no terminal do mapa, copie o arquivo <code>AI_RUNTIME.txt</code>, que foi salvo na sua pasta Home, para a raiz do seu repositório (no mesmo diretório do README.md).</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

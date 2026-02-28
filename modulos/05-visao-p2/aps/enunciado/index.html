@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="entregavel-5-de-robotica-computacional">Entregável 5 de Robótica Computacional</h1>
+<h2 id="instrucoes-gerais">Instruções gerais</h2>
+<p><strong>Aviso 1:</strong> Sempre desenvolvam nos arquivos <code>.py</code> dos respectivos exercícios.</p>
+<p><strong>Aviso 2:</strong> Lembre-se de dar <code>commit</code> e <code>push</code> no seu repositório até o horário limite de entrega.</p>
+<p><strong>Aviso 3:</strong> Preencha o nome completo dos integrantes do seu grupo no arquivo <code>README.md</code> do seu repositório.</p>
+<p><strong>Aviso 4:</strong> Além de seu repositório, para todas as questões você <strong>deve gravar um vídeo do seu robô executando a tarefa</strong>. O vídeo deve ser feito gravando a tela do linux, <a href="https://insper.github.io/robotica-computacional/screen_record/">tutorial</a>, e deve ser postado no Youtube. </p>
+<p>No arquivo <code>README.md</code> do seu repositório existe o campo <code>Link do Vídeo</code> onde você deve colocar o link do video no youtube. Certifique-se de que o vídeo está público e que o link está correto. <code>NUNCA de commit no vídeo</code>, somente adicione o link.</p>
+<p><strong>Aviso 5:</strong> Para este entregável, você deve utilizar o robô real, mas você pode testar o código no simulador.</p>
+<hr />
+<h1 id="baixe-o-zip-com-as-imagens-de-teste">Baixe o zip com as imagens de teste</h1>
+<p>Clique no link abaixo para baixar o zip com as imagens de teste dos exercícios.</p>
+<div class="admonition download">
+<p class="admonition-title">Download</p>
+<p><a href="../../fig_aps5.zip">Download das Imagens de Teste</a></p>
+</div>
+<hr />
+<h1 id="exercicio-1-latinhas-3-pontos">Exercício 1 - Latinhas (3 pontos)</h1>
+<p>Resolva o exercicio na atividade <a href="https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/2-identificacao/">2 - Identificação de Objetos</a>.</p>
+<p>Adicione o arquivo <code>latinhas.py</code> no seu repositório juntamente com as imagens de teste.</p>
+<p>Grave um vídeo da execução do código nas 3 imagens de teste e adicione o link no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="exercicio-2-vanishing-point-3-pontos">Exercício 2 - Vanishing Point (3 pontos)</h1>
+<p>Resolva o exercicio na atividade <a href="https://insper.github.io/robotica-computacional/modulos/05-visao-p2/atividades/4-retas-circulos/">4 - Detecção de Retas e Círculos</a>.</p>
+<p>Tire uma foto da pista no laboratório e salve no seu repositório. No vídeo, mostre o código para detectar os pontos de fuga (vanishing points) em execução.</p>
+<p>Adicione o arquivo <code>vanishing_point.py</code> no seu repositório juntamente com a imagem de teste do handout e a sua foto da pista, salve também a sua foto com o ponto de fuga desenhado detectado.</p>
+<h2 id="video">Video</h2>
+<p>Grave um vídeo da execução do código na imagem de teste do handout e na sua foto da pista, e adicione o link no arquivo <code>README.md</code> do seu repositório.</p>
+<p>Faça upload no YouTube e coloque o link no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="exercicio-3-estimando-pose-4-pontos">Exercício 3 - Estimando Pose (4 pontos)</h1>
+<p>Você vai precisar de uma folha com o padrão abaixo.</p>
+<p><strong>Dica:</strong> se não tiver impressa, pode exibir a imagem em um tablet ou smartphone.</p>
+<p><img alt="Folha com padrão de círculos" src="../figs/folha_atividade.png" /></p>
+<p>Neste exercício vamos estimar a distância da câmera até a folha e o ângulo de inclinação da folha em relação à direção da câmera, realizando a conversão 2D para 3D com o modelo pinhole visto em aula.</p>
+<p><img alt="Modelo Pinhole" src="../figs/pinhole.png" /></p>
+<p>Pela geometria do modelo pinhole, vale a relação entre distância focal <span class="arithmatex">\(f\)</span>, distância entre os centros dos círculos na imagem <span class="arithmatex">\(h\)</span>, distância da câmera ao objeto <span class="arithmatex">\(D\)</span> e distância real entre os centros na folha <span class="arithmatex">\(H\)</span>:</p>
+<div class="arithmatex">\[
+\frac{h}{H} = \frac{f}{D}
+\qquad\Rightarrow\qquad
+D = \frac{f \cdot H}{h}
+\]</div>
+<p><strong>Objetivo:</strong> estimar <span class="arithmatex">\(D\)</span> (distância câmera-folha) e <span class="arithmatex">\(\theta\)</span> (inclinação da folha em relação à vertical).</p>
+<p><strong>Arquivo de trabalho:</strong> <code>./ex3.py</code>.</p>
+<hr />
+<h2 id="o-que-fazer">O que fazer</h2>
+<h3 id="1-medicoes-iniciais">1) Medições iniciais</h3>
+<ol>
+<li>Use a sua câmera para capturar <strong>uma imagem da folha</strong> a uma distância conhecida <span class="arithmatex">\(D\)</span> (meça com régua ou trena).</li>
+<li>Meça a distância real <span class="arithmatex">\(H\)</span> entre os <strong>centros</strong> dos dois círculos na folha.
+   <strong>Atenção:</strong> <span class="arithmatex">\(D\)</span> e <span class="arithmatex">\(H\)</span> devem estar <strong>na mesma unidade</strong> (por exemplo, centímetros).</li>
+</ol>
+<h3 id="2-funcao-run">2) Função <code>run</code></h3>
+<p>Implemente a lógica principal chamando as funções auxiliares indicadas:</p>
+<ol>
+<li><strong>Encontrar os centros</strong> dos dois círculos na imagem da folha - <code>encontrar_centros</code>.</li>
+<li><strong>Calcular <span class="arithmatex">\(h\)</span></strong>, a distância em pixels entre os centros - <code>calcular_h</code>.</li>
+</ol>
+<details>
+   <summary>Spoiler*</summary>
+   Distância entre os centros: \(h = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)
+   </details>
+<ol>
+<li><strong>Calcular o ângulo <span class="arithmatex">\(\theta\)</span></strong> da folha em relação à vertical - <code>calcular_theta</code>.</li>
+<li><strong>Estimar <span class="arithmatex">\(D\)</span></strong> usando o modelo pinhole - <code>encontrar_D</code>.</li>
+<li><strong>Escrever na imagem</strong> os valores de <span class="arithmatex">\(D\)</span> e <span class="arithmatex">\(\theta\)</span> com <strong>duas casas decimais</strong>.</li>
+</ol>
+<details>
+   <summary>Spoiler**</summary>
+   Utilize `cv2.putText` para escrever na imagem.
+   </details>
+<ol>
+<li><strong>Retornar</strong>: a imagem anotada, <span class="arithmatex">\(D\)</span>, <span class="arithmatex">\(\theta\)</span> e <span class="arithmatex">\(h\)</span>.</li>
+<li><strong>Robustez</strong>: se a folha <strong>não</strong> estiver presente na imagem, retorne <code>-1</code> para <span class="arithmatex">\(D\)</span> e para <span class="arithmatex">\(\theta\)</span>. Ou seja, seu código não deve quebrar se a folha não for detectada.</li>
+</ol>
+<h3 id="3-funcao-calibration">3) Função <code>calibration</code></h3>
+<p>Implemente o processo de calibração da câmera:</p>
+<ol>
+<li>Ajuste a fonte de imagem para <strong>a sua câmera</strong> - <code>rodar_frame</code>.</li>
+<li>Chame <code>run</code> para obter os centros dos círculos e <span class="arithmatex">\(h\)</span>.</li>
+<li>Chame <code>encontrar_foco</code> com os valores medidos de <span class="arithmatex">\(D\)</span> e <span class="arithmatex">\(H\)</span> para obter a distância focal <span class="arithmatex">\(f\)</span>.</li>
+</ol>
+<p>Armazene <span class="arithmatex">\(f\)</span> como <strong>parâmetro da classe</strong>.</p>
+<h3 id="4-execucao-em-tempo-real">4) Execução em tempo real</h3>
+<p>Após passar no <code>pytest</code>, altere a <code>main</code> para executar <code>rodar_webcam</code>:</p>
+<ol>
+<li>Ajuste a fonte de imagem para <strong>a webcam</strong> - <code>rodar_webcam</code>.</li>
+<li>Chame <code>calibration</code> para <strong>calibrar a câmera</strong>.</li>
+<li>Dentro do loop da webcam, chame <code>run</code> a cada frame para obter <span class="arithmatex">\(D\)</span> e <span class="arithmatex">\(\theta\)</span>.</li>
+<li><strong>Grave um vídeo</strong> mostrando a câmera e a folha com <strong>várias distâncias <span class="arithmatex">\(D\)</span></strong> e <strong>vários ângulos <span class="arithmatex">\(\theta\)</span></strong>. Exiba <span class="arithmatex">\(D\)</span> e <span class="arithmatex">\(\theta\)</span> na imagem.</li>
+<li>Faça <strong>upload no YouTube</strong> e coloque o <strong>link no <code>README.md</code></strong> do seu repositório.</li>
+</ol>
+<hr />
+<h2 id="valores-esperados">Valores esperados</h2>
+<p>A imagem <code>./img/calib01.jpg</code> ilustra como tirar a foto de calibração. Com a sua câmera, capture uma foto similar, posicionando a folha a uma distância conhecida <span class="arithmatex">\(D\)</span>.</p>
+<p><img alt="Modelo Pinhole" src="../img/calib01.jpg" /></p>
+<p>Na legenda de exemplo: <span class="arithmatex">\(D = 80\ \text{cm}\)</span> e <span class="arithmatex">\(H = 12{,}7\ \text{cm}\)</span>.</p>
+<blockquote>
+<p><strong>Saída esperada da calibração</strong></p>
+<ul>
+<li>Distância entre os círculos na imagem <span class="arithmatex">\(h\)</span> ≈ <strong>161</strong> pixels</li>
+<li>Distância focal estimada <span class="arithmatex">\(f\)</span> ≈ <strong>1014.1732283464568</strong></li>
+</ul>
+</blockquote>
+<p>As imagens <code>./img/angulo01.jpg</code> a <code>./img/angulo04.jpg</code> exemplificam a estimativa do ângulo <span class="arithmatex">\(\theta\)</span>.</p>
+<blockquote>
+<p><strong>Saídas esperadas de ângulo</strong></p>
+<ul>
+<li><code>angulo01.jpg</code>: <strong>Ângulo de -0,18 graus</strong></li>
+<li><code>angulo02.jpg</code>: <strong>Ângulo de -51,98 graus</strong></li>
+<li><code>angulo03.jpg</code>: <strong>Ângulo de -88,93 graus</strong></li>
+<li><code>angulo04.jpg</code>: <strong>Ângulo de 118,57 graus</strong></li>
+</ul>
+</blockquote>
+<h2 id="video_1">Video</h2>
+<p>Grave um vídeo da execução do código utilizando a webcam, mostrando a distância estimada <span class="arithmatex">\(D\)</span> e o ângulo <span class="arithmatex">\(\theta\)</span> na imagem. Faça upload no YouTube e coloque o link no arquivo <code>README.md</code> do seu repositório.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

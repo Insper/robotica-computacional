@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../equipe.css"><link rel="stylesheet" href="../../css/ansi-colours.css"><link rel="stylesheet" href="../../css/jupyter-cells.css"><link rel="stylesheet" href="../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="projeto-missao-na-404">Projeto - Missão na 404</h1>
+<p>O objetivo do projeto é programar nosso robô para cumprir um conjunto de missões na sala 404. Utilizaremos o cenário apresentado a seguir.</p>
+<p><img alt="" src="../pista.png" /></p>
+<p>Os grupos, que podem ser compostos por <code>até quatro integrantes</code>, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. </p>
+<p><a class="ah-button" href="https://classroom.github.com/a/5yhk7MFN">Link para repositório do projeto GitHub Classroom</a></p>
+<h1 id="data-de-entrega-0311-as-2359h"><strong><code>Data de Entrega: 03/11 às 23:59h</code></strong></h1>
+<hr />
+<h2 id="instrucoes-gerais">Instruções gerais</h2>
+<p><strong>Aviso 1:</strong> Sempre desenvolvam nos arquivos <code>.py</code> dos respectivos exercícios.</p>
+<p><strong>Aviso 2:</strong> Lembre-se de realizar <code>commit</code> e <code>push</code> no seu repositório até o horário limite de entrega.</p>
+<p><strong>Aviso 3:</strong> Preencha o nome completo dos integrantes do seu grupo no arquivo <code>README.md</code> do seu repositório.</p>
+<p><strong>Aviso 4:</strong> Além de seu repositório, para todas as missões os grupos <strong><code>devem gravar um vídeo do seu robô executando a tarefa</code></strong>. O vídeo deve ser postado no Youtube. </p>
+<p>No arquivo <code>README.md</code> do seu repositório existe o campo <code>Link do Vídeo</code> onde você deve preencher com apenas o link de cada video no youtube. Certifique-se de que o vídeo está público e que o link está correto. <code>NUNCA de commit no vídeo</code>, somente adicione o link.</p>
+<p><strong>Aviso 5:</strong> Para o projeto, as entregas são feitas utilizando o robô real. Entregas no simulador serão aceitas apenas para a missão 1, conquistando nota máxima de 2,5 pontos.</p>
+<p><strong>Aviso 6:</strong> São aceitos videos com entregas parciais que comprovam que seu robô é capaz de realizar parte das tarefas. Inclua o link dos vídeos no README com um comentário. </p>
+<p><strong>Aviso 7:</strong> É possível realizar a entrega parcial de missões avançadas, descrevendo no README o que falta para completar a missão.</p>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do Pacote (ROS 2)</h2>
+<ul>
+<li><strong>Preparação Inicial:</strong> Primeiro, aceite o convite do GitHub Classroom e clone o repositório <strong>dentro da pasta</strong> <code>colcon_ws/src/</code> no seu SSD.</li>
+<li><strong>Criação do Pacote ROS 2:</strong> <strong>Dentro do diretório do seu repositório</strong>, crie um novo pacote chamado <code>projeto_robcomp</code>.<ul>
+<li><strong>Dica:</strong> Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote <code>robcomp_util</code> como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="atualizacao-dos-repositorios">Atualização dos Repositórios</h2>
+<p>Em um novo terminal, execute os comandos a seguir linha por linha.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_simulation
+git<span class="w"> </span>stash
+git<span class="w"> </span>pull
+cb
+</code></pre></div>
+<h2 id="mapa-simulado">Mapa Simulado</h2>
+<p>Para inicializar o mapa do projeto, em um terminal digite:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>pista-25B.launch.py
+</code></pre></div>
+<hr />
+<h2 id="descricao-das-missoes">Descrição das Missões</h2>
+<p>O projeto é composto por 3 missões de complexidade crescente, envolvendo tanto o design de software quanto a utilização dos sensores e comportamentos do robô. <strong>É preciso concluir todas as missões anteriores para obter a nota da missão subsequente</strong>.</p>
+<p>Cada missão deverá ser registrada em um ou mais vídeos, com o link adicionado no arquivo <code>README</code> e o codigo deve ser versionado utilizando o <strong>Releases</strong> do GitHub, com a tag do conceito atingido.</p>
+<p>As missões envolvem os seguintes elementos:</p>
+<ul>
+<li>
+<p><strong>Pista</strong>: O robô deve permanecer dentro da pista, retornando a ela o mais rápido possível caso saia.</p>
+</li>
+<li>
+<p><strong>Creepers</strong>: Bonecos semelhantes aos do Minecraft, que devem ser transportados até as Drop Areas.</p>
+<ul>
+<li>Quatro Creepers estão posicionados no <strong>Creeper Place</strong> com duas cores diferentes e dois ids diferentes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Slalom</strong>: Um trecho da pista com obstáculos que o robô deve atravessar sem bater.</p>
+</li>
+<li>
+<p><strong>Drop Areas</strong>: Placas com imagens detectáveis pela Yolo, local onde os Creepers devem ser depositados. Elas são colocadas em locais fixos fora da linha branca. Apenas a imagen entre os Slalom é fixa, sendo que as outras duas imagens podem trocar de lugar.</p>
+</li>
+<li>
+<p><strong>Placas</strong>: AprilTags de <code>ID</code> <code>100</code>, <code>150</code> e <code>250</code>. <strong>O grupo pode coloca-las em qualquer lugar</strong>, fora da linha branca, para auxiliar na navegação.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Dica 1</p>
+<p>No simulador, você pode alterar a posição das placas no arquivo <code>pista25B.world</code>, em um terminal digite:</p>
+<div class="highlight"><pre><span></span><code>code /home/borg/colcon_ws/src/my_simulation/my_gazebo/worlds/pista25B.world
+</code></pre></div>
+</div>
+<h3 id="para-completar-uma-missao-o-grupo-deve">Para completar uma missão, o grupo deve:</h3>
+<ol>
+<li>
+<p>Chamar um professor ou tecnico para validar a pista e selecionar o Creeper e a "Drop Area" (se aplicável).</p>
+</li>
+<li>
+<p>Sua classe deve receber como entrada, cor do Creeper, ID do Creeper e "Drop Area".</p>
+</li>
+<li>
+<p>Gravar o robô realizando a missão na pista real.</p>
+</li>
+<li>
+<p>Incluir o link do vídeo no README do seu repositório e criar um Release com a tag referente a última missão concluída.</p>
+</li>
+<li>
+<p>Cada missão deve ser concluída em menos de 15 minutos.</p>
+</li>
+<li>
+<p><strong>Deixar</strong> o Creeper em uma "Drop Area" inclui:</p>
+<p>a. Parar próximo à "Drop Area".</p>
+<p>b. Posicionar-se de frente da "Drop Area".</p>
+<p>c. Aproximar-se até ficar a 0.5m de distância.</p>
+<p>d. Abaixar a garra e soltar o Creeper em pé.</p>
+<p>e. Retornar à pista sem derrubar o Creeper.</p>
+</li>
+<li>
+<p><strong>Ao dar commit no vídeo e no código</strong>, peça para um professor ou técnico validar a missão na planilha como "Concluída".</p>
+</li>
+</ol>
+<!--- 
+!!! Atenção
+    Se uma missão for completada apenas no simulador, será concedido 25% da diferença dos conceitos de nota. **A missão C é obrigatória no robô real**.
+--->
+<hr />
+<h3 id="missao-1-simulador-e-robo-real">Missão <strong>1</strong> (Simulador e Robô Real)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Realizar a Missão no robô real - Simulador pode ser entrega, mas a nota é reduzida.</p>
+</div>
+<p>Nesta missão, o robô deve pegar um Creeper específico (ID e cor) e então retornar para a posição inicial. 
+Os seguintes passos devem ser realizados:</p>
+<ol>
+<li>
+<p>A classe recebe a cor e o ID do Creeper <strong>desejado</strong>.
+    a. Adicione <code>input</code> na função <code>main()</code> para receber a cor e o ID do Creeper desejado.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.</p>
+</li>
+<li>
+<p>O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.</p>
+</li>
+<li>
+<p>O robô deve pegar o Creeper <strong>desejado</strong>.</p>
+</li>
+<li>
+<p>O robô deve retornar para a posição inicial. </p>
+</li>
+<li>
+<p>Na posição inicial, o robô deve soltar o Creeper em pé, se posicionar para fechar e abaixar a garra sem derrubar o Creeper.</p>
+</li>
+<li>
+<p>Finalmente o código deve finalizar a execução sem nenhum erro.</p>
+</li>
+</ol>
+<p><strong>Requisitos de projeto de software</strong>:</p>
+<ul>
+<li>
+<p><strong>Uso de Classes</strong>: O código deve ser estruturado de forma orientada a objetos, utilizando classes para organizar as funcionalidades</p>
+</li>
+<li>
+<p><strong>Máquina de Estados</strong>: Implemente uma máquina de estados para gerenciar as diferentes etapas da missão;</p>
+</li>
+<li>
+<p><strong>Controle Proporcional</strong>: Utilize técnicas de controle proporcional para manter o robô na trajetória desejada, especialmente ao seguir a linha.</p>
+</li>
+</ul>
+<p><strong>Nota final desta missão:</strong> 5,0 - Simulador: 2,5</p>
+<hr />
+<h3 id="missao-2-apenas-no-simulador">Missão <strong>2</strong> (Apenas no Simulador)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Realizar a Missão no robô real</p>
+</div>
+<p>Essa missão expande a missão anterior, mas agora o robô deve pegar o Creeper específico, procurar e entrega-lo em uma "Drop Area" <strong>desejada</strong> e então retornar para a posição inicial. Para este conceito, o robô não precisa passar pelo Slalom, sendo relevante apenas as outras duas pistas.
+Os seguintes passos devem ser realizados:</p>
+<ol>
+<li>
+<p>A classe recebe a cor e o ID do Creeper <strong>desejado</strong> e a "Drop Area" <strong>desejada</strong>.
+    a. Adicione <code>input</code> na função <code>main()</code> para receber o objetivo da missão.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.</p>
+</li>
+<li>
+<p>O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.</p>
+</li>
+<li>
+<p>O robô deve pegar o Creeper <strong>desejado</strong>.</p>
+</li>
+<li>
+<p>O robô deve procurar a "Drop Area" <strong>desejada</strong> dentre as duas pistas, com exceção da pista do Slalom.</p>
+</li>
+<li>
+<p>O robô deve deixar o Creeper na "Drop Area" <strong>desejada</strong>.</p>
+</li>
+<li>
+<p>O robô deve retornar para a posição inicial, sem derrubar o Creeper.</p>
+</li>
+<li>
+<p>Finalmente o código deve finalizar a execução sem nenhum erro.</p>
+</li>
+</ol>
+<p><strong>Requisitos de projeto de software</strong>:</p>
+<ul>
+<li>Mesmo da missão <strong>1</strong></li>
+</ul>
+<p><strong>Nota final desta missão:</strong> 6,0</p>
+<hr />
+<h3 id="missao-3-simulador-e-robo-real">Missão <strong>3</strong> (Simulador e Robô Real)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Realizar a Missão no robô real</p>
+</div>
+<p>Essa missão expande a missão anterior, mas agora o robô deve pegar um Creeper específico (ID e cor), procurar e entrega-lo para um <del>"Drop Area"</del> Creeper <strong>desejada</strong> que nessa missão está entre os Slalom, e então retornar para a posição inicial.
+Os seguintes passos devem ser realizados:</p>
+<ol>
+<li>
+<p>A classe recebe a cor e o ID do Creeper <strong>desejado</strong> e a <del>"Drop Area"</del> Creeper <strong>desejada</strong>.
+    a. Adicione <code>input</code> na função <code>main()</code> para receber o objetivo da missão.
+    b. Passe esses valores ao instanciar a classe que implementa a missão.</p>
+</li>
+<li>
+<p>O robô sai da posição inicial e visita o Creeper Place, local onde estão os Creepers.</p>
+</li>
+<li>
+<p>O robô deve pegar o Creeper <strong>desejado</strong>.</p>
+</li>
+<li>
+<p>O robô deve passar pelo Slalom até a <del>"Drop Area"</del> Creeper <strong>desejada</strong>.</p>
+</li>
+<li>
+<p>O robô deve deixar o Creeper na <del>"Drop Area"</del> Creeper <strong>desejada</strong>.</p>
+</li>
+<li>
+<p>O robô deve passar novamente pelo Slalom para retornar para a posição inicial, sem derrubar o Creeper.</p>
+</li>
+<li>
+<p>Finalmente o código deve finalizar a execução sem nenhum erro.</p>
+</li>
+</ol>
+<p><strong>Requisitos de projeto de software</strong>:</p>
+<ul>
+<li>Mesmo da missão <strong>2</strong></li>
+</ul>
+<p><strong>Nota final desta missão:</strong> 10,0 (Real) -- 8,0 (Simulador)</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

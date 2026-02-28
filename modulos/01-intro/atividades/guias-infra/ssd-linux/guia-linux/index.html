@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Guia básico de Linux - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../../../equipe.css"><link rel="stylesheet" href="../../../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Guia básico de Linux</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 1 - Introdução ao Curso</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                  
+                    <li>1 - Infra</li>
+                  
+                
+                  
+                    <li>1.1 - Linux</li>
+                  
+                
+                <li>Guia básico de Linux</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="guia-basico-de-linux">Guia básico de Linux</h1>
+<p>Com este tutorial vamos guiar você por alguns exercícios práticos usando comandos e apresentando conceitos básicos que vão te ajudar muito no decorrer do curso. Não assumiremos nenhum conhecimento prévio, mas no final esperamos que você se sinta um pouco mais confortável na próxima vez que se deparar com algumas instruções que começam com “Abrir o terminal”. </p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 1</p>
+<p>Caso tenha interesse em aprofundar alguns conceitos sobre o Sistema Operacional Linux, <a href="um-pouco-de-historia/">clique aqui</a>.</p>
+</div>
+<h2 id="o-que-voce-vai-aprender">O que você vai aprender:</h2>
+<ul>
+<li>Comandos básicos via terminal do Linux</li>
+<li>Comando bonus para facilitar sua vida</li>
+</ul>
+<h2 id="conhecendo-e-utilizando-o-terminal">Conhecendo e utilizando o Terminal</h2>
+<p>O Terminal do Linux é uma ferramenta que facilita a manipulação do sistema, interpretando os comandos do usuário, fazendo a ponte com o hardware do seu computador.</p>
+<p>Quando usamos o terminal dentro da interface gráfica do sistema, chamamos de <strong>emulador de terminal</strong>, pois estamos dentro da interfáce gráfica. Existem diversos emuladores de terminais e também existem diversos tipos de terminais. Então vamos padronizar duas informações a partir deste ponto:</p>
+<ul>
+<li>
+<p><strong>Terminal</strong> será o nome dado à janela do terminal dentro do ambiente gráfico. No caso do seu SSD será o Terminator.</p>
+</li>
+<li>
+<p><strong>Bash</strong> será o único tipo de terminal que usamos. </p>
+</li>
+</ul>
+<p>Existem outros tipos de terminal como o <strong>ZSH</strong> ou <strong>ZShell</strong> mas estes são assuntos para outro momento.</p>
+<h3 id="abrindo-o-terminal">Abrindo o terminal</h3>
+<p>A forma mais facil de abrir o terminal, como já foi visto no tutorial anterior, é atraves do atalho:</p>
+<p><code>Super  +  T</code></p>
+<p>Neste momento nos deparamos com a janela do terminal aberta no ambiente do usuário (home ou ~) pronta para receber os primeiros comandos:</p>
+<p><img alt="passo1" src="imgs/passo1.png" /></p>
+<h2 id="comando-apt">Comando "apt"</h2>
+<p><code>APT</code> é um conjunto de ferramentas usadas pelo Linux para administrar o sistema de forma automática, é possível instalar, atualizar e remover programas e suas dependências via apt;</p>
+<h3 id="atualizar-a-lista-de-pacotes">Atualizar a "lista de pacotes"</h3>
+<p>Com o comando abaixo, usamos o <code>apt</code> para atualizar todos os programas instalados com essa ferramenta;</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<p>Com o comando abaixo, é possível baixar e instalar a versão mais atual de todos os programas instalados anteriormente via <code>apt</code>;</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+<h3 id="instalar-pacotes-via-apt">Instalar pacotes via apt</h3>
+<p>Com este comando, usamos o <code>apt</code> para encontrar, baixar e instalar automaticamente o programa no nosso computador;</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>geogebra
+</code></pre></div>
+<p>Após finalizar a instalação, podemos executar a nova ferramenta, apenas digitando o nome dela no terminal.</p>
+<div class="highlight"><pre><span></span><code>geogebra
+</code></pre></div>
+<h3 id="remover-pacotes-via-apt">Remover pacotes via apt</h3>
+<p>Tambem é possivel desinstalar um programa que foi baixado via <code>apt</code>, basta usar o comando <code>remove</code>, como no exemplo abaixo;</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>geogebra
+</code></pre></div>
+<h3 id="atualizar-pacotes-ja-instalados">Atualizar pacotes já instalados</h3>
+<p>Se quiser atualizar um pacote especifico, é possivel determinar o programa a ser atualizado;</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>--only-upgrade<span class="w"> </span>install<span class="w"> </span>google-chrome-stable
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>--only-upgrade<span class="w"> </span>install<span class="w"> </span>firefox
+</code></pre></div>
+<h3 id="instalar-pacotes-via-ubuntu-software">Instalar pacotes via Ubuntu Software</h3>
+<p><img alt="passo2" src="imgs/passo2.png" width="100" /></p>
+<p>Podemos instalar pacotes via <code>Ubuntu Software</code>, basta clicar em Show Applications, no canto inferior direito da tela, e digitar <code>Ubuntu Software</code> na janela de busca;</p>
+<p><img alt="passo3" src="imgs/passo3.png" width="800" /></p>
+<p>Agora clique na lupinha e digite o programa que deseja instalar;</p>
+<p><img alt="passo4" src="imgs/passo4.png" width="800" /></p>
+<p>Clique no software escolhido, e depois, clique no botão Instalar;</p>
+<p><img alt="passo5" src="imgs/passo5.png" width="800" /></p>
+<p>Terminada a instalação, basta clicar no botão <code>Launch</code> para executar o programa, ou <code>Remove</code> para desinstalar;</p>
+<p><img alt="passo6" src="imgs/passo6.png" width="800" /></p>
+<h3 id="navegando-entre-diretorios-e-arquivos">Navegando entre diretorios e arquivos</h3>
+<p>O Sistema Linux trabalha com dois elementos principais: Diretórios(pastas) e Arquivos.</p>
+<ul>
+<li>Os arquivos armazenam dados(txt,md,doc...), executam ações (py,jar,bin...)</li>
+<li>Diretórios são as pastas que agrupam os arquivos e organizam o sistema.</li>
+</ul>
+<p><img alt="passo7" src="imgs/passo7.png" width="800" /></p>
+<p><a href="https://commons.wikimedia.org/wiki/File:FilesAndFolders.png">Fonte</a></p>
+<h3 id="comando-cd">Comando "cd"</h3>
+<p>O comando <strong>cd</strong> , vem de Change Directory, ele é um dos comandos mais utilizados no terminal do Linux, isso porque ele permite que acessemos um diretório especifico. Vamos acessar o nosso  repositorio de Elementos de Sistemas via terminal, e atualizar ele via comandos git.</p>
+<p>Abra um terminal Super + T e execute o comando para entrar na pasta de Elementos de Sistemas:</p>
+<div class="highlight"><pre><span></span><code>cd ~/Z01.1
+</code></pre></div>
+<p>No mesmo terminal, utilize o comando abaixo para garantir que estamos com a ultima versão disponível na branch principal do repositório de Elementos de Sistemas no GitHub:
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 2</p>
+<p>É uma boa prática manter os seus repositórios do GitHub sempre atualizados, antes de começar a trabalhar, não esqueça de dar um <code>git pull</code>, para ter certeza de que está trabalhando com a ultima versão dos arquivos no seu repositório!</p>
+</div>
+<p>Feita a atualização, vamos instalar uma ferramenta que permite visualizar toda a estrutaras de árvore da pasta, no terminal que já está aberto, utilize o comando abaixo:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install tree
+</code></pre></div>
+<p>Agora digite o comando para visualizar a árvore do repositório de Elementos de Sistemas:</p>
+<div class="highlight"><pre><span></span><code>tree -d -L 4
+</code></pre></div>
+<p>Esta ferramenta é útil para navegar de forma mais eficiente dentro do sistema, se não sabemos aonde determinado repositório está, é possivel consultar a árvore para localizar o seu caminho visualmente. Veja abaixo como é mostrada a árvore do nosso diretório base do repositório da disciplina:</p>
+<p><img alt="Comando tree" src="imgs/tree.png" width="800" /></p>
+<p>Os paramentros -d -L 2 indica que que queremos listar (-L )até o quarto (4) nível na hierarquia de pastas, apenas as pastas (-d)</p>
+<p>Para listar tudo digite apenas tree.</p>
+<p>Na pasta em home, Z01.1 -&gt; Projetos -&gt; B-LogicaCombinacional -&gt; src  estão os arquivos .hdl da última aula, vamos dar uma olhada neles.</p>
+<div class="highlight"><pre><span></span><code>cd ~
+cd Z01.1
+cd Exercicios
+cd Extras
+</code></pre></div>
+<p>ou de forma mais ágil, digite:</p>
+<div class="highlight"><pre><span></span><code>cd ~/Z01.1/Exercicios/Extras
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dica 3</p>
+<p>Utilize a tecla <code>TAB</code> para autocompletar ou sugerir comandos no terminal.</p>
+</div>
+<p>Para acessar o diretório anterior podemos digitar:</p>
+<div class="highlight"><pre><span></span><code>cd ..
+</code></pre></div>
+<h3 id="comando-pwd">Comando "pwd"</h3>
+<p>Podemos verificar o caminho do diretório que estamos digitando:</p>
+<div class="highlight"><pre><span></span><code>pwd
+</code></pre></div>
+<p>Para acessar o diretório home, basta digitar;</p>
+<div class="highlight"><pre><span></span><code>cd
+</code></pre></div>
+<p>Toda vez que abrimos um novo terminal, ele é inicializado na home do usuário.</p>
+<h3 id="comando-ls">Comando "ls"</h3>
+<p>O comando <strong>ls</strong> é utilizado pra visualizar o conteúdo de um diretório.</p>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+<h2 id="visualizacao-de-arquivos-e-pastas-ocultos">Visualização de arquivos e pastas ocultos</h2>
+<p>O comando "ls" sozinho não exibe arquivos ocultos, que são arquivos e pastas que começam com ".". Talvez, em algum momento será necessário atualizar ou modificar as variáveis de ambiente, para isso, teremos que editar um arquivo oculto chamado "<strong>.bashrc</strong>", no momento precisamos apenas saber que este arquivo se encontra na home do usuario <code>~</code> e que após editado precisamos executar o <code>source ~/.bashrc</code> ou <code>feche o terminal e abra um novo</code> para recarregar as atualizações do arquivo.</p>
+<div class="highlight"><pre><span></span><code>cd ~
+ls -a
+</code></pre></div>
+<p>ou para listar informações mais detalhadas:</p>
+<div class="highlight"><pre><span></span><code>ls -la
+</code></pre></div>
+<p>ou simplismente:</p>
+<div class="highlight"><pre><span></span><code>ll
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cd ~
+code .bashrc
+source .bashrc
+</code></pre></div>
+<h3 id="comando-mkdir">Comando "mkdir"</h3>
+<p>Para criar um novo diretório no ambiente em que você está, basta digitar o comando a seguir;</p>
+<div class="highlight"><pre><span></span><code>mkdir ~/Documents/nome_da_pasta/nome_da_pasta
+</code></pre></div>
+<p>Para criar um novo diretório em um local especifico, basta especificar o caminho que o diretório deverá ser criado;</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 4</p>
+<p>Relembrando, Você sempre pode usar a tecla TAB para auto-completar os comandos.</p>
+</div>
+<div class="highlight"><pre><span></span><code>mkdir /home/borg/Documents/nome_da_pasta
+</code></pre></div>
+<p>ou</p>
+<div class="highlight"><pre><span></span><code>mkdir ~/Documents/nome_da_pasta
+</code></pre></div>
+<h3 id="comando-touch">Comando "touch"</h3>
+<p>O comando  <strong>touch</strong> cria arquivos vazios, na extensão que você definir;</p>
+<div class="highlight"><pre><span></span><code>touch /home/borg/Documents/nome_da_pasta/teste.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>touch /home/borg/Documents/nome_da_pasta/testando_outra_extensao.txt
+</code></pre></div>
+<p>O comando <strong>&gt;</strong> funciona exatamente como o <strong>touch</strong>:</p>
+<div class="highlight"><pre><span></span><code>&gt; /home/borg/Documents/nome_da_pasta/outro_teste.py
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&gt; /home/borg/Documents/nome_da_pasta/mais_um_teste.txt
+</code></pre></div>
+<p>Se você tentar abrir um arquivo que não existe, usando um editor de texto pelo terminal, o sistema cria o arquivo pra você, observe;</p>
+<div class="highlight"><pre><span></span><code>nano /home/borg/Documents/nome_da_pasta/usando_o_nano.py
+code /home/borg/Documents/nome_da_pasta/usando_o_vscode.md
+gedit /home/borg/Documents/nome_da_pasta/o_bloco_de_notas.txt
+</code></pre></div>
+<h3 id="comando-cp">Comando "cp"</h3>
+<p>Para copiar arquivos e diretorios, basta  digitar:</p>
+<div class="highlight"><pre><span></span><code>&gt; /home/borg/Documents/nome_da_pasta/meu_programa_python.py
+cp -R /home/borg/Documents/nome_da_pasta/meu_programa_python.py /home/borg/Documents/
+</code></pre></div>
+<p>No exemplo acima foi criado um arquivo chamado meu_programa_python.py e uma copia do arquivo "meu_programa_python.py" dentro do diretório Documents.</p>
+<h3 id="comando-mv">Comando "mv"</h3>
+<p>Para mover arquivos e diretorios, o famoso Ctrl + X - Ctrl + V, basta  digitar:</p>
+<div class="highlight"><pre><span></span><code>mv /home/borg/Documents/nome_da_pasta/testando_outra_extensao.txt /home/borg/Documents/
+</code></pre></div>
+<p>No exemplo acima o arquivo "testando_outra_extensao.txt" foi movido para dentro do diretório Documents (recortado e colado).</p>
+<p>O comando <strong>mv</strong> tambem serve tanto para mover, com para renomear arquivos e diretorios:</p>
+<div class="highlight"><pre><span></span><code>mkdir /home/borg/Documents/nome_da_pasta/pastinha
+mv /home/borg/Documents/nome_da_pasta/pastinha /home/borg/Documents/nome_da_pasta/nova_pastinha
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Cuidado para não sobrescrever arquivos e pastas impoortantes na hora de executar estes comandos.</p>
+</div>
+<h3 id="comando-rm">Comando "rm"</h3>
+<p>Para excluir arquivos e diretórios, o famoso  Shift +  Del basta digitar:</p>
+<div class="highlight"><pre><span></span><code>rm -rf /home/borg/Documents/nome_da_pasta/nova_pastinha
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Atenção</p>
+<p>Arquivos e pastas são apagados permanentemente, não vão para lixeira. No caso de diretórios, apaga o diretório e tudo que está dentro dele, use o comando com sabedoria.</p>
+</div>
+<h2 id="super-usuario">Super Usuário</h2>
+<h3 id="comando-sudo">Comando "sudo"</h3>
+<p>Por questões de seguraça, o Linux trabalha com permissões de usuários e para determinados arquivos ou comandos apenas o usuario administrador (root) pode executar.
+A titulo de curiosidade, "sudo" significa <strong>S**uper **U**ser **DO</strong>. Quando executar comandos com sudo, será necessário informar a senha.</p>
+<h3 id="comando-chmod">Comando "chmod"</h3>
+<p>Chmod vem de change mode -&gt; mode é o nome do campo que guarda as permissões de um arquivo. As permissões servem para determinar se um usuario ou grupo terá permissões para ler, gravar, executar. Existem diversas configurações possiveis e a que mais utilizamos dá a permissão de execução a um código qualquer, como um python, por exemplo;</p>
+<div class="highlight"><pre><span></span><code>touch /home/borg/Documents/nome_da_pasta/teste.py
+chmod a+x /home/borg/Documents/nome_da_pasta/teste.py
+</code></pre></div>
+<p>A concatenação de a+x significa que estamos permitindo para todos (a = all) usuários e grupos executem (x = execution) o
+<strong>teste.py</strong></p>
+<h2 id="editando-arquivos">Editando arquivos</h2>
+<p>Existem várias ferramentas para edição de texto, de um modo geral, podemos dizer que existem 2 grupos principais,
+os que rodam direto no console (terminal) e os que possuem uma interface gráfica.</p>
+<h3 id="editor-nano">Editor nano</h3>
+<p>O nano é um editor do modo console, ou seja, abre no proprio terminal.</p>
+<p><img alt="passo8" src="imgs/passo8.png" width="800" /></p>
+<h3 id="abrir">Abrir</h3>
+<p>Digite no terminal <strong>nano</strong> e o nome do arquivo com a extensão, caso não exista um arquivo com esse nome um novo arquivo será criado.</p>
+<div class="highlight"><pre><span></span><code>nano /home/borg/Documents/nome_da_pasta/nano.md
+nano /home/borg/Documents/nome_da_pasta/nano.txt
+</code></pre></div>
+<h3 id="localizar-palavra">Localizar palavra</h3>
+<p>Para fazer uma busca no texto pressione Ctrl + W, digite a palavra e aperte Enter.</p>
+<h3 id="salvar-e-sair">Salvar e Sair</h3>
+<p>Para salvar, precione Ctrl + S.
+Para sair Ctrl + X.
+Para sair sem salvar alteraçes,  Ctrl + X e N.</p>
+<h3 id="editor-gedit">Editor gedit</h3>
+<p>Muito parecido com o famoso bloco de notas do Windows.</p>
+<p><img alt="passo9" src="imgs/passo9.png" width="800" /></p>
+<h3 id="abrir_1">Abrir</h3>
+<p>Digite no terminal <strong>gedit</strong> e o nome do arquivo com a extensão, caso não exista um arquivo com esse nome um novo arquivo será criado.</p>
+<div class="highlight"><pre><span></span><code>gedit /home/borg/Documents/nome_da_pasta/roda_tartaruga.py
+gedit /home/borg/Documents/nome_da_pasta/roda_tartaruga.md
+</code></pre></div>
+<h3 id="localizar-palavra_1">Localizar palavra</h3>
+<p>Para fazer uma busca no texto pressione Ctrl + F, digite a palavra e tecle Enter.</p>
+<h3 id="salvar-e-sair_1">Salvar e Sair</h3>
+<p>Para salvar e sair, pressione Ctrl + S ou clique em salvar para salvar e para sair  Alt + F4.</p>
+<h3 id="editor-vscode">Editor vscode</h3>
+<p>O editor vscode é uma ferramenta que possui mais recursos que auxiliam no desenvimento de codigo.</p>
+<p><img alt="passo10" src="imgs/passo10.png" width="800" /></p>
+<h3 id="abrir_2">Abrir</h3>
+<p>Digite no terminal <strong>code</strong> e o nome do arquivo com a extensão, caso não exista um arquivo com esse nome um novo arquivo será criado.</p>
+<div class="highlight"><pre><span></span><code>code /home/borg/Documents/nome_da_pasta/roda_tartaruga.py
+</code></pre></div>
+<p>Uma forma bastante eficiente de trabalho é abrir um diretório no <strong>vscode</strong> ao invés de um arquivo.</p>
+<p>Vamos experimentar abrir o diretório um dos diretórios de trabalho de robótica. </p>
+<p>Utilize seus conhecimentos adquiridos neste tutorial e entre no diterório my_simulation, que pode ser visto na imagem a seguir:</p>
+<p><img alt="Untitled" src="imgs/tree_colcon.png" width="800" /></p>
+<p>Se você conseguiu entender a visualização acima, entrou no seguinte diretório:</p>
+<p><img alt="Untilted" src="imgs/terminal_simulation.png" width="800" /></p>
+<p>Agora vamos abrir o vscode com toda a pasta de trabalho, usando a pasta onde estamos:</p>
+<p><div class="highlight"><pre><span></span><code>code .
+</code></pre></div>
+<img alt="Untitled" src="imgs/terminal_simulation2.png" width="800" /></p>
+<p>Agora é só clicar em <strong>Yes, I trust the authors</strong> e você verá ao lado esquerdo que todos os arquivos deste diretório estão disponíveis para visualização/edição.</p>
+<p><img alt="Untitled" src="imgs/code1.png" width="800" />
+<img alt="Untitled" src="imgs/code2.png" width="800" /></p>
+<h3 id="localizar-palavra_2">Localizar palavra</h3>
+<p>Para fazer uma busca no texto pressione <code>Ctrl + F</code>, digite a palavra e tecle <code>Enter</code>.</p>
+<h3 id="salvar-e-sair_2">Salvar e Sair</h3>
+<p>Para salvar e sair, pressione  <code>Ctrl + S</code> ou clique em salvar para salvar e para sair <code>Alt + F4</code></p>
+<h2 id="bonus">BONUS</h2>
+<p>Comandos úteis para verificar informações do sistema, encontrar bugs, e encerrar programas travados;</p>
+<h3 id="informacoes-dos-dispositivos-conectados-na-usb">Informações dos dispositivos conectados na USB</h3>
+<p>Se você não tem certeza se o dispositivo conectado a sua porta USB foi reconhecido, use este comando e verifique o log do sistema;</p>
+<div class="highlight"><pre><span></span><code>lsusb
+</code></pre></div>
+<h3 id="informacoes-dos-dispositivos-conectados-na-pci">Informações dos dispositivos conectados na PCI</h3>
+<p>Se você não tem certeza se o dispositivo conectado a sua porta PCI foi reconhecido, use este comando e verifique o log do sistema;</p>
+<div class="highlight"><pre><span></span><code>lspci
+</code></pre></div>
+<h3 id="o-programa-travou-e-agora">O programa travou, e agora?</h3>
+<p>Para destravar uma tela, use "xkill" e clique na tela com o mouse.</p>
+<div class="highlight"><pre><span></span><code>xkill
+</code></pre></div>
+<p>Para emcerrar um processo, digite o comando abaixo, e o nome do software que deseja parar;</p>
+<div class="highlight"><pre><span></span><code>pkill terminal
+</code></pre></div>
+<h3 id="procurar-um-comando-ja-utilizado-no-terminal">Procurar um comando já utilizado no terminal</h3>
+<p>Você quer usar quele mesmo comando enorme que já usou antes? Você pode usar o comando <code>CTRL + R</code> no seu terminal, então digitar uma parte do comando que você queria. Veja no exemplo abaixo, onde há a busca de um comando que tem a palavar "disk" no meio:</p>
+<p><img alt="Passo11" src="imgs/passo11.png" width="800" /></p>
+<p>Após esta pesquisa e teclar <code>ENTER</code> o comando "antigo" é executado:</p>
+<p><img alt="Passo12" src="imgs/passo12.png" width="800" /></p>
+<h3 id="mudando-o-tamnanho-da-fonte-do-terminal">Mudando o tamnanho da fonte do terminal</h3>
+<p>Em alguns casos há a vontade de alterar o tamanho da fonte do terminal. Este processo é bastante simples. Basta clicar com o botão direito em uma área livre do terminal e clicar em <strong>Preferences</strong>:</p>
+<p><img alt="Passo13" src="imgs/passo13.png" width="800" /></p>
+<p>Na tela que abrir, clique em <strong>Profiles</strong> e em seguida retire o "check" da caixa <strong>Use the system fixed width font</strong>. Então clique na caixa <strong>Font</strong> e altere tanto a fonte quanto o seu tamanho.</p>
+<p><img alt="Passo14" src="imgs/passo14.png" width="800" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 5</p>
+<p>Lembre-se que usamos um utilitário chamado oh-my-bash, que nos ajuda muito a navegar em pastas com repositórios git. Porém algumas fontes <strong>não têm</strong> os caracteres especiais necessários. Estamos usando a Fonte: <strong>Cousine for Powerline Regular 12</strong> mas você pode experimentar outras fontes e tamanhos para ver o que mais lhe agrada.</p>
+</div>
+<h3 id="instalando-e-usando-o-htop">Instalando e usando o HTOP</h3>
+<p>Outra aplicação bastante útil é o <strong>htop</strong>. Ele não vem instalado por padrão, mas é facilmente instlado com o apt.</p>
+<p>Para instalar o htop vamos usar o seguinte comando:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install htop
+</code></pre></div>
+<p>Após a instalação, digite o comando <code>htop</code> e você poderá ver o quanto está sendo usado de memória RAM, de Procesamento e os processos que estão rodando (junto de outras informações):</p>
+<p><img alt="Passo15" src="imgs/passo15.png" width="800" /></p>
+<p>Para sair, basta apertar a tecla <strong>q</strong></p>
+<p>Espero que você esteja se sentindo mais confortável para explorar e personalizar o seu Ubuntu, divirta-se!</p>
+<h3 id="fontes">Fontes:</h3>
+<p><a href="https://www.redhat.com/pt-br/topics/linux">Linux: conheça o Linux OS</a>
+<a href="https://www.redhat.com/pt-br/topics/open-source/what-is-open-source">O que é open source?</a>
+<a href="https://www.tecmundo.com.br/linux/1739-codigo-aberto-e-software-livre-nao-significam-a-mesma-coisa-.htm">Código Aberto e Software Livre não significam a mesma coisa!</a>
+<a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">The Linux command line for beginners</a>
+<a href="https://github.com/ohmybash/oh-my-bash">Oh-My-Bash</a></p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../primeiros-passos/"
+               class="ah-prev"
+               title="Meu SSD subiu, e agora?">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Meu SSD subiu, e agora?</span>
+            </a>
+          
+          
+            <a href="../git-e-github/"
+               class="ah-next"
+               title="Configure o seu Git">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Configure o seu Git</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

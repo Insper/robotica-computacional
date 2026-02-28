@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>2 - Estrutura Básica de um Nó - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 3 - Controlando o Robô</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                  
+                    <li>2 - Estrutura Básica de um Nó</li>
+                  
+                
+                <li>2 - Estrutura Básica de um Nó</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="estrutura-basica-de-um-no">Estrutura Básica de um Nó</h1>
+<p>Para facilitar o desenvolvimento, fornecemos uma <strong>estrutura base</strong> de um nó da ROS 2, uma estrutura base para <strong>nós de ação</strong> e uma estrutura base para <strong>nós de controle</strong> ou clientes da ação.</p>
+<ul>
+<li>Nó base: <a href="../../util/base.py">base.py</a></li>
+<li>Nó de ação base: <a href="../../util/base_action.py">base_action.py</a></li>
+<li>Nó "cliente" da ação: <a href="../../util/base_control.py">base_control.py</a></li>
+</ul>
+<p>Baixe os arquivos e coloque-os em uma pasta de fácil acesso.</p>
+<p>Agora, vamos entender o papel de cada parte.</p>
+<h2 id="no-base">Nó Base</h2>
+<p>Este script não traz novidades em relação ao que já vimos, com <strong>duas exceções</strong> importantes:</p>
+<ol>
+<li><code>rclpy.spin_once(self)</code> - processa <strong>uma vez</strong> a fila de callbacks (mensagens recebidas, timers, etc.), atualizando variáveis intermediárias antes do próximo passo de controle.</li>
+<li><code>self.create_timer(0.25, self.control)</code> - cria um <strong>timer</strong> que chama <code>control()</code> a cada <strong>0,25 s</strong>.</li>
+</ol>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>O <strong>Nó Base</strong> é útil para módulos que <strong>assinam</strong> um tópico, processam os dados e <strong>publicam</strong> o resultado em outro tópico (ex.: um nó de visão computacional).</p>
+</div>
+<h2 id="no-base-de-acao">Nó Base de Ação</h2>
+<p>Este script define uma estrutura para ações com <strong>início, meio e fim</strong>. A ação inicia quando <code>reset()</code> é chamada e termina quando o estado chega a <code>'done'</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Acao</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span> <span class="c1"># Mude o nome da classe</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="s1">&#39;node_name_here&#39;</span><span class="p">):</span> <span class="c1"># Mude o nome do nó</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;done&#39;</span> <span class="c1"># Comece em &#39;done&#39; - reset iniciará a ação</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Adicione quantos estados forem necessários</span>
+            <span class="s1">&#39;acao&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">acao</span><span class="p">,</span>
+            <span class="s1">&#39;stop&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span>
+            <span class="s1">&#39;done&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Inicialização de variáveis</span>
+        <span class="c1"># ...</span>
+
+        <span class="c1"># Publishers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># Subscribers</span>
+        <span class="c1"># ...</span>
+</code></pre></div>
+<p>Nesta parte, passamos para o construtor o <strong>nome do nó</strong> e iniciamos a <strong>máquina de estados</strong> (<code>self.state_machine</code>), o <strong>estado inicial</strong> (<code>self.robot_state</code>) e os <strong>publishers/subscribers</strong> necessários, por padrão, o publisher do <code>cmd_vel</code> já está definido.</p>
+<p><strong>Quando mais de um nó forem utilizar a mesma ação, será necessário mudar o nome do nó para algo mais específico.</strong></p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;acao&#39;</span> <span class="c1"># Inicie a ação</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control</span><span class="p">)</span> <span class="c1"># Timer para o controle</span>
+        <span class="c1">### Iniciar variaveis da ação</span>
+</code></pre></div>
+<p>Nesta parte, definimos a função <code>reset()</code>, essa função deve ser chamada para iniciar a ação. A função <code>reset()</code> faz o seguinte:</p>
+<ol>
+<li>Inicializa a variável <code>self.twist</code>,</li>
+<li>Define o estado do robô para o estado inicial da ação (mude para o estado inicial da sua ação)</li>
+<li>Inicia o timer, <code>self.timer</code> que chama a função <code>control()</code> a cada 0,25 segundos.</li>
+<li>Por fim, você deve inicializar as variáveis necessárias para a ação.</li>
+</ol>
+<p>A partir desse ponto, vamos seguir uma máquina de estado padrão, até o fim da ação.</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># Zera a velocidade</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parando o robô.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span> <span class="c1"># Finaliza o timer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Reseta a variável do timer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;done&#39;</span> <span class="c1"># Ação finalizada</span>
+</code></pre></div>
+<p>Ao final da ação, o estado do robô deve ser alterado para <code>stop</code>. Este estado deve:</p>
+<ol>
+<li>Parar o robô;</li>
+<li>Cancelar o timer;</li>
+<li>Em seguida, mudar para o estado <code>'done'</code> (finalização).</li>
+</ol>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># Controla a máquina de estados - eh chamado pelo timer</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Estado Atual: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span><span class="p">]()</span> <span class="c1"># Chama o método do estado atual </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="p">)</span> <span class="c1"># Publica a velocidade</span>
+</code></pre></div>
+<p>Outra função importante é a <code>control()</code>, que é chamada pelo timer a cada 0,25 segundos. Ela imprime o estado atual do robô e chama o método correspondente ao estado atual do robô na máquina de estados (<code>self.state_machine[self.robot_state]()</code>). Por fim, ela publica a velocidade do robô no tópico <code>cmd_vel</code>.</p>
+<div class="admonition importante">
+<p class="admonition-title">Importante</p>
+<p><strong>A função control deve ser a única função que publica no tópico <code>cmd_vel</code></strong>. Isso é importante para garantir que o robô não receba comandos conflitantes.</p>
+</div>
+<h2 id="no-cliente-da-acao">Nó "Cliente" da Ação</h2>
+<p>Este script é um <strong>gerenciador</strong> que pode ou não chamar a ação definida no nó de ação. Normalmente, ele é o <strong>nó principal</strong> do pacote que decide quando iniciar/parar uma ação.</p>
+<p>Vamos estudar as partes relevantes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BaseControlNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span> <span class="c1"># Mude o nome da classe</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;node_name_here&#39;</span><span class="p">)</span> <span class="c1"># Mude o nome do nó</span>
+        <span class="c1"># Outra Herança que você queira fazer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span> <span class="o">=</span> <span class="n">Acao</span><span class="p">()</span> <span class="c1"># Cria o nó da Acao</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;acao&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;acao&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">acao</span><span class="p">,</span> <span class="c1"># Estado para GERENCIAR a ação</span>
+            <span class="s1">&#39;done&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">done</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">estados_clientes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;acao&#39;</span><span class="p">]</span> <span class="c1"># Coloque aqui os estados que são &quot;cliente de ação&quot;.</span>
+
+        <span class="c1"># Inicialização de variáveis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+
+        <span class="c1"># Subscribers</span>
+        <span class="c1">## Coloque aqui os subscribers</span>
+
+        <span class="c1"># Publishers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="c1">## Coloque aqui os publishers</span>
+
+        <span class="c1">## Por fim, inicialize o timer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">control</span><span class="p">)</span>
+</code></pre></div>
+<p>Diferenças chave em relação ao nó de ação:</p>
+<ol>
+<li><strong>Não cancelamos</strong> o timer do gerenciador (ele roda o tempo todo).</li>
+<li>Instanciamos e guardamos os nós auxiliares (ex.: <code>self.acao_node</code>).</li>
+<li>Armazenamos os estados que são "cliente de ação" em <code>self.estados_clientes</code>, nestes estados, este nó não publicará no <code>cmd_vel</code>, para não conflitar com o nó de ação.</li>
+</ol>
+<p>Função que <strong>aciona</strong> a ação:</p>
+<p><div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">acao</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">==</span> <span class="s1">&#39;done&#39;</span><span class="p">:</span> <span class="c1"># Se a ação NÂO FOI INICIADA</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iniciando [ACAO]...&quot;</span><span class="p">)</span>
+            <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_once</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="p">)</span> <span class="c1"># Processa as callbacks uma vez</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1"># Reseta o nó para iniciar a ação</span>
+
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_once</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="p">)</span> <span class="c1"># Processa os callbacks e o timer</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">==</span> <span class="s1">&#39;done&#39;</span><span class="p">:</span> <span class="c1"># Se a ação FOI FINALIZADA</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">acao_node</span><span class="o">.</span><span class="n">control</span><span class="p">()</span> <span class="c1"># Garante que o robo é parado antes de finalizar a ação</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[ACAO] Finalizada.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;done&#39;</span> <span class="c1"># Muda para o próximo estado da máquina de estados</span>
+</code></pre></div>
+Essa função:</p>
+<ol>
+<li>primeiro verifica se a ação já foi iniciada, caso contrário, inicia a ação chamando <code>reset()</code> do nó de ação.</li>
+<li>Em seguida, processa os callbacks do nó de ação (incluindo o timer) chamando <code>rclpy.spin_once(self.acao_node)</code>.</li>
+<li>Por fim, verifica se a ação foi finalizada internamente, caso afirmativo, garante que o robô é parado chamando <code>self.acao_node.control()</code> e muda o estado para o próximo estado da máquina de estados, nesse caso, <code>'done'</code>.</li>
+</ol>
+<p>No estado anterior, note a ação só será iniciada uma vez e só passará para o próximo estado quando a ação for finalizada internamente, ou seja, quando o nó de ação mudar seu estado para <code>'done'</code>. Assim, o controle da ação é delegado para o nó de ação, enquanto o nó "cliente" apenas gerencia quando iniciar/parar a ação.</p>
+<p>Agora, no estado <code>'control'</code> temos uma alteração:</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># Controla a máquina de estados - eh chamado pelo timer</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Estado Atual: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span><span class="p">]()</span> <span class="c1"># Chama o método do estado atual </span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estados_clientes</span><span class="p">:</span> <span class="c1"># Se o estado atual não é um estado &quot;cliente de ação&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cmd_vel_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">twist</span><span class="p">)</span> <span class="c1"># Publica a velocidade</span>
+</code></pre></div>
+<p>Aqui, o nó "cliente" só publicará no <code>cmd_vel</code> se o estado atual <strong>não for um estado cliente de ação</strong>. Isso é importante para evitar conflitos de publicação entre o nó "cliente" e o nó de ação, garantindo que o nó de ação tenha controle total sobre o <code>cmd_vel</code> durante a execução da ação.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../1-maquina-de-estados/"
+               class="ah-prev"
+               title="1 - Máquina de Estados">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">1 - Máquina de Estados</span>
+            </a>
+          
+          
+            <a href="../../util/base.py"
+               class="ah-next"
+               title="Download > Nó Básico">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Download > Nó Básico</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

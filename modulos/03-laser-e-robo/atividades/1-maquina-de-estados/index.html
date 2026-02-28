@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>1 - Máquina de Estados - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">1 - Máquina de Estados</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 3 - Controlando o Robô</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                <li>1 - Máquina de Estados</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="maquina-de-estados-em-robotica">Máquina de Estados em Robótica</h1>
+<p>Nesta atividade, vamos revisar o conceito de <strong>máquina de estados finitos (FSM)</strong> e como implementá‑la para controlar um robô.</p>
+<h2 id="conceito-de-maquina-de-estados-finitos-fsm">Conceito de Máquina de Estados Finitos (FSM)</h2>
+<p>Uma máquina de estados finitos (FSM) é um modelo computacional que descreve o comportamento de um sistema a partir de <strong>estados</strong> e <strong>transições</strong>, permitindo que sistemas complexos sejam modelados de forma clara e modular.</p>
+<ul>
+<li><strong>Estados:</strong> representam as condições atuais do sistema.</li>
+<li><strong>Transições:</strong> representam mudanças de estado em resposta a eventos ou condições.</li>
+</ul>
+<p>Essa abordagem é muito útil em robótica, pois organiza o fluxo de decisões do robô de forma <strong>clara</strong>, <strong>reutilizável</strong> e <strong>testável</strong>.</p>
+<hr />
+<h2 id="exemplo-robo-limpador-com-laser-2d">Exemplo: Robô Limpador com Laser 2D</h2>
+<p>Agora,, vamos aplicar o conceito de FSM a um <strong>robô limpador</strong> que navega no ambiente, procura áreas para limpar e <strong>desvia</strong> de obstáculos. Para melhorar a capacidade do nosso robô, equipamos‑no com um <strong>sensor laser 2D</strong>.</p>
+<h3 id="estados-principais">Estados principais</h3>
+<p><img alt="Robô Limpador" src="../figs/robo_limpador.png" /></p>
+<p>Como mostra a figura acima, nosso robô pode ser caracterizado pelos estados principais:</p>
+<ol>
+<li><strong>Procurar</strong> - o robô gira em trajetória elíptica até encontrar um obstáculo à <strong>frente</strong> ou à <strong>direita</strong>.</li>
+<li><strong>Limpar</strong> - o robô avança, limpando a área à frente até que o sensor detecte um obstáculo <strong>frontal</strong>.</li>
+<li><strong>Esperar (Desviar)</strong> - o robô aguarda enquanto avalia se existe uma direção livre.</li>
+<li><strong>Girar (Desviar)</strong> - o robô gira até alinhar‑se com uma direção livre.</li>
+</ol>
+<h3 id="subestados-da-acao-desviar">Sub‑estados da ação "Desviar"</h3>
+<p>No caso do nosso robô, detalhamos a ação <strong>Desviar</strong>:</p>
+<ol>
+<li><strong>Esperar e escolher</strong> - avalia direções livres (direita, esquerda, traseira):</li>
+<li>Se <strong>nenhuma</strong> estiver livre → permanece em <strong>Esperar</strong> e tenta novamente.</li>
+<li>Se <strong>uma</strong> estiver livre → <strong>seleciona</strong> essa direção.</li>
+<li>Se <strong>mais de uma</strong> estiver livre → <strong>seleciona aleatoriamente</strong> uma delas.</li>
+<li><strong>Girar</strong> - gira até o <strong>ângulo</strong> aproximado da direção escolhida.</li>
+</ol>
+<h3 id="transicoes">Transições</h3>
+<p>Dado o ambiente do robô limpador, podemos definir as transições entre estados como na tabela abaixo:</p>
+<table>
+<thead>
+<tr>
+<th>Origem</th>
+<th>Condição</th>
+<th>Destino</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Procurar</td>
+<td>obstáculo em <strong>frente</strong> ou <strong>direita</strong></td>
+<td>Esperar</td>
+<td>ação <strong>Desviar</strong></td>
+</tr>
+<tr>
+<td>Limpar</td>
+<td>obstáculo em <strong>frente</strong></td>
+<td>Esperar</td>
+<td>ação <strong>Desviar</strong></td>
+</tr>
+<tr>
+<td>Esperar</td>
+<td><strong>sem direção livre</strong> (aguardar)</td>
+<td>Esperar</td>
+<td>tentar novamente</td>
+</tr>
+<tr>
+<td>Esperar</td>
+<td>pelo menos <strong>uma direção livre</strong></td>
+<td>Girar</td>
+<td>ação <strong>Desviar</strong></td>
+</tr>
+<tr>
+<td>Girar</td>
+<td>atingiu <strong>ângulo/direção livre</strong></td>
+<td>Limpar</td>
+<td>fim da <strong>Desviar</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estado inicial:</strong> Procurar.</p>
+<h3 id="estrutura-de-codigo-em-python">Estrutura de código em Python</h3>
+<p>Em Python, podemos implementar a FSM com uma variável que guarda o <strong>estado atual</strong> (string) e <strong>uma função por estado</strong>, responsável pelas ações daquele estado. A função principal executa a função do estado atual e decide se o estado deve mudar.</p>
+<p>Em vez de um grande bloco <code>if/elif</code>, usamos um <strong>dicionário</strong> que mapeia <code>estado → função</code>.</p>
+<h3 id="robo-limpador">Robô Limpador</h3>
+<p>Considerando os estados, podemos desenhar o esqueleto do código como abaixo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Limpador</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Estado inicial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span> <span class="o">=</span> <span class="s1">&#39;procurar&#39;</span>
+
+        <span class="c1"># Tabela de despacho: estado → método</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;procurar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">procurar</span><span class="p">,</span>
+            <span class="s1">&#39;limpar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">limpar</span><span class="p">,</span>
+            <span class="s1">&#39;esperar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">esperar</span><span class="p">,</span>
+            <span class="s1">&#39;girar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">girar</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">procurar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gira em trajetória elíptica (ex.: v=0.1, rz=0.1).</span>
+<span class="sd">        Transição quando há obstáculo à frente/direita → &#39;esperar&#39;.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: ler sensores, decidir transição</span>
+        <span class="c1"># mude para &#39;esperar&#39;  # quando condição atendida</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">limpar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Avança limpando até detectar obstáculo frontal → &#39;esperar&#39;.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: publicar velocidade para frente; checar obstáculo</span>
+        <span class="c1"># mude para &#39;esperar&#39;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">esperar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Avalia direções livres (dir/esq/trás).</span>
+<span class="sd">        0 opções → permanece &#39;esperar&#39;;</span>
+<span class="sd">        1 opção → escolhe; &gt;1 → escolhe aleatoriamente → &#39;girar&#39;.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: computar direções livres e escolher alvo</span>
+        <span class="c1"># mude &#39;girar&#39;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">girar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Executa rotação até o ângulo desejado (ação externa).</span>
+<span class="sd">        Ao alinhar → &#39;limpar&#39;.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: chamar ação/serviço de giro e monitorar conclusão</span>
+        <span class="c1"># return &#39;limpar&#39;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+        <span class="c1"># Executa a ação do estado atual</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_machine</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_state</span><span class="p">]()</span>
+</code></pre></div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../"
+               class="ah-prev"
+               title="Index">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Index</span>
+            </a>
+          
+          
+            <a href="../2-estrutura-basica/"
+               class="ah-next"
+               title="2 - Estrutura Básica de um Nó">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">2 - Estrutura Básica de um Nó</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

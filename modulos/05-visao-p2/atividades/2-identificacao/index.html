@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>2 identificacao - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>2 identificacao</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="identificacao-de-objetos">Identificação de Objetos</h1>
+<p>Nesta atividade, vamos explorar como identificar objetos encontrando seus contornos a partir de segmentação de cores.</p>
+<p>Detecção de contornos é uma técnica importante em visão computacional. A ideia é que os contornos são as bordas dos objetos, e portanto, podem ser usados para detectar a localização de objetos, além de outras métricas como centro, área, perímetro, etc.</p>
+<p>Fonte das imagens: <a href="http://time.com/4299724/coca-cola-diet-coke-redesign/">http://time.com/4299724/coca-cola-diet-coke-redesign/</a></p>
+<h1 id="componentes-conexos-e-contornos">Componentes conexos e contornos</h1>
+<p>Neste exercicio vamos trabalhar na segunte imagem. Nosso objetivo é encontrar os contornos da <strong>parte vermelha</strong> das latinhas de coca-cola.</p>
+<p><img alt="image.png" src="../img/coke-cans.jpg" /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;img/coke-cans.jpg&quot;</span><span class="p">)</span>
+<span class="n">coke_hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>Matplotlib is building the font cache; this may take a moment.
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="filtrando-o-objeto">Filtrando o objeto</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Revisando o círculo de cores HSV, temos:</p>
+<p><img alt="" src="../img/hsv_circle.png" /></p>
+<p>Conforme ilustrado acima, a cor vermelha aparece em duas regiões distintas do círculo HSV: uma entre 0 e 30 graus e outra entre 330 e 360 graus.</p>
+<p>Uma limitação do OpenCV é sua incapacidade de realizar seleções em intervalos não contínuos diretamente, como seria necessário para a cor vermelha (-30 a 30 graus). Isso representa um desafio na segmentação eficaz do vermelho.</p>
+<p>No entanto, uma abordagem viável é realizar duas seleções de intervalos separadas para cada faixa do vermelho, aplicar a segmentação em ambas e, posteriormente, unir as duas máscaras resultantes. Esta técnica permite a segmentação eficiente da cor vermelha, contornando a restrição de seleção de intervalos do OpenCV.</p>
+<p>lembrando que o valor HSV na OpenCV fica adaptado para:</p>
+<p><strong>Hue (H)</strong>: No espaço de cores HSV original, o matiz varia de 0 a 360 graus. No entanto, na OpenCV, esse intervalo é mapeado para 0 a 180. Portanto, para converter um valor de matiz do espaço de cores HSV padrão para o utilizado pela OpenCV, você deve dividir o valor por 2 (H/2).</p>
+<p><strong>Saturation (S)</strong>: A saturação no espaço de cores HSV padrão varia de 0 a 100% (representando a intensidade da cor). Na OpenCV, esse intervalo é mapeado para 0 a 255. Portanto, para converter um valor de saturação do espaço de cores HSV padrão para o utilizado pela OpenCV, você pode usar a seguinte regra de três: (valor de saturação * 255) / 100.</p>
+<p><strong>Value (V)</strong>: O valor (ou brilho) no espaço de cores HSV padrão também varia de 0 a 100%. Na OpenCV, assim como a saturação, esse intervalo é mapeado para 0 a 255. A conversão é feita da mesma maneira que a saturação: (valor de brilho * 255) / 100.</p>
+<p>Abaixo, temos o código para realizar a segmentação da cor vermelha, neste código, combinamos as duas máscaras resultantes utilizando o operador lógico OR do OpenCV, que retorna branco se pelo menos um dos pixels for branco. A função <code>cv2.bitwise_or</code> recebe os seguintes parâmetros:</p>
+<ul>
+<li><code>cv2.bitwise_or(src, src2, **mask)</code><ul>
+<li><code>src1</code>: primeira imagem, ou máscara, de entrada ou matriz real.</li>
+<li><code>src2</code>: segunda imagem, ou máscara, de entrada ou matriz real.</li>
+<li><code>mask</code> (opcional): máscara de entrada de 8 bits. A operação será realizada apenas nos elementos especificados pela máscara.</li>
+</ul>
+</li>
+</ul>
+<p>Também temos o operator lógico AND, que retorna branco se ambos os pixels forem brancos, na função <code>cv2.bitwise_and</code>.</p>
+<p>Depois da execução do código abaixo, podemos notar que a segmentação resultante está muito boa, mas ainda há alguns ruídos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1">#                       H , S , V </span>
+<span class="n">cor_menor1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">172</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">cor_maior1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>
+<span class="n">mask_coke1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">coke_hsv</span><span class="p">,</span> <span class="n">cor_menor1</span><span class="p">,</span> <span class="n">cor_maior1</span><span class="p">)</span>
+
+<span class="c1">#                       H , S , V </span>
+<span class="n">cor_menor2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">cor_maior2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>
+<span class="n">mask_coke2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">coke_hsv</span><span class="p">,</span> <span class="n">cor_menor2</span><span class="p">,</span> <span class="n">cor_maior2</span><span class="p">)</span>
+
+<span class="n">mask_coke</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_or</span><span class="p">(</span><span class="n">mask_coke1</span><span class="p">,</span> <span class="n">mask_coke2</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;mask 1&quot;</span><span class="p">,</span> <span class="n">mask_coke1</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;mask 2&quot;</span><span class="p">,</span> <span class="n">mask_coke2</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">mask_coke</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="componentes-conexos">Componentes conexos</h2>
+<p>Após a segmentação da imagem por mascaramento, podemos observar que os pixels de interesse podem formar um ou mais grupos conectados entre si, ou seja, conjuntos de pixels que se comunicam através de algum caminho que passa apenas por pixels de interesse (brancos)</p>
+<p>No OpenCV, é possível encontrar componente conexos em imagens tons de cinza através da função <code>cv2.findContours()</code>. Ela considera pixels de valor maior do que 0 como pixels de interesse. </p>
+<p>Usamos a seguinte função para encontrar os contornos:</p>
+<div class="highlight"><pre><span></span><code>contours, hierarchy = cv2.findContours(mask, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+</code></pre></div>
+<p>onde:</p>
+<ul>
+<li><code>mask</code> é a imagem com a máscara binária de entrada.</li>
+<li><code>cv2.RETR_CCOMP</code> indica que queremos organizar os contornos em componentes conexos e buracos dentro deles - veja mais detalhes em <a href="https://docs.opencv.org/4.x/d9/d8b/tutorial_py_contours_hierarchy.html">Contours Hierarchy</a>.</li>
+<li><code>cv2.CHAIN_APPROX_NONE</code> indica que queremos armazenar todos os pontos do contorno.</li>
+<li><code>contours</code> é uma lista de contornos. Cada contorno é uma lista de pontos (x, y) que formam o polígono que delimita o contorno.</li>
+<li><code>hierarchy</code> é uma lista indicando a organização dos contornos em termos dos componentes e de seus buracos.</li>
+</ul>
+<p>Os componentes conexos são representados através de seus contornos internos, ou seja, dos pixels de cada componente conexo que são vizinhos a pixels de fundo. Para desenhar os contornos em uma imagem, usamos a função <code>cv2.drawContours()</code>, que usamos da forma:</p>
+<div class="highlight"><pre><span></span><code>cv2.drawContours(img, contours, indice, cor, espessura)
+</code></pre></div>
+<ul>
+<li><code>img</code> é a imagem colorida ou tons de cinza onde serão desenhados os contornos.</li>
+<li><code>contours</code> é a lista de contornos obtida com <code>cv2.findContours()</code>, ou seja, recebe uma lista de lista. Então assumindo que <code>contours[i]</code> seja um contorno, a função esperaria uma sintaxe como <code>cv2.drawContours(img, [contours[i]], indice, cor)</code>.</li>
+<li><code>indice</code> é o índice do contorno dentro da lista a ser desenhado; se <code>-1</code> desenha todos os contornos</li>
+<li><code>cor</code> é a cor do pixel a ser usada para desenhar o contorno, por exemplo, <code>(255, 0, 0)</code> para azul.</li>
+<li><code>espessura</code> é a espessura do contorno. Se for <code>-1</code>, o contorno é <strong>preenchido</strong> com a cor.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">contornos</span><span class="p">,</span> <span class="n">arvore</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">mask_coke</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_TREE</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_NONE</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Numero de Contornos Encontrados: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">contornos</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">contornos_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">contornos_img</span><span class="p">,</span> <span class="n">contornos</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;contornos_img&quot;</span><span class="p">,</span> <span class="n">contornos_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Numero de Contornos Encontrados: 111
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="medidas-dos-contornos">Medidas dos contornos</h2>
+<p>A partir dos contornos, podemos tirar uma série de medidas como:</p>
+<ul>
+<li><strong>Área:</strong> número de pixels pertencentes ao contorno, calculada com <code>cv2.contourArea(contour)</code></li>
+<li><strong>Centro de massa:</strong> linha e coluna do centro de massa do contorno</li>
+<li><strong>Caixa delimitadora:</strong> menor retângulo que contém o contorno, calculada com <code>cv2.boundingRect(contour)</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="maior-contorno">Maior contorno</h3>
+<p>Utilizando a função <code>cv2.contourArea()</code> podemos calcular a área de cada contorno e assim encontrar o maior contorno.</p>
+<p>Na célula abaixo, apresentamos <code>duas formas</code> de encontrar o maior contorno dentre os contornos encontrados na imagem. Repare como a segunda forma é mais performática comparada a primeira.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1">## Utilizando laço</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">maior</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">maior_area</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contornos</span><span class="p">:</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">area</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">maior_area</span><span class="p">:</span>
+        <span class="n">maior_area</span> <span class="o">=</span> <span class="n">area</span>
+        <span class="n">maior</span> <span class="o">=</span> <span class="n">c</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tempo de execução: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="c1">## Utilizando max e key</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">maior</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">contornos</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tempo de execução: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Tempo de execução: 0.00154s
+Tempo de execução: 0.00037s
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">contornos_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">contornos_img</span><span class="p">,</span> <span class="p">[</span><span class="n">maior</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;contornos_img&quot;</span><span class="p">,</span> <span class="n">contornos_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="centro-de-massa-do-contorno">Centro de massa do contorno</h3>
+<p>O centro de massa de um contorno é calculado através da função <code>cv2.moments(contour)</code>, que retorna um dicionário com as seguintes chaves:</p>
+<ul>
+<li><code>m00</code>: área do contorno</li>
+<li><code>m10</code>: soma das coordenadas x dos pixels do contorno</li>
+<li><code>m01</code>: soma das coordenadas y dos pixels do contorno</li>
+</ul>
+<p>Essas chaves são usadas para calcular o centro de massa do contorno, que é dado por:
+<div class="highlight"><pre><span></span><code>cX = int(M[&quot;m10&quot;] / M[&quot;m00&quot;])
+cY = int(M[&quot;m01&quot;] / M[&quot;m00&quot;])
+</code></pre></div></p>
+<p>Além disso, a função <code>cv2.moments(contour)</code> também retorna outras chaves que podem ser usadas para calcular outras medidas do contorno. Essas chaves não serão usadas no curso, mas são apresentadas abaixo para referência:</p>
+<ul>
+<li><code>m20</code>: soma das coordenadas x^2 dos pixels do contorno</li>
+<li><code>m11</code>: soma das coordenadas x*y dos pixels do contorno</li>
+<li><code>m02</code>: soma das coordenadas y^2 dos pixels do contorno</li>
+<li><code>m30</code>: soma das coordenadas x^3 dos pixels do contorno</li>
+<li><code>m21</code>: soma das coordenadas x^2*y dos pixels do contorno</li>
+<li><code>m12</code>: soma das coordenadas x*y^2 dos pixels do contorno</li>
+<li><code>m03</code>: soma das coordenadas y^3 dos pixels do contorno</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">crosshair</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Desenha um crosshair centrado no point.</span>
+<span class="sd">        point deve ser uma tupla (x,y)</span>
+<span class="sd">        color é uma tupla R,G,B uint8</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span> <span class="o">-</span> <span class="n">size</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span> <span class="o">+</span> <span class="n">size</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">color</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">-</span> <span class="n">size</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">size</span><span class="p">),</span><span class="n">color</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="sd">&quot;&quot;&quot; Retorna uma tupla (cx, cy) que desenha o centro do contorno&quot;&quot;&quot;</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">moments</span><span class="p">(</span><span class="n">maior</span><span class="p">)</span>
+<span class="c1"># Usando a expressão do centróide definida em: https://en.wikipedia.org/wiki/Image_moment</span>
+<span class="n">cX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="s2">&quot;m10&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="s2">&quot;m00&quot;</span><span class="p">])</span>
+<span class="n">cY</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="s2">&quot;m01&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="s2">&quot;m00&quot;</span><span class="p">])</span>
+
+<span class="n">contornos_img</span> <span class="o">=</span> <span class="n">crosshair</span><span class="p">(</span><span class="n">contornos_img</span><span class="p">,</span> <span class="p">(</span><span class="n">cX</span><span class="p">,</span><span class="n">cY</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;contornos_img&quot;</span><span class="p">,</span> <span class="n">contornos_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="caixa-delimitadora">Caixa delimitadora</h4>
+<p>Em visão computacional, uma caixa delimitadora é um retângulo que delimita as coordenadas de um objeto. A caixa delimitadora é definida pelas coordenadas de seu canto <strong>superior esquerdo</strong> e sua <strong>largura e altura</strong>.</p>
+<p>Vamos calcular a caixa delimitadora da maior latinha de refrigerante na imagem.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># get bounding rect</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">maior</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">contornos_img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;contornos_img&quot;</span><span class="p">,</span> <span class="n">contornos_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="pratica">Prática</h1>
+<h2 id="pratica-51">Prática 5.1</h2>
+<p>Neste exercício, vamos encontrar os contornos das 4 latinhas de Coca-Cola e depois filtrar apenas a latinha da Coca-Cola Life (a que tem a parte verde no topo).</p>
+<p><strong>Dica:</strong> Pode utilizar a função <code>sorted</code> para ordenar os contornos por área, use o método que foi utilizado para obter a maior área como referência.</p>
+<p><strong>Dica:</strong> Use as funções de contornos para analisar cada latinha individualmente. Depois disso, veja se a latinha contém uma quantidade "grande" de pixels verdes.</p>
+<p>Crie um arquivo chamado <code>latinhas.py</code> que contenha uma classe chamada <code>ProcessImage</code> com as seguintes especificações:</p>
+<p><strong>Dica:</strong> Pode testar adiantando o método <code>run_image</code></p>
+<h3 id="classe-processimage">Classe <code>ProcessImage</code></h3>
+<h4 id="metodo-filter_bw">Método <code>filter_bw</code></h4>
+<ul>
+<li>Recebe uma imagem como entrada, o limite inferior e o limite superior.</li>
+<li>Converte a imagem para o espaço de cores GRAY.</li>
+<li>Filtra a imagem e aplica ajustes de morfologia para remover ruídos.</li>
+<li>Encontra os contornos da máscara resultante.</li>
+<li>Retorna os contornos encontrados.</li>
+</ul>
+<h4 id="metodo-filter_hsv">Método <code>filter_hsv</code></h4>
+<ul>
+<li>Recebe uma imagem como entrada, o limite inferior e o limite superior.</li>
+<li>Converte a imagem para o espaço de cores HSV.</li>
+<li>Filtra a imagem e aplica ajustes de morfologia para remover ruídos.</li>
+<li>Encontra os contornos da máscara resultante.</li>
+<li>Retorna os contornos encontrados.</li>
+</ul>
+<h4 id="metodo-get_center">Método <code>get_center</code></h4>
+<ul>
+<li>Recebe uma lista de contornos.</li>
+<li>Calcula o centro de massa de cada contorno e armazene o como uma tupla, <strong>(cx,cy)</strong>, em uma lista.</li>
+<li>Retorna a lista de centros de massa.</li>
+</ul>
+<h4 id="metodo-find_latinhas">Método <code>find_latinhas</code></h4>
+<ul>
+<li>Recebe uma imagem e uma lista de contornos</li>
+<li>Filtra os contornos para encontrar apenas os contornos das 4 latinhas. (vide dicas)</li>
+<li>Retorna a imagem com os contornos desenhados e os contornos das latinhas.</li>
+</ul>
+<h4 id="metodo-find_latinha_life">Método <code>find_latinha_life</code></h4>
+<ul>
+<li>Recebe uma imagem com os contornos das latinhas, os contornos das 4 latinhas.</li>
+<li>Chama o método <code>get_center</code> para encontrar o centro de massa de cada latinha.</li>
+<li>Chama o método <code>filter_hsv</code> para encontrar o contorno da parte verde da Coca-Cola Life.</li>
+<li>Filtra apenas o maior contorno encontrado.</li>
+<li>Chama o método <code>get_center</code> para encontrar o centro de massa do contorno.</li>
+<li>Em um loop, compara a distância entre o centro de massa da parte verde e o centro de massa de cada latinha.</li>
+<li>A menor distância será da latinha da Coca-Cola Life.</li>
+<li>Retorna a imagem com os contornos desenhados e a latinha da Coca-Cola Life.</li>
+</ul>
+<h4 id="metodo-run_image">Método <code>run_image</code></h4>
+<ul>
+<li>Recebe uma imagem como entrada.</li>
+<li>Chama o método <code>filter_bw</code> para encontrar o os contornors das latinhas (e tambem de ruido)</li>
+<li>Chama o método <code>find_latinhas</code> para encontrar os contornos das latinhas, removendo o ruido.</li>
+<li>Chama o método <code>find_latinha_life</code> para encontrar o contorno da Coca-Cola Life.</li>
+<li>Armazena a imagem resultante em uma variável da classe chamada <code>self.bgr</code>.</li>
+</ul>
+<h4 id="metodo-show_image">Método <code>show_image</code></h4>
+<ul>
+<li>Exibe a imagem processada.</li>
+</ul>
+<h3 id="funcao-main">Função <code>main</code></h3>
+<ul>
+<li>Carrega uma das três imagens das latinhas (<code>coke-cans.jpg</code>, <code>coke-cans2.jpg</code>, <code>coke-cans3.jpg</code>).</li>
+<li>Utiliza o método <code>run_image</code> para processar a imagem capturada.</li>
+<li>Chama o método <code>show_image</code> para exibir a imagem processada.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div id="hough"></div>
+</div>
+</div>
+</div>
+<!--0 REMOVE ME-->
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
