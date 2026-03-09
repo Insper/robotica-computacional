@@ -12,7 +12,7 @@ class Acao(Node): # Mude o nome da classe
         self.state_machine = { # Adicione quantos estados forem necessários
             'acao': self.acao,
             'stop': self.stop,
-            'done': self.stop
+            'done': self.done,
         }
 
         # Inicialização de variáveis
@@ -45,6 +45,9 @@ class Acao(Node): # Mude o nome da classe
         self.timer.cancel() # Finaliza o timer
         self.timer = None # Reseta a variável do timer
         self.robot_state = 'done' # Ação finalizada
+    
+    def done(self):
+        self.twist = Twist() # Zera a velocidade
 
     def control(self): # Controla a máquina de estados - eh chamado pelo timer
         print(f'Estado Atual: {self.robot_state}')

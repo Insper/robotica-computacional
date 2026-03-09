@@ -35,7 +35,7 @@ class Acao(Node): # Mude o nome da classe
         self.state_machine = { # Adicione quantos estados forem necessários
             'acao': self.acao,
             'stop': self.stop,
-            'done': self.stop,
+            'done': self.done,
         }
 
         # Inicialização de variáveis
