@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../equipe.css"><link rel="stylesheet" href="../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="robotica-computacional-20252-ai">Robótica Computacional 2025.2 - AI</h1>
+<p>Instruções para a avaliação:</p>
+<ul>
+<li>A prova tem duração de <strong>4 horas</strong>.</li>
+<li>Inicie a prova no Blackboard para a ferramenta do Smowl ser iniciada. </li>
+<li>O Smowl é obrigatório durante toda a prova.</li>
+<li>Só finalize o Blackboard quando enviar a prova via Github Classroom incluindo o hash do último commit na resposta do Blackboard.</li>
+<li>Durante a prova vamos registrar, a camera, a tela, as páginas visitadas, os acessos online e os registro do teclado.</li>
+<li>Coloque seu <code>nome</code> e <code>email</code> no <code>README.md</code> do seu repositório.</li>
+<li>A prova deverá ser realizada de forma individual.</li>
+<li>Não é permitido consultar a internet, com exceção do site da disciplina, do site "Ferramenta para Ajuste de Máscaras", do <code>Blackboard</code> e do repositório da avaliação criado através do GitHub Classroom.</li>
+<li><code>Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot, Gemini ou similares durante a prova</code>.</li>
+<li><code>Não é permitido o uso de ferramentas colaborativas como Google Docs, Google Slides, ou similares durante a prova</code>.</li>
+<li><code>Não é permitido o uso de ferramentas de comunicação como Discord, WhatsApp, Telegram ou similares durante a prova</code>.</li>
+<li><code>Não é permitido o uso de editores de codigo com IA como Cursor ou Windsurf durante a prova, sendo permitido apenas o uso do **VSCode**</code>.</li>
+<li><code>Não é permitido o uso do Copilot durante a prova. Então desative-o antes de iniciar a prova</code>.</li>
+<li><code>Não é permitido o uso de redes sociais, fóruns ou plataformas de comunicação durante a prova</code>.</li>
+<li>Faça commits e pushes regularmente de sua avaliação.</li>
+<li>Eventuais avisos importantes serão realizados em sala durante a prova.</li>
+<li>Escreva a frase "yey" como a resposta da soma no arquivo <code>README.md</code> como teste de sua atenção.</li>
+<li>A responsabilidade por <em><code>infraestrutura</code></em>, <em><code>configurações</code></em> e <em><code>setup</code></em> em funcionamento pleno, é de cada estudante.</li>
+<li>
+<p><strong>SÓ SERÃO ACEITOS REPOSITÓRIOS DE ALUNOS QUE ASSINARAM A LISTA DE PRESENÇA.</strong></p>
+</li>
+<li>
+<p><strong>BOA PROVA!</strong></p>
+</li>
+</ul>
+<h2 id="atualizacao-do-pacote-ros-2">Atualização do Pacote (ROS 2)</h2>
+<p>Execute os comandos abaixo para atualizar os pacotes da <code>ros2</code> obrigatórios para a prova:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_simulation
+git<span class="w"> </span>stash
+git<span class="w"> </span>pull
+cb
+</code></pre></div>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do Pacote (ROS 2)</h2>
+<ul>
+<li>
+<p><strong>Preparação Inicial:</strong> Primeiro, aceite o convite do GitHub Classroom e clone o repositório <strong>dentro da pasta</strong> <code>colcon_ws/src/</code> no seu SSD.</p>
+</li>
+<li>
+<p><strong>Criação do Pacote ROS 2:</strong> <strong>Dentro do diretório do seu repositório</strong>, crie um novo pacote chamado <code>avaliacao_ai</code>.</p>
+<ul>
+<li><strong>Dica:</strong> Para utilizar os módulos desenvolvidos no capitulo 3, inclua o pacote <code>robcomp_util</code> e o pacote <code>robcomp_interfaces</code> como dependência do seu pacote, e então, importe como nos exemplos do capitulo 3.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="exercicio-0-organizacao-qualidade">Exercício 0 - Organização &amp; Qualidade</h1>
+<p>Este exercício avalia a organização e a qualidade dos vídeos dos exercícios e do arquivo <code>README.md</code>.</p>
+<h2 id="criterios-de-avaliacao">Critérios de Avaliação:</h2>
+<ul>
+<li>O pacote foi corretamente configurado.</li>
+<li>As dependências do pacote estão corretas.</li>
+<li>Os diretórios e arquivos estão organizados de forma adequada.</li>
+<li>Todos os scripts estão na pasta <code>avaliacao_ai</code> dentro do pacote <code>avaliacao_ai</code>.</li>
+<li>A configuração dos nós foi realizada corretamente.</li>
+<li>Os nós da ROS 2 foram executados utilizando o comando <code>ros2 run</code>.</li>
+<li><strong>Vídeo:</strong> A ação do robô é claramente compreensível pelo vídeo.</li>
+<li><strong>README.md:</strong> O link do vídeo foi adicionado corretamente no campo indicado.</li>
+<li><strong>README.md:</strong> O arquivo <code>README.md</code> contém o nome completo e o e-mail do estudante.</li>
+</ul>
+<hr />
+<h1 id="exercicio-1-show-bot-4-desafio-10">Exercício 1 - Show Bot (4) - (Desafio: +1,0)</h1>
+<p><img alt="" src="../figs/show.png" /></p>
+<p>Baseando-se no código <code>base_control.py</code> do capítulo 3, crie um arquivo chamado <code>q1.py</code> contendo uma classe denominada <code>ShowBot</code>. Esta classe deve implementar um <strong>nó</strong> chamado <code>showbot_node</code>, responsável por executar <strong>figuras geométricas</strong> sob comando do <strong>Orquestrator</strong>.</p>
+<p>O Orquestrator enviará comandos para o robô executar uma "forma" definida por:</p>
+<ul>
+<li>um <strong>lado</strong> <code>L ∈ [0.5, 1.0]</code> (metros), e</li>
+<li>um <strong>ângulo</strong> <code>θ ∈ {40, 60, 90, 120}</code> (graus), aplicado na rotação entre segmentos.</li>
+</ul>
+<p>O robô deve:</p>
+<ol>
+<li>avisar que está <strong>pronto</strong> ao iniciar,</li>
+<li><strong>executar</strong> a forma repetindo "anda <code>L</code> → gira <code>θ</code> graus" até <strong>retornar próximo do ponto inicial</strong>, e</li>
+<li>ao retornar, <strong>informar</strong> o Orquestrator que terminou e <strong>aguardar a métrica de deriva</strong>.</li>
+<li>após avisar que terminou, o Orquestrator enviará a métrica de <strong>deriva</strong> (distância entre o ponto inicial e o ponto final do robô, em metros).</li>
+<li><strong>Após receber a métrica de deriva</strong> do Orquestrator, o robô deve imprimir o valor com o comando de log da ros2 (<code>self.get_logger().info(ESCREVA AQUI)</code>), e então, voltar a avisar que está <strong>pronto</strong> para o próximo comando.</li>
+<li>Deve finalizar depois de completar 2 formas geométricas.</li>
+</ol>
+<p>Utilize o comando abaixo para iniciar o simulador no mapa da prova:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>empty_world.launch.py
+</code></pre></div>
+<p>Verifique se o orquestrator está rodando com a presença do topico <code>/showbot</code> e com a presença de prints no terminal da simulação.</p>
+<p>Caso o orquestrator não esteja rodando, feche TODOS os terminais e atualize os pacotes com o comando acima.</p>
+<hr />
+<h2 id="o-no-criado-deve">O nó criado deve</h2>
+<ul>
+<li>
+<p><strong>Comunicação com o Orquestrator</strong></p>
+</li>
+<li>
+<p>Publicar e assinar ao tópico <code>/showbot</code> com o tipo <code>robcomp_interfaces.msg.OrquestratorMSG</code>.</p>
+</li>
+<li>Ao iniciar, publicar <strong>READY</strong> no campo <code>status</code> com horário atual e <strong>nome do aluno</strong> nos campos apropriados.</li>
+<li>Ao receber o <code>status</code> <strong>IN_PROGRESS</strong>, recolha os valores do lado e do ângulo dos campos apropriados e inicie a execução da forma.</li>
+<li>Ao finalizar a forma, publicar <strong>DONE</strong> no campo <code>status</code> e aguardar a mensagem do Orquestrator.</li>
+<li>
+<p>Ao receber o <code>status</code> <strong>FEEDBACK</strong>, imprima o valor da deriva com o comando de log da ros2 (<code>self.get_logger().info(ESCREVA AQUI)</code>) e publicar <strong>READY</strong> para aguardar novo comando.</p>
+</li>
+<li>
+<p><strong>Execução da forma</strong></p>
+</li>
+<li>
+<p>Robô deve executar a forma com os parâmetros recebidos:</p>
+<ul>
+<li>Andar <code>L</code> metros em linha reta.</li>
+<li>Girar <code>θ</code> graus (positivo: sentido anti-horário; negativo: horário).</li>
+<li>Repetir até finalizar a forma.</li>
+</ul>
+</li>
+<li><strong>Limite de tempo:</strong> cada forma deve terminar em <strong>até 4 minutos</strong>. Se passar disso, o Orquestrator vai spamar <strong>ERROR</strong> até o robô enviar novo comando <strong>READY</strong> enquanto o robô estiver na origem.</li>
+</ul>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+</div>
+<p>Se precisar resetar a posição do robô, enquanto a atenção estiver na simulação, aperte as teclas <code>Ctrl + R</code>.</p>
+<hr />
+<h2 id="requisitos">Requisitos</h2>
+<ol>
+<li>Deve existir o arquivo chamado <code>q1.py</code>.</li>
+<li>O programa deve ser executado sem erros.</li>
+<li>A classe deve ser chamada <code>ShowBot</code>.</li>
+<li>A implementação deve seguir a estrutura da classe de exemplo em <code>base_control.py</code>.</li>
+<li>A função <code>control</code> deve ser a <strong>única</strong> a publicar no tópico <code>/cmd_vel</code>.</li>
+<li>A função <code>control</code> deve ser idêntica à do <code>base_control.py</code>. Todas as decisões de controle devem ocorrer dentro dos nós, sem alterações no <code>control</code>.</li>
+<li><strong>Não</strong> utilizar loops infinitos ou <code>sleep</code> durante o controle do robô.</li>
+<li>Deve se publicar e assinar no tópico <code>/showbot</code> com mensagens do tipo <code>robcomp_interfaces.msg.OrquestratorMSG</code>.</li>
+<li>Deve <strong>executar a forma</strong> com os parâmetros recebidos, em no maximo 4 min, contado de quando enviar READY para quando envia DONE.</li>
+<li>Deve escrever a métrica de deriva com o comando de log da ros2 (<code>self.get_logger().info(ESCREVA AQUI)</code>).</li>
+<li>Nunca spamar mensagens no tópico <code>/showbot</code>.</li>
+</ol>
+<h2 id="rubrica">Rúbrica</h2>
+<ol>
+<li>O programa deve respeitar as restrições definidas.</li>
+<li>Nota: +1,0 - [1] &amp; o robô mantém a conversa com o Orquestrador sem spamar.</li>
+<li>Nota: +1,0 - [2] &amp; O robô deve conseguir executar a forma, avisar quando terminar, receber a métrica de deriva, imprimir o valor e voltar a avisar que está pronto.</li>
+<li>
+<p>Nota: até +2,0 - [3] &amp; robô finaliza após segunda forma &amp; <strong>Qualidade de deriva</strong> - medida após a execução de duas formas geométricas quaisquer.</p>
+</li>
+<li>
+<p><strong>Desafio +1,0</strong> se - <code>drift_m ≤ 0.10 m</code>;</p>
+</li>
+<li><strong>2,0</strong> se <code>drift_m ≤ 0.20 m</code>;</li>
+<li><strong>1,0</strong> se <code>0.20 &lt; drift_m ≤ 0.40 m</code>;</li>
+<li><strong>0,0</strong> se <code>drift_m &gt; 0.40 m</code> ou não reportado.</li>
+</ol>
+<hr />
+<h2 id="video">Vídeo</h2>
+<p>Grave um vídeo mostrando:</p>
+<ul>
+<li>o <strong>echo</strong> do tópico <code>/showbot</code>;</li>
+<li>o <strong>terminal da simulação</strong>;</li>
+<li>o <strong>terminal do robô</strong>;</li>
+<li>e o robô executando pelo menos duas formas, recebendo a deriva, e <strong>claramente</strong> mostrando no terminal do robô.</li>
+</ul>
+<p>Publique o vídeo no YouTube e inclua apenas o <strong>link</strong> no arquivo <code>README.md</code> do seu repositório.</p>
+<p>Entregas parciais são aceitas, sem garantia de nota; o aluno deve explicar no <code>README.md</code> e na descrição do vídeo <strong>até onde foi feito</strong>.</p>
+<hr />
+<h1 id="exercicio-2-manipular-logo-25">Exercício 2 - Manipular Logo (2,5)</h1>
+<p>Crie um arquivo chamado <code>q2.py</code> com uma classe chamada <code>LogoManipulator</code>, que possui um método <code>run</code>. Este método deve receber duas imagens (um logomarca e um fundo) e retornar uma nova imagem onde as partes da logomarca, em branco, são preenchidas pelo fundo fornecido. </p>
+<p>O arquivo só pode ser executado se for rodado diretamente, chamando a função <code>main</code>. A função main deve aplicar o método às imagens fornecidas e salvar o resultado em disco, além de exibi-lo em uma janela.</p>
+<h3 id="exemplo-de-entrada-e-saida">Exemplo de entrada e saída:</h3>
+<p><img alt="alt text" src="../figs/image.png" /></p>
+<h2 id="importante">Importante</h2>
+<p>O objetivo é que apenas as partes da logomarca (simbolo e/ou texto) seja substituída pelos pixels da imagem de fundo, mantendo o restante da imagem inalterado.</p>
+<h3 id="entrada">Entrada</h3>
+<ul>
+<li>Uma imagem de logomarca com fundo branco (exemplo: <code>logo1.png</code>, <code>logo2.png</code>, ... <code>logo6.png</code>). Sempre com o logo em branco e o restante da imagem em outra cor.</li>
+<li>Uma imagem de fundo (exemplo: <code>background.png</code>).</li>
+</ul>
+<h3 id="saida-esperada">Saída esperada</h3>
+<p>Uma nova imagem onde o texto do logotipo aparece com o preenchimento do fundo colorido.</p>
+<h3 id="dicas">Dicas</h3>
+<p>Para deixar uma imagem do mesmo tamanho da outra, você pode usar a função <code>cv2.resize()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>              <span class="c1"># altura e largura da imagem de referência</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span> <span class="c1"># redimensiona o background para ter o mesmo tamanho</span>
+</code></pre></div>
+<p>Para somar duas imagens, você pode usar a função <code>cv2.add()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">)</span>
+</code></pre></div>
+<p>Inverter uma máscara pode ser feito com a função <code>cv2.bitwise_not()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">mask_inv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_not</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="restricoes">Restrições</h3>
+<ul>
+<li>A logomarca pode ter diferentes resoluções e proporções, mas o método deve funcionar em qualquer caso.</li>
+<li>O fundo deve ser redimensionado para caber na logomarca.</li>
+<li>O restante da imagem deve permanecer inalterado.</li>
+</ul>
+<h3 id="requisitos_1">Requisitos</h3>
+<ol>
+<li>Deve existir um arquivo chamado <code>q2.py</code></li>
+<li>O programa deve ser executado sem erros.</li>
+<li>A classe deve se chamar <code>LogoManipulator</code></li>
+<li>A classe deve possuir um método <code>run</code> que recebe duas <strong>imagens</strong> (logo, fundo) e retorna a imagem manipulada.</li>
+<li>Função <code>run</code> não carrega as imagens do disco.</li>
+<li>O programa deve conter uma função <code>main</code> que aplique o método e salve os resultados em disco.</li>
+<li><code>O método deve funcionar dinamicamente para qualquer imagem com as mesmas características, além das fornecidas</code>.</li>
+</ol>
+<h2 id="rubrica_1">Rúbrica</h2>
+<ol>
+<li>O programa respeita as restrições definidas.</li>
+<li>Nota: +0,5 - [1] &amp; é capaz de carregar e exibir as imagens corretamente.</li>
+<li>Nota: +0,5 - [2] &amp; é capaz de identificar corretamente as regiões da logomarca (desenhe os contornos para validar).</li>
+<li>Nota: +1,5 - [2] &amp; é capaz de substituir as regiões por pixels do fundo em todas as imagens.</li>
+</ol>
+<h2 id="video_1">Vídeo</h2>
+<p>Na função <code>main</code> adicione um loop para processar e mostrar todas as imagens fornecidas. Grave um vídeo mostrando o funcionamento do programa para todas as imagens fornecidas. Em cada imagem, deve mostrar a imagem original, o fundo aplicado e o resultado final. Publique o vídeo no YouTube e inclua apenas o link no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="exercicio-3-detectar-colisoes-35">Exercício 3 - Detectar Colisões (3,5)</h1>
+<p>Modifique o arquivo <code>q3.py</code> que tem uma classe chamada <code>CollisionCounter</code> e um método <code>run</code>. Este método deve processar um frame do vídeo, identificar a nave principal (vermelha) e os tiros (amarelos). A classe deve <strong>contar o número total de tiros que atingiram a nave</strong> ao longo do vídeo.</p>
+<p>Como pode observar, o arquivo <code>q3.py</code> já tem a classe <code>CollisionCounter</code> e o método <code>run</code> implementados, mas não estão fazendo nada. O arquivo também já tem a função <code>main</code> que carrega o vídeo, passa frame a frame para o método <code>run</code> e exibe o vídeo enquanto ele é processado.</p>
+<h2 id="importante_1">Importante</h2>
+<p>No vídeo existem:</p>
+<ul>
+<li>Uma nave principal vermelha que deve ser monitorada.</li>
+<li>Tiros amarelos que podem ou não atingir a nave.</li>
+</ul>
+<p>O desafio é contar o número total de tiros que atingiram a nave principal ao longo do vídeo.</p>
+<h2 id="saida-esperada_1">Saída esperada</h2>
+<p>Em cada frame processado, escreva na imagem o número de colisões detectadas até aquele momento. Ao final do vídeo, imprima no terminal o número total de colisões detectadas.</p>
+<h2 id="restricoes_1">Restrições</h2>
+<ul>
+<li>A nave alvo é sempre vermelha, mas pode variar de formato em vídeos diferentes.</li>
+<li>Os tiros são sempre amarelos.</li>
+<li>O programa deve funcionar mesmo se a nave principal estiver em posições diferentes no vídeo.</li>
+<li>Considere que um tiro atingiu a nave se houver uma sobreposição significativa entre o tiro e a nave em um frame.</li>
+</ul>
+<h2 id="requisitos_2">Requisitos</h2>
+<ul>
+<li>Deve existir um arquivo chamado <code>q3.py</code></li>
+<li>O programa deve ser executado sem erros até o final do vídeo.</li>
+<li>A classe deve se chamar <code>CollisionCounter</code>.</li>
+<li>A classe deve possuir um método <code>run</code> que recebe um vídeo e retorna o número de colisões da nave principal com tiros.</li>
+<li>O programa deve conter uma função <code>main</code> que processa o vídeo, exibe os resultados e imprime o número de colisões.</li>
+<li>O método deve ser dinâmico e funcionar para qualquer vídeo com as mesmas características (nave vermelha, tiros amarelos).</li>
+</ul>
+<h2 id="rubrica_2">Rúbrica</h2>
+<ol>
+<li>Nota: +0,5 [1] - O método consegue identificar a nave e os tiros (desenhe os contornos para validar).</li>
+<li>Nota: +1 [2] - O programa consegue identificar colisões e contar a quantidade de tiros que atingiram a nave, mas o valor final está incorreto. Ele também mostra o número de colisões na imagem.</li>
+<li>Nota: +2 [3] - O método contabiliza precisamente o número total de tiros que acertaram a nave principal, para qualquer vídeo com as mesmas características, e exibe o número de colisões na imagem.</li>
+</ol>
+<h2 id="video_2">Vídeo</h2>
+<p>Grave um vídeo mostrando o funcionamento do programa em <strong>AMBOS</strong> os vídeos fornecidos.
+Em cada frame processado, deve mostrar: a nave principal segmentada, os tiros detectados e escrever na imagem o número de colisões detectadas até aquele momento.
+Ao final, deve imprimir o número total de colisões detectadas e <strong>claramente mostrar isso no terminal.</strong>
+Publique o vídeo no YouTube e inclua apenas o link no arquivo README.md do seu repositório.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

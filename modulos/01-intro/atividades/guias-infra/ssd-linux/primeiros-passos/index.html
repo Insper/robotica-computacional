@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Meu SSD subiu, e agora? - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../../../equipe.css"><link rel="stylesheet" href="../../../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Meu SSD subiu, e agora?</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 1 - Introdução ao Curso</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                  
+                    <li>1 - Infra</li>
+                  
+                
+                  
+                    <li>1.1 - Linux</li>
+                  
+                
+                <li>Meu SSD subiu, e agora?</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="meu-ssd-subiu-e-agora">Meu SSD subiu, e agora?</h1>
+<p>Assumindo que você seguiu o <a href="../recebi-meu-ssd/">tutorial anterior</a>, este guia detalha como: </p>
+<p><strong>1.</strong> Fazer o login</p>
+<p><strong>2.</strong> Trocar a senha</p>
+<p><strong>3.</strong> Adicionar Teclado PT-BR</p>
+<p><strong>4.</strong> Configurar a rede</p>
+<p><strong>5.</strong> Atualizar o Sistema</p>
+<p><strong>6.</strong> Terminator</p>
+<h2 id="fazendo-login">Fazendo Login</h2>
+<p>Se tudo deu certo até agora, você encontrará esta imagem:</p>
+<p><img alt="Untitled" src="imgs/img1.png" width="800" /></p>
+<p>Clique no pinguin - Usuário <strong>borg</strong> - e coloque a senha inicial: <strong>fl1pfl0p</strong></p>
+<p><img alt="Untitled" src="imgs/img2.png" width="800" /></p>
+<p>Você encontrará este ambiente de trabalho</p>
+<p><img alt="Untitled" src="imgs/img3.png" width="800" /></p>
+<h2 id="trocando-a-senha">Trocando a Senha</h2>
+<p>A primeira configuração que recomendamos é trocar esta senha inicial. Temos duas formas de realizar esta tarefa, pelo ambiente gráfico e pelo terminal. Vamos ver as duas formas de realizar, iniciando pelo ambiente gráfico.</p>
+<p>Clique no canto superior direito, em seguinda em settings.</p>
+<p><img alt="Untitled" src="imgs/img4.png" width="800" /></p>
+<p>Na barra da esquerda, escolha o item Users e clique no botão no canto superior direito chamado Unlock.</p>
+<p><img alt="Untitled" src="imgs/img5.png" width="800" /></p>
+<p>Ele pedira a senha de usuário (ainda é fl1pfl0p). Depois basta clicar em Password. Ele pedira a senha atual e a nova senha. Lembre-se que precisa ser uma senha forte, ou seja, ter letras maiúsculas, minúsculas, números e símbolos. Ter seu comprimento superior ou igual a 8 dígitos.</p>
+<p><img alt="Untitled" src="imgs/img6.png" width="800" /></p>
+<p>Após preencher a nova senha e confirmar a nova senha, se ela estiver dentro dos padrões de segurança, o botão Change ficará habilitado.</p>
+<p><img alt="Untitled" src="imgs/img7.png" width="800" />
+A partir de agora todas as vezes que for pedida a senha de usuário você deve usar a nova senha. É recomendado que reinicie a máquina para que o ambiente gráfico utilize a nova senha.</p>
+<p>A outra forma de fazer a mudança de senha é pelo terminal. Para isso, você pode abrir o terminal (veja dois ícones de terminais na barra de atalhos). Você pode clicar no programa com o mouse ou usar as teclas de atalho SUPER+T <strong>(Super é a tecla do windows).</strong></p>
+<p>Com o terminal aberto (não importa qual dos dois você escolheu), você digitará o comando: <code>passwd</code> em seguida forneca a <strong>senha atual</strong> (fl1pfl0p) e depois a <strong>nova senha</strong>, lembrando que precisa ter no mínimo 8 dígitos, usar letras maíusculas e minúsculas, números e símbolos. Ele pedirá para <strong>confirmar a nova senha</strong> e pronto! Sempre que precisar trocar a senha, refaça este procedimento.</p>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>É normal não aparecer nada no terminal quando você digita a senha, é uma medida de segurança do terminal esconder o display de caracteres.</p>
+</div>
+<p><img alt="Untitled" src="imgs/img8.png" width="800" /></p>
+<h2 id="adicionando-teclado-pt-br">Adicionando Teclado PT-BR</h2>
+<p>Estamos usando o Ubuntu no idimoa Inglês para facilitar a compreenção dos termos e palavras-chave, uma vez que o sistema é desenvolvido originlmante em inglês e depois traduzido para outros idiomas.</p>
+<p>Para podermos utilizar as teclas das derivações do layout ABNT (aqueles teclados físicos que possuem as teclas de "ç" utilizados no idioma Português do Brasil), precisamos adicionar um novo layout. </p>
+<p>Clique, então no canto superior direito e em <strong>Settings</strong>, como na figura abaixo.</p>
+<p><img alt="Untitled" src="imgs/teclado1.png" width="800" /></p>
+<p>Na tela de configurações, clique em <strong>Keyboard</strong> e depois no sinal de <strong>+</strong> encontrado abaixo do layout English (US) no item <strong>Input Sources</strong>.</p>
+<p><img alt="Untitled" src="imgs/teclado2.png" width="800" /></p>
+<p>Agora clique nos três pontos que aparece após as possibilidades apresentadas:</p>
+<p><img alt="Untitled" src="imgs/teclado3.png" width="800" /></p>
+<p>Role a tela até aparecer <strong>Portugeses</strong> e clique nesta opção:</p>
+<p><img alt="Untitled" src="imgs/teclado4.png" width="800" /></p>
+<p>Então selecione <strong>Porguese (Brazil)</strong> e clque em <strong>Add</strong></p>
+<p><img alt="Untitled" src="imgs/teclado5.png" width="800" /></p>
+<p>Após adicionar o novo Layout que, ao selecionar, você troca o layout do seu teclado e o idioma de digitação, você encontrará um ícone com as iniciais do idioma em uso na parte superior direita da Área de Trabalho. Ela será <strong>en</strong> ou <strong>pt</strong> neste caso. Para trocar o idioma que está utilizando, você pode clicar neste ícione, como mostrado na figura a seguir, ou pressionando simultaneamente as teclas CTRL+SPACE.</p>
+<p><img alt="Untitled" src="imgs/teclado6.png" width="800" /></p>
+<h2 id="configurando-a-rede">Configurando a Rede</h2>
+<p>Esta etapa não é difícil mas requer atenção em alguns detalhes. Você utilizará a rede <strong>insper_alunos</strong> e as configurações de conexão são um pouco diferentes das que utiliza em sua casa ou locais públicos. Então após este tutorial você estará apto a logar em qualquer rede do INSPER com sua máquina.</p>
+<p>O primeiro passo é clicar nos ícones no canto superior direito, depois clicar no item da Wi-fi seguido de “Select Network”, como visto na imagem abaixo.</p>
+<p><img alt="Untitled" src="imgs/img9.png" width="800" /></p>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>Se não aparecer o ícone de rede sem fio, conecte seu computador com um cabo de rede e utilize o seguinte comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ubuntu-drivers<span class="w"> </span>install
+</code></pre></div>
+<p>Se tiver dúvidas ou dificuldades, peça ajuda ao técnico.</p>
+</div>
+<p>Na tela que se abrirá, escolha a rede que deseja conectar e clique em “Connect”.</p>
+<p><img alt="Untitled" src="imgs/img10.png" width="800" /></p>
+<p>Então você verá a tela de configurações de rede. São três informações que você deve passar:</p>
+<p><strong>1.</strong> Clicar (”check”) na caixa: No CA certificate is required</p>
+<p><strong>2.</strong> Username: seu usuário de rede (e-mail sem @al.insper.edu.br)</p>
+<p><strong>3.</strong> Password: senha do seu e-mail.</p>
+<p>Depois clique em “Connect”.</p>
+<p><img alt="Untitled" src="imgs/img11.png" width="800" /></p>
+<p>Após a conexão, você verá o ícone do Wi-Fi no canto superior direito da tela:</p>
+<p><img alt="Untitled" src="imgs/img12.png" width="800" /></p>
+<h2 id="atualizando-o-sistema">Atualizando o Sistema</h2>
+<p>Vamos abrir o terminal usando as teclas de atalho SUPER+T (lembrando que a tecla super é como a tecla “windows” é chamada no linux).</p>
+<p>Em nosso SSD você verá a tela do Terminator após usar este atalho. Na imagem abaixo você verá o terminator aberto e o primeiro comando que iremos utilizar. </p>
+<p><img alt="Untitled" src="imgs/img13.png" width="800" /></p>
+<p>O primeiro comando que iremos utilizar,  <code>sudo apt update</code>,  é dividido em três partes. A primeira palavra <strong>sudo</strong> diz ao sistema que você usará permissão de <strong>root</strong> (administrador do sistema) para executar o comando a seguir, o comando <strong>apt</strong> chama o gerenciador de pacotes do ubuntu, que espera uma sequência de comandos, e por fim a palavra <strong>update</strong> que diz ao apt que precisamos atualizar as bases dos repositórios para saber se temos alguma atualização. Como estamos usando permissão de root, pedirá a senha de usuário a seguir. </p>
+<p>Com a mesma premissa, vamos atualizar os pacotes que ele encontrou com novas versões. para isto utilize o comando <code>sudo apt upgrade</code>.  Este comando perguntará, a cada pacote, se você quer ou não instalar, basta teclar ENTER se quiser instalar. Se você não quer confirmar pacote a pacote, pode acrescentar o “-y” no comando, já enviando antecipadamente o “yes”, então comando ficaria assim: <code>sudo apt upgrade -y</code>.</p>
+<p>Podemos concatenar os dois comandos utilizando <code>&amp;&amp;</code> no terminal. Desta forma podemos executar o update e o upgrade na mesma linha, como segue: </p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</code></pre></div>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>Use a tecla <code>TAB</code> para autocompletar os comandos no terminal</p>
+</div>
+<p>Você tem um "alias" já adicionado no seu SSD chamado <strong>update</strong>. Este alias corresponde a concatenação de três comandos: 
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove
+</code></pre></div>
+Este terceiro comando remove tudo o que ficou obsoleto e foi substituído no comando de upgrade.</p>
+<p>Para chamar este comando, asta digitar <strong>update</strong> no seu terminal e fornecer a senha de usuário na sequência. </p>
+<h2 id="terminator">Terminator</h2>
+<p>Vamos aproveitar que você acabou de utilizar o Terminator, que é um emulador de terminal com diversos recursos interessantes, e aprender três recursos que serão extremamente úteis nas aulas de Robótica.</p>
+<p>Abra o terminator utilizando a tecla de atalho <code>SUPER+T</code> e clique com o botão direito do mouse na tela do terminal. Abrirá um menu e você deve se atentar nas duas opções de <strong>Split</strong> que encontrará. </p>
+<p><img alt="Untitled" src="imgs/terminal1.png" width="800" /></p>
+<p>Primeiro vamos clicar em <strong>Split Horizontally</strong> e ver a tela ser dividia horizontalemnte como se fossem dois terminais, com a vantagem de conseguir observar os dois terminais simultaneamente.</p>
+<p><img alt="Untitled" src="imgs/terminal2.png" width="800" /></p>
+<p>Repita o processo e abra uma divisão vertical agora. Para isso, clique com o botão direito numa área livre do terminal e clique em <strong>Split Vertically</strong></p>
+<p><img alt="Untitled" src="imgs/terminal3.png" width="800" /></p>
+<p>Você pode organizar da forma que for mais conveniente. Veja este exemplo com diversas divisões da tela:</p>
+<p><img alt="Untitled" src="imgs/terminal4.png" width="800" /></p>
+<p>O último recurso que veremos agora é a divisão por "tabs", onde você pode ter dois terminais na mesma janela, mas sem a visualização simultânea.</p>
+<p>Você deve clicar com o botão direito do mouse em uma parte livre do terminal e escolher <strong>Open Tab</strong> no menu que apaece:</p>
+<p><img alt="Untitled" src="imgs/terminal5.png" width="800" /></p>
+<p>E você verá que o terminal ganhará outra <strong>Tab</strong> da mesma forma que acontece com os navegadores web.</p>
+<p><img alt="Untitled" src="imgs/terminal6.png" width="800" /></p>
+<h2 id="finalizando">Finalizando</h2>
+<p>Se você conseguiu seguir todos os passos até agora, o seu SSD já está pronto para ser utilizado. Como você utilizará linux em outras etapas do curso, a dica <strong>é usar o SSD para tudo neste semestre</strong>.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../recebi-meu-ssd/mac-os/"
+               class="ah-prev"
+               title="Primeiro Boot - MAC">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Primeiro Boot - MAC</span>
+            </a>
+          
+          
+            <a href="../guia-linux/"
+               class="ah-next"
+               title="Guia básico de Linux">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Guia básico de Linux</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

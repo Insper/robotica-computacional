@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Um pouco de historia - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../../../../equipe.css"><link rel="stylesheet" href="../../../../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Um pouco de historia</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="um-pouco-de-historia">Um pouco de história.</h1>
+<p>O sistema operacional instalado no seu SSD é conhecido como <strong>LINUX</strong>, mas o termo correto é Ubuntu versão 20.04 o kernal sim, é o GNU/Linux. O kernel é o orquestrador do sistema operacional, ele utiliza uma série de  ferramentas para entregar as funcionalidades do sistema. Essas ferramentas foram criadas pelo projeto GNU, idealizado por Richard Stallman.</p>
+<p>Ser <a href="https://www.redhat.com/pt-br/open-source">open source</a>  talvez seja a principal vantagem do Linux. O Linux está disponível sob a <a href="https://www.gnu.org/licenses/licenses.html">Licença Pública Geral (GPL) GNU</a>.  Isso significa que qualquer pessoa pode executar, estudar, compartilhar e modificar o software. Por isso podemos distribuir cópias personalizadas com as ferramentas usadas pelas matérias do terceiro semestre para vocês sem problemas. O que for modificado também pode ser <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License#Terms_and_conditions">redistribuído e até mesmo vendido</a>,  mas isso deve ser feito sob a mesma licença. O Linux é muito diferente dos sistemas operacionais tradicionais, como Unix e Windows, que são softwares proprietários, fechados e oferecidos em estado final, ele são inalteráveis.</p>
+<h2 id="sabia-que-existe-uma-diferenca-entre-software-livre-e-open-source">Sabia que existe uma diferença entre Software Livre e Open Source?</h2>
+<p>Open Source é um código pensado para ser acessado abertamente pelo público, é desenvolvido de forma descentralizada e colaborativa e conta com a revisão e suporte da comunidade. Ele costuma ser mais barato, mais flexível e mais duradouro do que as opções proprietárias, já que é desenvolvido por comunidades, e não por um único autor ou empresa.</p>
+<p>O open source é hoje um movimento tecnológico e uma forma de trabalho que vai além da produção de software. Esse movimento usa os valores e o modelo descentralizado de produção do software open source para descobrir maneiras inovadoras de resolver problemas com a colaboração ativa da comunidade.</p>
+<p>A ARPANET influenciou a construção de uma comunidade com esses valores. Nas décadas de 1950 e 1960, os profissionais que desenvolviam as primeiras tecnologias de Internet e protocolos de rede de telecomunicação contavam com um ambiente de pesquisa colaborativo e aberto. Na época, a rede Advanced Research Projects Agency Network (ARPANET), que é a base da Internet moderna, incentivava a revisão pelos colaboradores e o processo de feedback aberto. Os grupos de usuários compartilhavam os próprios códigos-fonte e desenvolviam com base neles. Já os fóruns facilitavam as discussões e estabeleciam padrões para a colaboração e comunicação abertas. Quando a Internet surgiu no começo dos anos 1990, sua base já tinha incorporado os valores da colaboração, avaliação por pares, comunicação e transparência.</p>
+<p>Um modelo de desenvolvimento open source é o processo usado no projeto da comunidade para desenvolver softwares relacionados. Depois, o  software é lançado com uma licença open source, para que todos possam visualizar ou modificar o código-fonte.</p>
+<p>Muitos projetos open source são hospedados no <a href="https://github.com/explore">GitHub</a>.  Lá você pode acessar repositórios ou participar de projetos da comunidade. Alguns dos projetos open source mais conhecidos são <a href="https://www.redhat.com/pt-br/topics/linux">Linux®</a>, Ansible e Kubernetes.</p>
+<h3 id="open-source">Open Source</h3>
+<p>O nome "software livre" chegou a causar muita confusão. O termo "free" é ambíguo e pode significar "livre" ou "gratuito". Nesse caso, o software não é necessariamente gratuito, mas livre para ser usado. Para resolver a ambiguidade, "software livre" foi 
+substituído por "open source", <a href="https://opensource.com/article/18/2/coining-term-open-source-software">termo criado por Christine Peterson</a>:
+ "O problema com o nome antigo, não era a conotação política, mas o fato de que atraía novos usuários com uma gratuidade aparente. Foi necessário adotar um termo para enfatizar a questão em torno do código-fonte e não confundir quem acabou de conhecer o conceito."</p>
+<p>Christine propôs essa substituição de termo a um grupo de trabalho que era dedicado, em parte, a incentivar práticas de software open source em mercados maiores. O grupo queria mostrar ao mundo que o software ficava muito melhor quando era compartilhado, colaborativo, aberto e modificável. E assim seria possível usá-lo de outras maneiras inovadoras, além de aumentar a flexibilidade, economia e durabilidade sem dependência de fornecedor</p>
+<p>No começo de 1998, a <a href="https://opensource.org/docs/osd">Open Source Initiative</a>  (OSI) foi fundada, o que formalizou o termo e estabeleceu uma definição comum  no setor. Embora as empresas ainda desconfiassem do movimento open source do final dos anos 1990 ao começo dos anos 2000, ele começou a ser  adotado gradualmente na produção de software para se tornar o atual padrão do setor.</p>
+<p>A Mozilla Foundation, desenvolvedora do navegador Firefox, abre o código fonte de todos os seus aplicativos, para a modificação e redistribuição. Porém, a Mozilla criou sua própria licença, a  “Mozilla Public License”, que possui a restrição de, caso um programador modifique e redistribua seus aplicativos, eles deverão usar outro nome. Em outras palavras, um Firefox modificado fora da Mozilla Foundation não pode ser chamado de Firefox. Essa política foi adotada para preservar o nome da empresa, visto que cópias modificadas podem ser instaláveis, o que poderia sujar a credibilidade da Mozilla. </p>
+<p>O Firefox possui o código aberto para análise,  segue a filosofia da comunidade do código aberto, mas não pode ser considerado como Software livre.</p>
+<h3 id="linux-e-open-source"><strong>Linux e open source</strong></h3>
+<p>O Linux é um sistema operacional open source e gratuito, disponibilizado sob a Licença Pública Geral (GPL) GNU. Ele se tornou o maior projeto de software open source do mundo.</p>
+<p>O sistema operacional Linux foi criado como uma versão alternativa, gratuita e open source do sistema operacional MINIX, que era baseado nos princípios e design do Unix.</p>
+<p>O Linux foi lançado com uma licença open source, que impede restrições ao uso do software. Portanto, qualquer pessoa pode executar, estudar, modificar e redistribuir o código-fonte, ou até mesmo vender cópias do código modificado, desde que façam isso sob a mesma licença.</p>
+<h3 id="software-livre">Software Livre</h3>
+<p>O software livre é o oposto do software proprietário ou de "código-fonte fechado", que é altamente protegido. Somente os proprietários do código-fonte têm direito de acessá-lo. Não é possível alterar ou copiar legalmente um código-fonte fechado. Além disso, quando o usuário compra o software somente pode usá-lo da forma como foi programado, sem modificá-lo para novas utilizações nem compartilhá-lo com a comunidade.</p>
+<p>Voltando ao Richard Stallman, idealizador do projeto GNU, ele é conhecido como um dos principais militantes da idéia de Software Livre, o objetivo do projeto GNU é fornecer ferramentas para construir um sistema operacional totalmente livre, que tenha seu <strong>código fonte aperto para leitura, modificação e redistribuição sem restrições.</strong> Em um dos textos do Stallman, ele utiliza a seguinte frase: “The enemy is the propetary software”.</p>
+<p>Em 1989, foi lançada a GNU GPL (General Public License), que regulamenta o uso do Software Livre. Atualmente, podemos registrar nossos softwares na GPL2 ou GPL3.  Em 1998, Stallman criou a <a href="http://www.fsf.org/">Free Software Fondation</a>, uma organização especializada em Software Livre, baseada na GNU GPL.</p>
+<p>A  licença GPL prega  que as aplicações registradas com essa patente podem ser lidos, modificados e redistribuídos conforme os quatro conceitos de liberdade listados:</p>
+<ul>
+<li>
+<p><strong>Liberdade  nº 0 -</strong> A liberdade de executar o programa, para qualquer propósito (liberdade nº 0)</p>
+</li>
+<li>
+<p><strong>Liberdade nº 1 -</strong> A liberdade de acesso ao código fonte com permissão de leitura e modificações.</p>
+</li>
+<li>
+<p><strong>Liberdade nº 2 -</strong> A liberdade de redistribuir cópias do software.</p>
+</li>
+<li>
+<p><strong>Liberdade nº 3 -</strong> A liberdade de aperfeiçoar o programa, e liberar os seus aperfeiçoamentos, de modo que toda a comunidade se beneficie dessas melhorias.</p>
+</li>
+</ul>
+<p>Depois de um pouco de história, vamos colocar os dedos no teclado para explorar esse sistema sensacional com o <a href="../">guia-linux</a></p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Configure o seu Git - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../../../equipe.css"><link rel="stylesheet" href="../../../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Configure o seu Git</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Unidade 1</li>
+                  
+                
+                  
+                    <li>Capítulo 1 - Introdução ao Curso</li>
+                  
+                
+                  
+                    <li>Atividades</li>
+                  
+                
+                  
+                    <li>1 - Infra</li>
+                  
+                
+                  
+                    <li>1.1 - Linux</li>
+                  
+                
+                <li>Configure o seu Git</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="configure-o-seu-git">Configure o seu Git</h1>
+<p>Boas noticias, não precisa instalar o Git, deixamos isso pronto pra você, porém, algumas configurações só você pode fazer, te mostramos neste guia algumas noções básica sobre Git, GitHub e quais são os passos para fazer as configurações necessárias, bom proveito!</p>
+<h2 id="o-que-e-o-git">O que é o Git?</h2>
+<p>O Git é um sistema de controle de versão distribuído. Um sistemas de controle de versão tem a função de registrar qualquer alteração feita em cima de um código, armazenando essas informações e permitindo voltar a versões anteriores de uma aplicação de modo simples e rápido. Este tipo de sistema também simplifica muito o processo de compartilhamento de um projeto com um time.</p>
+<p>Um repositório ou um projeto Git, engloba toda a coleção de arquivos e pastas associados a um projeto, junto com o histórico de revisão de cada arquivo. O histórico de arquivos aparece como instantâneos no tempo denominados commits. Os commits podem ser organizados em várias linhas de desenvolvimento denominadas branches. Os repositórios são unidades auto-confinadas e qualquer pessoa que tiver uma cópia do repositório pode acessar toda a base de código e seu histórico. Um repositório Git também permite a interação com o histórico, clonagem do repositório, criação de branches, commiting, merge, comparação de alterações entre versões de código e muito mais.</p>
+<p>Por meio de plataformas como GitHub, o Git também oferece mais oportunidades para transparência e colaboração do projeto. Repositórios públicos ajudam as equipes a trabalhar juntas para criar o melhor produto final possível.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 1</p>
+<p>Para saber mais, consulte a <a href="https://docs.github.com/pt/get-started/using-git/about-git">documentação</a></p>
+</div>
+<h2 id="o-que-e-github">O que é GitHub?</h2>
+<p>GitHub é uma plataforma de hospedagem de código para controle de versão e colaboração <strong>usando as ferramentas Git</strong>, possibilita que desenvolvedores trabalhem em um único projeto podendo acessar as contribuições da equipe em tempo real, o GitHub também possui recursos de organização e gestão de projetos.</p>
+<p>GitHub cria colaboração diretamente no processo de desenvolvimento. O trabalho é organizado em repositórios onde os desenvolvedores podem definir os requisitos e expectativas para os integrantes da equipe. Em seguida, ao usar o fluxo GitHub, os desenvolvedores simplesmente criam um branch para trabalhar nas atualizações, enviar alterações para salvá-las, abrir um pull request para propor alterações e fazer merge de pull requests quando todos estiverem de acordo. Para obter mais informações, confira <a href="https://docs.github.com/pt/get-started/quickstart/github-flow">Fluxo do GitHub</a>.</p>
+<h2 id="resumindo-as-diferencas-entre-git-e-github">Resumindo as diferenças entre Git e GitHub:</h2>
+<h3 id="git">Git</h3>
+<p>É um software que é instalado na máquina do usuário e é executado localmente, possui um conjunto de ferramentas que monitora o histórico de alteraçoes onde qualquer versão anterior do projeto pode ser recuperada a qualquer momento, isso é Git:</p>
+<ul>
+<li>git init</li>
+<li>git clone</li>
+<li>git status</li>
+<li>git add meu_arquivo.py</li>
+<li>git add minha_pasta_completona</li>
+<li>git commit -m "minha mensagem de commit"</li>
+<li>git push origin nome_da_branch</li>
+<li>git checkout -b nome_da_nova_branch</li>
+</ul>
+<p><a href="https://training.github.com/downloads/pt_BR/github-git-cheat-sheet/">Resumo de comandos git via terminal</a> </p>
+<h3 id="github">GitHub</h3>
+<p>É uma plataforma que hospeda códigos e possibilita a colaboração com repositórios públicos, é o chamado repositório remoto. Isso é GitHub:</p>
+<ul>
+<li>Abrir um pull request</li>
+<li>Criar um Fork de um repositório remoto</li>
+<li>Criar um repositório público</li>
+<li>Criar um repositório privado</li>
+<li>Criar um clone de um repositório remoto</li>
+<li>Criar plugins de automação com actions</li>
+<li>Criar Issues no repositório remoto</li>
+<li>Criar organizações com gerenciamento de permissões entre integrantes</li>
+</ul>
+<p>Se quiser saber mais, visite o <a href="https://www.youtube.com/githubguides">canal do YouTube oficial do GitHub</a> ou a <a href="https://docs.github.com/pt/get-started/quickstart/hello-world">documentação oficial.</a></p>
+<h2 id="se-identificando-para-o-git">Se identificando para o Git</h2>
+<p>A primeira coisa que devemos fazer antes de começar a usar o Git é configurar o <strong>nome de usuário</strong> e <strong>endereço de e-mail</strong>. Isto é importante porque cada <em>commit</em>  usa esta informação, e ela é carimbada de forma imutável nos seus <em>commits</em>:</p>
+<p>Abra um terminal usando o atalho <code>Super + T</code>, então use os comando a seguir para configurar o seu user name e seu email:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Seu Belo Nome Aqui&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>Seu_email_do_GitHub_aqui@exemplo.br
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dica 2</p>
+<p>Não precisa colocar o seu login do GitHub ao configurar o user.name, pode ser o seu nome sem problemas</p>
+</div>
+<p>Você precisara fazer a configuração de usuário e email somente uma vez, por que estamos usado a opção <code>--global</code>, o Git usará esta configuração para qualquer coisa que você fizer no Git em qualquer parte do sistema.
+Se você precisar substituir os dados de usuário e email para um projeto específico, você pode executar o mesmo comando <strong>sem a opção</strong> <code>--global</code> dentro do projeto específico, então a configuração será local e só vai funcionar naquele espaço.</p>
+<h3 id="seu-editor">Seu Editor</h3>
+<p>Agora que a sua identidade está configurada, você pode escolher o editor de texto padrão que será chamado quando o Git precisar que você digite uma mensagem. Se não for configurado, o Git usará o editor padrão, que normalmente é o nano.
+Se você quiser usar um editor de texto diferente, como o Visual Code, você pode fazer o seguinte:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span>code
+</code></pre></div>
+<h2 id="configurando-autenticacao-por-chave-ssh">Configurando autenticação por chave ssh</h2>
+<p>Autenticação por chave SSH é um método de garantir uma conexão segura entre dois sistemas. Uma chanve SSH na verdade consiste de um par de chaves, uma chave privada, que é mantida em segredo no computador do usuário, e uma chave pública, que é colocada no servidor. Quando você tenta conectar-se ao um servidor, no caso tenta se conectar na sua conta do Git, ele criará um desafio criptográfico usando sua chave pública, que só pode ser resolvido com a chave privada correspondente. Assim, o Git pode confirmar sua identidade automaticamente, sem que você precise enviar uma senha ou seu personal access token.</p>
+<p>Vamos agora aprnder como confirguardar a sua chave SSH no GitHub.</p>
+<h3 id="gerando-uma-chave-ssh">Gerando uma chave SSH</h3>
+<p>Primeiramente devemos criar uma chave SSH, para isso, abra um terminal e execute o seguinte comando substituindo o endereço de e-mail pelo seu GitHub. Pressione enter para aceitar o local padrão para salvar a chave, ao menos que você deseje salvar com outro nome.</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+</code></pre></div>
+<p>Você receberá uma mensagem parecida com a imagem a seguir, se desejar adicionar uma senha para a chave, digite uma senha e pressione enter, se não quiser adicionar uma senha, pressione enter sem digitar nada. Se adicionar uma senha, você precisará digitar a senha toda vez que usar a chave.</p>
+<p><img alt="saida1" src="imgs/saida1.png" /></p>
+<p>Por fim, você receberá uma mensagem parecida com a imagem a seguir, isso significa que a chave foi criada com sucesso.</p>
+<p><img alt="saida2" src="imgs/saida2.png" /></p>
+<p>Agora vamos adicionar a chave ao ssh-agent, o ssh-agent é um programa que roda em segundo plano e armazena as chaves privadas usadas para autenticação SSH, ele é responsável por segurar as chaves privadas e usar quando necessário.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+</code></pre></div>
+<p>Você receberá uma mensagem parecida com a imagem a seguir.</p>
+<p><img alt="saida3" src="imgs/saida3.png" /></p>
+<h3 id="adicionando-a-chave-ssh-ao-github">Adicionando a chave SSH ao GitHub</h3>
+<p>Agora vamos adicionar a chave SSH que criamos ao GitHub, para isso, vamos copiar o conteudo do arquivo <code>id_ed25519.pub</code> e cola-lo na sua página de configurações do GitHub. Voce pode fazer isso abrindo o arquivo com o seu editor de texto favorito e copiar o conteudo, ou pode usar visualizar o conteúdo do arquivo no terminal com o cmando abaixo:
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+</code></pre></div></p>
+<p>Após esse último comando, o conteúdo da sua chave SSH será exibido no terminal, você só precisa marcar com o mouse o texto todo e clicar como botão direito do mouse sobre a marcação pra copiar:</p>
+<p><img alt="saida4" src="imgs/saida4.png" /></p>
+<p>Agora basta colar na sua página de configurações do GitHub.
+Para acessar a página de configurações, clique na sua foto de perfil no canto superior direito da página do GitHub, em seguida, clique em <strong>Settings</strong>.</p>
+<p><img alt="passo1" src="imgs/passo1.png" /></p>
+<p>Depois, na barra lateral esquerda, clique em <strong>SSH and GPG keys</strong>. Em seguida, clique em <strong>New SSH key</strong> ou <strong>Add SSH key</strong>.</p>
+<p><img alt="passo2" src="imgs/passo2.png" />
+<img alt="passo2a" src="imgs/passo2a.png" /></p>
+<p>Preencha o campo <strong>Title</strong> com um nome descritivo para a chave, por exemplo, <strong>SSD Robotica</strong>. Em seguida, cole a chave no campo <strong>Key</strong>. Finalmente, clique em <strong>Add SSH key</strong>.</p>
+<p>Agora não será mais nescessario digitar seu usuário e senha toda vez que você executar um comando git, o GitHub vai reconhecer a sua chave SSH e vai autenticar você automaticamente.</p>
+<h3 id="clonando-repositorios-com-a-chave-ssh">Clonando repositorios com a chave SSH</h3>
+<p>Agora que a chave SSH já está configurada, vamos usar para clonar um repositório usando a chave.</p>
+<p>Para este primeiro uso, vamos clonar o repositório de robótica. Você o acessará através de uma página no github, mas é um reposítório possível de ser clonado.</p>
+<p>O endereço do repositório é: <a href="https://github.com/insper-classroom/robcomp_util">https://github.com/insper-classroom/robcomp_util</a></p>
+<p>Ao acessar a página, verá um botão escrito <strong>&lt;&gt; Code</strong>, clicando nele verá três opoções: HHTPS, <strong>SSH</strong> e GitHubCLI. Você deve clicar em <strong>SSH</strong>. Ao lado do endereço que aparecerá, tem um íconde cópia, clique nele.</p>
+<p><img alt="Clone_SSH" src="imgs/ssh1.png" width="800" /></p>
+<p>Abra um terminal e vá até o diretório que será feito o clone do repositório. 
+Lá digite o comando git clone adicionado pelo endereço de clonagem:</p>
+<div class="highlight"><pre><span></span><code>git clone git@github.com:insper-classroom/robcomp_util.git
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dica 3</p>
+<p>Você pode colar no terminal usando o <code>botão direito do mouse</code> e selecionar <strong>parte</strong> ou utilizando as teclas <code>CTRL+SHIFT+V</code>. Pode colar também com o <code>botão do meio do mouse</code>.</p>
+</div>
+<p><img alt="Git_clone" src="imgs/ssh2.png" width="800" /></p>
+<p>Quando usar a chave SSH pela primeira vez, terá de confirmar a dição dela ao uso no terminal. basta digitar <strong>yes</strong> e apertar <code>enter</code>.</p>
+<p><img alt="ssh_primeiro_uso" src="imgs/ssh3.png" width="800" /></p>
+<p>Imediatamente antes do início da clonagem você verá a adição do <code>github.com</code> à lista de hosts conhecidos. Agora, é só aguardar o termino.</p>
+<p><img alt="ssh_hosts" src="imgs/ssh4.png" width="800" /></p>
+<h3 id="salvando-trabalho-local">Salvando trabalho local</h3>
+<p>Às vezes, temos trabalhos locais que não queremos perder, mas precisamos atualizar o repositório devido a alterações feitas por outro desenvolvedor.</p>
+<p>Para essa situação, podemos usar o comando <code>git stash</code>. Ele move todo o trabalho local para um cache oculto e mantém o repositório inalterado para que você possa fazer a atualização.</p>
+<p>Para demonstrar como isso funciona, você seguirá uma série de prompts. No entanto, você não deve tentar alterar este repositório que acabou de clonar.</p>
+<p>Como este repositório não permite que você envie alterações, mas é necessário atualizar com as modificações feitas pelo professor, você precisa <strong>"guardar"</strong> suas alterações para não perder seu progresso. Vamos usar o comando <code>git stash</code> para armazenar suas alterações em um cache oculto do git:</p>
+<p><img alt="git_stash" src="imgs/ssh5.png" width="800" /></p>
+<p>É possível verificar uma mensagem indicando que seu trabalho local foi salvo, juntamente com um índice dessa situação. Ao lado da branch, você verá um número entre chaves, indicando que há trabalho local guardado em cache.</p>
+<p>Se listarmos o diretório, veremos que os arquivos alterados não estão presentes no repositório local:</p>
+<p><img alt="git_stash_ls" src="imgs/ssh6.png" width="800" /></p>
+<p>Para retornar o trabalho, basta usar o comando <strong>git stash pop</strong>. Aparecerá um aviso com os arquivos restaurados e, ao listar o diretório, os arquivos estarão de volta.</p>
+<p><img alt="git_stash_pop" src="imgs/ssh7.png" width="800" /></p>
+<h3 id="atualizando-o-repositorio">Atualizando o repositório</h3>
+<p>Para atualizar um repositório com os conteúdos do repositório online, você precisará usar o comando <code>pull</code>. Basta entrar no diretório do repositório e digitar <strong>git pull</strong>.</p>
+<p><img alt="git_pull" src="imgs/ssh8.png" width="800" /></p>
+<p>Você verá mensagens indicando quantos e quais arquivos foram alterados.</p>
+<h3 id="atualizando-o-repositorio-remoto-enviando-as-alteracoes">Atualizando o repositório remoto (enviando as alterações)</h3>
+<p>Após realizar suas alterações no repositório, é necessário enviar estas alterações para o respositório remoto. </p>
+<p>A sequência de comandos necessária para isso é:</p>
+<ol>
+<li>
+<p>Adicionar os arquivos alterados</p>
+</li>
+<li>
+<p>Realizar o commit com uma mensagem clara e informativa</p>
+</li>
+<li>
+<p>Enviar as alterações para o repositório remoto.</p>
+</li>
+</ol>
+<p>Para adicionar os arquivos, você pode adicionar um a um ou todos de uma vez. Vamos ver as duas situações.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica 4</p>
+<p>Se você clonou o repositório utilizando <strong>SSH</strong>, não precisará usar credenciais. Porém, se tiver clonado utilizando <strong>HTTPS</strong>, será necessário fornecer seu usuário do GitHub e seu token de acesso (não é a senha!).</p>
+</div>
+<p>Adicionando um arquivo em específico:
+<img alt="git_add_arquivo" src="imgs/ssh9.png" width="800" /></p>
+<p>Adicionando todos os arquivos:
+<img alt="git_add_all" src="imgs/ssh10.png" width="800" /></p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../guia-linux/"
+               class="ah-prev"
+               title="Guia básico de Linux">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Guia básico de Linux</span>
+            </a>
+          
+          
+            <a href="../../robo-simulado/"
+               class="ah-next"
+               title="1.2 - Robô Simulado">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">1.2 - Robô Simulado</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>

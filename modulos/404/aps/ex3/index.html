@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Ex3 - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/C_JjJjs8">APS 1 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/qdcKXPHO">APS 2 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/gw4IPvW-">APS 3 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Ex3</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="aps-2-visao-computacional">APS 2 - Visão Computacional</h1>
+<p><strong>Importante:</strong> Sempre desenvolvam nos arquivos <code>.py</code> dos respectivos exercícios.</p>
+<p><strong>Aviso 1:</strong> Não modifique o arquivo de teste, <code>test.py</code>.</p>
+<p><strong>Aviso 2:</strong> Lembre-se de dar commit e push no seu repositório até o horário limite de entrega.</p>
+<p><strong>Aviso 3:</strong> Preencha o nome completo dos integrantes do seu grupo no arquivo <code>README.md</code> do seu repositório.</p>
+<h2 id="teste-seu-codigo">Teste seu código</h2>
+<p>Para testar seu código, execute o  teste automático usando o comando abaixo no terminal:</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>test.py
+</code></pre></div>
+<p>Para testar apenas um exercício:</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>test.py::test_ex1
+</code></pre></div>
+<p>Caso aparece um erro de <code>ModuleNotFoundError</code>, execute o comando abaixo no terminal:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pytest
+</code></pre></div>
+<p>Se discordar do resultado do teste, verifique se seu código está seguindo o que foi pedido, leia com atenção o enunciado e a saída do teste. Se ainda assim discordar, entre em contato com os professores ou outro membro da equipe da disciplina.</p>
+<p>Alguns exercícios possuem um resultado esperado que você pode usar para conferir o seu resultado.</p>
+<hr />
+<h1 id="exercicio-1">Exercício 1</h1>
+<p>Robôs que trabalham dentro de prédios precisam saber seguir corredores.</p>
+<p>Uma das maneiras de fazer isso é o robô alinhar o centro de sua câmera ao ponto de fuga do corredor, para que sua trajetória seja aproximadamente paralela às paredes do mesmo.</p>
+<p>O ponto de fuga é aquele para o qual as retas paralelas parecem convergir</p>
+<p>Dada a seguinte imagem de um corredor:</p>
+<p><img alt="Imagem do corredor" src="fig/ponto_fuga.png" /></p>
+<p>Podemos traçar as linhas geradas pela perspectiva, seu ponto de encontro será o ponto de fuga.</p>
+<h2 id="revisao">Revisão</h2>
+<h3 id="reta-passando-por-dois-pontos">Reta Passando por Dois Pontos</h3>
+<p><img alt="Encontro de duas retas" src="fig/retas.png" /></p>
+<p>Seja o ponto <span class="arithmatex">\(A:(a_x, a_y)\)</span> e o ponto <span class="arithmatex">\(B:(b_x, b_y)\)</span></p>
+<p>Queremos encontrar uma reta <span class="arithmatex">\(r: y = mx + h\)</span> que passa por <span class="arithmatex">\(A\)</span> e <span class="arithmatex">\(B\)</span>, em que <span class="arithmatex">\(m\)</span> é o <em>coeficiente angular</em> e <span class="arithmatex">\(h\)</span> é o intercepto ou coeficiente linear da reta.</p>
+<p>Temos que:</p>
+<p><span class="arithmatex">\(m = \frac{\Delta_y}{\Delta_x} = \frac{b_y - a_y}{b_x - a_x}\)</span></p>
+<p>Uma vez encontrado o valor de <span class="arithmatex">\(m\)</span>, a substituição a seguir permite encontrar a equação da reta:</p>
+<p><span class="arithmatex">\(m = \frac{y - a_y}{x - a_x}\)</span></p>
+<p><span class="arithmatex">\(mx - ma_x = y - a_y\)</span></p>
+<p><span class="arithmatex">\(mx = y - a_y + ma_x\)</span></p>
+<p><span class="arithmatex">\(y = mx -ma_x + a_y\)</span></p>
+<p><span class="arithmatex">\(h = a_y - ma_x\)</span></p>
+<p><span class="arithmatex">\(y = mx - ma_x + a_y\)</span></p>
+<h3 id="intersecao-de-ruas-retas">Interseção de Ruas Retas</h3>
+<p>Temos que na interseção as duas retas se encontram num ponto <span class="arithmatex">\((x_i, y_i)\)</span></p>
+<p>Sejam as retas <span class="arithmatex">\(r1: y = m1x + h1\)</span> e <span class="arithmatex">\(r2: y = m2x + h2\)</span></p>
+<p>Vamos encontrar o ponto <span class="arithmatex">\(x_i\)</span> em que os valores de <span class="arithmatex">\(y_i\)</span> serão iguais:</p>
+<p><span class="arithmatex">\(m1x_i + h1 = m2x_i + h2\)</span></p>
+<p><span class="arithmatex">\((m1 - m2)x_i = h2 - h1\)</span></p>
+<p><span class="arithmatex">\(x_i = \frac{h2 - h1}{m1 - m2}\)</span></p>
+<p><span class="arithmatex">\(y_i = m1x_i + h1\)</span></p>
+<h3 id="dados-de-teste">Dados de teste:</h3>
+<p>Caso precise testar seu código, você pode conferir com estes valores. As retas definidas por pontos <span class="arithmatex">\(r1: (P_1, P_2)\)</span> e <span class="arithmatex">\(r2: (Q_1, Q_2)\)</span>, para os valores:</p>
+<div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)</span>
+<span class="n">q2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+</code></pre></div>
+<p>Encontram-se no ponto <code>(1.7572 4.8611)</code></p>
+<h2 id="tarefa">Tarefa</h2>
+<p>O objetivo deste exercicio é encontrar o ponto de fuga da pista através do encontro das retas brancas que delimitam o corredor. Para isso você deve:</p>
+<ol>
+<li>
+<p>Filtrar a imagem para obter apenas as linhas brancas do corredor.</p>
+</li>
+<li>
+<p>Utilizar o filtro de Canny para encontrar as bordas das linhas na máscara.</p>
+</li>
+<li>
+<p>Utilizar a transformada de Hough para encontrar as linhas na imagem.</p>
+</li>
+<li>
+<p>Filtrar as linhas encontradas para obter apenas uma linha para cada lado do corredor. Vide sugestão abaixo.</p>
+</li>
+<li>
+<p>Encontrar o ponto de fuga a partir do encontro das retas.</p>
+</li>
+</ol>
+<p><strong>Sugestão:</strong> </p>
+<p>A partir do coeficiente angular, selecionar uma reta mais à esquerda e uma mais à direita para encontrar a interseção.</p>
+<p>Lembre-se de que na OpenCV o eixo y fica <strong>para baixo</strong>, por isso os coeficientes angulares se comportam como na figura abaixo:</p>
+<p><img alt="Valores de coeficiente angular" src="fig/coeficientes_m.png" /></p>
+<hr />
+<p><strong>Saída esperada:</strong> (515, 326)</p>
+<h1 id="exercicio-2">Exercício 2</h1>
+<p>Trabalhe no arquivo <code>ex2.py</code>. </p>
+<p>Você vai notar que este programa roda o vídeo <code>dominoes.mp4</code>. Baixe o vídeo <a href="https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/ETs-JVT7B51Nlt9kbnhrev4BNqA3N58dSuKLjVvi-Um6wA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=bWY8xh">neste endereço</a></p>
+<p><img alt="Domino" src="img/domino.jpg" /></p>
+<h4 id="o-que-voce-deve-fazer">O que você deve fazer:</h4>
+<p>Um programa que escreve <em>na tela</em> o valor da peça de dominó que aparece a cada frame do vídeo. </p>
+<p>Por exemplo para a peça acima, deve escrever <strong>5 por 3</strong></p>
+<p><strong>Grave um video</strong> da saída, publique no Youtube e escreva o link no arquivo <code>README.md</code> do seu repositório.</p>
+<hr />
+<h1 id="exercicio-3">Exercício 3</h1>
+<p>Neste exercício vamos explorar mais o uso do detector Aruco.
+Na imagem abaixo temos um onde o robô real está olhando para os "creepers". Neste contexto, um creeper é um marcador Aruco com um corpo de uma cor, "creepers" de mesma cor tem ids diferentes.</p>
+<p><img alt="Creeper" src="fig/aruco.jpg" /></p>
+<p>Voce deve trabalhar no arquivo <code>ex3.py</code> e implementar a classe <code>DistanceEstimator</code> que vai herdar a classe <code>ArucoDetector</code> e da classe <code>ImageModule</code>. A função <code>run</code> detectar os "creepers" e e calcular o centros dos corpos de cada um deles.</p>
+<p>Por fim, deve associar os marcadores aruco com os corpos dos "creepers" e então rankear os "creepers" de acordo com a distância até o robô.</p>
+<p><strong>Grave um video</strong> do seu código rodando no video no link abaixando, mostrando uma linha ligando o centro do marcador aruco ao centro do corpo do "creeper" e o id do "creeper" e coloque o link do video no arquivo <code>README.md</code> do seu repositório.</p>
+<p><a href="https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/EeOys3--O4tPhCbELsfZ9FABRMdAhARfKogGpqT1yHoLNQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=Tviiaw">Link Para Baixar o Video</a></p>
+<hr />
+<h1 id="exercicio-4">Exercício 4</h1>
+<p>Neste exercício vamos utilizar as detecções da mobilenet em um problema de 'multi-object-tracking'. Em visão computacional, tracking é o processo de identificar e rastrear objetos em movimento em uma sequência de imagens. O problema fica mais complexo quando temos mais de um objeto em movimento, pois precisamos identificar qual objeto é qual em cada frame.</p>
+<p>Vocês vão trabalhar no arquivo <code>ex2.py</code> e implementar a classe <code>DogTracker</code> que vai herdar a classe <code>MobileNetDetector</code> e a cada frame vai armazenar as posições de cada um dos dois cachorros presentes no video <code>dogs.wmv</code>.</p>
+<h2 id="teoria">Teoria</h2>
+<p>Para facilitar o problema, nesta disciplina vamos assumir que os objetos não se sobrepõem, ou seja, não há ocultação. Além disso, vamos assumir que conhecemos o número de objetos que queremos rastrear.</p>
+<h3 id="deteccoes">Detecções</h3>
+<p>Observe a imagem abaixo:</p>
+<p><img alt="Tracking" src="fig/tracking.png" />
+Cada quadrado representa uma detecção. As detecções são associadas aos objetos de acordo com a proximidade entre elas. Note que foram encontradas 2 detecções, representadas pelo nome da classe e a probabilidade de acerto. </p>
+<p>Devido a limitações do detector, uma delas é o frame da imagem, representada pela classe 'tvmonitor'. A outra é um dos cachorros, mas está representada pela classe 'bird'.</p>
+<p>Na função <code>run</code> da classe <code>DogTracker</code> você deve primeiro limpar deteções que são 'tvmonitor' e depois associar as deteções restantes aos cachorros. Se não houver deteções, deve retornar apenas a imagem original. Como no exemplo abaixo:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">bgr</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">bgr</span><span class="p">)</span>
+    <span class="n">dogs</span> <span class="o">=</span> <span class="p">[</span><span class="n">det</span> <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">det</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;tvmonitor&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dogs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bgr</span>
+</code></pre></div>
+<h3 id="armazenando-as-deteccoes">Armazenando as detecções</h3>
+<p>O uso de dicionarios ajuda a armazenar as detecções de cada objeto, <code>self.tracking</code>. Cada objeto é identificado por um id, que pode ser um número inteiro ou uma string. No caso dos cachorros, vamos usar os ids 'dogA' e 'dogB'.</p>
+<p>Então uma vez que reconhecemos um cachorro, podemos armazenar sua posição no dicionário <code>self.tracking</code> utilizando o metodo <code>.append()</code>.</p>
+<h3 id="associando-as-deteccoes">Associando as detecções</h3>
+<p>O desafio é associar as detecções de cada frame com os objetos que estamos rastreando. Para isso, vamos utilizar a distância euclidiana entre as detecções e as posições armazenadas no dicionário <code>self.tracking</code>.</p>
+<p>Temos 3 casos:</p>
+<h4 id="caso-1-primeiro-encontro">Caso 1: Primeiro encontro</h4>
+<p>Se o dicionário <code>self.tracking</code> para ambos os objetos estiver vazio armazenamos a detecção no primeiro cachorro <code>dogA</code></p>
+<h4 id="caso-2-apenas-um-cachorro-foi-encontrado">Caso 2: Apenas um cachorro foi encontrado</h4>
+<p>Se temos uma deteção, mas apenas um cachorro foi encontrado, ou seja, <code>dogB</code> está vazio, definimos uma distância máxima para associar a detecção com o cachorro <code>dogA</code>. Se a distância entre a detecção e o <code>dogA</code> for menor que a distância máxima, associamos a detecção ao cachorro.</p>
+<h4 id="caso-3-ambos-os-cachorros-foram-encontrados">Caso 3: Ambos os cachorros foram encontrados.</h4>
+<p>A partir desse momento, vamos observar a primeira detecção e procurar qual cachorro está mais proximo. Se a distância entre a detecção e o <code>dogA</code> for menor que a distância entre a detecção e o <code>dogB</code>, associamos a detecção ao cachorro <code>dogA</code>. Caso contrário, associamos a detecção ao cachorro <code>dogB</code>.</p>
+<p>Se houver uma segunda detecção, associamos a detecção ao outro cachorro. Note que só podemos fazer essa associação porque estamos assumindo que não há ocultação e conhecemos o número de objetos que queremos rastrear.</p>
+<h2 id="tarefa_1">Tarefa</h2>
+<p>O objetivo deste exercicio é implementar a classe <code>DogTracker</code> que vai herdar a classe <code>MobileNetDetector</code> e a cada frame vai armazenar as posições de cada um dos dois cachorros presentes no video <code>dogs.wmv</code>.</p>
+<p>Para isso você deve:</p>
+<ol>
+<li>
+<p>Implementar a função <code>bbox_center</code> que recebe uma detecção e retorna o centro da bounding box;</p>
+</li>
+<li>
+<p>Implementar a função <code>bbox_distance</code> que recebe duas detecções e retorna a distância euclidiana entre elas;</p>
+</li>
+<li>
+<p>A função <code>run</code> já está implementada para você. Entenda o que ela faz e como ela funciona;</p>
+</li>
+<li>
+<p>No caso de um dos dois cachorros ainda não foram encontrados, a função <code>first_detection</code> deve implementar o <strong>Caso 1</strong> e o <strong>Caso 2</strong>;</p>
+</li>
+<li>
+<p>No caso de ambos os cachorros já foram encontrados, a função <code>update_tracking</code> deve implementar o <strong>Caso 3</strong>;</p>
+</li>
+<li>
+<p>A função <code>update_2dogs</code> verufica se há uma segunda detecção e associa a detecção ao outro cachorro, definido pela variável <code>key</code>;</p>
+</li>
+<li>
+<p>A função <code>plot_last_detections</code> desenha as últimas 3 detecções de cada cachorro na imagem. Representado pelas ultimas 3 caixas (se existirem) e uma linha ligando o centro das caixas. Você não precisa implementar essa função, mas entenda como ela funciona;</p>
+</li>
+<li>
+<p><strong>Grave um video</strong> com o resultado do seu código rodando no video no link abaixando e coloque o link no arquivo <code>README.md</code> do seu repositório.</p>
+</li>
+</ol>
+<p><a href="https://insper-my.sharepoint.com/:v:/g/personal/diegops_insper_edu_br/Ea8ODYUTaMxAhr6UNxnTPOABi9FcgSkkbUW7ZTbCUijWgQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;e=lzGIhe">Link Para Baixar o Video</a></p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
