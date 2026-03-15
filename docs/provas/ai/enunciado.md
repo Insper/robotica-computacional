@@ -232,7 +232,7 @@ Na função `main` adicione um loop para processar e mostrar todas as imagens fo
 
 ---
 
-# Exercício 3 - Detectar Colisões (3,5)
+# Exercício 3 - Detectar Colisões (3,5) (Precisa do capítulo 5)
 
 Modifique o arquivo `q3.py` que tem uma classe chamada `CollisionCounter` e um método `run`. Este método deve processar um frame do vídeo, identificar a nave principal (vermelha) e os tiros (amarelos). A classe deve **contar o número total de tiros que atingiram a nave** ao longo do vídeo.
 

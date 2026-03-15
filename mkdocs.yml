@@ -241,10 +241,12 @@ nav:
     #     - "Enunciado": simulados/simulado_af/enunciado.md
     #     - "Gabarito Q1" : simulados/simulado_af/q1.py
     #     - "Gabarito Q2" : simulados/simulado_af/q2.py
-    #   - Provas Antigas:
-    #     - AI 25a:
-    #       - "Enunciado": simulados/ai_25a/enunciado.md
-    #       - "Gabarito Q1" : simulados/ai_25a/q1.py
+      - Provas Antigas:
+        - AI 25b:
+          - "Enunciado": simulados/ai_25b/enunciado.md
+        - AI 25a:
+          - "Enunciado": simulados/ai_25a/enunciado.md
+          - "Gabarito Q1 (OLD)" : simulados/ai_25a/q1.py
     #     - AI 24b:
     #       - "Enunciado": simulados/ai_24b/enunciado.md
     #       - "Gabarito Q1 (quase)" : simulados/simulado_af/q1.py
