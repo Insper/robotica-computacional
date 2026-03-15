@@ -137,11 +137,11 @@ Se precisar resetar a posição do robô, enquanto a atenção estiver na simula
 2. Nota: +1,0 - [1] & o robô mantém a conversa com o Orquestrador sem spamar.
 3. Nota: +1,0 - [2] & O robô deve conseguir executar a forma, avisar quando terminar, receber a métrica de deriva, imprimir o valor e voltar a avisar que está pronto.
 4. Nota: até +2,0 - [3] & robô finaliza após segunda forma & **Qualidade de deriva** - medida após a execução de duas formas geométricas quaisquer.
-
-   * **Desafio +1,0** se - `drift_m ≤ 0.10 m`;
-   * **2,0** se `drift_m ≤ 0.20 m`;
-   * **1,0** se `0.20 < drift_m ≤ 0.40 m`;
-   * **0,0** se `drift_m > 0.40 m` ou não reportado.
+5. Qualidade de deriva:
+   * **Desafio +3,0** se - `drift_m ≤ 0.10 m`;
+   * **+2,0** se `drift_m ≤ 0.20 m`;
+   * **+1,0** se `0.20 < drift_m ≤ 0.40 m`;
+   * **+0,0** se `drift_m > 0.40 m` ou não reportado.
 
 ---
 
