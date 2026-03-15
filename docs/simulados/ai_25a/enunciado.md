@@ -131,6 +131,8 @@ ___________________________
 
 # Exercício 2 - OpenCV (3)
 
+Download das imagens de teste para o exercício 2: [imgs.zip](imgs.zip)
+
 Crie um arquivo chamado `q2.py` com uma classe chamada `BalloonCounter`, que possui um método `run`. Este método deve receber uma imagem e retornar um dicionário com a contagem de balões de cada cor. O arquivo só pode ser executado se for rodado diretamente, chamanado a função `main`. A função `main` deve passar pelas 5 imagens fornecidas e armazenar o resultado em um dicionário onde a chave é o nome do arquivo e o valor é o dicionário retornado pelo método `run`. Ao final, a função `main` deve imprimir o dicionário com o total de balões de cada cor em cada imagem.
 
 Exemplo de um frame do vídeo:
