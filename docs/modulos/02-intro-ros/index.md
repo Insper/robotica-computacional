@@ -27,8 +27,6 @@ Estes conceitos são explorados nas seguintes atividades,
 !!! exercise
     Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
 
-    A APS 2 será realizada individualmente.
-    
     As entregas da APS 2 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Linux Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
     [APS 2 - Github Classroom]( {{ link_APS2 }} )
