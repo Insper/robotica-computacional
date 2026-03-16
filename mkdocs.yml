@@ -19,8 +19,8 @@ extra:
     data_APS3: Segunda - 16/03 às 12:00
     link_APS3: https://classroom.github.com/a/gw4IPvW-
 
-    data_APS4: TBA
-    link_APS4: TBA
+    data_APS4: Segunda - 23/03 às 12:00
+    link_APS4: https://classroom.github.com/a/qpaQW-_8
     data_APS5: TBA
     link_APS5: TBA
     data_APS6: TBA
@@ -155,8 +155,8 @@ nav:
           - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
           - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
     #     - APS 4:
-    #       - "APS 4 - Classroom" : https://classroom.github.com/a/JAHIzlL7
-    #       - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
+          - "APS 4 - Classroom" : https://classroom.github.com/a/qpaQW-_8
+          - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
     #   - Capítulo 5 - Identificação e Modelo de Câmera:
     #     - modulos/05-visao-p2/index.md
