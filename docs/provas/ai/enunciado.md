@@ -21,11 +21,11 @@ O robô **só pode executar um movimento se o comando recebido começar com `Sim
 
 Se o robô obedecer corretamente aos comandos válidos, ele deve continuar avançando no labirinto e repetindo o processo até chegar a uma posição em que nenhuma direção esteja disponível. Quando o robô publicar que nenhuma direção está disponível, Simon encerrará o jogo, publicando o **nome do aluno vencedor** e o **tempo total em segundos**.
 
-## Modo fast
+## Modo deterministico
 
-Se o robô publicar `modo_de_jogo = fast`, Simon deixará de escolher direções aleatoriamente e passará a sempre enviar o **próximo comando da sequência que leva ao final**, de forma a levar o robô ao final do percurso no menor numero de passos possíveis.
+Se o robô publicar `modo_de_jogo = deterministico`, Simon deixará de escolher direções aleatoriamente e passará a sempre enviar o **próximo comando de uma sequência já definida**, de forma a levar o robô ao final do percurso em numero de passos predefinido.
 
-Nesse modo, não há escolha aleatória nem retorno de alternativas. O robô deve apenas seguir corretamente os comandos enviados por Simon até o final.
+Nesse modo, não há escolha aleatória nem retorno de alternativas, comandos inválidos são predefinidos assim como o delay entre os comandos. O objetivo é completar o percurso no menor tempo possível, obedecendo às regras do Simon.
 
 ## Simulador
 
@@ -35,62 +35,51 @@ Utilize o comando abaixo para iniciar o simulador no mapa da prova:
 ros2 launch my_gazebo run_turtle.launch.py
 ```
 
-## Comunicação com o Simon
+## O nó criado deve:
 
-O nó criado deve:
-
-- Publicar e assinar o tópico definido para comunicação com o Simon, utilizando o tipo de mensagem especificado na prova.
-- Ao iniciar, publicar uma mensagem equivalente a **estou pronto**, com horário atual e nome do aluno nos campos apropriados.
-- Opcionalmente publicar o campo `modo_de_jogo = fast` para disputar o desafio de menor tempo.
-- Após o início do jogo, andar imediatamente para frente.
+- Publicar e assinar no tópico `\simon_says`, utilizando o tipo de mensagem especifico do topico.
+- Ao iniciar, publicar literalmente a menssagem **simon, eu estou pronto**, com horário atual e nome do aluno nos campos apropriados.
+- Opcionalmente preencher o campo `modo_de_jogo = deterministico` para disputar o **desafio** de menor tempo.
+- Após avisar que está pronto, começar a andar para frente.
 - Sempre que detectar uma parede à frente, informar ao Simon quais lados estão disponíveis.
-- Executar giros **somente** quando receber comandos iniciados por `Simon diz:`.
-- Se receber um comando sem `Simon diz:`, não deve executar qualquer movimento associado a esse comando.
-- Quando receber do Simon a mensagem de derrota, o robô deve parar e nunca mais se mover.
-- Quando o jogo terminar com sucesso, deve parar e registrar no terminal o nome do vencedor e o tempo enviado pelo Simon.
-
-## Execução do jogo
-
-O robô deve:
-
-- Começar sempre da posição inicial padrão do mapa.
-- Andar para frente até encontrar uma parede.
-- Identificar de forma eficiente quais lados estão livres naquele ponto do labirinto.
-- Informar corretamente ao Simon as possibilidades de movimento.
-- Aguardar o comando do Simon.
-- Girar apenas se o comando recebido começar com `Simon diz:`.
-- Após girar, voltar a andar para frente até encontrar a próxima parede.
-- Repetir esse processo até chegar ao ponto final, em que nenhuma direção esteja disponível.
-- Ao final, permanecer parado e não se mover mais.
+- Executar movimentos **somente** quando receber comandos iniciados por `Simon diz:`.
+- Se receber um comando sem `Simon diz:`, o robô deve permanecer parado e aguardar o próximo comando.
+- Quando o jogo terminar com sucesso, o robô deve imprimir no terminal o nome do aluno vencedor e o tempo total recebido do Simon, então, o nó deve ser finalizado automaticamente.
 
 ## Requisitos
 
 - Deve existir o arquivo chamado `q1.py`.
 - O programa deve ser executado sem erros.
 - A classe deve ser chamada `JogadorSimon`.
-- A implementação deve seguir a estrutura da classe de exemplo em `base_control.py`.
+- A implementação deve seguir a estrutura da classe e de máquina de estados do exemplo `base_control.py`.
 - A função `control` deve ser a única a publicar no tópico `/cmd_vel`.
-- A função `control` deve ser idêntica à do `base_control.py`. Todas as decisões de controle devem ocorrer dentro dos nós, sem alterações na função `control`.
+- Todas as decisões de controle devem ocorrer dentro dos nós, sem alterações na função `control`.
 - Não utilizar loops infinitos ou `sleep` durante o controle do robô.
-- Deve publicar e assinar corretamente o tópico de comunicação com o Simon.
+- Não utilizar loops `while` dentro dos estados de controle, a máquina de estados e as ações devem ser acionadas apenas por callbacks de mensagens ou timers.
+- Deve publicar e assinar corretamente no tópico de comunicação com o Simon.
 - Deve publicar a mensagem inicial de pronto com nome e horário.
-- Deve se mover **somente** quando apropriado de acordo com as regras do Simon.
-- Deve identificar corretamente os lados disponíveis ao encontrar uma parede.
+- Deve seguir as regras do jogo corretamente.
+- Deve identificar corretamente os lados disponíveis utilizando os sensores ao encontrar uma parede.
 - Deve ser capaz de executar o jogo completo para qualquer lado escolhido pelo Simon.
-- Deve parar definitivamente em caso de derrota.
-- Deve parar definitivamente ao final do jogo.
+- Deve finalizar o nó automaticamente ao receber a mensagem de vitória, imprimindo o nome do vencedor e o tempo total.
 
 ## Rúbrica
 
 O programa deve respeitar as restrições definidas.
 
-**Nota: +1,0** - [1] Sub, pub e comunicação com o Simon sem spamar.
+* **Nota: +0,5** - [1] Sub, pub e comunicação com o Simon sem spamar.
 
-**Nota: +1,0** - [2] O robô só se move se ouvir `Simon diz:`.
+* **Nota: +0,5** - [2] Nó consegue processar todas as possíveis mensagens do Simon.
 
-**Nota: +2,0** - [3] Consegue identificar de forma eficiente quais lados estão ocupados e quais estão disponíveis, informando corretamente ao Simon.
+* **Nota: +0,5** - [2] O robô só se move se ouvir `Simon diz:`, girando para o lado correto quando receber um comando válido, e permanecendo parado caso contrário.
 
-**Nota: +2,0** - [4] Consegue executar o jogo completo corretamente para qualquer lado e comando válido enviado pelo Simon.
+* **Nota: +1,0** - [3] Consegue identificar de forma eficiente quais lados estão ocupados e quais estão disponíveis, informando corretamente ao Simon.
+
+* **Nota: +1,0** - [4] Consegue executar o jogo completo corretamente para qualquer lado e comando válido enviado pelo Simon.
+
+### Rúbrica Alternativa:
+
+* **Nota Final = 2,0** - Completa ambos os trajetos fixos pré-definidos, sem considerar as mensagens do Simon.
 
 ## Vídeo
 
@@ -109,32 +98,19 @@ Entregas parciais são aceitas, sem garantia de nota. O aluno deve explicar no `
 
 ## Desafio (+1,0)
 
-Para participar do desafio, o robô deve publicar `modo_de_jogo = fast`.
+Para participar do desafio, o robô deve publicar `modo_de_jogo = deterministico`.
 
-Nesse modo, Simon sempre enviará o próximo comando correto da sequência para chegar ao final o mais rápido possível.
+Nesse modo, Simon se comportará seguindo um script pré-definido, sem escolhas aleatórias, e o objetivo é completar o percurso no menor tempo possível, obedecendo às regras do Simon.
 
 O aluno deve gravar um segundo vídeo mostrando:
 
-- o robô executando o percurso no modo `fast`;
-- o terminal da simulação visível;
-- o tempo final sendo publicado pelo Simon;
-- o terminal do robô mostrando claramente o tempo recebido.
+- o terminal do robô;
+- o terminal da simulação;
+- o `echo` do tópico de comunicação com o Simon;
+- o robô executando o percurso no modo `deterministico`;
 
-Ao final da execução, o robô deve imprimir no terminal o tempo enviado pelo Simon.
+Ao final da execução, o robô deve imprimir no terminal o tempo enviado pelo Simon e o nome do aluno vencedor e isto deve estar claro no vídeo.
 
 O melhor tempo entre os alunos que completarem corretamente o desafio recebe **+1,0** ponto extra.
 
-Os outros **2 alunos** entre os **3 melhores tempos** recebem **+0,5** ponto extra cada.
-
-Para que o desafio seja considerado válido, deve estar claro no vídeo que:
-
-- o tempo foi enviado pelo Simon;
-- o robô chegou corretamente ao final;
-- o terminal do simulador está visível.
-
-## Observações finais
-
-- O foco da prova é a lógica de comunicação, tomada de decisão e execução correta dos comandos.
-- Soluções que funcionem apenas para um caminho fixo ou que ignorem as mensagens do Simon não atendem ao objetivo do exercício.
-- Em caso de dúvida entre robustez e velocidade, priorize primeiro o funcionamento correto do jogo.
-
+Os outros **2 alunos** entre os **3 melhores tempos** recebem **+0,5** pontos extra cada.
