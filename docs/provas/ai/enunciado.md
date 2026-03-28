@@ -1,3 +1,66 @@
+# Robótica Computacional 2025.2 - AI
+
+Instruções para a avaliação:
+
+* A prova tem duração de **4 horas**.
+* Inicie a prova no Blackboard para a ferramenta do Smowl ser iniciada. 
+* O Smowl é obrigatório durante toda a prova.
+* Só finalize o Blackboard quando enviar a prova via Github Classroom incluindo o hash do último commit na resposta do Blackboard.
+* Durante a prova vamos registrar, a camera, a tela, as páginas visitadas, os acessos online e os registro do teclado.
+* Coloque seu `nome` e `email` no `README.md` do seu repositório.
+* A prova deverá ser realizada de forma individual.
+* Não é permitido consultar a internet, com exceção do site da disciplina, do site "Ferramenta para Ajuste de Máscaras", do `Blackboard` e do repositório da avaliação criado através do GitHub Classroom.
+* `Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot, Gemini ou similares durante a prova`.
+* `Não é permitido o uso de ferramentas colaborativas como Google Docs, Google Slides, ou similares durante a prova`.
+* `Não é permitido o uso de ferramentas de comunicação como Discord, WhatsApp, Telegram ou similares durante a prova`.
+* `Não é permitido o uso de editores de codigo com IA como Cursor ou Windsurf durante a prova, sendo permitido apenas o uso do **VSCode**`.
+* `Não é permitido o uso do Copilot durante a prova. Então desative-o antes de iniciar a prova`.
+* `Não é permitido o uso de redes sociais, fóruns ou plataformas de comunicação durante a prova`.
+* Faça commits e pushes regularmente de sua avaliação.
+* Eventuais avisos importantes serão realizados em sala durante a prova.
+* Escreva a frase "yey" como a resposta da soma no arquivo `README.md` como teste de sua atenção.
+* A responsabilidade por *`infraestrutura`*, *`configurações`* e *`setup`* em funcionamento pleno, é de cada estudante.
+* **SÓ SERÃO ACEITOS REPOSITÓRIOS DE ALUNOS QUE ASSINARAM A LISTA DE PRESENÇA.**
+
+* **BOA PROVA!**
+
+## Atualização do Pacote (ROS 2)
+
+Execute os comandos abaixo para atualizar os pacotes da `ros2` obrigatórios para a prova:
+
+```bash
+cd ~/colcon_ws/src/my_simulation
+git add .
+git stash
+git pull
+cb
+```
+
+## Configuração do Pacote (ROS 2)
+
+- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
+
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `avaliacao_ai`.
+
+    - **Dica:** Para utilizar os módulos desenvolvidos no capitulo 3, inclua o pacote `robcomp_util` e o pacote `robcomp_interfaces` como dependência do seu pacote, e então, importe como nos exemplos do capitulo 3.
+
+---
+
+# Exercício 0 - Organização & Qualidade
+Este exercício avalia a organização e a qualidade dos vídeos dos exercícios e do arquivo `README.md`.
+
+## Critérios de Avaliação:
+* O pacote foi corretamente configurado.
+* As dependências do pacote estão corretas.
+* Os diretórios e arquivos estão organizados de forma adequada.
+* Todos os scripts estão na pasta `avaliacao_ai` dentro do pacote `avaliacao_ai`.
+* A configuração dos nós foi realizada corretamente.
+* Os nós da ROS 2 foram executados utilizando o comando `ros2 run`.
+* **Vídeo:** A ação do robô é claramente compreensível pelo vídeo.
+* **README.md:** O link do vídeo foi adicionado corretamente no campo indicado.
+* **README.md:** O arquivo `README.md` contém o nome completo e o e-mail do estudante.
+---
+
 # Exercício 1 - Simon Diz (Desafio: +1,0)
 
 Baseando-se no código `base_control.py` do capítulo 3, crie um arquivo chamado `q1.py` contendo uma classe denominada `JogadorSimon`. Esta classe deve implementar um nó chamado `jogador_simon_node`, responsável por fazer com que o robô simulado jogue o jogo **Simon Diz**.
