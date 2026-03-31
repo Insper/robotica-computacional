@@ -99,7 +99,7 @@ Nesse modo, não há escolha aleatória e comandos invalidos, o objetivo é comp
 Utilize o comando abaixo para iniciar o simulador no mapa da prova:
 
 ```bash
-ros2 launch my_gazebo run_turtle.launch.py
+ros2 launch my_gazebo responde.launch.py
 ```
 
 ## O nó criado deve:
