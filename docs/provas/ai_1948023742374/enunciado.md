@@ -237,11 +237,16 @@ resultado = {
 
 ## Rúbrica
 
+!!! warning
+    Considere apenas as imagens 1, 3 e 5 para a avaliação.
+
 1. O programa respeita as restrições definidas.
-2. Nota: +1,0 - [1] & é capaz de segmentar e identificar as cartas da esquerda e da direita. Desenhe as regiões detectadas para provar que a segmentação está correta.
+2. Nota: +1,0 - [1] & é capaz de criar a mascara isolando as cartas na imagem.
 3. Nota: +1,0 - [2] & é capaz de estimar corretamente o valor das cartas na imagem.
-4. Nota: +2,0 - [3] & seleciona corretamente 5 imagens aleatórias da lista usando `random.choice` e processa cada uma de forma independente.
-5. Nota: +1,0 - [4] & contabiliza precisamente o número total de vitórias da esquerda, da direita e de empates, exibindo o resultado em cada imagem e imprimindo o dicionário final no terminal.
+4. Nota: +1,0 - [3] & consegue contabilizar o vencedor de pelo menos uma imagem corretamente.
+5. Nota: +2,0 - [4] & contabiliza precisamente todas as 3 imagens e calcula o resultado final corretamente.
+
+Importante, o codigo deve ser robusto o suficiente para lidar com qualquer imagem que siga os mesmo padroes dos exemplos.
 
 ## Vídeo
 
