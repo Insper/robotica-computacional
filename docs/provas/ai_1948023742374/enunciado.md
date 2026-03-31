@@ -9,7 +9,7 @@ Instruções para a avaliação:
 * Durante a prova vamos registrar, a camera, a tela, as páginas visitadas, os acessos online e os registro do teclado.
 * Coloque seu `nome` e `email` no `README.md` do seu repositório.
 * A prova deverá ser realizada de forma individual.
-* Não é permitido consultar a internet, com exceção do site da disciplina, do site "Ferramenta para Ajuste de Máscaras", do `Blackboard` e do repositório da avaliação criado através do GitHub Classroom.
+* Não é permitido consultar a internet, com exceção do site da disciplina, do `Blackboard` e do repositório da avaliação criado através do GitHub Classroom.
 * `Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot, Gemini ou similares durante a prova`.
 * `Não é permitido o uso de ferramentas colaborativas como Google Docs, Google Slides, ou similares durante a prova`.
 * `Não é permitido o uso de ferramentas de comunicação como Discord, WhatsApp, Telegram ou similares durante a prova`.
