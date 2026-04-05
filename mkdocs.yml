@@ -21,8 +21,8 @@ extra:
 
     data_APS4: Segunda - 23/03 às 12:00
     link_APS4: https://classroom.github.com/a/qpaQW-_8
-    data_APS5: TBA
-    link_APS5: TBA
+    data_APS5: Segunda - 13/04 às 12:00
+    link_APS5: https://classroom.github.com/a/LIbjPbWE
     data_APS6: TBA
     link_APS6: TBA
     
@@ -154,28 +154,28 @@ nav:
           - "3 - ROI e NumPy": modulos/04-visao-p1/atividades/3-roi_e_numpy.ipynb
           - "4 - Segmentação de Imagens p1": modulos/04-visao-p1/atividades/4-segmentacao_1.ipynb
           - "5 - Segmentação de Imagens p2": modulos/04-visao-p1/atividades/5-segmentacao_2.ipynb
-    #     - APS 4:
+        - APS 4:
           - "APS 4 - Classroom" : https://classroom.github.com/a/qpaQW-_8
           - "Enunciado": modulos/04-visao-p1/aps/enunciado.md
 
-    #   - Capítulo 5 - Identificação e Modelo de Câmera:
-    #     - modulos/05-visao-p2/index.md
-    #     - "Ferramenta para Ajuste de Máscaras": https://pseudopencv.site/utilities/hsvcolormask/
-    #     - Atividades:
-    #       - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
-    #       - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
-    #       - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
-    #       - "3 - Convolução e Filtragem de Imagens": modulos/05-visao-p2/atividades/3-canny-filtros.ipynb
-    #       - "4 - Detecção de Retas e Círculos": modulos/05-visao-p2/atividades/4-retas-circulos.ipynb
-    #       - "5 - Exemplo de Resolução de Exercício":
-    #         - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
-    #         - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
-    #         - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
-    #         - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
-    #     - APS 5:
-    #       - "APS 5 - Classroom" : https://classroom.github.com/a/8HCjiGTo
-    #       - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
-    #       - "Q3 base": modulos/05-visao-p2/aps/ex3.py
+      - Capítulo 5 - Identificação e Modelo de Câmera:
+        - modulos/05-visao-p2/index.md
+        - "Ferramenta para Ajuste de Máscaras": https://pseudopencv.site/utilities/hsvcolormask/
+        - Atividades:
+          - "Download > Atividades": modulos/05-visao-p2/atividades_cap_5.zip
+          - "1 - Refinamento de Máscaras de Segmentação": modulos/05-visao-p2/atividades/1-morfologia.ipynb
+          - "2 - Identificação de Objetos": modulos/05-visao-p2/atividades/2-identificacao.ipynb
+          - "3 - Convolução e Filtragem de Imagens": modulos/05-visao-p2/atividades/3-canny-filtros.ipynb
+          - "4 - Detecção de Retas e Círculos": modulos/05-visao-p2/atividades/4-retas-circulos.ipynb
+          - "5 - Exemplo de Resolução de Exercício":
+            - "5.1 - Enunciado": modulos/05-visao-p2/atividades/51-enunciado.md
+            - "5.2 - Resolução": modulos/05-visao-p2/atividades/52-resolucao.ipynb
+            - "Download > Q1": modulos/05-visao-p2/atividades/util/q1.py
+            - "Download > Gabarito": modulos/05-visao-p2/atividades/util/q1_gab.py
+        - APS 5:
+          - "APS 5 - Classroom" : https://classroom.github.com/a/LIbjPbWE
+          - "Enunciado": modulos/05-visao-p2/aps/enunciado.md
+          - "Q3 base": modulos/05-visao-p2/aps/ex3.py
 
     #   - Capítulo 6 - Visão Robótica & Deep Learning:
     #     - modulos/06-visao-p3/index.md
