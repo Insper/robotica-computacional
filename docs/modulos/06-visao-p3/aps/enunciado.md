@@ -63,4 +63,4 @@ Grave um vídeo da execução do código no robô **real** e adicione o link no 
 
 # Desafio - Centraliza no Creeper (+1 ponto)
 
-Modifique o código do exercício 2 para que o robô centralize em um creeper escolhido, além de um video do robô executando a tarefa, será nescessário mostrar o funcionamento do código para um dos professores durante a aula. Será aceito demonstrações do desafio até a aula de segunda-feira dia 13/10/25.
+Modifique o código do exercício 2 para que o robô centralize em dois creeper escolhido, em sequencia, além de um video do robô executando a tarefa, será nescessário mostrar o funcionamento do código para um dos professores durante a aula. Será aceito demonstrações do desafio até a aula de segunda-feira dia 27/04/26.
