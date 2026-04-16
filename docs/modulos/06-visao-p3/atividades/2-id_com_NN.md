@@ -36,7 +36,7 @@ YoloDetector[] yolos
 Para cada objeto detectado, dentro do parametro `yolos`, você terá uma mensagem do tipo `YoloDetector`, que contém as seguintes informações:
 
 * classe (ex.: person, car)
-* boxes: x, y, largura, altura (coordenadas do retângulo)
+* boxes: x1, y1, x2, y2 (coordenadas do retângulo)
 * score (0–1): confiança, quanto maior, mais confiante o modelo está na detecção.
 
 ## Prática 1

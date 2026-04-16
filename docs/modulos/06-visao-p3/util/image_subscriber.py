@@ -20,32 +20,17 @@ class ImageNode(Node): # Mude o nome da classe
             '/camera/image_raw', # or '/camera/image_raw/compressed'
             self.image_callback,
             QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
-        
-        self.flag_sub = self.create_subscription(
-            String,
-            '/vision/image_flag', # Mude o nome do tópico
-            self.flag_callback,
-            QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
 
         # Publishers
         ## Coloque aqui os publishers
 
-    def flag_callback(self, msg):
-        if msg.data.lower() == 'false':
-            self.running = False
-        elif msg.data.lower() == 'true':
-            self.running = True
-
     def image_callback(self, msg):
-        if self.running:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
-            # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
-            cv2.imshow('Image', cv_image)
-            cv2.waitKey(1)
-            # Faça aqui o processamento da imagem
-            # ou chame uma classe ou função que faça isso
-        else:
-            print('Image processing is paused')
+        cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8") # if Image
+        # cv_image = self.bridge.compressed_imgmsg_to_cv2(msg, "bgr8") # if CompressedImage
+        cv2.imshow('Image', cv_image)
+        cv2.waitKey(1)
+        # Faça aqui o processamento da imagem
+        # ou chame uma classe ou função que faça isso
 
     
 def main(args=None):
