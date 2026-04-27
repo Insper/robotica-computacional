@@ -44,15 +44,7 @@ layout: default
 title: Simulação Drone PID
 ---
 
-## Exemplo Controle Proporcional de Altitude (Drone)
-
-Experimente ajustar o ganho proporcional **Kp** e o tempo de atualização do controlador para ver como o drone reage para atingir a altitude desejada.
-
 ## Exemplo: Controle Proporcional de Altitude em um Drone
-
-Experimente ajustar o ganho proporcional **Kp** e o tempo de atualização do controlador para observar como o drone tenta atingir a altitude desejada.
-
-Nesta simulação, o controlador é atualizado em intervalos discretos, mas a física do drone é simulada com um passo interno menor. Isso evita instabilidades numéricas artificiais e deixa o comportamento mais próximo de um sistema real.
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 
