@@ -59,7 +59,7 @@ Nesta simulação, o controlador é atualizado em intervalos discretos, mas a f�
 <div style="margin-top:1em; font-family:sans-serif; max-width:760px">
 
   <div style="margin-bottom:1em">
-    <label for="kp"><b>Kp — Ganho proporcional:</b></label><br>
+    <label for="kp"><b>Kp: Ganho proporcional:</b></label><br>
     <input 
       type="range" 
       id="kp" 
@@ -295,7 +295,7 @@ function updatePlot() {
 
   const layout = {
     title: {
-      text: `Controle Proporcional de Altitude — Kp=${Kp.toFixed(1)}, atualização=${controlDt.toFixed(2)}s`,
+      text: `Controle Proporcional de Altitude (Kp=${Kp.toFixed(1)}, atualização=${controlDt.toFixed(2)}s)`,
       font: { size: 16 }
     },
     xaxis: {
