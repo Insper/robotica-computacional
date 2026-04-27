@@ -58,244 +58,251 @@ Nesta simulação, o controlador é atualizado em intervalos discretos, mas a f�
 
 <div style="margin-top:1em; font-family:sans-serif; max-width:760px">
 
+  <p>
+    Experimente ajustar o ganho proporcional <b>Kp</b> e o tempo de atualização <b>dt</b>.
+    A estabilidade depende diretamente do produto <b>Kp * dt</b>.
+  </p>
+
   <div style="margin-bottom:1em">
-    <label for="kp"><b>Kp: Ganho proporcional:</b></label><br>
-    <input 
-      type="range" 
-      id="kp" 
-      min="0" 
-      max="8" 
-      value="1.5" 
-      step="0.1" 
-      style="width:320px"
+    <label for="kp"><b>Kp - ganho proporcional:</b></label><br>
+    <input
+      type="range"
+      id="kp"
+      min="0"
+      max="20"
+      value="5"
+      step="0.1"
+      style="width:340px"
       oninput="atualizarValores(); updatePlot();"
     >
-    <span id="kp_val">1.5</span>
+    <span id="kp_val">5.0</span>
   </div>
 
   <div style="margin-bottom:1em">
-    <label for="controlDt"><b>Tempo de atualização do controlador:</b></label><br>
-    <input 
-      type="range" 
-      id="controlDt" 
-      min="0.02" 
-      max="1.00" 
-      value="0.20" 
-      step="0.02" 
-      style="width:320px"
+    <label for="dt"><b>dt - tempo de atualização do controlador:</b></label><br>
+    <input
+      type="range"
+      id="dt"
+      min="0.02"
+      max="1.00"
+      value="0.25"
+      step="0.01"
+      style="width:340px"
       oninput="atualizarValores(); updatePlot();"
     >
-    <span id="controlDt_val">0.20</span> s
+    <span id="dt_val">0.25</span> s
   </div>
 
-  <div 
-    id="status" 
+  <div
+    id="status"
     style="
-      padding:0.8em; 
-      border-radius:8px; 
-      background:#f3f3f3; 
+      padding:0.9em;
+      border-radius:8px;
+      background:#f3f3f3;
       margin-bottom:1em;
-      line-height:1.4;
+      line-height:1.45;
+      border:1px solid #ddd;
     "
-  >
-  </div>
+  ></div>
 
 </div>
 
 <div id="grafico" style="width:100%; max-width:760px; height:440px;"></div>
 
 <script>
-function clamp(valor, min, max) {
-  return Math.max(min, Math.min(max, valor));
-}
-
-function simular(Kp, controlDt) {
-  const setpoint = 10.0;
-  const tempoFinal = 12.0;
-
-  // Passo interno fixo da simulação física.
-  // Ele não depende do tempo de atualização do controlador.
-  const simDt = 0.005;
-
-  // Modelo físico simplificado
-  let altitude = 0.0;
-  let velocidade = 0.0;
-  let aceleracaoComandada = 0.0;
-
-  // Limites físicos simplificados
-  const aceleracaoMax = 8.0;   // m/s²
-  const amortecimento = 0.9;   // resistência proporcional à velocidade
-
-  let proximaAtualizacaoControle = 0.0;
-
-  const tempos = [];
-  const altitudes = [];
-  const setpoints = [];
-  const velocidades = [];
-  const comandos = [];
-
-  let overshootMax = 0.0;
-  let erroFinal = 0.0;
-
-  for (let t = 0; t <= tempoFinal; t += simDt) {
-
-    // O controlador só atualiza a cada controlDt segundos
-    if (t >= proximaAtualizacaoControle) {
-      const erro = setpoint - altitude;
-
-      // Controle proporcional:
-      // erro positivo gera aceleração para cima;
-      // erro negativo gera aceleração para baixo.
-      aceleracaoComandada = Kp * erro;
-
-      // Saturação: motores não conseguem gerar aceleração infinita
-      aceleracaoComandada = clamp(aceleracaoComandada, -aceleracaoMax, aceleracaoMax);
-
-      proximaAtualizacaoControle += controlDt;
-    }
-
-    // Física simplificada:
-    // aceleração efetiva = comando do controlador - amortecimento aerodinâmico
-    const aceleracaoEfetiva = aceleracaoComandada - amortecimento * velocidade;
-
-    velocidade += aceleracaoEfetiva * simDt;
-    altitude += velocidade * simDt;
-
-    // Impede altitude negativa
-    if (altitude < 0) {
-      altitude = 0;
-      velocidade = Math.max(0, velocidade);
-    }
-
-    const overshootAtual = Math.max(0, altitude - setpoint);
-    overshootMax = Math.max(overshootMax, overshootAtual);
-    erroFinal = setpoint - altitude;
-
-    // Guarda menos pontos para o gráfico ficar leve
-    if (Math.round(t / simDt) % 10 === 0) {
-      tempos.push(t);
-      altitudes.push(altitude);
-      setpoints.push(setpoint);
-      velocidades.push(velocidade);
-      comandos.push(aceleracaoComandada);
-    }
-  }
-
-  return {
-    tempos,
-    altitudes,
-    setpoints,
-    velocidades,
-    comandos,
-    setpoint,
-    overshootMax,
-    erroFinal
-  };
-}
-
-function classificarComportamento(Kp, controlDt, overshootMax, erroFinal) {
-  const produto = Kp * controlDt;
+function classificarRegime(Kp, dt) {
+  var produto = Kp * dt;
+  var eps = 0.005;
 
   if (Kp === 0) {
     return {
-      texto: "Sem controle: Kp = 0, então o drone não reage ao erro de altitude.",
+      nome: "Sem controle",
+      texto: "Kp = 0. O drone não reage ao erro.",
+      cor: "#eeeeee"
+    };
+  }
+
+  if (produto > 0 && produto < 0.5) {
+    return {
+      nome: "Estável, porém lento",
+      texto: "O erro diminui sem oscilar, mas a aproximação pode ser lenta demais para uma aplicação real.",
+      cor: "#e2e3e5"
+    };
+  }
+
+  if (produto >= 0.5 && produto < 1) {
+    return {
+      nome: "Estável sem oscilação",
+      texto: "O erro diminui sem trocar de sinal. A resposta é suave e mais rápida que no regime lento.",
+      cor: "#d4edda"
+    };
+  }
+
+  if (Math.abs(produto - 1) < eps) {
+    return {
+      nome: "Ideal discreto",
+      texto: "Neste modelo simplificado, o drone chega exatamente ao alvo em uma única atualização.",
+      cor: "#cce5ff"
+    };
+  }
+
+  if (produto > 1 && produto < 1.6) {
+    return {
+      nome: "Estável oscilatório / rápido",
+      texto: "O erro troca de sinal a cada passo, mas diminui rapidamente. É uma região útil quando se aceita pequena oscilação em troca de resposta mais rápida.",
+      cor: "#d4edda"
+    };
+  }
+
+  if (produto >= 1.6 && produto < 2) {
+    return {
+      nome: "Oscilatório agressivo",
+      texto: "O sistema ainda é estável, mas oscila bastante antes de convergir. Pode ser inadequado em um drone real.",
       cor: "#fff3cd"
     };
   }
 
-  if (overshootMax > 3.0 || produto > 3.0) {
+  if (Math.abs(produto - 2) < eps) {
     return {
-      texto: "Resposta agressiva: o drone tende a passar bastante da altitude desejada e pode oscilar.",
+      nome: "Perfeitamente instável",
+      texto: "O erro troca de sinal, mas não diminui. O sistema oscila indefinidamente com a mesma amplitude.",
+      cor: "#ffe0b2"
+    };
+  }
+
+  if (produto > 2) {
+    return {
+      nome: "Super instável",
+      texto: "O erro troca de sinal e aumenta a cada passo. A altitude diverge em oscilações cada vez maiores.",
       cor: "#f8d7da"
     };
   }
 
-  if (Math.abs(erroFinal) > 1.0) {
-    return {
-      texto: "Resposta lenta ou ainda não estabilizada: o drone está se aproximando, mas ainda possui erro relevante.",
-      cor: "#fff3cd"
-    };
+  return {
+    nome: "Caso limite",
+    texto: "Regime de transição.",
+    cor: "#eeeeee"
+  };
+}
+
+function simular(Kp, dt) {
+  var setpoint = 10.0;
+  var altitudeInicial = 0.0;
+  var tempoFinal = 10.0;
+
+  var tempos = [];
+  var altitudes = [];
+  var setpoints = [];
+  var erros = [];
+
+  var altitude = altitudeInicial;
+  var maxAbsPlot = 100;
+  var divergiu = false;
+
+  for (var t = 0; t <= tempoFinal + 1e-9; t += dt) {
+    var erro = setpoint - altitude;
+
+    tempos.push(Number(t.toFixed(3)));
+    altitudes.push(altitude);
+    setpoints.push(setpoint);
+    erros.push(erro);
+
+    var comando = Kp * erro;
+    altitude = altitude + comando * dt;
+
+    if (Math.abs(altitude) > maxAbsPlot) {
+      divergiu = true;
+
+      var tFinal = t + dt;
+      var erroFinal = setpoint - altitude;
+
+      tempos.push(Number(tFinal.toFixed(3)));
+      altitudes.push(altitude);
+      setpoints.push(setpoint);
+      erros.push(erroFinal);
+
+      break;
+    }
   }
 
   return {
-    texto: "Resposta estável: o drone se aproxima da altitude desejada com erro final pequeno.",
-    cor: "#d4edda"
+    tempos: tempos,
+    altitudes: altitudes,
+    setpoints: setpoints,
+    erros: erros,
+    divergiu: divergiu
   };
 }
 
 function atualizarValores() {
-  const Kp = parseFloat(document.getElementById("kp").value);
-  const controlDt = parseFloat(document.getElementById("controlDt").value);
+  var Kp = parseFloat(document.getElementById("kp").value);
+  var dt = parseFloat(document.getElementById("dt").value);
 
   document.getElementById("kp_val").textContent = Kp.toFixed(1);
-  document.getElementById("controlDt_val").textContent = controlDt.toFixed(2);
+  document.getElementById("dt_val").textContent = dt.toFixed(2);
 }
 
 function updatePlot() {
-  const Kp = parseFloat(document.getElementById("kp").value);
-  const controlDt = parseFloat(document.getElementById("controlDt").value);
+  if (typeof Plotly === "undefined") {
+    document.getElementById("status").innerHTML =
+      "<b>Erro:</b> Plotly não carregou. Verifique se a prévia permite carregar scripts externos.";
+    return;
+  }
 
-  const resultado = simular(Kp, controlDt);
+  var Kp = parseFloat(document.getElementById("kp").value);
+  var dt = parseFloat(document.getElementById("dt").value);
 
-  const {
-    tempos,
-    altitudes,
-    setpoints,
-    velocidades,
-    comandos,
-    overshootMax,
-    erroFinal
-  } = resultado;
+  var produto = Kp * dt;
+  var fatorErro = 1 - produto;
 
-  const comportamento = classificarComportamento(Kp, controlDt, overshootMax, erroFinal);
+  var regime = classificarRegime(Kp, dt);
+  var resultado = simular(Kp, dt);
 
-  const status = document.getElementById("status");
-  status.style.background = comportamento.cor;
-  status.innerHTML = `
-    <b>Leitura da simulação:</b> ${comportamento.texto}<br>
-    <b>Overshoot máximo:</b> ${overshootMax.toFixed(2)} m &nbsp; | &nbsp;
-    <b>Erro final:</b> ${erroFinal.toFixed(2)} m
-  `;
+  var status = document.getElementById("status");
+  status.style.background = regime.cor;
+  status.innerHTML =
+    "<b>Regime:</b> " + regime.nome + "<br>" +
+    regime.texto + "<br><br>" +
+    "<b>Kp * dt:</b> " + produto.toFixed(3) + " &nbsp; | &nbsp; " +
+    "<b>fator do erro:</b> 1 - Kp * dt = " + fatorErro.toFixed(3) +
+    (resultado.divergiu ? "<br><b>Observação:</b> a simulação foi interrompida porque a altitude cresceu demais." : "");
 
-  const traceAltitude = {
-    x: tempos,
-    y: altitudes,
-    mode: "lines",
+  var traceAltitude = {
+    x: resultado.tempos,
+    y: resultado.altitudes,
+    mode: "lines+markers",
     name: "Altitude do drone",
-    line: { width: 3 }
+    line: { width: 3 },
+    marker: { size: 6 }
   };
 
-  const traceSetpoint = {
-    x: tempos,
-    y: setpoints,
+  var traceSetpoint = {
+    x: resultado.tempos,
+    y: resultado.setpoints,
     mode: "lines",
     name: "Altitude desejada",
     line: { dash: "dash", width: 2 }
   };
 
-  const traceVelocidade = {
-    x: tempos,
-    y: velocidades,
-    mode: "lines",
-    name: "Velocidade vertical",
+  var traceErro = {
+    x: resultado.tempos,
+    y: resultado.erros,
+    mode: "lines+markers",
+    name: "Erro",
     yaxis: "y2",
     line: { width: 2, dash: "dot" },
+    marker: { size: 5 },
     visible: "legendonly"
   };
 
-  const traceComando = {
-    x: tempos,
-    y: comandos,
-    mode: "lines",
-    name: "Aceleração comandada",
-    yaxis: "y2",
-    line: { width: 2, dash: "dot" },
-    visible: "legendonly"
-  };
+  var yValores = resultado.altitudes.concat(resultado.setpoints);
+  var yMin = Math.min.apply(null, yValores);
+  var yMax = Math.max.apply(null, yValores);
+  var margem = Math.max(2, 0.15 * (yMax - yMin));
 
-  const layout = {
+  var layout = {
     title: {
-      text: `Controle Proporcional de Altitude (Kp=${Kp.toFixed(1)}, atualização=${controlDt.toFixed(2)}s)`,
+      text: "Controle Proporcional Discreto - Kp=" + Kp.toFixed(1) + ", dt=" + dt.toFixed(2) + "s",
       font: { size: 16 }
     },
     xaxis: {
@@ -303,41 +310,57 @@ function updatePlot() {
     },
     yaxis: {
       title: "Altitude (m)",
-      range: [0, 16]
+      range: [yMin - margem, yMax + margem],
+      zeroline: true
     },
     yaxis2: {
-      title: "Velocidade / comando",
+      title: "Erro",
       overlaying: "y",
       side: "right",
       showgrid: false
     },
+    shapes: [
+      {
+        type: "line",
+        x0: 0,
+        x1: resultado.tempos[resultado.tempos.length - 1],
+        y0: 0,
+        y1: 0,
+        line: {
+          width: 1,
+          dash: "dot"
+        }
+      }
+    ],
     legend: {
       orientation: "h",
       y: -0.25
     },
     margin: {
       t: 70,
-      r: 60,
+      r: 65,
       l: 55,
       b: 90
     }
   };
 
-  const config = {
+  var config = {
     responsive: true,
     displayModeBar: false
   };
 
   Plotly.react(
     "grafico",
-    [traceAltitude, traceSetpoint, traceVelocidade, traceComando],
+    [traceAltitude, traceSetpoint, traceErro],
     layout,
     config
   );
 }
 
-atualizarValores();
-updatePlot();
+window.addEventListener("load", function() {
+  atualizarValores();
+  updatePlot();
+});
 </script>
 
 Observe que aumentar Kp nem sempre melhora o controle. Um ganho proporcional muito baixo faz o drone subir lentamente. Um ganho muito alto faz o drone reagir de maneira agressiva, podendo ultrapassar a altitude desejada e oscilar. Além disso, quanto maior o intervalo de atualização do controlador, mais "atrasada" fica a reação do sistema, o que também pode aumentar as oscilações.
