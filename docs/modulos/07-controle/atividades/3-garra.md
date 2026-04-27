@@ -33,7 +33,7 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
     * Se receber o comando **frente** move o ombro para frente e espera `self.delay` segundos.
     * Para esperar `self.delay` segundos, utilize a função `time.sleep(self.delay)`.
 
-## Prática 2
+<!-- ## Prática 2
 Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) e na sua solução do "Exercício 2 - Identifica Creeper" e no "Desafio" da [APS 6](https://insper.github.io/robotica-computacional/modulos/06-visao-p3/aps/enunciado/), implemente a **Ação de Pegar o Creeper** com o seguindo comportamento:
 
 1. A Ação de Pegar o Creeper deve finalizar após pegar o creeper.
@@ -44,4 +44,4 @@ Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-com
     * `procura`: o robô deve procurar o creeper girando no local.
     * `aproximar`: o robô deve se aproximar do creeper, até ficar a uma distância apropriada, centralizando o mesmo na imagem usando controle proporcional.
     * `finaliza`: prepare a garra e assumindo que o creeper está no centro da imagem, pode andar uma distância fixa com base na leitura do laser do front ou continuar se aproximando até utilizando controle proporcional.
-    * `pega`: quando creeper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação.
+    * `pega`: quando creeper esta na garra do robo, feche a garra, levanta o ombro e finalize a ação. -->

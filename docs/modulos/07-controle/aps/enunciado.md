@@ -50,7 +50,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 
 ---
 
-# Exercício 1 - Ação Segue Linha (8 pontos)
+# Exercício 1 - Ação Segue Linha (10 pontos)
 Primeiro resolva o exercicio na atividade [2 - Segue-Linha](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
 
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `seguidor_de_linha.py` com um nó `seguidor_de_linha_node` que faça o robô **real** de uma volta completa no exterior do circuito de linha amarela do laboratório e **pare próximo do ponto de partida**.
@@ -72,11 +72,9 @@ O nó principal deve:
 # Desafio - Segue Linha Time Attack (+0 ou +1 ou +2 pontos)
 Modifique o código do exercício 1 para que o robô complete o circuito de linha amarela do laboratório no menor tempo possível durante o desafio na aula. O tempo é contado de quando o aluno incia o robo até quando ele para "perto de onde iniciou". Cada grupo terá 3 tentativas para completar o circuito ou 15 minutos, podendo modificar o código entre as tentativas. O grupo que completar o circuito no menor tempo ganha 2 pontos extras, o segundo lugar e o terceiro lugar ganham 1 ponto.
 
----
-# Exercício 2 - Ação de Pegar o Creeper (2 pontos + 0.5 extra no projeto (para o individuo, não o grupo do projeto))
+<!-- ---
+# Exercício 2 - Ação de Pegar o Creeper (2 pontos)
 
 Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/3-garra/).
 
-Grave um vídeo do robô real procurando e pegando um creeper selecionado pelo professor. **Pelo menos 9 creepers** devem estar espalhados na frente do robô com ambiguidades de cor e id com o creeper desejado. Finalize o vídeo com o robô segurando o creeper.
-
-Para ganhar o ponto extra, tem 3 chances de pegar dois creepers em sequência ao vivo na aula. Depois de pegar o primeiro, o nó deve finalizar a ação, o aluno pode reposicionar o robô e remover o creeper da garra, e então iniciar a ação novamente para pegar o segundo creeper, **SEM MODIFICAR O CÓDIGO**.
+Grave um vídeo do robô real e pegando um creeper qualquer em sua frente, a uma distancia de cerca de 1m. -->
