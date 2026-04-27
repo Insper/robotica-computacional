@@ -39,11 +39,6 @@ Durante seus experimentos, tente responder às seguintes perguntas:
 1. O que acontece se o ganho proporcional for muito baixo? E se for muito alto?
 2. Qual a relação entre o ganho proporcional e a resposta do sistema para o momento em que o sistema nunca atinge o setpoint, ou seja, o sistema é instável?
 
----
-layout: default
-title: Simulação Drone PID
----
-
 ## Exemplo: Controle Proporcional de Altitude em um Drone
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
