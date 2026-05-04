@@ -78,3 +78,11 @@ Modifique o código do exercício 1 para que o robô complete o circuito de linh
 Resolva o exercicio na atividade [3 - Controlando a Garra](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/3-garra/).
 
 Grave um vídeo do robô real e pegando um creeper qualquer em sua frente, a uma distancia de cerca de 1m. -->
+
+## Resultados
+
+| Posição | Grupo | Ano | Melhor tempo | Tentativa |
+|---:|---|---|---:|---:|
+| 1 | Enrico Guarita e Pedro Kramer Talento | 25b | 1:07:99 | - |
+| 2 | Lucas Agnoletto e Marcos Rosado | 25b | 1:08:80 | - |
+| 3 | Gabriel Vidigal e Bruno Mota | 24b | 1:09:00 | - |
