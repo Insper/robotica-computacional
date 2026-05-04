@@ -207,7 +207,7 @@ nav:
         - Atividades:
           - "1 - GoTo": modulos/08-slam/atividades/1-goto.md
             # - "Gabarito GoTo": modulos/08-slam/util/goto.py"
-          - "2 - slam": modulos/08-slam/atividades/2-slam.md
+          - "2 - SLAM": modulos/08-slam/atividades/2-slam.md
       #     - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
           - "AMCL": modulos/08-slam/util/amcl.py
         - APS 8:
