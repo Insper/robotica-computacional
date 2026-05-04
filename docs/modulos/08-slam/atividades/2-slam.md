@@ -62,13 +62,6 @@ Uma vez que o pacote de navegação esteja em execução, vamos primeiro definir
 
 ![2D Pose Estimate](../util/2d_pose_estimate.png)
 
-<!-- ### Extraindo a Posição do robô no Mapa
-
-Quando estamos utilizando o `Navigation`, o tópico `/odom` por si só não é suficiente para extrair a posição do robô no mapa, porque representa uma abstração da posição LOCAL do robô.
-
-Para utilizar a posição GLOBAL do robô, devemos combinar o tópico `/odom` com o tópico `/tf` extraindo assim a posição do robô no mapa. O tópico `/tf` contém as transformações entre os diferentes frames do Turtlebot3, incluindo a transformação entre o frame `odom` e o frame `map`. 
-
-Felizmente, isso já foi implementado e está disponível no `robcomp_util`, bastando apenas herdar do arquivo `amcl.py` a classe `AMCL` no lugar da classe `Odom` para extrair a posição GLOBAL do robô. -->
 
 ## Definindo o Ponto de Destino da Navegação
 
@@ -83,3 +76,41 @@ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True \
 map:='topic://map'
 ```
+
+### Extraindo a posição do robô no mapa
+
+Quando usamos o sistema de navegação, o tópico `/odom` sozinho não é suficiente para obter a posição do robô no mapa. Isso acontece porque `/odom` representa a pose do robô em um sistema de coordenadas local, associado ao frame `odom`.
+
+Para obter a posição global do robô no mapa, precisamos combinar a odometria com as transformações publicadas no tópico `/tf`. Em especial, usamos a transformação entre os frames `map` e `odom`, junto com a pose do robô em relação ao frame `odom`.
+
+De forma simplificada, a composição é:
+
+```text
+map -> odom -> base_link
+```
+
+Assim, conseguimos estimar a pose do robô no frame `map`, ou seja:
+
+```text
+x, y, yaw no mapa
+```
+
+Essa lógica já foi implementada no arquivo [`amcl.py`](docs/modulos/08-slam/util/amcl.py). Diferente da classe `Odom`, a classe `AMCL` deve ser executada como um nó ROS independente, publicando a pose global estimada no tópico `/amcl_pose`.
+
+O tópico publicado segue o formato:
+
+```text
+/amcl_pose
+```
+
+com o tipo:
+
+```text
+geometry_msgs/msg/PoseWithCovarianceStamped
+```
+
+Nesse tópico:
+
+- `pose.pose.position.x` representa a posição do robô no eixo X do mapa (metros);
+- `pose.pose.position.y` representa a posição do robô no eixo Y do mapa (metros);
+- `pose.pose.orientation` representa a orientação do robô no mapa.
