@@ -22,7 +22,7 @@ Para otimizar a trajetória do robô, é interessante que o robô gire até que 
 
 ## Prática 1: Ação GoTo
 
-Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) do módulo 3, crie uma ação em um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **simulado** `=)` se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
+Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py) do módulo 3, crie uma ação em um arquivo chamado `goto.py`, com uma classe `GoTo` e com um nó denominado `goto_node`, que, dado uma posição, faça o robô **real** se mova ***precisamente*** para este ponto em qualquer posição. O nó deve:
 
 1. Mude o nome da classe para `GoTo` e o nome do nó para `goto_node`.
 2. Mude também a chamada da classe na função `main()` para `GoTo()`.
