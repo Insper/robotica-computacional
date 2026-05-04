@@ -95,7 +95,7 @@ Assim, conseguimos estimar a pose do robô no frame `map`, ou seja:
 x, y, yaw no mapa
 ```
 
-Essa lógica já foi implementada no arquivo [`amcl.py`](/robotica-computacional/docs/modulos/08-slam/util/amcl.py). Diferente da classe `Odom`, a classe `AMCL` deve ser executada como um nó ROS independente, publicando a pose global estimada no tópico `/amcl_pose`.
+Essa lógica já foi implementada no arquivo [`amcl.py`](/robotica-computacional/modulos/08-slam/util/amcl.py). Diferente da classe `Odom`, a classe `AMCL` deve ser executada como um nó ROS independente, publicando a pose global estimada no tópico `/amcl_pose`.
 
 O tópico publicado segue o formato:
 
