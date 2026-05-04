@@ -83,6 +83,6 @@ Grave um vídeo do robô real e pegando um creeper qualquer em sua frente, a uma
 
 | Posição | Grupo | Ano | Melhor tempo | Tentativa |
 |---:|---|---|---:|---:|
-| 1 | Enrico Guarita e Pedro Kramer Talento | 25b | 1:07:99 | - |
-| 2 | Lucas Agnoletto e Marcos Rosado | 25b | 1:08:80 | - |
-| 3 | Gabriel Vidigal e Bruno Mota | 24b | 1:09:00 | - |
+| 🥇 **1º** | Enrico Guarita e Pedro Kramer Talento | 25b | 1:07:99 | - |
+| 🥈 **2º** | Lucas Agnoletto e Marcos Rosado | 25b | 1:08:80 | - |
+| 🥉 **3º** | Gabriel Vidigal e Bruno Mota | 24b | 1:09:00 | - |
