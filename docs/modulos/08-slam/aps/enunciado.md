@@ -50,7 +50,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 
 ---
 
-# Exercício 1 - Robô Quadrado Melhorado (5 pontos)
+# Exercício 1 - Robô Quadrado Melhorado (7 pontos)
 Primeiro resolva o exercicio na atividade [1 - GoTo](https://insper.github.io/robotica-computacional/modulos/08-slam/atividades/1-goto/).
 
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `quadrado.py` com um nó `quadrado_node` que faça o robô **real** desenhe um quadrado excelente na referência do chão do laboratório. O nó deve:
@@ -70,7 +70,7 @@ Grave um vídeo do robô real desenhando o quadrado de referência no chão do l
 
 ---
 
-# Exercício 2 - SLAM no Labirinto (5 pontos)
+# Exercício 2 - SLAM no Labirinto (3 pontos)
 
 Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto da sala enquanto controla o robô simulado manualmente ou usando a UI, explorando cada canto do labirinto. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
 
