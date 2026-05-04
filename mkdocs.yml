@@ -209,7 +209,7 @@ nav:
             # - "Gabarito GoTo": modulos/08-slam/util/goto.py"
           - "2 - SLAM": modulos/08-slam/atividades/2-slam.md
       #     - "Visualizar Mapa": modulos/08-slam/util/visualizar_mapa.py
-          - "AMCL": modulos/08-slam/util/amcl.py
+          - "3 - AMCL Node": modulos/08-slam/util/amcl.py
         - APS 8:
           - "APS 8 - Classroom" : https://classroom.github.com/a/fEBvk8wI
           - "Enunciado": modulos/08-slam/aps/enunciado.md
