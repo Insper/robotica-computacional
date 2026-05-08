@@ -13,7 +13,7 @@ Uma etapa será considerada completa quando:
 
 ## Repositório
 
-Link do GitHub Classroom [TODO](TODO)
+Link do GitHub Classroom: [https://classroom.github.com/a/2bjEAWwF](https://classroom.github.com/a/2bjEAWwF)
 
 ## Execução
 
