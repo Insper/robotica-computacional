@@ -217,9 +217,9 @@ nav:
     - Gabarito do robcomp_util (até Cap 3):
       - "Link do Repositório": https://github.com/insper-classroom/robcomp-util
 
-    # - Projeto:
-    #   - "Enunciado": projeto/enunciado.md
-    #   - "Projeto - Classroom" : https://classroom.github.com/a/5yhk7MFN
+    - Projeto:
+      - "Enunciado": projeto/enunciado.md
+      - "Projeto - Classroom" : TODO
 
     - Provas:
       - AI:
