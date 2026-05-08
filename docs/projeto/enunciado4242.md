@@ -47,7 +47,8 @@ Todas as rubricas: o relatório deve descrever o que foi feito e explicar como o
 - Em um script auxiliar:
     - Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
     - Implementou uma função para a conversão inversa: mapa para imagem/grid.
-- Considere `resolution`, `origin`, largura, altura e possivel inversão do eixo `y`.
+- Considere os parametros do mapa descritos no arquivo `map.yaml`.
+- Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
 
 ### 3. Navegação ponto a ponto com `GOTO` (1.0)
 - Adapta o `GOTO` para usar AMCL no lugar do ODOM.
@@ -55,6 +56,7 @@ Todas as rubricas: o relatório deve descrever o que foi feito e explicar como o
 
 ### 4. Completar o labirinto conhecido (2.0)
 - O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.
+- Mostra uma imagem do mapa com os pontos definidos e a trajetória planejada.
 - O robô executa a sequência usando `GOTO`.
 - O robô consegue sair do labirinto conhecido de forma consistente.
 
