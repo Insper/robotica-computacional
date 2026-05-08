@@ -22,7 +22,7 @@ O projeto pode ser desenvolvido e testado no simulador. No entanto, **apenas exe
 Utilize o comando abaixo para gerar um mapa com um labirinto:
 
 ```bash
-TODO
+ros2 launch my_gazebo labirinto.launch.py
 ```
 
 ## Relatório
@@ -42,53 +42,53 @@ Todas as rubricas: o relatório deve descrever o que foi feito e explicar como o
 ### 1. Localização global no mapa (0.5)
 - Roda o nó de localização/AMCL.
 - Consegue obter `x`, `y` e `yaw` do robô no frame `map`.
-- Usa corretamente a transformação `map -> odom -> base_link`.
 
 ### 2. Conversão entre imagem/grid e coordenadas do mapa (0.5)
-- Implementa conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
-- Implementa a conversão inversa: mapa para imagem/grid.
-- Considera `resolution`, `origin`, largura, altura e inversão do eixo `y`.
+- Em um script auxiliar:
+    - Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
+    - Implementou uma função para a conversão inversa: mapa para imagem/grid.
+- Considere `resolution`, `origin`, largura, altura e possivel inversão do eixo `y`.
 
-### 3. Navegação ponto a ponto com `GOTO` (1.00 pt)
+### 3. Navegação ponto a ponto com `GOTO` (1.0)
 - Adapta o `GOTO` para usar AMCL no lugar do ODOM.
 - O robô consegue navegar de um ponto até outro no mapa conhecido.
 
-### 4. Completar o labirinto conhecido (2.00 pts)
+### 4. Completar o labirinto conhecido (2.0)
 - O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.
 - O robô executa a sequência usando `GOTO`.
 - O robô consegue sair do labirinto conhecido de forma consistente.
 
 ---
 
-## Etapa 2 - SLAM, planejamento e labirinto desconhecido (6 pts)
+## Etapa 2 - SLAM, planejamento e labirinto desconhecido (6)
 
-### 1. Leitura e visualização do mapa (0.50 pt)
+### 1. Leitura e visualização do mapa (0.5)
 - Implementa subscriber para o mapa.
 - Converte o mapa recebido em uma estrutura útil para planejamento.
 - Desenha o mapa usando `matplotlib`, `cv2` ou ferramenta equivalente.
 
-### 2. Planejador em grid (0.75 pt)
+### 2. Planejador em grid (0.75)
 - Implementa A* ou algoritmo similar.
 - Considera paredes/obstáculos como regiões não navegáveis.
 - Gera caminho entre a posição atual do robô e um ponto final hipotético, longe da posição atual do robô.
-- Desenha a trajetória planejada sobre o mapa.
+- Desenha a trajetória planejada sobre a imagem do mapa.
 
-### 3. Tratamento de região conhecida (0.25 pt)
+### 3. Tratamento de região conhecida (0.25)
 - Evita planejar por áreas desconhecidas.
 - Corta ou restringe o caminho para permanecer dentro da região conhecida.
 - Desenha a trajetória navegável com outra cor no mapa, sem incluir pontos desconhecidos.
 
-### 4. Campo de custo em relação às paredes (0.5 pt)
+### 4. Campo de custo em relação às paredes (0.5)
 - Gera um campo de custo ao redor das paredes.
 - Faz o planejador preferir caminhos afastados dos obstáculos.
 - O planejador prioriza a navegação pelo centro dos corredores.
 
-### 5. Otimização e execução parcial do caminho (1.0 pt)
+### 5. Otimização e execução parcial do caminho (1.0)
 - Reduz ou suaviza pontos redundantes do caminho.
 - O caminho é simples e contém apenas pontos significativos, sem redundância repetitiva.
 - O robô consegue executar pelo menos uma trajetória planejada.
 
-### 6. Completar o labirinto desconhecido de forma autônoma (3.00 pts)
+### 6. Completar o labirinto desconhecido de forma autônoma (3.0)
 - O robô atualiza o mapa enquanto explora.
 - O sistema chama o planejador múltiplas vezes conforme executa as trajetórias planejadas.
 - O robô consegue completar um labirinto desconhecido sem sequência manual de pontos e sem colidir com as paredes.
