@@ -37,61 +37,63 @@ Caso o grupo utilize algum método, algoritmo ou técnica que não foi apresenta
 
 Todas as rubricas: o relatório deve descrever o que foi feito e explicar como os principais problemas de cada item foram resolvidos. O relatório também deve explicar o funcionamento de qualquer método ou algoritmo que não foi apresentado em sala de aula.
 
+Marque os itens abaixo com `X` quando o grupo tiver evidências claras de que o item foi resolvido, seja por meio de vídeos, imagens ou descrições detalhadas no relatório.
+
 ## Etapa 1 - Navegação em mapa conhecido (4)
 
 ### 1. Localização global no mapa (0.5)
-- Roda o nó de localização/AMCL.
-- Consegue obter `x`, `y` e `yaw` do robô no frame `map`.
+- [] Roda o nó de localização/AMCL.
+- [] Consegue obter `x`, `y` e `yaw` do robô no frame `map`.
 
 ### 2. Conversão entre imagem/grid e coordenadas do mapa (0.5)
-- Em um script auxiliar:
-    - Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
-    - Implementou uma função para a conversão inversa: mapa para imagem/grid.
-- Considere os parametros do mapa descritos no arquivo `map.yaml`.
-- Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
+- [] Em um script auxiliar:
+    - [] Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
+    - [] Implementou uma função para a conversão inversa: mapa para imagem/grid.
+- [] Considere os parametros do mapa descritos no arquivo `map.yaml`.
+- [] Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
 
 ### 3. Navegação ponto a ponto com `GOTO` (1.0)
-- Adapta o `GOTO` para usar AMCL no lugar do ODOM.
-- O robô consegue navegar de um ponto até outro no mapa conhecido.
+- [] Adapta o `GOTO` para usar AMCL no lugar do ODOM.
+- [] O robô consegue navegar de um ponto até outro no mapa conhecido.
 
 ### 4. Completar o labirinto conhecido (2.0)
-- O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.
-- Mostra uma imagem do mapa com os pontos definidos e a trajetória planejada.
-- O robô executa a sequência usando `GOTO`.
-- O robô consegue sair do labirinto conhecido de forma consistente.
+- [] O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.
+- [] Mostra uma imagem do mapa com os pontos definidos e a trajetória planejada.
+- [] O robô executa a sequência usando `GOTO`.
+- [] O robô consegue sair do labirinto conhecido de forma consistente.
 
 ---
 
 ## Etapa 2 - SLAM, planejamento e labirinto desconhecido (6)
 
 ### 1. Leitura e visualização do mapa (0.5)
-- Implementa subscriber para o mapa.
-- Converte o mapa recebido em uma estrutura útil para planejamento.
-- Desenha o mapa usando `matplotlib`, `cv2` ou ferramenta equivalente.
+- [] Implementa subscriber para o mapa.
+- [] Converte o mapa recebido em uma estrutura útil para planejamento.
+- [] Desenha o mapa usando `matplotlib`, `cv2` ou ferramenta equivalente.
 
 ### 2. Planejador em grid (0.75)
-- Implementa A* ou algoritmo similar.
-- Considera paredes/obstáculos como regiões não navegáveis.
-- Gera caminho entre a posição atual do robô e um ponto final hipotético, longe da posição atual do robô.
-- Desenha a trajetória planejada sobre a imagem do mapa.
+- [] Implementa A* ou algoritmo similar.
+- [] Considera paredes/obstáculos como regiões não navegáveis.
+- [] Gera caminho entre a posição atual do robô e um ponto final hipotético, longe da posição atual do robô.
+- [] Desenha a trajetória planejada sobre a imagem do mapa.
 
 ### 3. Tratamento de região conhecida (0.25)
-- Evita planejar por áreas desconhecidas.
-- Corta ou restringe o caminho para permanecer dentro da região conhecida.
-- Desenha a trajetória navegável com outra cor no mapa, sem incluir pontos desconhecidos.
+- [] Evita planejar por áreas desconhecidas.
+- [] Corta ou restringe o caminho para permanecer dentro da região conhecida.
+- [] Desenha a trajetória navegável com outra cor no mapa, sem incluir pontos desconhecidos.
 
 ### 4. Campo de custo em relação às paredes (0.5)
-- Gera um campo de custo ao redor das paredes.
-- Faz o planejador preferir caminhos afastados dos obstáculos.
-- O planejador prioriza a navegação pelo centro dos corredores.
+- [] Gera um campo de custo ao redor das paredes.
+- [] Faz o planejador preferir caminhos afastados dos obstáculos.
+- [] O planejador prioriza a navegação pelo centro dos corredores.
 
 ### 5. Otimização e execução parcial do caminho (1.0)
-- Reduz ou suaviza pontos redundantes do caminho.
-- O caminho é simples e contém apenas pontos significativos, sem redundância repetitiva.
-- O robô consegue executar pelo menos uma trajetória planejada.
+- [] Reduz ou suaviza pontos redundantes do caminho.
+- [] O caminho é simples e contém apenas pontos significativos, sem redundância repetitiva.
+- [] O robô consegue executar pelo menos uma trajetória planejada.
 
 ### 6. Completar o labirinto desconhecido de forma autônoma (3.0)
-- O robô atualiza o mapa enquanto explora.
-- O sistema chama o planejador múltiplas vezes conforme executa as trajetórias planejadas.
-- O robô consegue completar um labirinto desconhecido sem sequência manual de pontos e sem colidir com as paredes.
+- [] O robô atualiza o mapa enquanto explora.
+- [] O sistema chama o planejador múltiplas vezes conforme executa as trajetórias planejadas.
+- [] O robô consegue completar um labirinto desconhecido sem sequência manual de pontos e sem colidir com as paredes.
 
