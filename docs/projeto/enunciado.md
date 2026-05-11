@@ -35,7 +35,7 @@ Caso o grupo utilize algum método, algoritmo ou técnica que não foi apresenta
 
 # Rubrica - Projeto SLAM e Navegação
 
-Todas as rubricas: o relatório deve descrever o que foi feito e explicar como os principais problemas de cada item foram resolvidos. O relatório também deve explicar o funcionamento de qualquer método ou algoritmo que não foi apresentado em sala de aula.
+**Todas as rubricas:** o relatório deve descrever o que foi feito e explicar como os principais problemas de cada item foram resolvidos. O relatório também deve explicar o funcionamento de qualquer método ou algoritmo que não foi apresentado em sala de aula.
 
 Marque os itens abaixo com `X` quando o grupo tiver evidências claras de que o item foi resolvido, seja por meio de vídeos, imagens ou descrições detalhadas no relatório.
 
