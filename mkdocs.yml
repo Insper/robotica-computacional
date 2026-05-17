@@ -248,11 +248,10 @@ nav:
         - AI 25a:
           - "Enunciado": simulados/ai_25a/enunciado.md
           - "Gabarito Q1 (OLD)" : simulados/ai_25a/q1.py
-    #     - AI 24b:
-    #       - "Enunciado": simulados/ai_24b/enunciado.md
-    #       - "Gabarito Q1 (quase)" : simulados/simulado_af/q1.py
-    #     - AF 24b:
-    #       - "Enunciado": simulados/af_24b/enunciado.md
+        - AF 24b:
+          - "Enunciado": simulados/af_24b/enunciado.md
+        - AF 25b:
+          - "Enunciado": simulados/af_25b/enunciado.md
     #     - SUB 24b:
     #       - "Enunciado": simulados/sub_24b/enunciado.md
     #     - AI 24a:
