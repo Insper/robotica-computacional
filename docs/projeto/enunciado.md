@@ -42,8 +42,12 @@ Marque os itens abaixo com `X` quando o grupo tiver evidências claras de que o 
 ## Etapa 1 - Navegação em mapa conhecido (4)
 
 ### 1. Localização global no mapa (0.5)
-- [] Roda o nó de localização/AMCL.
-- [] Consegue obter `x`, `y` e `yaw` do robô no frame `map`.
+- [] Roda o nó Navigator usando o mapa salvo pelo Cartographer.
+
+```bash
+ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
+```
+- [] Consegue obter `x`, `y` e `yaw` do robô no frame `map` usando o tópico `/amcl_pose`.
 
 ### 2. Conversão entre imagem/grid e coordenadas do mapa (0.5)
 - [] Em um script auxiliar:
