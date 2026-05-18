@@ -57,7 +57,7 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:
 - [] Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
 
 ### 3. Navegação ponto a ponto com `GOTO` (1.0)
-- [] Adapta o `GOTO` para usar AMCL no lugar do ODOM.
+- [] Adapta o `GOTO` para usar se  inscrever no tópico `/amcl_pose` para obter a posição do robô no frame `map`.
 - [] O robô consegue navegar de um ponto até outro no mapa conhecido.
 
 ### 4. Completar o labirinto conhecido (2.0)
