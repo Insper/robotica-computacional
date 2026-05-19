@@ -70,6 +70,13 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:
 
 ## Etapa 2 - SLAM, planejamento e labirinto desconhecido (6)
 
+Para essa etapa, vamos executar o SLAM, para isso, precisamos rodar o Cartographer e o Navigator ao mesmo tempo, com o mapa sendo atualizado em tempo real. Para isso, utilize o comando abaixo:
+
+```bash
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
+ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:='topic://map'
+```
+
 ### 1. Leitura e visualização do mapa (0.5)
 - [] Implementa subscriber para o mapa.
 - [] Converte o mapa recebido em uma estrutura útil para planejamento.
