@@ -57,6 +57,24 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:
 - [] Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
 
 ### 3. Navegação ponto a ponto com `GOTO` (1.0)
+Subscriber para o tópico `/amcl_pose`:
+
+```python
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.RELIABLE,
+            durability=DurabilityPolicy.TRANSIENT_LOCAL,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+
+        self.subscription = self.create_subscription(
+            PoseWithCovarianceStamped,
+            '/amcl_pose',
+            self.pose_callback,
+            qos_profile
+        )
+```
+ 
 - [] Adapta o `GOTO` para usar se  inscrever no tópico `/amcl_pose` para obter a posição do robô no frame `map`.
 - [] O robô consegue navegar de um ponto até outro no mapa conhecido.
 
