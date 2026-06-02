@@ -227,8 +227,8 @@ nav:
         - "Enunciado": provas/ai/enunciado.md
         # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
       
-    #   # - AF:
-    #   #   - "Enunciado": provas/af/enunciado.md
+      - AF:
+        - "Enunciado": provas/af/enunciado.md
     #   # - SUB:
     #   #   - "Enunciado": provas/sub/enunciado.md
     #   # - DELTA:
