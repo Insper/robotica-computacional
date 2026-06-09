@@ -225,12 +225,10 @@ nav:
       - AI:
         - "Download > IMGS": provas/ai/imgs.zip
         - "Enunciado": provas/ai/enunciado.md
-        # - "AI - Classroom" : https://classroom.github.com/a/mevKeP_u
-      
       - AF:
         - "Enunciado": provas/af/enunciado.md
-    #   # - SUB:
-    #   #   - "Enunciado": provas/sub/enunciado.md
+      - SUB:
+        - "Enunciado": provas/sub/enunciado.md
     #   # - DELTA:
     #   #   - "Enunciado": provas/delta/enunciado.md
     #   - Simulado AI:
