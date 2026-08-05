@@ -4,16 +4,26 @@ Todas as entregas da disciplina serão feitas via GitHub.
 
 ## Entregas via GitHub
 
-* **Criação do Repositório:** Para cada APS, um link de um repositório-template será disponibilizado.
+* **Criação do Repositório:** Para cada APS, um repositório-template será disponibilizado.
 
-  * Você deve **criar um novo repositório privado** usando o template fornecido no Blackboard. No caso de atividades em grupo, o repositório deve ser criado por **apenas um dos integrantes**.
+  * Você deve **criar um novo repositório privado** usando o template informado no Blackboard. No caso de atividades em grupo, o repositório deve ser criado por **apenas um dos integrantes**.
   * No caso de atividades em grupo, os demais integrantes devem ser adicionados como colaboradores no repositório.
-* **Escolha do Nome do Repositório:** O nome do repositório deve seguir o padrão `robcomp_aps#_XXXX`, substituindo `#` pelo número da APS e `XXXX` pelo nome do grupo. Use apenas letras minúsculas, números, hífens ou sublinhados, sem espaços e sem acentos. Exemplo: `robcomp_aps1_grupo_wall-e`.
-* **Acesso ao Repositório:** Após a criação do repositório, adicione o usuário GitHub do professor como colaborador: `dsoldev`.
 
-Ao clicar no link do template, você será direcionado para a página do GitHub. Clique em **Use this template** e depois em **Create a new repository**, como na imagem abaixo.
+* **Escolha do Nome do Repositório:** O nome do repositório deve seguir o padrão `robcomp_aps#_XXXX`, substituindo `#` pelo número da APS e `XXXX` pelo nome do grupo. Use apenas letras minúsculas, números, hífens ou sublinhados, sem espaços e sem acentos. Exemplo: `robcomp_aps1_wall-e`.
+
+* **Configuração do Repositório:**
+
+  * No campo **Visibility**, escolha **Private**.
+  * No campo **Start with a template**, clique em **Choose a template**, pesquise e selecione o template correspondente à APS, conforme informado no Blackboard.
+  * Depois, clique em **Create repository**.
 
 ![](figs/github-template.png)
+
+### Acesso ao Repositório
+
+Após a criação do repositório, adicione o usuário GitHub do professor `dsoldev` como colaborador. Caso seja uma atividade em grupo, adicione também os demais integrantes.
+
+Para isso, acesse **Settings → Collaborators**, clique em **Add people** e adicione os usuários GitHub correspondentes.
 
 ## Configuração do Repositório
 
@@ -42,7 +52,7 @@ Para obter o SHA do commit mais recente, execute:
 git rev-parse HEAD
 ```
 
-A correção será realizada com base no commit informado. O horário oficial da entrega será o registrado na plataforma da disciplina.
+A correção será realizada com base no commit informado. O horário oficial da entrega será o registrado no Blackboard, e não o horário do commit. 
 
 !!! warning
     A correção será feita considerando o histórico até o commit informado, e não necessariamente o último commit do repositório. Commits posteriores não serão considerados. Portanto, é importante informar no Blackboard o SHA do último commit que deseja entregar antes do fechamento da atividade.
