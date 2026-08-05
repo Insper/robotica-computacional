@@ -41,7 +41,7 @@ Para isso, acesse **Settings → Collaborators**, clique em **Add people** e adi
 
 ## Entrega
 
-Na plataforma da disciplina, envie:
+No Blackboard, envie:
 
 * o link do repositório;
 * o SHA completo do commit que deve ser avaliado.
