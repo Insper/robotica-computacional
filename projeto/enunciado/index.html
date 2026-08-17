@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../equipe.css"><link rel="stylesheet" href="../../css/ansi-colours.css"><link rel="stylesheet" href="../../css/jupyter-cells.css"><link rel="stylesheet" href="../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="projeto-slam-e-navegacao">Projeto - SLAM e Navegação</h1>
+<p>Neste projeto, grupos de até <strong>4 alunos</strong> deverão desenvolver um sistema de navegação para que o robô real seja capaz de se localizar no mapa, planejar trajetórias e sair de um labirinto desconhecido. O projeto está dividido em duas etapas.</p>
+<p>Na <strong>Etapa 1</strong>, a equipe vai estudar o conceito de navegação na ROS 2 e fazer com que o robô real saia de um labirinto conhecido. Para isso, será necessário compreender a relação entre a odometria do robô e as coordenadas do mapa fornecidas pelo Cartographer, além de adaptar o <code>GOTO</code> para utilizar as coordenadas globais estimadas pelo nó AMCL.</p>
+<p>Na <strong>Etapa 2</strong>, a equipe deverá implementar uma solução de SLAM e planejamento em grid. O sistema deve construir ou atualizar o mapa, gerar trajetórias automaticamente e fazer com que o robô complete um labirinto desconhecido de forma autônoma.</p>
+<p>Uma etapa será considerada completa quando:</p>
+<ol>
+<li>Existir pelo menos um vídeo demonstrando claramente o funcionamento dos itens principais da rubrica. Vídeos intermediários também podem ser enviados, desde que sejam descritos no relatório.</li>
+<li>O grupo enviar, no próprio GitHub, um relatório explicando como os problemas foram abordados e resolvidos. O formato esperado do relatório está descrito abaixo.</li>
+</ol>
+<h2 id="repositorio">Repositório</h2>
+<p>Link do GitHub Classroom: <a href="https://classroom.github.com/a/2bjEAWwF">https://classroom.github.com/a/2bjEAWwF</a></p>
+<h2 id="execucao">Execução</h2>
+<p>O projeto pode ser desenvolvido e testado no simulador. No entanto, <strong>apenas execuções no robô real serão consideradas para nota</strong>.</p>
+<p>Utilize o comando abaixo para gerar um mapa com um labirinto:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>labirinto.launch.py
+</code></pre></div>
+<h2 id="relatorio">Relatório</h2>
+<p>O relatório deve ser escrito como um <strong>relatório técnico curto</strong>, em texto contínuo, mas dividido em seções claras, como introdução, metodologia, resultados e dificuldades. O objetivo não é apenas listar códigos ou funções, mas explicar o que foi feito, por que foi feito e como cada problema da rubrica foi resolvido.</p>
+<p>Para cada etapa do projeto, o grupo deve incluir pequenos parágrafos explicando a solução adotada, imagens do mapa e das trajetórias planejadas quando fizer sentido, além de evidências de funcionamento no robô real. As demonstrações em vídeo devem ser incluídas por meio de links, acompanhadas de uma breve explicação do que cada vídeo mostra.</p>
+<p>Caso o grupo utilize algum método, algoritmo ou técnica que não foi apresentado em sala de aula, como A*, variações de planejamento, suavização de caminho ou campo de custo, o relatório deve explicar brevemente o funcionamento dessa escolha.</p>
+<h1 id="rubrica-projeto-slam-e-navegacao">Rubrica - Projeto SLAM e Navegação</h1>
+<p><strong>Todas as rubricas:</strong> o relatório deve descrever o que foi feito e explicar como os principais problemas de cada item foram resolvidos. O relatório também deve explicar o funcionamento de qualquer método ou algoritmo que não foi apresentado em sala de aula.</p>
+<p>Marque os itens abaixo com <code>X</code> quando o grupo tiver evidências claras de que o item foi resolvido, seja por meio de vídeos, imagens ou descrições detalhadas no relatório.</p>
+<h2 id="etapa-1-navegacao-em-mapa-conhecido-4">Etapa 1 - Navegação em mapa conhecido (4)</h2>
+<h3 id="1-localizacao-global-no-mapa-05">1. Localização global no mapa (0.5)</h3>
+<ul>
+<li>[] Roda o nó Navigator usando o mapa salvo pelo Cartographer.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_navigation2<span class="w"> </span>navigation2.launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span>True<span class="w"> </span>map:<span class="o">=</span><span class="nv">$HOME</span>/map.yaml
+</code></pre></div>
+- [] Consegue obter <code>x</code>, <code>y</code> e <code>yaw</code> do robô no frame <code>map</code> usando o tópico <code>/amcl_pose</code>.</p>
+<h3 id="2-conversao-entre-imagemgrid-e-coordenadas-do-mapa-05">2. Conversão entre imagem/grid e coordenadas do mapa (0.5)</h3>
+<ul>
+<li>[] Em um script auxiliar:<ul>
+<li>[] Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.</li>
+<li>[] Implementou uma função para a conversão inversa: mapa para imagem/grid.</li>
+</ul>
+</li>
+<li>[] Considere os parametros do mapa descritos no arquivo <code>map.yaml</code>.</li>
+<li>[] Considere que a imagem do mapa tem eixo <code>y</code> invertido em relação ao sistema de coordenadas do mapa.</li>
+</ul>
+<h3 id="3-navegacao-ponto-a-ponto-com-goto-10">3. Navegação ponto a ponto com <code>GOTO</code> (1.0)</h3>
+<p>Subscriber para o tópico <code>/amcl_pose</code>:</p>
+<div class="highlight"><pre><span></span><code>        <span class="n">qos_profile</span> <span class="o">=</span> <span class="n">QoSProfile</span><span class="p">(</span>
+            <span class="n">reliability</span><span class="o">=</span><span class="n">ReliabilityPolicy</span><span class="o">.</span><span class="n">RELIABLE</span><span class="p">,</span>
+            <span class="n">durability</span><span class="o">=</span><span class="n">DurabilityPolicy</span><span class="o">.</span><span class="n">TRANSIENT_LOCAL</span><span class="p">,</span>
+            <span class="n">history</span><span class="o">=</span><span class="n">HistoryPolicy</span><span class="o">.</span><span class="n">KEEP_LAST</span><span class="p">,</span>
+            <span class="n">depth</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+            <span class="n">PoseWithCovarianceStamped</span><span class="p">,</span>
+            <span class="s1">&#39;/amcl_pose&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pose_callback</span><span class="p">,</span>
+            <span class="n">qos_profile</span>
+        <span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>[] Adapta o <code>GOTO</code> para usar se  inscrever no tópico <code>/amcl_pose</code> para obter a posição do robô no frame <code>map</code>.</li>
+<li>[] O robô consegue navegar de um ponto até outro no mapa conhecido.</li>
+</ul>
+<h3 id="4-completar-o-labirinto-conhecido-20">4. Completar o labirinto conhecido (2.0)</h3>
+<ul>
+<li>[] O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.</li>
+<li>[] Mostra uma imagem do mapa com os pontos definidos e a trajetória planejada.</li>
+<li>[] O robô executa a sequência usando <code>GOTO</code>.</li>
+<li>[] O robô consegue sair do labirinto conhecido de forma consistente.</li>
+</ul>
+<hr />
+<h2 id="etapa-2-slam-planejamento-e-labirinto-desconhecido-6">Etapa 2 - SLAM, planejamento e labirinto desconhecido (6)</h2>
+<p>Para essa etapa, vamos executar o SLAM, para isso, precisamos rodar o Cartographer e o Navigator ao mesmo tempo, com o mapa sendo atualizado em tempo real. Para isso, utilize o comando abaixo:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span>True
+ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_navigation2<span class="w"> </span>navigation2.launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span>True<span class="w"> </span>map:<span class="o">=</span><span class="s1">&#39;topic://map&#39;</span>
+</code></pre></div>
+<h3 id="1-leitura-e-visualizacao-do-mapa-05">1. Leitura e visualização do mapa (0.5)</h3>
+<ul>
+<li>[] Implementa subscriber para o mapa.</li>
+<li>[] Converte o mapa recebido em uma estrutura útil para planejamento.</li>
+<li>[] Desenha o mapa usando <code>matplotlib</code>, <code>cv2</code> ou ferramenta equivalente.</li>
+</ul>
+<h3 id="2-planejador-em-grid-075">2. Planejador em grid (0.75)</h3>
+<ul>
+<li>[] Implementa A* ou algoritmo similar.</li>
+<li>[] Considera paredes/obstáculos como regiões não navegáveis.</li>
+<li>[] Gera caminho entre a posição atual do robô e um ponto final hipotético, longe da posição atual do robô.</li>
+<li>[] Desenha a trajetória planejada sobre a imagem do mapa.</li>
+</ul>
+<h3 id="3-tratamento-de-regiao-conhecida-025">3. Tratamento de região conhecida (0.25)</h3>
+<ul>
+<li>[] Evita planejar por áreas desconhecidas.</li>
+<li>[] Corta ou restringe o caminho para permanecer dentro da região conhecida.</li>
+<li>[] Desenha a trajetória navegável com outra cor no mapa, sem incluir pontos desconhecidos.</li>
+</ul>
+<h3 id="4-campo-de-custo-em-relacao-as-paredes-05">4. Campo de custo em relação às paredes (0.5)</h3>
+<ul>
+<li>[] Gera um campo de custo ao redor das paredes.</li>
+<li>[] Faz o planejador preferir caminhos afastados dos obstáculos.</li>
+<li>[] O planejador prioriza a navegação pelo centro dos corredores.</li>
+</ul>
+<h3 id="5-otimizacao-e-execucao-parcial-do-caminho-10">5. Otimização e execução parcial do caminho (1.0)</h3>
+<ul>
+<li>[] Reduz ou suaviza pontos redundantes do caminho.</li>
+<li>[] O caminho é simples e contém apenas pontos significativos, sem redundância repetitiva.</li>
+<li>[] O robô consegue executar pelo menos uma trajetória planejada.</li>
+</ul>
+<h3 id="6-completar-o-labirinto-desconhecido-de-forma-autonoma-30">6. Completar o labirinto desconhecido de forma autônoma (3.0)</h3>
+<ul>
+<li>[] O robô atualiza o mapa enquanto explora.</li>
+<li>[] O sistema chama o planejador múltiplas vezes conforme executa as trajetórias planejadas.</li>
+<li>[] O robô consegue completar um labirinto desconhecido sem sequência manual de pontos e sem colidir com as paredes.</li>
+</ul>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
