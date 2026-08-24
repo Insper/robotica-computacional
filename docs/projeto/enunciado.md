@@ -13,7 +13,7 @@ Uma etapa será considerada completa quando:
 
 ## Repositório
 
-Link do GitHub Classroom: [https://classroom.github.com/a/2bjEAWwF](https://classroom.github.com/a/2bjEAWwF)
+O repositório do projeto é informado no Blackboard. As instruções centralizadas estão em [Sobre as APS](https://insper.github.io/robotica-computacional/aps/).
 
 ## Execução
 

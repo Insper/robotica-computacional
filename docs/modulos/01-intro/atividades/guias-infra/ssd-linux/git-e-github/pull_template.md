@@ -4,7 +4,7 @@
 **Siga este tutorial apenas quando o professor alertar alguma modificação de uma tarefa, durante a aula, ou em um aviso no blackboard.**
 
 
-Uma atividade do classroom se baseia em um repositório base, denominado de template repository, se o aluno aceitou a atividade no classroom antes do professor fazer alguma modificação no template, o aluno não terá acesso às modificações. Neste tutorial vamos aprender como pegar (fetch) modificações da atividade do classroom.
+Uma atividade se baseia em um repositório base, denominado de template repository. Se o aluno começou a atividade antes do professor fazer alguma modificação no template, o aluno não terá acesso às modificações. Neste tutorial vamos aprender como pegar (fetch) modificações do repositório template da atividade.
 
 
 ## Passo 1 - URL do template repo

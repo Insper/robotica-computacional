@@ -27,12 +27,12 @@ Estes conceitos são explorados nas seguintes atividades,
 <!-- ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 3.
+    O repositório da APS 3 é informado no Blackboard. As instruções centralizadas estão em [Sobre as APS](https://insper.github.io/robotica-computacional/aps/).
 
     As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
 
     As entregas da APS 3 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 3 - Github Classroom]( {{ link_APS3 }} )
+    [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)
 
     A data final de entrega é **{{ data_APS3 }}**. -->

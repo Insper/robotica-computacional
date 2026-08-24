@@ -4,9 +4,9 @@ O objetivo do projeto é programar nosso robô para cumprir um conjunto de miss�
 
 ![](pista.png)
 
-Os grupos, que podem ser compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório do GitHub Classroom disponibilizado. 
+Os grupos, que podem ser compostos por `até quatro integrantes`, deverão trabalhar em conjuto no repositório informado no Blackboard.
 
-[Link para repositório do projeto GitHub Classroom](TODO){ .ah-button }
+[Sobre as APS](https://insper.github.io/robotica-computacional/aps/){ .ah-button }
 
 # **`Data de Entrega: Dia da AF às 12h`**
 
@@ -32,7 +32,7 @@ No arquivo `README.md` do seu repositório existe o campo `Link do Vídeo` onde 
 
 ## Configuração do Pacote (ROS 2)
 
-- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom e clone o repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
+- **Preparação Inicial:** O repositório é informado no Blackboard (veja [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)). Clone-o **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `projeto_robcomp`.
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `robcomp_util` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 

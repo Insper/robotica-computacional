@@ -27,7 +27,7 @@ cb
 
 ## Configuração do Pacote (ROS 2)
 
-- **Preparação Inicial:** Primeiro, aceite o convite do GitHub Classroom.
+- **Preparação Inicial:** O repositório é informado no Blackboard (veja [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)).
 - Você deve fazer o clone do repositório **dentro da pasta** `colcon_ws/src/` no seu SSD.
 - **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote nomeado `entregavel_2`.
 

@@ -25,10 +25,9 @@ Estes conceitos são explorados nas seguintes atividades,
 ## Para entregar
 
 !!! exercise
-    Clique no link abaixo para ser direcionado para o Github Classroom da APS 2.
+    O repositório da APS 2 é informado no Blackboard. As instruções centralizadas estão em [Sobre as APS](https://insper.github.io/robotica-computacional/aps/).
 
     As entregas da APS 2 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Linux Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [APS 2 - Github Classroom]( {{ link_APS2 }} )
-
+    [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)
     A data final de entrega é **{{ data_APS2 }}**.
