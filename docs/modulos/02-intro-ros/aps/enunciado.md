@@ -1,5 +1,7 @@
 # Entregável 2 de Robótica Computacional
 
+**Data de entrega:** {{ data_APS2 }}
+
 ## Instruções Gerais
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.

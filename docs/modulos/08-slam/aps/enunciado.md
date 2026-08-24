@@ -1,5 +1,7 @@
 # Entregável 8 de Robótica Computacional
 
+**Data de entrega:** {{ data_APS8 }}
+
 ## Instruções gerais
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
