@@ -38,10 +38,10 @@ class BaseControlNode(Node): # Mude o nome da classe
     def acao(self):
         if self.acao_node.robot_state == 'done': # Se a ação NÂO FOI INICIADA
             print("\nIniciando [ACAO]...")
-            rclpy.spin_once(self.acao_node) # Processa as callbacks uma vez
+            rclpy.spin_once(self.acao_node, timeout_sec=0.5) # Processa as callbacks uma vez
             self.acao_node.reset() # Reseta o nó para iniciar a ação
 
-        rclpy.spin_once(self.acao_node) # Processa os callbacks e o timer
+        rclpy.spin_once(self.acao_node, timeout_sec=0.5) # Processa os callbacks e o timer
 
         if self.acao_node.robot_state == 'done': # Se a ação FOI FINALIZADA
             self.acao_node.control() # Garante que o robo é parado antes de finalizar a ação
