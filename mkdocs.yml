@@ -237,6 +237,11 @@ nav:
           - "Download > IMGS": simulados/ai_2/imgs.zip
           - "Enunciado": simulados/ai_2/enunciado.md
           - "Gabarito Q1 (OLD)" : simulados/ai_2/q1.py
+        - Simulado AI 3:
+          - "Enunciado": simulados/simulado_ai/enunciado.md
+          - "Download > Imagens Q2": simulados/simulado_ai/q2.zip
+          - "Gabarito Q1" : simulados/simulado_ai/q1.py
+          - "Gabarito Q2" : simulados/simulado_ai/q2.py
     # #   - Simulado AF:
     # #     - "Enunciado": simulados/simulado_af/enunciado.md
     # #     - "Gabarito Q1" : simulados/simulado_af/q1.py
