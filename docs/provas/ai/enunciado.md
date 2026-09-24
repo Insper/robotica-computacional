@@ -10,12 +10,15 @@ Instruções para a avaliação:
 * Coloque seu `nome` e `email` no `README.md` do seu repositório.
 * A prova deverá ser realizada de forma individual.
 * Não é permitido consultar a internet, com exceção do site da disciplina, do `Blackboard` e do repositório da avaliação informado no Blackboard.
-* `Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot, Gemini ou similares durante a prova`.
-* `Não é permitido o uso de ferramentas colaborativas como Google Docs, Google Slides, ou similares durante a prova`.
+* `Não é permitido o uso de ferramentas de **IA** como ChatGPT, Copilot, Gemini ou similares durante a prova`.
+* `Não é permitido o uso de ferramentas colaborativas como Google Docs, Google Slides, Notion, ou similares durante a prova`.
 * `Não é permitido o uso de ferramentas de comunicação como Discord, WhatsApp, Telegram ou similares durante a prova`.
 * `Não é permitido o uso de editores de codigo com IA como Cursor ou Windsurf durante a prova, sendo permitido apenas o uso do **VSCode**`.
 * `Não é permitido o uso do Copilot durante a prova. Então desative-o antes de iniciar a prova`.
 * `Não é permitido o uso de redes sociais, fóruns ou plataformas de comunicação durante a prova`.
+* Só é permitido acessar o repositório da avaliação informado no Blackboard, o site da disciplina e o Blackboard.
+* Só é permitido acessar documentos e arquivos estáticos em PDF, TXT, MD, DOCX, DOC utilizando ferramentas offline.
+* Não é permitido push e pull de repositórios que não sejam o da avaliação informado no Blackboard.
 * Faça commits e pushes regularmente de sua avaliação.
 * Eventuais avisos importantes serão realizados em sala durante a prova.
 * Escreva a frase "yey" como a resposta da soma no arquivo `README.md` como teste de sua atenção.
