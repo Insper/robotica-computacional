@@ -232,7 +232,7 @@ nav:
       - Simulados AI:
         - Simulado AI 1:
           - "Download > IMGS": simulados/ai_1/imgs.zip
-          - "Enunciado": provas/ai_1/enunciado.md
+          - "Enunciado": simulados/ai_1/enunciado.md
         - Simulado AI 2:
           - "Download > IMGS": simulados/ai_2/imgs.zip
           - "Enunciado": simulados/ai_2/enunciado.md
