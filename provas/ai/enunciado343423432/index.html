@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado343423432 - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../equipe.css"><link rel="stylesheet" href="../../../css/ansi-colours.css"><link rel="stylesheet" href="../../../css/jupyter-cells.css"><link rel="stylesheet" href="../../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 2</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 4 - Imagens e Matrizes</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades_cap_4.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades/1-leitura_e_webcam/">1 - Leitura de Imagem e Webcam</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades/2-corte_e_criacao/">2 - Corte e Criação de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades/3-roi_e_numpy/">3 - ROI e NumPy</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades/4-segmentacao_1/">4 - Segmentação de Imagens p1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/atividades/5-segmentacao_2/">5 - Segmentação de Imagens p2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/04-visao-p1/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 5 - Identificação e Modelo de Câmera</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://pseudopencv.site/utilities/hsvcolormask/">Ferramenta para Ajuste de Máscaras</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades_cap_5.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/1-morfologia/">1 - Refinamento de Máscaras de Segmentação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/2-identificacao/">2 - Identificação de Objetos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/3-canny-filtros/">3 - Convolução e Filtragem de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/4-retas-circulos/">4 - Detecção de Retas e Círculos</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">5 - Exemplo de Resolução de Exercício</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/51-enunciado/">5.1 - Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/52-resolucao/">5.2 - Resolução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/util/q1.py">Download > Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/atividades/util/q1_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 5</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/LIbjPbWE">APS 5 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../modulos/05-visao-p2/aps/ex3.py">Q3 base</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulados AI</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_1/imgs.zip">Download > IMGS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_1/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_2/imgs.zip">Download > IMGS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_2/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_2/q1.py">Gabarito Q1 (OLD)</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_3/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_3/q2.zip">Download > Imagens Q2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_3/q1.py">Gabarito Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../../simulados/ai_3/q2.py">Gabarito Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li>Enunciado343423432</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="robotica-computacional-20262-ai">Robótica Computacional 2026.2 - AI</h1>
+<p>Instruções para a avaliação:</p>
+<ul>
+<li>A prova tem duração de <strong>4 horas</strong>.</li>
+<li>Inicie a prova no Blackboard para que a ferramenta Smowl seja iniciada.</li>
+<li>O Smowl é obrigatório durante toda a prova.</li>
+<li>Só finalize o Blackboard depois de enviar a prova para o repositório informado, incluindo o hash do último commit na resposta do Blackboard.</li>
+<li>Durante a prova serão registrados a câmera, a tela, as páginas visitadas, os acessos on-line e o teclado.</li>
+<li>Coloque seu <code>nome</code> e <code>e-mail</code> no <code>README.md</code> do seu repositório.</li>
+<li>A prova deverá ser realizada individualmente.</li>
+<li>Não é permitido consultar a internet, com exceção do site da disciplina, do Blackboard e do repositório da avaliação informado no Blackboard.</li>
+<li><strong>Não é permitido usar ferramentas de IA</strong>, como ChatGPT, Copilot, Gemini ou similares, durante a prova.</li>
+<li>Não é permitido usar ferramentas colaborativas, como Google Docs, Google Slides, Notion ou similares.</li>
+<li>Não é permitido usar ferramentas de comunicação, como Discord, WhatsApp, Telegram ou similares.</li>
+<li>Não é permitido usar editores de código com IA, como Cursor ou Windsurf. É permitido apenas o uso do <strong>VS Code</strong>, com o Copilot desativado.</li>
+<li>Não é permitido acessar redes sociais, fóruns ou plataformas de comunicação.</li>
+<li>Só é permitido acessar documentos e arquivos estáticos em PDF, TXT, MD, DOCX ou DOC utilizando ferramentas off-line.</li>
+<li>Não é permitido fazer <code>push</code> ou <code>pull</code> de repositórios que não sejam o repositório da avaliação informado no Blackboard.</li>
+<li>Faça commits e pushes regularmente durante a avaliação.</li>
+<li>Eventuais avisos importantes serão feitos em sala.</li>
+<li>Escreva a frase <code>yey</code> como resposta da soma no arquivo <code>README.md</code>, como teste de atenção.</li>
+<li>A responsabilidade pelo funcionamento da infraestrutura, das configurações e do ambiente é de cada estudante.</li>
+<li><strong>SÓ SERÃO ACEITOS REPOSITÓRIOS DE ESTUDANTES QUE ASSINARAM A LISTA DE PRESENÇA.</strong></li>
+</ul>
+<p><strong>BOA PROVA!</strong></p>
+<h2 id="atualizacao-dos-pacotes-ros-2">Atualização dos pacotes ROS 2</h2>
+<p>Execute os comandos abaixo para atualizar os pacotes obrigatórios para a prova:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_simulation
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>stash
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull
+cb
+</code></pre></div>
+<h2 id="configuracao-do-pacote-ros-2">Configuração do pacote ROS 2</h2>
+<ul>
+<li><strong>Preparação inicial:</strong> clone o repositório informado no Blackboard dentro da pasta <code>~/colcon_ws/src/</code> do SSD.</li>
+<li><strong>Criação do pacote:</strong> dentro do diretório do seu repositório, crie um pacote chamado <code>avaliacao_ai</code>.</li>
+<li>Para utilizar os módulos desenvolvidos no capítulo 3, inclua <code>robcomp_util</code> e <code>robcomp_interfaces</code> como dependências do pacote.</li>
+</ul>
+<hr />
+<h1 id="exercicio-0-organizacao-e-qualidade-gate">Exercício 0 - Organização e qualidade (gate)</h1>
+<p>Este exercício avalia a organização da entrega, a execução dos programas e a qualidade dos vídeos. O descumprimento deste gate limita a nota total da prova a <strong>2,0 pontos</strong>.</p>
+<h2 id="criterios-do-gate">Critérios do gate</h2>
+<ul>
+<li>O pacote <code>avaliacao_ai</code> foi criado e configurado corretamente.</li>
+<li>As dependências do pacote estão declaradas corretamente.</li>
+<li>Todos os scripts da prova estão no módulo Python <code>avaliacao_ai</code> do pacote <code>avaliacao_ai</code>.</li>
+<li>Os nós ROS 2 são executados usando <code>ros2 run</code>.</li>
+<li>Os programas são executados sem alterações manuais durante a demonstração.</li>
+<li>Os vídeos permitem compreender claramente a execução e mostram os terminais solicitados.</li>
+<li>O <code>README.md</code> contém o nome completo, o e-mail e os links solicitados.</li>
+</ul>
+<hr />
+<h1 id="exercicio-1-segue-comando-50">Exercício 1 - Segue Comando (5,0)</h1>
+<p>Baseando-se no código <code>base_control.py</code> do capítulo 3, crie um arquivo chamado <code>q1.py</code> com uma classe denominada <code>SegueComando</code>. A classe deve implementar um nó chamado <code>segue_comando_node</code>, responsável por executar comandos enviados por um <strong>Comandante</strong> e informar medidas sobre a execução.</p>
+<p>O Comandante publica no tópico <code>/comando</code>, usando mensagens do tipo <code>robcomp_interfaces.msg.ComandanteMSG</code>. O nó do aluno responde no tópico <code>/resposta</code>, usando mensagens do tipo <code>robcomp_interfaces.msg.RoboMSG</code>.</p>
+<p>Toda mensagem enviada pelo robô deve conter o <strong>nome completo do aluno</strong> e o <strong>horário atual</strong>, preenchidos nos campos apropriados. O horário deve ser atualizado a cada publicação; não copie o valor recebido do Comandante.</p>
+<p>Para verificar as interfaces instaladas, utilize:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>robcomp_interfaces/msg/ComandanteMSG
+ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>robcomp_interfaces/msg/RoboMSG
+</code></pre></div>
+<h2 id="comandos">Comandos</h2>
+<p>O Comandante pode enviar os seguintes comandos, com os parâmetros preenchidos nos campos apropriados:</p>
+<ul>
+<li><code>andar</code>: andar em linha reta a distância positiva indicada, em metros.</li>
+<li><code>girar</code>: girar o ângulo indicado, em graus. Valores positivos representam o sentido anti-horário e valores negativos, o sentido horário.</li>
+<li><code>parar</code>: interromper imediatamente um comando <code>andar</code> ou <code>girar</code>.</li>
+<li><code>quadrado</code>: completar um quadrado de lado <code>1,0 m</code> e retornar à pose inicial.</li>
+<li><code>triangulo</code>: completar um triângulo equilátero de lado <code>1,0 m</code> e retornar à pose inicial.</li>
+<li><code>erro</code>: responder com o erro da tarefa atual ou da última forma concluída, conforme descrito abaixo.</li>
+</ul>
+<p>Os comandos <code>quadrado</code> e <code>triangulo</code> <strong>não serão interrompidos</strong> pelo Comandante.</p>
+<h2 id="estados-e-respostas-do-robo">Estados e respostas do robô</h2>
+<p>O robô deve utilizar somente os sseguintes valores no campo apropriado de estado da mensagem <code>RoboMSG</code>:</p>
+<ul>
+<li><code>READY</code>: publicado uma única vez, no início do nó para iniciar a execução (publicar novamente reinicia o Comandante).</li>
+<li><code>IN_PROGRESS</code>: publicado uma única vez quando o robô começa um movimento.</li>
+<li><code>STOPPED</code>: utilizado nas respostas enviadas enquanto o robô estiver efetivamente parado.</li>
+</ul>
+<p>Ao receber <code>parar</code>, o robô deve primeiro interromper o movimento e somente então responder <code>STOPPED</code>. Depois dessa resposta, o Comandante enviará <code>erro</code>:</p>
+<ul>
+<li>se a tarefa interrompida for <code>andar</code>, o robô responde com a distância que falta, em metros;</li>
+<li>se a tarefa interrompida for <code>girar</code>, o robô responde com o módulo do ângulo que falta, em graus.</li>
+<li>se a última tarefa for <code>quadrado</code> ou <code>triangulo</code>, o robô responde com a deriva da forma, em metros. </li>
+</ul>
+<p><strong>Deriva</strong> é a distância euclidiana, em metros, entre a posição em que o robô inicia uma forma geométrica e a posição em que termina essa forma.</p>
+<h2 id="sequencia-do-comandante">Sequência do Comandante</h2>
+<p>Em cada execução, o Comandante:</p>
+<ol>
+<li>envia dois comandos, sempre um <code>andar</code> e um <code>girar</code>, em ordem aleatória;</li>
+<li>envia <code>parar</code> durante cada uma dessas tarefas;</li>
+<li>aguarda o robô responder <code>STOPPED</code>, envia <code>erro</code> e segue para o próximo comando;</li>
+<li>depois que <code>andar</code> e <code>girar</code> forem interrompidos, escolhe aleatoriamente <code>quadrado</code> ou <code>triangulo</code>;</li>
+<li>aguarda o robô concluir a forma e responder <code>STOPPED</code>;</li>
+<li>envia <code>erro</code>, a deriva informada pelo robô e encerra a sequência.</li>
+</ol>
+<h2 id="simulador">Simulador</h2>
+<p>Utilize o comando abaixo para iniciar o simulador:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>ai_2026_2.launch.py
+</code></pre></div>
+<p>Para verificar a comunicação, mantenha dois outros terminais exibindo os tópicos:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/comando
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/resposta
+</code></pre></div>
+<h2 id="requisitos">Requisitos</h2>
+<ol>
+<li>Deve existir um arquivo chamado <code>q1.py</code>.</li>
+<li>A classe deve se chamar <code>SegueComando</code> e o nó, <code>segue_comando_node</code>.</li>
+<li>O nó deve assinar <code>/comando</code> com <code>robcomp_interfaces.msg.ComandanteMSG</code> e publicar em <code>/resposta</code> com <code>robcomp_interfaces.msg.RoboMSG</code>.</li>
+<li>A implementação deve seguir a estrutura de máquina de estados do exemplo <code>base_control.py</code>.</li>
+<li>A função <code>control</code> deve ser a única a publicar no tópico <code>/cmd_vel</code> e deve permanecer idêntica à função fornecida no exemplo.</li>
+<li>Não é permitido usar <code>sleep</code>, loops infinitos ou loops <code>while</code> para controlar o movimento dentro de estados.</li>
+<li>O robô deve parar imediatamente ao receber <code>parar</code>, responder <code>STOPPED</code> e permanecer imóvel até receber o próximo comando do Comandante.</li>
+<li>Toda <code>RoboMSG</code> deve conter o nome completo do aluno e o horário atual nos campos apropriados.</li>
+<li>Cada mudança de estado e cada solicitação de <code>erro</code> devem produzir exatamente uma resposta em <code>/resposta</code>; não é permitido publicar continuamente ou enviar spam.</li>
+</ol>
+<h2 id="rubrica">Rúbrica</h2>
+<ol>
+<li><strong>+0,5:</strong> comunica-se com os tipos customizados, preenchendo todos os campos apropriados e sem enviar spam.</li>
+<li><strong>+1,0:</strong> executa corretamente os comandos <code>andar</code> e <code>girar</code> nos dois sentidos, usando odometria.</li>
+<li><strong>+1,0:</strong> interrompe imediatamente <code>andar</code> e <code>girar</code> e informa corretamente quanto faltava para concluir cada tarefa.</li>
+<li><strong>+1,0:</strong> executa corretamente <code>quadrado</code> ou <code>triangulo</code> e retorna próximo da posição inicial.</li>
+<li><strong>+1,5:</strong> calcula e publica corretamente a deriva da forma concluída.</li>
+</ol>
+<p>Os itens são cumulativos: um item pressupõe o funcionamento dos anteriores.</p>
+<h2 id="video">Vídeo</h2>
+<p>Grave um vídeo contínuo mostrando:</p>
+<ul>
+<li>o terminal do nó do robô;</li>
+<li>o terminal da simulação;</li>
+<li>o <code>echo</code> de <code>/comando</code> e <code>/resposta</code>;</li>
+<li>as interrupções de <code>andar</code> e <code>girar</code> e os respectivos erros informados;</li>
+<li>a execução completa da forma geométrica;</li>
+<li>a resposta final contendo a deriva.</li>
+</ul>
+<p>Publique o vídeo no YouTube e inclua apenas o link no <code>README.md</code>. Entregas parciais são aceitas, sem garantia de nota; explique no <code>README.md</code> e na descrição do vídeo até onde a implementação funciona.</p>
+<hr />
+<h1 id="exercicio-2-contador-de-batatas-50">Exercício 2 - Contador de Batatas (5,0)</h1>
+<p>LINK DOWNLOAD DOS VIDEOS: <a href="https://insper.github.io/robotica-computacional/provas/ai/videos_batatas.zip">https://insper.github.io/robotica-computacional/provas/ai/videos_batatas.zip</a></p>
+<p>Crie um arquivo chamado <code>q2.py</code> com uma classe <code>ProcessaImage</code> e um método <code>roda_video</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ProcessaImage</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">roda_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caminho_video</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="o">...</span>
+</code></pre></div>
+<p>O método deve abrir <strong>um vídeo por vez</strong>, contar quantas batatas atravessam a cena e retornar esse total como <code>int</code>.</p>
+<p>Os vídeos possuem fundo verde e batatas marrons. Em cada vídeo, as batatas seguem trajetórias paralelas em um único sentido, que pode ser horizontal, vertical ou diagonal. As velocidades podem ser diferentes, mas não ocorrem colisões. Cada batata deve ser contada apenas uma vez.</p>
+<p><img alt="Exemplo de batatas em um vídeo" src="../figs/contador_batatas.png" /></p>
+<p>Ao final, durante o processamento, você deve exibir uma janela contendo:</p>
+<ul>
+<li>o contorno de cada batata detectada;</li>
+<li>a trajetória de cada batata;</li>
+<li>o contador atualizado de batatas.</li>
+</ul>
+<p>Ao terminar o vídeo, deve imprimir o total:</p>
+<div class="highlight"><pre><span></span><code>Total de batatas: &lt;quantidade&gt;
+</code></pre></div>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>Para abrir um vídeo com OpenCV, utilize <code>cv2.VideoCapture</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">caminho_video</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="c1"># Processar o frame</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="admonition dica">
+<p class="admonition-title">Dica</p>
+<p>Para escrever o contador na imagem com OpenCV, utilize <code>cv2.putText</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span>
+    <span class="n">frame</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"Batatas: </span><span class="si">{</span><span class="n">contador</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">LINE_AA</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<h2 id="requisitos_1">Requisitos</h2>
+<ol>
+<li>Deve existir um arquivo chamado <code>q2.py</code>.</li>
+<li>A classe deve se chamar <code>ProcessaImage</code> e possuir o método <code>roda_video</code> com a assinatura especificada.</li>
+<li>O método deve abrir o vídeo com <code>cv2.VideoCapture</code>, processá-lo até o fim e retornar um <code>int</code>.</li>
+<li>A solução deve segmentar e rastrear as batatas, desenhando suas trajetórias.</li>
+<li>Cada batata deve ser contada exatamente uma vez, mesmo permanecendo visível durante vários frames.</li>
+<li>A visualização deve mostrar os contornos, as trajetórias e o contador atualizado.</li>
+<li>A solução será avaliada também com um vídeo oculto, não disponibilizado previamente. Não é permitido determinar a resposta pelo nome ou pela duração do arquivo.</li>
+</ol>
+<h2 id="rubrica_1">Rúbrica</h2>
+<ol>
+<li><strong>+0,5:</strong> segmenta todas as batatas nos vídeos.</li>
+<li><strong>+1,0:</strong> identifica todas as batatas nos vídeos.</li>
+<li><strong>+1,5:</strong> conta cada batata uma única vez, sem duplicar objetos presentes em vários frames.</li>
+<li><strong>+1,5:</strong> identifica e desenha as trajetórias das batatas.</li>
+<li><strong>+0,5:</strong> retorna e imprime o total de batatas no vídeo.</li>
+</ol>
+<p>Os itens são cumulativos: um item pressupõe o funcionamento dos anteriores.</p>
+<h2 id="video_1">Vídeo</h2>
+<p>Grave um vídeo mostrando o processamento completo de <strong>um</strong> dos vídeos fornecidos, incluindo a janela do OpenCV e o total final impresso no terminal. Publique-o no YouTube e inclua apenas o link no <code>README.md</code>.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
