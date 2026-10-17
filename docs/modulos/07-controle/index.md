@@ -13,12 +13,12 @@ Esse conceito será explorado nas seguintes atividades,
 ## Para entregar
 
 !!! exercise
-    O repositório da APS 7 é informado no Blackboard. As instruções centralizadas estão em [Sobre as APS](https://insper.github.io/robotica-computacional/aps/).
+    A APS 7 deve ser realizada **em dupla, com integrantes da mesma turma**. Consulte o [enunciado](aps/enunciado.md) para conhecer as tarefas e os critérios de avaliação.
 
-    As APSs são em dupla dentro da mesma turma, no link você deve escolher seu parceiro e/ou criar um grupo.
+    Baixem os arquivos iniciais do repositório informado no Blackboard. Um dos integrantes deve criar um **repositório privado próprio** para a dupla e adicionar o colega e o professor `dsoldev` como colaboradores, seguindo as instruções de [Sobre as APS](../../aps.md).
 
     As entregas da APS 7 são em vídeo. Siga o tutorial [guia de configuração da APS](https://insper.github.io/robotica-computacional/screen_record/) para saber como fazer a gravação do vídeo no Ubuntu. Feito isso, realize o upload do vídeo no YouTube e coloque o link no arquivo `README.md` do seu repositório.
 
-    [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)
+    No Blackboard, enviem o **link do repositório da dupla** e o **SHA completo do commit** que deve ser avaliado.
 
     A data final de entrega é **{{ data_APS7 }}**.
