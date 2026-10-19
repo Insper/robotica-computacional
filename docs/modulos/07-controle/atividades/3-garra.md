@@ -14,15 +14,15 @@ Para mover a **garra** publique no tópico `/joint2_position_controller/command`
 
 ## Módulo da Garra
 
-Vamos encapsular a os comandos da garra em uma classe que pode ser facilmente importado em qualquer nó na ROS 2.
+Vamos encapsular os comandos da garra em uma classe que pode ser facilmente reaproveitada em qualquer nó da ROS 2.
 
-Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma classe chamada `Garra` sem herança. Essa classe deve:
+Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma classe chamada `Garra`. Ela é um **mixin**: uma classe que não é um nó, mas acrescenta métodos e atributos a um nó por **herança múltipla**. Essa classe deve:
 
-* Não herdar de `Node` nem iniciar um nó. Em vez disso, receba o nó que a utilizará no construtor, `__init__(self, node: Node, delay: float = 2.0)` (composição). Importe `Node` de `rclpy.node` e `Float64` de `std_msgs.msg`.
+* Não herdar de `Node` nem iniciar um nó. Importe apenas `Float64` de `std_msgs.msg` e `time`. O construtor é `__init__(self, delay: float = 2.0)`, sem parâmetro `node`.
 
 * Inicialize uma variável `self.delay` com o valor do parâmetro `delay` (padrão `2.0`), que será utilizada para controlar o tempo de espera, em segundos, enquanto a garra se move.
 
-* Definir os publishers `self.ombro_pub` e `self.garra_pub`, criados com `node.create_publisher`, que publicam no tópico `/joint1_position_controller/command` e `/joint2_position_controller/command`, respectivamente.
+* Definir os publishers `self.ombro_pub` e `self.garra_pub`, criados com `self.create_publisher`, que publicam no tópico `/joint1_position_controller/command` e `/joint2_position_controller/command`, respectivamente. O `self.create_publisher` existe porque `self` é uma instância da classe concreta que herda de `Node` **e** de `Garra`; `Garra` sozinha não é um nó e não tem `create_publisher`.
 
 * Definir um método `controla_garra` que recebe um commando do tipo `str` e executa o movimento da garra de acordo com o comando recebido. O método deve:
 
@@ -37,19 +37,40 @@ Dentro do pacote `robcomp_util`, crie um arquivo denominado `garra.py` e uma cla
 
 ### Usando a Garra em um nó
 
-Como `Garra` não é um nó, ela não faz `spin`: quem executa `rclpy.spin` (ou `spin_once`) é o nó que a hospeda. Dentro de um nó que já existe, passe o próprio nó (`self`) ao construtor:
+Para usar a garra, o seu nó herda de `Node` **e** de `Garra`. Como `Garra` não é um nó, ela não faz `spin`: quem executa `rclpy.spin` (ou `spin_once`) é o nó.
 
 ```python
+from rclpy.node import Node
 from robcomp_util.garra import Garra
 
-class MeuNo(Node):
+class MeuNo(Node, Garra):
     def __init__(self):
-        super().__init__('meu_no')
-        self.garra = Garra(self)  # usa este nó; não cria outro
+        Node.__init__(self, 'meu_no')  # 1º: cria o nó
+        Garra.__init__(self)           # 2º: cria os publishers da garra (precisa do nó pronto)
 
     # em algum estado ou callback:
-    #     self.garra.controla_garra('abrir')
+    #     self.controla_garra('abrir')
 ```
+
+Pontos de atenção:
+
+* **`Node` primeiro** na lista de bases (`class MeuNo(Node, Garra)`): assim os métodos do nó (`get_logger`, `create_timer` etc.) têm prioridade e nenhum deles é mascarado por um método de mesmo nome da `Garra`.
+* **Inicialize cada base explicitamente**, `Node.__init__(self, ...)` e depois `Garra.__init__(self)`. Não confie em `super().__init__()` para chamar as duas: ele só executa o `__init__` da próxima classe na ordem de resolução (MRO). A ordem importa porque `Garra.__init__` usa `self.create_publisher`, que só funciona depois que o nó foi inicializado.
+* Para mudar o tempo de espera, passe o valor ao mixin: `Garra.__init__(self, delay=1.0)`.
+
+#### Com a Ação do módulo 3
+
+Se a sua ação já herda da classe `Acao` do [Nó Base de Ação](https://insper.github.io/robotica-computacional/modulos/03-laser-e-robo/util/base_action.py), acrescente `Garra` às bases, depois de `Acao`. Inicialize `Acao` antes de `Garra`, pois é o `__init__` da ação que inicializa o nó:
+
+```python
+class PegaCreeper(Acao, Garra):
+    def __init__(self):
+        Acao.__init__(self)   # 1º: inicializa o nó e a ação
+        Garra.__init__(self)  # 2º: publishers da garra
+        # ... suas variáveis e estados ...
+```
+
+Em seguida, chame `self.controla_garra(...)` no estado em que a garra deve se mover.
 
 !!! warning "Atenção"
     No executor de uma única thread usado nos exemplos, `time.sleep` dentro de um callback impede o processamento dos demais callbacks (imagem, laser, timer) durante a espera. Antes de manipular a garra, **publique um `Twist` zerado** para parar o robô; apenas zerar a variável não envia o comando. Mantenha o robô parado durante a manipulação e só volte a andar depois que o comando terminar.

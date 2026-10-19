@@ -1,21 +1,19 @@
-from rclpy.node import Node
 from std_msgs.msg import Float64
 import time
 
-class Garra(): # Não herda de Node: usa o nó que a criou
+class Garra(): # Mixin: não herda de Node. Use junto com um Node: class MeuNo(Node, Garra)
 
-    def __init__(self, node: Node, delay: float = 2.0):
-        # Inicialização de variáveis
-        self.node = node
+    def __init__(self, delay: float = 2.0):
+        # Chame DEPOIS de Node.__init__(self, ...): create_publisher vem do nó.
         self.delay = delay # Tempo de espera (s) após cada movimento
 
-        # Publishers (criados no nó recebido)
-        self.ombro_pub = node.create_publisher(
+        # Publishers (criados no próprio nó que herda de Garra)
+        self.ombro_pub = self.create_publisher(
             Float64,
             "/joint1_position_controller/command",
             10
         )
-        self.garra_pub = node.create_publisher(
+        self.garra_pub = self.create_publisher(
             Float64,
             "/joint2_position_controller/command",
             10
