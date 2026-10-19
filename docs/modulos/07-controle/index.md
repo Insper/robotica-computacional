@@ -8,7 +8,7 @@ Esse conceito será explorado nas seguintes atividades,
 
 - [Atividade 1](atividades/1-controle-proporcional.md) - Introdução ao conceito de controle proporcional.
 - [Atividade 2](atividades/2-segue-linha.md) - Desenvolvendo uma ação que segue a linha amarela utilizando controle proporcional.
-- [Atividade 3](atividades/3-garra.md) - Entendendo a utilização da garra. Desenvolvendo uma ação que identifica e pega o creeper desejado utilizando a garra do robô.
+- [Atividade 3](atividades/3-garra.md) - Entendendo a utilização da garra e desenvolvendo o módulo `Garra`. Na APS, esse módulo é integrado à percepção e ao controle para pegar um creeper.
 
 ## Para entregar
 

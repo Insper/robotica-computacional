@@ -53,7 +53,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 ---
 
 # Exercício 1 - Ação Segue Linha (5 pontos)
-Primeiro resolva o exercicio na atividade [2 - Segue-Linha](https://insper.github.io/robotica-computacional/modulos/07-controle/atividades/2-seguelinha-proporcional/).
+Primeiro resolva o exercicio na atividade [2 - Segue-Linha](../atividades/2-segue-linha.md).
 
 Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `seguidor_de_linha.py` com um nó `seguidor_de_linha_node` que faça o robô **real** de uma volta completa no exterior do circuito de linha amarela do laboratório e **pare próximo do ponto de partida**.
 

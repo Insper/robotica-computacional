@@ -21,13 +21,13 @@ Para andar em direção a um alvo, o alvo deve estar **centralizado** na horizon
 No `image_callback`, após detectar o centróide do segmento amarelo:
 
 * Guarde `self.cx_linha` (x do centróide) e **`self.w` = metade da largura da imagem**.
-* Se não houver linha, defina `self.erro = None`.
+* Se não houver linha, defina `self.erro = None`. Inicialize `self.erro = None` também no `__init__()`, pois o estado pode rodar antes da primeira imagem chegar.
 * Se houver linha, calcule o erro:
 
   * `self.erro = ???` (em pixels)
   * Normalize o erro ≈ `[-1, 1]` dividindo por `self.w` 
 
-Então no estado `segue`, use o controle proporcional para definir a velocidade angular. Defina o ganho `self.kp` testando valores e considerando o limite da velocidade angular (+- 0.5 rad/s, por exemplo).
+Então no estado `seguir`, use o controle proporcional para definir a velocidade angular. Defina o ganho `self.kp` testando valores e considerando o limite da velocidade angular (+- 0.5 rad/s, por exemplo).
 
 Cuidado com o sinal do erro! Pense quando o robô deve girar para a esquerda ou para a direita.
 
@@ -44,7 +44,8 @@ Baseando-se no codigo [Nó Base de Ação](https://insper.github.io/robotica-com
     * Mude o estado do robô para `seguir`.
 
 5. Na função `seguir` (antiga função `acao`), 
-    * Calcule a velocidade angular com controle proporcional: `self.twist.angular.z = self.kp * self.erro`.
+    * Antes de calcular, trate o caso sem detecção: se `self.erro` for `None`, zere o `Twist` (pare o robô) e retorne da função, sem executar `self.kp * self.erro` (multiplicar `None` gera `TypeError`).
+    * Com linha detectada, calcule a velocidade angular com controle proporcional: `self.twist.angular.z = self.kp * self.erro`, limitando o resultado a ±0.5 rad/s, como sugerido acima.
     * Defina uma velocidade linear constante.
 
 6. No. `image_callback`:
