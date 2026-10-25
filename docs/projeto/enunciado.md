@@ -1,128 +1,92 @@
-# Projeto - SLAM e Navegação
+# Projeto - Missões de Navegação e Resgate
 
-Neste projeto, grupos de até **4 alunos** deverão desenvolver um sistema de navegação para que o robô real seja capaz de se localizar no mapa, planejar trajetórias e sair de um labirinto desconhecido. O projeto está dividido em duas etapas.
+Neste projeto, grupos de até **4 alunos** deverão programar o robô para conquistar missões de dificuldade crescente, combinando segue-linha, navegação, visão computacional e controle da garra.
 
-Na **Etapa 1**, a equipe vai estudar o conceito de navegação na ROS 2 e fazer com que o robô real saia de um labirinto conhecido. Para isso, será necessário compreender a relação entre a odometria do robô e as coordenadas do mapa fornecidas pelo Cartographer, além de adaptar o `GOTO` para utilizar as coordenadas globais estimadas pelo nó AMCL.
+O cenário tem uma **região inicial**, uma linha até a **entrada do labirinto** e outra linha que liga a **saída do labirinto** à região inicial. Dentro do labirinto, o robô deverá navegar e procurar os alvos de cada missão.
 
-Na **Etapa 2**, a equipe deverá implementar uma solução de SLAM e planejamento em grid. O sistema deve construir ou atualizar o mapa, gerar trajetórias automaticamente e fazer com que o robô complete um labirinto desconhecido de forma autônoma.
+O percurso completo é:
 
-Uma etapa será considerada completa quando:
+**Região inicial → linha de ida → entrada → labirinto → saída → linha de volta → região inicial.**
 
-1. Existir pelo menos um vídeo demonstrando claramente o funcionamento dos itens principais da rubrica. Vídeos intermediários também podem ser enviados, desde que sejam descritos no relatório.
-2. O grupo enviar, no próprio GitHub, um relatório explicando como os problemas foram abordados e resolvidos. O formato esperado do relatório está descrito abaixo.
+## Repositório e entrega
 
-## Repositório
+**Prazo de entrega: até as 23h59 do primeiro dia do período de provas finais, conforme o calendário acadêmico.**
 
-O repositório do projeto é informado no Blackboard. As instruções centralizadas estão em [Sobre as APS](https://insper.github.io/robotica-computacional/aps/).
+O repositório do projeto é informado no Blackboard. Siga as instruções de [Sobre as APS](../aps.md) para configurar o repositório e entregar o link e o SHA completo do commit que deve ser avaliado.
 
-## Execução
+O repositório deve conter:
 
-O projeto pode ser desenvolvido e testado no simulador. No entanto, **apenas execuções no robô real serão consideradas para nota**.
+- Nome completo dos integrantes no `README.md`;
+- Código e instruções para executar as missões;
+- Relatório técnico curto;
+- Links dos vídeos, identificando as missões demonstradas.
 
-Utilize o comando abaixo para gerar um mapa com um labirinto:
+Os vídeos devem ser publicados no YouTube, com acesso disponível para a correção. **Não adicione os arquivos de vídeo ao Git**, apenas os links.
 
-```bash
-ros2 launch my_gazebo labirinto.launch.py
-```
+## Execução e comprovação
+
+Todas as missões deverão ser comprovadas **no robô real**.
+
+O grupo pode escolher quais missões demonstrar separadamente e quais comprovar em uma execução integrada. Um mesmo vídeo pode comprovar várias missões, desde que cada conquista fique clara.
+
+Para comprovar separadamente as missões intermediárias do labirinto desconhecido (5 a 8), é necessário também completar e comprovar a missão 4. **A missão 9, por outro lado, pode ser demonstrada sem a demonstração da missão 4**.
+
+Nas demonstrações desacopladas, o robô pode começar na posição e nas condições indicadas na missão. O relatório deve informar essas condições. Após a preparação e o início da demonstração, a execução deve ser autônoma.
+
+As **missões 4 e 9 avaliam a integração**: cada uma deve ser demonstrada em um vídeo contínuo, mostrando o percurso completo, sem cortes, reposicionamento do robô, comandos manuais ou reinicialização dos nós entre os trechos. Depois de iniciado, o robô deve realizar a missão autonomamente.
+
+Entregar o creeper significa **transportá-lo, soltá-lo dentro da região inicial e parar o robô nessa região com a garra abaixada e fechada**.
+
+## Missões e pontuação
+
+### Parte 1 - Labirinto conhecido (4 pontos)
+
+Nesta parte, o grupo pode mapear previamente o labirinto e conhecer a posição do creeper, além de definir os pontos usados na navegação.
+
+| Missão | Conquista | Pontos |
+| --- | --- | ---: |
+| 1 - Atravessar o labirinto | Partindo da entrada, navegar pelo labirinto conhecido e chegar à saída. | 1,0 |
+| 2 - Buscar o creeper | Partindo da entrada, chegar ao creeper em posição conhecida, pegá-lo com a garra e transportá-lo até a saída. | 1,0 |
+| 3 - Seguir as linhas | Seguir a linha da região inicial até a entrada; em outra demonstração, se necessário, partir da saída, seguir a linha de volta e parar dentro da região inicial. | 1,0 |
+| 4 - Expedição conhecida | Em uma execução contínua, partir da região inicial, seguir a linha de ida, entrar no labirinto, buscar o creeper, sair pela saída, seguir a linha de volta e entregá-lo na região inicial. | **1,0** |
+
+### Parte 2 - Labirinto desconhecido (6 pontos)
+
+Nesta parte, o robô deve construir o mapa durante a exploração e decidir autonomamente por onde navegar. **Cada demonstração deve começar sem um mapa prévio do labirinto**, inclusive na missão 8. O mapa e as posições do creeper e do AprilTag não podem ser fornecidos previamente ao programa, nem substituídos por uma sequência de pontos preparada para aquele labirinto. Antes de cada demonstração, peça ao professor ou aos técnicos para posicionar o AprilTag e/ou o creeper, conforme a missão.
+
+| Missão | Conquista | Pontos |
+| --- | --- | ---: |
+| 5 - Explorar e encontrar a saída | Partindo da entrada, explorar e mapear autonomamente o labirinto até encontrar e alcançar a saída. | 1,0 |
+| 6 - Encontrar o creeper | Partindo da entrada, procurar o creeper em posição desconhecida, aproximar-se dele e pegá-lo com a garra. | 1,0 |
+| 7 - Encontrar o AprilTag | Partindo da entrada, procurar o AprilTag escondido e registrar seu ID e sua posição estimada no mapa. | 1,0 |
+| 8 - Resgatar e retornar | Partindo de dentro do labirinto com o creeper já coletado e sem mapa prévio, explorar e mapear autonomamente até encontrar a saída, seguir a linha de volta e entregá-lo na região inicial. | 1,0 |
+| 9 - Expedição completa | Em uma execução contínua, partir da região inicial, seguir a linha de ida, explorar o labirinto desconhecido, identificar e localizar o AprilTag, pegar o creeper, sair pela saída, seguir a linha de volta e entregá-lo na região inicial. Os dois alvos podem ser encontrados em qualquer ordem. | **2,0** |
+
+**Total: 10 pontos.** As missões desacopladas somam 7 pontos; a integração no labirinto conhecido vale 1 ponto e a integração final no desconhecido vale 2 pontos.
 
 ## Relatório
 
-O relatório deve ser escrito como um **relatório técnico curto**, em texto contínuo, mas dividido em seções claras, como introdução, metodologia, resultados e dificuldades. O objetivo não é apenas listar códigos ou funções, mas explicar o que foi feito, por que foi feito e como cada problema da rubrica foi resolvido.
+Escreva um **relatório técnico curto**, em texto contínuo e dividido em seções como metodologia, resultados e dificuldades. Ele deve explicar como o sistema funciona e como as missões foram resolvidas.
 
-Para cada etapa do projeto, o grupo deve incluir pequenos parágrafos explicando a solução adotada, imagens do mapa e das trajetórias planejadas quando fizer sentido, além de evidências de funcionamento no robô real. As demonstrações em vídeo devem ser incluídas por meio de links, acompanhadas de uma breve explicação do que cada vídeo mostra.
+Descreva:
 
-Caso o grupo utilize algum método, algoritmo ou técnica que não foi apresentado em sala de aula, como A*, variações de planejamento, suavização de caminho ou campo de custo, o relatório deve explicar brevemente o funcionamento dessa escolha.
+- Como os nós e os comportamentos do robô se organizam e como ocorrem as transições entre segue-linha, navegação, busca e coleta;
+- Como o robô se localiza, representa o mapa, escolhe destinos, planeja trajetórias e evita obstáculos e áreas ainda desconhecidas;
+- Como o creeper e o AprilTag são detectados e como a coleta e a entrega são realizadas;
+- Quais missões foram conquistadas, quais condições iniciais foram usadas nos vídeos e quais dificuldades ou limitações permanecem.
 
-# Rubrica - Projeto SLAM e Navegação
+Vocês podem usar diagramas para complementar o texto, ilustrando a organização dos nós, os fluxos de execução e as transições entre comportamentos. Inclua imagens dos mapas e das trajetórias quando ajudarem a explicar a solução. Associe cada missão aos links dos vídeos e aos arquivos ou classes principais que a implementam.
 
-**Todas as rubricas:** o relatório deve descrever o que foi feito e explicar como os principais problemas de cada item foram resolvidos. O relatório também deve explicar o funcionamento de qualquer método ou algoritmo que não foi apresentado em sala de aula.
+**Todo método, algoritmo ou técnica utilizado que não tenha sido apresentado em aula deve ser explicado no relatório.** Por exemplo: A*, exploração por fronteiras, campo de custo ou suavização de trajetórias. Explique a ideia do método, por que ele foi escolhido e como foi aplicado no código do grupo.
 
-Marque os itens abaixo com `X` quando o grupo tiver evidências claras de que o item foi resolvido, seja por meio de vídeos, imagens ou descrições detalhadas no relatório.
+## Uso de IA
 
-## Etapa 1 - Navegação em mapa conhecido (4)
+**O uso de IA é livre em todas as partes do projeto**, incluindo planejamento, programação, testes e redação do relatório. O grupo deve conferir se o relatório corresponde ao código entregue e ao funcionamento demonstrado nos vídeos.
 
-### 1. Localização global no mapa (0.5)
-- [] Roda o nó Navigator usando o mapa salvo pelo Cartographer.
+**O relatório será avaliado por IA**, verificando sua concordância com o código do repositório e a coerência lógica do funcionamento descrito. Ele deve também servir como **material de estudo para a prova**, explicada a seguir.
 
-```bash
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
-```
-- [] Consegue obter `x`, `y` e `yaw` do robô no frame `map` usando o tópico `/amcl_pose`.
+**Cada integrante deve compreender e conseguir explicar a solução entregue**, incluindo os trechos produzidos com auxílio de IA e as técnicas que não foram apresentadas em aula.
 
-### 2. Conversão entre imagem/grid e coordenadas do mapa (0.5)
-- [] Em um script auxiliar:
-    - [] Implementou uma função para conversão de coordenadas da imagem/grid para coordenadas reais do mapa.
-    - [] Implementou uma função para a conversão inversa: mapa para imagem/grid.
-- [] Considere os parametros do mapa descritos no arquivo `map.yaml`.
-- [] Considere que a imagem do mapa tem eixo `y` invertido em relação ao sistema de coordenadas do mapa.
+## Prova
 
-### 3. Navegação ponto a ponto com `GOTO` (1.0)
-Subscriber para o tópico `/amcl_pose`:
-
-```python
-        qos_profile = QoSProfile(
-            reliability=ReliabilityPolicy.RELIABLE,
-            durability=DurabilityPolicy.TRANSIENT_LOCAL,
-            history=HistoryPolicy.KEEP_LAST,
-            depth=1
-        )
-
-        self.subscription = self.create_subscription(
-            PoseWithCovarianceStamped,
-            '/amcl_pose',
-            self.pose_callback,
-            qos_profile
-        )
-```
- 
-- [] Adapta o `GOTO` para usar se  inscrever no tópico `/amcl_pose` para obter a posição do robô no frame `map`.
-- [] O robô consegue navegar de um ponto até outro no mapa conhecido.
-
-### 4. Completar o labirinto conhecido (2.0)
-- [] O grupo define uma sequência válida de pontos para fazer o robô sair do labirinto conhecido.
-- [] Mostra uma imagem do mapa com os pontos definidos e a trajetória planejada.
-- [] O robô executa a sequência usando `GOTO`.
-- [] O robô consegue sair do labirinto conhecido de forma consistente.
-
----
-
-## Etapa 2 - SLAM, planejamento e labirinto desconhecido (6)
-
-Para essa etapa, vamos executar o SLAM, para isso, precisamos rodar o Cartographer e o Navigator ao mesmo tempo, com o mapa sendo atualizado em tempo real. Para isso, utilize o comando abaixo:
-
-```bash
-ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:='topic://map'
-```
-
-### 1. Leitura e visualização do mapa (0.5)
-- [] Implementa subscriber para o mapa.
-- [] Converte o mapa recebido em uma estrutura útil para planejamento.
-- [] Desenha o mapa usando `matplotlib`, `cv2` ou ferramenta equivalente.
-
-### 2. Planejador em grid (0.75)
-- [] Implementa A* ou algoritmo similar.
-- [] Considera paredes/obstáculos como regiões não navegáveis.
-- [] Gera caminho entre a posição atual do robô e um ponto final hipotético, longe da posição atual do robô.
-- [] Desenha a trajetória planejada sobre a imagem do mapa.
-
-### 3. Tratamento de região conhecida (0.25)
-- [] Evita planejar por áreas desconhecidas.
-- [] Corta ou restringe o caminho para permanecer dentro da região conhecida.
-- [] Desenha a trajetória navegável com outra cor no mapa, sem incluir pontos desconhecidos.
-
-### 4. Campo de custo em relação às paredes (0.5)
-- [] Gera um campo de custo ao redor das paredes.
-- [] Faz o planejador preferir caminhos afastados dos obstáculos.
-- [] O planejador prioriza a navegação pelo centro dos corredores.
-
-### 5. Otimização e execução parcial do caminho (1.0)
-- [] Reduz ou suaviza pontos redundantes do caminho.
-- [] O caminho é simples e contém apenas pontos significativos, sem redundância repetitiva.
-- [] O robô consegue executar pelo menos uma trajetória planejada.
-
-### 6. Completar o labirinto desconhecido de forma autônoma (3.0)
-- [] O robô atualiza o mapa enquanto explora.
-- [] O sistema chama o planejador múltiplas vezes conforme executa as trajetórias planejadas.
-- [] O robô consegue completar um labirinto desconhecido sem sequência manual de pontos e sem colidir com as paredes.
-
+Parte das questões da prova será **gerada com auxílio de IA a partir do relatório e do repositório do grupo**. Essas questões poderão abordar o funcionamento do código, os métodos utilizados, as decisões tomadas e as limitações da solução.
