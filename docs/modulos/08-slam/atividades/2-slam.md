@@ -9,23 +9,18 @@ Veja o vídeo abaixo de demonstração do SLAM no Turtlebot3:
 
 [Turtlebot3 SLAM](https://www.youtube.com/watch?v=pJNSxDodhDk)
 
-## Instalando os pacotes necessários
+## Preparação
 
-Para instalar os pacotes necessários para o SLAM, execute os comandos abaixo:
+Antes de começar, siga a [checagem da infraestrutura](../../01-intro/atividades/guias-infra/checagem.md) e mantenha os nós de sensores e odometria do robô em execução. Você precisará dos pacotes `turtlebot3_cartographer`, `turtlebot3_navigation2` e `nav2_map_server`.
 
-```bash
-cd /home/borg/colcon_ws/src/my_simulation/atualiza_infra
-git stash
-git pull
-./atualiza_infra_2024.sh
-```
+**Os comandos abaixo usam o robô real, com `use_sim_time:=False`.** Para testar no Gazebo, use `use_sim_time:=True` em todos os nós envolvidos. Não misture os dois relógios na mesma execução.
 
 ## Executando o Mapeamento
 
 Para iniciar o mapeamento do ambiente, devemos executar o pacote denominado `Cartographer`. Para isso, execute os comandos abaixo:
 
 ```bash
-ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=False
 ```
 
 Agora, abra um novo terminal com o `teleop` para controlar o Turtlebot3:
@@ -37,10 +32,10 @@ ros2 run turtlebot3_teleop teleop_keyboard
 Com o `teleop` aberto, movimente o Turtlebot3 pelo ambiente para que o mapeamento seja realizado. Após finalizar o mapeamento, execute o comando abaixo para salvar o mapa:
 
 ```bash
-ros2 run nav2_map_server map_saver_cli -f ~/map
+ros2 run nav2_map_server map_saver_cli -f ~/map --ros-args -p use_sim_time:=False
 ```
 
-O mapa será salvo no diretório `~/map` com os arquivos `map.pgm` e `map.yaml`.
+Os arquivos serão salvos como `~/map.pgm` e `~/map.yaml`. O YAML informa, entre outros parâmetros, a resolução em metros por célula e a origem do mapa. Guarde os dois arquivos juntos.
 
 ## Visualizando o Mapa
 
@@ -52,10 +47,10 @@ O mapa ilustra o ambiente mapeado, onde os pixels pretos representam obstáculos
 
 ## Navegando no Mapa
 
-Agora para navegar no ambiente, primeiro **feche todos os terminais abertos** e execute o pacote `Navigation`, através do comando abaixo:
+Para navegar em um mapa salvo, encerre a teleoperação e o Cartographer, mas mantenha os nós do robô e de seus sensores em execução. Inicie o Nav2 com o mapa salvo:
 
 ```bash
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/map.yaml
+ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=False map:=$HOME/map.yaml
 ```
 
 Uma vez que o pacote de navegação esteja em execução, vamos primeiro definir a posição inicial do Turtlebot3 no mapa, para isso, clique no botão `2D Pose Estimate` no Rviz e clique e segure o botão esquerdo do mouse no local onde o Turtlebot3 está localizado no mapa. Em seguida, arraste o mouse para a direção que o Turtlebot3 está apontando e solte o botão esquerdo do mouse, conforme ilustrado na imagem abaixo:
@@ -67,15 +62,19 @@ Uma vez que o pacote de navegação esteja em execução, vamos primeiro definir
 
 Agora, para definir o ponto de destino da navegação, clique no botão `2D Nav Goal` no Rviz e clique e segure o botão esquerdo do mouse no local onde deseja que o Turtlebot3 vá. Em seguida, arraste o mouse para a direção que deseja que o Turtlebot3 esteja apontando e solte o botão esquerdo do mouse.
 
-## Combinando Mapeamento e Navegação (SLAM)
+## Navegação enquanto o mapa é construído
 
-Agora, vamos aprender a combinar o mapeamento e a navegação, executando o pacote `Navigation` e o pacote `Cartographer` juntos. Para isso, execute o comando abaixo (cada um em um terminal diferente):
+No labirinto desconhecido do projeto, o Cartographer deve continuar em execução para atualizar o mapa e a localização. Seu programa pode ler o tópico `/map` (`nav_msgs/msg/OccupancyGrid`), escolher destinos e conduzir o robô usando essa informação.
+
+Para combinar o Cartographer com o Nav2 na infraestrutura da disciplina, execute os comandos abaixo, cada um em um terminal diferente:
 
 ```bash
-ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True \
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=False
+ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=False \
 map:='topic://map'
 ```
+
+Na APS 8, o mapeamento pode ser feito somente com Cartographer e teleoperação. A escolha autônoma dos destinos de exploração será necessária no projeto.
 
 ### Extraindo a posição do robô no mapa
 
@@ -95,22 +94,32 @@ Assim, conseguimos estimar a pose do robô no frame `map`, ou seja:
 x, y, yaw no mapa
 ```
 
-Essa lógica já foi implementada no arquivo [`amcl.py`](https://insper.github.io/robotica-computacional/modulos/08-slam/util/amcl.py). Diferente da classe `Odom`, a classe `AMCL` deve ser executada como um nó ROS independente, publicando a pose global estimada no tópico `/amcl_pose`.
+O arquivo didático [`amcl.py`](../util/amcl.py) compõe a transformação `map -> odom` com a odometria para publicar essa pose. Apesar do nome da classe `AMCL`, ele **não implementa o algoritmo de localização AMCL**: é um nó auxiliar de leitura da pose.
 
-O tópico publicado segue o formato:
+Ao navegar com um mapa salvo, o AMCL do Nav2 já publica `/amcl_pose`; nesse caso, use esse tópico diretamente e não execute o auxiliar no mesmo tópico.
 
-```text
-/amcl_pose
+Durante o SLAM, se precisar do auxiliar, execute-o como um nó independente, remapeando a publicação para evitar confusão com o AMCL do Nav2:
+
+```bash
+python3 amcl.py --ros-args -r /amcl_pose:=/map_pose -p use_sim_time:=False
 ```
 
-com o tipo:
+Baixe o arquivo e execute o comando na pasta em que ele foi salvo. Configure seu subscriber para `/map_pose`. O publisher do auxiliar é `VOLATILE`; o subscriber também deve usar durabilidade `VOLATILE`. Diferentemente da classe `Odom`, esse auxiliar não deve ser usado como uma classe de herança do controlador. A covariância publicada pelo auxiliar contém valores fixos de exemplo, não uma estimativa de incerteza.
+
+Os tópicos `/amcl_pose` (AMCL do Nav2) e `/map_pose` (auxiliar remapeado) usam o tipo:
 
 ```text
 geometry_msgs/msg/PoseWithCovarianceStamped
 ```
 
-Nesse tópico:
+Nessas mensagens:
 
 - `pose.pose.position.x` representa a posição do robô no eixo X do mapa (metros);
 - `pose.pose.position.y` representa a posição do robô no eixo Y do mapa (metros);
 - `pose.pose.orientation` representa a orientação do robô no mapa.
+
+## Da atividade ao projeto
+
+Para trabalhar com o mapa no código, observe a resolução, a origem e as dimensões de `OccupancyGrid`. Os valores indicam células desconhecidas (`-1`) ou ocupação de `0` a `100`. A representação como imagem também exige atenção ao sentido do eixo vertical.
+
+No projeto, além de mapear, será necessário escolher destinos de exploração, planejar por regiões conhecidas e livres e manter distância das paredes. O relatório deverá explicar os métodos escolhidos e como os comportamentos de navegação, visão e garra foram integrados.

@@ -6,7 +6,7 @@
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
 
-**Aviso 2:** Lembre-se de dar `commit` e `push` no seu repositório até o horário limite de entrega.
+**Aviso 2:** Siga as instruções de [Sobre as APS](../../../aps.md): envie no Blackboard o link do repositório e o SHA completo do commit que deve ser avaliado, até o prazo de entrega.
 
 **Aviso 3:** Preencha o nome completo dos integrantes do seu grupo no arquivo `README.md` do seu repositório.
 
@@ -55,7 +55,7 @@ Este exercício está avaliando a organização e qualidade dos vídeos dos exer
 # Exercício 1 - Robô Quadrado Melhorado (7 pontos)
 Primeiro resolva o exercicio na atividade [1 - GoTo](https://insper.github.io/robotica-computacional/modulos/08-slam/atividades/1-goto/).
 
-Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `quadrado.py` com um nó `quadrado_node` que faça o robô **real** desenhe um quadrado excelente na referência do chão do laboratório. O nó deve:
+Em seguida, baseando-se no `base_control.py` (Módulo 3), crie um arquivo chamado `quadrado.py` com um nó `quadrado_node` que faça o robô **real** percorrer os quatro vértices do quadrado de referência no chão do laboratório e retornar ao ponto inicial. O nó deve:
 
 ## Ação Cliente (Principal)
 
@@ -63,10 +63,12 @@ O nó principal deve:
 
 1. Ter dois estados: `goto`, `done`.
 2. Instanciar a ação `GoTo`.
-4. Definir uma flag `self.iniciando = True`.
-5. O estado `goto` deve:
-    * Iterativamente enviar o robô para os quatro pontos que formam o quadrado, utilizando a ação `GoTo`.
-    * Quando o robô chegar no ponto final do quadrado, mude o estado para `done`.
+3. Definir uma flag `self.iniciando = True`.
+4. O estado `goto` deve:
+    * Definir os vértices no mesmo referencial da odometria usada pelo `GoTo`.
+    * Usar a flag para iniciar cada destino uma única vez e aguardar a ação chegar a `done` antes de enviar o próximo ponto.
+    * Percorrer os quatro lados, incluindo o trecho de volta ao ponto inicial.
+    * Ao concluir o percurso, mudar para `done` e garantir que o robô pare.
 
 Grave um vídeo do robô real desenhando o quadrado de referência no chão do laboratório. Salve o vídeo no Youtube e adicione o link no arquivo `README.md` do seu repositório.
 
@@ -74,11 +76,11 @@ Grave um vídeo do robô real desenhando o quadrado de referência no chão do l
 
 # Exercício 2 - SLAM no Labirinto (3 pontos)
 
-Utilizando o pacote `Cartographer` e o pacote `Navigation`, explore o labirinto da sala enquanto controla o robô simulado manualmente ou usando a UI, explorando cada canto do labirinto. Por fim, salve o mapa do labirinto e adicione o arquivo `map.pgm` e `map.yaml` no seu repositório.
+Utilizando o `Cartographer`, mapeie o labirinto do laboratório com o **robô real**, percorrendo os corredores para representar as paredes e as áreas livres. Nesta APS, a exploração pode ser conduzida por teleoperação ou por destinos enviados pela interface do Nav2; não é necessário implementar exploração autônoma. Por fim, salve o mapa e adicione os arquivos `map.pgm` e `map.yaml` ao repositório.
 
 !!! dica
-    O `Navigation` atualmente tem um bug que impede o robô de navegar contornando obstáculos, então, envie vários pontos para o robô, para que ele possa navegar pelo labirinto.
+    Se usar o Nav2, envie destinos em regiões já mapeadas e livres. Para esta atividade, você também pode fazer todo o mapeamento usando o teclado, sem iniciar o Nav2.
 
 ## Vídeo
 
-Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre a tela do computador com o Rviz e então, mostre o robô explorando o labirinto.
+Grave um vídeo do robô explorando o labirinto do laboratório e adicione o link no arquivo `README.md` do seu repositório. No vídeo, mostre o robô real explorando o labirinto, o mapa sendo construído no RViz e o resultado final do mapeamento.
