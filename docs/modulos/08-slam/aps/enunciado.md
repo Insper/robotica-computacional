@@ -2,6 +2,8 @@
 
 **Data de entrega:** {{ data_APS8 }}
 
+**Grupos:** esta APS deve ser realizada em grupos de até **4 alunos**, com os mesmos integrantes do projeto final.
+
 ## Instruções gerais
 
 **Aviso 1:** Sempre desenvolvam nos arquivos `.py` dos respectivos exercícios.
