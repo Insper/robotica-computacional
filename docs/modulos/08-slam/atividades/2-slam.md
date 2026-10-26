@@ -117,9 +117,3 @@ Nessas mensagens:
 - `pose.pose.position.x` representa a posição do robô no eixo X do mapa (metros);
 - `pose.pose.position.y` representa a posição do robô no eixo Y do mapa (metros);
 - `pose.pose.orientation` representa a orientação do robô no mapa.
-
-## Da atividade ao projeto
-
-Para trabalhar com o mapa no código, observe a resolução, a origem e as dimensões de `OccupancyGrid`. Os valores indicam células desconhecidas (`-1`) ou ocupação de `0` a `100`. A representação como imagem também exige atenção ao sentido do eixo vertical.
-
-No projeto, além de mapear, será necessário escolher destinos de exploração, planejar por regiões conhecidas e livres e manter distância das paredes. O relatório deverá explicar os métodos escolhidos e como os comportamentos de navegação, visão e garra foram integrados.
