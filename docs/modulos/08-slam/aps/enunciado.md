@@ -65,10 +65,9 @@ O nó principal deve:
 
 1. Ter dois estados: `goto`, `done`.
 2. Instanciar a ação `GoTo`.
-3. Definir uma flag `self.iniciando = True`.
-4. O estado `goto` deve:
+3. O estado `goto` deve:
     * Definir os vértices no mesmo referencial da odometria usada pelo `GoTo`.
-    * Usar a flag para iniciar cada destino uma única vez e aguardar a ação chegar a `done` antes de enviar o próximo ponto.
+    * Iniciar cada destino uma única vez e aguardar a ação chegar a `done` antes de enviar o próximo ponto.
     * Percorrer os quatro lados, incluindo o trecho de volta ao ponto inicial.
     * Ao concluir o percurso, mudar para `done` e garantir que o robô pare.
 
