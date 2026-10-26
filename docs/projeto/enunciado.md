@@ -62,8 +62,6 @@ Nesta parte, o robô deve construir o mapa durante a exploração e decidir auto
 | 8 - Resgatar e retornar | Partindo de dentro do labirinto com o creeper já coletado e sem mapa prévio, explorar e mapear autonomamente até encontrar a saída, seguir a linha de volta e entregá-lo na região inicial. | 1,0 |
 | 9 - Expedição completa | Em uma execução contínua, partir da região inicial, seguir a linha de ida, explorar o labirinto desconhecido, identificar e localizar o AprilTag, pegar o creeper, sair pela saída, seguir a linha de volta e entregá-lo na região inicial. Os dois alvos podem ser encontrados em qualquer ordem. | **2,0** |
 
-**Total: 10 pontos.** As missões desacopladas somam 7 pontos; a integração no labirinto conhecido vale 1 ponto e a integração final no desconhecido vale 2 pontos.
-
 ## Relatório
 
 Escreva um **relatório técnico curto**, em texto contínuo e dividido em seções como metodologia, resultados e dificuldades. Ele deve explicar como o sistema funciona e como as missões foram resolvidas.
