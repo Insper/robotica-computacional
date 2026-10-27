@@ -10,9 +10,18 @@ O percurso completo é:
 
 ## Simulação para desenvolvimento
 
-Para desenvolver e testar as missões, utilize a [simulação da pista 26B](https://github.com/rbcuenca/my_simulation#pista-26b), com linhas de ida e volta, uma casa em formato de labirinto e um creeper na sala dos fundos.
+Execute os comandos abaixo para atualizar os pacotes da simulação:
 
-Atualize o repositório `my_simulation`, recompile o pacote `my_gazebo` e carregue o ambiente do workspace. Depois, inicie a simulação com:
+```bash
+cd ~/colcon_ws/src/my_simulation
+git add .
+git stash
+git checkout main
+git pull
+cb
+```
+
+Para iniciar a simulação do projeto:
 
 ```bash
 ros2 launch my_gazebo pista-26B.launch.py
