@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Enunciado - Robótica Computacional - Insper</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../equipe.css"><link rel="stylesheet" href="../../css/ansi-colours.css"><link rel="stylesheet" href="../../css/jupyter-cells.css"><link rel="stylesheet" href="../../css/pandas-dataframe.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="Robótica Computacional - Insper"
+           class="ah-logo"
+           aria-label="Robótica Computacional - Insper">
+          Robótica Computacional - Insper
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../criterios/">Critérios de Aprovação</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../aps/">Sobre as APS</a>
+    </li>
+  
+
+            
+              
+  
+    <li>
+      <a href="../../screen_record/">Como Gravar a Tela no Linux</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 1</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 1 - Introdução ao Curso</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/atividade-dia1/">Atividade Dia 1</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Infra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/">Começe Aqui!</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1.1 - Linux</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/">Início</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Primeiro boot com SSD</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/">Primeiro Boot</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/windows/">Primeiro Boot - Windows</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/recebi-meu-ssd/mac-os/">Primeiro Boot - MAC</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/primeiros-passos/">Meu SSD subiu, e agora?</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/guia-linux/">Guia básico de Linux</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/ssd-linux/git-e-github/">Configure o seu Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/robo-simulado/">1.2 - Robô Simulado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/turtlebot3/">1.3 - Robô TurtleBot3</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Revisão Python</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/21-classes/">2.1 - Introdução à Classes no Python</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/22-funcoes/">2.2 - Dicionario e Funções</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/01-intro/atividades/guias-infra/checagem/">Checagem da Infra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 2 - Introdução à ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/1-package/">1 - Pacotes e Comandos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/2-topicos/">2 - Topicos na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/3-creating-package/">3 - Criando um Pacote</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/4-pub-sub/">4 - Publisher e Subscriber na ROS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/atividades/5-rosbag/">5 - Salvando Eventos na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/02-intro-ros/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 3 - Controlando o Robô</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/1-maquina-de-estados/">1 - Máquina de Estados</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">2 - Estrutura Básica de um Nó</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/2-estrutura-basica/">2 - Estrutura Básica de um Nó</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base.py">Download > Nó Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base_action.py">Download > Nó Base de Ação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/util/base_control.py">Download > Nó Cliente da Ação</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/3-odometria/">3 - Entendendo a Odometria</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/4-laser/">4 - Entendendo o Laser</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/5-acao-andar/">5 - Ação de Andar</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/atividades/6-visualizacao/">6 - Visualização na ROS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/03-laser-e-robo/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 2</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 4 - Imagens e Matrizes</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades_cap_4.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades/1-leitura_e_webcam/">1 - Leitura de Imagem e Webcam</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades/2-corte_e_criacao/">2 - Corte e Criação de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades/3-roi_e_numpy/">3 - ROI e NumPy</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades/4-segmentacao_1/">4 - Segmentação de Imagens p1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/atividades/5-segmentacao_2/">5 - Segmentação de Imagens p2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 4</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/04-visao-p1/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 5 - Identificação e Modelo de Câmera</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/">Index</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="https://pseudopencv.site/utilities/hsvcolormask/">Ferramenta para Ajuste de Máscaras</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades_cap_5.zip">Download > Atividades</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/1-morfologia/">1 - Refinamento de Máscaras de Segmentação</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/2-identificacao/">2 - Identificação de Objetos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/3-canny-filtros/">3 - Convolução e Filtragem de Imagens</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/4-retas-circulos/">4 - Detecção de Retas e Círculos</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">5 - Exemplo de Resolução de Exercício</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/51-enunciado/">5.1 - Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/52-resolucao/">5.2 - Resolução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/util/q1.py">Download > Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/atividades/util/q1_gab.py">Download > Gabarito</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 5</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="https://classroom.github.com/a/LIbjPbWE">APS 5 - Classroom</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/05-visao-p2/aps/ex3.py">Q3 base</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 6 - Visão Robótica & Deep Learning</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">1 - Visão na ROS 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/atividades/1-image_subscriber/">1 - Visão na ROS 2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/util/image_subscriber.py">Download > Nó Básico de Visão</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/atividades/2-id_com_NN/">2 - Detecção com Redes Neurais</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/atividades/3-reconhecimento-marcadores/">3 - Marcador AprilTag</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 6</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/06-visao-p3/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Unidade 3</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 7 - Controle Proporcional</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/atividades/1-controle-proporcional/">1 - Controle Básico</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/atividades/2-segue-linha/">2 - Segue-Linha</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">3 - Controlando a Garra</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/atividades/3-garra/">3 - Controlando a Garra</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/util/garra.py">Download > Garra</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 7</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/07-controle/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Capítulo 8 - SLAM</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/08-slam/">Index</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Atividades</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/08-slam/atividades/1-goto/">1 - GoTo</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/08-slam/atividades/2-slam/">2 - SLAM</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../modulos/08-slam/util/amcl.py">3 - AMCL Node</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">APS 8</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../modulos/08-slam/aps/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Projeto</span>
+    <ul>
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Enunciado</span>
+      <ul>
+        
+      </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Provas</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulados AI</span>
+    <ul>
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 1</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_1/imgs.zip">Download > IMGS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_1/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 2</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_2/imgs.zip">Download > IMGS</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_2/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_2/q1.py">Gabarito Q1 (OLD)</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Simulado AI 3</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_3/enunciado/">Enunciado</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_3/q2.zip">Download > Imagens Q2</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_3/q1.py">Gabarito Q1</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../simulados/ai_3/q2.py">Gabarito Q2</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Projeto</li>
+                  
+                
+                <li>Enunciado</li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="projeto-missoes-de-navegacao-e-resgate">Projeto - Missões de Navegação e Resgate</h1>
+<p>Neste projeto, grupos de até <strong>4 alunos</strong> deverão programar o robô para conquistar missões de dificuldade crescente, combinando segue-linha, navegação, visão computacional e controle da garra.</p>
+<p>O cenário tem uma <strong>região inicial</strong>, uma linha até a <strong>entrada do labirinto</strong> e outra linha que liga a <strong>saída do labirinto</strong> à região inicial. Dentro do labirinto, o robô deverá navegar e procurar os alvos de cada missão.</p>
+<p>O percurso completo é:</p>
+<p><strong>Região inicial → linha de ida → entrada → labirinto → saída → linha de volta → região inicial.</strong></p>
+<h2 id="simulacao-para-desenvolvimento">Simulação para desenvolvimento</h2>
+<p>Execute os comandos abaixo para atualizar os pacotes da simulação:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/colcon_ws/src/my_simulation
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>stash
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull
+cb
+</code></pre></div>
+<p>Para iniciar a simulação do projeto:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>my_gazebo<span class="w"> </span>pista-26B.launch.py
+</code></pre></div>
+<h2 id="repositorio-e-entrega">Repositório e entrega</h2>
+<p><strong>Prazo de entrega: até as 23h59 do primeiro dia do período de provas finais, conforme o calendário acadêmico.</strong></p>
+<p>O repositório do projeto é informado no Blackboard. Siga as instruções de <a href="../../aps/">Sobre as APS</a> para configurar o repositório e entregar o link e o SHA completo do commit que deve ser avaliado.</p>
+<p>O repositório deve conter:</p>
+<ul>
+<li>Nome completo dos integrantes no <code>README.md</code>;</li>
+<li>Código e instruções para executar as missões;</li>
+<li>Relatório técnico curto;</li>
+<li>Links dos vídeos, identificando as missões demonstradas.</li>
+</ul>
+<p>Os vídeos devem ser publicados no YouTube, com acesso disponível para a correção. <strong>Não adicione os arquivos de vídeo ao Git</strong>, apenas os links.</p>
+<h2 id="execucao-e-comprovacao">Execução e comprovação</h2>
+<p>Todas as missões deverão ser comprovadas <strong>no robô real</strong>.</p>
+<p>O grupo pode escolher quais missões demonstrar separadamente e quais comprovar em uma execução integrada. Um mesmo vídeo pode comprovar várias missões, desde que cada conquista fique clara.</p>
+<p>Para comprovar separadamente as missões intermediárias do labirinto desconhecido (5 a 8), é necessário também completar e comprovar a missão 4. <strong>A missão 9, por outro lado, pode ser demonstrada sem a demonstração da missão 4</strong>.</p>
+<p>Nas demonstrações desacopladas, o robô pode começar na posição e nas condições indicadas na missão. O relatório deve informar essas condições. Após a preparação e o início da demonstração, a execução deve ser autônoma.</p>
+<p>As <strong>missões 4 e 9 avaliam a integração</strong>: cada uma deve ser demonstrada em um vídeo contínuo, mostrando o percurso completo, sem cortes, reposicionamento do robô, comandos manuais ou reinicialização dos nós entre os trechos. Depois de iniciado, o robô deve realizar a missão autonomamente.</p>
+<p>Entregar o creeper significa <strong>transportá-lo, soltá-lo dentro da região inicial e parar o robô nessa região com a garra abaixada e fechada</strong>.</p>
+<h2 id="missoes-e-pontuacao">Missões e pontuação</h2>
+<h3 id="parte-1-labirinto-conhecido-4-pontos">Parte 1 - Labirinto conhecido (4 pontos)</h3>
+<p>Nesta parte, o grupo pode mapear previamente o labirinto e conhecer a posição do creeper, além de definir os pontos usados na navegação.</p>
+<table>
+<thead>
+<tr>
+<th>Missão</th>
+<th>Conquista</th>
+<th style="text-align: right;">Pontos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - Atravessar o labirinto</td>
+<td>Partindo da entrada, navegar pelo labirinto conhecido e chegar à saída.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>2 - Buscar o creeper</td>
+<td>Partindo da entrada, chegar ao creeper em posição conhecida, pegá-lo com a garra e transportá-lo até a saída.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>3 - Seguir as linhas</td>
+<td>Seguir a linha da região inicial até a entrada; em outra demonstração, se necessário, partir da saída, seguir a linha de volta e parar dentro da região inicial.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>4 - Expedição conhecida</td>
+<td>Em uma execução contínua, partir da região inicial, seguir a linha de ida, entrar no labirinto, buscar o creeper, sair pela saída, seguir a linha de volta e entregá-lo na região inicial.</td>
+<td style="text-align: right;"><strong>1,0</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parte-2-labirinto-desconhecido-6-pontos">Parte 2 - Labirinto desconhecido (6 pontos)</h3>
+<p>Nesta parte, o robô deve construir o mapa durante a exploração e decidir autonomamente por onde navegar. <strong>Cada demonstração deve começar sem um mapa prévio do labirinto</strong>, inclusive na missão 8. O mapa e as posições do creeper e do AprilTag não podem ser fornecidos previamente ao programa, nem substituídos por uma sequência de pontos preparada para aquele labirinto. Antes de cada demonstração, peça ao professor ou aos técnicos para posicionar o AprilTag e/ou o creeper, conforme a missão.</p>
+<table>
+<thead>
+<tr>
+<th>Missão</th>
+<th>Conquista</th>
+<th style="text-align: right;">Pontos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 - Explorar e encontrar a saída</td>
+<td>Partindo da entrada, explorar e mapear autonomamente o labirinto até encontrar e alcançar a saída.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>6 - Encontrar o creeper</td>
+<td>Partindo da entrada, procurar o creeper em posição desconhecida, aproximar-se dele e pegá-lo com a garra.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>7 - Encontrar o AprilTag</td>
+<td>Partindo da entrada, procurar o AprilTag escondido e registrar seu ID e sua posição estimada no mapa.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>8 - Resgatar e retornar</td>
+<td>Partindo de dentro do labirinto com o creeper já coletado e sem mapa prévio, explorar e mapear autonomamente até encontrar a saída, seguir a linha de volta e entregá-lo na região inicial.</td>
+<td style="text-align: right;">1,0</td>
+</tr>
+<tr>
+<td>9 - Expedição completa</td>
+<td>Em uma execução contínua, partir da região inicial, seguir a linha de ida, explorar o labirinto desconhecido, identificar e localizar o AprilTag, pegar o creeper, sair pela saída, seguir a linha de volta e entregá-lo na região inicial. Os dois alvos podem ser encontrados em qualquer ordem.</td>
+<td style="text-align: right;"><strong>2,0</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="relatorio">Relatório</h2>
+<p>Escreva um <strong>relatório técnico curto</strong>, em texto contínuo e dividido em seções como metodologia, resultados e dificuldades. Ele deve explicar como o sistema funciona e como as missões foram resolvidas.</p>
+<p>Descreva:</p>
+<ul>
+<li>Como os nós e os comportamentos do robô se organizam e como ocorrem as transições entre segue-linha, navegação, busca e coleta;</li>
+<li>Como o robô se localiza, representa o mapa, escolhe destinos, planeja trajetórias e evita obstáculos e áreas ainda desconhecidas;</li>
+<li>Como o creeper e o AprilTag são detectados e como a coleta e a entrega são realizadas;</li>
+<li>Quais missões foram conquistadas, quais condições iniciais foram usadas nos vídeos e quais dificuldades ou limitações permanecem.</li>
+</ul>
+<p>Vocês podem usar diagramas para complementar o texto, ilustrando a organização dos nós, os fluxos de execução e as transições entre comportamentos. Inclua imagens dos mapas e das trajetórias quando ajudarem a explicar a solução. Associe cada missão aos links dos vídeos e aos arquivos ou classes principais que a implementam.</p>
+<p><strong>Todo método, algoritmo ou técnica utilizado que não tenha sido apresentado em aula deve ser explicado no relatório.</strong> Por exemplo: A*, exploração por fronteiras, campo de custo ou suavização de trajetórias. Explique a ideia do método, por que ele foi escolhido e como foi aplicado no código do grupo.</p>
+<h2 id="uso-de-ia">Uso de IA</h2>
+<p><strong>O uso de IA é livre em todas as partes do projeto</strong>, incluindo planejamento, programação, testes e redação do relatório. O grupo deve conferir se o relatório corresponde ao código entregue e ao funcionamento demonstrado nos vídeos.</p>
+<p><strong>O relatório será avaliado por IA</strong>, verificando sua concordância com o código do repositório e a coerência lógica do funcionamento descrito. Ele deve também servir como <strong>material de estudo para a prova</strong>, explicada a seguir.</p>
+<p><strong>Cada integrante deve compreender e conseguir explicar a solução entregue</strong>, incluindo os trechos produzidos com auxílio de IA e as técnicas que não foram apresentadas em aula.</p>
+<h2 id="prova">Prova</h2>
+<p>Parte das questões da prova será <strong>gerada com auxílio de IA a partir do relatório e do repositório do grupo</strong>. Essas questões poderão abordar o funcionamento do código, os métodos utilizados, as decisões tomadas e as limitações da solução.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../modulos/08-slam/aps/enunciado/"
+               class="ah-prev"
+               title="Enunciado">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Enunciado</span>
+            </a>
+          
+          
+            <a href="../../simulados/ai_1/imgs.zip"
+               class="ah-next"
+               title="Download > IMGS">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Download > IMGS</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
