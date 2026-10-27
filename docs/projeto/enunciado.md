@@ -8,6 +8,16 @@ O percurso completo é:
 
 **Região inicial → linha de ida → entrada → labirinto → saída → linha de volta → região inicial.**
 
+## Simulação para desenvolvimento
+
+Para desenvolver e testar as missões, utilize a [simulação da pista 26B](https://github.com/rbcuenca/my_simulation#pista-26b), com linhas de ida e volta, uma casa em formato de labirinto e um creeper na sala dos fundos.
+
+Atualize o repositório `my_simulation`, recompile o pacote `my_gazebo` e carregue o ambiente do workspace. Depois, inicie a simulação com:
+
+```bash
+ros2 launch my_gazebo pista-26B.launch.py
+```
+
 ## Repositório e entrega
 
 **Prazo de entrega: até as 23h59 do primeiro dia do período de provas finais, conforme o calendário acadêmico.**
