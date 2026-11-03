@@ -1,17 +1,4 @@
-# Robótica Computacional 2024.1 - Simulado PF
-
-Observações de avaliações nesta disciplina:
-
-* A prova tem duração de **4 horas**.
-* Inicie a prova no Blackboard para a ferramenta de Proctoring iniciar. Só finalize o Blackboard quando enviar a prova via o repositório informado no Blackboard.
-* Durante a prova vamos registrar as páginas visitadas e acessos online e o teclado.
-* Coloque seu nome e email no README.md do seu repositório.
-* Você pode consultar a internet ou qualquer material que utilizado no curso, mas não pode se comunicar com pessoas ou colegas a respeito da prova *em qualquer plataforma*.
-* `Não é permitido o uso de ferramentas de **IA** como chatGPT, Copilot ou similares durante a prova`.
-* Faça commits e pushes frequentes no seu repositório.
-* Eventuais avisos importantes serão realizados em sala durante a prova.
-* Escreva o número 42 como a resposta da soma no arquivo `README.md` como teste de sua atenção.
-* A responsabilidade por *infraestrutura*, *configuração* e *setup* em funcionamento pleno, é de cada estudante.
+# Robótica Computacional - Simulado AF 2
 
 ## Atualização dos Pacote (ROS 2)
 
@@ -29,13 +16,13 @@ cb
 ## Configuração do Pacote (ROS 2)
 
 - **Preparação Inicial:** O repositório é informado no Blackboard (veja [Sobre as APS](https://insper.github.io/robotica-computacional/aps/)). Clone-o **dentro da pasta** `colcon_ws/src/` no seu SSD.
-- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `avaliacao_ai`.
+- **Criação do Pacote ROS 2:** **Dentro do diretório do seu repositório**, crie um novo pacote chamado `simulado_2`.
 
     - **Dica:** Para utilizar os modulos desenvolvidos no módulo 3, inclua o pacote `my_package` como dependência do seu pacote, e então, importe como nos exemplos do módulo 3.
 
 ___________________________
 
-# Exercício 1 (5)
+# Exercício 1
 
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `q1.py` contendo uma classe denominada `Circuito`. Esta classe deve implementar um **nó** chamado `circuito_node`, responsável por fazer com que o robô **simulado** siga a linha amarela, ao completar uma volta, gire 90 graus e vá até a caixa da cor passada na criação da classe `Circuito`.
 
@@ -67,7 +54,7 @@ O nó criado deve:
 
 ___________________________
 
-# Exercício 2 (5)
+# Exercício 2
 
 Baseando-se no código `base_control.py` do módulo 3, crie um arquivo chamado `q2.py` contendo uma classe denominada `Aleatorio`. Esta classe deve implementar um **nó** chamado `aleatorio_node`, responsável por fazer com que o robô **simulado** gire a uma velocidade de 0.5 rad/s por um tempo aleatório entre 5 e 10 segundos, e então realizar um comportamento diferente dependendo da cor da caixa mais prevalecente no campo de visão do robô.
 

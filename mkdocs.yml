@@ -238,10 +238,15 @@ nav:
           - "Download > Imagens Q2": simulados/ai_3/q2.zip
           - "Gabarito Q1" : simulados/ai_3/q1.py
           - "Gabarito Q2" : simulados/ai_3/q2.py
-    # #   - Simulado AF:
-    # #     - "Enunciado": simulados/simulado_af/enunciado.md
-    # #     - "Gabarito Q1" : simulados/simulado_af/q1.py
-    # #     - "Gabarito Q2" : simulados/simulado_af/q2.py
+      - Simulados AF:
+        - Simulado AF 1:
+          - "Enunciado": simulados/af_1/enunciado.md
+        - Simulado AF 2:
+          - "Enunciado": simulados/af_2/enunciado.md
+          - "Gabarito Q1": simulados/af_2/q1.py
+          - "Gabarito Q2": simulados/af_2/q2.py
+        - Simulado AF 3:
+          - "Enunciado": simulados/af_3/enunciado.md
     #   - Provas Antigas:
     #     - AI 25b:
     #       - "Enunciado": simulados/ai_25b/enunciado.md
