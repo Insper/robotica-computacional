@@ -216,9 +216,9 @@ nav:
       - "Enunciado": projeto/enunciado.md
 
     - Provas:
-    #   - AI:
-    #     - "Download > IMGS": provas/ai/imgs.zip
-    #     - "Enunciado": provas/ai/enunciado.md
+      - AI:
+        # - "Download > IMGS": provas/ai/imgs.zip
+        - "Enunciado": provas/ai/enunciado.md
     #   - AF:
     #     - "Enunciado": provas/af/enunciado.md
     #   - SUB:
